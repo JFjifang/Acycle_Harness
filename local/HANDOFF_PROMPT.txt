@@ -1,31 +1,37 @@
-请在当前 Acycle_Harness 项目中完成本地安装和实际 MATLAB 测试。
+请在解压后的当前 Acycle_Harness 项目完成本机安装和实际测试。我希望在 Harness 中上传数据、发简短问题、看到主聊天中的 MATLAB 图，再在同一对话调整；也保留 Codex MCP 接入。请直接完成可独立进行的工作，最后报告本机实际结果。
 
-先读取 docs/USER_GUIDE.zh-CN.md、docs/LOCAL_HANDOFF.zh-CN.md、当前 validation/ 验收记录和 tool schema。确认交付版本0.4.0、仓库状态及当前操作系统：Python/MCP有10个工具，Harness另有acycle_import_attachment共11个工具，8个skills。旧版回执仅证明对应旧版验收范围。安装和测试产物写入项目自己的虚拟环境、local/generated/、local-validation/ 和 .acycle/；客户端配置仅按下文定向合并必要条目。保留已有研究数据、模型设置和其他客户端配置。
+先读取 docs/USER_GUIDE.zh-CN.md、docs/LOCAL_HANDOFF.zh-CN.md、validation/v0.5/ACCEPTANCE.md 和当前 tool schema。核对版本0.5.0：Python/MCP12个工具、Harness原生13个工具、10个skills。六项科学操作是 mini robot、SWA、COCO、eCOCO、Interpolation Pro、周期极值调谐。不要把历史0.4的验收当作新增功能已通过。
 
-寻找本机已安装的 MATLAB、所需工具箱与 Acycle 源码。优先使用已存在的安装；不要安装或修改 MATLAB 许可证。参考 Acycle 提交是 dcba4279168745b563e0535b954297023dd62fc7。若原目录有修改，另建参考 checkout，不重置用户目录。缺少路径或许可证时先完成独立可做的检查，再准确说明缺什么。
+定位本机已有MATLAB、工具箱和Acycle源码。参考Acycle SHA为dcba4279168745b563e0535b954297023dd62fc7；已有目录有修改时另建参考checkout，不重置用户目录。不要修改许可证。缺少环境时继续无关独立检查，再准确说明缺什么。所有路径按本机生成，不复制旧云端/workspace路径。
 
-建立项目 .venv，安装本项目或匹配的0.4.0 wheel。先运行local/install_check.py核对软件安装和真实MCP；该检查不调用API或MATLAB。设置 ACYCLE_BACKEND=local、ACYCLE_ROOT、MATLAB_EXECUTABLE、ACYCLE_MATLAB_TIMEOUT。运行 local/doctor.py --run-matlab，把回执保存到 local-validation/。不得用 Python/Octave 替代 MATLAB 科学计算，不把静态找到可执行文件写成 MATLAB 验证成功。
+在项目.venv安装匹配的dist/acycle_deepseek-0.5.0-py3-none-any.whl；必要时从本项目安装。运行local/install_check.py写新的local-validation回执，该步骤不调用API/MATLAB。设置ACYCLE_BACKEND=local、ACYCLE_ROOT、MATLAB_EXECUTABLE、ACYCLE_MATLAB_STARTUP_TIMEOUT=180、ACYCLE_MATLAB_TIMEOUT=3600。运行local/doctor.py --run-matlab --output一个新的回执路径，实际检查许可证、release和工具箱。找到可执行文件不代表MATLAB运行成功。
 
-用 local/smoke.py 先跑 Newark mini robot，再分别跑 SWA、COCO、eCOCO。第一次 COCO/eCOCO 使用19次 Monte Carlo、固定seed，明确它只是运行检查，不能支持发表级显著性结论。逐项记录实际参数、输入SHA、运行ID、Acycle原函数来源、MATLAB版本、失败原因和输出路径。打开至少一张谱图与一张eCOCO图，确认坐标单位与非空内容。检查CSV、MAT、PNG、FIG并保留原结果；不能仅看到退出码0就宣布全部科学结论成立。
+首次MATLAB启动失败，停止并读取保留的matlab-launch.json、matlab.log和启动标记；doctor证据在.acycle/diagnostics/<unique>/，科学调用证据在.acycle/runs/<run_id>/。不循环重试、不从sandbox shell绕过桥、不删除失败记录。修复明确原因后如需重试，创建新的记录。Python/Octave不得代替已有MATLAB计算、数值QA或图形。
 
-如果当前客户端是 Codex，生成并检查 local/render_config.py 的 MCP 片段，把 acycle 条目合并到此受信任项目的 .codex/config.toml，不覆盖其他条目；设置足够的MCP工具超时。如果当前客户端是 DeepSeek Harness，检查官方dsh版本，在明确的web或headless profile安装匹配npm包，使启动进程继承ACYCLE_PYTHON和MATLAB环境。已有Desktop配置用其附带CLI处理，不混用另一个npm CLI。配置模型时只引用运行环境中的API Key，不把凭据写入代码、日志、handoff或提交。
+先运行local/smoke.py --case all --dry-run查看实际请求。环境可用后分别运行analyze、swa、coco --nsim 19、ecoco --nsim 19、interpolate_pro、tune。tune会执行MATLAB滤波、极值调谐、原始proxy的时间诊断，采用公开演示48–80m频带、405kyr完整周期、第一峰相对时间0和trim边界；这些是显式演示假设，不是从谱图检测出绝对年龄或轨道周期。19次Monte Carlo只做诊断，不支持发表级显著性。保留输入SHA、实际参数、每个运行ID、MATLAB版本、原函数来源及所有失败。
 
-若需要独立SDK验证，可按用户指南第6节在local/harness-runtime安装固定版本官方依赖和本版npm包；local/install_check.py加--runtime该目录可检查安装后的11个工具/8个skills及注册器。可先跑scripts/harness_conversation.mjs的--mode mock检查基础设施，不当作真实模型或科学验收。真实场景与恢复命令见用户指南第7节，务必显式传本机--runtime和新的--workspace/--output，不使用脚本旧云端默认值。缺少本地模型凭据时继续完成无Key独立检查，把真实模型项标为not_run。
+调谐必须明确period_kyr、anchor_age_kyr、anchor_phase、extrema、depth_unit。检查控制点、年龄模型、沉积速率和端点；时间诊断用原始proxy加顶层tuning_run_id，不同时传age_model、sedimentation_rate或coordinate_range。不要只分析已经赋予周期的滤波曲线，再把该周期当独立验证。Interpolation Pro缺口置零是显式方法选择，不把合成零视为测量，不把更密网格视为新增信息。
 
-刷新客户端工具后，实际调用一次 acycle_capabilities 和科学工具。若使用Harness，请在真实会话上传数据，确认通过当前会话授权的附件ref导入研究工作区。发送简短分析要求，等待真实模型回复与MATLAB结果，再发送独立的下一条用户消息要求调整；不得把全部工具名、JSON和后续步骤塞进同一条提示当作多轮验收。缺少单位、年代背景或目标周期时，模型应先检查已有材料，必要时明确澄清；不能自动补造科研前提。
+若用Codex，运行local/render_config.py生成片段，只把acycle条目定向合并到受信任项目.codex/config.toml，不覆盖其他配置或全局模型；保留虚拟环境解释器和足够工具超时。刷新MCP后实际调用capabilities和一次科学操作，检查12工具。Codex数据使用工作区路径，其图件客户端另行检查，不拿Harness的附件验收替代。
 
-连续调整使用acycle_rerun或对应敏感性分支，检查基线保留、parent_run_id及输入哈希；SWA/COCO/eCOCO必须保持原分析类型，未修改的显式设置保留，方法只有在用户明确调整时才改变。确实依赖本次改动的默认值可由MATLAB重新计算，须在steering.removed_or_reset_parameters记录原因，不能无说明重置其他设置。用acycle_compare解释变化。输入行数以MATLAB summary.input_rows为准，处理后点数以processed_rows为准，不混用文本行数。
+Harness固定走Node>=24.9和官方0.2.1-rc.3项目内Web/native模式。保留旧Desktop0.1.2-rc.1及其标准MCP/profile，不用另一个npm CLI修改它。运行local/deploy_harness.py --workspace . --acycle-root本机路径 --matlab本机可执行路径 --install；默认runtime、私有DSH_HOME、Web profile和manifest在local/generated/harness-web/。使用local/install_check.py --runtime local/generated/harness-web/runtime核对安装包；再用local/check_harness.py --output新的回执，证明真正acycle preset agent拥有13个工具、10个scoped skills、persona、可加载技能正文，技能目录确实在pre-step后进入实际请求，以及deepseek-official/deepseek-flash解析为text/image。只看根注册器不够。
 
-核查官方attachment/present回传的图片和文件事件，并在实际客户端打开至少一张MATLAB图、下载一个数据或FIG文件。插件自动预览是offloaded，不等于模型读图；宿主read_image与图像模型路由可另行读图，应核对实际工具及provider输入。事件存在、磁盘文件存在、模型读图、浏览器/桌面画面可见是不同检查项，各自记录结果。Codex的10个MCP工具不包含Harness专用附件导入，Codex数据按工作区路径接入，不能把Harness附件验收替代其客户端检查。
+用local/launch_harness.py启动生成的私有Web。它设置MATLAB/Python路径并继承终端中的DEEPSEEK_API_KEY；不把Key值写入配置、日志、报告、handoff或提交，不打印Web本地token到报告。没有Key时完成无Key安装/agent/MATLAB工作，将真实模型部分标记not_run。浏览器地址从启动输出读取，默认127.0.0.1:3080。若端口冲突，生成新私有端口或明确重生成自己的配置，不结束无关进程。
 
-自然语言验收采用tests/fixtures/conversation_scenarios.json中的四组场景，每组独立会话与工作区。只把user_prompt和对应附件交给真实模型；不要传入acceptance、预期工具名、参数字段、判分规则或既有结果。未知元数据场景不得暴露原始文件的真实身份。合理澄清只能用已有用户事实作答；没有已知事实时记录needs_human_clarification，不编造地质条件。先等上一条助手回复结束，再发送下一条用户消息，保留失败调用及恢复过程。
+实际会话在acycle preset上传两列CSV/TXT/DAT/TSV。短提示说清必要单位和研究目标，等待第一轮回复与真实MATLAB结果，再发独立下一条消息调整参数。缺少必要单位、年代/目标、搜索范围时先读取已有说明，再澄清，不猜隐藏文件身份，不为了测试通过编造前提。完整公开Newark演示见demo/newark-0.5.0/manifest.json和scenarios.json；其预设先验允许公开给模型，验收规则和预期答案不应混入提示。
 
-已有0.4真实会话结果见validation/v0.4/conversation-evaluation.md/json和interpretation-review.json：Newark两轮核心完成但解释有错误；SWA两轮与完整频谱保持通过，但额外NumPy数值QA违反MATLAB边界，且解释读取了旧验证记录；PETM第二个8m/4m分支在原MATLAB中不可解析，无第二张图，模型如实停止；未知元数据先澄清通过但措辞仍有过度推断/未实现接口承诺。不要把这些结果改写成全通过。最后三项附件边界修复只做了官方服务接口测试，没有追加真实API/MATLAB会话，GUI也尚未测。
+acycle_import_attachment只接受当前会话用户附件；多文件应选择，唯一8位官方短句柄可用。裸文件名优先会话上传，旧workspace同名文件须用./文件名或绝对路径。核对原字节SHA和本次import_receipt来源session/message，不能只凭同hash假定来源相同。
 
-在 local-validation/ 写一份本机验收报告，各项明确标记passed、failed或not_run；记录会话ID、每条独立用户提示、真实模型标识、工具调用、参数变化、运行ID及图件事件。模拟模型、真实模型、MATLAB计算、客户端目视检查分开报告。方法数值对照、真实论文数据流程、论文定量复现分别标记；列出调用原函数的位置和任何改动。不要把0.3的工具往返次数写成0.4用户连续会话已通过。当前桥不覆盖Acycle所有GUI功能。超出接口的任务先尝试桥接原始MATLAB，Python可做缺失功能或文件转换，随后尽可能返回MATLAB计算和作图。
+连续修改使用acycle_rerun，检查基线保留、冻结输入SHA、parent_run_id、operation和未改参数；SWA/COCO/eCOCO及新操作不能被偷偷换成另一种分析。确实依赖本次修改的默认值可重算，但steering须说明。跨不同操作不伪造同类型parent。用acycle_compare读已有MATLAB结果进行比较。
 
-同时审查模型的完整工具轨迹，而非只检查Acycle返回的backend字段：读取MAT文件的结构或传输元数据可以是辅助操作，但已有MATLAB能力的数值统计、科学质量检查和作图不得悄悄移到Python。发现越界时保留原调用并单独标记该维度失败，不能用其他计算成功覆盖。
+图件验收先复用已有成功运行，不为显示问题重跑科学。助手最终答案应引用工具返回的display_markdown真实PNG路径。检查主Chat内实际img加载、点击放大、同session刷新后仍显示，并下载PNG/CSV/MAT/FIG核对原字节哈希。present卡、Trajectory事件、磁盘文件存在都不等于主Chat大图。自动preview是offloaded；read_image加支持image的模型路由可额外传像素，须从实际请求/回执核对；用户看得见、模型收到图、模型解释正确分别报告。禁止虚构图片URL。
 
-保留已知科研差异：Lavernock SWA约0.82125m峰的位置接近论文0.81m，但5%FDR条件未复现；PETM COCO首轮较宽区间上的2000次模拟得到约26.43cm/kyr、速率搜索校正p约0.103948，没有达到论文8–15cm/kyr的速率判据。已发现首轮输入区间、插值和相关类型与论文原始日志不一致，已按日志独立复跑并保留：最大相关点28.93cm/kyr、全速率网格校正p约0.66967、仅4/6周期可解析，仍不满足原判据，不能据此推断可靠地质速率。不能把首轮差异直接归因于版本。Cambrian eCOCO只有预算缩减的真实数据流程验证。不要把工程执行通过写成论文全部复现，不要隐含更换区间或参数以掩盖未通过。phase_averaged最多接受9个显式周期，以当前schema为准。
+检查完整模型工具轨迹，不能只看Acycle响应backend=matlab：已有MATLAB能力的统计、谱分析、数值质量检查和作图不得另用NumPy。模型可做文件传输/结构处理及Acycle没有实现的辅助功能；必要的新增科学工作尽量整理原MATLAB并记录来源，再桥接回来。超出当前六操作的GUI能力应准确说明边界，不承诺不存在的接口。
 
-不要更改全局Codex/Harness模型配置，不发布、推送或部署外部服务。完成本地结果后给我报告和产物入口，以及下一轮值得做的敏感性设置。
+以本机真实证据逐项标记passed、failed、not_run或needs_human_clarification。无Keyactual-agent fixture、真实模型、MATLAB计算、主Chat渲染、模型读图、科学解释和论文定量复现分别报告。保存会话ID、每条独立用户消息、模型route、工具调用、runID、参数变化、输出路径及图件事件。不能把工具往返次数写成用户多轮数。
+
+历史0.4有明确未通过项：Newark解释错误；SWA额外NumPy QA越界；PETM第二个8m/4m窗口分支原MATLAB不可解析、无第二图；未知元数据虽先澄清但措辞有问题。0.5官方Web的main-chat-final-fixture已用text-only脚本provider验证既存图件主Chat/放大/刷新/下载，未调用模型或重算科学，也不是Mac Desktop验证。真实图片lane已有两次read_image像素经Files API上传；原live runner的懒加载等待超时保留failed，随后main-chat-live-browser-replay.json在同Session通过浏览器检查，新增模型/工具/科学调用均0。它是图像传输和交付证据，不是科学解释验收。完整科学结果以validation/v0.5/ACCEPTANCE.md和对应回执为准，不能提前宣布全部通过。
+
+保留论文差异：Lavernock约0.82125m峰接近论文0.81m但5%FDR未复现；PETM首轮26.43cm/kyr、校正p约0.103948，按原日志独立复跑28.93cm/kyr、校正p约0.66967且仅4/6周期可解析，均未达8–15cm/kyr；Cambrian只预算缩减流程。不要用换区间、改参数、改显著性定义隐去未通过项，也不能只归因于版本。
+
+完成后在local-validation/写本机验收报告和产物入口，列出剩余问题及有依据的下一轮敏感性设置。不要发布、推送或部署外部服务，不修改全局Codex/Harness模型设置，不回传凭据、许可证秘密或无关私有数据。

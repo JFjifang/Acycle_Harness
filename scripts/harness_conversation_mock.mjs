@@ -15,7 +15,7 @@ export async function apply(ctx, config) {
       const step = this.step++
       const names = ['skill', 'acycle_capabilities', 'acycle_import_attachment', null, 'acycle_inspect']
       const name = names[step] ?? null
-      let args = step === 0 ? { name: 'acycle-intake' } : {}
+      let args = step === 0 ? { name: config.skillName ?? 'acycle-intake' } : {}
       if (step === 4) {
         const userMessages = options.messages.filter(message => message.role === 'user')
         if (userMessages.length < 2) throw new Error('The official runtime did not retain both independent user messages')

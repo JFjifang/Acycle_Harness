@@ -143,6 +143,22 @@ verifyTrue(testCase,any(contains(string(r.warnings),'not proof of orbital forcin
 verifyFalse(testCase,isfield(r.summary,'orbital_detection'));
 end
 
+function testOriginalProxyTrimmedToTuningCoverage(testCase)
+% Saved tuning controls apply to the original multi-band proxy, not merely
+% the filtered curve used to select those controls. All cropping is MATLAB.
+x=(0:0.5:100)'; y=sin(2*pi*x/10)+0.4*cos(2*pi*x/3);
+p=struct('detrend','mean','evolution',false,'coordinate_range',[10,90], ...
+    'age_model',[10,0;50,200;90,400],'depth_unit','m','dt',2.5);
+[r,s]=runFixture(testCase,'original-proxy-tuning-coverage',[x,y],p);
+selected=x>=10 & x<=90;
+[time,~]=depthtotime(x(selected),p.age_model);
+verifyEqual(testCase,s.clean,[time(:),s.raw(selected,2)],'AbsTol',1e-12);
+verifyEqual(testCase,r.summary.input_rows,numel(x));
+verifyEqual(testCase,r.summary.selected_rows,sum(selected));
+verifyEqual(testCase,r.summary.coordinate_unit,'kyr');
+verifyEqual(testCase,s.ageModel,p.age_model);
+end
+
 function testRejectsNonScientificParameters(testCase)
 x=(0:30)'; y=sin(x);
 [requestPath,responsePath]=prepareFixture(testCase,'invalid-parameter',[x,y],struct('unknown_setting',1));

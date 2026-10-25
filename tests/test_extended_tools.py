@@ -76,7 +76,7 @@ def test_old_runs_without_operation_still_branch_as_analyze(project):
 
 def test_schemas_expose_explicit_units_and_distinct_target_modes():
     schemas={x['function']['name']:x['function']['parameters'] for x in tools.tool_schemas()}
-    assert len(schemas)==10
+    assert len(schemas)==12
     for name in ['acycle_coco','acycle_ecoco']:
         assert 'depth_unit' in schemas[name]['properties']['parameters']['required']
     assert schemas['acycle_ecoco']['properties']['parameters']['properties']['orbital_periods_kyr']['minItems']==9

@@ -196,11 +196,12 @@ def test_matlab_expression_escapes_quoted_paths_without_shell_interpolation(work
     monkeypatch.setattr(tools.shutil, 'which', lambda _: '/fake/matlab')
     monkeypatch.setenv('MATLAB_EXECUTABLE', '/fake/matlab')
     calls = []
-    def run(command, **kwargs):
+    def run(command, output_dir, **kwargs):
         calls.append((command, kwargs))
         (output / 'response.json').write_text(json.dumps({'status': 'completed'}))
         return type('Completed', (), {'returncode': 0})()
-    monkeypatch.setattr(tools.subprocess, 'run', run)
+    from acycle_deepseek import matlab_runner
+    monkeypatch.setattr(matlab_runner, 'run_matlab', run)
     assert tools._execute(request)['status'] == 'completed'
     command, kwargs = calls[0]
     assert isinstance(command, list) and command[:2] == ['/fake/matlab', '-batch']

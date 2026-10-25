@@ -4,12 +4,16 @@ import sys
 
 
 def main():
-    from .tools import dispatch, tool_schemas
+    from .tools import dispatch, tool_schemas, RunError
     request = json.load(sys.stdin)
     if request.get("action") == "schemas":
         result = tool_schemas()
     elif request.get("action") == "call":
-        result = dispatch(request["name"], request.get("arguments", {}), request["workspace"])
+        try:
+            result = dispatch(request["name"], request.get("arguments", {}), request["workspace"])
+        except RunError as error:
+            print(json.dumps(error.as_result(), ensure_ascii=False, allow_nan=False), flush=True)
+            raise SystemExit(1)
     else:
         raise ValueError("Unknown bridge action")
     print(json.dumps(result, ensure_ascii=False, allow_nan=False))

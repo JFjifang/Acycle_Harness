@@ -38,6 +38,7 @@ def main() -> int:
         matlab = os.path.abspath(os.path.expanduser(matlab))
     env = {'ACYCLE_BACKEND': 'local', 'ACYCLE_ROOT': str(root),
            'MATLAB_EXECUTABLE': matlab, 'ACYCLE_MATLAB_TIMEOUT': '3600',
+           'ACYCLE_MATLAB_STARTUP_TIMEOUT': '180',
            'ACYCLE_PYTHON': str(executable), 'ACYCLE_WORKSPACE': str(workspace)}
     quote = lambda value: json.dumps(value, ensure_ascii=False)
     toml = '\n'.join([

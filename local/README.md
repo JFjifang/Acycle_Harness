@@ -1,20 +1,27 @@
-# Local deployment helpers
+# Acycle 0.5 local handoff
 
-Read `../docs/USER_GUIDE.zh-CN.md` for installation and `../docs/LOCAL_HANDOFF.zh-CN.md` for a self-contained handoff prompt.
+Give `local/HANDOFF_PROMPT.txt` to a local Codex/DeepSeek Harness session after extracting the complete release. Detailed Chinese instructions: `docs/USER_GUIDE.zh-CN.md` and `docs/LOCAL_HANDOFF.zh-CN.md`.
 
-- `render_config.py` writes reviewed configuration snippets only. It never edits Codex or Harness configuration. Replacing different generated content requires `--force`.
-- `install_check.py` verifies the installed 0.4 release, wheel/native archive checksums when present, and actual isolated MCP calls. Optional `--runtime` checks the installed native plugin's eleven tools/eight skills against the official registries. It calls neither model APIs nor MATLAB and never edits a user profile.
-- `doctor.py` checks Python, MATLAB executable, source hashes and, with `--run-matlab`, actually starts MATLAB and checks required toolbox functions. A static pass is not a license or numerical validation.
-- `smoke.py` calls the package's public tools. Numerical operations and figures remain in MATLAB. Small Monte Carlo counts are diagnostic and must not be interpreted as publication-quality significance.
+The release has 12 shared Python/MCP tools, 13 native Harness tools and 10 skills. Six scientific operations use MATLAB: mini robot, SWA, COCO, eCOCO, Interpolation Pro and periodic-extrema tuning. No automatic Python numerical fallback is provided.
 
-Use a new local test directory when comparing machines. Each scientific call creates a new `.acycle/runs/<run_id>` record. Do not edit the saved input or result of an existing run.
+| Entry point | Scope |
+| --- | --- |
+| `install_check.py` | Installed 0.5.0 package, archive bytes and actual MCP; optional native registry. No API/MATLAB. |
+| `doctor.py` | Paths/source hashes; `--run-matlab` starts MATLAB once and retains all diagnostic evidence. |
+| `render_config.py` | Project-local Codex MCP and environment snippets; never overwrites host config. |
+| `deploy_harness.py` | Pinned official Harness 0.2.1-rc.3 Web/native deployment, project-private runtime/home/profile/preset. |
+| `check_harness.py` | Actual `acycle` preset agent, scoped persona/tools/skills, skill pre-step messages and image capability. Keyless fixture, no science. |
+| `launch_harness.py` | Launch generated Web deployment with inherited credential and configured MATLAB environment. |
+| `smoke.py` | Bounded real MATLAB requests; `--dry-run` only prints the plan. |
 
-Version 0.4 exposes ten Python/MCP tools, eleven native Harness tools (including session-authorized attachment import), and eight skills. `acycle_rerun` preserves the saved analysis operation and creates a child run from an explicit parameter patch. Actual 0.4 Harness user turns verified core calling, steering and artifact delivery, with incomplete or failed dimensions: SWA additionally used forbidden NumPy numerical QA, the second PETM map failed in original MATLAB, and interpretations contained errors. Newark completed both analysis turns; the missing-metadata case asked for necessary context. See `validation/v0.4/conversation-evaluation.md` and its interpretation review. Record `passed`, `failed`, or `not_run` for each layer; these results do not establish unattended scientific reliability or GUI rendering.
+Use the matching virtual environment interpreter. The supported Harness route requires Node.js ≥24.9, the official Web app/frontend and the actual scoped `acycle` preset. Leave the old Desktop installation/configuration unchanged. The generated provider references `DEEPSEEK_API_KEY`; no credential value is saved. The default runtime, private `DSH_HOME`, npm cache and configuration live under `local/generated/harness-web/`.
 
-Predeclared cases are in `tests/fixtures/conversation_scenarios.json`: Newark detrending, Lavernock FDR display, PETM eCOCO changes, and required clarification of missing metadata. Keep acceptance fields separate from model-visible prompts, use a new session per case, and preserve failures and recovery attempts.
+`check_harness.py` goes beyond registry discovery: a real mounted AgentLoop with a deterministic adapter proves the official skill catalog is in actual request messages. It resolves the real deployment model catalog separately. This does not establish a successful real API call, scientific result, or user-visible browser image.
 
-The user guide includes a project-local npm runtime install, a keyless SDK mock check, and real conversation commands with explicit local paths. `needs_human_clarification` can be resumed in the same session with a predeclared, matching answer topic and a new receipt; never invent scientific facts to get a passing run. Automatic offloaded previews, optional host `read_image`/provider image input, and actual GUI display are distinct checks.
+`smoke.py --case tune` performs a MATLAB depth/filter analysis, explicitly assumes 405 kyr with a relative zero at the first peak, then diagnoses the original proxy through `tuning_run_id`. Its 48–80 m illustrative band follows the public demo manifest, not independent cycle identification. `--case all` covers all six scientific operations and the dependent tuning chain. The default 19 simulations are diagnostic only.
 
-The final session-local short-handle, filename-priority and per-import source-receipt fixes have official-service fixture coverage; another real API/MATLAB conversation was not run after those fixes. Keep earlier errors and recoveries in the evidence.
+MATLAB startup failures preserve `matlab-launch.json` and `matlab.log` in unique `.acycle/diagnostics/` or run directories. Do not automatically retry through a different shell or delete failed evidence. GUI delivery failures should reuse existing results, not rerun scientific calculations.
 
-The paper checks are not uniformly successful: the Lavernock peak location matches but its 5% FDR criterion is not reproduced; both the initial PETM COCO run and the independent published-log rerun lie outside the paper's declared rate interval; the Cambrian eCOCO test is a reduced workflow. Preserve these outcomes without attributing the discrepancy to version differences alone. See the current user guide and `docs/PAPER_VALIDATION.md` for numerical observations and exact scope.
+Current acceptance is in `validation/v0.5/ACCEPTANCE.md`. The official browser fixture `validation/v0.5/web/main-chat-final-fixture.json` verified two existing MATLAB PNGs in the main Chat, lightbox, refresh and original-byte file downloads with a text-only scripted provider. It is not a live-model test or a macOS Desktop test. Review live-model/image/scientific receipts separately. Historical 0.4 conversation failures and the unresolved SWA/PETM paper criteria remain part of the handoff; see the Chinese guide.
+
+The live image lane retained two `read_image` image blocks and uploaded both through the official provider Files API. Its first browser runner timed out before lazy-loaded images were scrolled into view; that failed receipt is preserved. `validation/v0.5/web/main-chat-live-browser-replay.json` passed the same-session browser checks with zero new model requests, tool calls or scientific calculations. This is image transport/delivery evidence, not scientific interpretation acceptance.

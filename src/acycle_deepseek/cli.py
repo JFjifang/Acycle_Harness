@@ -2,7 +2,7 @@
 import argparse
 import json
 import sys
-from .tools import dispatch, tool_schemas
+from .tools import dispatch, tool_schemas, RunError
 
 
 def main():
@@ -28,7 +28,8 @@ def main():
             result = dispatch(args.tool, arguments, args.workspace)
         print(json.dumps(result, ensure_ascii=False, allow_nan=False))
     except Exception as exc:
-        print(json.dumps({'status':'error','error':str(exc)}, ensure_ascii=False))
+        value = exc.as_result() if isinstance(exc, RunError) else {'status':'error','error':str(exc)}
+        print(json.dumps(value, ensure_ascii=False))
         sys.exit(1)
 
 

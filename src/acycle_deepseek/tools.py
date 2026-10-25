@@ -13,6 +13,18 @@ import uuid
 from datetime import datetime, timezone
 
 
+class RunError(RuntimeError):
+    """A failed scientific run with an immutable, inspectable diagnostic record."""
+    def __init__(self, record):
+        self.record = record
+        super().__init__(f'Run {record["run_id"]} failed: {record["error"]}')
+
+    def as_result(self):
+        return {key: self.record.get(key) for key in
+                ('status', 'run_id', 'operation', 'parent_run_id', 'error', 'diagnostics',
+                 'matlab_error', 'input_sha256', 'parameters', 'output_dir')}
+
+
 def _write(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False)+'\n', encoding='utf-8')
 
@@ -87,10 +99,13 @@ def _execute(request):
     output = Path(request['output_dir'])
     request_path, response_path = output / 'matlab-request.json', output / 'response.json'
     _write(request_path, request)
-    expression = f"addpath({_matlab_string(_matlab_dir())}); acycle_batch({_matlab_string(request_path)},{_matlab_string(response_path)});"
-    with (output / 'matlab.log').open('w', encoding='utf-8') as log:
-        completed = subprocess.run([executable, '-batch', expression], stdout=log, stderr=subprocess.STDOUT,
-                                   timeout=int(os.environ.get('ACYCLE_MATLAB_TIMEOUT', '1800')), check=False)
+    from .matlab_runner import run_matlab
+    started_path = output / 'matlab-started.json'
+    expression = (f"fid=fopen({_matlab_string(started_path)},'w'); fprintf(fid,'{{\"started\":true}}'); fclose(fid); "
+                  f"addpath({_matlab_string(_matlab_dir())}); acycle_batch({_matlab_string(request_path)},{_matlab_string(response_path)});")
+    completed = run_matlab([executable, '-batch', expression], output, startup_marker=started_path,
+                          startup_timeout=float(os.environ.get('ACYCLE_MATLAB_STARTUP_TIMEOUT', '180')),
+                          timeout=float(os.environ.get('ACYCLE_MATLAB_TIMEOUT', '1800')))
     if not response_path.is_file():
         raise RuntimeError(f'MATLAB returned {completed.returncode} without a response; see {output / "matlab.log"}')
     response = json.loads(response_path.read_text(encoding='utf-8'))
@@ -100,7 +115,7 @@ def _execute(request):
 
 
 def _parameter_schema(operation):
-    if operation not in {'analyze', 'swa', 'coco', 'ecoco'}:
+    if operation not in {'analyze', 'swa', 'coco', 'ecoco', 'interpolate_pro', 'tune'}:
         raise ValueError(f'Unsupported saved operation: {operation}')
     return next(t for t in tool_schemas() if t['function']['name']=='acycle_'+operation)['function']['parameters']['properties']['parameters']
 
@@ -147,6 +162,14 @@ def _validate_parameters(operation, parameters):
         extras = {'mtm_nw', 'pad_factor', 'detrend'} & parameters.keys()
         if extras:
             raise ValueError(f'Lomb SWA does not accept MTM-only parameters: {sorted(extras)}')
+    if operation == 'analyze' and 'coordinate_range' in parameters:
+        lo, hi = parameters['coordinate_range']
+        if hi <= lo:
+            raise ValueError('coordinate_range must contain increasing bounds in the original input coordinate')
+    if operation == 'tune':
+        extrema = parameters['extrema']
+        if extrema != 'both' and parameters['anchor_phase'] != {'peaks': 'peak', 'troughs': 'trough'}[extrema]:
+            raise ValueError('anchor_phase must match the selected extrema')
     if operation in {'coco', 'ecoco'}:
         if ('middle_age_ma' in parameters) == ('orbital_periods_kyr' in parameters):
             raise ValueError('Specify exactly one of middle_age_ma or orbital_periods_kyr')
@@ -172,6 +195,35 @@ def _validate_parameters(operation, parameters):
 def _analyze(root, arguments, operation='analyze', *, steering=None, explicit_parameters=None):
     source = _input_path(root, arguments['input_path'])
     parameters = arguments.get('parameters', {})
+    tuning_reference = None
+    if arguments.get('tuning_run_id'):
+        if operation != 'analyze':
+            raise ValueError('tuning_run_id applies only to analysis of the original proxy in the time domain')
+        if not isinstance(parameters, dict):
+            raise ValueError('parameters must be an object')
+        if {'age_model', 'sedimentation_rate', 'coordinate_range'} & parameters.keys():
+            raise ValueError('tuning_run_id supplies the saved age model and covered input range; omit competing conversion settings')
+        tuning = _get(root, arguments['tuning_run_id'])
+        if tuning.get('operation') != 'tune' or tuning.get('status') != 'completed':
+            raise ValueError('tuning_run_id must reference a completed tune run')
+        summary = tuning.get('summary', {})
+        age_model = summary.get('age_model')
+        extent = summary.get('valid_depth_range')
+        if not isinstance(age_model, list) or len(age_model) < 2 or not isinstance(extent, list) or len(extent) != 2:
+            raise ValueError('Saved tuning lacks machine-readable age_model or valid_depth_range')
+        unit = summary.get('depth_unit', tuning.get('parameters', {}).get('depth_unit'))
+        if parameters.get('depth_unit', unit) != unit:
+            raise ValueError('Original proxy depth_unit must match the tuning control-point unit')
+        model_path = Path(tuning['artifacts']['age_model_csv']).resolve()
+        if not model_path.is_relative_to(_run_path(root, tuning['run_id']) / 'outputs') or not model_path.is_file():
+            raise ValueError('Saved tuning age-model artifact is missing or outside its run')
+        expected_hash = tuning.get('artifact_sha256', {}).get('age_model_csv')
+        if not expected_hash or hashlib.sha256(model_path.read_bytes()).hexdigest() != expected_hash:
+            raise ValueError('Saved tuning age-model artifact checksum changed')
+        parameters = {**parameters, 'age_model': age_model, 'coordinate_range': extent, 'depth_unit': unit}
+        tuning_reference = {'run_id': tuning['run_id'], 'age_model_sha256': expected_hash,
+                            'endpoint_policy': tuning['effective_parameters'].get('endpoint_policy', 'trim'),
+                            'note': 'Saved MATLAB control points applied to the supplied original proxy; tuned periodicity is not independent evidence of orbital forcing.'}
     _validate_parameters(operation, parameters)
     parent = arguments.get('parent_run_id')
     if parent:
@@ -187,7 +239,8 @@ def _analyze(root, arguments, operation='analyze', *, steering=None, explicit_pa
         method_defaults = {'swa': {'method': 'lomb'},
                            'coco': {'method': 'adaptive', 'detrend': 'linear'},
                            'ecoco': {'method': 'adaptive', 'detrend': 'linear'},
-                           'analyze': {'detrend': 'lowess'}}[operation]
+                           'analyze': {'detrend': 'lowess'},
+                           'interpolate_pro': {'method': 'linear'}, 'tune': {}}[operation]
         for key, default in method_defaults.items():
             if key not in parameters and previous_parameters.get(key, default) != default:
                 raise ValueError(f'Omitted {key} would reset the parent method. Use acycle_rerun to preserve existing settings, or specify {key} explicitly.')
@@ -205,6 +258,16 @@ def _analyze(root, arguments, operation='analyze', *, steering=None, explicit_pa
               'operation':operation, 'parameters':parameters, 'created_at':datetime.now(timezone.utc).isoformat(),
               'backend':os.environ.get('ACYCLE_BACKEND','local'), 'output_dir':str(output)}
     record['explicit_parameter_names'] = sorted(parameters if explicit_parameters is None else explicit_parameters)
+    if tuning_reference is not None:
+        record['tuning_reference'] = tuning_reference
+    try:
+        relative = source.relative_to(root / '.acycle' / 'runs')
+        if len(relative.parts) >= 3 and relative.parts[1] == 'outputs':
+            upstream = _get(root, relative.parts[0])
+            record['input_lineage'] = {'run_id': upstream['run_id'], 'operation': upstream['operation'],
+                                       'artifact_path': str(source), 'sha256': record['input_sha256']}
+    except (ValueError, KeyError):
+        pass
     if steering is not None:
         record['steering'] = steering
     _write(run_dir / 'request.json', record)
@@ -217,10 +280,25 @@ def _analyze(root, arguments, operation='analyze', *, steering=None, explicit_pa
         record['effective_parameters'] = response.get('parameters', parameters)
         record['artifacts'] = response.get('artifacts', {})
         record['provenance'] = response.get('provenance', {})
-    except Exception as exc:
-        record.update({'status':'failed', 'error':str(exc)})
+        record['artifact_sha256'] = {key: hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                                    for key, path in record['artifacts'].items()
+                                    if isinstance(path, str) and Path(path).is_file() and Path(path).resolve().is_relative_to(output.resolve())}
+    except BaseException as exc:
+        interrupted = isinstance(exc, (KeyboardInterrupt, SystemExit))
+        record.update({'status':'cancelled' if interrupted else 'failed',
+                       'error':f'{type(exc).__name__}: {exc}'})
+        record['diagnostics'] = {p.name: str(p) for p in output.iterdir() if p.is_file() and
+                                 (p.suffix in {'.log', '.json'} or p.name in {'stdout.txt', 'stderr.txt'})}
+        response_path = output / 'response.json'
+        if response_path.is_file():
+            try:
+                record['matlab_error'] = json.loads(response_path.read_text()).get('error')
+            except (ValueError, OSError):
+                pass
         _write(run_dir / 'result.json', record)
-        raise RuntimeError(f'Run {run_id} failed: {exc}') from exc
+        if interrupted:
+            raise
+        raise RunError(record) from exc
     _write(run_dir / 'result.json', record)
     return record
 
@@ -287,7 +365,7 @@ def _prepare_branch(root, baseline, patch):
                key not in parameters or parameters[key] != original_parameters[key]}
     reset_defaults = set()
     if operation == 'analyze':
-        if {'sedimentation_rate', 'age_model', 'depth_unit'} & changed:
+        if {'sedimentation_rate', 'age_model', 'depth_unit', 'coordinate_range'} & changed:
             reset_defaults.update({'coordinate_unit', 'dt', 'nfft', 'fmax', 'fit_fmax', 'evolution_window', 'evolution_step'})
         if 'dt' in changed:
             reset_defaults.update({'nfft', 'fmax', 'fit_fmax', 'evolution_step'})
@@ -334,7 +412,7 @@ def dispatch(name, args, workspace='.'):
     root = _root(workspace)
     if name == 'acycle_capabilities':
         remote = os.environ.get('ACYCLE_BACKEND','local') == 'github'
-        return {'version':'0.4.0', 'scientific_backend':'MATLAB/Acycle',
+        return {'version':'0.5.0', 'scientific_backend':'MATLAB/Acycle',
                 'backend':os.environ.get('ACYCLE_BACKEND','local'),
                 'matlab_available':bool(shutil.which(os.environ.get('MATLAB_EXECUTABLE','matlab'))),
                 'acycle_root':os.environ.get('ACYCLE_ROOT'),
@@ -342,7 +420,7 @@ def dispatch(name, args, workspace='.'):
                 'remote_backend_configured':remote and bool(os.environ.get('ACYCLE_GITHUB_REPO')),
                 'execution_note':('GitHub backend runs MATLAB remotely; local matlab_available does not indicate remote readiness. A dispatched run verifies execution.' if remote else 'Local backend requires MATLAB_EXECUTABLE and ACYCLE_ROOT.'),
                 'python_numerical_fallback':False,
-                'operations':['mini_robot','mtm_rednoise','evolution','filter_envelope','age_model','swa','coco','ecoco'],
+                'operations':['mini_robot','mtm_rednoise','evolution','filter_envelope','age_model','swa','coco','ecoco','interpolate_pro','tune'],
                 'limits':['pointwise significance is not proof of astronomical forcing',
                           'Acycle GUI-only methods outside this core require a sourced MATLAB extension']}
     if name == 'acycle_inspect':
@@ -360,7 +438,7 @@ def dispatch(name, args, workspace='.'):
                 'ends_with_newline':content.endswith((b'\r', b'\n')),
                 'matlab_accepts_original_newlines':True,
                 'note':'Structural preview only. line_count/logical_line_count use universal CR, CRLF and LF handling; they are text-line counts, not validated sample counts. MATLAB already reads these original newline formats: do not convert the file or use shell wc -l to reinterpret a CR-only file as one row. Numerical QA, including spacing, ranges, means, missing data and duplicate handling, belongs in MATLAB; do not recompute it using Python, awk or shell arithmetic. Use the completed MATLAB summary.input_rows/processed_rows for scientific row counts.'}
-    if name in {'acycle_analyze','acycle_swa','acycle_coco','acycle_ecoco'}:
+    if name in {'acycle_analyze','acycle_swa','acycle_coco','acycle_ecoco','acycle_interpolate_pro','acycle_tune'}:
         return _analyze(root,args,name.removeprefix('acycle_'))
     if name == 'acycle_get_run':
         return _get(root,args['run_id'])
@@ -379,6 +457,8 @@ def dispatch(name, args, workspace='.'):
             'swa': {'method','mtm_nw','pad_factor','fmax','detrend'},
             'coco': {'sedimentation_rate_min','sedimentation_rate_max','sedimentation_rate_step','middle_age_ma','orbital_periods_kyr','nsim','seed','correlation','red_noise','nfft','max_frequency','slices','dt','detrend','span','detrend_window','method'},
             'ecoco': {'sedimentation_rate_min','sedimentation_rate_max','sedimentation_rate_step','middle_age_ma','orbital_periods_kyr','nsim','seed','correlation','red_noise','nfft','max_frequency','window','step','method','detrend','span','detrend_window'},
+            'interpolate_pro': {'method','dt','gap_policy','gap_multiplier','endpoint_policy'},
+            'tune': {'period_kyr','anchor_age_kyr','anchor_phase','extrema','endpoint_policy'},
         }.get(operation,set())
         if not isinstance(parameter, str) or parameter not in allowed:
             raise ValueError(f'Unsupported sensitivity parameter: {parameter}')
@@ -420,6 +500,8 @@ def tool_schemas():
             'fmax':{'type':'number','exclusiveMinimum':0},
             'fit_fmax':{'type':'number','exclusiveMinimum':0},
             'coordinate_unit':{'type':'string'},
+            'coordinate_range':{'type':'array','items':{'type':'number'},'minItems':2,'maxItems':2,
+                                'description':'Optional inclusive bounds in original input coordinates, applied in MATLAB before age conversion. Used to retain only the depth interval covered by tuning control points.'},
             'rolloff_exponent':{'type':'number','exclusiveMinimum':0,'maximum':20},
             'evolution':{'type':'boolean'},
             'evolution_window':{'type':'number','exclusiveMinimum':0},
@@ -468,8 +550,24 @@ def tool_schemas():
             'method':{'type':'string','enum':['adaptive','blocked','interleaved']},
             'window':{'type':'number','exclusiveMinimum':0,'description':'Window length in the declared input depth_unit'},
             'step':{'type':'number','exclusiveMinimum':0,'description':'Window step in the declared input depth_unit'}}}
+    interpolation_schema = {'type':'object','additionalProperties':False,'properties':{
+        'method':{'type':'string','enum':['linear','nearest','next','previous','pchip','cubic','v5cubic','makima','spline']},
+        'dt':{'type':'number','exclusiveMinimum':0,'description':'Requested grid interval in the input coordinate unit; omitted uses the original GUI median spacing.'},
+        'coordinate_unit':string,
+        'gap_policy':{'type':'string','enum':['interpolate','zero'],'description':'Original Interpolation Pro option: interpolate through gaps or assign zero to grid points inside large gaps. Zero filling is not a measured zero.'},
+        'gap_multiplier':{'type':'number','exclusiveMinimum':0,'description':'A large gap exceeds requested dt times this factor; default 10.'},
+        'endpoint_policy':{'type':'string','enum':['gui','strict_grid'],'description':'gui preserves the original endpoint fallback if dt exceeds the record span; strict_grid rejects that fallback. No extrapolation.'}}}
+    tuning_schema = {'type':'object','additionalProperties':False,
+        'required':['period_kyr','anchor_age_kyr','anchor_phase','extrema','depth_unit'],
+        'properties':{
+            'period_kyr':{'type':'number','exclusiveMinimum':0,'description':'Explicit assumed full cycle period; not inferred from the data.'},
+            'anchor_age_kyr':{'type':'number','description':'Age of the first selected extremum of anchor_phase; zero defines a relative-time convention, not an absolute date.'},
+            'anchor_phase':{'type':'string','enum':['peak','trough']},
+            'extrema':{'type':'string','enum':['peaks','troughs','both'],'description':'Original getpks applied to y and/or -y; both requires strict alternation and assigns half a period between adjacent opposite extrema.'},
+            'depth_unit':{'type':'string','enum':['m','dm','cm','mm','ft','km']},
+            'endpoint_policy':{'type':'string','enum':['trim','linear_extrapolate','error'],'description':'Default trim retains only the control-point interval. Extrapolation is explicit and recorded.'}}}
     patch_properties = {}
-    for schema in (parameter_schema, swa_schema, coco_schema, ecoco_schema):
+    for schema in (parameter_schema, swa_schema, coco_schema, ecoco_schema, interpolation_schema, tuning_schema):
         for key, value in schema['properties'].items():
             choices = patch_properties.setdefault(key, {'anyOf': []})['anyOf']
             if value not in choices:
@@ -483,13 +581,18 @@ def tool_schemas():
         ('acycle_capabilities','Inspect configured MATLAB backend and supported Acycle core. No numerical Python fallback.',{},[]),
         ('acycle_inspect','Inspect exact input bytes, checksum, universal-newline logical line count and preview. CR-only data is supported without conversion. MATLAB performs all numerical QA.',{'input_path':string},['input_path']),
         ('acycle_analyze','Run Acycle original MATLAB computation and MATLAB plots. Creates immutable run with source provenance.',
-         {'input_path':string,'parameters':parameter_schema,'label':string,'parent_run_id':parent_id},['input_path']),
+         {'input_path':string,'parameters':parameter_schema,'label':string,'parent_run_id':parent_id,
+          'tuning_run_id':{'type':'string','description':'Apply the saved age model and covered depth range of a completed tune run to the ORIGINAL proxy. Do not use the already bandpassed/tuned curve as independent confirmation of its imposed period. Omit age_model, sedimentation_rate and coordinate_range when using this reference.'}},['input_path']),
         ('acycle_swa','Run original MATLAB SWA (Smoothed Window Averages) and FDR; save original tables and MATLAB figures.',
          {'input_path':string,'parameters':swa_schema,'label':string,'parent_run_id':parent_id},['input_path']),
         ('acycle_coco','Run Acycle adaptive COCO in MATLAB to evaluate sedimentation rates with explicit orbital targets and Monte Carlo settings.',
          {'input_path':string,'parameters':coco_schema,'label':string,'parent_run_id':parent_id},['input_path','parameters']),
         ('acycle_ecoco','Run Acycle evolutionary COCO in MATLAB; retain window-wise rates, uncertainty and original statistical outputs.',
          {'input_path':string,'parameters':ecoco_schema,'label':string,'parent_run_id':parent_id},['input_path','parameters']),
+        ('acycle_interpolate_pro','Run original Acycle Interpolation Pro MATLAB callback: nine interpolation methods, explicit grid/gap policy and diagnostic figures. Preserve source bytes and report changes.',
+         {'input_path':string,'parameters':interpolation_schema,'label':string,'parent_run_id':parent_id},['input_path']),
+        ('acycle_tune','Identify peaks/troughs in a bandpassed depth curve with original Acycle getpks, assign an explicitly assumed period and time anchor, and save auditable control points and MATLAB tuning diagnostics. Two columns or the original three-column filtered CSV are accepted; envelope is not used.',
+         {'input_path':string,'parameters':tuning_schema,'label':string,'parent_run_id':parent_id},['input_path','parameters']),
         ('acycle_rerun','Apply a conversational parameter change to a saved run. Preserve its frozen input and original analysis operation (including SWA/COCO/eCOCO), retain other effective settings, and create an immutable child run in MATLAB.',
          {'run_id':string,'parameter_patch':patch_schema,'label':string},['run_id','parameter_patch']),
         ('acycle_sensitivity','Branch a completed run, varying one parameter in MATLAB; preserve baseline.',

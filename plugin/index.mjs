@@ -9,12 +9,16 @@ export const name = 'acycle-matlab'
 export const inject = ['tools', 'skills', 'workingDirectory']
 const skillRoot = fileURLToPath(new URL('./skills/', import.meta.url))
 const MAX_OUTPUT = 16 * 1024 * 1024
+// Python's MATLAB supervisor may need 5 s to escalate its separate process group,
+// then up to 10 s to reap it and persist interrupted-run evidence.
+const TERMINATION_GRACE_MS = 20_000
 const WORKFLOW_POLICY = `Acycle research workflow
 Use Acycle's original MATLAB implementation for its scientific quality assessment, numerical analysis, statistics, and plotting. Python may handle attachment bytes, checksums, file-format structure, transport, and functions Acycle does not implement; bridge scientific work back to MATLAB wherever possible. Do not replace available Acycle scientific QA or calculations with shell/Python statistics. The default MATLAB analysis pipeline already performs scientific QA; external numerical pre-analysis is unnecessary.
 Choose methods from the user's research question, documented data meaning, and applicable Acycle skills. For sedimentation-rate, age, or orbital interpretations, verify the required coordinate units, geological age constraints, orbital targets, and scientifically reasonable search range. If required information is missing, ask the user a concise clarification and wait before starting scientific analysis. Never infer units, age, or a rate range from a filename, numerical magnitudes, or a sample count. Structural attachment import and byte preview can proceed while clarification is pending.
 For conversational changes to a completed run, prefer acycle_rerun with the requested changes together in parameter_patch. Preserve the saved input, operation, method, and effective settings except for changes the user requested. Do not restart a generic analysis that silently changes the original method. Retrieve completed outputs for display instead of recalculating them.
 If a scientific tool fails and returns a run_id, report that run_id and its diagnostic, and stop the failed analysis attempt. Do not repeatedly resubmit a failed scientific computation or switch to Python as a numerical substitute. Do not alter authentication or execute gh auth to repair an analysis backend; report the setup problem for the operator. A presentation failure does not undo completed MATLAB results: reopen the saved run to recover its files.
-Image previews and downloadable files are for the user. Offloaded image references do not give a text-only model image pixels; do not claim visual inspection. Preserve statistical limitations and warnings in the answer.`
+Deliver key MATLAB figures in the main Chat by including the exact PNG Markdown returned in presentation.display_markdown in the final answer, together with short captions and the run ID. Keep the returned original-file links for downloads; do not invent image URLs or present bare filesystem text as an embedded image.
+The plugin's offloaded previews alone do not give the model image pixels. When the selected model declares image input and read_image is available, read the existing MATLAB PNG when a visual review is needed; check that the tool actually returned an image before claiming visual inspection. If image input is unavailable or reading fails, say that visual review was not completed and still deliver the figures and numerical results. Numerical verification, model visual review, and user-visible Chat display are separate checks. Preserve statistical limitations and warnings in the answer.`
 
 /** No shell expansion; arguments and paths travel as JSON through stdin. */
 export function runBridge(request, { python = process.env.ACYCLE_PYTHON || 'python3', signal,
@@ -35,7 +39,7 @@ export function runBridge(request, { python = process.env.ACYCLE_PYTHON || 'pyth
         } catch { /* It may already have exited. */ }
       }
       kill('SIGTERM')
-      forceTimer = setTimeout(() => kill('SIGKILL'), 5000)
+      forceTimer = setTimeout(() => kill('SIGKILL'), TERMINATION_GRACE_MS)
       forceTimer.unref()
     }
     const abort = () => stop(new Error('Acycle call cancelled'))
@@ -57,8 +61,13 @@ export function runBridge(request, { python = process.env.ACYCLE_PYTHON || 'pyth
       if (failure) return reject(failure)
       if (code !== 0) {
         const secret = process.env.DEEPSEEK_API_KEY
-        const detail = secret ? stderr.replaceAll(secret, '[REDACTED]') : stderr
-        return reject(new Error(`Acycle bridge exited ${code}: ${detail.slice(-4000)}`))
+        let record
+        try { record = JSON.parse(stdout) } catch { /* Older bridges report errors on stderr. */ }
+        const structuredFailure = record && typeof record === 'object' &&
+          (record.status === 'failed' || record.error) ? JSON.stringify(record) : null
+        const raw = structuredFailure ?? stderr.slice(-4000)
+        const detail = secret ? raw.replaceAll(secret, '[REDACTED]') : raw
+        return reject(new Error(`Acycle bridge exited ${code}: ${detail}`))
       }
       try { fulfill(JSON.parse(stdout)) }
       catch { reject(new Error('Acycle bridge returned invalid JSON')) }

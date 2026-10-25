@@ -15,10 +15,10 @@ import tarfile
 import uuid
 import zipfile
 
-VERSION = '0.4.0'
+VERSION = '0.5.0'
 TOOLS = {'acycle_capabilities', 'acycle_inspect', 'acycle_analyze', 'acycle_swa',
          'acycle_coco', 'acycle_ecoco', 'acycle_rerun', 'acycle_sensitivity',
-         'acycle_compare', 'acycle_get_run'}
+         'acycle_compare', 'acycle_get_run', 'acycle_interpolate_pro', 'acycle_tune'}
 
 
 def main() -> int:
@@ -64,10 +64,11 @@ import acycle_deepseek
 from acycle_deepseek.tools import _matlab_dir,tool_schemas
 print(json.dumps({'version':importlib.metadata.version('acycle-deepseek'),'package_root':str(Path(acycle_deepseek.__file__).parent),'matlab_root':str(_matlab_dir()),'tools':[item['function']['name'] for item in tool_schemas()]}))'''
         installed = json.loads(run([sys.executable, '-I', '-c', probe]))
-        require(installed['version'] == VERSION, 'Install the matching 0.4.0 package in this Python environment')
+        require(installed['version'] == VERSION, 'Install the matching 0.5.0 package in this Python environment')
         require(set(installed['tools']) == TOOLS, 'Installed shared tool set does not match this release')
         bridge = Path(installed['matlab_root'])
         for name in ('acycle_batch.m', 'acycle_swa.m', 'acycle_coco.m',
+                     'acycle_interpolate_pro.m', 'acycle_tune.m', 'preparation_sources.json',
                      'source_registry.json', 'swa_sources.json', 'coco_sources.json'):
             require((bridge/name).is_file(), f'MATLAB bridge missing: {name}')
         report['checks']['python_package'] = {'status': 'passed', **installed}
@@ -95,7 +96,7 @@ print(json.dumps({'version':importlib.metadata.version('acycle-deepseek'),'packa
                 metadata = json.load(archive.extractfile('package/package.json'))
                 require(metadata['version'] == VERSION, 'Native archive version mismatch')
                 skills = [name for name in archive.getnames() if name.endswith('/SKILL.md')]
-                require(len(skills) == 8, 'Native archive must contain eight skills')
+                require(len(skills) == 10, 'Native archive must contain ten skills')
                 for name in ('package/index.mjs', 'package/attachments.mjs', 'package/cordis.patch.yml'):
                     require(name in archive.getnames(), f'Native archive missing {name}')
             packages = {'status': 'passed', 'sha256': hashes, 'installed_files_match_wheel': True,
@@ -142,7 +143,7 @@ print(json.dumps({'version':importlib.metadata.version('acycle-deepseek'),'packa
                                       str(runtime), str(workspace), str(plugin)]))
             require(outcome.get('status') == 'passed', 'Native registry check failed')
             require(set(outcome['registered_tools']) == TOOLS | {'acycle_import_attachment'}, 'Native tool set mismatch')
-            require(len(outcome['registered_skills']) == 8, 'Native skill count mismatch')
+            require(len(outcome['registered_skills']) == 10, 'Native skill count mismatch')
             require(outcome['capabilities']['version'] == VERSION, 'Native bridge version mismatch')
             outcome['installed_files_match_archive'] = installed_plugin_matches_archive
             report['checks']['native_plugin'] = outcome

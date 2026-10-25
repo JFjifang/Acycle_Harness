@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "package": "newark-demo",
+  "version": "0.5.0",
+  "title": "Newark：从深度记录到相对时间轴",
+  "purpose": "A disclosed, workflow-guided demonstration using original Acycle MATLAB calculations and figures; not blind method selection or reconstruction of the published Newark chronology.",
+  "design_context": "The existing v0.4 Newark depth-spectrum results were already known when this demonstration was designed. The fixed long-cycle band is justified against the cited regional literature, but this is not a blinded or independently preregistered cycle-detection study.",
+  "preset_visible_to_user": true,
+  "scientific_backend": "MATLAB / original Acycle routines",
+  "input": {
+    "path": "data/Example-LateTriassicNewarkDepthRank.txt",
+    "upstream_path": "data/Examples/Example-LateTriassicNewarkDepthRank.txt",
+    "upstream_repository": "https://github.com/mingsongli/acycle",
+    "upstream_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+    "sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+    "bytes": 39218,
+    "raw_bytes_preserved": true,
+    "columns": ["depth_m", "depth_rank"],
+    "unit_evidence": "Pinned code/guicode/AC.m, menu_example_Newark_Callback: Depth (m), Depth Rank.",
+    "source_attribution": "Acycle v2.8 User's Guide p.38 attributes this exact example filename to Olsen and Kent (1996).",
+    "existing_matlab_observation": {
+      "rows": 2344,
+      "coordinate_min_m": 0,
+      "coordinate_max_m": 1999.60992,
+      "median_spacing_m": 0.85344,
+      "meaning": "Metadata already reported by the original MATLAB baseline; no new Python scientific preprocessing."
+    },
+    "exact_published_section_to_example_mapping": "not established"
+  },
+  "public_assumptions": {
+    "middle_age_ma": {
+      "value": 210,
+      "status": "demonstration approximation for age-dependent orbital target periods; not an absolute age assigned to any row",
+      "basis": "The pinned upstream Newark comparison scripts use 210 Ma. Their newark2km-s-rsp0.85.txt is not proven byte-identical to this example."
+    },
+    "rate_search_cm_per_kyr": {
+      "min": 5,
+      "max": 25,
+      "step": 1,
+      "status": "exploratory search grid, not a measured or inferred rate",
+      "basis": "Pinned runCocoPublicationValidation.m uses 5–25 cm/kyr for a separately preprocessed 0–800 m excerpt of this example; the coarser step here is a demo choice."
+    },
+    "long_cycle_period_kyr": {
+      "value": 405,
+      "status": "explicit tuning hypothesis",
+      "basis": "Kent et al. (2018), DOI 10.1073/pnas.1800891115, supports the regional 405-kyr metronome using independent U–Pb dates and magnetostratigraphic correlation; it does not identify the cycles or absolute age of this particular example file."
+    },
+    "depth_filter": {
+      "method": "gaussian",
+      "lower_frequency_cycles_per_m": 0.0125,
+      "upper_frequency_cycles_per_m": 0.020833333333333332,
+      "nominal_center_wavelength_m": 60,
+      "nominal_wavelength_edges_m": [48, 80],
+      "status": "literature-informed demonstration band, fixed before this run; Gaussian edges are not a sharp passband",
+      "basis": "Kent and Olsen (1999), DOI 10.1029/1999JB900076, reports a mean thickness of about 60 m for the regional 404-kyr cycle. The 48–80 m width is an explicit demonstration choice, not a published confidence interval."
+    },
+    "relative_time": {
+      "coordinate_direction": "relative time increases with the input depth coordinate; no young-to-old absolute-age orientation is asserted",
+      "anchor_phase": "peak",
+      "extrema": "peaks",
+      "period_kyr": 405,
+      "anchor_age_kyr": 0,
+      "endpoint_policy": "trim",
+      "rule": "First selected filtered maximum is t=0; successive selected maxima are assigned +405 kyr. Apply the resulting controls to the original proxy, retaining only the interval between the first and last controls.",
+      "phase_meaning": "A peak is an operational signal maximum, not independently identified eccentricity maximum or a dated horizon.",
+      "uncertainty": "Missing/extra cycles, filtering, edge behavior, phase choice, variable accumulation and hiatuses are not propagated into a formal age confidence interval. A trough branch is a phase sensitivity check, not a statistical confidence interval."
+    },
+    "monte_carlo": {
+      "nsim": 19,
+      "seed": 1,
+      "minimum_attainable_p": 0.05,
+      "status": "quick exploratory budget; cannot demonstrate p < 0.05"
+    }
+  },
+  "workflow_presets": {
+    "interpolate_pro": {
+      "method": "linear",
+      "dt": 0.85344,
+      "coordinate_unit": "m",
+      "gap_policy": "interpolate",
+      "gap_multiplier": 10,
+      "endpoint_policy": "strict_grid"
+    },
+    "depth_diagnostics_and_filter": {
+      "detrend": "lowess",
+      "span": 0.35,
+      "coordinate_unit": "m",
+      "mtm_nw": 2,
+      "evolution": true,
+      "evolution_window": 600,
+      "evolution_step": 50,
+      "filter_method": "gaussian",
+      "filter_band": [0.0125, 0.020833333333333332]
+    },
+    "coco": {
+      "depth_unit": "m",
+      "middle_age_ma": 210,
+      "sedimentation_rate_min": 5,
+      "sedimentation_rate_max": 25,
+      "sedimentation_rate_step": 1,
+      "method": "adaptive",
+      "correlation": "Spearman",
+      "red_noise": 0,
+      "detrend": "lowess",
+      "span": 0.35,
+      "nsim": 19,
+      "seed": 1
+    },
+    "ecoco": {
+      "depth_unit": "m",
+      "middle_age_ma": 210,
+      "sedimentation_rate_min": 5,
+      "sedimentation_rate_max": 25,
+      "sedimentation_rate_step": 1,
+      "method": "adaptive",
+      "correlation": "Spearman",
+      "red_noise": 0,
+      "detrend": "lowess",
+      "span": 0.35,
+      "window": 600,
+      "step": 100,
+      "nsim": 19,
+      "seed": 1
+    },
+    "tune": {
+      "depth_unit": "m",
+      "period_kyr": 405,
+      "anchor_age_kyr": 0,
+      "anchor_phase": "peak",
+      "extrema": "peaks",
+      "endpoint_policy": "trim"
+    },
+    "time_diagnostics": {
+      "input_policy": "Use the original raw proxy, the actual tuning_run_id and its MATLAB control table; never use the band-pass output as the proxy for this diagnostic.",
+      "parameters": {
+        "coordinate_unit": "kyr",
+        "detrend": "lowess",
+        "span": 0.35,
+        "dt": 5,
+        "mtm_nw": 2,
+        "evolution": true,
+        "evolution_window": 2430,
+        "evolution_step": 405
+      },
+      "resampling_note": "The 5-kyr grid is an interpolation setting, not evidence of 5-kyr effective resolution."
+    }
+  },
+  "workflow_input_lineage": {
+    "interpolate_pro": "Consumes the untouched official raw input; retains its bytes and computes QA/grid/diagnostic in MATLAB. The requested 0.85344-m grid comes from the existing MATLAB metadata, not the different upstream 0.85-m record.",
+    "depth_diagnostics_coco_ecoco": "All three consume the same actual interpolated_csv artifact from this run's Interpolation Pro stage. Retain its hash and link to the original raw source. Do not silently revert individual analyses to another input.",
+    "tune": "Consumes the actual filtered_csv artifact of the depth diagnostic, including only its coordinate and filtered-value columns.",
+    "time_diagnostics": "Consumes the untouched original raw proxy plus the completed tuning_run_id, and applies the saved MATLAB controls and valid depth range. Its raw-file hash intentionally differs from the formatted Pro artifact's hash."
+  },
+  "interpretation_contract": [
+    "A spectrum peak is an exploratory candidate, not an automatic orbital identification.",
+    "Report original COCO rate-global Monte Carlo results and resolved target counts; local p values cannot replace the global test.",
+    "eCOCO global p values correct the rate search within each window, not a search over all windows.",
+    "Monte Carlo inference is conditional on the globally LOWESS-transformed record; the original null routine does not refit that nonlinear trend for each realization.",
+    "Low-rate cells may leave short orbital terms unresolved at the original sampling interval; retain these cells and report the resolved count rather than silently narrowing the grid.",
+    "EvoFFT zero-padded edge windows and complete unpadded eCOCO windows have different edge support.",
+    "No all-NaN map, unresolved maximum, missing cycle, or failed stage may be concealed by changing parameters or presenting a cached successful result.",
+    "A 405-kyr peak after 405-kyr tuning is an expected consequence of the imposed controls and is not independent confirmation of astronomical forcing.",
+    "Time-domain features at other periods remain conditional on the same age model; they are diagnostics, not independent dating evidence.",
+    "No true Newark absolute chronology, formal age uncertainty, or blind paper replication is claimed."
+  ],
+  "required_deliverables": [
+    "MATLAB Interpolation Pro grid/gap diagnostic and interpolated table, with raw-source linkage",
+    "MATLAB original-series/preprocessing figure and processed table",
+    "MATLAB depth MTM spectrum and EvoFFT figure/tables",
+    "MATLAB COCO rate diagnostics and original global significance outputs",
+    "MATLAB eCOCO map and rate-track table, including unresolved cells",
+    "MATLAB filtered series and extrema-derived age-control table",
+    "MATLAB relative age-depth/controls figure and tuned original-proxy table",
+    "MATLAB time MTM spectrum and time EvoFFT diagnostic",
+    "Original downloadable artifacts plus concise visible assumptions and conditional interpretation"
+  ],
+  "presentation": {
+    "opening_disclosure_zh": "我将采用演示方案中的公开先验，以405 kyr建立相对时间轴；210 Ma仅用于轨道目标近似，19次模拟用于快速探索。",
+    "chronology_label_zh": "405 kyr假设下的相对时间轴",
+    "main_story": ["深度中的节律", "候选速率及沿剖面变化", "滤波峰到相对时间轴", "哪些结论仍依赖假设"],
+    "main_images": ["depth spectrum and EvoFFT", "eCOCO map", "filtered series with tuning controls", "time spectrum and EvoFFT"],
+    "all_raw_artifacts_downloadable": true,
+    "no_cached_result_substitution": true,
+    "no_hidden_parameter_search": true
+  },
+  "validation": {
+    "manifest_state": "predeclared_demo_design",
+    "full_workflow_status": "not_run_by_demo_author",
+    "existing_evidence_scope": "Version 0.4 Newark real Harness conversation completed depth-domain analysis and a separate detrending-span follow-up with MATLAB results and image/file delivery. It did not execute this complete 405-kyr tuning workflow.",
+    "rehearsal_receipt_policy": "Record actual run IDs, effective parameters, failures, duration and client rendering separately; do not overwrite this design with an inferred success claim."
+  },
+  "references": [
+    "https://acycle.org/docs/Acycle_Users_Guide.pdf",
+    "https://doi.org/10.1016/0031-0182(95)00171-9",
+    "https://doi.org/10.1029/1999JB900076",
+    "https://doi.org/10.1073/pnas.1800891115"
+  ]
+}

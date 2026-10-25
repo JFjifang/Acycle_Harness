@@ -28,13 +28,30 @@ def requests(input_path: Path, nsim: int) -> dict:
         'ecoco': {'tool': 'acycle_ecoco', 'arguments': {'input_path': str(input_path),
                   'parameters': {**shared, 'window': 500, 'step': 500},
                   'label': f'local Newark eCOCO diagnostic nsim={nsim}'}},
+        'interpolate_pro': {'tool': 'acycle_interpolate_pro', 'arguments': {'input_path': str(input_path),
+                            'parameters': {'method': 'linear', 'dt': 1, 'coordinate_unit': 'm',
+                                           'gap_policy': 'interpolate', 'endpoint_policy': 'strict_grid'},
+                            'label': 'local Newark Interpolation Pro diagnostic'}},
+        'filter_prepare': {'tool': 'acycle_analyze', 'arguments': {'input_path': str(input_path),
+                           'parameters': {'detrend': 'lowess', 'span': 0.35, 'coordinate_unit': 'm',
+                                          'filter_band': [0.0125, 0.020833333333333332], 'filter_method': 'gaussian', 'evolution': False},
+                           'label': 'local tuning smoke illustrative band; not orbital identification'}},
+        'tune': {'tool': 'acycle_tune', 'arguments': {'input_path': '<filter_prepare.artifacts.filtered_csv>',
+                 'parameters': {'period_kyr': 405, 'anchor_age_kyr': 0, 'anchor_phase': 'peak',
+                                'extrema': 'peaks', 'depth_unit': 'm', 'endpoint_policy': 'trim'},
+                 'label': 'local tuning smoke assumed 405 kyr cycle and relative zero'}},
+        'time_diagnostic': {'tool': 'acycle_analyze', 'arguments': {'input_path': str(input_path),
+                            'tuning_run_id': '<tune.run_id>',
+                            'parameters': {'coordinate_unit': 'kyr', 'dt': 5, 'detrend': 'lowess', 'span': 0.35,
+                                           'evolution': True, 'evolution_window': 2430, 'evolution_step': 405},
+                            'label': 'original proxy time diagnostic under the assumed tuning model'}},
     }
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--workspace', default='.')
-    parser.add_argument('--case', choices=['analyze', 'swa', 'coco', 'ecoco', 'all'], default='analyze')
+    parser.add_argument('--case', choices=['analyze', 'swa', 'coco', 'ecoco', 'interpolate_pro', 'tune', 'all'], default='analyze')
     parser.add_argument('--nsim', type=int, default=19, help='Diagnostic Monte Carlo count; not a publication setting')
     parser.add_argument('--receipt', help='Optional receipt path; otherwise creates a unique file under workspace/local-validation')
     parser.add_argument('--dry-run', action='store_true', help='Print exact requests without launching MATLAB')
@@ -48,13 +65,15 @@ def main() -> int:
     if not source.is_file():
         parser.error(f'Official Newark fixture not found: {source}')
     tasks = requests(source, args.nsim)
-    selected = list(tasks) if args.case == 'all' else [args.case]
+    selected = list(tasks) if args.case == 'all' else (['filter_prepare', 'tune', 'time_diagnostic'] if args.case == 'tune' else [args.case])
     receipt = {'scope': 'Local diagnostic smoke; parameter examples are not a published chronology reproduction',
                'created_at_utc': datetime.now(timezone.utc).isoformat(),
                'input_path': str(source), 'input_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
                'diagnostic_monte_carlo_count': args.nsim,
                'minimum_nominal_mc_resolution': f'1/({args.nsim}+1); read original method output for its exact p-value definition',
                'requests': [tasks[name] for name in selected], 'runs': []}
+    if 'tune' in selected:
+        receipt['tuning_assumptions'] = 'Illustrative 0.0125–0.020833333333333332 cycles/m band, assumed 405 kyr period, first peak at relative time zero. This does not identify orbital forcing or establish an absolute age.'
     if args.dry_run:
         print(json.dumps(receipt, ensure_ascii=False, indent=2))
         return 0
@@ -71,9 +90,16 @@ def main() -> int:
         parser.error(f'Refusing to overwrite receipt: {destination}')
     destination.parent.mkdir(parents=True, exist_ok=True)
     failed = False
+    completed_runs = {}
     for name in selected:
         task = tasks[name]
+        result = None
         try:
+            # Resolve references to immutable MATLAB outputs; no numerical processing here.
+            if name == 'tune':
+                task['arguments']['input_path'] = completed_runs['filter_prepare']['artifacts']['filtered_csv']
+            elif name == 'time_diagnostic':
+                task['arguments']['tuning_run_id'] = completed_runs['tune']['run_id']
             result = dispatch(task['tool'], task['arguments'], workspace)
             if result.get('status') != 'completed' or result.get('result', {}).get('backend') != 'matlab':
                 raise RuntimeError('Expected a completed real MATLAB response')
@@ -81,10 +107,12 @@ def main() -> int:
             if not artifacts or not all(Path(path).is_file() for path in artifacts.values()):
                 raise RuntimeError('One or more MATLAB artifacts are missing')
             receipt['runs'].append({'case': name, 'status': 'passed', 'result': result})
+            completed_runs[name] = result
             print(json.dumps({'case': name, 'run_id': result['run_id'], 'status': 'passed'}, ensure_ascii=False), flush=True)
         except Exception as error:
             failed = True
-            receipt['runs'].append({'case': name, 'status': 'failed', 'error': str(error)})
+            receipt['runs'].append({'case': name, 'status': 'failed', 'error': str(error),
+                                    **({'result': result} if result is not None else {})})
             print(json.dumps({'case': name, 'status': 'failed', 'error': str(error)}, ensure_ascii=False), flush=True)
         receipt['status'] = 'failed' if failed else 'passed'
         destination.write_text(json.dumps(receipt, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')

@@ -27,7 +27,7 @@ def digest(path: Path) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--workspace', default=str(Path(__file__).resolve().parents[1]))
-    parser.add_argument('--version', default='0.4.0')
+    parser.add_argument('--version', default='0.5.0')
     parser.add_argument('--plugin-root', required=True, help='Extracted package/ from the npm tarball')
     parser.add_argument('--runtime', help='Official Harness package installation for native-registry smoke')
     parser.add_argument('--output', default='validation/release-verification.json')
@@ -90,7 +90,7 @@ def main() -> int:
     assert len(responses) == 3
     assert responses[0]['result']['serverInfo']['version'] == args.version
     names = [tool['name'] for tool in responses[1]['result']['tools']]
-    assert len(names) == 10 and 'acycle_rerun' in names and 'acycle_import_attachment' not in names
+    assert len(names) == 12 and 'acycle_tune' in names and 'acycle_import_attachment' not in names
     capabilities = json.loads(responses[2]['result']['content'][0]['text'])
     assert capabilities['version'] == args.version and capabilities['python_numerical_fallback'] is False
 
@@ -102,7 +102,7 @@ def main() -> int:
                                  env=env, capture_output=True, text=True, check=True, timeout=120)
         native = json.loads(checked.stdout)
         assert native['status'] == 'passed'
-        assert len(native['registered_tools']) == 11 and len(native['registered_skills']) == 8
+        assert len(native['registered_tools']) == 13 and len(native['registered_skills']) == 10
         (root/'validation/native-plugin-smoke.json').write_text(json.dumps(native, indent=2)+'\n')
 
     receipt = {

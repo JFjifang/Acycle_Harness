@@ -86,6 +86,9 @@ test('official SystemPrompt always includes Acycle workflow rules and removes th
     assert.match(rules[0].text, /ask the user.*wait before starting scientific analysis/)
     assert.match(rules[0].text, /acycle_rerun.*parameter_patch/)
     assert.match(rules[0].text, /Do not alter authentication or execute gh auth/)
+    assert.match(rules[0].text, /main Chat.*presentation\.display_markdown/)
+    assert.match(rules[0].text, /model declares image input and read_image is available/)
+    assert.match(rules[0].text, /Numerical verification, model visual review, and user-visible Chat display are separate checks/)
   }
   await f.pluginFiber.dispose()
   const disposed = await f.ctx.systemPrompt.assemble({ scope: f.agent })
@@ -105,7 +108,7 @@ test('official registry imports only current Session user refs, preserving bytes
   assert.equal(result.value.source_message_id, sourceId)
   assert.deepEqual(await readFile(result.value.input_path), data)
   assert.deepEqual(JSON.parse(await readFile(result.value.import_receipt, 'utf8')).attachment, ref)
-  assert.equal(f.ctx.tools.schemas().filter(item => item.name.startsWith('acycle_')).length, 11)
+  assert.equal(f.ctx.tools.schemas().filter(item => item.name.startsWith('acycle_')).length, 13)
   const repeat = await f.execute('acycle_import_attachment')
   assert.equal(repeat.isError, false)
   assert.equal(repeat.value.input_path, result.value.input_path, 'repeat import reuses the verified immutable copy')

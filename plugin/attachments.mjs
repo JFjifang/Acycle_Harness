@@ -261,7 +261,7 @@ export async function attachOutputs(ctx, value, workspace, exec, config, fetchRu
   const imageLines = presentation.images.map(item => `![${item.run_id}: ${item.key}](<${item.path}>)`)
   const fileLines = presentation.files.filter(item => !item.path.endsWith('.png')).map(item => `[${item.run_id}: ${item.key}](<${item.path}>)`)
   presentation.display_markdown = [...imageLines, ...fileLines].join('\n\n')
-  presentation.warnings.push('Image previews are delivered for the user; the model received offloaded references, not image pixels. Do not claim visual inspection. Include relevant display_markdown images and file links in the answer.')
+  presentation.warnings.push('This tool returns offloaded previews, not image pixels for model inspection. If a vision-capable route and read_image are available, explicitly read the existing PNG for visual review; otherwise state that visual review was not completed. Include key display_markdown PNG images in the final Chat answer with captions, and retain original-file links. A successful present event alone does not prove an inline Chat image was displayed.')
   if (presentation.skipped.length) presentation.status = 'partial'
   if (config.presentOutputs && exec.agent && ctx.tools.get('present', exec.agent)) {
     const pngPaths = presentation.images.map(item => item.path)
