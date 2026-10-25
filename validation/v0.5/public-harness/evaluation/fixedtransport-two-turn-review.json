@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "status": "requires_scientific_correction",
+  "behavior_status": "passed_observed_matlab_only_science",
+  "first_turn_review": "fixedtransport-first-turn-review.json",
+  "original_model_responses_edited": false,
+  "continuation_infrastructure": {
+    "initial_attempt": "../newark-fixedtransport/ecoco-followup.json",
+    "initial_attempt_status": "failed_before_a_new_user_event_or_tool_call",
+    "cause": "The runner used session(id), which creates a handle without restoring the persisted official Session. The published SDK requires resumeSession(id).",
+    "fix_verified_by": "../resume-keyless-v2/resume-check.json",
+    "retry_receipt": "../newark-fixedtransport/ecoco-followup-retry.json",
+    "baseline_science_recomputed": false
+  },
+  "followup": {
+    "status": "completed_with_interpretation_corrections",
+    "scientific_behavior": "Only the requested eCOCO window/step changed; no extra rate search, new target selection, numerical Python or retries. The model asked before a proposed future grid expansion and did not execute it.",
+    "supported_claims": [
+      {
+        "quote": "原结果全部保留",
+        "evidence": "Evaluator v2 checks every original artifact role against the first live tool-return SHA, plus original frozen input hashes after the follow-up."
+      },
+      {
+        "quote": "6 窗，400–1400 m",
+        "evidence": "Matches the saved MATLAB window_count and depth_centres_m."
+      },
+      {
+        "quote": "5, 7, 5, 5, 5, 8",
+        "evidence": "Matches the new saved tracked_rate_cm_kyr array."
+      },
+      {
+        "quote": "原答复中…应降级为窗长依赖…描述性结果",
+        "assessment": "A useful correction: this window change substantially changes candidate tracks. It does not validate actual geological rate variation."
+      },
+      {
+        "quote": "不能表述为 p<0.05 或显著",
+        "assessment": "Correctly preserves the 19-simulation probability-resolution limit and does not claim significance."
+      }
+    ],
+    "corrections": [
+      {
+        "id": "repeats_nonmonotone_track_error",
+        "quote": "600/100 方案给出 6→13 cm/kyr 的单调上升",
+        "correction": "The saved sequence includes 8→7; it is not monotone. Preserve the actual descriptive trajectory without a directional proof claim."
+      },
+      {
+        "id": "repeats_cycle_count_error",
+        "quote": "35 个循环计数",
+        "correction": "35 selected extrema are 35 control points and 34 complete adjacent intervals. Equal counts under shared filtering/405 kyr assumptions do not independently verify cycle completeness."
+      },
+      {
+        "id": "nonconstant_candidates_not_established_rates",
+        "quote": "两种窗长…都不是常数",
+        "correction": "Only the candidate maxima vary. Non-significant search tracks do not establish that actual sedimentation rates vary."
+      },
+      {
+        "id": "unchanged_other_artifacts_are_not_independent_validation",
+        "quote": "来自另一条独立分支",
+        "correction": "Other artifact files were not recomputed or overwritten by this eCOCO change. They nevertheless share the same source data and priors; branch separation is not scientific independence or proof of robust chronology."
+      }
+    ],
+    "limits": [
+      "The longer windows have different support and only six complete centers, so this is a conditional window-sensitivity comparison, not a controlled geological estimate or formal uncertainty interval.",
+      "Boundary maxima may motivate a separately disclosed future rate-grid experiment; none was performed in this accepted two-turn test."
+    ]
+  },
+  "scope": "Public final answers, actual official Session user/tool events, saved MATLAB metadata and file-byte witnesses only. No private reasoning or scientific recomputation."
+}

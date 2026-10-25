@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "mode": "fixture",
+  "fixture_adapter": true,
+  "scope": "Published official Web profile and actual Acycle preset in Chromium; existing MATLAB files only. Fixture mode is not a real-model autonomy or vision test.",
+  "runtime_version": "0.2.1-rc.3",
+  "run_id": "20261025T071158Z-b0f32143454c",
+  "expected_files": [
+    {
+      "key": "preprocess_png",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.png",
+      "sha256": "873ff2e2565c5de8d44a6d61bc5a0a446dfadb385d213e1cb82f972e384bcdaa"
+    },
+    {
+      "key": "spectrum_png",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png",
+      "sha256": "9e6f659946cd2f4142597eacd1526d6d6bfad79ce0bfc97bb7ca124031304ed1"
+    },
+    {
+      "key": "evolution_png",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png",
+      "sha256": "04ffc91dfb89fd86500771dac96ea904bc55da295bb9faddae0e1e8457f40356"
+    }
+  ],
+  "main_chat_images": [
+    {
+      "alt": "20261025T071158Z-b0f32143454c: spectrum_png",
+      "src": "http://127.0.0.1:3096/api/file?path=%2Fworkspace%2FAcycle_Harness%2F.acycle%2Fruns%2F20261025T071158Z-b0f32143454c%2Foutputs%2Fspectrum.png",
+      "width": 831,
+      "height": 656,
+      "sidebar": false,
+      "original_path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png"
+    },
+    {
+      "alt": "20261025T071158Z-b0f32143454c: evolution_png",
+      "src": "http://127.0.0.1:3096/api/file?path=%2Fworkspace%2FAcycle_Harness%2F.acycle%2Fruns%2F20261025T071158Z-b0f32143454c%2Foutputs%2Fevolution.png",
+      "width": 1707,
+      "height": 1113,
+      "sidebar": false,
+      "original_path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png"
+    }
+  ],
+  "lightbox": true,
+  "refreshed": true,
+  "scientific_recalculation": false,
+  "screenshots": [
+    "/workspace/Acycle_Harness/validation/v0.5/web/main-chat-fixture.lightbox.png",
+    "/workspace/Acycle_Harness/validation/v0.5/web/main-chat-fixture.chat-refreshed.png"
+  ],
+  "workspace_response": {
+    "workspace": {
+      "workspaceId": "ff22d8a1-f574-4e02-a7a1-0bf230a8c7ff",
+      "path": "/workspace/Acycle_Harness",
+      "title": "Acycle_Harness",
+      "sessionIds": [],
+      "createdAt": "2026-10-25T10:19:07.898Z",
+      "updatedAt": "2026-10-25T10:19:07.898Z"
+    },
+    "created": true
+  },
+  "session_response": {
+    "sessionId": "session-19dddf4d-5861-4556-843e-121fe40f21de",
+    "agentPreset": "acycle"
+  },
+  "session_id": "session-19dddf4d-5861-4556-843e-121fe40f21de",
+  "agent": {
+    "mode": "fixture",
+    "fixture_adapter": true,
+    "scientific_calls": [],
+    "session_id": "session-19dddf4d-5861-4556-843e-121fe40f21de",
+    "preset": "acycle",
+    "headers": [
+      {
+        "config": {
+          "provider": "acycle-ui-fixture",
+          "model": "fixture-text"
+        },
+        "tool_names": [
+          "acycle_analyze",
+          "acycle_capabilities",
+          "acycle_coco",
+          "acycle_compare",
+          "acycle_ecoco",
+          "acycle_get_run",
+          "acycle_import_attachment",
+          "acycle_inspect",
+          "acycle_interpolate_pro",
+          "acycle_rerun",
+          "acycle_sensitivity",
+          "acycle_swa",
+          "acycle_tune",
+          "ask_user_question",
+          "present",
+          "read",
+          "read_image",
+          "skill",
+          "working_directory"
+        ]
+      }
+    ],
+    "tools": [
+      {
+        "name": "skill",
+        "arguments": "{\"name\":\"acycle-mini-robot\"}"
+      },
+      {
+        "name": "acycle_get_run",
+        "arguments": "{\"run_id\":\"20261025T071158Z-b0f32143454c\"}"
+      }
+    ],
+    "image_results": [
+      {
+        "attachment": {
+          "attachmentId": "sha256:93ff8ae513c5d7d52879e194c3c449d8119b68a3df035a7c1653640dabfca6d1",
+          "mediaType": "image/jpeg",
+          "width": 1707,
+          "height": 1113,
+          "bytes": 460810,
+          "name": "evolution.png"
+        },
+        "offloaded": true
+      },
+      {
+        "attachment": {
+          "attachmentId": "sha256:3f22483b64ef12acf185d5ac61dd5ff940c72ace05585ade7570e58252eb3eff",
+          "mediaType": "image/jpeg",
+          "width": 831,
+          "height": 656,
+          "bytes": 100943,
+          "name": "spectrum.png"
+        },
+        "offloaded": true
+      },
+      {
+        "attachment": {
+          "attachmentId": "sha256:6e979ac2db3756155782acc5e0f94e6861068d322f0942dedcac0dc398ad2b32",
+          "mediaType": "image/jpeg",
+          "width": 1703,
+          "height": 1092,
+          "bytes": 170547,
+          "name": "preprocessing.png"
+        },
+        "offloaded": true
+      }
+    ],
+    "final_text": "UI acceptance fixture using existing MATLAB results. This text-only scripted adapter does not inspect pixels or perform scientific calculations. Run: 20261025T071158Z-b0f32143454c.\n\n![20261025T071158Z-b0f32143454c: evolution_png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png>)\n\n![20261025T071158Z-b0f32143454c: spectrum_png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png>)\n\n![20261025T071158Z-b0f32143454c: preprocess_png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.png>)\n\n[20261025T071158Z-b0f32143454c: cleaned_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/cleaned.csv>)\n\n[20261025T071158Z-b0f32143454c: prepared_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/prepared.csv>)\n\n[20261025T071158Z-b0f32143454c: processed_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/processed.csv>)\n\n[20261025T071158Z-b0f32143454c: robust_spectrum_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum_robust.csv>)\n\n[20261025T071158Z-b0f32143454c: classic_spectrum_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum_classic.csv>)\n\n[20261025T071158Z-b0f32143454c: evolution_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.csv>)\n\n[20261025T071158Z-b0f32143454c: preprocess_fig](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.fig>)\n\n[20261025T071158Z-b0f32143454c: spectrum_fig](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.fig>)\n\n[20261025T071158Z-b0f32143454c: evolution_fig](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.fig>)\n\n[20261025T071158Z-b0f32143454c: analysis_mat](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/analysis.mat>)\n\n[20261025T071158Z-b0f32143454c: provenance_json](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/provenance.json>)",
+    "completed": true,
+    "deepseek_catalog": {
+      "provider": "deepseek-official",
+      "id": "deepseek-flash",
+      "name": "DeepSeek Flash",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "context": {
+        "contextWindow": 1000000
+      },
+      "defaultMaxTokens": 256000,
+      "systemPromptUpdate": "in-history",
+      "reasoning": {
+        "efforts": [
+          {
+            "id": "off",
+            "name": "Off",
+            "description": "Use for simple tasks that do not need reasoning."
+          },
+          {
+            "id": "low",
+            "name": "Low",
+            "description": "Prefer for routine or latency-sensitive tasks."
+          },
+          {
+            "id": "high",
+            "name": "High",
+            "description": "The default balance for most tasks."
+          },
+          {
+            "id": "max",
+            "name": "Max",
+            "description": "Reserve for the hardest quality-first tasks."
+          }
+        ],
+        "defaultEffort": "high"
+      }
+    },
+    "acycle_persona": true,
+    "acycle_workflow_policy": true,
+    "skill_names_in_prompt": []
+  },
+  "downloads": [
+    {
+      "extension": ".png",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.png",
+      "bytes": 139731,
+      "sha256": "873ff2e2565c5de8d44a6d61bc5a0a446dfadb385d213e1cb82f972e384bcdaa"
+    },
+    {
+      "extension": ".csv",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/cleaned.csv",
+      "bytes": 39212,
+      "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+    },
+    {
+      "extension": ".mat",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/analysis.mat",
+      "bytes": 3240323,
+      "sha256": "ec952413c3c19f513753c68caa08e57ba90cd8456145bbdb8fdb9ec3fc88c402"
+    },
+    {
+      "extension": ".fig",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.fig",
+      "bytes": 116894,
+      "sha256": "9cc50c6fcdae3ce5c17e62ccba0b3ded6d00491185061451e2a794defbe9dc29"
+    }
+  ],
+  "page_errors": []
+}

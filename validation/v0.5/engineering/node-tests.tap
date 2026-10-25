@@ -1,0 +1,36 @@
+✔ compact model result preserves statistics, warnings and source mismatches (1.650039ms)
+✔ missing attachment services preserve science and path delivery (0.479901ms)
+✔ failed presentation cannot turn a completed MATLAB result into a failed analysis (9.55246ms)
+✔ artifact delivery excludes a symlink escaping recorded outputs and oversized files (5.707364ms)
+✔ official SystemPrompt always includes Acycle workflow rules and removes them with the plugin (148.819532ms)
+✔ official registry imports only current Session user refs, preserving bytes and source (77.408003ms)
+✔ multiple files require selection; official host paths auto-import for Python intake (109.362169ms)
+✔ official short handles resolve only unique current Session refs, with real prefix collisions requiring selection (108.356132ms)
+✔ bare filenames prefer current uploads, preserve explicit workspace paths, and reject ambiguous uploads (183.435276ms)
+✔ every import preserves its own source receipt across messages and Sessions without changing prior records (70.522748ms)
+✔ import rejects byte limits and a symlinked destination, leaving source intact (49.235678ms)
+✔ official sha256 refs detect altered source bytes and remove partial imports (44.257078ms)
+✔ official image/file refs and present deliver both spectrum and evolution with original bytes (98.341813ms)
+✔ path intake remains usable without attachments; attachment import gives an actionable error (68.648813ms)
+✔ bridge transports JSON literally without shell expansion (11.485976ms)
+✔ bridge observes cancellation and waits for subprocess exit (102.833951ms)
+✔ native cancellation lets Python stop a TERM-ignoring MATLAB process group and save evidence (5062.332981ms)
+ℹ {"fixture":"TERM-ignoring process; no MATLAB science","status":"interrupted","returncode":-9,"attempts":1,"automatic_retry":false,"elapsed_seconds":5.032440042003145,"child_reaped":true}
+✔ bridge reports errors and rejects non-JSON output (11.59418ms)
+✔ bridge retains structured failed-run diagnostics while rejecting the tool call (16.829898ms)
+✔ packaged skill metadata strips frontmatter and resolves resources (0.923328ms)
+✔ optional SystemPrompt service does not block legacy plugin registration (12.904138ms)
+✔ new preparation and tuning operations count toward the science budget (0.455214ms)
+✔ v0.5 structured RunError survives native error prefixes and isError omissions (0.232529ms)
+✔ a successful early stage does not erase a later failed scientific stage (0.16609ms)
+✔ read-only retrieval and success-shaped prose cannot satisfy a fresh scientific stage (0.138539ms)
+✔ public scenario budgets override legacy defaults without becoming model instructions (0.287592ms)
+✔ continuation inherits only a matching actual Session catalog and labels it historical (1.803981ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6223.099974

@@ -1,0 +1,760 @@
+{
+  "created_at_utc": "2026-10-25T10:44:19.560257+00:00",
+  "python": "3.12.14",
+  "python_executable": "/workspace/acycle-release-check-v05/bin/python",
+  "workspace": "/workspace/acycle-local-check-v05/workspace",
+  "backend": "local",
+  "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+  "acycle_root": "/workspace/upstream/acycle",
+  "errors": [
+    "MATLAB startup/toolbox probe failed. Inspect retained evidence in /workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3; no automatic retry was made."
+  ],
+  "warnings": [],
+  "package_version": "0.5.0",
+  "registered_tools": [
+    "acycle_capabilities",
+    "acycle_inspect",
+    "acycle_analyze",
+    "acycle_swa",
+    "acycle_coco",
+    "acycle_ecoco",
+    "acycle_interpolate_pro",
+    "acycle_tune",
+    "acycle_rerun",
+    "acycle_sensitivity",
+    "acycle_compare",
+    "acycle_get_run"
+  ],
+  "matlab_bridge": "/workspace/acycle-release-check-v05/lib/python3.12/site-packages/acycle_deepseek/matlab",
+  "matlab_executable": "/workspace/acycle-local-check-v05/fake-matlab",
+  "installed_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+  "source_files": [
+    {
+      "relative_path": "code/corrcoef/ac_protect_coco_result_figures.m",
+      "sha256": "f03e9bc0c55541fd589e0b96f695124b9737ec4fdca7b088f94f1bb3224e08b6",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoAdaptiveEvaluate.m",
+      "sha256": "2b57ce284fcff1bbf60bd0c6ffc310cac47ffdbe27adb1dfe5e3cbf6d3d721db",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoAdaptivePublicationReport.m",
+      "sha256": "6b7794503fff916a564757a65dc34a8c56aaeffd5a0e7f5f22d05ca808e1d643",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoAllPeriodRateRange.m",
+      "sha256": "93383011662d9267c51236d8617c842feccb54a7103e0a01543573f7a6a3893d",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoConclusionReport.m",
+      "sha256": "e30f58ae7ffaab8d1cc83895466fb59dd3590a3e79f94727e610dd72ec1dd15e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoFixedTargetWeights.m",
+      "sha256": "e42a05c4b56960265116bd91b143138e5c3263fbb5d8a1bd8ab5d868f7e2dd69",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoGetPower.m",
+      "sha256": "a303b822c580679bfd96544e8bc4dbb3d02b5cc90ede2594624b69cd2754a950",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoGetPowerNew.m",
+      "sha256": "dd9c6d07402ecaf50d6235cbf68848e5d8e7f6ff874871a62e30f93e204fcd07",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoIsNonfatalResolutionError.m",
+      "sha256": "76f1e8eef2067b65569eb16b4c0dc3175c386174ab08741ee08dbc1fb2d80f4e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoNonnegativeLeakageSolve.m",
+      "sha256": "5e7dff61e7891b440c5463aa83650f5d0ddd74a38982c0f1028a0fe14d5e056b",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoOrbitGroups.m",
+      "sha256": "8cc804e5c19b395d4d1e3a3a2864903e5d853647beb5cfec248cd6a33bded525",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoPrepareRegularData.m",
+      "sha256": "a8571c3b32943a64f77aeee37b4c6536562abc6ec45d182c8a1b73d9e4a6454f",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoPublicationPrepareData.m",
+      "sha256": "f7fb50513202a5d316994e6137fcf895b8ea60bc75e01081dbfe8338d4477947",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoResolvedDetrendedVariance.m",
+      "sha256": "72bb835ffbb4a23517638156ea0a5f819d77d279bfd18d5300c75dd20b6e40f4",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoSamplingTolerance.m",
+      "sha256": "9c2476a6cfe46e57ef4c48a68bb02351ce0cf42a88f4ffcc6a140381c9b74643",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoShadeOutsideAllPeriodRange.m",
+      "sha256": "eb7c7a85be5f160f7bdfbd3b4b87c0ae5c3b786a12cef6dd37d248a5be9febd3",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cocoTargetSpectrum.m",
+      "sha256": "83b6c77ebdcd614ec479ec77dc75e97606349cb1ac41706f05ced2ab2ea040b7",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/corrcoefsig.m",
+      "sha256": "5765e172706601a1049ef0eaff483bbf8562b9b71bcd26bec5f5b6a990da0165",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/corrcoefslices.m",
+      "sha256": "ed064e8a65824eba2505916761ac5ab111040d39a93d33d1e4c888467fcf790e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/corrcoefslices_rankNew.m",
+      "sha256": "4adeaf0a0fc18c207731d974085200b08d906287b6e86a3e717acd0e9eaac366",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/corrsig.m",
+      "sha256": "db68ecd61cb16136a3da368b0626fc736dcaebd46ecc3c2bd17432639c6d1d9b",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cvcoco.m",
+      "sha256": "60d000e15525019224ba218a4f448fe3ea064fd39d45645f90461a075dd8933e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cvcoco2.m",
+      "sha256": "14c687546840c6d39cde9f93fd5ed9ccee87d223c20374bb5cf74dd81851e9df",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cvcoco9.m",
+      "sha256": "d71361296a493815dd775f60a080fcd7fa8ab24d50341076d51083f7652fa22e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cvcoco9A.m",
+      "sha256": "b52c0e0211146b2048e07b14c88b6cd161b7e6b91537b6d2aadacce759fb9307",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cvcoco9B.m",
+      "sha256": "fe09973d0118cfeb32bbff5084692c63b62233eb4aa6e8fd3358c5c5f5b28ddf",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cvcocoLegacy.m",
+      "sha256": "e4c7d406b45033ccc7eae89ba299fb634243db2bba6946e85881c9b086a77a00",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cyclecorr.m",
+      "sha256": "c067ac108792f4fc3e4daac7e390a2dea67cad1e3321afc227be6c0a6712c554",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cyclecorr4.m",
+      "sha256": "a0e8ce81a14165102a488dd7999271a83dabff9254aa93159fddc7ced209a28c",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cyclecorr4sig.m",
+      "sha256": "458bd6a0cf8fc62902823a87141446c879aa6bc09f4424e6164fcaaabfb79341",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cyclecorr5.m",
+      "sha256": "4e732f2067b101a8343bd2d4c1431a8eda100339bd64c4816bd1d74bf4f526bd",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cyclecorrNew.m",
+      "sha256": "474b2b900d3d9e15b504cf02b1633662a8aa17bdc40dd9d2d6938f177c0646b4",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cyclecorr_rank.m",
+      "sha256": "a78b9f2e5e9adb77d80780b972f163103d51a2e1a1dd85bacb51dd4cc912b00b",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cyclecorrsigNew.m",
+      "sha256": "9196a4365877bf162a848b1fb8eb2fdfb66df0e36e027ff53264a1eaa3cb061e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/cyclesig_rank.m",
+      "sha256": "fa67eb477311578e04fd4df1bb64b778336cefdff0e25dc45a0bf69c5ff47e30",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/data_slices.m",
+      "sha256": "6fa282c8b758cbca298b931d852ca45bb4b94a4b6aaa5a00d3088ac6be396728",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ebrief.m",
+      "sha256": "1d37a94ece0377de72596def5db96306df1a5ac4b316375287176adf10b886c9",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/eccount.m",
+      "sha256": "aafc6a5d2e16945a37153f9af1609a56a812b1f812fdb82742de9765ab50481e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/eccpeaks.m",
+      "sha256": "7b9fdf27c82cdb1d879f036f232df8a73560b06502d302efb1a8271b95287629",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecoco.m",
+      "sha256": "a3336d5cda29810a8b054a6ed5f31070b1570a8ab5866c6dae083bb7b053484b",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocoAdaptiveCore.m",
+      "sha256": "baf7b4ab18804c61e4213c46e3c6aaedf58476e10ba494ab975eaee8945a7152",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocoCrossfitCore.m",
+      "sha256": "95082f19bd96b7e35ea732b703b80f8807a1f75e341f690a5acedda7876c21a1",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocoEstimateAr1.m",
+      "sha256": "dcb1ac946d0e14d7686bdfc75f75691b0cef9eca4b094354300a7ebab6a60bf6",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocoInterleavedCore.m",
+      "sha256": "84082914d36139b920abbbfb5a37ad5b2c3d8c7de6318a7e6c926695c47dd3b8",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocoPhysicalCenters.m",
+      "sha256": "faab45994de5f813a2ca60bf9fc8a2329e67445a23c66cd77e734187817f8d10",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocoPhysicalWindowValues.m",
+      "sha256": "4b835e37add1e7b17fb71e3105c807a864013a6f68dccd4b27bc3eeb7bd10da1",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocoWindowSpectra.m",
+      "sha256": "b6db203a8fb326d5ef9a14a033056b69b72b3cc10e43890fe625a72b7c084590",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocoplot.m",
+      "sha256": "aba7acd2470b76e35dbe16fe9cf197d8e8002b87316964d5bf098a8852b60799",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocoplots.m",
+      "sha256": "b70746a8e0206b5190de3108794ee32fac4e24a12f82cdfed25d250dd93e6e0c",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocos.m",
+      "sha256": "7587e73fe369e0c32ec42b4ef14ef6420c8584a2a16073f455b8c65cc773af63",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocotrack.m",
+      "sha256": "ac9a90ef3d81282adbd5ddd0eb0e7bd30c4732d5a9d394e077dc67f6cc190902",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/ecocotrackn.m",
+      "sha256": "95785cb8db3f8928200dc93b5908920ad7216d26acdb64e33de412d8d7461631",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/findperct.m",
+      "sha256": "c8972beda8d35c23be9cd6f6ace5e2b025be9f9fc7b00d79465197db536dbecc",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/freq2targetFixed.m",
+      "sha256": "0cda5e8445586e138df8e600e48cbcea1d4142cc9c10ff6f3f6b245625dbc24a",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/freq2targetNew.m",
+      "sha256": "79dce9b57591f4ebf2aa950b4e7d39388c04d7cdc94deb86a6a70464a21c19b5",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/gentarget.m",
+      "sha256": "babd9b60b74bcc8b3018d11888d277ba131985d3283471cc78327fd421778c2d",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/getBerger89Period.m",
+      "sha256": "486c8cf1660f83611a8be2be3c7454ebf63b65d0231bd9f0fbf9c033a3c20a4a",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/interleavedcvcoco.m",
+      "sha256": "3003e08fce298c5f8f48f3e5cc548ab8d6b5ba7da448567a7df99e47b910d102",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/norbits.m",
+      "sha256": "c8ef4eb47cd76e6ff4d67202be08c066866ab47e937b4b93de96ebe089530206",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/numorbit.m",
+      "sha256": "916d50f071ab6e33a11e901c17dba00dc60b9cd71191d27ed02f138323b468c7",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/period2spectrum.m",
+      "sha256": "ba42d15c2dfb4162320b06e12dc2e4e689b223b19dbedf2012e0c23ec149cd9a",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/plotAdaptiveCocoPublication.m",
+      "sha256": "ad0311417600615c6261dcf3ed08503cfb24428d9a0948e88ad1de1ded62de71",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/plotcvcoco.m",
+      "sha256": "d503ec916754c2c7bbada99ad219918127850eb84c4bf7d0b731a50371f49625",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/randspec_sin.m",
+      "sha256": "8784e712cf476508474a848a97c59907fb86423eaa6030f962a9183a7359d931",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/redNoisePeriodogramMC.m",
+      "sha256": "38d5e9f8dc59f6ced3240859194b8b6a00201314bf52c6af4786052be20f060f",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/reexportCocoPublicationPdfs.m",
+      "sha256": "ee84ef03576f7aeaf2cc7bea55708d53c9ab546aa03ed5755fb452cc8f52b793",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/runCocoEightMethodExperiment.m",
+      "sha256": "5bd4ff4a788e100ce55240c6317085e1b16ee81f9e906c9532b93c3ac7b2a21c",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/runCocoPublicationValidation.m",
+      "sha256": "2e2adba94648cf046a0b66844e23ce0805de9dbb32b0fe8c5102f950842700bb",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/runEcocoTwoMethodExperiment.m",
+      "sha256": "7af1b70f70b584ce8eb910b0a19ea48f0509a16b1295a0b578e02a46b4079ba4",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/runInterleavedCvCocoComparison.m",
+      "sha256": "0450e6660dad1bc2f92824f5e036f80780f99e408d73bff4071d76a429699309",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/runSyn3FourMethodPublicationStudy.m",
+      "sha256": "2260d41da46a4ac5389e76640e64f7afe0021bb68407a6306865e24db5f73b92",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/saveCocoGuiFigures.m",
+      "sha256": "8b27e3f2b55ca2ef2c29ef9adea4cd46142a184e6c0b7448c2ecaf94c208c0b5",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/targetadj_real.m",
+      "sha256": "dce881b34b6d9e4b6f00001089fffbacc05490d5f63732c0df3cd36f1b1a66e9",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/targetrebuilt.m",
+      "sha256": "7fa201b8315eaf34003285952385b94e1cb60173baa6925f873a54af07b26d89",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/theoredar1ML.m",
+      "sha256": "2b46b9674294a80ea7f4fd0448f514ca83c6b4c046373888f7fa7f51516cf469",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/corrcoef/validateCocoPublicationValidation.m",
+      "sha256": "35b13b8ec39fa6854e48b6fa9309c2464217efa7e454482a8b5fde97fd290c2f",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/guicode/detrending.m",
+      "sha256": "79faf4aac9bb627452f02c813f8759a3947d8f05323142efae1b7ff75a4bc146",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/secular_periods/AstroGeo22.txt",
+      "sha256": "e3377f59c8383b575e5b6d425846bf3da9045971c0071860ec925e21fb9028d2",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/secular_periods/La04gisi.csv",
+      "sha256": "f52ac4d2bd087d4278dd052e9f6119047dab7db40ff352a87becf9692ba02acd",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/secular_periods/calculate_orbit9.m",
+      "sha256": "3f1187a56a213b1888625ba96b301ff2ca464b365265c436a7cb8fcf2c62ca93",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/ctaper.m",
+      "sha256": "d5c1baa110a38fa9e4186b243f6f51bf7c2051772a5d4c584cc5b5d8dc735e60",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/gammcf.m",
+      "sha256": "8803334a63c51ae46432dbb9ce8bd88408ac2ea21b5f37ad21cf978a73a9baac",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/gammln.m",
+      "sha256": "a80325520e372fd713d252cd83510d4286ce951c396f3ebef22444594b7c8285",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/gammp.m",
+      "sha256": "afad21bc0025e967f30a8a7539bef465bb423be7b98506c3c90e35f4027ee1e0",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/gamser.m",
+      "sha256": "bd3f9b7b35b5fa276d4da1cdeddda8bef70c06bba865d504fba6898bef5cf5d9",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/getchi2.m",
+      "sha256": "10b201c4ab44dea1099194e2d3ba17ea27395be8e601b99c01f1ea721c872b9c",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/hpsort.m",
+      "sha256": "33cd232432789ff791ba47ef69ab32308aa092fac0d508f43bbfd3d9c23d288e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/lfitls.m",
+      "sha256": "43cc4b85e0ae31f0e1a0652d80d3d6bb09fb989c92c3fbccc9e8de43e15c4f50",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/period.m",
+      "sha256": "725ce39866dde1cd62d799ef643542e45b8d5bd967d57ca852396b5d6fdfa506",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/rho.m",
+      "sha256": "8e406a8d92e0a0aabd2d58d73431ccdc81549bfcfdd169c71fd675312d97d179",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/solve.m",
+      "sha256": "36a2f73cea23d0da4c6bdc8f6d77a9680f0a844ada41cca2a0293a8b0a647560",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/specbayes.m",
+      "sha256": "c28043f2ffd62bd21e3a6b0542d7fc8914f3010a777df61120f661f54d2b7a42",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/specswa.m",
+      "sha256": "b5ec40bc53903f285f233dc168093129828f5d69ad6fbf02bbae1b04c9121629",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/specswafdr.m",
+      "sha256": "4c8b338ec23ac375bfcf0a1c381433ff9b2abd665758b5d1bb598897c16dade0",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/spectralswafdr.m",
+      "sha256": "c5c531c80450a12f81a5e1c68e48ddb489b839b978686168f77d9abc34b00880",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/strAssign.m",
+      "sha256": "499d87bbc6fc94a20001033872e8bd825fe3e748f315ab2153aa62c841d36e1e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/writeFmt.m",
+      "sha256": "6096ab6dca08a733c216b68967163c5224225b191a8a034213484ec7969fc7bc",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/interpolate.m",
+      "sha256": "1a318132adaf427be8fcd207f359200bad2ee723b8f36a0f9a729627c85865b1",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/minirhos0.m",
+      "sha256": "7f364438a7d9f127398deb7825f4693c4ddcfda082eae8baac47077c905f2ef1",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/moveMedian.m",
+      "sha256": "273e894ecdc63ceabaea780f53d8a0e2ddf58ee2ab26709206bbc7c9ad46612f",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/redconf_any.m",
+      "sha256": "296c4d8992bc6c466d1caba2a1f814cefa1ababf82a5a22371eeeaaba73524f3",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/rhoAR1.m",
+      "sha256": "d3d9da911c604925c55d0983c6b50a4762d50047bd75cb36e58c9c7faef131f1",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/rhoAR1ML.m",
+      "sha256": "45784cfd151e64d5de27a6420debe0cab110cebb5577b4face96a9246bb114a8",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/zeropad2.m",
+      "sha256": "6cfe10485ed673a6424dc36e413b6135f086eeb1296546366c5a978f0ee80975",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/guicode/interpolationGUI.m",
+      "sha256": "b980da4b59489b77f5e824cc9b3aedf9220d180bae1e9814bc74f60c2bc7a6c3",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/guicode/AC.m",
+      "sha256": "2fc348e34912b9449edf31c29fe869666e6c2f1a447b6917518ee85a36ffa8da",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/guicode/agescale.m",
+      "sha256": "dc2d59312d227201151d51ff6baea118f9b226c5a63ea00a9508dc32117a3cc4",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/getpks.m",
+      "sha256": "c3acd22152b97d813870fdd53f1f7589b4e2aca80de08cda6fdcfa2e65b87213",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/depthtotime.m",
+      "sha256": "89331b462993289dd01a337c139f250e98d5aef641a04cac489ef08e274a13b4",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/findduplicate.m",
+      "sha256": "5cf401e34dd8472e58c1aa66cb02f26d4996b217cd8e358723d1f1fcd5ca2b45",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/guicode/RobotGUI.m",
+      "sha256": "58b6b4bf799e94b2b5cde9f75117c7c718ac417328ee91642b24a2ef8cc699f9",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/findduplicate.m",
+      "sha256": "5cf401e34dd8472e58c1aa66cb02f26d4996b217cd8e358723d1f1fcd5ca2b45",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/interpolate.m",
+      "sha256": "1a318132adaf427be8fcd207f359200bad2ee723b8f36a0f9a729627c85865b1",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/acycleSamplingIsUneven.m",
+      "sha256": "14c40be7e62b2e21fc13faf11a2ae01d34f66aaed5d186766c1271a24ff632f1",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/redconfML.m",
+      "sha256": "fc0b9fb572208733ad096960efdb55558ceb6dc0a5a25b4a46cd6aca8df6e46d",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/rhoAR1.m",
+      "sha256": "d3d9da911c604925c55d0983c6b50a4762d50047bd75cb36e58c9c7faef131f1",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/moveMedian.m",
+      "sha256": "273e894ecdc63ceabaea780f53d8a0e2ddf58ee2ab26709206bbc7c9ad46612f",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/minirhos0.m",
+      "sha256": "7f364438a7d9f127398deb7825f4693c4ddcfda082eae8baac47077c905f2ef1",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/acycleMtmTaperCount.m",
+      "sha256": "03a993f38d252313930046b9fd9b7e0502991a53fc35bdaa6e69cdcf7d8785fe",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/zeropad2.m",
+      "sha256": "6cfe10485ed673a6424dc36e413b6135f086eeb1296546366c5a978f0ee80975",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/evofft.m",
+      "sha256": "3c7d47ceaddcf49ae54e7f7728b92c0ceb977e725042aab9e4638f5489cdbd26",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/acycleBandpassFilter.m",
+      "sha256": "0fd4683086d4f884685d3bb5a9c18336cb276c43d187c75aa8990485c209b292",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/acycleSedimentationRateAgeModel.m",
+      "sha256": "c52658c4a03dcb01344df85aa04576d0b7082f97d58f109347255b7b937562f5",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/depthtotime.m",
+      "sha256": "89331b462993289dd01a337c139f250e98d5aef641a04cac489ef08e274a13b4",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/guicode/SWAgui.m",
+      "sha256": "24d768cb0cfacd6a4fb67cf39ebaf30416b9c28e6cf410c6cdcfa66d9f1cc761",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/ctaper.m",
+      "sha256": "d5c1baa110a38fa9e4186b243f6f51bf7c2051772a5d4c584cc5b5d8dc735e60",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/gammcf.m",
+      "sha256": "8803334a63c51ae46432dbb9ce8bd88408ac2ea21b5f37ad21cf978a73a9baac",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/gammln.m",
+      "sha256": "a80325520e372fd713d252cd83510d4286ce951c396f3ebef22444594b7c8285",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/gammp.m",
+      "sha256": "afad21bc0025e967f30a8a7539bef465bb423be7b98506c3c90e35f4027ee1e0",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/gamser.m",
+      "sha256": "bd3f9b7b35b5fa276d4da1cdeddda8bef70c06bba865d504fba6898bef5cf5d9",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/getchi2.m",
+      "sha256": "10b201c4ab44dea1099194e2d3ba17ea27395be8e601b99c01f1ea721c872b9c",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/hpsort.m",
+      "sha256": "33cd232432789ff791ba47ef69ab32308aa092fac0d508f43bbfd3d9c23d288e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/lfitls.m",
+      "sha256": "43cc4b85e0ae31f0e1a0652d80d3d6bb09fb989c92c3fbccc9e8de43e15c4f50",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/period.m",
+      "sha256": "725ce39866dde1cd62d799ef643542e45b8d5bd967d57ca852396b5d6fdfa506",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/rho.m",
+      "sha256": "8e406a8d92e0a0aabd2d58d73431ccdc81549bfcfdd169c71fd675312d97d179",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/solve.m",
+      "sha256": "36a2f73cea23d0da4c6bdc8f6d77a9680f0a844ada41cca2a0293a8b0a647560",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/specbayes.m",
+      "sha256": "c28043f2ffd62bd21e3a6b0542d7fc8914f3010a777df61120f661f54d2b7a42",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/specswa.m",
+      "sha256": "b5ec40bc53903f285f233dc168093129828f5d69ad6fbf02bbae1b04c9121629",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/specswafdr.m",
+      "sha256": "4c8b338ec23ac375bfcf0a1c381433ff9b2abd665758b5d1bb598897c16dade0",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/spectralswafdr.m",
+      "sha256": "c5c531c80450a12f81a5e1c68e48ddb489b839b978686168f77d9abc34b00880",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/strAssign.m",
+      "sha256": "499d87bbc6fc94a20001033872e8bd825fe3e748f315ab2153aa62c841d36e1e",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/package/swa/writeFmt.m",
+      "sha256": "6096ab6dca08a733c216b68967163c5224225b191a8a034213484ec7969fc7bc",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/acycleMtmTaperCount.m",
+      "sha256": "03a993f38d252313930046b9fd9b7e0502991a53fc35bdaa6e69cdcf7d8785fe",
+      "matches_reference": true
+    },
+    {
+      "relative_path": "code/seriesanalysis/acycleSamplingIsUneven.m",
+      "sha256": "14c40be7e62b2e21fc13faf11a2ae01d34f66aaed5d186766c1271a24ff632f1",
+      "matches_reference": true
+    }
+  ],
+  "matlab_runtime_checked": false,
+  "matlab_diagnostics_directory": "/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3",
+  "automatic_matlab_retry": false,
+  "matlab_exit_code": 7,
+  "matlab_log": "/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3/matlab.log",
+  "matlab_launch_receipt": "/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3/matlab-launch.json",
+  "status": "failed"
+}

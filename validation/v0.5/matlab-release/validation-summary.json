@@ -1,0 +1,267 @@
+{
+  "matlab_version": "24.2.0.3361896 (R2024b) Update 10",
+  "release": "2024b",
+  "acycle_root": "/home/runner/work/Acycle_Harness/Acycle_Harness/upstream/acycle",
+  "passed": 39,
+  "failed": 0,
+  "incomplete": 0,
+  "tests": [
+    {
+      "name": "test_acycle_batch/testOriginalNumericalParity",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 11.061399
+    },
+    {
+      "name": "test_acycle_batch/testOriginalLowessAndOfficialExamples",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 19.645827999999998
+    },
+    {
+      "name": "test_acycle_batch/testAgeModelAndGaussianFilter",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.5367549999999999
+    },
+    {
+      "name": "test_acycle_batch/testPublishedPaperDataWorkflow",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 7.145151
+    },
+    {
+      "name": "test_acycle_batch/testTiePointAgeModel",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.952278
+    },
+    {
+      "name": "test_acycle_batch/testNegativeControlUsesPointwiseLanguage",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.0110750000000002
+    },
+    {
+      "name": "test_acycle_batch/testOriginalProxyTrimmedToTuningCoverage",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.886192
+    },
+    {
+      "name": "test_acycle_batch/testRejectsNonScientificParameters",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.174477
+    },
+    {
+      "name": "test_acycle_batch/testPreventsOutputOverwrite",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.195012
+    },
+    {
+      "name": "test_acycle_batch/testNonphysicalFitUsesOriginalGridSearch",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.4996410000000002
+    },
+    {
+      "name": "test_acycle_coco/testCocoOriginalParityAndKnownRate",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 5.205178
+    },
+    {
+      "name": "test_acycle_coco/testEcocoOriginalParityAndPhysicalWindows",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 4.3572669999999993
+    },
+    {
+      "name": "test_acycle_coco/testExplicitUnitsAndSixPeriodMode",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.65945
+    },
+    {
+      "name": "test_acycle_coco/testEcocoBlockedStrictConsensusExecutes",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 2.720014
+    },
+    {
+      "name": "test_acycle_coco/testEcocoInterleavedSplitBeforeInterpolationExecutes",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 2.620075
+    },
+    {
+      "name": "test_acycle_coco/testCocoLoessUsesOriginalCallback",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.529166
+    },
+    {
+      "name": "test_acycle_coco/testRejectsUnknownTargetAndHeldoutLeakage",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.831965
+    },
+    {
+      "name": "test_acycle_interpolate_pro/testAllNineOriginalGuiMethods",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 5.341682
+    },
+    {
+      "name": "test_acycle_interpolate_pro/testOriginalGapThresholdAndStrictInteriorZeroing",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.62123100000000009
+    },
+    {
+      "name": "test_acycle_interpolate_pro/testDefaultDoesNotZeroFillAndPreservesGuiTail",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.595436
+    },
+    {
+      "name": "test_acycle_interpolate_pro/testGuiFallbackVersusExplicitStrictGrid",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.533757
+    },
+    {
+      "name": "test_acycle_interpolate_pro/testDefaultMedianPrecisionMatchesGuiEditbox",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.508042
+    },
+    {
+      "name": "test_acycle_interpolate_pro/testRejectsAmbiguousInputAndUnsafeAllocation",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.036705
+    },
+    {
+      "name": "test_acycle_interpolate_pro/testPreventsCompletedOutputOverwrite",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.593505
+    },
+    {
+      "name": "test_acycle_swa/testLavernockOriginalParityAndPublicationAudit",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 2.755333
+    },
+    {
+      "name": "test_acycle_swa/testNewarkMtmOriginalParity",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 3.9442799999999996
+    },
+    {
+      "name": "test_acycle_swa/testRejectsAmbiguousPreprocessing",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.015158000000000001
+    },
+    {
+      "name": "test_acycle_swa/testRejectsDuplicateCoordinates",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.059267
+    },
+    {
+      "name": "test_acycle_tune/testSingleExtremaUseOriginalPeakAndTimeFunctions",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 3.3814509999999998
+    },
+    {
+      "name": "test_acycle_tune/testBothExtremaUseHalfCyclesAndFirstMatchingAnchor",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.0163739999999999
+    },
+    {
+      "name": "test_acycle_tune/testExplicitExtrapolationUsesOriginalRatesAndUnits",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.046174
+    },
+    {
+      "name": "test_acycle_tune/testFilterCsvEnvelopeDoesNotChangeTuning",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.9577689999999999
+    },
+    {
+      "name": "test_acycle_tune/testRejectsSelectedPlateausWithoutChangingDetector",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.3074219999999999
+    },
+    {
+      "name": "test_acycle_tune/testRejectsIncompatibleAnchorAndImplicitExtrapolation",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.16595500000000002
+    },
+    {
+      "name": "test_acycle_tune/testRejectsInsufficientControlPoints",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.089059000000000013
+    },
+    {
+      "name": "test_acycle_tune/testPreventsCompletedOutputOverwrite",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.99178899999999992
+    },
+    {
+      "name": "test_paper_coco/testPETM2000DrawPublishedRateComparison",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 43.668324
+    },
+    {
+      "name": "test_paper_coco/testCambrianPublishedAluminiumEcocoWorkflow",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 9.118250999999999
+    },
+    {
+      "name": "test_paper_coco/testPETMPublishedSupplementaryProtocol",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 8.105278000000002
+    }
+  ],
+  "validation_scope": "Engineering, original-function numerical parity and executable examples. A passed test suite does not imply that independent publication criteria were reproduced.",
+  "publication_checks": [
+    {
+      "case": "paper-cambrian-ecoco-199",
+      "publication_criterion": "not_claimed",
+      "evidence_file": "paper-cambrian-ecoco-199/published-comparison.json"
+    },
+    {
+      "case": "paper-petm-coco-2000",
+      "publication_criterion": "failed",
+      "evidence_file": "paper-petm-coco-2000/published-comparison.json"
+    },
+    {
+      "case": "paper-petm-published-protocol-coco-2000",
+      "publication_criterion": "failed",
+      "evidence_file": "paper-petm-published-protocol-coco-2000/published-comparison.json"
+    },
+    {
+      "case": "swa-lavernock-publication",
+      "publication_criterion": "failed",
+      "evidence_file": "swa-lavernock-publication/publication-comparison.json"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "mode": "replay",
+  "fixture_adapter": false,
+  "scientific_calls": [],
+  "session_id": null,
+  "preset": null,
+  "headers": [],
+  "tools": [],
+  "image_results": [],
+  "final_text": "",
+  "completed": false,
+  "deepseek_catalog": {
+    "provider": "deepseek-official",
+    "id": "deepseek-flash",
+    "name": "DeepSeek Flash",
+    "inputModalities": [
+      "text",
+      "image"
+    ],
+    "context": {
+      "contextWindow": 1000000
+    },
+    "defaultMaxTokens": 256000,
+    "systemPromptUpdate": "in-history",
+    "reasoning": {
+      "efforts": [
+        {
+          "id": "off",
+          "name": "Off",
+          "description": "Use for simple tasks that do not need reasoning."
+        },
+        {
+          "id": "low",
+          "name": "Low",
+          "description": "Prefer for routine or latency-sensitive tasks."
+        },
+        {
+          "id": "high",
+          "name": "High",
+          "description": "The default balance for most tasks."
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "description": "Reserve for the hardest quality-first tasks."
+        }
+      ],
+      "defaultEffort": "high"
+    }
+  }
+}

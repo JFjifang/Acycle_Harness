@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-25T11:26:10.359946+00:00",
+  "source_root": "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless",
+  "public_root": "/workspace/Acycle_Harness/validation/v0.5/public-harness/resume-keyless",
+  "scope": "Public user-visible conversation and tool evidence; private reasoning omitted structurally. Originals untouched.",
+  "policy": {
+    "typed_reasoning_blocks_and_deltas_removed": true,
+    "nested_provider_reasoning_fields_removed": true,
+    "strings_not_interpreted": true,
+    "scientific_tool_summaries_preserved": true,
+    "model_reasoning_effort_configuration_preserved": true
+  },
+  "files": [
+    {
+      "path": "first-process.json",
+      "original_sha256": "8171b2cb205d14511b4d06e478809fa4c936860c08ffdca746693ab5f30e5e87",
+      "public_sha256": "8171b2cb205d14511b4d06e478809fa4c936860c08ffdca746693ab5f30e5e87",
+      "original_bytes": 15618,
+      "public_bytes": 15618,
+      "structural_removals": {}
+    },
+    {
+      "path": "first-process.turn-1.events.jsonl",
+      "original_sha256": "d0977ac57dc695c09f210ceafb8ca28bf24ea3bdfb81904e26ec756dd97befe8",
+      "public_sha256": "42db9c7efb08ea4060f1831f25b8a610d2a6f6a76ed66019018f7edcdb691264",
+      "original_bytes": 97037,
+      "public_bytes": 53365,
+      "structural_removals": {}
+    },
+    {
+      "path": "first-process.turn-1.json",
+      "original_sha256": "8f2f47d1fd27afc40314832fb8ea0f601314e70160263b3e10dbe0c2a1fd6d4b",
+      "public_sha256": "8f2f47d1fd27afc40314832fb8ea0f601314e70160263b3e10dbe0c2a1fd6d4b",
+      "original_bytes": 205172,
+      "public_bytes": 205172,
+      "structural_removals": {}
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-25T11:31:17.158279+00:00",
+  "source_root": "/workspace/Acycle_Harness/validation/v0.5/harness/newark-fixedtransport",
+  "public_root": "/workspace/Acycle_Harness/validation/v0.5/public-harness/newark-fixedtransport",
+  "scope": "Public user-visible conversation and tool evidence; private reasoning omitted structurally. Originals untouched.",
+  "policy": {
+    "typed_reasoning_blocks_and_deltas_removed": true,
+    "nested_provider_reasoning_fields_removed": true,
+    "strings_not_interpreted": true,
+    "scientific_tool_summaries_preserved": true,
+    "model_reasoning_effort_configuration_preserved": true
+  },
+  "files": [
+    {
+      "path": "ecoco-followup-retry.json",
+      "original_sha256": "773d2e8efe3aaf3a8897fc21607426769bb016514c9ae0ee708599ecac6f7b45",
+      "public_sha256": "773d2e8efe3aaf3a8897fc21607426769bb016514c9ae0ee708599ecac6f7b45",
+      "original_bytes": 408973,
+      "public_bytes": 408973,
+      "structural_removals": {}
+    },
+    {
+      "path": "ecoco-followup-retry.turn-2.events.jsonl",
+      "original_sha256": "608fd083a767daf3646a4d7d5eb9634761a84ca20acdeaaaac321eda340fcb04",
+      "public_sha256": "037626c694e5e1133df1504d46ca7e37148a67bd508a82125aa0f25c05c106a7",
+      "original_bytes": 286945,
+      "public_bytes": 91847,
+      "structural_removals": {
+        "removed_block:reasoning": 12,
+        "removed_block:reasoning-chunks": 3
+      }
+    },
+    {
+      "path": "ecoco-followup-retry.turn-2.json",
+      "original_sha256": "adb498415eac5e6c208a912e4906e51b5a5980dd4247748a1919228e7a3b04f4",
+      "public_sha256": "a13cc498de7ff87f2f273ab8facbdafc7ce4811be3dff4d94e10e52f2d0f83d8",
+      "original_bytes": 637816,
+      "public_bytes": 402638,
+      "structural_removals": {
+        "removed_block:reasoning": 24,
+        "removed_block:reasoning-chunks": 6
+      }
+    },
+    {
+      "path": "ecoco-followup.json",
+      "original_sha256": "3a4f64f461167a7a81c3eddb94adba39b3516ccaa8dd442237885f50650a6c32",
+      "public_sha256": "3a4f64f461167a7a81c3eddb94adba39b3516ccaa8dd442237885f50650a6c32",
+      "original_bytes": 363313,
+      "public_bytes": 363313,
+      "structural_removals": {}
+    },
+    {
+      "path": "first-turn.json",
+      "original_sha256": "531c7489ae3bd394bdbc4d66bf2bd128bd9161d13ff9b2ab2dc4d82a749ecb44",
+      "public_sha256": "531c7489ae3bd394bdbc4d66bf2bd128bd9161d13ff9b2ab2dc4d82a749ecb44",
+      "original_bytes": 361005,
+      "public_bytes": 361005,
+      "structural_removals": {}
+    },
+    {
+      "path": "first-turn.turn-1.events.jsonl",
+      "original_sha256": "552a821bf7fda4f21702083e3a0b95d9a924a1b69b0ef4569a365d81d5c64cd6",
+      "public_sha256": "c2b058c93eb718d191a397f9dfb2f97e6bf3a5ae49fafe5ba7a7df3453883097",
+      "original_bytes": 1075652,
+      "public_bytes": 444339,
+      "structural_removals": {
+        "removed_block:reasoning": 56,
+        "removed_block:reasoning-chunks": 13
+      }
+    },
+    {
+      "path": "first-turn.turn-1.json",
+      "original_sha256": "5b5aebda7dcb53f93a7c387bfd5af6e3e737ed45d3186d1a6dd32a07745713c8",
+      "public_sha256": "7456bb82bf4c28f787a0f1b2fdcd97229d0f183f7d61026ee4d11067385b4a8a",
+      "original_bytes": 2361270,
+      "public_bytes": 1554906,
+      "structural_removals": {
+        "removed_block:reasoning": 112,
+        "removed_block:reasoning-chunks": 26
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-25T10:53:12.312813+00:00",
+  "source_root": "/workspace/Acycle_Harness/validation/v0.5/harness",
+  "public_root": "/workspace/Acycle_Harness/validation/v0.5/public-harness",
+  "scope": "Public user-visible conversation and tool evidence; private reasoning omitted structurally. Originals untouched.",
+  "policy": {
+    "typed_reasoning_blocks_and_deltas_removed": true,
+    "nested_provider_reasoning_fields_removed": true,
+    "strings_not_interpreted": true,
+    "scientific_tool_summaries_preserved": true,
+    "model_reasoning_effort_configuration_preserved": true
+  },
+  "files": [
+    {
+      "path": "newark-keyless-composition.json",
+      "original_sha256": "881eff9acf37459c2aaa0817cea2e5456f877cf93698fb53db6617c6a121984e",
+      "public_sha256": "881eff9acf37459c2aaa0817cea2e5456f877cf93698fb53db6617c6a121984e",
+      "original_bytes": 18760,
+      "public_bytes": 18760,
+      "structural_removals": {}
+    },
+    {
+      "path": "newark-keyless-composition.turn-1.events.jsonl",
+      "original_sha256": "9fe501c5cff29f6496f034ec75420d69e89c89f0642e56f3f8783e656985a0f4",
+      "public_sha256": "27246eb8e18f47c85efbb5c37dee8848d5e65ce4d81700bc499911d43f7f1c6b",
+      "original_bytes": 97041,
+      "public_bytes": 53369,
+      "structural_removals": {}
+    },
+    {
+      "path": "newark-keyless-composition.turn-1.json",
+      "original_sha256": "922c796f59e21a35220bc7f7883ee0f52e84f5b243cf9cd0e9ee7323bef896a8",
+      "public_sha256": "922c796f59e21a35220bc7f7883ee0f52e84f5b243cf9cd0e9ee7323bef896a8",
+      "original_bytes": 205180,
+      "public_bytes": 205180,
+      "structural_removals": {}
+    },
+    {
+      "path": "newark-keyless-composition.turn-2.events.jsonl",
+      "original_sha256": "3dbc8d7f99a855062456a825f835c331caecb9c02e9c38ab9a0ff068bac5d279",
+      "public_sha256": "4108e04bc18e9aab66c25fc67e77f7c1b8eb44d399187e7e3ef926a94138ff52",
+      "original_bytes": 9994,
+      "public_bytes": 6880,
+      "structural_removals": {}
+    },
+    {
+      "path": "newark-keyless-composition.turn-2.json",
+      "original_sha256": "06043c63bc7db78fd6c61a667d52dfb487964a2da656f37eabf97e19a90b025d",
+      "public_sha256": "06043c63bc7db78fd6c61a667d52dfb487964a2da656f37eabf97e19a90b025d",
+      "original_bytes": 20650,
+      "public_bytes": 20650,
+      "structural_removals": {}
+    }
+  ]
+}

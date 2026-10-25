@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-25T11:26:10.309455+00:00",
+  "source_root": "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2",
+  "public_root": "/workspace/Acycle_Harness/validation/v0.5/public-harness/resume-keyless-v2",
+  "scope": "Public user-visible conversation and tool evidence; private reasoning omitted structurally. Originals untouched.",
+  "policy": {
+    "typed_reasoning_blocks_and_deltas_removed": true,
+    "nested_provider_reasoning_fields_removed": true,
+    "strings_not_interpreted": true,
+    "scientific_tool_summaries_preserved": true,
+    "model_reasoning_effort_configuration_preserved": true
+  },
+  "files": [
+    {
+      "path": "first-process.json",
+      "original_sha256": "26c56cd8c9d00f02a43f30f7e6045d927f112f9ac71e0d458254517e28581422",
+      "public_sha256": "26c56cd8c9d00f02a43f30f7e6045d927f112f9ac71e0d458254517e28581422",
+      "original_bytes": 15986,
+      "public_bytes": 15986,
+      "structural_removals": {}
+    },
+    {
+      "path": "first-process.turn-1.events.jsonl",
+      "original_sha256": "4a3b0aa0ff638563a5f89d31be77843619465c6de5de82d4e73c3652fe9398b7",
+      "public_sha256": "dca80a0db46434209a6ecdbd0cd92fbbf7ae0ff2a5e5c8c8949661416b29f286",
+      "original_bytes": 97049,
+      "public_bytes": 53377,
+      "structural_removals": {}
+    },
+    {
+      "path": "first-process.turn-1.json",
+      "original_sha256": "3101a4b3e325fff709e93f31527e31ecbf203fc7291350d7c1fcd93493f57a34",
+      "public_sha256": "3101a4b3e325fff709e93f31527e31ecbf203fc7291350d7c1fcd93493f57a34",
+      "original_bytes": 205196,
+      "public_bytes": 205196,
+      "structural_removals": {}
+    },
+    {
+      "path": "process-1.stdout.jsonl",
+      "original_sha256": "7fa9cea159e005186f2a0086cf7b0cb7ea035d7400dac7d891aab9e5ec122496",
+      "public_sha256": "7fa9cea159e005186f2a0086cf7b0cb7ea035d7400dac7d891aab9e5ec122496",
+      "original_bytes": 621,
+      "public_bytes": 621,
+      "structural_removals": {}
+    },
+    {
+      "path": "process-2.stdout.jsonl",
+      "original_sha256": "61b92b1ab600983207019f0d93975793a120f3949ae7558479821a5f1dd58b4d",
+      "public_sha256": "61b92b1ab600983207019f0d93975793a120f3949ae7558479821a5f1dd58b4d",
+      "original_bytes": 394,
+      "public_bytes": 394,
+      "structural_removals": {}
+    },
+    {
+      "path": "resume-check.json",
+      "original_sha256": "c22caad0f6b912fe11079e26d8424533b0fb18bd56b4e5e02f3b5b2bb7cd2a40",
+      "public_sha256": "c22caad0f6b912fe11079e26d8424533b0fb18bd56b4e5e02f3b5b2bb7cd2a40",
+      "original_bytes": 3192,
+      "public_bytes": 3192,
+      "structural_removals": {}
+    },
+    {
+      "path": "second-process.json",
+      "original_sha256": "756ea6a7d9a1565837e8207685b954ea70c2c4d0dffb8740a805d5b2e552d0e8",
+      "public_sha256": "756ea6a7d9a1565837e8207685b954ea70c2c4d0dffb8740a805d5b2e552d0e8",
+      "original_bytes": 19634,
+      "public_bytes": 19634,
+      "structural_removals": {}
+    },
+    {
+      "path": "second-process.turn-2.events.jsonl",
+      "original_sha256": "27995ef4c6364e22fc0080f715cfbdb26785aef4e9c7f7bb8d2638b935393079",
+      "public_sha256": "a48bb9eabf2ae4f5b19b075fdf61899579c28e11a4a73ee5db83da7243ab79a4",
+      "original_bytes": 71855,
+      "public_bytes": 32852,
+      "structural_removals": {}
+    },
+    {
+      "path": "second-process.turn-2.json",
+      "original_sha256": "dfce821638d7ac5d03426a2ebb5d8239f4ee184f99944e8c3254d41f070caec9",
+      "public_sha256": "dfce821638d7ac5d03426a2ebb5d8239f4ee184f99944e8c3254d41f070caec9",
+      "original_bytes": 153527,
+      "public_bytes": 153527,
+      "structural_removals": {}
+    }
+  ]
+}

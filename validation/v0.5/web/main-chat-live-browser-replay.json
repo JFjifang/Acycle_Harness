@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "mode": "live",
+  "fixture_adapter": false,
+  "scope": "Published official Web profile and actual Acycle preset in Chromium; existing MATLAB files only. Fixture mode is not a real-model autonomy or vision test.",
+  "runtime_version": "0.2.1-rc.3",
+  "run_id": "20261025T071158Z-b0f32143454c",
+  "expected_files": [
+    {
+      "key": "preprocess_png",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.png",
+      "sha256": "873ff2e2565c5de8d44a6d61bc5a0a446dfadb385d213e1cb82f972e384bcdaa"
+    },
+    {
+      "key": "spectrum_png",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png",
+      "sha256": "9e6f659946cd2f4142597eacd1526d6d6bfad79ce0bfc97bb7ca124031304ed1"
+    },
+    {
+      "key": "evolution_png",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png",
+      "sha256": "04ffc91dfb89fd86500771dac96ea904bc55da295bb9faddae0e1e8457f40356"
+    }
+  ],
+  "main_chat_images": [
+    {
+      "alt": "20261025T071158Z-b0f32143454c: spectrum_png",
+      "src": "http://127.0.0.1:3096/api/file?path=%2Fworkspace%2FAcycle_Harness%2F.acycle%2Fruns%2F20261025T071158Z-b0f32143454c%2Foutputs%2Fspectrum.png",
+      "width": 831,
+      "height": 656,
+      "sidebar": false,
+      "original_path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png"
+    },
+    {
+      "alt": "20261025T071158Z-b0f32143454c: evolution_png",
+      "src": "http://127.0.0.1:3096/api/file?path=%2Fworkspace%2FAcycle_Harness%2F.acycle%2Fruns%2F20261025T071158Z-b0f32143454c%2Foutputs%2Fevolution.png",
+      "width": 1707,
+      "height": 1113,
+      "sidebar": false,
+      "original_path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png"
+    }
+  ],
+  "lightbox": true,
+  "refreshed": true,
+  "scientific_recalculation": false,
+  "screenshots": [
+    "/workspace/Acycle_Harness/validation/v0.5/web/main-chat-live-browser-replay.lightbox.png",
+    "/workspace/Acycle_Harness/validation/v0.5/web/main-chat-live-browser-replay.chat-spectrum.png",
+    "/workspace/Acycle_Harness/validation/v0.5/web/main-chat-live-browser-replay.chat-evolution.png",
+    "/workspace/Acycle_Harness/validation/v0.5/web/main-chat-live-browser-replay.chat-refreshed.png"
+  ],
+  "reuse": {
+    "original_receipt": "/workspace/Acycle_Harness/validation/v0.5/web/main-chat-live.json",
+    "session_id": "session-7d967920-62f7-43d8-8039-301b4c536a05",
+    "new_user_prompt": false,
+    "new_model_requests_allowed": false,
+    "model_evidence_from_prior_completed_turn": true,
+    "prior_model_plugin_sha256": "1ef8cc98142f4f39129335a4cb0f0c14d4385918839f8b20f6244d4cb77bd2a6",
+    "prior_model_attachments_sha256": "43a7c1ed3204cbdd63fec21f0376c1db83df16bebef1a0abb865640cba4481c8",
+    "observed_new_model_requests": 0,
+    "observed_new_tool_calls": 0
+  },
+  "plugin_sha256": "1fb84748d35ee4282cf91da55c9f5b7bb67dfab8115b7fce15de9e9f640e9abe",
+  "attachments_sha256": "43a7c1ed3204cbdd63fec21f0376c1db83df16bebef1a0abb865640cba4481c8",
+  "session_id": "session-7d967920-62f7-43d8-8039-301b4c536a05",
+  "agent": {
+    "mode": "live",
+    "fixture_adapter": false,
+    "scientific_calls": [],
+    "session_id": "session-7d967920-62f7-43d8-8039-301b4c536a05",
+    "preset": "acycle",
+    "headers": [
+      {
+        "config": {
+          "provider": "deepseek-official",
+          "model": "deepseek-flash",
+          "maxTokens": 256000,
+          "reasoningEffort": "high"
+        },
+        "tool_names": [
+          "acycle_analyze",
+          "acycle_capabilities",
+          "acycle_coco",
+          "acycle_compare",
+          "acycle_ecoco",
+          "acycle_get_run",
+          "acycle_import_attachment",
+          "acycle_inspect",
+          "acycle_interpolate_pro",
+          "acycle_rerun",
+          "acycle_sensitivity",
+          "acycle_swa",
+          "acycle_tune",
+          "ask_user_question",
+          "present",
+          "read",
+          "read_image",
+          "skill",
+          "working_directory"
+        ]
+      }
+    ],
+    "tools": [
+      {
+        "name": "acycle_get_run",
+        "arguments": "{\"run_id\": \"20261025T071158Z-b0f32143454c\"}"
+      },
+      {
+        "name": "skill",
+        "arguments": "{\"name\": \"acycle-spectral-interpretation\"}"
+      },
+      {
+        "name": "read_image",
+        "arguments": "{\"file_path\": \"/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png\"}"
+      },
+      {
+        "name": "read_image",
+        "arguments": "{\"file_path\": \"/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png\"}"
+      }
+    ],
+    "image_results": [
+      {
+        "attachment": {
+          "attachmentId": "sha256:93ff8ae513c5d7d52879e194c3c449d8119b68a3df035a7c1653640dabfca6d1",
+          "mediaType": "image/jpeg",
+          "width": 1707,
+          "height": 1113,
+          "bytes": 460810,
+          "name": "evolution.png"
+        },
+        "offloaded": true
+      },
+      {
+        "attachment": {
+          "attachmentId": "sha256:3f22483b64ef12acf185d5ac61dd5ff940c72ace05585ade7570e58252eb3eff",
+          "mediaType": "image/jpeg",
+          "width": 831,
+          "height": 656,
+          "bytes": 100943,
+          "name": "spectrum.png"
+        },
+        "offloaded": true
+      },
+      {
+        "attachment": {
+          "attachmentId": "sha256:6e979ac2db3756155782acc5e0f94e6861068d322f0942dedcac0dc398ad2b32",
+          "mediaType": "image/jpeg",
+          "width": 1703,
+          "height": 1092,
+          "bytes": 170547,
+          "name": "preprocessing.png"
+        },
+        "offloaded": true
+      },
+      {
+        "attachment": {
+          "attachmentId": "sha256:3f22483b64ef12acf185d5ac61dd5ff940c72ace05585ade7570e58252eb3eff",
+          "mediaType": "image/jpeg",
+          "bytes": 100943,
+          "width": 831,
+          "height": 656,
+          "name": "spectrum.png"
+        },
+        "offloaded": false
+      },
+      {
+        "attachment": {
+          "attachmentId": "sha256:93ff8ae513c5d7d52879e194c3c449d8119b68a3df035a7c1653640dabfca6d1",
+          "mediaType": "image/jpeg",
+          "bytes": 460810,
+          "width": 1707,
+          "height": 1113,
+          "name": "evolution.png"
+        },
+        "offloaded": false
+      }
+    ],
+    "final_text": "## 运行 20261025T071158Z-b0f32143454c\n\n已完成运行，状态 `completed`，**未启动任何新的科学计算**（仅取回已保存的 MATLAB 输出并做图像核查）。数据集为 Newark 晚三叠世 depth–rank 全记录，2344 行、无空值、无重复合并、未插值；参数：LOWESS 去趋势 span = 0.35，MTM NW = 2，25% 中值平滑，坐标单位 **m**，演化谱开启。\n\n### 频谱图\n\n![20261025T071158Z-b0f32143454c: spectrum_png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png>)\n\n图件核查：x 轴 Frequency（cycles/m，0–0.586，即 Nyquist = 0.5859 cycles/m），y 轴为对数功率；图例含黑实线功率谱、洋红虚线 25% 中值平滑、粗黑线 Robust AR(1) 中值，以及 90%/95%/99%/99.9% 置信曲线。谱采样间隔 dt = 0.8534 m（nfft = 11720），记录长度约 2000 m，对应频率分辨率约 5×10⁻⁴ cycles/m。最高峰出现在 f ≈ 0.0175 cycles/m（周期约 57.2 m），功率远超 99.9% 线；f ≈ 0.0163 与 0.0186 cycles/m（约 61.4 m、53.8 m）的峰群整体位于 95% 线之上；低频端 f ≈ 0.0037–0.0042（约 270 m、238 m）有一尖锐峰，同样跨过 99.9% 线；17.6 m、14.1 m、13.2 m 附近另有一组较弱峰。Robust AR(1) 拟合 ρ = 0.434。\n\n### 演化图（EvoFFT）\n\n![20261025T071158Z-b0f32143454c: evolution_png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png>)\n\n图件核查：标题记录 window = 699.863 m、step = 9.388 m；横轴为深度 m（0–约 1900 m），纵轴为频率 cycles/coordinate unit（0–约 0.58），色标为归一化振幅 0–1。低频带（f ≲ 0.02，对应 50 m 以上尺度）能量在整段记录中持续存在，并在 ~0.004–0.005 与 ~0.017–0.019 处形成稳定亮脊，与频谱图的主峰位置一致；f ≈ 0.07–0.08 附近另有一条贯穿全段的亮带。约 480 m 与 1500 m 附近的竖向暗条是边缘窗口零填充造成的假象，不是数据缺失。\n\n### 解释边界（需保留）\n\n- 本运行没有年龄模型，频率单位是 **cycles/m（深度域）**，因此上述周期（57 m、270 m 等）**不能直接换算或归属为米兰科维奇周期**；需要独立的年龄/沉积速率约束。\n- 置信曲线为点对点（pointwise）相对 Robust AR(1) 背景，未控制多重比较；跨阈值不等于轨道强迫的证据。\n- EvoFFT 保留 Acycle mini-robot 的零填充与归一化振幅，边缘窗口含合成零，端点亮度不宜解读。\n- 图件视觉核查已通过 `read_image` 完成（两图均成功返回像素）。\n\n### 原始文件入口\n\n- [spectrum.png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png>) ／ [spectrum.fig](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.fig>) ／ [spectrum_robust.csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum_robust.csv>) ／ [spectrum_classic.csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum_classic.csv>)\n- [evolution.png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png>) ／ [evolution.fig](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.fig>) ／ [evolution.csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.csv>)\n- [preprocessing.png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.png>)（预处理诊断，本次未展开）／ [processed.csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/processed.csv>) ／ [analysis.mat](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/analysis.mat>) ／ [provenance.json](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/provenance.json>)\n\n溯源：MATLAB R2024b，Acycle commit `dcba427`，全部使用源码与参考版本一致；远程 MATLAB 运行 40171879521 结论 success。",
+    "completed": true,
+    "deepseek_catalog": {
+      "provider": "deepseek-official",
+      "id": "deepseek-flash",
+      "name": "DeepSeek Flash",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "context": {
+        "contextWindow": 1000000
+      },
+      "defaultMaxTokens": 256000,
+      "systemPromptUpdate": "in-history",
+      "reasoning": {
+        "efforts": [
+          {
+            "id": "off",
+            "name": "Off",
+            "description": "Use for simple tasks that do not need reasoning."
+          },
+          {
+            "id": "low",
+            "name": "Low",
+            "description": "Prefer for routine or latency-sensitive tasks."
+          },
+          {
+            "id": "high",
+            "name": "High",
+            "description": "The default balance for most tasks."
+          },
+          {
+            "id": "max",
+            "name": "Max",
+            "description": "Reserve for the hardest quality-first tasks."
+          }
+        ],
+        "defaultEffort": "high"
+      }
+    },
+    "acycle_persona": true,
+    "acycle_workflow_policy": true,
+    "skill_names_in_prompt": [],
+    "model_visible_skill_catalog": [
+      "acycle-age-model",
+      "acycle-astronomical-tuning",
+      "acycle-coco",
+      "acycle-intake",
+      "acycle-interpolation-pro",
+      "acycle-mini-robot",
+      "acycle-reproduction",
+      "acycle-sensitivity-steering",
+      "acycle-spectral-interpretation",
+      "acycle-swa"
+    ],
+    "actual_agent_skills": [
+      "acycle-age-model",
+      "acycle-astronomical-tuning",
+      "acycle-coco",
+      "acycle-intake",
+      "acycle-interpolation-pro",
+      "acycle-mini-robot",
+      "acycle-reproduction",
+      "acycle-sensitivity-steering",
+      "acycle-spectral-interpretation",
+      "acycle-swa"
+    ]
+  },
+  "model_visual_input": {
+    "provider": "deepseek-official",
+    "model": "deepseek-flash",
+    "retained_image_count": 2,
+    "uploads": [
+      {
+        "attachment_id": "sha256:3f22483b64ef12acf185d5ac61dd5ff940c72ace05585ade7570e58252eb3eff",
+        "bytes": 100943,
+        "remote_file_id_present": true
+      },
+      {
+        "attachment_id": "sha256:93ff8ae513c5d7d52879e194c3c449d8119b68a3df035a7c1653640dabfca6d1",
+        "bytes": 386268,
+        "remote_file_id_present": true
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "extension": ".png",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.png",
+      "bytes": 139731,
+      "sha256": "873ff2e2565c5de8d44a6d61bc5a0a446dfadb385d213e1cb82f972e384bcdaa"
+    },
+    {
+      "extension": ".csv",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/cleaned.csv",
+      "bytes": 39212,
+      "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+    },
+    {
+      "extension": ".mat",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/analysis.mat",
+      "bytes": 3240323,
+      "sha256": "ec952413c3c19f513753c68caa08e57ba90cd8456145bbdb8fdb9ec3fc88c402"
+    },
+    {
+      "extension": ".fig",
+      "path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.fig",
+      "bytes": 116894,
+      "sha256": "9cc50c6fcdae3ce5c17e62ccba0b3ded6d00491185061451e2a794defbe9dc29"
+    }
+  ],
+  "page_errors": []
+}

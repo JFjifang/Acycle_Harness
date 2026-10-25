@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "mode": "keyless-scripted-infrastructure",
+  "scope": "Two separate runner processes using the actual published SDK and persisted official Session. No live API or scientific computation.",
+  "session_id": "session-d8d3c4c9c151449dbc01732c54163bd0",
+  "distinct_user_message_ids": [
+    "eca1279e-b59c-4069-ad0c-f41006ab705b",
+    "554a63f4-e249-4c03-bccb-408d285011ca"
+  ],
+  "prior_import_path_retained": true,
+  "second_turn_inspects_the_genuine_prior_import": true,
+  "first_process_exited_before_second_started": true,
+  "catalog_inheritance": {
+    "tools": {
+      "source": "current_session_event",
+      "session_id": "session-d8d3c4c9c151449dbc01732c54163bd0",
+      "event_seq": 35
+    },
+    "skills": {
+      "source": "prior_event_from_same_session",
+      "session_id": "session-d8d3c4c9c151449dbc01732c54163bd0",
+      "receipt": "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2/first-process.json",
+      "event_seq": 7,
+      "events_file": "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2/first-process.turn-1.json",
+      "note": "Verified historical catalog; not a new agent-composition check."
+    }
+  },
+  "processes": [
+    {
+      "ordinal": 1,
+      "exit_code": 0,
+      "command_arguments": [
+        "/workspace/Acycle_Harness/scripts/harness_conversation.mjs",
+        "--mode",
+        "mock",
+        "--runtime",
+        "/workspace/harness-conversation-runtime",
+        "--scenarios",
+        "/workspace/Acycle_Harness/demo/newark-0.5.0/scenarios.json",
+        "--workspace",
+        "/workspace/harness-conversation-runs/v05-resume-keyless-v2",
+        "--plugin",
+        "/workspace/Acycle_Harness/plugin/index.mjs",
+        "--max-user-turns",
+        "1",
+        "--expect-acycle-tools",
+        "13",
+        "--expect-acycle-skills",
+        "10",
+        "--output",
+        "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2/first-process.json"
+      ]
+    },
+    {
+      "ordinal": 2,
+      "exit_code": 0,
+      "command_arguments": [
+        "/workspace/Acycle_Harness/scripts/harness_conversation.mjs",
+        "--mode",
+        "mock",
+        "--runtime",
+        "/workspace/harness-conversation-runtime",
+        "--scenarios",
+        "/workspace/Acycle_Harness/demo/newark-0.5.0/scenarios.json",
+        "--workspace",
+        "/workspace/harness-conversation-runs/v05-resume-keyless-v2",
+        "--plugin",
+        "/workspace/Acycle_Harness/plugin/index.mjs",
+        "--max-user-turns",
+        "1",
+        "--expect-acycle-tools",
+        "13",
+        "--expect-acycle-skills",
+        "10",
+        "--output",
+        "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2/second-process.json",
+        "--continue",
+        "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2/first-process.json"
+      ]
+    }
+  ],
+  "receipts": [
+    "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2/first-process.json",
+    "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2/second-process.json"
+  ],
+  "scientific_execution_count": 0,
+  "live_model_requests": 0
+}

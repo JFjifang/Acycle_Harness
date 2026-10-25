@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "scope": "Synthetic executable exits 7 before MATLAB startup; checks doctor persistence and no retry. No real MATLAB or model API executed.",
+  "doctor_expected_status": "failed",
+  "doctor_receipt": "/workspace/Acycle_Harness/validation/v0.5/local/doctor-startup-failure-fixture.json",
+  "persistent_diagnostic_directory": "/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3",
+  "launch": {
+    "attempts": 1,
+    "automatic_retry": false,
+    "status": "process_failed",
+    "stdout_stderr_log": "/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3/matlab.log",
+    "startup_marker": "/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3/matlab-started.json",
+    "startup_timeout_seconds": 180,
+    "execution_timeout_seconds": 300,
+    "launched_process_group_only": true,
+    "command": [
+      "/workspace/acycle-local-check-v05/fake-matlab",
+      "-batch",
+      "fid=fopen('/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3/matlab-started.json','w');fprintf(fid,'%s','{\"started\":true}');fclose(fid);r=struct('release',version('-release'),'version',version,'toolboxes',ver);names={'pmtm','chi2inv','smooth','hilbert'};r.required_functions=cellfun(@which,names,'UniformOutput',false);fid=fopen('/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3/probe.json','w');fprintf(fid,'%s',jsonencode(r));fclose(fid);assert(all(~cellfun(@isempty,r.required_functions)),'Required MATLAB toolbox function missing');"
+    ],
+    "pid": 29893,
+    "returncode": 7,
+    "startup_observed": false,
+    "elapsed_seconds": 0.1009616619994631
+  },
+  "log_contents": "synthetic doctor startup failure\n",
+  "matlab_executed": false,
+  "api_called": false,
+  "portable_evidence": {
+    "doctor-failure-fixture/matlab-launch.json": "119fc2d06e6309f1c38153be6f364b52c809b4ec00f996721f712f8b507f6440",
+    "doctor-failure-fixture/matlab.log": "93a3ba9d55be348803963773748aa7196a6d65d111837287ba74bb69c5d7b2df",
+    "doctor-failure-fixture/synthetic-executable.txt": "7b521ae7c8bc24c2c824b180e76105d9c101e5a99f872438a8cf31a34ca1968a"
+  }
+}

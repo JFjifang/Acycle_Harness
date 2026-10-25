@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T11:37:46.302883+00:00",
+  "repository": "JFjifang/Acycle_Harness",
+  "run_id": 40189240746,
+  "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40189240746",
+  "source_commit": "4c184e1ae86fcfbecf7cb5fa4ea0fd01771034c7",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "completedAt": "2026-10-25T11:36:14Z",
+      "conclusion": "success",
+      "databaseId": 121156493030,
+      "name": "matlab",
+      "startedAt": "2026-10-25T11:31:44Z",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install Python orchestration",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Python contract tests",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run matlab-actions/setup-matlab@v2",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Prepare remote request",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Execute MATLAB request",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "MATLAB numerical and example validation",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Upload MATLAB outputs",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Upload compact validation report",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Upload numerical validation tables",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run matlab-actions/setup-matlab@v2",
+          "number": 23,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 24,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 25,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 26,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 27,
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40189240746/job/121156493030"
+    }
+  ],
+  "matlab_test_counts": {
+    "passed": 39,
+    "failed": 0,
+    "incomplete": 0
+  },
+  "junit": {
+    "testcases": 39,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "publication_checks": [
+    {
+      "case": "paper-cambrian-ecoco-199",
+      "publication_criterion": "not_claimed",
+      "evidence_file": "paper-cambrian-ecoco-199/published-comparison.json"
+    },
+    {
+      "case": "paper-petm-coco-2000",
+      "publication_criterion": "failed",
+      "evidence_file": "paper-petm-coco-2000/published-comparison.json"
+    },
+    {
+      "case": "paper-petm-published-protocol-coco-2000",
+      "publication_criterion": "failed",
+      "evidence_file": "paper-petm-published-protocol-coco-2000/published-comparison.json"
+    },
+    {
+      "case": "swa-lavernock-publication",
+      "publication_criterion": "failed",
+      "evidence_file": "swa-lavernock-publication/publication-comparison.json"
+    }
+  ],
+  "archive": {
+    "artifact_id": 12596638308,
+    "artifact_name": "acycle-validation-report",
+    "size_bytes": 12597945,
+    "sha256": "b0b89f70ebcdade3594a4857e954d0e298d33db9b74f01e8016f744c98b64c35",
+    "github_digest": "sha256:b0b89f70ebcdade3594a4857e954d0e298d33db9b74f01e8016f744c98b64c35",
+    "digest_matches_github": true,
+    "transport": "github_connector_to_sediment_download_file",
+    "source_download_path": "/workspace/attachments/9a66fe9e-8022-44d6-8417-52966682e884/v05-release-summary-report.zip"
+  },
+  "extracted_original_files": [
+    {
+      "path": "validation/v0.5/matlab-release/validation-summary.json",
+      "archive_member": "validation-summary.json",
+      "bytes": 7919,
+      "sha256": "c68d30955a26c671615e9f3a6b28f87602306b1cbf6de903b91bc87b71c59445"
+    },
+    {
+      "path": "validation/v0.5/matlab-release/junit.xml",
+      "archive_member": "junit.xml",
+      "bytes": 4985,
+      "sha256": "d16ff34c04efbb6ba276202f72ef1fc3c1da09bc015bc8d1211884012bdc8256"
+    }
+  ],
+  "selection_scope": "Only original validation-summary.json and junit.xml are retained for this final source commit; no duplicate scientific CSV/PNG outputs were extracted.",
+  "matlab_and_workflow_unchanged_since": {
+    "source_commit": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+    "paths": [
+      "matlab",
+      ".github/workflows/matlab.yml"
+    ],
+    "git_diff_has_no_changes": true,
+    "complete_prior_output_receipt": "validation/v0.5/matlab-transport-ci.json"
+  },
+  "not_downloaded_artifacts": [
+    {
+      "artifact_id": 12597547206,
+      "artifact_name": "acycle-validation-data",
+      "size_bytes": 16349280,
+      "github_digest": "sha256:b73e50d37b890151d0d05e8577777942c639e97b81034ada8f45d7fe27726b5e"
+    },
+    {
+      "artifact_id": 12596713237,
+      "artifact_name": "acycle-output-validation",
+      "size_bytes": 68751640,
+      "github_digest": "sha256:f4182e48ad431e7e897c6edd0f0c2536e1199b01a1f40c7f08f3c6edc93c8f52"
+    }
+  ],
+  "numerical_analysis_repeated_by_delivery_service": false
+}

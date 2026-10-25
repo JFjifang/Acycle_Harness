@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "status": "conversation_failed_with_scientific_products_preserved",
+  "scope": "Initial attempt before GitHub intermediate-artifact reference fix. A preset-assisted public demo; not blind method discovery.",
+  "dimensions": {
+    "conversation_completion": {
+      "status": "failed",
+      "reason": "The model requested a ninth scientific call (trough phase sensitivity) before a final answer. The configured first-turn budget was eight; the runner stopped and no final_response was emitted. Reliability assessment could reasonably include sensitivity, so this is a budget/completion failure, not by itself a scientific error or unauthorized action."
+    },
+    "required_matlab_products": {
+      "status": "passed",
+      "reason": "Six required scientific stages completed: Interpolation Pro, combined depth MTM/EvoFFT/filter, COCO, eCOCO, tuning, and analysis of the original proxy under saved tuning controls."
+    },
+    "stop_after_failed_scientific_call": {
+      "status": "failed",
+      "reason": "After a structured failed tuning run, the model continued with a two-column projection and subsequent submissions, contrary to the explicit product stop-on-failed-run policy. The second local failure was HTTP 503; a later successful remote orphan was independently recorded but never delivered to this Session or used to replace its failure."
+    },
+    "matlab_only_scientific_processing": {
+      "status": "passed_for_observed_commands",
+      "reason": "The two Python commands inspect gzip/base64 payload sizes and perform a byte/token-preserving first-two-column projection. They do not parse numeric values, calculate scientific QA, determine extrema, interpolate, plot or replace MATLAB methods. All six successful scientific results came from GitHub Actions MATLAB."
+    },
+    "direct_filtered_file_lineage": {
+      "status": "failed",
+      "reason": "The successful tuning input was a model-created two-column projection rather than the full filtered.csv; the original whole-file hash and automatic run-output lineage were lost. The evaluator independently verifies exact first-two-column token equality and equal text-line counts, without numerical recomputation."
+    },
+    "original_proxy_for_time_analysis": {
+      "status": "passed",
+      "reason": "The final successful time-domain analyze uses the original uploaded raw proxy SHA, with the successful tuning run reference, saved age-model SHA, control array and valid trim range."
+    },
+    "interpretation": {
+      "status": "not_established_no_final_response",
+      "reason": "No completed user-facing final answer exists for this attempt. Interim progress text is retained in the public trace; it is not relabeled as a final report."
+    },
+    "client_rendering": {
+      "status": "separate_web_acceptance",
+      "reason": "Image/file/present evidence is retained here. Actual main Chat rendering, lightbox, refresh and byte downloads are assessed by the separate Web receipts, not inferred from SDK completion."
+    }
+  },
+  "scientific_limits_from_saved_matlab_results": [
+    "The exploratory full-record COCO maximum is at 7 cm/kyr; the saved minimum rate-global p is 0.95. This is not evidence for a validated sedimentation rate.",
+    "The 405 kyr relative chronology is an imposed public prior. Its tuned spectral appearance is not independent confirmation; 210 Ma is an approximate orbital-target lookup age.",
+    "The 600/100 eCOCO map uses 14 complete, unpadded windows; rate-global correction applies within windows and is not map-wide. EvoFFT and eCOCO do not share the same edge-window policy.",
+    "The 19 simulations and 5 kyr interpolation step do not establish publication-level significance or independent temporal resolution."
+  ],
+  "orphan_evidence": "validation/v0.5/orphan-run.json",
+  "no_private_reasoning_reviewed_or_exported": true,
+  "last_user_visible_interim_message": {
+    "event_seq": 174,
+    "text": "核心链路已全部完成。为评估可靠性，我再做一个**相位敏感性检查**（波谷相位分支），仍从同一滤波文件出发。"
+  },
+  "last_user_visible_interim_message_is_final_response": false
+}

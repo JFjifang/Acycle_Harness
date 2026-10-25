@@ -1,0 +1,3548 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-25T11:10:58.289472+00:00",
+  "receipt": "validation/v0.5/public-harness/newark/first-turn.json",
+  "transport_status": "failed",
+  "scope": "Preset-assisted demo, not blind method selection or published chronology reproduction. No scientific calculations in this evaluator.",
+  "session_id": "session-d26b9aeed6c94ebdb46f502f08044e56",
+  "autonomy_class": "preset-assisted",
+  "actual_tool_names": [
+    "acycle_analyze",
+    "acycle_capabilities",
+    "acycle_coco",
+    "acycle_compare",
+    "acycle_ecoco",
+    "acycle_get_run",
+    "acycle_import_attachment",
+    "acycle_inspect",
+    "acycle_interpolate_pro",
+    "acycle_rerun",
+    "acycle_sensitivity",
+    "acycle_swa",
+    "acycle_tune",
+    "bash",
+    "present",
+    "read_image",
+    "skill",
+    "working_directory"
+  ],
+  "actual_skill_names": [
+    "acycle-age-model",
+    "acycle-astronomical-tuning",
+    "acycle-coco",
+    "acycle-intake",
+    "acycle-interpolation-pro",
+    "acycle-mini-robot",
+    "acycle-reproduction",
+    "acycle-sensitivity-steering",
+    "acycle-spectral-interpretation",
+    "acycle-swa",
+    "newark-relative-time-demo"
+  ],
+  "receipt_errors": [
+    "User turn 1 exceeded the configured scientific-call budget",
+    "TransportClosedError: dsh profile \"sdk-minimal\": DeepSeek Harness runtime exited\nexit code: 0\nstderr tail:\n[llm-deepseek-api-key] model listing from https://api.deepseek.com/models loaded 2 model(s), skipped 0 row(s)\n[llm-deepseek-api-key] model listing from https://api.deepseek.com/models loaded 2 model(s), skipped 0 row(s)\nshutdown request failed: shutdown timed out after 1000ms waiting for dsh profile \"sdk-minimal\"; stderr tail:\n[llm-deepseek-api-key] model listing from https://api.deepseek.com/models loaded 2 model(s), skipped 0 row(s)\n[llm-deepseek-api-key] model listing from https://api.deepseek.com/models loaded 2 model(s), skipped 0 row(s)\n    at HarnessClient.closedError (file:///workspace/harness-conversation-runtime/node_modules/@deepseek-ai/dsh-sdk-client/lib/index.js:622:10)\n    at ChildProcess.<anonymous> (file:///workspace/harness-conversation-runtime/node_modules/@deepseek-ai/dsh-sdk-client/lib/index.js:400:32)\n    at Object.onceWrapper (node:events:631:26)\n    at ChildProcess.emit (node:events:521:24)\n    at ChildProcess._handle.onexit (node:internal/child_process:295:12)"
+  ],
+  "turns": [
+    {
+      "index": 0,
+      "scenario_turn_index": 0,
+      "user_prompt": "按 Newark 演示方案，对附件完成从深度记录到相对时间轴的分析，并评估可靠性。",
+      "same_session": "passed",
+      "independent_user_message_ids": [
+        "bca0a73d-9f0e-40ef-bcdb-f56ffc5b18cb"
+      ],
+      "actual_user_prompt_matches_receipt": "passed",
+      "scientific_errors": [
+        {
+          "call": {
+            "turn": 1,
+            "step": 10,
+            "callId": "call_00_jfyQ1DvkQARVp54Jf85u2962",
+            "name": "acycle_tune",
+            "arguments": "{\"input_path\": \"/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/filtered.csv\", \"label\": \"Newark step4 tuning: 405 kyr peak-to-peak, first peak t=0, trim\", \"parameters\": {\"depth_unit\": \"m\", \"period_kyr\": 405, \"anchor_age_kyr\": 0, \"anchor_phase\": \"peak\", \"extrema\": \"peaks\", \"endpoint_policy\": \"trim\"}}",
+            "event_seq": 83
+          },
+          "structured_results": [
+            {
+              "status": "failed",
+              "run_id": "20261025T104334Z-86b8add5581c",
+              "operation": "tune",
+              "parent_run_id": null,
+              "error": "ValueError: Request exceeds GitHub workflow input limit; use local MATLAB",
+              "diagnostics": {},
+              "matlab_error": null,
+              "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+              "parameters": {
+                "depth_unit": "m",
+                "period_kyr": 405,
+                "anchor_age_kyr": 0,
+                "anchor_phase": "peak",
+                "extrema": "peaks",
+                "endpoint_policy": "trim"
+              },
+              "output_dir": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104334Z-86b8add5581c/outputs"
+            }
+          ],
+          "text": "Error: Acycle bridge exited 1: {\"status\":\"failed\",\"run_id\":\"20261025T104334Z-86b8add5581c\",\"operation\":\"tune\",\"parent_run_id\":null,\"error\":\"ValueError: Request exceeds GitHub workflow input limit; use local MATLAB\",\"diagnostics\":{},\"matlab_error\":null,\"input_sha256\":\"1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5\",\"parameters\":{\"depth_unit\":\"m\",\"period_kyr\":405,\"anchor_age_kyr\":0,\"anchor_phase\":\"peak\",\"extrema\":\"peaks\",\"endpoint_policy\":\"trim\"},\"output_dir\":\"/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104334Z-86b8add5581c/outputs\"}"
+        },
+        {
+          "call": {
+            "turn": 1,
+            "step": 16,
+            "callId": "call_00_ET_9Zup6ltDjlMn5vjLldNq6957",
+            "name": "acycle_tune",
+            "arguments": "{\"input_path\": \"/workspace/harness-conversation-runs/v05-newark/work/filtered_2col_projection.csv\", \"label\": \"Newark step4 tuning 405 kyr peaks, t0=first peak, trim (2-col projection of filtered.csv 1b97d448)\", \"parameters\": {\"anchor_age_kyr\": 0, \"anchor_phase\": \"peak\", \"depth_unit\": \"m\", \"endpoint_policy\": \"trim\", \"extrema\": \"peaks\", \"period_kyr\": 405}}",
+            "event_seq": 119
+          },
+          "structured_results": [
+            {
+              "status": "failed",
+              "run_id": "20261025T104353Z-5c159b838ec0",
+              "operation": "tune",
+              "parent_run_id": null,
+              "error": "GitHubBackendError: GitHub CLI failed: gh: HTTP 503",
+              "diagnostics": {},
+              "matlab_error": null,
+              "input_sha256": "b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff",
+              "parameters": {
+                "anchor_age_kyr": 0,
+                "anchor_phase": "peak",
+                "depth_unit": "m",
+                "endpoint_policy": "trim",
+                "extrema": "peaks",
+                "period_kyr": 405
+              },
+              "output_dir": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104353Z-5c159b838ec0/outputs"
+            }
+          ],
+          "text": "Error: Acycle bridge exited 1: {\"status\":\"failed\",\"run_id\":\"20261025T104353Z-5c159b838ec0\",\"operation\":\"tune\",\"parent_run_id\":null,\"error\":\"GitHubBackendError: GitHub CLI failed: gh: HTTP 503\",\"diagnostics\":{},\"matlab_error\":null,\"input_sha256\":\"b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff\",\"parameters\":{\"anchor_age_kyr\":0,\"anchor_phase\":\"peak\",\"depth_unit\":\"m\",\"endpoint_policy\":\"trim\",\"extrema\":\"peaks\",\"period_kyr\":405},\"output_dir\":\"/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104353Z-5c159b838ec0/outputs\"}"
+        }
+      ],
+      "scientific_call_count": 9,
+      "unreturned_scientific_calls": [
+        {
+          "turn": 1,
+          "step": 24,
+          "callId": "call_00_7nv6nfITHn8LdS352kQ61036",
+          "name": "acycle_tune",
+          "arguments": "{\"input_path\": \"/workspace/harness-conversation-runs/v05-newark/work/filtered_2col_projection.csv\", \"label\": \"Newark phase-sensitivity: 405 kyr troughs branch\", \"parameters\": {\"anchor_age_kyr\": 0, \"anchor_phase\": \"trough\", \"depth_unit\": \"m\", \"endpoint_policy\": \"trim\", \"extrema\": \"troughs\", \"period_kyr\": 405}}",
+          "event_seq": 175
+        }
+      ],
+      "runs": [
+        {
+          "run_id": "20261025T102957Z-af924b44ffa5",
+          "operation": "interpolate_pro",
+          "status": "completed",
+          "parent_run_id": null,
+          "input_lineage": null,
+          "tuning_reference": null,
+          "requested_parameters": {
+            "method": "linear",
+            "dt": 0.85344,
+            "coordinate_unit": "m",
+            "gap_policy": "interpolate",
+            "gap_multiplier": 10,
+            "endpoint_policy": "strict_grid"
+          },
+          "effective_parameters": {
+            "method": "linear",
+            "dt": 0.85344,
+            "coordinate_unit": "m",
+            "gap_policy": "interpolate",
+            "gap_multiplier": 10,
+            "endpoint_policy": "strict_grid"
+          },
+          "matlab_summary": {
+            "input_rows": 2344,
+            "processed_rows": 2344,
+            "sorted": false,
+            "removed_nonfinite_rows": 0,
+            "merged_duplicate_rows": 0,
+            "method": "linear",
+            "coordinate_unit": "m",
+            "requested_dt": 0.85344,
+            "input_median_spacing": 0.853439999999992,
+            "sample_interval": 0.8534399999999778,
+            "minimum_output_spacing": 0.8534399999998641,
+            "maximum_output_spacing": 0.8534400000003188,
+            "input_range": [
+              0,
+              1999.60992
+            ],
+            "output_range": [
+              0,
+              1999.60992
+            ],
+            "endpoint_included": true,
+            "unfilled_tail": 0,
+            "endpoint_policy": "strict_grid",
+            "gui_two_endpoint_fallback": false,
+            "extrapolated": false,
+            "gap_policy": "interpolate",
+            "gap_threshold": 8.5344,
+            "gap_threshold_basis": "requested dt times gap_multiplier",
+            "gap_count": 0,
+            "zero_filled_rows": 0,
+            "downsampling": true,
+            "anti_alias_filter": "none"
+          },
+          "frozen_input_matches_record": "passed",
+          "remote_matlab_execution": "passed",
+          "remote_execution": {
+            "backend": "github-actions-matlab",
+            "run_id": 40185016563,
+            "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40185016563",
+            "head_sha": "b9d064d4918ce01c6f05ba3f84c77f1054d7af65",
+            "conclusion": "success",
+            "request_token": "acycle-cc8ad5cb2f9a41d5b13bf264101219ce",
+            "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+            "artifact_transport": "github_connector_cache",
+            "artifact_sha256": "cdf40f438014000379e3ecff2b1a60a60e194d7587743f91ffaf5037ce2f412a"
+          },
+          "artifacts": [
+            {
+              "role": "raw_csv",
+              "name": "raw.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/raw.csv",
+              "tool_return_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+              "observed_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+              "status": "passed"
+            },
+            {
+              "role": "cleaned_csv",
+              "name": "cleaned.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/cleaned.csv",
+              "tool_return_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+              "observed_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+              "status": "passed"
+            },
+            {
+              "role": "interpolated_csv",
+              "name": "interpolated.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolated.csv",
+              "tool_return_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "observed_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "status": "passed"
+            },
+            {
+              "role": "gap_csv",
+              "name": "gaps.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/gaps.csv",
+              "tool_return_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "status": "passed"
+            },
+            {
+              "role": "diagnostic_png",
+              "name": "interpolation.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolation.png",
+              "tool_return_sha256": "2bf45379bc577667a2c69847e4a9af380609ac1a56a5760a836fc24a733f85de",
+              "observed_sha256": "2bf45379bc577667a2c69847e4a9af380609ac1a56a5760a836fc24a733f85de",
+              "status": "passed"
+            },
+            {
+              "role": "diagnostic_fig",
+              "name": "interpolation.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolation.fig",
+              "tool_return_sha256": "0e8cb6441ac4fd1590d4a339385c4f9a9aa502d6de631cf2c5a28108ae0ce821",
+              "observed_sha256": "0e8cb6441ac4fd1590d4a339385c4f9a9aa502d6de631cf2c5a28108ae0ce821",
+              "status": "passed"
+            },
+            {
+              "role": "diagnostic_pdf",
+              "name": "interpolation.pdf",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolation.pdf",
+              "tool_return_sha256": "c03ca96768ff3624dfade501a5ca4c4f798320e5449be381d71a0202def0a091",
+              "observed_sha256": "c03ca96768ff3624dfade501a5ca4c4f798320e5449be381d71a0202def0a091",
+              "status": "passed"
+            },
+            {
+              "role": "analysis_mat",
+              "name": "analysis.mat",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/analysis.mat",
+              "tool_return_sha256": "c348ab7e9c693ebd21c768c0c198cfdd6c411741fcc1af579eebbdc6fe88e506",
+              "observed_sha256": "c348ab7e9c693ebd21c768c0c198cfdd6c411741fcc1af579eebbdc6fe88e506",
+              "status": "passed"
+            },
+            {
+              "role": "provenance_json",
+              "name": "provenance.json",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/provenance.json",
+              "tool_return_sha256": "71251d3015758044c1ac20e16f806e27cbfb4f2a721dd4c96b96ccbedd549e5a",
+              "observed_sha256": "71251d3015758044c1ac20e16f806e27cbfb4f2a721dd4c96b96ccbedd549e5a",
+              "status": "passed"
+            }
+          ],
+          "all_artifact_bytes_preserved": "passed",
+          "saved_error": null,
+          "saved_matlab_error": null,
+          "diagnostics": null
+        },
+        {
+          "run_id": "20261025T103317Z-c23be0fceaeb",
+          "operation": "analyze",
+          "status": "completed",
+          "parent_run_id": null,
+          "input_lineage": {
+            "run_id": "20261025T102957Z-af924b44ffa5",
+            "operation": "interpolate_pro",
+            "artifact_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolated.csv",
+            "sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0"
+          },
+          "tuning_reference": null,
+          "requested_parameters": {
+            "detrend": "lowess",
+            "span": 0.35,
+            "coordinate_unit": "m",
+            "mtm_nw": 2,
+            "evolution": true,
+            "evolution_window": 600,
+            "evolution_step": 50,
+            "filter_method": "gaussian",
+            "filter_band": [
+              0.0125,
+              0.020833333333333332
+            ]
+          },
+          "effective_parameters": {
+            "detrend": "lowess",
+            "span": 0.35,
+            "coordinate_unit": "m",
+            "mtm_nw": 2,
+            "evolution": true,
+            "evolution_window": 600,
+            "evolution_step": 50.35295999999953,
+            "filter_method": "gaussian",
+            "filter_band": [
+              0.0125,
+              0.020833333333333332
+            ],
+            "smooth_fraction": 0.25,
+            "dt": 0.853439999999992,
+            "nfft": 11720,
+            "fmax": 0.5858642669666346,
+            "fit_fmax": 0.5858642669666346
+          },
+          "matlab_summary": {
+            "input_rows": 2344,
+            "removed_nonfinite_rows": 0,
+            "merged_duplicate_rows": 0,
+            "selected_rows": 2344,
+            "processed_rows": 2344,
+            "interpolated": false,
+            "sample_interval": 0.853439999999992,
+            "nyquist": 0.5858642669666346,
+            "coordinate_unit": "m",
+            "robust_ar1_rho": 0.43361925074560903,
+            "robust_ar1_s0": 0.04453031015110401,
+            "robust_fit_method": "original_redconfML",
+            "peaks": [
+              {
+                "frequency": 0.017495946539105984,
+                "period": 57.156095999999465,
+                "power": 1.3850034691165285,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.016296224490710144,
+                "period": 61.36390674846569,
+                "power": 1.1750712690699683,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.018595691750135503,
+                "period": 53.77589677419304,
+                "power": 0.8338279384075679,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.003699142982553837,
+                "period": 270.3328864864839,
+                "power": 0.6630209917210756,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.004199027169385436,
+                "period": 238.15039999999775,
+                "power": 0.630487994025635,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.015296456117046948,
+                "period": 65.37461960784252,
+                "power": 0.5308003218258979,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.05678684362406971,
+                "period": 17.609712676056173,
+                "power": 0.516788631902539,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.07568246588630417,
+                "period": 13.213100132100273,
+                "power": 0.46518157542710636,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.05768663516036659,
+                "period": 17.33503778162895,
+                "power": 0.4490324377170439,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.07088357769272081,
+                "period": 14.107640056417358,
+                "power": 0.44164756700078567,
+                "pointwise_above_95": true
+              }
+            ]
+          },
+          "frozen_input_matches_record": "passed",
+          "remote_matlab_execution": "passed",
+          "remote_execution": {
+            "backend": "github-actions-matlab",
+            "run_id": 40185255649,
+            "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40185255649",
+            "head_sha": "b9d064d4918ce01c6f05ba3f84c77f1054d7af65",
+            "conclusion": "success",
+            "request_token": "acycle-fc8c3824d2a5490581d33ab7cd9a9b19",
+            "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+            "artifact_transport": "github_connector_cache",
+            "artifact_sha256": "7f0e4dd4f2582c91720012007b88993fb2c7ab5f62356b8f7221253860465cd4"
+          },
+          "artifacts": [
+            {
+              "role": "cleaned_csv",
+              "name": "cleaned.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/cleaned.csv",
+              "tool_return_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "observed_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "status": "passed"
+            },
+            {
+              "role": "prepared_csv",
+              "name": "prepared.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/prepared.csv",
+              "tool_return_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "observed_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "status": "passed"
+            },
+            {
+              "role": "processed_csv",
+              "name": "processed.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/processed.csv",
+              "tool_return_sha256": "2f392f6a4dac26038236458580ef629ee5c77ca564e1a8f2117b354fd3a4c84b",
+              "observed_sha256": "2f392f6a4dac26038236458580ef629ee5c77ca564e1a8f2117b354fd3a4c84b",
+              "status": "passed"
+            },
+            {
+              "role": "preprocess_png",
+              "name": "preprocessing.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/preprocessing.png",
+              "tool_return_sha256": "9d0e9a903a70a48547050806dfbd690dcebe3785d2439f7343e3495a816406cb",
+              "observed_sha256": "9d0e9a903a70a48547050806dfbd690dcebe3785d2439f7343e3495a816406cb",
+              "status": "passed"
+            },
+            {
+              "role": "spectrum_png",
+              "name": "spectrum.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/spectrum.png",
+              "tool_return_sha256": "7ebde701d771adec43d91ad12394cb9f7fc17a00dd1751dd1ee805e078c44f52",
+              "observed_sha256": "7ebde701d771adec43d91ad12394cb9f7fc17a00dd1751dd1ee805e078c44f52",
+              "status": "passed"
+            },
+            {
+              "role": "robust_spectrum_csv",
+              "name": "spectrum_robust.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/spectrum_robust.csv",
+              "tool_return_sha256": "c9e4cd3795c8dce66bb742e64d65579521cadbbd50dd4a7af5b525ea675b8bab",
+              "observed_sha256": "c9e4cd3795c8dce66bb742e64d65579521cadbbd50dd4a7af5b525ea675b8bab",
+              "status": "passed"
+            },
+            {
+              "role": "classic_spectrum_csv",
+              "name": "spectrum_classic.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/spectrum_classic.csv",
+              "tool_return_sha256": "71c1da9fa37c949087eeeb8db52ae21d72acdec9e845eb2054a7e65e9939c6c4",
+              "observed_sha256": "71c1da9fa37c949087eeeb8db52ae21d72acdec9e845eb2054a7e65e9939c6c4",
+              "status": "passed"
+            },
+            {
+              "role": "evolution_png",
+              "name": "evolution.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/evolution.png",
+              "tool_return_sha256": "207c2ee9269e29560ee86b902aea7bdd6a66666aaab3028f8ba68cd3ded72909",
+              "observed_sha256": "207c2ee9269e29560ee86b902aea7bdd6a66666aaab3028f8ba68cd3ded72909",
+              "status": "passed"
+            },
+            {
+              "role": "evolution_csv",
+              "name": "evolution.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/evolution.csv",
+              "tool_return_sha256": "47bdad3979311f1ad08f85a23859e4f84dd501922b64f675da28eba5108a183b",
+              "observed_sha256": "47bdad3979311f1ad08f85a23859e4f84dd501922b64f675da28eba5108a183b",
+              "status": "passed"
+            },
+            {
+              "role": "filtered_csv",
+              "name": "filtered.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/filtered.csv",
+              "tool_return_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+              "observed_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+              "status": "passed"
+            },
+            {
+              "role": "filter_png",
+              "name": "filter.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/filter.png",
+              "tool_return_sha256": "4e63771a52c6d7f1d5df7e703acd05c6ebad48716d2a62a848873ce4d716657f",
+              "observed_sha256": "4e63771a52c6d7f1d5df7e703acd05c6ebad48716d2a62a848873ce4d716657f",
+              "status": "passed"
+            },
+            {
+              "role": "preprocess_fig",
+              "name": "preprocessing.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/preprocessing.fig",
+              "tool_return_sha256": "a23cc2e8bc73aba2966c089eadd6e3f14f14a39fd0bb736dcde07cd290d1926d",
+              "observed_sha256": "a23cc2e8bc73aba2966c089eadd6e3f14f14a39fd0bb736dcde07cd290d1926d",
+              "status": "passed"
+            },
+            {
+              "role": "spectrum_fig",
+              "name": "spectrum.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/spectrum.fig",
+              "tool_return_sha256": "08f312540117e5576b477ca65cf4ec06730b43f3365e80b065dd49da10daaaa2",
+              "observed_sha256": "08f312540117e5576b477ca65cf4ec06730b43f3365e80b065dd49da10daaaa2",
+              "status": "passed"
+            },
+            {
+              "role": "evolution_fig",
+              "name": "evolution.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/evolution.fig",
+              "tool_return_sha256": "d4e83fd33a3d46e457fcbf9ff8e73c7d3fd4d2b3fcef612c2f915544dfe0494a",
+              "observed_sha256": "d4e83fd33a3d46e457fcbf9ff8e73c7d3fd4d2b3fcef612c2f915544dfe0494a",
+              "status": "passed"
+            },
+            {
+              "role": "filter_fig",
+              "name": "filter.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/filter.fig",
+              "tool_return_sha256": "bdc254e411c75f03305cd76278056262298dac3a87aff40b84a6a47059c04dba",
+              "observed_sha256": "bdc254e411c75f03305cd76278056262298dac3a87aff40b84a6a47059c04dba",
+              "status": "passed"
+            },
+            {
+              "role": "analysis_mat",
+              "name": "analysis.mat",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/analysis.mat",
+              "tool_return_sha256": "856a3f63632a3d716f8938e2292d04499487ee72e2a06d4f4bb5c0344328e991",
+              "observed_sha256": "856a3f63632a3d716f8938e2292d04499487ee72e2a06d4f4bb5c0344328e991",
+              "status": "passed"
+            },
+            {
+              "role": "provenance_json",
+              "name": "provenance.json",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/provenance.json",
+              "tool_return_sha256": "f3c8983a93511d2a413203416ed3648f569d66f86b39d8cde00a6323cc617814",
+              "observed_sha256": "f3c8983a93511d2a413203416ed3648f569d66f86b39d8cde00a6323cc617814",
+              "status": "passed"
+            }
+          ],
+          "all_artifact_bytes_preserved": "passed",
+          "saved_error": null,
+          "saved_matlab_error": null,
+          "diagnostics": null
+        },
+        {
+          "run_id": "20261025T103651Z-21f20570b673",
+          "operation": "coco",
+          "status": "completed",
+          "parent_run_id": null,
+          "input_lineage": {
+            "run_id": "20261025T102957Z-af924b44ffa5",
+            "operation": "interpolate_pro",
+            "artifact_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolated.csv",
+            "sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0"
+          },
+          "tuning_reference": null,
+          "requested_parameters": {
+            "depth_unit": "m",
+            "middle_age_ma": 210,
+            "sedimentation_rate_min": 5,
+            "sedimentation_rate_max": 25,
+            "sedimentation_rate_step": 1,
+            "method": "adaptive",
+            "correlation": "Spearman",
+            "red_noise": 0,
+            "detrend": "lowess",
+            "span": 0.35,
+            "nsim": 19,
+            "seed": 1
+          },
+          "effective_parameters": {
+            "depth_unit": "m",
+            "middle_age_ma": 210,
+            "sedimentation_rate_min": 5,
+            "sedimentation_rate_max": 25,
+            "sedimentation_rate_step": 1,
+            "method": "adaptive",
+            "correlation": "Spearman",
+            "red_noise": 0,
+            "detrend": "lowess",
+            "span": 0.35,
+            "nsim": 19,
+            "seed": 1,
+            "max_frequency": 0.0678797861111111,
+            "slices": 1,
+            "nfft": 4096
+          },
+          "matlab_summary": {
+            "input_rows": 2344,
+            "depth_unit_input": "m",
+            "depth_unit_analysis": "m",
+            "depth_to_metres_factor": 1,
+            "sampling_interval_m": 0.853439999999992,
+            "method": "adaptive",
+            "orbital_periods_kyr": [
+              405.69119637582526,
+              130.69786204114564,
+              123.8532110091743,
+              98.85170322399951,
+              94.88563498843362,
+              35.463934068387225,
+              21.726148900463244,
+              20.621782053254513,
+              17.678311449534377
+            ],
+            "target_source": "Acycle calculate_orbit9; age rounded to nearest integer Ma",
+            "rate_unit": "cm/kyr",
+            "rate_count": 21,
+            "nsim_requested": 19,
+            "seed": 1,
+            "minimum_resolvable_p": 0.05,
+            "preparation": {
+              "label": "Harness COCO/eCOCO",
+              "method": "finite rows; sort; mean duplicate values; conditional linear interpolation",
+              "originalRowCount": 2344,
+              "finiteRowCount": 2344,
+              "nonfiniteRowsRemoved": 0,
+              "uniqueDepthCount": 2344,
+              "duplicateRowsCollapsed": 0,
+              "interpolationApplied": false,
+              "interpolationMethod": "linear",
+              "originalDepthRange": [
+                0,
+                1999.60992
+              ],
+              "outputDepthRange": [
+                0,
+                1999.60992
+              ],
+              "spacingMinimum": 0.8534399999998641,
+              "spacingMedian": 0.853439999999992,
+              "spacingMaximum": 0.8534400000000915,
+              "outputSpacing": 0.853439999999992,
+              "maximumSpacingDeviation": 1.2789769243681803e-13,
+              "uniformityTolerance": 8.534399999999921e-06,
+              "maximumGapToMedianRatio": 1.0000000000001166,
+              "outputPointCount": 2344,
+              "maximumOutputPointCount": 200000,
+              "inputAssumption": "proxy values were scientifically detrended before COCO/eCOCO",
+              "nonlinearDetrend": {
+                "method": "lowess",
+                "spanFraction": 0.35,
+                "source": "code/guicode/detrending.m smooth callback",
+                "order": "clean; nonlinear smooth subtraction; original median-grid interpolation; original internal linear detrending",
+                "nullConditioning": "Monte Carlo conditional on preprocessed record; global nonlinear trend is not re-estimated in each null"
+              },
+              "afterDetrend": {
+                "label": "Harness detrended input",
+                "method": "finite rows; sort; mean duplicate values; conditional linear interpolation",
+                "originalRowCount": 2344,
+                "finiteRowCount": 2344,
+                "nonfiniteRowsRemoved": 0,
+                "uniqueDepthCount": 2344,
+                "duplicateRowsCollapsed": 0,
+                "interpolationApplied": false,
+                "interpolationMethod": "linear",
+                "originalDepthRange": [
+                  0,
+                  1999.60992
+                ],
+                "outputDepthRange": [
+                  0,
+                  1999.60992
+                ],
+                "spacingMinimum": 0.8534399999998641,
+                "spacingMedian": 0.853439999999992,
+                "spacingMaximum": 0.8534400000000915,
+                "outputSpacing": 0.853439999999992,
+                "maximumSpacingDeviation": 1.2789769243681803e-13,
+                "uniformityTolerance": 8.534399999999921e-06,
+                "maximumGapToMedianRatio": 1.0000000000001166,
+                "outputPointCount": 2344,
+                "maximumOutputPointCount": 200000,
+                "inputAssumption": "proxy values were scientifically detrended before COCO/eCOCO"
+              }
+            },
+            "target_age_rounded_ma": 210,
+            "best_rate_cm_kyr": 7,
+            "best_correlation": 0.37781441804226334,
+            "minimum_rate_global_p": 0.95,
+            "global_p_confidence_interval": [
+              0.753612688331012,
+              0.9906480059376995
+            ],
+            "mc_threshold_resolved": true,
+            "nsim_completed": 19,
+            "target_mode": "adaptive9b",
+            "target_model": "coherent-nine",
+            "target_construction": "nine zero-phase sine FFT terms summed coherently before power, with four group amplitudes fitted independently for each observed or Monte Carlo spectrum by finite-record phase-averaged leakage correction and nonnegative least squares",
+            "null_conditioning": "stationary Gaussian AR(1) conditional on the regularized grid, pre-specified periods/rate grid/Pad/MaxFrequency/red/slices/method; raw irregular sampling and interpolation are not resimulated",
+            "requested_period_count": 9,
+            "resolved_period_count_at_best": 6,
+            "all_requested_periods_resolved": false,
+            "all_period_rate_range_cm_kyr": [
+              9.655220776444352,
+              493.1000174198473
+            ],
+            "interpretation": "No sedimentation rate passes the Adaptive COCO global p < 0.05 criterion. QUALIFICATION: the best exploratory rate uses 6/9 distinct frequency-resolved orbital periods. Any positive result concerns that resolved partial target, not the complete nine-period target."
+          },
+          "frozen_input_matches_record": "passed",
+          "remote_matlab_execution": "passed",
+          "remote_execution": {
+            "backend": "github-actions-matlab",
+            "run_id": 40185497994,
+            "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40185497994",
+            "head_sha": "b9d064d4918ce01c6f05ba3f84c77f1054d7af65",
+            "conclusion": "success",
+            "request_token": "acycle-7c02dfad50084134ba2649edecb5634d",
+            "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+            "artifact_transport": "github_connector_cache",
+            "artifact_sha256": "fee0fb3f1aabf607dee5cda5a35cda0ce02e79bcfd610531af74a346bbe701ff"
+          },
+          "artifacts": [
+            {
+              "role": "input_metres_csv",
+              "name": "input_metres.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/input_metres.csv",
+              "tool_return_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "observed_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "status": "passed"
+            },
+            {
+              "role": "cleaned_metres_csv",
+              "name": "cleaned_metres.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/cleaned_metres.csv",
+              "tool_return_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "observed_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "status": "passed"
+            },
+            {
+              "role": "prepared_metres_csv",
+              "name": "prepared_metres.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/prepared_metres.csv",
+              "tool_return_sha256": "380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+              "observed_sha256": "380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+              "status": "passed"
+            },
+            {
+              "role": "detrended_input_csv",
+              "name": "detrended_input.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/detrended_input.csv",
+              "tool_return_sha256": "380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+              "observed_sha256": "380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+              "status": "passed"
+            },
+            {
+              "role": "preprocessing_trend_csv",
+              "name": "preprocessing_trend.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/preprocessing_trend.csv",
+              "tool_return_sha256": "b9c70ec3e95e5ea8b05e0da0a171dcd533ed06e0ee3dc3c2c155f799bbe98f77",
+              "observed_sha256": "b9c70ec3e95e5ea8b05e0da0a171dcd533ed06e0ee3dc3c2c155f799bbe98f77",
+              "status": "passed"
+            },
+            {
+              "role": "orbital_periods_csv",
+              "name": "orbital_periods_kyr.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/orbital_periods_kyr.csv",
+              "tool_return_sha256": "11050a47719a7ea6b14033d8e8f916113213bdb71c6ca250833c6a2e1661016d",
+              "observed_sha256": "11050a47719a7ea6b14033d8e8f916113213bdb71c6ca250833c6a2e1661016d",
+              "status": "passed"
+            },
+            {
+              "role": "coco_csv",
+              "name": "coco.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/coco.csv",
+              "tool_return_sha256": "266bc094f43fbfaa46ad6b365cff4a769a35c53be8cf3228d7fb85e7356f43ad",
+              "observed_sha256": "266bc094f43fbfaa46ad6b365cff4a769a35c53be8cf3228d7fb85e7356f43ad",
+              "status": "passed"
+            },
+            {
+              "role": "null_max_csv",
+              "name": "null_max.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/null_max.csv",
+              "tool_return_sha256": "b66b57d773bda44a9e4e130e4658fa3ed6d640d375d27eb4b4150c9287a59708",
+              "observed_sha256": "b66b57d773bda44a9e4e130e4658fa3ed6d640d375d27eb4b4150c9287a59708",
+              "status": "passed"
+            },
+            {
+              "role": "coco_figure_1_png",
+              "name": "coco_figure_1.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/coco_figure_1.png",
+              "tool_return_sha256": "5b4232676d7433a1c73b58decda6eb3a403d90843c0a722810b440e29dfd9775",
+              "observed_sha256": "5b4232676d7433a1c73b58decda6eb3a403d90843c0a722810b440e29dfd9775",
+              "status": "passed"
+            },
+            {
+              "role": "coco_figure_1_fig",
+              "name": "coco_figure_1.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/coco_figure_1.fig",
+              "tool_return_sha256": "eaf4223beb1853e02bdd2c9015ffd130fa15501a84051509a8b33a328392145e",
+              "observed_sha256": "eaf4223beb1853e02bdd2c9015ffd130fa15501a84051509a8b33a328392145e",
+              "status": "passed"
+            },
+            {
+              "role": "coco_figure_1_pdf",
+              "name": "coco_figure_1.pdf",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/coco_figure_1.pdf",
+              "tool_return_sha256": "d954461d6b34e997e0aa5fad9f104fd7854fbd5f122b9d6796b968b9a92f018f",
+              "observed_sha256": "d954461d6b34e997e0aa5fad9f104fd7854fbd5f122b9d6796b968b9a92f018f",
+              "status": "passed"
+            },
+            {
+              "role": "coco_figure_2_png",
+              "name": "coco_figure_2.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/coco_figure_2.png",
+              "tool_return_sha256": "e2aa4467e11b2349125405147065940482ff3d8132e73cab92232fa0b8b3ea73",
+              "observed_sha256": "e2aa4467e11b2349125405147065940482ff3d8132e73cab92232fa0b8b3ea73",
+              "status": "passed"
+            },
+            {
+              "role": "coco_figure_2_fig",
+              "name": "coco_figure_2.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/coco_figure_2.fig",
+              "tool_return_sha256": "e23b0236c61101fcc8c571d249c17130ad517abaa9f68f943ff16d1a8e84601f",
+              "observed_sha256": "e23b0236c61101fcc8c571d249c17130ad517abaa9f68f943ff16d1a8e84601f",
+              "status": "passed"
+            },
+            {
+              "role": "coco_figure_2_pdf",
+              "name": "coco_figure_2.pdf",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/coco_figure_2.pdf",
+              "tool_return_sha256": "8db656200ec64ea4e879f41a8c0b68321f10f71f3f42025a99f1f96bef4c6470",
+              "observed_sha256": "8db656200ec64ea4e879f41a8c0b68321f10f71f3f42025a99f1f96bef4c6470",
+              "status": "passed"
+            },
+            {
+              "role": "provenance_json",
+              "name": "provenance.json",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/provenance.json",
+              "tool_return_sha256": "4e4b879019395c570095dbc1d3d60fb64c7bbeadff8aa43844fa67bf4e87ac2d",
+              "observed_sha256": "4e4b879019395c570095dbc1d3d60fb64c7bbeadff8aa43844fa67bf4e87ac2d",
+              "status": "passed"
+            },
+            {
+              "role": "details_json",
+              "name": "details.json",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/details.json",
+              "tool_return_sha256": "903ea6f10c005eb62f5980ff9915f5d59b3952dbac1dfbe7e00bcc14a8a04ea0",
+              "observed_sha256": "903ea6f10c005eb62f5980ff9915f5d59b3952dbac1dfbe7e00bcc14a8a04ea0",
+              "status": "passed"
+            },
+            {
+              "role": "analysis_mat",
+              "name": "analysis.mat",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/analysis.mat",
+              "tool_return_sha256": "7e2f13f71eab26bd07ae7e1a4ea15771c5fae16492fb671f5fff685cb72865b8",
+              "observed_sha256": "7e2f13f71eab26bd07ae7e1a4ea15771c5fae16492fb671f5fff685cb72865b8",
+              "status": "passed"
+            }
+          ],
+          "all_artifact_bytes_preserved": "passed",
+          "saved_error": null,
+          "saved_matlab_error": null,
+          "diagnostics": null
+        },
+        {
+          "run_id": "20261025T104008Z-943b58424d17",
+          "operation": "ecoco",
+          "status": "completed",
+          "parent_run_id": null,
+          "input_lineage": {
+            "run_id": "20261025T102957Z-af924b44ffa5",
+            "operation": "interpolate_pro",
+            "artifact_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolated.csv",
+            "sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0"
+          },
+          "tuning_reference": null,
+          "requested_parameters": {
+            "depth_unit": "m",
+            "middle_age_ma": 210,
+            "sedimentation_rate_min": 5,
+            "sedimentation_rate_max": 25,
+            "sedimentation_rate_step": 1,
+            "method": "adaptive",
+            "correlation": "Spearman",
+            "red_noise": 0,
+            "detrend": "lowess",
+            "span": 0.35,
+            "window": 600,
+            "step": 100,
+            "nsim": 19,
+            "seed": 1
+          },
+          "effective_parameters": {
+            "depth_unit": "m",
+            "middle_age_ma": 210,
+            "sedimentation_rate_min": 5,
+            "sedimentation_rate_max": 25,
+            "sedimentation_rate_step": 1,
+            "method": "adaptive",
+            "correlation": "Spearman",
+            "red_noise": 0,
+            "detrend": "lowess",
+            "span": 0.35,
+            "window": 600,
+            "step": 100,
+            "nsim": 19,
+            "seed": 1,
+            "max_frequency": 0.0678797861111111,
+            "nfft": 1024
+          },
+          "matlab_summary": {
+            "input_rows": 2344,
+            "depth_unit_input": "m",
+            "depth_unit_analysis": "m",
+            "depth_to_metres_factor": 1,
+            "sampling_interval_m": 0.853439999999992,
+            "method": "adaptive",
+            "orbital_periods_kyr": [
+              405.69119637582526,
+              130.69786204114564,
+              123.8532110091743,
+              98.85170322399951,
+              94.88563498843362,
+              35.463934068387225,
+              21.726148900463244,
+              20.621782053254513,
+              17.678311449534377
+            ],
+            "target_source": "Acycle calculate_orbit9; age rounded to nearest integer Ma",
+            "rate_unit": "cm/kyr",
+            "rate_count": 21,
+            "nsim_requested": 19,
+            "seed": 1,
+            "minimum_resolvable_p": 0.05,
+            "preparation": {
+              "label": "Harness COCO/eCOCO",
+              "method": "finite rows; sort; mean duplicate values; conditional linear interpolation",
+              "originalRowCount": 2344,
+              "finiteRowCount": 2344,
+              "nonfiniteRowsRemoved": 0,
+              "uniqueDepthCount": 2344,
+              "duplicateRowsCollapsed": 0,
+              "interpolationApplied": false,
+              "interpolationMethod": "linear",
+              "originalDepthRange": [
+                0,
+                1999.60992
+              ],
+              "outputDepthRange": [
+                0,
+                1999.60992
+              ],
+              "spacingMinimum": 0.8534399999998641,
+              "spacingMedian": 0.853439999999992,
+              "spacingMaximum": 0.8534400000000915,
+              "outputSpacing": 0.853439999999992,
+              "maximumSpacingDeviation": 1.2789769243681803e-13,
+              "uniformityTolerance": 8.534399999999921e-06,
+              "maximumGapToMedianRatio": 1.0000000000001166,
+              "outputPointCount": 2344,
+              "maximumOutputPointCount": 200000,
+              "inputAssumption": "proxy values were scientifically detrended before COCO/eCOCO",
+              "nonlinearDetrend": {
+                "method": "lowess",
+                "spanFraction": 0.35,
+                "source": "code/guicode/detrending.m smooth callback",
+                "order": "clean; nonlinear smooth subtraction; original median-grid interpolation; original internal linear detrending",
+                "nullConditioning": "Monte Carlo conditional on preprocessed record; global nonlinear trend is not re-estimated in each null"
+              },
+              "afterDetrend": {
+                "label": "Harness detrended input",
+                "method": "finite rows; sort; mean duplicate values; conditional linear interpolation",
+                "originalRowCount": 2344,
+                "finiteRowCount": 2344,
+                "nonfiniteRowsRemoved": 0,
+                "uniqueDepthCount": 2344,
+                "duplicateRowsCollapsed": 0,
+                "interpolationApplied": false,
+                "interpolationMethod": "linear",
+                "originalDepthRange": [
+                  0,
+                  1999.60992
+                ],
+                "outputDepthRange": [
+                  0,
+                  1999.60992
+                ],
+                "spacingMinimum": 0.8534399999998641,
+                "spacingMedian": 0.853439999999992,
+                "spacingMaximum": 0.8534400000000915,
+                "outputSpacing": 0.853439999999992,
+                "maximumSpacingDeviation": 1.2789769243681803e-13,
+                "uniformityTolerance": 8.534399999999921e-06,
+                "maximumGapToMedianRatio": 1.0000000000001166,
+                "outputPointCount": 2344,
+                "maximumOutputPointCount": 200000,
+                "inputAssumption": "proxy values were scientifically detrended before COCO/eCOCO"
+              }
+            },
+            "target_age_rounded_ma": 210,
+            "window_count": 14,
+            "window_m": 600,
+            "step_m": 100,
+            "depth_centres_m": [
+              300,
+              400,
+              500,
+              600,
+              700,
+              800,
+              900,
+              1000,
+              1100,
+              1200,
+              1300,
+              1400,
+              1500,
+              1600
+            ],
+            "edge_padding": false,
+            "rate_global_p_scope": "maximum across sedimentation-rate grid within each window only; no correction across windows",
+            "map_global_applied": false,
+            "finite_correlation_cells": 294,
+            "unresolved_correlation_cells": 0,
+            "tracked_rate_cm_kyr": [
+              6,
+              6,
+              7,
+              7,
+              8,
+              7,
+              7,
+              7,
+              7,
+              8,
+              9,
+              10,
+              11,
+              13
+            ],
+            "nsim_completed": 19,
+            "target_mode": "coherent-nine / four-group-area",
+            "blocked_consensus_policy": "supported"
+          },
+          "frozen_input_matches_record": "passed",
+          "remote_matlab_execution": "passed",
+          "remote_execution": {
+            "backend": "github-actions-matlab",
+            "run_id": 40185718350,
+            "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40185718350",
+            "head_sha": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+            "conclusion": "success",
+            "request_token": "acycle-527c79a6d6eb427db147e9ea8b77d015",
+            "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+            "artifact_transport": "github_connector_cache",
+            "artifact_sha256": "6b567acd1a9192a0dd94b1e2dd9bf31846d69358140f538e52e0ae62a801bbe8"
+          },
+          "artifacts": [
+            {
+              "role": "input_metres_csv",
+              "name": "input_metres.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/input_metres.csv",
+              "tool_return_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "observed_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "status": "passed"
+            },
+            {
+              "role": "cleaned_metres_csv",
+              "name": "cleaned_metres.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/cleaned_metres.csv",
+              "tool_return_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "observed_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+              "status": "passed"
+            },
+            {
+              "role": "prepared_metres_csv",
+              "name": "prepared_metres.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/prepared_metres.csv",
+              "tool_return_sha256": "380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+              "observed_sha256": "380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+              "status": "passed"
+            },
+            {
+              "role": "detrended_input_csv",
+              "name": "detrended_input.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/detrended_input.csv",
+              "tool_return_sha256": "380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+              "observed_sha256": "380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+              "status": "passed"
+            },
+            {
+              "role": "preprocessing_trend_csv",
+              "name": "preprocessing_trend.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/preprocessing_trend.csv",
+              "tool_return_sha256": "b9c70ec3e95e5ea8b05e0da0a171dcd533ed06e0ee3dc3c2c155f799bbe98f77",
+              "observed_sha256": "b9c70ec3e95e5ea8b05e0da0a171dcd533ed06e0ee3dc3c2c155f799bbe98f77",
+              "status": "passed"
+            },
+            {
+              "role": "orbital_periods_csv",
+              "name": "orbital_periods_kyr.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/orbital_periods_kyr.csv",
+              "tool_return_sha256": "11050a47719a7ea6b14033d8e8f916113213bdb71c6ca250833c6a2e1661016d",
+              "observed_sha256": "11050a47719a7ea6b14033d8e8f916113213bdb71c6ca250833c6a2e1661016d",
+              "status": "passed"
+            },
+            {
+              "role": "ecoco_csv",
+              "name": "ecoco.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/ecoco.csv",
+              "tool_return_sha256": "5f77829d4718cc2297ba920ff9c9e887c1197180789fceb035b170855fb77745",
+              "observed_sha256": "5f77829d4718cc2297ba920ff9c9e887c1197180789fceb035b170855fb77745",
+              "status": "passed"
+            },
+            {
+              "role": "tracked_rate_csv",
+              "name": "tracked_rate.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/tracked_rate.csv",
+              "tool_return_sha256": "42d5d8aeab8758cbf39ff3e85d1405d3b964f0ccc4b0210ee8744b927ca97303",
+              "observed_sha256": "42d5d8aeab8758cbf39ff3e85d1405d3b964f0ccc4b0210ee8744b927ca97303",
+              "status": "passed"
+            },
+            {
+              "role": "ecoco_figure_1_png",
+              "name": "ecoco_figure_1.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/ecoco_figure_1.png",
+              "tool_return_sha256": "0270b11616f4b9d1e6a5ce3620ab1ef465ea94664bbc863963315ec1a203b976",
+              "observed_sha256": "0270b11616f4b9d1e6a5ce3620ab1ef465ea94664bbc863963315ec1a203b976",
+              "status": "passed"
+            },
+            {
+              "role": "ecoco_figure_1_fig",
+              "name": "ecoco_figure_1.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/ecoco_figure_1.fig",
+              "tool_return_sha256": "00fb01043e5443d244cf7628a71bbd17a29a711d827d387a11f8daa0e3bbd2ec",
+              "observed_sha256": "00fb01043e5443d244cf7628a71bbd17a29a711d827d387a11f8daa0e3bbd2ec",
+              "status": "passed"
+            },
+            {
+              "role": "ecoco_figure_1_pdf",
+              "name": "ecoco_figure_1.pdf",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/ecoco_figure_1.pdf",
+              "tool_return_sha256": "2dc330d9063654282cd4a338e4facda59d01d7f29f6f5841b8d9a8d03df84fc4",
+              "observed_sha256": "2dc330d9063654282cd4a338e4facda59d01d7f29f6f5841b8d9a8d03df84fc4",
+              "status": "passed"
+            },
+            {
+              "role": "ecoco_figure_2_png",
+              "name": "ecoco_figure_2.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/ecoco_figure_2.png",
+              "tool_return_sha256": "ebf6149ecf4c660027f3c759f5629f45db3e738becb18704637f8bc2a054f681",
+              "observed_sha256": "ebf6149ecf4c660027f3c759f5629f45db3e738becb18704637f8bc2a054f681",
+              "status": "passed"
+            },
+            {
+              "role": "ecoco_figure_2_fig",
+              "name": "ecoco_figure_2.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/ecoco_figure_2.fig",
+              "tool_return_sha256": "e542d1b6a02b6b4ed77509a48eab36ea34cfc7ff991c814811832c1a01ff5776",
+              "observed_sha256": "e542d1b6a02b6b4ed77509a48eab36ea34cfc7ff991c814811832c1a01ff5776",
+              "status": "passed"
+            },
+            {
+              "role": "ecoco_figure_2_pdf",
+              "name": "ecoco_figure_2.pdf",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/ecoco_figure_2.pdf",
+              "tool_return_sha256": "6401865d7703340bcdf60e6f1c949099982b3068234159d5e936db96d26fd1ff",
+              "observed_sha256": "6401865d7703340bcdf60e6f1c949099982b3068234159d5e936db96d26fd1ff",
+              "status": "passed"
+            },
+            {
+              "role": "provenance_json",
+              "name": "provenance.json",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/provenance.json",
+              "tool_return_sha256": "c10a581eb90300e2f25ee88ffabcd9abac60073035fdc8334b357ca2b2e1e8f8",
+              "observed_sha256": "c10a581eb90300e2f25ee88ffabcd9abac60073035fdc8334b357ca2b2e1e8f8",
+              "status": "passed"
+            },
+            {
+              "role": "details_json",
+              "name": "details.json",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/details.json",
+              "tool_return_sha256": "df4e5bba889905207bf9e3fd745058ec5ec1f8ce91a6379ef3d350f49415eefa",
+              "observed_sha256": "df4e5bba889905207bf9e3fd745058ec5ec1f8ce91a6379ef3d350f49415eefa",
+              "status": "passed"
+            },
+            {
+              "role": "analysis_mat",
+              "name": "analysis.mat",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/analysis.mat",
+              "tool_return_sha256": "156dc9597a2e9fbeccdcdbdef80a640562e2bc35779c54aa8c6ec8c8c3a6598c",
+              "observed_sha256": "156dc9597a2e9fbeccdcdbdef80a640562e2bc35779c54aa8c6ec8c8c3a6598c",
+              "status": "passed"
+            }
+          ],
+          "all_artifact_bytes_preserved": "passed",
+          "saved_error": null,
+          "saved_matlab_error": null,
+          "diagnostics": null
+        },
+        {
+          "run_id": "20261025T104334Z-86b8add5581c",
+          "operation": "tune",
+          "status": "failed",
+          "parent_run_id": null,
+          "input_lineage": {
+            "run_id": "20261025T103317Z-c23be0fceaeb",
+            "operation": "analyze",
+            "artifact_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/filtered.csv",
+            "sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5"
+          },
+          "tuning_reference": null,
+          "requested_parameters": {
+            "depth_unit": "m",
+            "period_kyr": 405,
+            "anchor_age_kyr": 0,
+            "anchor_phase": "peak",
+            "extrema": "peaks",
+            "endpoint_policy": "trim"
+          },
+          "effective_parameters": null,
+          "matlab_summary": null,
+          "frozen_input_matches_record": "passed",
+          "remote_matlab_execution": "failed",
+          "remote_execution": {},
+          "artifacts": [],
+          "all_artifact_bytes_preserved": "unverifiable",
+          "saved_error": "ValueError: Request exceeds GitHub workflow input limit; use local MATLAB",
+          "saved_matlab_error": null,
+          "diagnostics": {}
+        },
+        {
+          "run_id": "20261025T104353Z-5c159b838ec0",
+          "operation": "tune",
+          "status": "failed",
+          "parent_run_id": null,
+          "input_lineage": null,
+          "tuning_reference": null,
+          "requested_parameters": {
+            "anchor_age_kyr": 0,
+            "anchor_phase": "peak",
+            "depth_unit": "m",
+            "endpoint_policy": "trim",
+            "extrema": "peaks",
+            "period_kyr": 405
+          },
+          "effective_parameters": null,
+          "matlab_summary": null,
+          "frozen_input_matches_record": "passed",
+          "remote_matlab_execution": "failed",
+          "remote_execution": {},
+          "artifacts": [],
+          "all_artifact_bytes_preserved": "unverifiable",
+          "saved_error": "GitHubBackendError: GitHub CLI failed: gh: HTTP 503",
+          "saved_matlab_error": null,
+          "diagnostics": {}
+        },
+        {
+          "run_id": "20261025T104547Z-631960023604",
+          "operation": "tune",
+          "status": "completed",
+          "parent_run_id": null,
+          "input_lineage": null,
+          "tuning_reference": null,
+          "requested_parameters": {
+            "anchor_age_kyr": 0,
+            "anchor_phase": "peak",
+            "depth_unit": "m",
+            "endpoint_policy": "trim",
+            "extrema": "peaks",
+            "period_kyr": 405
+          },
+          "effective_parameters": {
+            "anchor_age_kyr": 0,
+            "anchor_phase": "peak",
+            "depth_unit": "m",
+            "endpoint_policy": "trim",
+            "extrema": "peaks",
+            "period_kyr": 405
+          },
+          "matlab_summary": {
+            "input_rows": 2344,
+            "removed_nonfinite_rows": 0,
+            "merged_duplicate_rows": 0,
+            "processed_rows": 2272,
+            "input_curve": "bandpassed",
+            "bandpass_status": "user-declared assumption; not independently verified",
+            "ignored_input_columns": [],
+            "depth_unit": "m",
+            "time_unit": "kyr",
+            "rate_unit": "cm/kyr",
+            "period_kyr": 405,
+            "extrema": "peaks",
+            "control_point_count": 35,
+            "anchor_phase": "peak",
+            "anchor_age_kyr": 0,
+            "anchor_control_index": 1,
+            "anchor_depth": 6.82752,
+            "anchor_definition": "first selected extremum matching anchor_phase",
+            "cycle_increment": 1,
+            "endpoint_policy": "trim",
+            "input_depth_range": [
+              0,
+              1999.60992
+            ],
+            "observed_control_depth_range": [
+              6.82752,
+              1944.98976
+            ],
+            "valid_depth_range": [
+              6.82752,
+              1944.98976
+            ],
+            "recommended_depth_range": [
+              6.82752,
+              1944.98976
+            ],
+            "age_model": [
+              [
+                6.82752,
+                0
+              ],
+              [
+                56.32704,
+                405
+              ],
+              [
+                116.92128,
+                810
+              ],
+              [
+                184.34304,
+                1215
+              ],
+              [
+                237.25632,
+                1620
+              ],
+              [
+                296.99712,
+                2025
+              ],
+              [
+                352.47072,
+                2430
+              ],
+              [
+                412.21152,
+                2835
+              ],
+              [
+                480.48672,
+                3240
+              ],
+              [
+                528.27936,
+                3645
+              ],
+              [
+                580.3392,
+                4050
+              ],
+              [
+                649.46784,
+                4455
+              ],
+              [
+                707.50176,
+                4860
+              ],
+              [
+                775.77696,
+                5265
+              ],
+              [
+                838.93152,
+                5670
+              ],
+              [
+                894.40512,
+                6075
+              ],
+              [
+                952.43904,
+                6480
+              ],
+              [
+                1010.47296,
+                6885
+              ],
+              [
+                1068.50688,
+                7290
+              ],
+              [
+                1125.68736,
+                7695
+              ],
+              [
+                1177.7472,
+                8100
+              ],
+              [
+                1228.9536,
+                8505
+              ],
+              [
+                1287.84096,
+                8910
+              ],
+              [
+                1355.26272,
+                9315
+              ],
+              [
+                1412.4432,
+                9720
+              ],
+              [
+                1466.20992,
+                10125
+              ],
+              [
+                1519.97664,
+                10530
+              ],
+              [
+                1575.45024,
+                10935
+              ],
+              [
+                1606.17408,
+                11340
+              ],
+              [
+                1665.91488,
+                11745
+              ],
+              [
+                1721.38848,
+                12150
+              ],
+              [
+                1780.27584,
+                12555
+              ],
+              [
+                1846.84416,
+                12960
+              ],
+              [
+                1910.85216,
+                13365
+              ],
+              [
+                1944.98976,
+                13770
+              ]
+            ],
+            "time_range_kyr": [
+              0,
+              13770
+            ],
+            "trimmed_rows": 72,
+            "extrapolated_rows": 0,
+            "extrapolated_endpoints": 0,
+            "time_resampled": false,
+            "independent_astronomical_test": false,
+            "phase_detection": "original getpks sampled extrema; no prominence, minimum-distance or sub-sample fit"
+          },
+          "frozen_input_matches_record": "passed",
+          "remote_matlab_execution": "passed",
+          "remote_execution": {
+            "backend": "github-actions-matlab",
+            "run_id": 40186105313,
+            "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40186105313",
+            "head_sha": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+            "conclusion": "success",
+            "request_token": "acycle-bc39c16348ff4a4389bb383bd35207a5",
+            "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+            "artifact_transport": "github_connector_cache",
+            "artifact_sha256": "077b805baf124aaaa162ddbb0824e1f226d79ae59b4097604db7719ed7e419c4"
+          },
+          "artifacts": [
+            {
+              "role": "cleaned_csv",
+              "name": "tune-cleaned.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/tune-cleaned.csv",
+              "tool_return_sha256": "b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff",
+              "observed_sha256": "b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff",
+              "status": "passed"
+            },
+            {
+              "role": "control_points_csv",
+              "name": "control_points.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/control_points.csv",
+              "tool_return_sha256": "7722e982dec7ac74be68887e4c3b3048044d7e246c80fc2e85068e5c0ceb89c2",
+              "observed_sha256": "7722e982dec7ac74be68887e4c3b3048044d7e246c80fc2e85068e5c0ceb89c2",
+              "status": "passed"
+            },
+            {
+              "role": "age_model_csv",
+              "name": "age_model.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/age_model.csv",
+              "tool_return_sha256": "5eff30d9e1469a3e662eeac73b72a7903333fa521e6b1a6b5c6ba302fe1599eb",
+              "observed_sha256": "5eff30d9e1469a3e662eeac73b72a7903333fa521e6b1a6b5c6ba302fe1599eb",
+              "status": "passed"
+            },
+            {
+              "role": "depth_age_csv",
+              "name": "depth_age.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/depth_age.csv",
+              "tool_return_sha256": "3c86a33d0a9f7c2b950fcf574f530eb0a46c8061ddb504bc35f46a47478e6658",
+              "observed_sha256": "3c86a33d0a9f7c2b950fcf574f530eb0a46c8061ddb504bc35f46a47478e6658",
+              "status": "passed"
+            },
+            {
+              "role": "tuned_csv",
+              "name": "tuned.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/tuned.csv",
+              "tool_return_sha256": "0df2894638b2bf77f091889b0c07ddc67fb4174637531a7deb6b71bbd5cad8d1",
+              "observed_sha256": "0df2894638b2bf77f091889b0c07ddc67fb4174637531a7deb6b71bbd5cad8d1",
+              "status": "passed"
+            },
+            {
+              "role": "sedimentation_rate_csv",
+              "name": "sedimentation_rate.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/sedimentation_rate.csv",
+              "tool_return_sha256": "455bbbbbc155190a981713ae58417448001fac85e2581b052e750f0f67622a25",
+              "observed_sha256": "455bbbbbc155190a981713ae58417448001fac85e2581b052e750f0f67622a25",
+              "status": "passed"
+            },
+            {
+              "role": "diagnostic_png",
+              "name": "tuning.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/tuning.png",
+              "tool_return_sha256": "fc878dec83d8f648b5936f632b7835e1ed0964db20de088420276eb1f9991c43",
+              "observed_sha256": "fc878dec83d8f648b5936f632b7835e1ed0964db20de088420276eb1f9991c43",
+              "status": "passed"
+            },
+            {
+              "role": "diagnostic_fig",
+              "name": "tuning.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/tuning.fig",
+              "tool_return_sha256": "b2bfb8052c303a44bf50af87fe005913d40718180f8964d0e8c344ad23a3d025",
+              "observed_sha256": "b2bfb8052c303a44bf50af87fe005913d40718180f8964d0e8c344ad23a3d025",
+              "status": "passed"
+            },
+            {
+              "role": "diagnostic_pdf",
+              "name": "tuning.pdf",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/tuning.pdf",
+              "tool_return_sha256": "6c72fc07d5a4039f90bbcb48e733de49e9789fc21a2b67478ddb7b054104eca9",
+              "observed_sha256": "6c72fc07d5a4039f90bbcb48e733de49e9789fc21a2b67478ddb7b054104eca9",
+              "status": "passed"
+            },
+            {
+              "role": "analysis_mat",
+              "name": "analysis.mat",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/analysis.mat",
+              "tool_return_sha256": "1a93a8ec6ddf84bd6f40f1fd02d98beedd7f4a10d3eda3583894cb09091c0402",
+              "observed_sha256": "1a93a8ec6ddf84bd6f40f1fd02d98beedd7f4a10d3eda3583894cb09091c0402",
+              "status": "passed"
+            },
+            {
+              "role": "provenance_json",
+              "name": "provenance.json",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/provenance.json",
+              "tool_return_sha256": "934ed79b879de54ce26b8dc1a76facdf8a354b5d8e3633c8ef116404f6b7ed60",
+              "observed_sha256": "934ed79b879de54ce26b8dc1a76facdf8a354b5d8e3633c8ef116404f6b7ed60",
+              "status": "passed"
+            }
+          ],
+          "all_artifact_bytes_preserved": "passed",
+          "saved_error": null,
+          "saved_matlab_error": null,
+          "diagnostics": null
+        },
+        {
+          "run_id": "20261025T104951Z-73f1bcd33790",
+          "operation": "analyze",
+          "status": "completed",
+          "parent_run_id": null,
+          "input_lineage": null,
+          "tuning_reference": {
+            "run_id": "20261025T104547Z-631960023604",
+            "age_model_sha256": "5eff30d9e1469a3e662eeac73b72a7903333fa521e6b1a6b5c6ba302fe1599eb",
+            "endpoint_policy": "trim",
+            "note": "Saved MATLAB control points applied to the supplied original proxy; tuned periodicity is not independent evidence of orbital forcing."
+          },
+          "requested_parameters": {
+            "coordinate_unit": "kyr",
+            "detrend": "lowess",
+            "span": 0.35,
+            "dt": 5,
+            "mtm_nw": 2,
+            "evolution": true,
+            "evolution_window": 2430,
+            "evolution_step": 405,
+            "age_model": [
+              [
+                6.82752,
+                0
+              ],
+              [
+                56.32704,
+                405
+              ],
+              [
+                116.92128,
+                810
+              ],
+              [
+                184.34304,
+                1215
+              ],
+              [
+                237.25632,
+                1620
+              ],
+              [
+                296.99712,
+                2025
+              ],
+              [
+                352.47072,
+                2430
+              ],
+              [
+                412.21152,
+                2835
+              ],
+              [
+                480.48672,
+                3240
+              ],
+              [
+                528.27936,
+                3645
+              ],
+              [
+                580.3392,
+                4050
+              ],
+              [
+                649.46784,
+                4455
+              ],
+              [
+                707.50176,
+                4860
+              ],
+              [
+                775.77696,
+                5265
+              ],
+              [
+                838.93152,
+                5670
+              ],
+              [
+                894.40512,
+                6075
+              ],
+              [
+                952.43904,
+                6480
+              ],
+              [
+                1010.47296,
+                6885
+              ],
+              [
+                1068.50688,
+                7290
+              ],
+              [
+                1125.68736,
+                7695
+              ],
+              [
+                1177.7472,
+                8100
+              ],
+              [
+                1228.9536,
+                8505
+              ],
+              [
+                1287.84096,
+                8910
+              ],
+              [
+                1355.26272,
+                9315
+              ],
+              [
+                1412.4432,
+                9720
+              ],
+              [
+                1466.20992,
+                10125
+              ],
+              [
+                1519.97664,
+                10530
+              ],
+              [
+                1575.45024,
+                10935
+              ],
+              [
+                1606.17408,
+                11340
+              ],
+              [
+                1665.91488,
+                11745
+              ],
+              [
+                1721.38848,
+                12150
+              ],
+              [
+                1780.27584,
+                12555
+              ],
+              [
+                1846.84416,
+                12960
+              ],
+              [
+                1910.85216,
+                13365
+              ],
+              [
+                1944.98976,
+                13770
+              ]
+            ],
+            "coordinate_range": [
+              6.82752,
+              1944.98976
+            ],
+            "depth_unit": "m"
+          },
+          "effective_parameters": {
+            "coordinate_unit": "kyr",
+            "detrend": "lowess",
+            "span": 0.35,
+            "dt": 5,
+            "mtm_nw": 2,
+            "evolution": true,
+            "evolution_window": 2430,
+            "evolution_step": 405,
+            "age_model": [
+              [
+                6.82752,
+                0
+              ],
+              [
+                56.32704,
+                405
+              ],
+              [
+                116.92128,
+                810
+              ],
+              [
+                184.34304,
+                1215
+              ],
+              [
+                237.25632,
+                1620
+              ],
+              [
+                296.99712,
+                2025
+              ],
+              [
+                352.47072,
+                2430
+              ],
+              [
+                412.21152,
+                2835
+              ],
+              [
+                480.48672,
+                3240
+              ],
+              [
+                528.27936,
+                3645
+              ],
+              [
+                580.3392,
+                4050
+              ],
+              [
+                649.46784,
+                4455
+              ],
+              [
+                707.50176,
+                4860
+              ],
+              [
+                775.77696,
+                5265
+              ],
+              [
+                838.93152,
+                5670
+              ],
+              [
+                894.40512,
+                6075
+              ],
+              [
+                952.43904,
+                6480
+              ],
+              [
+                1010.47296,
+                6885
+              ],
+              [
+                1068.50688,
+                7290
+              ],
+              [
+                1125.68736,
+                7695
+              ],
+              [
+                1177.7472,
+                8100
+              ],
+              [
+                1228.9536,
+                8505
+              ],
+              [
+                1287.84096,
+                8910
+              ],
+              [
+                1355.26272,
+                9315
+              ],
+              [
+                1412.4432,
+                9720
+              ],
+              [
+                1466.20992,
+                10125
+              ],
+              [
+                1519.97664,
+                10530
+              ],
+              [
+                1575.45024,
+                10935
+              ],
+              [
+                1606.17408,
+                11340
+              ],
+              [
+                1665.91488,
+                11745
+              ],
+              [
+                1721.38848,
+                12150
+              ],
+              [
+                1780.27584,
+                12555
+              ],
+              [
+                1846.84416,
+                12960
+              ],
+              [
+                1910.85216,
+                13365
+              ],
+              [
+                1944.98976,
+                13770
+              ]
+            ],
+            "coordinate_range": [
+              6.82752,
+              1944.98976
+            ],
+            "depth_unit": "m",
+            "smooth_fraction": 0.25,
+            "nfft": 13775,
+            "fmax": 0.1,
+            "fit_fmax": 0.1
+          },
+          "matlab_summary": {
+            "input_rows": 2344,
+            "removed_nonfinite_rows": 0,
+            "merged_duplicate_rows": 0,
+            "selected_rows": 2272,
+            "processed_rows": 2755,
+            "interpolated": true,
+            "sample_interval": 5,
+            "nyquist": 0.1,
+            "coordinate_unit": "kyr",
+            "robust_ar1_rho": 0.6712931614732253,
+            "robust_ar1_s0": 0.029680890534667118,
+            "robust_fit_method": "original_redconfML",
+            "peaks": [
+              {
+                "frequency": 0.002395644283121597,
+                "period": 417.42424242424244,
+                "power": 2.6793188716218763,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.0025408348457350276,
+                "period": 393.5714285714285,
+                "power": 2.4722958925481886,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.0024682395644283124,
+                "period": 405.1470588235294,
+                "power": 2.352728326181718,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.00818874773139746,
+                "period": 122.11879432624113,
+                "power": 1.038858717279422,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.01055535390199637,
+                "period": 94.73865199449794,
+                "power": 1.0245741485576603,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.008101633393829402,
+                "period": 123.43189964157705,
+                "power": 0.9455966549451537,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.010642468239564428,
+                "period": 93.96316507503411,
+                "power": 0.933470405807127,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.0005226860254083486,
+                "period": 1913.1944444444441,
+                "power": 0.8368755272914338,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.0004500907441016334,
+                "period": 2221.7741935483873,
+                "power": 0.7954051393888601,
+                "pointwise_above_95": true
+              },
+              {
+                "frequency": 0.007709618874773141,
+                "period": 129.7080979284369,
+                "power": 0.5768835507067029,
+                "pointwise_above_95": true
+              }
+            ]
+          },
+          "frozen_input_matches_record": "passed",
+          "remote_matlab_execution": "passed",
+          "remote_execution": {
+            "backend": "github-actions-matlab",
+            "repository": "JFjifang/Acycle_Harness",
+            "artifact_id": 12596028780,
+            "run_id": 40186372828,
+            "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40186372828",
+            "head_sha": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+            "conclusion": "success",
+            "request_token": "acycle-e31abe7cdff049109881903958605592",
+            "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+            "artifact_transport": "github_connector_cache",
+            "artifact_sha256": "c68b87a1495cfd23fb9b67895a8fbb2d5723e56c65d37ab3d66675f453362357",
+            "input_transport": "inline_gzip",
+            "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+            "input_artifact_reference": null
+          },
+          "artifacts": [
+            {
+              "role": "cleaned_csv",
+              "name": "cleaned.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/cleaned.csv",
+              "tool_return_sha256": "8ab308b3ebbe904376ec0de148c9076bcbbf3d5728d2fd89f212dbdf6baa9252",
+              "observed_sha256": "8ab308b3ebbe904376ec0de148c9076bcbbf3d5728d2fd89f212dbdf6baa9252",
+              "status": "passed"
+            },
+            {
+              "role": "prepared_csv",
+              "name": "prepared.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/prepared.csv",
+              "tool_return_sha256": "be03ec62d18c8441695ac4a8679994fb8a7707102c80b0f3fcd294518c9d844b",
+              "observed_sha256": "be03ec62d18c8441695ac4a8679994fb8a7707102c80b0f3fcd294518c9d844b",
+              "status": "passed"
+            },
+            {
+              "role": "processed_csv",
+              "name": "processed.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/processed.csv",
+              "tool_return_sha256": "61adb62069ffc98afb8652dbe5bc9e2944f5e99d462031a6ed7bdc3d997052b5",
+              "observed_sha256": "61adb62069ffc98afb8652dbe5bc9e2944f5e99d462031a6ed7bdc3d997052b5",
+              "status": "passed"
+            },
+            {
+              "role": "preprocess_png",
+              "name": "preprocessing.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/preprocessing.png",
+              "tool_return_sha256": "53160a74b306b0a854277e166a9ee051f11bc04cf0d8edad0cdc82555aff573b",
+              "observed_sha256": "53160a74b306b0a854277e166a9ee051f11bc04cf0d8edad0cdc82555aff573b",
+              "status": "passed"
+            },
+            {
+              "role": "spectrum_png",
+              "name": "spectrum.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/spectrum.png",
+              "tool_return_sha256": "4b43fcee56c90f1614ae136256aeecd624e941bda79bb4fb19072449210b72b4",
+              "observed_sha256": "4b43fcee56c90f1614ae136256aeecd624e941bda79bb4fb19072449210b72b4",
+              "status": "passed"
+            },
+            {
+              "role": "robust_spectrum_csv",
+              "name": "spectrum_robust.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/spectrum_robust.csv",
+              "tool_return_sha256": "b4f09b08af815c20b2c946251ade5a7a3b18a9907991fa026dce0ed9972c4ded",
+              "observed_sha256": "b4f09b08af815c20b2c946251ade5a7a3b18a9907991fa026dce0ed9972c4ded",
+              "status": "passed"
+            },
+            {
+              "role": "classic_spectrum_csv",
+              "name": "spectrum_classic.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/spectrum_classic.csv",
+              "tool_return_sha256": "57da73379f8bf438fba8c5b4b803268a76bd4ed666ccb469ce2011b5de010b3a",
+              "observed_sha256": "57da73379f8bf438fba8c5b4b803268a76bd4ed666ccb469ce2011b5de010b3a",
+              "status": "passed"
+            },
+            {
+              "role": "evolution_png",
+              "name": "evolution.png",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/evolution.png",
+              "tool_return_sha256": "27618db3c9dc7ba94be279acb87481879f6683756df486811851168ad3a47fa7",
+              "observed_sha256": "27618db3c9dc7ba94be279acb87481879f6683756df486811851168ad3a47fa7",
+              "status": "passed"
+            },
+            {
+              "role": "evolution_csv",
+              "name": "evolution.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/evolution.csv",
+              "tool_return_sha256": "6d5ddb9d6fe44dfdd1888c4260e0cb74386a1d96037bc401716cdde2535281e1",
+              "observed_sha256": "6d5ddb9d6fe44dfdd1888c4260e0cb74386a1d96037bc401716cdde2535281e1",
+              "status": "passed"
+            },
+            {
+              "role": "age_model_csv",
+              "name": "age_model.csv",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/age_model.csv",
+              "tool_return_sha256": "5eff30d9e1469a3e662eeac73b72a7903333fa521e6b1a6b5c6ba302fe1599eb",
+              "observed_sha256": "5eff30d9e1469a3e662eeac73b72a7903333fa521e6b1a6b5c6ba302fe1599eb",
+              "status": "passed"
+            },
+            {
+              "role": "preprocess_fig",
+              "name": "preprocessing.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/preprocessing.fig",
+              "tool_return_sha256": "684266d8c721e6aa1403d145413e66b012d16e6a181f84989604f0424e5914c5",
+              "observed_sha256": "684266d8c721e6aa1403d145413e66b012d16e6a181f84989604f0424e5914c5",
+              "status": "passed"
+            },
+            {
+              "role": "spectrum_fig",
+              "name": "spectrum.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/spectrum.fig",
+              "tool_return_sha256": "e150f3d57ec1e9e959d0aca3e3b6a855d97b362c1c39920ee82bbd3b0da4c19b",
+              "observed_sha256": "e150f3d57ec1e9e959d0aca3e3b6a855d97b362c1c39920ee82bbd3b0da4c19b",
+              "status": "passed"
+            },
+            {
+              "role": "evolution_fig",
+              "name": "evolution.fig",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/evolution.fig",
+              "tool_return_sha256": "69abc3ffe5c187684d325ef280ce2901506a96e260de048ac26baf75d6262761",
+              "observed_sha256": "69abc3ffe5c187684d325ef280ce2901506a96e260de048ac26baf75d6262761",
+              "status": "passed"
+            },
+            {
+              "role": "analysis_mat",
+              "name": "analysis.mat",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/analysis.mat",
+              "tool_return_sha256": "13bda44c2c0457b7e657d92a7a5433e5c4e5b5bb0ec18013d5aa9d997177902b",
+              "observed_sha256": "13bda44c2c0457b7e657d92a7a5433e5c4e5b5bb0ec18013d5aa9d997177902b",
+              "status": "passed"
+            },
+            {
+              "role": "provenance_json",
+              "name": "provenance.json",
+              "source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/provenance.json",
+              "tool_return_sha256": "b1cfacc7e3d8dbd5847c2e6a0dddbe909b8b6921afa3092202c68c88f009cb4f",
+              "observed_sha256": "b1cfacc7e3d8dbd5847c2e6a0dddbe909b8b6921afa3092202c68c88f009cb4f",
+              "status": "passed"
+            }
+          ],
+          "all_artifact_bytes_preserved": "passed",
+          "saved_error": null,
+          "saved_matlab_error": null,
+          "diagnostics": null
+        }
+      ],
+      "shell_commands_for_review": [
+        {
+          "classification": "read_or_byte_metadata_only",
+          "command": "ls -la /workspace/Acycle_Harness/demo/newark-0.5.0/ && echo \"-----\" && cat /workspace/Acycle_Harness/demo/newark-0.5.0/manifest.json",
+          "call_id": "call_00_Q5V9E2ydSQ2uwGiZxBes8243"
+        },
+        {
+          "classification": "read_or_byte_metadata_only",
+          "command": "cat /workspace/Acycle_Harness/demo/newark-0.5.0/SOURCES.md 2>/dev/null | head -120",
+          "call_id": "call_01_dRSpbIOrNKWdnDfLkeme0037"
+        },
+        {
+          "classification": "read_or_byte_metadata_only",
+          "command": "head -3 /workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/filtered.csv; echo \"---tail\"; tail -2 /workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/filtered.csv",
+          "call_id": "call_00_xSUziDFrOgUb6l4MutwC7600"
+        },
+        {
+          "classification": "read_or_byte_metadata_only",
+          "command": "cd /workspace/Acycle_Harness 2>/dev/null; grep -rn \"workflow input limit\" --include=*.py . | head",
+          "call_id": "call_00_JCDlhTS5iE5539sljBcS1334"
+        },
+        {
+          "classification": "requires_manual_review",
+          "command": "cd /workspace/Acycle_Harness; sed -n 80,140p src/acycle_deepseek/github_backend.py",
+          "call_id": "call_00_ET_8gBVIkUnDCb7eroNH5Xu1832"
+        },
+        {
+          "classification": "read_or_byte_metadata_only",
+          "command": "cd /workspace/Acycle_Harness; grep -rn \"MAX_ENCODED_REQUEST\" src/ | head",
+          "call_id": "call_00_ET_HC4sxT6vyLH3tmpIXJeG5629"
+        },
+        {
+          "classification": "requires_manual_review_for_numerical_processing",
+          "command": "cd /tmp && python3 - <<'EOF'\nimport gzip,base64,json,os\np='/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/filtered.csv'\nraw=open(p,'rb').read()\nlines=raw.decode().strip().split('\\n')\nprint('rows',len(lines))\ntwo='\\n'.join(','.join(l.split(',')[:2]) for l in lines).encode()\nprint('3col bytes',len(raw),'gz',len(gzip.compress(raw,mtime=0)))\nprint('2col bytes',len(two),'gz',len(gzip.compress(two,mtime=0)))\nb=base64.b64encode(gzip.compress(two,mtime=0)).decode()\nprint('encoded est 2col', len(base64.b64encode(json.dumps({'input_bytes_b64':b,'input_compression':'gzip','input_suffix':'.csv','operation':'tune','parameters':{}},allow_nan=False).encode())))\nb3=base64.b64encode(gzip.compress(raw,mtime=0)).decode()\nprint('encoded est 3col', len(base64.b64encode(json.dumps({'input_bytes_b64':b3,'input_compression':'gzip','input_suffix':'.csv','operation':'tune','parameters':{}},allow_nan=False).encode())))\nEOF",
+          "call_id": "call_00_gkJzSNO8jDhLOexHO55b6130"
+        },
+        {
+          "classification": "requires_manual_review_for_numerical_processing",
+          "command": "cd /workspace/harness-conversation-runs/v05-newark && mkdir -p work && python3 - <<'EOF'\nimport hashlib\nsrc='/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/filtered.csv'\ndst='/workspace/harness-conversation-runs/v05-newark/work/filtered_2col_projection.csv'\nraw=open(src,'rb').read().decode()\nlines=raw.strip().split('\\n')\nout='\\n'.join(','.join(l.split(',')[:2]) for l in lines)+'\\n'\nopen(dst,'w',newline='\\n').write(out)\n# verify every retained token is identical to source\nok=all(','.join(l.split(',')[:2])==','.join(o.split(',')[:2]) for l,o in zip(lines,out.strip().split('\\n')))\nprint('rows',len(lines),'tokens_identical',ok)\nprint('src_sha256',hashlib.sha256(raw.encode()).hexdigest())\nprint('dst_sha256',hashlib.sha256(out.encode()).hexdigest(),'bytes',len(out.encode()))\nEOF",
+          "call_id": "call_00_KXEMzsmAwL67NKeNI5NB4228"
+        },
+        {
+          "classification": "read_or_byte_metadata_only",
+          "command": "ls -la /workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104353Z-5c159b838ec0/ 2>/dev/null; cat /workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104353Z-5c159b838ec0/*.json 2>/dev/null | head -40",
+          "call_id": "call_00_PjgCpn0CJ2Zpj5iItNGo8558"
+        },
+        {
+          "classification": "read_or_byte_metadata_only",
+          "command": "cd /tmp && timeout 60 gh run list --repo JFjifang/Acycle_Harness --limit 6 --json databaseId,status,conclusion,createdAt,displayTitle 2>&1 | head -40",
+          "call_id": "call_00_TWfVHFz2ER3cYAMbeqX18676"
+        },
+        {
+          "classification": "read_or_byte_metadata_only",
+          "command": "cd /workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs && echo \"== sedimentation_rate.csv ==\" && cat sedimentation_rate.csv && echo \"== control head/tail ==\" && head -4 control_points.csv && tail -3 control_points.csv",
+          "call_id": "call_00_kFTYKMLH8mhPFvePs91k8786"
+        },
+        {
+          "classification": "read_or_byte_metadata_only",
+          "command": "cd /workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs && echo \"== tracked_rate.csv ==\" && cat tracked_rate.csv && echo \"== coco.csv ==\" && cat /workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/coco.csv",
+          "call_id": "call_01_kuztBbyINkBIWTI7duqk4071"
+        }
+      ],
+      "present_events": [
+        {
+          "turn": 1,
+          "callId": "acycle-present-fee42635-4321-4f75-a2f6-7c03bca97d52",
+          "files": [
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolation.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/analysis.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/raw.csv",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/cleaned.csv",
+              "description": "Acycle original MATLAB output"
+            }
+          ]
+        },
+        {
+          "turn": 1,
+          "callId": "acycle-present-c371b456-837d-400f-a124-62c4f79a2438",
+          "files": [
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/evolution.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/spectrum.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/preprocessing.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs/analysis.mat",
+              "description": "Acycle original MATLAB output"
+            }
+          ]
+        },
+        {
+          "turn": 1,
+          "callId": "acycle-present-bf8944b3-f6d9-4946-874c-fdd148510fca",
+          "files": [
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/coco_figure_1.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/coco_figure_2.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/analysis.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs/input_metres.csv",
+              "description": "Acycle original MATLAB output"
+            }
+          ]
+        },
+        {
+          "turn": 1,
+          "callId": "acycle-present-e9fb9864-49f0-4fe8-97b2-2d67ddb65f0c",
+          "files": [
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/ecoco_figure_1.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/ecoco_figure_2.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/analysis.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs/input_metres.csv",
+              "description": "Acycle original MATLAB output"
+            }
+          ]
+        },
+        {
+          "turn": 1,
+          "callId": "acycle-present-5c174188-bd78-44af-8bc4-b522ca718e3a",
+          "files": [
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/tuning.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/analysis.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/tune-cleaned.csv",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs/control_points.csv",
+              "description": "Acycle original MATLAB output"
+            }
+          ]
+        },
+        {
+          "turn": 1,
+          "callId": "acycle-present-7bc023e0-0eaf-4639-8736-48ec3e588be1",
+          "files": [
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/evolution.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/spectrum.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/preprocessing.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs/analysis.mat",
+              "description": "Acycle original MATLAB output"
+            }
+          ]
+        }
+      ],
+      "original_file_refs": [
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:2bf45379bc577667a2c69847e4a9af380609ac1a56a5760a836fc24a733f85de",
+            "name": "20261025T102957Z-af924b44ffa5-interpolation.png",
+            "bytes": 647016
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+            "name": "20261025T102957Z-af924b44ffa5-raw.csv",
+            "bytes": 39212
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+            "name": "20261025T102957Z-af924b44ffa5-cleaned.csv",
+            "bytes": 39212
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+            "name": "20261025T102957Z-af924b44ffa5-interpolated.csv",
+            "bytes": 44357
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "name": "20261025T102957Z-af924b44ffa5-gaps.csv",
+            "bytes": 0
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:0e8cb6441ac4fd1590d4a339385c4f9a9aa502d6de631cf2c5a28108ae0ce821",
+            "name": "20261025T102957Z-af924b44ffa5-interpolation.fig",
+            "bytes": 72016
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:c03ca96768ff3624dfade501a5ca4c4f798320e5449be381d71a0202def0a091",
+            "name": "20261025T102957Z-af924b44ffa5-interpolation.pdf",
+            "bytes": 88903
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:c348ab7e9c693ebd21c768c0c198cfdd6c411741fcc1af579eebbdc6fe88e506",
+            "name": "20261025T102957Z-af924b44ffa5-analysis.mat",
+            "bytes": 81796
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:71251d3015758044c1ac20e16f806e27cbfb4f2a721dd4c96b96ccbedd549e5a",
+            "name": "20261025T102957Z-af924b44ffa5-provenance.json",
+            "bytes": 1613
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:207c2ee9269e29560ee86b902aea7bdd6a66666aaab3028f8ba68cd3ded72909",
+            "name": "20261025T103317Z-c23be0fceaeb-evolution.png",
+            "bytes": 439777
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:7ebde701d771adec43d91ad12394cb9f7fc17a00dd1751dd1ee805e078c44f52",
+            "name": "20261025T103317Z-c23be0fceaeb-spectrum.png",
+            "bytes": 102247
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:9d0e9a903a70a48547050806dfbd690dcebe3785d2439f7343e3495a816406cb",
+            "name": "20261025T103317Z-c23be0fceaeb-preprocessing.png",
+            "bytes": 139731
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:4e63771a52c6d7f1d5df7e703acd05c6ebad48716d2a62a848873ce4d716657f",
+            "name": "20261025T103317Z-c23be0fceaeb-filter.png",
+            "bytes": 150267
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+            "name": "20261025T103317Z-c23be0fceaeb-cleaned.csv",
+            "bytes": 44357
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+            "name": "20261025T103317Z-c23be0fceaeb-prepared.csv",
+            "bytes": 44357
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:2f392f6a4dac26038236458580ef629ee5c77ca564e1a8f2117b354fd3a4c84b",
+            "name": "20261025T103317Z-c23be0fceaeb-processed.csv",
+            "bytes": 109710
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:c9e4cd3795c8dce66bb742e64d65579521cadbbd50dd4a7af5b525ea675b8bab",
+            "name": "20261025T103317Z-c23be0fceaeb-spectrum_robust.csv",
+            "bytes": 759905
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:71c1da9fa37c949087eeeb8db52ae21d72acdec9e845eb2054a7e65e9939c6c4",
+            "name": "20261025T103317Z-c23be0fceaeb-spectrum_classic.csv",
+            "bytes": 436408
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:47bdad3979311f1ad08f85a23859e4f84dd501922b64f675da28eba5108a183b",
+            "name": "20261025T103317Z-c23be0fceaeb-evolution.csv",
+            "bytes": 1048948
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+            "name": "20261025T103317Z-c23be0fceaeb-filtered.csv",
+            "bytes": 111326
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:a23cc2e8bc73aba2966c089eadd6e3f14f14a39fd0bb736dcde07cd290d1926d",
+            "name": "20261025T103317Z-c23be0fceaeb-preprocessing.fig",
+            "bytes": 117436
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:08f312540117e5576b477ca65cf4ec06730b43f3365e80b065dd49da10daaaa2",
+            "name": "20261025T103317Z-c23be0fceaeb-spectrum.fig",
+            "bytes": 635557
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:d4e83fd33a3d46e457fcbf9ff8e73c7d3fd4d2b3fcef612c2f915544dfe0494a",
+            "name": "20261025T103317Z-c23be0fceaeb-evolution.fig",
+            "bytes": 450944
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:bdc254e411c75f03305cd76278056262298dac3a87aff40b84a6a47059c04dba",
+            "name": "20261025T103317Z-c23be0fceaeb-filter.fig",
+            "bytes": 83294
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:856a3f63632a3d716f8938e2292d04499487ee72e2a06d4f4bb5c0344328e991",
+            "name": "20261025T103317Z-c23be0fceaeb-analysis.mat",
+            "bytes": 1254138
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:f3c8983a93511d2a413203416ed3648f569d66f86b39d8cde00a6323cc617814",
+            "name": "20261025T103317Z-c23be0fceaeb-provenance.json",
+            "bytes": 3950
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:5b4232676d7433a1c73b58decda6eb3a403d90843c0a722810b440e29dfd9775",
+            "name": "20261025T103651Z-21f20570b673-coco_figure_1.png",
+            "bytes": 135646
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:e2aa4467e11b2349125405147065940482ff3d8132e73cab92232fa0b8b3ea73",
+            "name": "20261025T103651Z-21f20570b673-coco_figure_2.png",
+            "bytes": 53015
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+            "name": "20261025T103651Z-21f20570b673-input_metres.csv",
+            "bytes": 44357
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+            "name": "20261025T103651Z-21f20570b673-cleaned_metres.csv",
+            "bytes": 44357
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+            "name": "20261025T103651Z-21f20570b673-prepared_metres.csv",
+            "bytes": 67800
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+            "name": "20261025T103651Z-21f20570b673-detrended_input.csv",
+            "bytes": 67800
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:b9c70ec3e95e5ea8b05e0da0a171dcd533ed06e0ee3dc3c2c155f799bbe98f77",
+            "name": "20261025T103651Z-21f20570b673-preprocessing_trend.csv",
+            "bytes": 65804
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:11050a47719a7ea6b14033d8e8f916113213bdb71c6ca250833c6a2e1661016d",
+            "name": "20261025T103651Z-21f20570b673-orbital_periods_kyr.csv",
+            "bytes": 153
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:266bc094f43fbfaa46ad6b365cff4a769a35c53be8cf3228d7fb85e7356f43ad",
+            "name": "20261025T103651Z-21f20570b673-coco.csv",
+            "bytes": 1018
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:b66b57d773bda44a9e4e130e4658fa3ed6d640d375d27eb4b4150c9287a59708",
+            "name": "20261025T103651Z-21f20570b673-null_max.csv",
+            "bytes": 341
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:eaf4223beb1853e02bdd2c9015ffd130fa15501a84051509a8b33a328392145e",
+            "name": "20261025T103651Z-21f20570b673-coco_figure_1.fig",
+            "bytes": 22796
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:d954461d6b34e997e0aa5fad9f104fd7854fbd5f122b9d6796b968b9a92f018f",
+            "name": "20261025T103651Z-21f20570b673-coco_figure_1.pdf",
+            "bytes": 13655
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:e23b0236c61101fcc8c571d249c17130ad517abaa9f68f943ff16d1a8e84601f",
+            "name": "20261025T103651Z-21f20570b673-coco_figure_2.fig",
+            "bytes": 12024
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:8db656200ec64ea4e879f41a8c0b68321f10f71f3f42025a99f1f96bef4c6470",
+            "name": "20261025T103651Z-21f20570b673-coco_figure_2.pdf",
+            "bytes": 5007
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:4e4b879019395c570095dbc1d3d60fb64c7bbeadff8aa43844fa67bf4e87ac2d",
+            "name": "20261025T103651Z-21f20570b673-provenance.json",
+            "bytes": 22782
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:903ea6f10c005eb62f5980ff9915f5d59b3952dbac1dfbe7e00bcc14a8a04ea0",
+            "name": "20261025T103651Z-21f20570b673-details.json",
+            "bytes": 3274
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:7e2f13f71eab26bd07ae7e1a4ea15771c5fae16492fb671f5fff685cb72865b8",
+            "name": "20261025T103651Z-21f20570b673-analysis.mat",
+            "bytes": 181340
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:0270b11616f4b9d1e6a5ce3620ab1ef465ea94664bbc863963315ec1a203b976",
+            "name": "20261025T104008Z-943b58424d17-ecoco_figure_1.png",
+            "bytes": 132176
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:ebf6149ecf4c660027f3c759f5629f45db3e738becb18704637f8bc2a054f681",
+            "name": "20261025T104008Z-943b58424d17-ecoco_figure_2.png",
+            "bytes": 64384
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+            "name": "20261025T104008Z-943b58424d17-input_metres.csv",
+            "bytes": 44357
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+            "name": "20261025T104008Z-943b58424d17-cleaned_metres.csv",
+            "bytes": 44357
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+            "name": "20261025T104008Z-943b58424d17-prepared_metres.csv",
+            "bytes": 67800
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:380641833f6600409ea16b00208a0e9e322431817396f88494c9b543e94da4b1",
+            "name": "20261025T104008Z-943b58424d17-detrended_input.csv",
+            "bytes": 67800
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:b9c70ec3e95e5ea8b05e0da0a171dcd533ed06e0ee3dc3c2c155f799bbe98f77",
+            "name": "20261025T104008Z-943b58424d17-preprocessing_trend.csv",
+            "bytes": 65804
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:11050a47719a7ea6b14033d8e8f916113213bdb71c6ca250833c6a2e1661016d",
+            "name": "20261025T104008Z-943b58424d17-orbital_periods_kyr.csv",
+            "bytes": 153
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:5f77829d4718cc2297ba920ff9c9e887c1197180789fceb035b170855fb77745",
+            "name": "20261025T104008Z-943b58424d17-ecoco.csv",
+            "bytes": 12576
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:42d5d8aeab8758cbf39ff3e85d1405d3b964f0ccc4b0210ee8744b927ca97303",
+            "name": "20261025T104008Z-943b58424d17-tracked_rate.csv",
+            "bytes": 678
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:00fb01043e5443d244cf7628a71bbd17a29a711d827d387a11f8daa0e3bbd2ec",
+            "name": "20261025T104008Z-943b58424d17-ecoco_figure_1.fig",
+            "bytes": 61938
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:2dc330d9063654282cd4a338e4facda59d01d7f29f6f5841b8d9a8d03df84fc4",
+            "name": "20261025T104008Z-943b58424d17-ecoco_figure_1.pdf",
+            "bytes": 63258
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:e542d1b6a02b6b4ed77509a48eab36ea34cfc7ff991c814811832c1a01ff5776",
+            "name": "20261025T104008Z-943b58424d17-ecoco_figure_2.fig",
+            "bytes": 18969
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:6401865d7703340bcdf60e6f1c949099982b3068234159d5e936db96d26fd1ff",
+            "name": "20261025T104008Z-943b58424d17-ecoco_figure_2.pdf",
+            "bytes": 23622
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:c10a581eb90300e2f25ee88ffabcd9abac60073035fdc8334b357ca2b2e1e8f8",
+            "name": "20261025T104008Z-943b58424d17-provenance.json",
+            "bytes": 22783
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:df4e5bba889905207bf9e3fd745058ec5ec1f8ce91a6379ef3d350f49415eefa",
+            "name": "20261025T104008Z-943b58424d17-details.json",
+            "bytes": 37349
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:156dc9597a2e9fbeccdcdbdef80a640562e2bc35779c54aa8c6ec8c8c3a6598c",
+            "name": "20261025T104008Z-943b58424d17-analysis.mat",
+            "bytes": 183054
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:fc878dec83d8f648b5936f632b7835e1ed0964db20de088420276eb1f9991c43",
+            "name": "20261025T104547Z-631960023604-tuning.png",
+            "bytes": 189986
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff",
+            "name": "20261025T104547Z-631960023604-tune-cleaned.csv",
+            "bytes": 68532
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:7722e982dec7ac74be68887e4c3b3048044d7e246c80fc2e85068e5c0ceb89c2",
+            "name": "20261025T104547Z-631960023604-control_points.csv",
+            "bytes": 1409
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:5eff30d9e1469a3e662eeac73b72a7903333fa521e6b1a6b5c6ba302fe1599eb",
+            "name": "20261025T104547Z-631960023604-age_model.csv",
+            "bytes": 541
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:3c86a33d0a9f7c2b950fcf574f530eb0a46c8061ddb504bc35f46a47478e6658",
+            "name": "20261025T104547Z-631960023604-depth_age.csv",
+            "bytes": 56225
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:0df2894638b2bf77f091889b0c07ddc67fb4174637531a7deb6b71bbd5cad8d1",
+            "name": "20261025T104547Z-631960023604-tuned.csv",
+            "bytes": 76358
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:455bbbbbc155190a981713ae58417448001fac85e2581b052e750f0f67622a25",
+            "name": "20261025T104547Z-631960023604-sedimentation_rate.csv",
+            "bytes": 1301
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:b2bfb8052c303a44bf50af87fe005913d40718180f8964d0e8c344ad23a3d025",
+            "name": "20261025T104547Z-631960023604-tuning.fig",
+            "bytes": 60706
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:6c72fc07d5a4039f90bbcb48e733de49e9789fc21a2b67478ddb7b054104eca9",
+            "name": "20261025T104547Z-631960023604-tuning.pdf",
+            "bytes": 39811
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:1a93a8ec6ddf84bd6f40f1fd02d98beedd7f4a10d3eda3583894cb09091c0402",
+            "name": "20261025T104547Z-631960023604-analysis.mat",
+            "bytes": 122576
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:934ed79b879de54ce26b8dc1a76facdf8a354b5d8e3633c8ef116404f6b7ed60",
+            "name": "20261025T104547Z-631960023604-provenance.json",
+            "bytes": 2492
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:27618db3c9dc7ba94be279acb87481879f6683756df486811851168ad3a47fa7",
+            "name": "20261025T104951Z-73f1bcd33790-evolution.png",
+            "bytes": 414172
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:4b43fcee56c90f1614ae136256aeecd624e941bda79bb4fb19072449210b72b4",
+            "name": "20261025T104951Z-73f1bcd33790-spectrum.png",
+            "bytes": 97100
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:53160a74b306b0a854277e166a9ee051f11bc04cf0d8edad0cdc82555aff573b",
+            "name": "20261025T104951Z-73f1bcd33790-preprocessing.png",
+            "bytes": 150545
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:8ab308b3ebbe904376ec0de148c9076bcbbf3d5728d2fd89f212dbdf6baa9252",
+            "name": "20261025T104951Z-73f1bcd33790-cleaned.csv",
+            "bytes": 48068
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:be03ec62d18c8441695ac4a8679994fb8a7707102c80b0f3fcd294518c9d844b",
+            "name": "20261025T104951Z-73f1bcd33790-prepared.csv",
+            "bytes": 50586
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:61adb62069ffc98afb8652dbe5bc9e2944f5e99d462031a6ed7bdc3d997052b5",
+            "name": "20261025T104951Z-73f1bcd33790-processed.csv",
+            "bytes": 115266
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:b4f09b08af815c20b2c946251ade5a7a3b18a9907991fa026dce0ed9972c4ded",
+            "name": "20261025T104951Z-73f1bcd33790-spectrum_robust.csv",
+            "bytes": 909875
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:57da73379f8bf438fba8c5b4b803268a76bd4ed666ccb469ce2011b5de010b3a",
+            "name": "20261025T104951Z-73f1bcd33790-spectrum_classic.csv",
+            "bytes": 528514
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:6d5ddb9d6fe44dfdd1888c4260e0cb74386a1d96037bc401716cdde2535281e1",
+            "name": "20261025T104951Z-73f1bcd33790-evolution.csv",
+            "bytes": 644808
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:5eff30d9e1469a3e662eeac73b72a7903333fa521e6b1a6b5c6ba302fe1599eb",
+            "name": "20261025T104951Z-73f1bcd33790-age_model.csv",
+            "bytes": 541
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:684266d8c721e6aa1403d145413e66b012d16e6a181f84989604f0424e5914c5",
+            "name": "20261025T104951Z-73f1bcd33790-preprocessing.fig",
+            "bytes": 98967
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:e150f3d57ec1e9e959d0aca3e3b6a855d97b362c1c39920ee82bbd3b0da4c19b",
+            "name": "20261025T104951Z-73f1bcd33790-spectrum.fig",
+            "bytes": 749481
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:69abc3ffe5c187684d325ef280ce2901506a96e260de048ac26baf75d6262761",
+            "name": "20261025T104951Z-73f1bcd33790-evolution.fig",
+            "bytes": 279462
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:13bda44c2c0457b7e657d92a7a5433e5c4e5b5bb0ec18013d5aa9d997177902b",
+            "name": "20261025T104951Z-73f1bcd33790-analysis.mat",
+            "bytes": 908893
+          }
+        },
+        {
+          "type": "file",
+          "attachment": {
+            "attachmentId": "sha256:b1cfacc7e3d8dbd5847c2e6a0dddbe909b8b6921afa3092202c68c88f009cb4f",
+            "name": "20261025T104951Z-73f1bcd33790-provenance.json",
+            "bytes": 3932
+          }
+        }
+      ],
+      "image_refs": [
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:0b5ef2d9cd674e4385782ca238931e0186c9572640da5e567fed09e0379ff8c1",
+            "mediaType": "image/jpeg",
+            "width": 1878,
+            "height": 1196,
+            "bytes": 354043,
+            "name": "interpolation.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:ba2a98cd9d57c0a45b8ed849dc9221f9dd99c379a0d0e065fd9c28d4c8fc1bc2",
+            "mediaType": "image/jpeg",
+            "width": 1707,
+            "height": 1113,
+            "bytes": 405996,
+            "name": "evolution.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:2b53a75148a2695e7e2045312e74adaf910c6c30d82e9136723eab595385e1e6",
+            "mediaType": "image/jpeg",
+            "width": 831,
+            "height": 656,
+            "bytes": 100917,
+            "name": "spectrum.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:6e979ac2db3756155782acc5e0f94e6861068d322f0942dedcac0dc398ad2b32",
+            "mediaType": "image/jpeg",
+            "width": 1703,
+            "height": 1092,
+            "bytes": 170547,
+            "name": "preprocessing.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:8607eeeb5b038140d8469cc4d40ab47f8b1ff207dff94b6697f10477463e992c",
+            "mediaType": "image/jpeg",
+            "width": 1724,
+            "height": 1092,
+            "bytes": 154932,
+            "name": "filter.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:6517ac550d5a139f7c357afccbeedd61aa15b89e8fa094ac911880001466ddd3",
+            "mediaType": "image/jpeg",
+            "width": 2101,
+            "height": 1996,
+            "bytes": 213990,
+            "name": "coco_figure_1.png",
+            "originalDimensions": {
+              "width": 2145,
+              "height": 2038
+            }
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:cbb8fe9443ca01a2298d36038828b9beec25006a627fe27be3a16cd4ddc3e815",
+            "mediaType": "image/jpeg",
+            "width": 982,
+            "height": 843,
+            "bytes": 72066,
+            "name": "coco_figure_2.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:204e3faab2fe184d2ad3a40c851cca448e8f8fcd23f147828e9a0ed1b8019d35",
+            "mediaType": "image/jpeg",
+            "width": 2243,
+            "height": 1259,
+            "bytes": 189810,
+            "name": "ecoco_figure_1.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:33eaf70ac537fc659b0b6b0094cd4bf45ee5e2ac5850efe0f6e4036ff4d312e5",
+            "mediaType": "image/jpeg",
+            "width": 1167,
+            "height": 1097,
+            "bytes": 69022,
+            "name": "ecoco_figure_2.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:a58fa8f36933ffb64a5829aa9c34cc977cb3feaccd63c2cdff34f62c53b5275b",
+            "mediaType": "image/jpeg",
+            "width": 1912,
+            "height": 1797,
+            "bytes": 243396,
+            "name": "tuning.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:d32c964ed76a0b7b94f479ec437e1d09381308f376816cc5d68c86923ef9518e",
+            "mediaType": "image/jpeg",
+            "width": 1721,
+            "height": 1118,
+            "bytes": 320081,
+            "name": "evolution.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:b45d027376bdf45a839405b1408c3264fa943a334892727a513910494b8e75c9",
+            "mediaType": "image/jpeg",
+            "width": 845,
+            "height": 668,
+            "bytes": 89009,
+            "name": "spectrum.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:21bf7f074297b9bf96f6e45b29d497e0ed308266e505cd0d86dcca26e5fce4ae",
+            "mediaType": "image/jpeg",
+            "width": 1722,
+            "height": 1097,
+            "bytes": 172131,
+            "name": "preprocessing.png"
+          },
+          "offloaded": true
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:a58fa8f36933ffb64a5829aa9c34cc977cb3feaccd63c2cdff34f62c53b5275b",
+            "mediaType": "image/jpeg",
+            "bytes": 243396,
+            "width": 1912,
+            "height": 1797,
+            "name": "tuning.png"
+          }
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:204e3faab2fe184d2ad3a40c851cca448e8f8fcd23f147828e9a0ed1b8019d35",
+            "mediaType": "image/jpeg",
+            "bytes": 189810,
+            "width": 2243,
+            "height": 1259,
+            "name": "ecoco_figure_1.png"
+          }
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:2b53a75148a2695e7e2045312e74adaf910c6c30d82e9136723eab595385e1e6",
+            "mediaType": "image/jpeg",
+            "bytes": 100917,
+            "width": 831,
+            "height": 656,
+            "name": "spectrum.png"
+          }
+        },
+        {
+          "type": "image",
+          "attachment": {
+            "attachmentId": "sha256:b45d027376bdf45a839405b1408c3264fa943a334892727a513910494b8e75c9",
+            "mediaType": "image/jpeg",
+            "bytes": 89009,
+            "width": 845,
+            "height": 668,
+            "name": "spectrum.png"
+          }
+        }
+      ],
+      "final_response": null,
+      "user_visible_final_delivered": "failed",
+      "workflow": {
+        "stage_run_ids": {
+          "interpolate_pro": "20261025T102957Z-af924b44ffa5",
+          "depth_diagnostics": "20261025T103317Z-c23be0fceaeb",
+          "depth_filter": "20261025T103317Z-c23be0fceaeb",
+          "coco": "20261025T103651Z-21f20570b673",
+          "ecoco": "20261025T104008Z-943b58424d17",
+          "tune": "20261025T104547Z-631960023604",
+          "time_diagnostics": "20261025T104951Z-73f1bcd33790"
+        },
+        "checks": [
+          {
+            "id": "interpolate_pro_completed",
+            "status": "passed",
+            "detail": "20261025T102957Z-af924b44ffa5"
+          },
+          {
+            "id": "interpolate_pro_required_saved_products",
+            "status": "passed",
+            "detail": [
+              "interpolated_csv",
+              "diagnostic_png",
+              "diagnostic_fig",
+              "analysis_mat"
+            ]
+          },
+          {
+            "id": "interpolate_pro_public_preset_requested",
+            "status": "passed",
+            "detail": {}
+          },
+          {
+            "id": "depth_diagnostics_completed",
+            "status": "passed",
+            "detail": "20261025T103317Z-c23be0fceaeb"
+          },
+          {
+            "id": "depth_diagnostics_required_saved_products",
+            "status": "passed",
+            "detail": [
+              "processed_csv",
+              "spectrum_png",
+              "robust_spectrum_csv",
+              "evolution_png",
+              "evolution_csv",
+              "analysis_mat"
+            ]
+          },
+          {
+            "id": "depth_diagnostics_public_preset_requested",
+            "status": "passed",
+            "detail": {}
+          },
+          {
+            "id": "depth_filter_completed",
+            "status": "passed",
+            "detail": "20261025T103317Z-c23be0fceaeb"
+          },
+          {
+            "id": "depth_filter_required_saved_products",
+            "status": "passed",
+            "detail": [
+              "filtered_csv"
+            ]
+          },
+          {
+            "id": "depth_filter_public_preset_requested",
+            "status": "passed",
+            "detail": {}
+          },
+          {
+            "id": "coco_completed",
+            "status": "passed",
+            "detail": "20261025T103651Z-21f20570b673"
+          },
+          {
+            "id": "coco_matlab_figure_present",
+            "status": "passed"
+          },
+          {
+            "id": "coco_required_saved_products",
+            "status": "passed",
+            "detail": [
+              "coco_csv",
+              "null_max_csv",
+              "details_json",
+              "analysis_mat"
+            ]
+          },
+          {
+            "id": "coco_public_preset_requested",
+            "status": "passed",
+            "detail": {}
+          },
+          {
+            "id": "ecoco_completed",
+            "status": "passed",
+            "detail": "20261025T104008Z-943b58424d17"
+          },
+          {
+            "id": "ecoco_matlab_figure_present",
+            "status": "passed"
+          },
+          {
+            "id": "ecoco_required_saved_products",
+            "status": "passed",
+            "detail": [
+              "ecoco_csv",
+              "tracked_rate_csv",
+              "details_json",
+              "analysis_mat"
+            ]
+          },
+          {
+            "id": "ecoco_public_preset_requested",
+            "status": "passed",
+            "detail": {}
+          },
+          {
+            "id": "tune_completed",
+            "status": "passed",
+            "detail": "20261025T104547Z-631960023604"
+          },
+          {
+            "id": "tune_required_saved_products",
+            "status": "passed",
+            "detail": [
+              "age_model_csv",
+              "control_points_csv",
+              "tuned_csv",
+              "diagnostic_png",
+              "diagnostic_fig",
+              "analysis_mat"
+            ]
+          },
+          {
+            "id": "tune_public_preset_requested",
+            "status": "passed",
+            "detail": {}
+          },
+          {
+            "id": "time_diagnostics_completed",
+            "status": "passed",
+            "detail": "20261025T104951Z-73f1bcd33790"
+          },
+          {
+            "id": "time_diagnostics_required_saved_products",
+            "status": "passed",
+            "detail": [
+              "processed_csv",
+              "spectrum_png",
+              "robust_spectrum_csv",
+              "evolution_png",
+              "evolution_csv",
+              "analysis_mat"
+            ]
+          },
+          {
+            "id": "time_diagnostics_public_preset_requested",
+            "status": "passed",
+            "detail": {}
+          },
+          {
+            "id": "pro_consumes_original_raw_bytes",
+            "status": "passed"
+          },
+          {
+            "id": "depth_diagnostics_uses_this_pro_artifact",
+            "status": "passed"
+          },
+          {
+            "id": "depth_filter_uses_this_pro_artifact",
+            "status": "passed"
+          },
+          {
+            "id": "coco_uses_this_pro_artifact",
+            "status": "passed"
+          },
+          {
+            "id": "ecoco_uses_this_pro_artifact",
+            "status": "passed"
+          },
+          {
+            "id": "tune_consumes_actual_filtered_file",
+            "status": "failed"
+          },
+          {
+            "id": "time_diagnostic_uses_original_proxy",
+            "status": "passed"
+          },
+          {
+            "id": "time_diagnostic_uses_this_tuning_control_hash",
+            "status": "passed"
+          },
+          {
+            "id": "time_model_matches_saved_matlab_controls",
+            "status": "passed"
+          },
+          {
+            "id": "time_trim_matches_saved_valid_range",
+            "status": "passed"
+          }
+        ],
+        "required_products_and_lineage": "failed",
+        "required_products": "passed",
+        "transport_projection": {
+          "status": "exact_two_column_tokens_preserved",
+          "source_run_id": "20261025T103317Z-c23be0fceaeb",
+          "target_run_id": "20261025T104547Z-631960023604",
+          "source_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+          "target_sha256": "b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff",
+          "source_text_lines": 2344,
+          "target_text_lines": 2344,
+          "direct_file_hash_and_automatic_lineage_preserved": false,
+          "note": "Independent byte-token audit of a model-created transport projection; it does not erase the failed attempt or claim that original whole-file bytes were retained as tuning input."
+        },
+        "failed_attempt_run_ids": [
+          "20261025T104334Z-86b8add5581c",
+          "20261025T104353Z-5c159b838ec0"
+        ],
+        "additional_completed_runs_for_review": []
+      },
+      "original_uploaded_file_in_session": "passed",
+      "authorized_attachment_import_receipt": "passed"
+    }
+  ],
+  "interpretation_review": {
+    "schema_version": 1,
+    "status": "conversation_failed_with_scientific_products_preserved",
+    "scope": "Initial attempt before GitHub intermediate-artifact reference fix. A preset-assisted public demo; not blind method discovery.",
+    "dimensions": {
+      "conversation_completion": {
+        "status": "failed",
+        "reason": "The model requested a ninth scientific call (trough phase sensitivity) before a final answer. The configured first-turn budget was eight; the runner stopped and no final_response was emitted. Reliability assessment could reasonably include sensitivity, so this is a budget/completion failure, not by itself a scientific error or unauthorized action."
+      },
+      "required_matlab_products": {
+        "status": "passed",
+        "reason": "Six required scientific stages completed: Interpolation Pro, combined depth MTM/EvoFFT/filter, COCO, eCOCO, tuning, and analysis of the original proxy under saved tuning controls."
+      },
+      "stop_after_failed_scientific_call": {
+        "status": "failed",
+        "reason": "After a structured failed tuning run, the model continued with a two-column projection and subsequent submissions, contrary to the explicit product stop-on-failed-run policy. The second local failure was HTTP 503; a later successful remote orphan was independently recorded but never delivered to this Session or used to replace its failure."
+      },
+      "matlab_only_scientific_processing": {
+        "status": "passed_for_observed_commands",
+        "reason": "The two Python commands inspect gzip/base64 payload sizes and perform a byte/token-preserving first-two-column projection. They do not parse numeric values, calculate scientific QA, determine extrema, interpolate, plot or replace MATLAB methods. All six successful scientific results came from GitHub Actions MATLAB."
+      },
+      "direct_filtered_file_lineage": {
+        "status": "failed",
+        "reason": "The successful tuning input was a model-created two-column projection rather than the full filtered.csv; the original whole-file hash and automatic run-output lineage were lost. The evaluator independently verifies exact first-two-column token equality and equal text-line counts, without numerical recomputation."
+      },
+      "original_proxy_for_time_analysis": {
+        "status": "passed",
+        "reason": "The final successful time-domain analyze uses the original uploaded raw proxy SHA, with the successful tuning run reference, saved age-model SHA, control array and valid trim range."
+      },
+      "interpretation": {
+        "status": "not_established_no_final_response",
+        "reason": "No completed user-facing final answer exists for this attempt. Interim progress text is retained in the public trace; it is not relabeled as a final report."
+      },
+      "client_rendering": {
+        "status": "separate_web_acceptance",
+        "reason": "Image/file/present evidence is retained here. Actual main Chat rendering, lightbox, refresh and byte downloads are assessed by the separate Web receipts, not inferred from SDK completion."
+      }
+    },
+    "scientific_limits_from_saved_matlab_results": [
+      "The exploratory full-record COCO maximum is at 7 cm/kyr; the saved minimum rate-global p is 0.95. This is not evidence for a validated sedimentation rate.",
+      "The 405 kyr relative chronology is an imposed public prior. Its tuned spectral appearance is not independent confirmation; 210 Ma is an approximate orbital-target lookup age.",
+      "The 600/100 eCOCO map uses 14 complete, unpadded windows; rate-global correction applies within windows and is not map-wide. EvoFFT and eCOCO do not share the same edge-window policy.",
+      "The 19 simulations and 5 kyr interpolation step do not establish publication-level significance or independent temporal resolution."
+    ],
+    "orphan_evidence": "validation/v0.5/orphan-run.json",
+    "no_private_reasoning_reviewed_or_exported": true,
+    "last_user_visible_interim_message": {
+      "event_seq": 174,
+      "text": "核心链路已全部完成。为评估可靠性，我再做一个**相位敏感性检查**（波谷相位分支），仍从同一滤波文件出发。"
+    },
+    "last_user_visible_interim_message_is_final_response": false
+  },
+  "client_pixel_rendering": "not_established_by_headless_SDK; use separate Web live receipt",
+  "original_attachment_sha256": "passed",
+  "model_visible_catalog": {
+    "acycle_tools": 13,
+    "acycle_skills": 10,
+    "public_demo_skill": true
+  },
+  "all_run_ids": [
+    "20261025T102957Z-af924b44ffa5",
+    "20261025T103317Z-c23be0fceaeb",
+    "20261025T103651Z-21f20570b673",
+    "20261025T104008Z-943b58424d17",
+    "20261025T104334Z-86b8add5581c",
+    "20261025T104353Z-5c159b838ec0",
+    "20261025T104547Z-631960023604",
+    "20261025T104951Z-73f1bcd33790"
+  ],
+  "model_image_transport": {
+    "status": "image_upload_observed",
+    "unoffloaded_image_ids": [
+      "sha256:204e3faab2fe184d2ad3a40c851cca448e8f8fcd23f147828e9a0ed1b8019d35",
+      "sha256:2b53a75148a2695e7e2045312e74adaf910c6c30d82e9136723eab595385e1e6",
+      "sha256:a58fa8f36933ffb64a5829aa9c34cc977cb3feaccd63c2cdff34f62c53b5275b",
+      "sha256:b45d027376bdf45a839405b1408c3264fa943a334892727a513910494b8e75c9"
+    ],
+    "uploaded_matching_ids": [
+      "sha256:204e3faab2fe184d2ad3a40c851cca448e8f8fcd23f147828e9a0ed1b8019d35",
+      "sha256:2b53a75148a2695e7e2045312e74adaf910c6c30d82e9136723eab595385e1e6",
+      "sha256:a58fa8f36933ffb64a5829aa9c34cc977cb3feaccd63c2cdff34f62c53b5275b",
+      "sha256:b45d027376bdf45a839405b1408c3264fa943a334892727a513910494b8e75c9"
+    ],
+    "scope": "Official read_image image blocks and Files API receipts establish pixel transport, not visual interpretation correctness or browser rendering."
+  },
+  "separate_user_turns_same_session": {
+    "status": "passed",
+    "actual_user_turns": 1,
+    "scope": "Only executed user turns; unexecuted optional scenario messages are not counted as passed."
+  },
+  "no_overall_pass_inferred": true
+}

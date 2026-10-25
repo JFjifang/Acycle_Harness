@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "supersedes_without_deleting": "portable-evidence-check.json",
+  "initial_attempt": {
+    "status": "passed",
+    "portable_report": "evaluation/initial-attempt-v2.json",
+    "evidence_root": "scientific-runs/initial-attempt",
+    "scope": "All fields except generated timestamp match live files; historical complete role set and first-return input/artifact hashes checked. No scientific recomputation."
+  },
+  "fixedtransport-first-turn": {
+    "status": "passed",
+    "portable_report": "evaluation/fixedtransport-first-turn.json",
+    "evidence_root": "scientific-runs/fixedtransport",
+    "scope": "All report fields except evaluation timestamp match live files; full historical artifact roles and first-return input/artifact hashes are checked."
+  },
+  "fixedtransport-two-turn": {
+    "status": "passed",
+    "portable_report": "evaluation/fixedtransport-two-turn.json",
+    "evidence_root": "scientific-runs/fixedtransport",
+    "scope": "All report fields except evaluation timestamp match live files; full historical artifact roles and first-return input/artifact hashes are checked."
+  }
+}

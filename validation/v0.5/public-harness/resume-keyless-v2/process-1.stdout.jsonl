@@ -1,0 +1,5 @@
+{"event":"tool_call","case":"keyless-sdk-infrastructure","turn":1,"name":"skill"}
+{"event":"tool_call","case":"keyless-sdk-infrastructure","turn":1,"name":"acycle_capabilities"}
+{"event":"tool_call","case":"keyless-sdk-infrastructure","turn":1,"name":"acycle_import_attachment"}
+{"event":"user_turn_completed","case":"keyless-sdk-infrastructure","turn":1,"tools":["skill","acycle_capabilities","acycle_import_attachment"],"images":0}
+{"status":"completed","case":"keyless-sdk-infrastructure","mode":"mock","user_turns":1,"receipt":"/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2/first-process.json"}

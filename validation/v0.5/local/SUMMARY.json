@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "created_at_utc": "2026-10-25T11:43:36.079098+00:00",
+  "scope": "Installed wheel/native release plus private official Web actual-agent composition, generated Codex config and synthetic startup-failure retention; not a real MATLAB, model API or macOS execution test.",
+  "version": "0.5.0",
+  "harness_version": "0.2.1-rc.3",
+  "checks": {
+    "installed_release": "passed",
+    "generated_codex_mcp": "passed",
+    "standard_actual_agent": "passed",
+    "newark_actual_agent": "passed"
+  },
+  "shared_tools": 12,
+  "native_tools": 13,
+  "acycle_skills": 10,
+  "standard_total_skills": 10,
+  "newark_demo_total_skills": 11,
+  "environment": {
+    "python": "/workspace/acycle-release-check-v05/bin/python",
+    "native_plugin": "/workspace/acycle-plugin-check-v05/package/index.mjs",
+    "working_directory": "/workspace/acycle-local-check-v05/workspace",
+    "pythonpath_removed": true,
+    "pythonhome_removed": true,
+    "api_key_removed": true,
+    "official_runtime": "Existing exact 0.2.1-rc.3 official packages reused through private node_modules symlinks; no fresh npm network install claim."
+  },
+  "model_api_called": false,
+  "real_matlab_executed": false,
+  "global_or_desktop_configuration_modified": false,
+  "release_archives": {
+    "acycle_deepseek-0.5.0-py3-none-any.whl": "eddfd28e172a56441525d1a5a20d846a53f4e5be1e2c9c46dd295e11a9e1f383",
+    "dsh-acycle-0.5.0.tgz": "53cf77151f57de50e9d42f553ae87b82a6f7da5eeff3aea8e2b2e8b7c249f6d7"
+  },
+  "local_implementation_sha256": {
+    "local/check_harness.py": "462b8277c8d69b4ce30e5457437fe7ed3bec6ad0bd9072b635de76e4d1b1ad28",
+    "local/deploy_harness.py": "217917c4465fd8eeed7ea14380b110ebd4014c4c91ced28b9653fcabf9c77c5e",
+    "local/doctor.py": "c0e2d70a5713888f6f45d6621478d20b0ffee71e12af4914c532624042456d7e",
+    "local/harness_probe.mjs": "7faad57d7781af0b6edaaef3b8783cf73d3de07c92885866067a96098afee936",
+    "local/install_check.py": "087bd8eb90372a4f63e752b669121f14ac24829d0c134b701c3975a287d4ee61",
+    "local/launch_harness.py": "562d63f7d1ef36d1fb7ccf470f444148138618e4eb9a60e838c721801e3a9576",
+    "local/render_config.py": "aad065739ac9e1eed9e61ec7f81278e464ba263a355c30afcb3a87b0506a45f6",
+    "local/smoke.py": "4213cc57ecfb3acece4c4c590475d49af1e6c082cc00f3ca1d97354119621987"
+  },
+  "notes": [
+    "The synthetic doctor fixture intentionally exits 7; its raw doctor receipt is failed, and the failure-preservation check passes.",
+    "No scientific result was computed; smoke dry-run parameter names and required fields matched the 12-tool schema.",
+    "Evidence contains historical validation-machine paths; regenerate deployment on the local machine instead of copying these paths.",
+    "Final installed-package and actual-agent checks were rerun after exact-byte GitHub artifact-reference and bounded GET/single-POST recovery changes. These keyless local checks do not execute the GitHub remote workflow or alter its live acceptance conclusions.",
+    "Release metadata verification after 4c184e1 retained-artifact-reference steering fix: all four installed-package/config/actual-agent checks rerun with final wheel hash. Code, docs, scientific/live conclusions, prior receipts and prior synthetic startup evidence were not changed."
+  ],
+  "source_revision": "4c184e1ae86fcfbecf7cb5fa4ea0fd01771034c7",
+  "previous_summary": "SUMMARY-cc3cdcb.json",
+  "check_receipts": {
+    "installed_release": "install-check-release.json",
+    "generated_codex_mcp": "generated-mcp-release.json",
+    "standard_actual_agent": "agent-composition-release.json",
+    "newark_actual_agent": "newark-agent-composition-release.json"
+  },
+  "prior_unchanged_failure_guard_check": {
+    "receipt": "doctor-failure-preservation-check.json",
+    "status": "passed",
+    "note": "Retained prior synthetic-failure check. No real MATLAB was started or retried after the transport-only rebuild."
+  },
+  "public_demo_sources": [
+    {
+      "relative_path": "demo/newark-0.5.0/manifest.json",
+      "sha256": "c16fa49fc6b4feb4f83baaac0c61dbf7388fb0b793452cb9356fbb2a210954d4"
+    },
+    {
+      "relative_path": "demo/newark-0.5.0/SOURCES.md",
+      "sha256": "8ab5d2bc641454df05ca9f51f224e8db168ad36b5c28d727db073a384a1081d8"
+    },
+    {
+      "relative_path": "demo/newark-0.5.0/skills/newark-relative-time-demo/SKILL.md",
+      "sha256": "c39153a5ebbd5c872852e5b33090b88d3f0df517e2d6e9aa9c4ee65a99a5ad58"
+    },
+    {
+      "relative_path": "scripts/harness_conversation_support.mjs",
+      "sha256": "e519c122d2ba1a29844518138c31cb31ee87190cc865694de79ad11b14db1524"
+    }
+  ]
+}

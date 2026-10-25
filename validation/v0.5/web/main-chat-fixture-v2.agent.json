@@ -1,0 +1,137 @@
+{
+  "mode": "fixture",
+  "fixture_adapter": true,
+  "scientific_calls": [],
+  "session_id": "session-9c2d5ee8-8f37-4dad-bcd8-070580ffc6ce",
+  "preset": "acycle",
+  "headers": [
+    {
+      "config": {
+        "provider": "acycle-ui-fixture",
+        "model": "fixture-text"
+      },
+      "tool_names": [
+        "acycle_analyze",
+        "acycle_capabilities",
+        "acycle_coco",
+        "acycle_compare",
+        "acycle_ecoco",
+        "acycle_get_run",
+        "acycle_import_attachment",
+        "acycle_inspect",
+        "acycle_interpolate_pro",
+        "acycle_rerun",
+        "acycle_sensitivity",
+        "acycle_swa",
+        "acycle_tune",
+        "ask_user_question",
+        "present",
+        "read",
+        "read_image",
+        "skill",
+        "working_directory"
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "name": "skill",
+      "arguments": "{\"name\":\"acycle-mini-robot\"}"
+    },
+    {
+      "name": "acycle_get_run",
+      "arguments": "{\"run_id\":\"20261025T071158Z-b0f32143454c\"}"
+    }
+  ],
+  "image_results": [
+    {
+      "attachment": {
+        "attachmentId": "sha256:93ff8ae513c5d7d52879e194c3c449d8119b68a3df035a7c1653640dabfca6d1",
+        "mediaType": "image/jpeg",
+        "width": 1707,
+        "height": 1113,
+        "bytes": 460810,
+        "name": "evolution.png"
+      },
+      "offloaded": true
+    },
+    {
+      "attachment": {
+        "attachmentId": "sha256:3f22483b64ef12acf185d5ac61dd5ff940c72ace05585ade7570e58252eb3eff",
+        "mediaType": "image/jpeg",
+        "width": 831,
+        "height": 656,
+        "bytes": 100943,
+        "name": "spectrum.png"
+      },
+      "offloaded": true
+    },
+    {
+      "attachment": {
+        "attachmentId": "sha256:6e979ac2db3756155782acc5e0f94e6861068d322f0942dedcac0dc398ad2b32",
+        "mediaType": "image/jpeg",
+        "width": 1703,
+        "height": 1092,
+        "bytes": 170547,
+        "name": "preprocessing.png"
+      },
+      "offloaded": true
+    }
+  ],
+  "final_text": "UI acceptance fixture using existing MATLAB results. This text-only scripted adapter does not inspect pixels or perform scientific calculations. Run: 20261025T071158Z-b0f32143454c.\n\n![20261025T071158Z-b0f32143454c: evolution_png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png>)\n\n![20261025T071158Z-b0f32143454c: spectrum_png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png>)\n\n![20261025T071158Z-b0f32143454c: preprocess_png](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.png>)\n\n[20261025T071158Z-b0f32143454c: cleaned_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/cleaned.csv>)\n\n[20261025T071158Z-b0f32143454c: prepared_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/prepared.csv>)\n\n[20261025T071158Z-b0f32143454c: processed_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/processed.csv>)\n\n[20261025T071158Z-b0f32143454c: robust_spectrum_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum_robust.csv>)\n\n[20261025T071158Z-b0f32143454c: classic_spectrum_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum_classic.csv>)\n\n[20261025T071158Z-b0f32143454c: evolution_csv](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.csv>)\n\n[20261025T071158Z-b0f32143454c: preprocess_fig](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.fig>)\n\n[20261025T071158Z-b0f32143454c: spectrum_fig](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.fig>)\n\n[20261025T071158Z-b0f32143454c: evolution_fig](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.fig>)\n\n[20261025T071158Z-b0f32143454c: analysis_mat](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/analysis.mat>)\n\n[20261025T071158Z-b0f32143454c: provenance_json](</workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/provenance.json>)",
+  "completed": true,
+  "deepseek_catalog": {
+    "provider": "deepseek-official",
+    "id": "deepseek-flash",
+    "name": "DeepSeek Flash",
+    "inputModalities": [
+      "text",
+      "image"
+    ],
+    "context": {
+      "contextWindow": 1000000
+    },
+    "defaultMaxTokens": 256000,
+    "systemPromptUpdate": "in-history",
+    "reasoning": {
+      "efforts": [
+        {
+          "id": "off",
+          "name": "Off",
+          "description": "Use for simple tasks that do not need reasoning."
+        },
+        {
+          "id": "low",
+          "name": "Low",
+          "description": "Prefer for routine or latency-sensitive tasks."
+        },
+        {
+          "id": "high",
+          "name": "High",
+          "description": "The default balance for most tasks."
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "description": "Reserve for the hardest quality-first tasks."
+        }
+      ],
+      "defaultEffort": "high"
+    }
+  },
+  "acycle_persona": true,
+  "acycle_workflow_policy": true,
+  "skill_names_in_prompt": [
+    "acycle-ui-fixture"
+  ],
+  "actual_agent_skills": [
+    "acycle-age-model",
+    "acycle-coco",
+    "acycle-intake",
+    "acycle-mini-robot",
+    "acycle-reproduction",
+    "acycle-sensitivity-steering",
+    "acycle-spectral-interpretation",
+    "acycle-swa"
+  ]
+}

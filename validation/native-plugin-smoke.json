@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "dsh_tools_version": "0.2.1-rc.3",
-  "plugin_path": "/workspace/acycle-plugin-check-v04/package/index.mjs",
+  "plugin_path": "/workspace/acycle-plugin-check-v05/package/index.mjs",
   "registered_tools": [
     "acycle_capabilities",
     "acycle_inspect",
@@ -9,6 +9,8 @@
     "acycle_swa",
     "acycle_coco",
     "acycle_ecoco",
+    "acycle_interpolate_pro",
+    "acycle_tune",
     "acycle_rerun",
     "acycle_sensitivity",
     "acycle_compare",
@@ -17,8 +19,10 @@
   ],
   "registered_skills": [
     "acycle-age-model",
+    "acycle-astronomical-tuning",
     "acycle-coco",
     "acycle-intake",
+    "acycle-interpolation-pro",
     "acycle-mini-robot",
     "acycle-reproduction",
     "acycle-sensitivity-steering",
@@ -26,7 +30,7 @@
     "acycle-swa"
   ],
   "capabilities": {
-    "version": "0.4.0",
+    "version": "0.5.0",
     "scientific_backend": "MATLAB/Acycle",
     "backend": "local",
     "matlab_available": false,
@@ -43,7 +47,9 @@
       "age_model",
       "swa",
       "coco",
-      "ecoco"
+      "ecoco",
+      "interpolate_pro",
+      "tune"
     ],
     "limits": [
       "pointwise significance is not proof of astronomical forcing",

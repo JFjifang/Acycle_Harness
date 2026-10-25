@@ -1,0 +1,3144 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-25T10:29:00.414889+00:00",
+  "repository": "JFjifang/Acycle_Harness",
+  "run_id": 40184589052,
+  "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40184589052",
+  "commit": "b9d064d4918ce01c6f05ba3f84c77f1054d7af65",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "completedAt": "2026-10-25T10:27:25Z",
+      "conclusion": "success",
+      "databaseId": 121142574170,
+      "name": "matlab",
+      "startedAt": "2026-10-25T10:23:42Z",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install Python orchestration",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Python contract tests",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run matlab-actions/setup-matlab@v2",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Prepare remote request",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Execute MATLAB request",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "MATLAB numerical and example validation",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Upload MATLAB outputs",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Upload compact validation report",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Upload numerical validation tables",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run matlab-actions/setup-matlab@v2",
+          "number": 23,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 24,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 25,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 26,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 27,
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40184589052/job/121142574170"
+    }
+  ],
+  "matlab_test_counts": {
+    "passed": 38,
+    "failed": 0,
+    "incomplete": 0
+  },
+  "publication_checks": [
+    {
+      "case": "paper-cambrian-ecoco-199",
+      "publication_criterion": "not_claimed",
+      "evidence_file": "paper-cambrian-ecoco-199/published-comparison.json"
+    },
+    {
+      "case": "paper-petm-coco-2000",
+      "publication_criterion": "failed",
+      "evidence_file": "paper-petm-coco-2000/published-comparison.json"
+    },
+    {
+      "case": "paper-petm-published-protocol-coco-2000",
+      "publication_criterion": "failed",
+      "evidence_file": "paper-petm-published-protocol-coco-2000/published-comparison.json"
+    },
+    {
+      "case": "swa-lavernock-publication",
+      "publication_criterion": "failed",
+      "evidence_file": "swa-lavernock-publication/publication-comparison.json"
+    }
+  ],
+  "output_directory": "validation/v0.5/matlab",
+  "archives": [
+    {
+      "artifact_id": 12595232905,
+      "artifact_name": "acycle-validation-data",
+      "size_bytes": 16311868,
+      "sha256": "bc4182da7295312e0d0a259651c5bf46f718a793aaee8ba4f6f956b21caf562f",
+      "github_digest": "sha256:bc4182da7295312e0d0a259651c5bf46f718a793aaee8ba4f6f956b21caf562f",
+      "digest_matches": true,
+      "source_zip_path": "/workspace/attachments/ce8b88c3-b83a-4f72-9db5-657c45b2dac4/v05-acycle-validation-data.zip",
+      "transport": "github_connector_to_sediment_download_file"
+    },
+    {
+      "artifact_id": 12595189868,
+      "artifact_name": "acycle-validation-report",
+      "size_bytes": 12381340,
+      "sha256": "d4d773553e27a75c8645f73922ce7072282a170622e110f87dc4cd6292069c9e",
+      "github_digest": "sha256:d4d773553e27a75c8645f73922ce7072282a170622e110f87dc4cd6292069c9e",
+      "digest_matches": true,
+      "source_zip_path": "/workspace/attachments/5660ff8f-cc6f-41a8-9aeb-2067d0ca672e/v05-acycle-validation-report.zip",
+      "transport": "github_connector_to_sediment_download_file"
+    }
+  ],
+  "not_downloaded": [
+    {
+      "artifact_id": 12596095607,
+      "artifact_name": "acycle-output-validation",
+      "size_bytes": 68388491,
+      "github_digest": "sha256:340705d4eda0b328900586da52d560e68617d19cec72c9de171499a4145495de",
+      "reason": "Full MAT/FIG artifact exceeds Sediment 32 MiB download limit; compact JSON/PNG/JUnit and separate numerical CSV artifacts retained."
+    }
+  ],
+  "files": [
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/cleaned.csv",
+      "bytes": 12880,
+      "sha256": "d7c9ddbe32c7a9b205c1481b1cbdc9a57c4750391e02144560c8ec6034e9e9c1"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/evolution.csv",
+      "bytes": 3033984,
+      "sha256": "0cd6dba799bf52466a6803d7f481e5cd1ba248a8d4b3e4669b5f0d2c353c0f7a"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/evolution.png",
+      "bytes": 631352,
+      "sha256": "708872ff6b1aae8a2d3a1b7e44c7a693bffdadc5bcd491b228c56af6be8a2e4d"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/prepared.csv",
+      "bytes": 36041,
+      "sha256": "76bcf186a7fd934163eaeea86ff35c2e651e56fab657fd7cf14f39e35238300d"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/preprocessing.png",
+      "bytes": 156850,
+      "sha256": "9b284bc6ded82703e36476aa6e1ab39b6b38785ca3df007f684ced549b29e7c1"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/processed.csv",
+      "bytes": 54725,
+      "sha256": "591fc8e5a69f5349d98e704c7848906159d1991e14ebe4b6e5caa12d2d51adb9"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/provenance.json",
+      "bytes": 3710,
+      "sha256": "e21821d01d0da6e49668e659bfacd13901e91133e7a6c6303fea76698fbb99ac"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/request.json",
+      "bytes": 387,
+      "sha256": "0af64ef87a1c574b185562d18b6c94599ef68590e77bc6266be14a7a3f1d54ad"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/response.json",
+      "bytes": 8642,
+      "sha256": "8fe6ad88aa94796a85b2dab58f70fa4f7b8a0772f3d0f64a66f5b74d03a9b452"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/spectrum.png",
+      "bytes": 88907,
+      "sha256": "195cff9f0a0c2b083b26a6d021752f03c8e3eba9f545f190753cd67dfc0834da"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/spectrum_classic.csv",
+      "bytes": 182263,
+      "sha256": "15950ddce60faf9361e7611746d92660709ea13ace34e1059dfa3b1dcca4ccb7"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-Guandao2AnisianGR/spectrum_robust.csv",
+      "bytes": 318038,
+      "sha256": "3d775c207dc3dc33262e6ecafc4e0f8795987a4c5b211d9ec05470cbe4276dbf"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/cleaned.csv",
+      "bytes": 32916,
+      "sha256": "3da9264c5a06f57d0494f0d526fa1c00eab14add8012c2aa0a1216f275562f58"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/evolution.csv",
+      "bytes": 6158224,
+      "sha256": "ec579ee7dc6c66306e0cd066cfb1a6b9e833fb08defa6479df00a669d2e57ce7"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/evolution.png",
+      "bytes": 453909,
+      "sha256": "7c040e03d3fc9ce3bb9bea063546f13a8c7f4819929b234784411c03dba2af87"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/prepared.csv",
+      "bytes": 32916,
+      "sha256": "3da9264c5a06f57d0494f0d526fa1c00eab14add8012c2aa0a1216f275562f58"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/preprocessing.png",
+      "bytes": 215511,
+      "sha256": "1dd476a70b9880cad80f91f68450c191de4d40797ef27bfe60151b3b79d5ebb5"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/processed.csv",
+      "bytes": 82541,
+      "sha256": "569a878f41cc955fd2ffa39048d24996c3945601e8cd410db40072bfd2c409d0"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/provenance.json",
+      "bytes": 3710,
+      "sha256": "63bd86085125e317867a262ac93384d9697175816786f81e591750916613713c"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/request.json",
+      "bytes": 399,
+      "sha256": "89bcaa7459a320d513dd300e1c31c127e2946cf161c112d6365d157e460b26c7"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/response.json",
+      "bytes": 8604,
+      "sha256": "1c1f89e5f3b2f8c4ff542098cb9fcc731e038078b41fbed2c2f75856c9965462"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/spectrum.png",
+      "bytes": 94541,
+      "sha256": "15efd8e4afc9c326092db2eebfc05f1e748f7bd9ee1b63cdffbfc4fd236ac832"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/spectrum_classic.csv",
+      "bytes": 399600,
+      "sha256": "b35c8abda330c8aadaa4eab6c85fa274e8c489f732cf1d7868df611395ba6579"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-La2004-1E.5T-1P-0-2000/spectrum_robust.csv",
+      "bytes": 713705,
+      "sha256": "1aa5150d191b5330d42580ad076a815dcee63779e86d923ac909088d13efdd02"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/cleaned.csv",
+      "bytes": 39212,
+      "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/evolution.csv",
+      "bytes": 6423032,
+      "sha256": "672ed205764213748c22a8ad0a1354694f928f7e689effc89c24c908d470a848"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/evolution.png",
+      "bytes": 837045,
+      "sha256": "c76b06e78cb76baffab66af37d876d9c3494ab871040015d760dfe8ef59f7bf3"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/prepared.csv",
+      "bytes": 39212,
+      "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/preprocessing.png",
+      "bytes": 139731,
+      "sha256": "782e09d107cf4d054dd8778233e0966fa481d89ffea0d0aa29da1443301f7ea1"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/processed.csv",
+      "bytes": 109732,
+      "sha256": "c381b25303abf450e0afb819e5c69e2fe380f11f7d076c3ee16187ab3362a552"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/provenance.json",
+      "bytes": 3710,
+      "sha256": "02f7e4e6971bc7a55096e856da0407c72c4edd01997154270f8ec07d2b22b29b"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/request.json",
+      "bytes": 407,
+      "sha256": "4b248d0b01bc34eec54abc25c38b0de63eb73f3b4be5548adf1c03cf623e587e"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/response.json",
+      "bytes": 8783,
+      "sha256": "58d52acbc9e6c5b84a8c446547846d983bbeb369bf1d37da286b5f2f32365b2f"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/spectrum.png",
+      "bytes": 102246,
+      "sha256": "0ce8f6727922b7cb0391147b5fdfad4960130bdd1892070eee29648688d6aff8"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/spectrum_classic.csv",
+      "bytes": 436373,
+      "sha256": "1d49818c99f2f42c4495637d59e92f1471f863effbda4718d2bb0b893f760d79"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-LateTriassicNewarkDepthRank/spectrum_robust.csv",
+      "bytes": 760018,
+      "sha256": "93b3be27fb9af3a26c73711d98fa9ca32fd314abaca830b40ad6502ee984d0e5"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/cleaned.csv",
+      "bytes": 5425,
+      "sha256": "7a8c96a7bf09bad44d2ebb40be6d5c0db57611860f058089e332728b3fde713c"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/evolution.csv",
+      "bytes": 983956,
+      "sha256": "4ba9a0029450df25a9dcbce26f599f523ae4c62f8a56774ea2f9d3fb85f2eadc"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/evolution.png",
+      "bytes": 768115,
+      "sha256": "8c6ddb317655e1b6fb498989670090ce50f9f2af29bcc41f9ea71665df6d8b94"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/prepared.csv",
+      "bytes": 13200,
+      "sha256": "f406cc1d617676559071841ed53775d94c6b54e2c4ae2dae06ba634d6fda2c3b"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/preprocessing.png",
+      "bytes": 174010,
+      "sha256": "92bb7b3d6846e0a7042ddb4c1dd48cb36b0655ad86a199fc7d065b9f8650640b"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/processed.csv",
+      "bytes": 20810,
+      "sha256": "dee872dd1070821ec0c6891aa2fc4f806758f71c4fcdf3431456b157c225b3d2"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/provenance.json",
+      "bytes": 3710,
+      "sha256": "a99244cc3c5f55ad5330d82fa725b59fac4e5046dc55d6cac53cbe0b5165873f"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/request.json",
+      "bytes": 389,
+      "sha256": "cb749451ae44d0634000ba3b04f4947df7dd8f64ebecd061915e4871a0558cd8"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/response.json",
+      "bytes": 8673,
+      "sha256": "f997a237f1b3ebba628dc54fbdc3da440e75932c79014602d37441593a630086"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/spectrum.png",
+      "bytes": 82026,
+      "sha256": "529e9b9a325f6e7cd1a95a4d2b731f410db0af5a2b6b40e11838fac8e01fb57b"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/spectrum_classic.csv",
+      "bytes": 77172,
+      "sha256": "86feba92508e0d77db45a76a538de56719f17642fce74103b7747d2d3fd9eaa0"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-SvalbardPETM-logFe/spectrum_robust.csv",
+      "bytes": 135285,
+      "sha256": "3ce8274c53a3dd2c9c9fdab59d0ef4f382cb8df25be94aac6678c35e160042be"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/cleaned.csv",
+      "bytes": 6709,
+      "sha256": "648f7e23b1d3728f08e122c473121fad2e3f5f153b305e6edf0955ed1001d16b"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/evolution.csv",
+      "bytes": 1594607,
+      "sha256": "6ad05e7a0ddd0ad28db1ff9f0c862e137d11fa68f5ac90afecf95d596d566dbe"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/evolution.png",
+      "bytes": 835441,
+      "sha256": "d5a1e8903d9b1ca080629046a93bf845dab742740c457e36d0a4110e6bc5064d"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/prepared.csv",
+      "bytes": 17305,
+      "sha256": "736525018ce41952fa5665d72c1a828d060adde5c84786aaf4330015bda5ddcc"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/preprocessing.png",
+      "bytes": 169710,
+      "sha256": "f71c06779f6e4a35c39ca15d8a80372344896352904b632177b55682b1b85e24"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/processed.csv",
+      "bytes": 25985,
+      "sha256": "6eb4bcb7270de963bc1fbc0ea95d8157bb5fbddc1d88a68bd80a39252ea5bc0b"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/provenance.json",
+      "bytes": 3710,
+      "sha256": "a97f812880bac9433f30a569a68b76434a1b953c0f9aa4817c945befd777820a"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/request.json",
+      "bytes": 383,
+      "sha256": "ee65f592ef9d73a12411fc50a732e7231b4a160cceca71a2f3ecb29b3b81ced0"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/response.json",
+      "bytes": 8605,
+      "sha256": "e314c4e2e177fc7ece678ac4a2dc53761f8e0d8ecc77e7271ef4197e4653acd5"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/spectrum.png",
+      "bytes": 95951,
+      "sha256": "af1c6844f52d8050907257af3445e3af9fd7e6eeb4252b9f30c6d92fd839c81f"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/spectrum_classic.csv",
+      "bytes": 84746,
+      "sha256": "9b40f35c95113804e59e54c083f9c4b557a88fa21335d08373847334c6900c97"
+    },
+    {
+      "path": "validation/v0.5/matlab/Example-WayaoCarnianGR0/spectrum_robust.csv",
+      "bytes": 147842,
+      "sha256": "93d217121f84be6e99917cfa61db8102fc2f844cf3899911dc0718b01fecd57b"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/cleaned_metres.csv",
+      "bytes": 12196,
+      "sha256": "2ab264cfbc1978c9e5cc9cb1fd31aa0b13b2b2d131a0c486dcc1d4839d49cc06"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/coco.csv",
+      "bytes": 294,
+      "sha256": "34f4b86a9773526e5a63d5de67aa13018ba52e3b35bafba5589c7f866318c8ec"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/coco_figure_1.png",
+      "bytes": 122886,
+      "sha256": "fb8e4841c397a7728d29108053fcde0bf1e6399961d589e1f0ed9be2a8c110e9"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/coco_figure_2.png",
+      "bytes": 56117,
+      "sha256": "61aa074747d23380740017f9bd200944cc1bd036eec8ec430376413ccc74b3b7"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/details.json",
+      "bytes": 2600,
+      "sha256": "5dc58c1c61d0d9c975f7bc0c68832d3097518a87439a48b2d9bad07071249f1c"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/input.csv",
+      "bytes": 16727,
+      "sha256": "9aa0d1ed412207a2da790da11a4a407abfe1919b5e03bdf610771cbaee649aad"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/input_metres.csv",
+      "bytes": 12196,
+      "sha256": "2ab264cfbc1978c9e5cc9cb1fd31aa0b13b2b2d131a0c486dcc1d4839d49cc06"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/null_max.csv",
+      "bytes": 161,
+      "sha256": "59a9e90dc77590f22a37c9232edbc1638b28431614a2cf876509dbb352b40f8b"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/orbital_periods_kyr.csv",
+      "bytes": 25,
+      "sha256": "51cb1817d2ddd5fecc2de348a682da9ad221e0e99a4e4efbc3c4c4a153ca736c"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/prepared_metres.csv",
+      "bytes": 22535,
+      "sha256": "5f97e252373fe0c0d8df06581553a099e92566a394d76f1f0c3c57167bf500b3"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/provenance.json",
+      "bytes": 22789,
+      "sha256": "b8291d261444ba0dc5b2b7ba33e9b5caba7741664f15cf88db97d333867b02d5"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/request.json",
+      "bytes": 590,
+      "sha256": "b1b6734635ba87b831cc5343a1b53efe9250be233d1338b4df4f176bf69cc444"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-feet-six-periods/response.json",
+      "bytes": 31526,
+      "sha256": "d6faccb5fba027004f7162aa3dd78a6dee4289ff5c82138f74b73e0b2c629d34"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/cleaned_metres.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/coco.csv",
+      "bytes": 328,
+      "sha256": "2dd31cba83677b42c68e90201393a982f18d7419bbffcf1cc6ab9990a5e4d6d2"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/coco_figure_1.png",
+      "bytes": 129813,
+      "sha256": "c364dffeba9b7876d12ef4cb4b9d3f76c5eea366273cfd5a7115c6cb8a0f1e3c"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/coco_figure_2.png",
+      "bytes": 55524,
+      "sha256": "1bac1c7650d32aeb12d69a0bedd8aa3415ca47bc169a30f67fbcf99db95a10a0"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/details.json",
+      "bytes": 2842,
+      "sha256": "54c5ec70b826dfe2179055b9f8a19a19bc0caf6b0c80a8973b3586ca212d7de2"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/detrended_input.csv",
+      "bytes": 10855,
+      "sha256": "c34642ae5c83df8201657f7a2220255763204d5ac50fccf6c5a627389c3939cd"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/input.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/input_metres.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/null_max.csv",
+      "bytes": 161,
+      "sha256": "7cc7085d4796374d6b6b91a1b229dd648f485dca7c8ec626a19f38bfa80e7ba9"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/orbital_periods_kyr.csv",
+      "bytes": 153,
+      "sha256": "3458fcaf1b11199a3a011600a0f800e1f2c943d01ae97f5b6bd72b5bd8bda4ec"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/prepared_metres.csv",
+      "bytes": 10855,
+      "sha256": "c34642ae5c83df8201657f7a2220255763204d5ac50fccf6c5a627389c3939cd"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/preprocessing_trend.csv",
+      "bytes": 11016,
+      "sha256": "f9be52536e12800350bf48ff3e56a1942f4487395f1cd88a03ea4bd331463e9c"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/provenance.json",
+      "bytes": 22782,
+      "sha256": "9336ee0a4a1152caace50ec941b84a005c3247b9936bd0582ffb1382813c8ce6"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/request.json",
+      "bytes": 562,
+      "sha256": "11f93e483a45ea9a2b3e2575ee89ea4ac7f798731e56aec4ca9cb745f1965b21"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-loess-callback/response.json",
+      "bytes": 31893,
+      "sha256": "3ee36d036f435046836d330f1b0add2b018fe727370a981cab5f2c5300b54fa8"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-missing-target/input.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-missing-target/request.json",
+      "bytes": 506,
+      "sha256": "6497cfd683a6150fbeb503bab786852ae35bfe7b02d90c2d906e10c4d63db46b"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/cleaned_metres.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/coco.csv",
+      "bytes": 318,
+      "sha256": "25c29b22204b945e9ce90ede5a15c6a4e05c988192745a9ef236f5ae1685aabc"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/coco_figure_1.png",
+      "bytes": 134827,
+      "sha256": "33f12245c11ff59faf3f9ff591a6d8b132ed69e9d4f0129f2f28a97fa9aaf464"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/coco_figure_2.png",
+      "bytes": 50140,
+      "sha256": "dde51ef1eaa8acdc182a76f4b9dc77ce795c46a2fac2c470443a80d7b4c95df7"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/details.json",
+      "bytes": 3100,
+      "sha256": "ddf12406664649bb89e10943ff80d682c04d802307ffd4730490b82369b4cba1"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/input.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/input_metres.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/null_max.csv",
+      "bytes": 340,
+      "sha256": "11dbf8a504edccb2a89019770b2a91f48c7b965129771b014d90a030df34b1da"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/orbital_periods_kyr.csv",
+      "bytes": 153,
+      "sha256": "3458fcaf1b11199a3a011600a0f800e1f2c943d01ae97f5b6bd72b5bd8bda4ec"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/prepared_metres.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/provenance.json",
+      "bytes": 22782,
+      "sha256": "9336ee0a4a1152caace50ec941b84a005c3247b9936bd0582ffb1382813c8ce6"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/request.json",
+      "bytes": 526,
+      "sha256": "9aaf0f1c385aa532f604e85cba0c4d6ad85ac0cb500003bed91351ffa94213db"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-original-parity/response.json",
+      "bytes": 30025,
+      "sha256": "d57c51f1b68b16d04cd564309dad504cafdb5deece678fbfa545aa5c45c0df2a"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-too-many-periods/input.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/coco-too-many-periods/request.json",
+      "bytes": 571,
+      "sha256": "eb5994011da5e2117ae7552ba65d8955deb2754ec6f42d489c5dd543b9073aa7"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/cleaned_metres.csv",
+      "bytes": 56881,
+      "sha256": "c9b397cd66d862399c283cd74801c46656af50705732843a246a7c90dfe74676"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/details.json",
+      "bytes": 58745,
+      "sha256": "1934c510cddee2ca5b891714dd0111e25cbb99857066f1cef43aa8a2b194402c"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/ecoco.csv",
+      "bytes": 943,
+      "sha256": "27d0e4c0cf9521bf1c747bcda9c27389be3d18c44510058295cccc6c1995cfdb"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/ecoco_figure_1.png",
+      "bytes": 98755,
+      "sha256": "fdbc2f4907e543aa6aa5a7de8e8a3e51bc615f5512b1daea8c6f025954c678c0"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/ecoco_figure_2.png",
+      "bytes": 53901,
+      "sha256": "616cba62402ce0fa87dd935ab060861a3e980c1dc86b3f3c9828a7aed90461dc"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/input.csv",
+      "bytes": 56881,
+      "sha256": "c9b397cd66d862399c283cd74801c46656af50705732843a246a7c90dfe74676"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/input_metres.csv",
+      "bytes": 56881,
+      "sha256": "c9b397cd66d862399c283cd74801c46656af50705732843a246a7c90dfe74676"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/orbital_periods_kyr.csv",
+      "bytes": 153,
+      "sha256": "3458fcaf1b11199a3a011600a0f800e1f2c943d01ae97f5b6bd72b5bd8bda4ec"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/prepared_metres.csv",
+      "bytes": 56881,
+      "sha256": "c9b397cd66d862399c283cd74801c46656af50705732843a246a7c90dfe74676"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/provenance.json",
+      "bytes": 22782,
+      "sha256": "d4ac603828a55b7698c02bbc344ea8ddc2d8cd33f88a9bb4b145444e6f3f8744"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/request.json",
+      "bytes": 549,
+      "sha256": "c764f980c2bc22c0bdbcc152f9636a5664aba5116896343d96ce0ac4fd901e5c"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/response.json",
+      "bytes": 29494,
+      "sha256": "1f1a9c9927fdfbebf2240a30280a40b4cb748e8b5a88539decf5637b076d6486"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-blocked-strict/tracked_rate.csv",
+      "bytes": 182,
+      "sha256": "1be176309f10d07e4311018fb497c75d41f67d2f130821465a957c18cceccb10"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-disallow-leakage/input.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-disallow-leakage/request.json",
+      "bytes": 586,
+      "sha256": "b6766b41b6e1b92c972dcfb24c77dd2f77961a6497e36bbea46e75aa82ec5186"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/cleaned_metres.csv",
+      "bytes": 22576,
+      "sha256": "becf4cc47b5e063a955f269e4bd06869f5cc19c470b26022a2978059fb31527f"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/details.json",
+      "bytes": 30356,
+      "sha256": "c27e37095d148531dbe073cb0f8c02c542bf44261697dd18991b06497b453ec8"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/ecoco.csv",
+      "bytes": 760,
+      "sha256": "460504138d768be53ccf2b059e7a2b3cfe419cf1ae2b72d2739d601f17439837"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/ecoco_figure_1.png",
+      "bytes": 63042,
+      "sha256": "11c640f26ea2daa200e86475784c66b183dccae9757637072436658c99f5291a"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/ecoco_figure_2.png",
+      "bytes": 39085,
+      "sha256": "2d9bcbe3f3d60e97664132cc954bf12c3513c28b335142801ada712f9bd0033f"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/input.csv",
+      "bytes": 22576,
+      "sha256": "becf4cc47b5e063a955f269e4bd06869f5cc19c470b26022a2978059fb31527f"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/input_metres.csv",
+      "bytes": 22576,
+      "sha256": "becf4cc47b5e063a955f269e4bd06869f5cc19c470b26022a2978059fb31527f"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/orbital_periods_kyr.csv",
+      "bytes": 153,
+      "sha256": "3458fcaf1b11199a3a011600a0f800e1f2c943d01ae97f5b6bd72b5bd8bda4ec"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/provenance.json",
+      "bytes": 22786,
+      "sha256": "c50c1f9675bfa5dfea5c6c2e82ee762ef15f36fdd503fdfa33db1c97ab3eee82"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/request.json",
+      "bytes": 546,
+      "sha256": "606420d0ab3b457a5d29047ada6bb975a14640c392ddcbe1f5534b7e3e1b6be1"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/response.json",
+      "bytes": 28575,
+      "sha256": "9d1f06441f5072424f2e0d3c93c55330ac15184d5df9a8a1719a90d05f1d4f88"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-interleaved/tracked_rate.csv",
+      "bytes": 164,
+      "sha256": "54d699872ef01e85618fd4e4cff530eb298704e12962606cf79132bc14126db7"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/cleaned_metres.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/details.json",
+      "bytes": 6265,
+      "sha256": "72127457c3aa709453b639288076d091563f57db7452699ab8ed299bf3cc08f9"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/ecoco.csv",
+      "bytes": 872,
+      "sha256": "193b48705e60541f170aef62ce0961bcb0842174cef654d240ebbc5c624e9a5e"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/ecoco_figure_1.png",
+      "bytes": 80264,
+      "sha256": "83a14ad9d31313221018a681b214ad32ddeaea44f2b2f3ee2b367a4e48e9a2b7"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/ecoco_figure_2.png",
+      "bytes": 52952,
+      "sha256": "33168fa454f2873df7cd036ce9484f99bb300e50a80668fea9da70d9b28167e0"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/input.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/input_metres.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/orbital_periods_kyr.csv",
+      "bytes": 153,
+      "sha256": "3458fcaf1b11199a3a011600a0f800e1f2c943d01ae97f5b6bd72b5bd8bda4ec"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/prepared_metres.csv",
+      "bytes": 10814,
+      "sha256": "bcd83d8b1c52b8624c72f6163675616edb82ef3f98bfcdfd3506c38d6ebaecff"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/provenance.json",
+      "bytes": 22783,
+      "sha256": "fc98c69e41e5734c72a948b948b442762f1cdb1d190b9351ee0ce105e7238613"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/request.json",
+      "bytes": 552,
+      "sha256": "92c3812ef65aa21edc0d38acea46379eb639ffe8351ab7bdc57cd800b0704dee"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/response.json",
+      "bytes": 29455,
+      "sha256": "ad06146be3ef10994744ea7344e17159fa5d67c92ff0291616f3a79c16e59fcc"
+    },
+    {
+      "path": "validation/v0.5/matlab/ecoco-original-parity/tracked_rate.csv",
+      "bytes": 163,
+      "sha256": "c9a9032e839159eb882578167344f6d8e2af6228dae4f753fba194de8c0c347e"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/cleaned.csv",
+      "bytes": 1783,
+      "sha256": "5bc3c51f354dff97f0021cd1601b9e97bb5c8be34ee5127ab4d0b03dd3dc78cd"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/input.csv",
+      "bytes": 1783,
+      "sha256": "5bc3c51f354dff97f0021cd1601b9e97bb5c8be34ee5127ab4d0b03dd3dc78cd"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/prepared.csv",
+      "bytes": 1783,
+      "sha256": "5bc3c51f354dff97f0021cd1601b9e97bb5c8be34ee5127ab4d0b03dd3dc78cd"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/preprocessing.png",
+      "bytes": 113199,
+      "sha256": "0556171acb9c2696800833543d13ccc16bc9015600f0f88831d2e0ab898fe2ca"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/processed.csv",
+      "bytes": 3248,
+      "sha256": "373b3bf2c085db8175c9ea3d5fee37276b9860c8abb68a61fa365400a76dcf9a"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/provenance.json",
+      "bytes": 3310,
+      "sha256": "a64cd1797c71d2a9d930b6a3a8aef00a7bf49d9807892338d1caaa6dbf7fb2af"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/request.json",
+      "bytes": 359,
+      "sha256": "67aadfaa4f254875c89344d68712fdb0e681a75a1cfcfebe357589f22757ac42"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/response.json",
+      "bytes": 7570,
+      "sha256": "6d09416057ec07a4f6b7f930218f981035601e502bb762f7c129728648b79832"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/spectrum.png",
+      "bytes": 160585,
+      "sha256": "5c705509298358818ebe7bdd0fe09620d5a8c21bead7bc3870b72c63f42af948"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/spectrum_classic.csv",
+      "bytes": 16082,
+      "sha256": "07f0568688da31ff20b875be22e1dfc12f655aea2277725ae9388e9869775e37"
+    },
+    {
+      "path": "validation/v0.5/matlab/immutable-result/spectrum_robust.csv",
+      "bytes": 28882,
+      "sha256": "397f539d5c4b4133517ae5a4f1056af8d0f65d2420fd2fc059f33295c5a46044"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-default-dt/cleaned.csv",
+      "bytes": 55,
+      "sha256": "b665dd4a57b6b88bff0fd4f597a3b322c7bbd8c45e5eb84f7df236f40ca93ff3"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-default-dt/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-default-dt/input.csv",
+      "bytes": 55,
+      "sha256": "b665dd4a57b6b88bff0fd4f597a3b322c7bbd8c45e5eb84f7df236f40ca93ff3"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-default-dt/interpolated.csv",
+      "bytes": 92,
+      "sha256": "b88f4f9364b1f80598587b53190ebd6c8095c892d1951260608d01d17474a756"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-default-dt/interpolation.png",
+      "bytes": 46909,
+      "sha256": "661e9e57351d22fae03f3e9046c90c3bb9fb4c94ecb339c91c138665e8020e86"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-default-dt/provenance.json",
+      "bytes": 1613,
+      "sha256": "31fbfa00163e1127f51f8a05f42acab1c7aca65ca945c3633bc3a6b7fd589800"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-default-dt/raw.csv",
+      "bytes": 55,
+      "sha256": "b665dd4a57b6b88bff0fd4f597a3b322c7bbd8c45e5eb84f7df236f40ca93ff3"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-default-dt/request.json",
+      "bytes": 357,
+      "sha256": "f81580eb9a65886cad49b808914d8572752c1224bf0871c5040308da1d561887"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-default-dt/response.json",
+      "bytes": 4497,
+      "sha256": "1c9a2175d368fcd2c84d0090d903c2d3994e634961e4791629714be168c4caa5"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-duplicate/input.csv",
+      "bytes": 20,
+      "sha256": "957113c65b44860e4d0ce4d53a539d529764f5799a47722eeaf7a53802f6de7e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-duplicate/request.json",
+      "bytes": 355,
+      "sha256": "afdc822cfc5d0f6aaa92740d76ad2486d0a11536b8871a90329cba290966c945"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-grid-budget/input.csv",
+      "bytes": 16,
+      "sha256": "b3af65fe942654170a073a9bab0e0026fcac581d63873c10bd8835b35dd8ff5b"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-grid-budget/request.json",
+      "bytes": 368,
+      "sha256": "dd4a08929d631acdf071ef3cbf16afcade84c045fd073399bd9e2c9f6c24e7f8"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-gui-endpoints/cleaned.csv",
+      "bytes": 16,
+      "sha256": "427d39c018c0b96eb9651f37e33f3e434ecbe4d4a7bc4975b3940cb004be49ee"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-gui-endpoints/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-gui-endpoints/input.csv",
+      "bytes": 16,
+      "sha256": "427d39c018c0b96eb9651f37e33f3e434ecbe4d4a7bc4975b3940cb004be49ee"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-gui-endpoints/interpolated.csv",
+      "bytes": 8,
+      "sha256": "909f840f6bd3a093ef7e2b3b24d4755393de5d9a35a021e6d4061d0d4b3f31b3"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-gui-endpoints/interpolation.png",
+      "bytes": 43996,
+      "sha256": "ae89d7a5fa9fa4aa4c209a60499aecd8c66deeb2ad93567325b752eff630da02"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-gui-endpoints/provenance.json",
+      "bytes": 1613,
+      "sha256": "2e463eaa8702cb996dc0aeaeace05e0f82e95f2b40d235dc4e7c66bf682463d9"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-gui-endpoints/raw.csv",
+      "bytes": 16,
+      "sha256": "427d39c018c0b96eb9651f37e33f3e434ecbe4d4a7bc4975b3940cb004be49ee"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-gui-endpoints/request.json",
+      "bytes": 369,
+      "sha256": "da142e4673e09ef4e9b6b16d1d8874464e6305e32fc9a485b24e03721bf271e1"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-gui-endpoints/response.json",
+      "bytes": 4524,
+      "sha256": "7984832dcaaa076643e60acde34885e5dd3c3279aa3f845b68d9fc489f6c3b06"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-immutable/cleaned.csv",
+      "bytes": 12,
+      "sha256": "207918f51d0a6d913a8ad107b3b20a259f7b2e8da4d2a29d5060de904d9d2a85"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-immutable/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-immutable/input.csv",
+      "bytes": 12,
+      "sha256": "207918f51d0a6d913a8ad107b3b20a259f7b2e8da4d2a29d5060de904d9d2a85"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-immutable/interpolated.csv",
+      "bytes": 12,
+      "sha256": "207918f51d0a6d913a8ad107b3b20a259f7b2e8da4d2a29d5060de904d9d2a85"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-immutable/interpolation.png",
+      "bytes": 50804,
+      "sha256": "7c49e4afb1b22455f79f2583103de385d4a4c945e635a0b7e95374a88cc0b40a"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-immutable/provenance.json",
+      "bytes": 1613,
+      "sha256": "cbd3762ead3b3e01ae884da84b21345bc4997e894dd3d75608af4df8ee841c7b"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-immutable/raw.csv",
+      "bytes": 12,
+      "sha256": "207918f51d0a6d913a8ad107b3b20a259f7b2e8da4d2a29d5060de904d9d2a85"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-immutable/request.json",
+      "bytes": 355,
+      "sha256": "7a6f34e359b8529757b1d82cda3124b8e0c64c6c40646dbcda90f930b81b1256"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-cubic/cleaned.csv",
+      "bytes": 52,
+      "sha256": "49b64b7e34dc5a60af6d92eaf31ce8f5f288ae636bb2fa43e57a916e8baa4fc2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-cubic/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-cubic/input.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-cubic/interpolated.csv",
+      "bytes": 479,
+      "sha256": "5edcc71f62af62125c1ac6033958c689d27b2d964a29b8382ef35d71d05ad89a"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-cubic/interpolation.png",
+      "bytes": 55365,
+      "sha256": "cd202a77bb3b244594667b092fd8837e3dd27ddbd1778bf33a44dabda131d6b6"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-cubic/provenance.json",
+      "bytes": 1613,
+      "sha256": "fb6d70e9ce98e7751cf1bc97601646684ffbdd8e42bd42cad168e331c03ff6fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-cubic/raw.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-cubic/request.json",
+      "bytes": 408,
+      "sha256": "224e842dbbcef44920c8071a411b3aa890782fe39134428423bdff14ee74c2f2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-cubic/response.json",
+      "bytes": 4446,
+      "sha256": "56a915b31a41574b2911259344d427702aa271bbd53da6073dac62f897690bce"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-linear/cleaned.csv",
+      "bytes": 52,
+      "sha256": "49b64b7e34dc5a60af6d92eaf31ce8f5f288ae636bb2fa43e57a916e8baa4fc2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-linear/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-linear/input.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-linear/interpolated.csv",
+      "bytes": 372,
+      "sha256": "b7c8b81ef5a219c3ebc436042482dda9d267d27c27ac38fd4c40b5cfec6098c1"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-linear/interpolation.png",
+      "bytes": 60893,
+      "sha256": "69b634ac9c644215def786f3ef8caacce0b76354e0c392a527b68feb82efba78"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-linear/provenance.json",
+      "bytes": 1613,
+      "sha256": "fb6d70e9ce98e7751cf1bc97601646684ffbdd8e42bd42cad168e331c03ff6fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-linear/raw.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-linear/request.json",
+      "bytes": 411,
+      "sha256": "a0c4bf52ae679a1d0cede5912f631a8b5156895902b6ec6936666aae06cc6330"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-linear/response.json",
+      "bytes": 4457,
+      "sha256": "df51f5b2cc204c75fccbd70929b192710d9837d5f1f3f9e675bb01e3590eb47a"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-makima/cleaned.csv",
+      "bytes": 52,
+      "sha256": "49b64b7e34dc5a60af6d92eaf31ce8f5f288ae636bb2fa43e57a916e8baa4fc2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-makima/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-makima/input.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-makima/interpolated.csv",
+      "bytes": 460,
+      "sha256": "22e4d1f258144a3ebe27125bb5ad1e9de9e82802896da1ab329bde67b0e6f5bb"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-makima/interpolation.png",
+      "bytes": 55872,
+      "sha256": "b9939af345329716af500cf2aff263802caf251cccf580e78e265f5c9f20f94b"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-makima/provenance.json",
+      "bytes": 1613,
+      "sha256": "fb6d70e9ce98e7751cf1bc97601646684ffbdd8e42bd42cad168e331c03ff6fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-makima/raw.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-makima/request.json",
+      "bytes": 411,
+      "sha256": "f70bc68ff82507edbab6da3709039074204f579a8ea408aca7131ef0a5ab5e63"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-makima/response.json",
+      "bytes": 4457,
+      "sha256": "adec748f9aeee28cfb8effa22c3c065c2c97844e17bc37ec024b4e7e1e87f7e0"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-nearest/cleaned.csv",
+      "bytes": 52,
+      "sha256": "49b64b7e34dc5a60af6d92eaf31ce8f5f288ae636bb2fa43e57a916e8baa4fc2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-nearest/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-nearest/input.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-nearest/interpolated.csv",
+      "bytes": 158,
+      "sha256": "ef3f7199d80d8f9424faec57b36677e8c65c5a084240bd71dbc46e3fa7b6e9ac"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-nearest/interpolation.png",
+      "bytes": 60223,
+      "sha256": "6d79384b7f4dd81b655f038f3e933f89fbe7d60081928f62417c279bae0e8c21"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-nearest/provenance.json",
+      "bytes": 1613,
+      "sha256": "fb6d70e9ce98e7751cf1bc97601646684ffbdd8e42bd42cad168e331c03ff6fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-nearest/raw.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-nearest/request.json",
+      "bytes": 414,
+      "sha256": "56a77d4b5cb17466ec9c485f9c616c6ab52b07308d3307ee7798dc17242ccc55"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-nearest/response.json",
+      "bytes": 4468,
+      "sha256": "7972ec4e80bca3d2961aae3446aeaf9eea150764bf35ee72f6878504b6a627b3"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-next/cleaned.csv",
+      "bytes": 52,
+      "sha256": "49b64b7e34dc5a60af6d92eaf31ce8f5f288ae636bb2fa43e57a916e8baa4fc2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-next/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-next/input.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-next/interpolated.csv",
+      "bytes": 158,
+      "sha256": "6cb4d2adbd8ad3fc5a8a703ca190f0f66e28a938a958b521cf38ccb9b0400419"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-next/interpolation.png",
+      "bytes": 59839,
+      "sha256": "220410e774cb143176365fd0d988b30dbe74432e06b8cd1979a035f807628415"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-next/provenance.json",
+      "bytes": 1613,
+      "sha256": "fb6d70e9ce98e7751cf1bc97601646684ffbdd8e42bd42cad168e331c03ff6fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-next/raw.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-next/request.json",
+      "bytes": 405,
+      "sha256": "928ebe0164fe7e9b1fbc6e587103b244b48951d404f5039e728c54ac0f22b1fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-next/response.json",
+      "bytes": 4435,
+      "sha256": "478c4ba84626c345e16574012e0892c601b5887a2fec7f43a72660513b2c9380"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-pchip/cleaned.csv",
+      "bytes": 52,
+      "sha256": "49b64b7e34dc5a60af6d92eaf31ce8f5f288ae636bb2fa43e57a916e8baa4fc2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-pchip/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-pchip/input.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-pchip/interpolated.csv",
+      "bytes": 461,
+      "sha256": "dece8804189a7071c8e75647ccb51cf017308bd9381481943f26e6db5e4543a0"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-pchip/interpolation.png",
+      "bytes": 61790,
+      "sha256": "7b577779d01283f71012a76d834ca107127b285823a1af1608a9df10573eb7fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-pchip/provenance.json",
+      "bytes": 1613,
+      "sha256": "fb6d70e9ce98e7751cf1bc97601646684ffbdd8e42bd42cad168e331c03ff6fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-pchip/raw.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-pchip/request.json",
+      "bytes": 408,
+      "sha256": "aa7e375a9bfaf7e76e904903b5f147833472e9526ca2ab834f4b3c904db43631"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-pchip/response.json",
+      "bytes": 4446,
+      "sha256": "c45f5c6d1cf97cf6bb82481151063edad2e84f1f498dec1306d69c790f4254be"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-previous/cleaned.csv",
+      "bytes": 52,
+      "sha256": "49b64b7e34dc5a60af6d92eaf31ce8f5f288ae636bb2fa43e57a916e8baa4fc2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-previous/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-previous/input.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-previous/interpolated.csv",
+      "bytes": 160,
+      "sha256": "2e1b0b46240f6fcb4dfb736ba360832f5662b0b13c9a2a81046a557a4c4314a6"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-previous/interpolation.png",
+      "bytes": 61302,
+      "sha256": "0114eec30121cd712a9aed40d45655a8dce7f5f4f081f462e4d24e76a8b89b2c"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-previous/provenance.json",
+      "bytes": 1613,
+      "sha256": "fb6d70e9ce98e7751cf1bc97601646684ffbdd8e42bd42cad168e331c03ff6fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-previous/raw.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-previous/request.json",
+      "bytes": 417,
+      "sha256": "2f306a51251d1208afb18baa0acab336e85d22a0175dc22a48a0de67f402fd4a"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-previous/response.json",
+      "bytes": 4479,
+      "sha256": "8d6444e463bea6596739dbd9720275a2d47e5e8824bbe0103c97d584171323a0"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-spline/cleaned.csv",
+      "bytes": 52,
+      "sha256": "49b64b7e34dc5a60af6d92eaf31ce8f5f288ae636bb2fa43e57a916e8baa4fc2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-spline/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-spline/input.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-spline/interpolated.csv",
+      "bytes": 479,
+      "sha256": "5edcc71f62af62125c1ac6033958c689d27b2d964a29b8382ef35d71d05ad89a"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-spline/interpolation.png",
+      "bytes": 55627,
+      "sha256": "1ee78efbf7d5c65d03a4cfd27a0fc84d79e90d49ab2f238556b43b3a0b060566"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-spline/provenance.json",
+      "bytes": 1613,
+      "sha256": "fb6d70e9ce98e7751cf1bc97601646684ffbdd8e42bd42cad168e331c03ff6fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-spline/raw.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-spline/request.json",
+      "bytes": 411,
+      "sha256": "1ad8451df56b0d3d81e7d8d22cde036c1fd3da2cfaf36e7f98a6231b04aa8a88"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-spline/response.json",
+      "bytes": 4457,
+      "sha256": "f8480db4cf255659d1f4fcb5a9faa41a487b62e8f36ff61b1b86d1fd8b2498f0"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-v5cubic/cleaned.csv",
+      "bytes": 52,
+      "sha256": "49b64b7e34dc5a60af6d92eaf31ce8f5f288ae636bb2fa43e57a916e8baa4fc2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-v5cubic/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-v5cubic/input.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-v5cubic/interpolated.csv",
+      "bytes": 479,
+      "sha256": "5edcc71f62af62125c1ac6033958c689d27b2d964a29b8382ef35d71d05ad89a"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-v5cubic/interpolation.png",
+      "bytes": 56432,
+      "sha256": "3e3a87f922caa3adf93bdc1ee3c4c383fc1c896e2ed89ce3cfb4cd62375aae2f"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-v5cubic/provenance.json",
+      "bytes": 1613,
+      "sha256": "fb6d70e9ce98e7751cf1bc97601646684ffbdd8e42bd42cad168e331c03ff6fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-v5cubic/raw.csv",
+      "bytes": 52,
+      "sha256": "7d0af6dd1198580186bb6d0b9a428a38ad79965e0e49377d83fc863127f64f4e"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-v5cubic/request.json",
+      "bytes": 414,
+      "sha256": "66e446bd691d66a476e037378e0bc9744961b3e07a43ddb768c40ffb36fd7db2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-v5cubic/response.json",
+      "bytes": 4468,
+      "sha256": "9ca210eea42234ad2a042db2cc256db9564593f452da7e3459b1030a109794c8"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-no-gap-fill/cleaned.csv",
+      "bytes": 27,
+      "sha256": "e25d3967477a415c774b3d96c56eb6d19cb8d07e5b635af500375a152dc642ba"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-no-gap-fill/gaps.csv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-no-gap-fill/input.csv",
+      "bytes": 27,
+      "sha256": "e25d3967477a415c774b3d96c56eb6d19cb8d07e5b635af500375a152dc642ba"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-no-gap-fill/interpolated.csv",
+      "bytes": 166,
+      "sha256": "a07cc99740a28fad0d5713ee37ca977a127555b03b49173678b416e5349a97c4"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-no-gap-fill/interpolation.png",
+      "bytes": 49654,
+      "sha256": "b0f797b35ab1d064e6375b7f6d6cd1c274040ff9daf79be6227ada0ec456c36d"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-no-gap-fill/provenance.json",
+      "bytes": 1613,
+      "sha256": "a405a8b003765c59b008be03c786ea057e58f8d8881a4eed4abb50599754cb83"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-no-gap-fill/raw.csv",
+      "bytes": 27,
+      "sha256": "e25d3967477a415c774b3d96c56eb6d19cb8d07e5b635af500375a152dc642ba"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-no-gap-fill/request.json",
+      "bytes": 385,
+      "sha256": "54213f2110e5027143a349974d99039b0eef71db45d58a5432ff3f60b2381a45"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-no-gap-fill/response.json",
+      "bytes": 4461,
+      "sha256": "6d2dee3121e15bca29ded1ea1a08c92acaf3129fa08e0633ec651d9cc566f724"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-nonfinite/input.csv",
+      "bytes": 22,
+      "sha256": "162553adaba65f1b09ddaa5f07cd328439f2c7e247fd1dcbc8d4aed5e96d2a9b"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-nonfinite/request.json",
+      "bytes": 355,
+      "sha256": "787baeea1bf9774aacc5e512c60250a8b3192553cca351fb146e991facadad25"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-original-gaps/cleaned.csv",
+      "bytes": 27,
+      "sha256": "e25d3967477a415c774b3d96c56eb6d19cb8d07e5b635af500375a152dc642ba"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-original-gaps/gaps.csv",
+      "bytes": 5,
+      "sha256": "83e10a488c29c7a7832c5576708dcdd541c9ef50695cd2e4077045726aa17961"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-original-gaps/input.csv",
+      "bytes": 27,
+      "sha256": "e25d3967477a415c774b3d96c56eb6d19cb8d07e5b635af500375a152dc642ba"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-original-gaps/interpolated.csv",
+      "bytes": 163,
+      "sha256": "51ddb706f1ab87e4d3ebf16b1b2a1e62a14e64f594941b7238927d097fdec370"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-original-gaps/interpolation.png",
+      "bytes": 48876,
+      "sha256": "5e008eda05b98f2b8d79ab4acf885039f2d8d21ab5de1523a4ebbd8d73d41dfd"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-original-gaps/provenance.json",
+      "bytes": 1613,
+      "sha256": "a405a8b003765c59b008be03c786ea057e58f8d8881a4eed4abb50599754cb83"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-original-gaps/raw.csv",
+      "bytes": 27,
+      "sha256": "e25d3967477a415c774b3d96c56eb6d19cb8d07e5b635af500375a152dc642ba"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-original-gaps/request.json",
+      "bytes": 428,
+      "sha256": "00e7163770606789cbe29c8d69132ba2f8e57ee4160ce852c95bfe8ead2eb339"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-original-gaps/response.json",
+      "bytes": 4541,
+      "sha256": "3b492569c44d68fbad0084f7f005a8553df1de980acb32e365a169f53ed795d2"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-strict-no-fallback/input.csv",
+      "bytes": 16,
+      "sha256": "427d39c018c0b96eb9651f37e33f3e434ecbe4d4a7bc4975b3940cb004be49ee"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-strict-no-fallback/request.json",
+      "bytes": 411,
+      "sha256": "1ffa05dd829284e6b929ccf4e3dfed3b7c8761a1abb62ece7253ea7e6f185e4f"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-unknown-field/input.csv",
+      "bytes": 16,
+      "sha256": "b3af65fe942654170a073a9bab0e0026fcac581d63873c10bd8835b35dd8ff5b"
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-unknown-field/request.json",
+      "bytes": 381,
+      "sha256": "2dd1bf612af1bf8923abfbe688380381fae00864523053ae4d667e15e792120e"
+    },
+    {
+      "path": "validation/v0.5/matlab/invalid-parameter/input.csv",
+      "bytes": 640,
+      "sha256": "59d974e2251acdb6b4de3eba34ed441aac37a9e3e77003b2913032d99bcb2cc6"
+    },
+    {
+      "path": "validation/v0.5/matlab/invalid-parameter/request.json",
+      "bytes": 346,
+      "sha256": "88209c982e365fa3da5bd8671b442bd7696b37b90fd4376b648e0ec4a3209f14"
+    },
+    {
+      "path": "validation/v0.5/matlab/invalid-parameter/response.json",
+      "bytes": 164,
+      "sha256": "ed7ef4a731736436160f6dd7f87654a4a02d594216ae6e3c89ce9cb5c1409dd5"
+    },
+    {
+      "path": "validation/v0.5/matlab/junit.xml",
+      "bytes": 4877,
+      "sha256": "b50f086e45eef65e2867bab16e6bfecb98304d7d5407434d60998dd411ec946a"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/cleaned.csv",
+      "bytes": 1783,
+      "sha256": "5bc3c51f354dff97f0021cd1601b9e97bb5c8be34ee5127ab4d0b03dd3dc78cd"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/input.csv",
+      "bytes": 1783,
+      "sha256": "5bc3c51f354dff97f0021cd1601b9e97bb5c8be34ee5127ab4d0b03dd3dc78cd"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/prepared.csv",
+      "bytes": 1783,
+      "sha256": "5bc3c51f354dff97f0021cd1601b9e97bb5c8be34ee5127ab4d0b03dd3dc78cd"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/preprocessing.png",
+      "bytes": 113199,
+      "sha256": "7b39bc0be8a2688a387b3225f0259fbc773844a5109e3f3beb1b077fa1d23995"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/processed.csv",
+      "bytes": 3248,
+      "sha256": "373b3bf2c085db8175c9ea3d5fee37276b9860c8abb68a61fa365400a76dcf9a"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/provenance.json",
+      "bytes": 3310,
+      "sha256": "a64cd1797c71d2a9d930b6a3a8aef00a7bf49d9807892338d1caaa6dbf7fb2af"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/request.json",
+      "bytes": 379,
+      "sha256": "ffdcf67d3c5d47c11f64a66cfbf4126d92a950e13bb1aafdee7d4221768fe574"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/response.json",
+      "bytes": 7680,
+      "sha256": "a1841c5c43fdf7dc0ea318b8562e1cc559daaa9420d564e62b09a547114f3e35"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/spectrum.png",
+      "bytes": 160585,
+      "sha256": "e3db84008751b6395a6586422c943d3eb6e10d19cbc58d8bb3784b336dc09953"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/spectrum_classic.csv",
+      "bytes": 16082,
+      "sha256": "07f0568688da31ff20b875be22e1dfc12f655aea2277725ae9388e9869775e37"
+    },
+    {
+      "path": "validation/v0.5/matlab/nonphysical-fit-regression/spectrum_robust.csv",
+      "bytes": 28882,
+      "sha256": "397f539d5c4b4133517ae5a4f1056af8d0f65d2420fd2fc059f33295c5a46044"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/cleaned_metres.csv",
+      "bytes": 307253,
+      "sha256": "40b5358bc3623642ccaf17cc9ff7f0cca1bdba6a8e67c8136ba598eadabc3712"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/details.json",
+      "bytes": 36724,
+      "sha256": "a6c542e292590e552e8e2a77818a79252bb45115ed4ae2f0caa2c6d9c796d224"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/detrended_input.csv",
+      "bytes": 439760,
+      "sha256": "8b7301bb6e7698ba3602a3af421b808bcd7a0be03697ac2554cc7e0ba0955f4d"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/ecoco.csv",
+      "bytes": 15156,
+      "sha256": "fdb75dfc212859ae56062bb1527f395dbefafdfaeeeea364b1c60a77cc3e909d"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/ecoco_figure_1.png",
+      "bytes": 155065,
+      "sha256": "e26d0d1de3f84221011377476b53729c03cee855720c0b8f665b05bd66125648"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/ecoco_figure_2.png",
+      "bytes": 98607,
+      "sha256": "8fc4f389239a566ea7c585a79aed8a915debb946982e8b87418df830dee2f3dd"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/fixture-provenance.json",
+      "bytes": 188105,
+      "sha256": "cf5332f2b285ba14234b1161714ea815f8557151010e6a39e1d0868ca79cf507"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/input_metres.csv",
+      "bytes": 307253,
+      "sha256": "40b5358bc3623642ccaf17cc9ff7f0cca1bdba6a8e67c8136ba598eadabc3712"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/orbital_periods_kyr.csv",
+      "bytes": 153,
+      "sha256": "4169a20735d4c7103c64f846449d76c8ff05b2d5ccacba0eba33699841a40ad5"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/prepared_metres.csv",
+      "bytes": 439760,
+      "sha256": "8b7301bb6e7698ba3602a3af421b808bcd7a0be03697ac2554cc7e0ba0955f4d"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/preprocessing_trend.csv",
+      "bytes": 418021,
+      "sha256": "2d5716dbc9c0684f8901e22326c17f5635e39553e73903e9a3a8078bea68c120"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/provenance.json",
+      "bytes": 22783,
+      "sha256": "4b3ac16e560476eee1a4f41477e9ad7c294f8d1585229d72190536e1fe08da05"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/published-comparison.json",
+      "bytes": 1605,
+      "sha256": "6e5f7c7c06b9c4c301ec36c266d3791b7885bfa98a960480f9e80babdb316cc1"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/request.json",
+      "bytes": 700,
+      "sha256": "809a172f2903da39fd5942748bac657b4a354ecaab843be1e87d69d99e511e00"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/response.json",
+      "bytes": 31784,
+      "sha256": "a06a6e3d594e4b0495c457d0659d4de1d25467b244b8604f7abb2fb66574ac8d"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-cambrian-ecoco-199/tracked_rate.csv",
+      "bytes": 464,
+      "sha256": "71c8d6f2d06f7e24da92b59b28106581eddb2d61aae05e205690bbddf5f6a97f"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/cleaned.csv",
+      "bytes": 28252,
+      "sha256": "f3f4eae60735ebfa2b4263631a269645d790c4263167c99ba0678bf0f0437efa"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/evolution.csv",
+      "bytes": 5399085,
+      "sha256": "76bf632e4b3f91a46d1ccbcd59f24196f5bb985af8e4db07134b16d5f74f592a"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/evolution.png",
+      "bytes": 416683,
+      "sha256": "82be824eece5e3fd378a16866e5976837ca79429232992c2322a7cd880f6cd9f"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/prepared.csv",
+      "bytes": 28252,
+      "sha256": "f3f4eae60735ebfa2b4263631a269645d790c4263167c99ba0678bf0f0437efa"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/preprocessing.png",
+      "bytes": 141979,
+      "sha256": "719a02dc0e5112d58b1986379646f5a9c03148a4ad988e271202f78f91bd0de1"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/processed.csv",
+      "bytes": 67340,
+      "sha256": "90f55077ab7c1ec35e0174dd46b0e2b6ac861e41d76e0ea33eb99a72d098c538"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/provenance.json",
+      "bytes": 3710,
+      "sha256": "160ff5aabcb298f64b994635aed00cc6476ceaced62407e57fb029a7c9f17cea"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/request.json",
+      "bytes": 380,
+      "sha256": "0143d8c4d521fc4afe8113f7b34f1f3bcebe5e530ccefaefc732d808fda3a277"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/response.json",
+      "bytes": 8786,
+      "sha256": "a0a3eaedbac37465949dbb40f87c3a5b7c5d60612d47306bf3709859c4d48412"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/spectrum.png",
+      "bytes": 95987,
+      "sha256": "76911338d97ac17a5286142909629d3b7b2f61964f9e9550aa8668d0d13ef51b"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/spectrum_classic.csv",
+      "bytes": 284854,
+      "sha256": "164530d0b3f1acf8a6b555a4fcaaa4402d7738e95a402069379ff534b0d2f739"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-cambrian_2022_gamma_ray/spectrum_robust.csv",
+      "bytes": 492319,
+      "sha256": "f2392ddee20a18a3865ad479a62f267eb16dd96c7d50f490c8fb6ad870c6a919"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/cleaned.csv",
+      "bytes": 11243,
+      "sha256": "3fb281e7fd55052ec7449e90f9f929091af8939c62829cf2f55bd859ccaf09a4"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/evolution.csv",
+      "bytes": 2307947,
+      "sha256": "cae1bfde375d9a9ad96e00d2fc9e5a14c662974958e01e349659f2c72c3c4a76"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/evolution.png",
+      "bytes": 687225,
+      "sha256": "2aa22f91afc1ed47139dc3537e8996c4b2bbe38b722a4aec6b07169fbbe76783"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/prepared.csv",
+      "bytes": 27296,
+      "sha256": "18af04b401a2ce415e003e0a39300d640cdcfddfa4dd79021dc8be6ae22d82bd"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/preprocessing.png",
+      "bytes": 142805,
+      "sha256": "eb390ace3d25ab839a92a7fd2cc4d9fff834e76649ac678f4d1bf278ae335d7e"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/processed.csv",
+      "bytes": 42377,
+      "sha256": "767cfe1dd548189d071955b3f6e7de6cbb06f711b8e809afa549a115b0fef12a"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/provenance.json",
+      "bytes": 3710,
+      "sha256": "347dad5972be45ee889f0311cd0b101ee7c060a10f52b21ac267d0b959deb2fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/request.json",
+      "bytes": 376,
+      "sha256": "17a6152361f60a246eb8126206b2a039c3d685cd1b0da36fd7070c231430be29"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/response.json",
+      "bytes": 8727,
+      "sha256": "c1bfb77e4b82405b9e4536d190f2cc5fae9bd4d3cd5c88d91ebe36c77ed15e7b"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/spectrum.png",
+      "bytes": 94116,
+      "sha256": "96f5c01fbe1bd67a17a7c1b20d5457137c2a7f6f5f821d20335df57df524b191"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/spectrum_classic.csv",
+      "bytes": 145188,
+      "sha256": "87dda8bc8b181e52ec3b21d5e0e9b1a97105fbdcf9e6ae44d6f3a6ecaec789f1"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-data-petm_2022_ms_194_200m/spectrum_robust.csv",
+      "bytes": 251204,
+      "sha256": "45a9ad904e17bf3e631f5c18a6356a23d84eaa3c1243207e18e907e253bd2751"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/cleaned_metres.csv",
+      "bytes": 67010,
+      "sha256": "fce5896fd5af063ea30444723425080ac04e99bdca26cc1aa33116894dd52763"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/coco.csv",
+      "bytes": 21155,
+      "sha256": "a64638fd8ea85ae9d133eee87f1a5ab38ccb7f0bde9abd60d3c1b360d3610294"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/coco_figure_1.png",
+      "bytes": 171204,
+      "sha256": "b846838f34528aa30aa7fddb65d5be90bb490370f6adbdb0ced5c721214d27de"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/coco_figure_2.png",
+      "bytes": 55403,
+      "sha256": "6918d1d1b2eb857972d082f4298bd20c6deb177f79fae2168cfc57ce9125bdae"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/details.json",
+      "bytes": 52056,
+      "sha256": "5cb92f9c5a0240b5262e002456aae50c8c602802ee401d32f0144332af81e9c7"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/detrended_input.csv",
+      "bytes": 127036,
+      "sha256": "59bb5ecb08c1ff9089fd1b229fd4221245b7755071cb4b8afd332ff071cae081"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/fixture-provenance.json",
+      "bytes": 53364,
+      "sha256": "b1735d6edfadfc1cd9e9594bbb3a6e7e9c2cdbb1c91d016b235644a1e089c1bf"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/input_metres.csv",
+      "bytes": 67543,
+      "sha256": "89a86427a68385ccd6961868cbfc7a6dcad786eff46fa9d19d81a0177697ac3c"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/null_max.csv",
+      "bytes": 35773,
+      "sha256": "38bbfb9aa10f61fee47d26e688cc97b5a16d9db68da727a8780bdd098a11abcb"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/orbital_periods_kyr.csv",
+      "bytes": 25,
+      "sha256": "51cb1817d2ddd5fecc2de348a682da9ad221e0e99a4e4efbc3c4c4a153ca736c"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/prepared_metres.csv",
+      "bytes": 186008,
+      "sha256": "1db17ffc751fc4bab788b610347775fe32e85d0f412d06aa919a1846b7ed9457"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/preprocessing_trend.csv",
+      "bytes": 123502,
+      "sha256": "9b571f5a768fa0a2cc16008067487ca2839f387d506166bf99edb04d39104a0e"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/provenance.json",
+      "bytes": 22789,
+      "sha256": "9cab3b7e6831dc04a4734463b36df028ee69b3e97a339b1c9182e44df94bb2eb"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/published-comparison.json",
+      "bytes": 1930,
+      "sha256": "d556e6a52238dadff9f151a6fa3d7f1c1060357ce0a8b0f1c4609d28dbe17364"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/request.json",
+      "bytes": 750,
+      "sha256": "6c7228e3d1d713d7cb4ef376a1256c4a14c989469518d37ca7ae27f889ca7657"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-coco-2000/response.json",
+      "bytes": 32002,
+      "sha256": "c8d1f667e7c9ad13602f18bd1229cb4e7f318e8bb1494dc588a5111fee16d426"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/cleaned_metres.csv",
+      "bytes": 58615,
+      "sha256": "5f317ef46a3d54f97c73b2fc494d092e1f36315849e30f83e3c46e5f385b785d"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/coco.csv",
+      "bytes": 21068,
+      "sha256": "c7381bbf500590ce2edf38fe252c893640ab4947d8be8977d76475c54111aba2"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/coco_figure_1.png",
+      "bytes": 150382,
+      "sha256": "2642682e6cf4bec591be79d7a1992d467e4e526ccf202808ed7bf8500ba6a9af"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/coco_figure_2.png",
+      "bytes": 53730,
+      "sha256": "2a9a0f9a13bca939a163317c451de33af31e5354e68fc85887f9f772501be252"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/details.json",
+      "bytes": 51789,
+      "sha256": "169c54cbcc78b23b0aa18986009c86f27c650509f9a42af547326081daaf87fe"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/detrended_input.csv",
+      "bytes": 60644,
+      "sha256": "de7e7ecb8ae49d9d8b18d09d1984f47083457cb9b49125dec7be3c016ba5f630"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/fixture-provenance.json",
+      "bytes": 46162,
+      "sha256": "a3f51c6bea739fbc89d2040268fdcf55dfa9ebbd43531038fc60699f0b095097"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/input_metres.csv",
+      "bytes": 58615,
+      "sha256": "187e3746ca64b23d3b5490dfe851f329f934234232d77c7699c7daeed6978769"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/null_max.csv",
+      "bytes": 35776,
+      "sha256": "c3f429785ce7f1876a6a7cfbe87573bc7904790e8261d94247578a52f06f82e2"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/orbital_periods_kyr.csv",
+      "bytes": 25,
+      "sha256": "51cb1817d2ddd5fecc2de348a682da9ad221e0e99a4e4efbc3c4c4a153ca736c"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/prepared_metres.csv",
+      "bytes": 60644,
+      "sha256": "de7e7ecb8ae49d9d8b18d09d1984f47083457cb9b49125dec7be3c016ba5f630"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/preprocessing_trend.csv",
+      "bytes": 108031,
+      "sha256": "f45f9c771a9b4ad97a43a286daab27ab784ed457e78d947ea9a026bcbeecabab"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/provenance.json",
+      "bytes": 22789,
+      "sha256": "95aed7a094db48f06cb40b5d91db2d276718d5768a9f7ea3327472f1a38dc1ec"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/published-comparison.json",
+      "bytes": 2010,
+      "sha256": "58434edd3a5d8bda81a8883171d871c5ea1b2c004913d9653cdfde0686f5aeaa"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/request.json",
+      "bytes": 855,
+      "sha256": "721b053cbe2acde758f3bad34f6b4c710357e111ed220a89a710e8f86158112d"
+    },
+    {
+      "path": "validation/v0.5/matlab/paper-petm-published-protocol-coco-2000/response.json",
+      "bytes": 33694,
+      "sha256": "11e430b7a48f75fa92229eb9e27645a978b3da7be56f6702a1c0d33bfb0a5e22"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/age_model.csv",
+      "bytes": 2547,
+      "sha256": "d8ede441264e171c6b50570673ec74d65ea24fae2cc20c209f09ca2b3c80e9af"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/cleaned.csv",
+      "bytes": 6696,
+      "sha256": "ba367fe61e4b5d720844d4c5c8b67e94a7626124866880e8dd870e2d43049a8f"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/filter.png",
+      "bytes": 113771,
+      "sha256": "08d809c12b13ee4865aa326b4475a062aad333e523d75a62a0ce75934d8d03ac"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/filtered.csv",
+      "bytes": 12183,
+      "sha256": "079df3e92b23f1c0ba61b17348c1671eac683574cc8467107a572b7b06f5ff2f"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/input.csv",
+      "bytes": 6835,
+      "sha256": "935557f2aa55b99ede0077d940273127bb2f832e5addc6cbf8ed1af329e30f74"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/prepared.csv",
+      "bytes": 6696,
+      "sha256": "ba367fe61e4b5d720844d4c5c8b67e94a7626124866880e8dd870e2d43049a8f"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/preprocessing.png",
+      "bytes": 141866,
+      "sha256": "ffd8d8e52b14d1d883d814e0a9521710531d6cb3e749fb90132b6a9507248713"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/processed.csv",
+      "bytes": 12746,
+      "sha256": "ec26b54823d89b642674707963f8c0ebc7415592bd43e775d0136d270efcd98e"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/provenance.json",
+      "bytes": 4006,
+      "sha256": "0210f27d8f2686b315241e0b25494f112c18f5bbf5a9a3b7446faa48a4390eeb"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/request.json",
+      "bytes": 461,
+      "sha256": "a4a9bc7650f3b5e9150ea809838ccbb0c1e1e9133caf6f0a2892169f16989b58"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/response.json",
+      "bytes": 9056,
+      "sha256": "bcf47f426726eac7e196730020f9d00f5ca6ba7ecdb1df7a41f5a5492efbddfa"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/spectrum.png",
+      "bytes": 85056,
+      "sha256": "5e10552d3c7a8f2bfeb78bd001db0200ab229326b205c8be3917ce22ba3cb2bd"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/spectrum_classic.csv",
+      "bytes": 60581,
+      "sha256": "2d2cb68e25cda1d1383f75fbdabaadd35a27e19c0fa293db6b88871ad4368d2a"
+    },
+    {
+      "path": "validation/v0.5/matlab/rate-age-conversion/spectrum_robust.csv",
+      "bytes": 107768,
+      "sha256": "73a9c689028a8b5c0d3206123014ec843dd8c3e8569c3a35a5c1ecb4495f3f2a"
+    },
+    {
+      "path": "validation/v0.5/matlab/rednoise-negative-control/cleaned.csv",
+      "bytes": 33287,
+      "sha256": "e6b84856072e02382884fbd27ebaaead78d9e808527953dfba27de9c558ef849"
+    },
+    {
+      "path": "validation/v0.5/matlab/rednoise-negative-control/prepared.csv",
+      "bytes": 33287,
+      "sha256": "e6b84856072e02382884fbd27ebaaead78d9e808527953dfba27de9c558ef849"
+    },
+    {
+      "path": "validation/v0.5/matlab/rednoise-negative-control/preprocessing.png",
+      "bytes": 219735,
+      "sha256": "d9dec8d99950920f5b8ba0ff30e23156ca1a87bd74b44b77c124b7c07aadf3af"
+    },
+    {
+      "path": "validation/v0.5/matlab/rednoise-negative-control/processed.csv",
+      "bytes": 89493,
+      "sha256": "c6dac994005e093ce09890ff95241fbb2f2b7216d2a785d8dc4d4e424fa1a13c"
+    },
+    {
+      "path": "validation/v0.5/matlab/rednoise-negative-control/provenance.json",
+      "bytes": 3282,
+      "sha256": "1f8c3360ff12e53de6a990854fde937ae49ba31cf6a0a4470f3e6e0481c32881"
+    },
+    {
+      "path": "validation/v0.5/matlab/rednoise-negative-control/request.json",
+      "bytes": 382,
+      "sha256": "6158a7a565de2d9c9e14391ce374c60bfd38302a2ffd64551fc4a0237836a81e"
+    },
+    {
+      "path": "validation/v0.5/matlab/rednoise-negative-control/response.json",
+      "bytes": 7489,
+      "sha256": "b4ba1d82083c280d7025a36389f18f528f5f50f837a231dc017729f79a36a015"
+    },
+    {
+      "path": "validation/v0.5/matlab/rednoise-negative-control/spectrum.png",
+      "bytes": 97643,
+      "sha256": "fd3ca3496d3c5c68893fce15b872f0c240a105b44466ad7647627e5cace3e583"
+    },
+    {
+      "path": "validation/v0.5/matlab/rednoise-negative-control/spectrum_classic.csv",
+      "bytes": 365799,
+      "sha256": "f88bf2bf20e716ca0f4a393b2bcfb7f9a89642bb259dcf113bbebf31a6e71f53"
+    },
+    {
+      "path": "validation/v0.5/matlab/rednoise-negative-control/spectrum_robust.csv",
+      "bytes": 628213,
+      "sha256": "91c9abc57da430f4e2e27ee3649d34f25ee905675227852dbd2f1b396731d97f"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-duplicates/input.csv",
+      "bytes": 2103,
+      "sha256": "8136e880dca81bc6b187d6767f5566e4fd55f4f0f7d902e2e06a3a56606fa7e3"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-lavernock-publication/publication-comparison.json",
+      "bytes": 1582,
+      "sha256": "f12fd50c304dbb72279eaa51588864cff4b8453e1f688569eda927d38b54c438"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-lavernock-publication/request.json",
+      "bytes": 410,
+      "sha256": "4697869891e3c5a242a1b472471a2f8ddd73935155ab27b1fe6ea68fadcc89b0"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-lavernock-publication/response.json",
+      "bytes": 8710,
+      "sha256": "14fe610938b1411157bed8f075c9b5c1169ba53b31d62736aa5364321781d300"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-lavernock-publication/swa-cleaned.csv",
+      "bytes": 5106,
+      "sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-lavernock-publication/swa-prepared.csv",
+      "bytes": 5106,
+      "sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-lavernock-publication/swa-provenance.json",
+      "bytes": 4110,
+      "sha256": "5b5178c3bfbd96aa3aa2411d3f262cd4faea1073d56b856f580bb65411fd8bab"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-lavernock-publication/swa-spectrum.csv",
+      "bytes": 34955,
+      "sha256": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-lavernock-publication/swa-spectrum.png",
+      "bytes": 140973,
+      "sha256": "2520ba8bb7ec4cd860660c609452ec5d4baa7768ada2f53d8553a769333382a4"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-newark-mtm/request.json",
+      "bytes": 478,
+      "sha256": "4c3cd78d6ea5ca9fa8cf28c3b6713ff33b455df00730d8f311a05f350024ada9"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-newark-mtm/response.json",
+      "bytes": 6938,
+      "sha256": "b16fdc6d37ee1005fb668ef1c421f17f65631def076086cebabea15cd00acd80"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-newark-mtm/swa-cleaned.csv",
+      "bytes": 39212,
+      "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-newark-mtm/swa-prepared.csv",
+      "bytes": 68052,
+      "sha256": "ff39f924b15292429d34708684314b8913540559939d44bbacc802a833248fc2"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-newark-mtm/swa-provenance.json",
+      "bytes": 2488,
+      "sha256": "fed7dacf5b75d1aa2418785f5f5018d3893d9e47e5d37b3f14648ae1d6eefaa9"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-newark-mtm/swa-spectrum.csv",
+      "bytes": 246391,
+      "sha256": "837aa227228c9402bf46ed77d74f9336c6e064831e6900872993fdd71df7aa35"
+    },
+    {
+      "path": "validation/v0.5/matlab/swa-newark-mtm/swa-spectrum.png",
+      "bytes": 265565,
+      "sha256": "b4deb93ae3e31f7431f294306b5a131f66cee3c2aa3ffa200873d4d30b08d3ca"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/cleaned.csv",
+      "bytes": 7144,
+      "sha256": "0771bfa49906dfafec6fe16027f2d6924346114fc90cca9955ad5dde2c8261c4"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/evolution.csv",
+      "bytes": 1393310,
+      "sha256": "1c2228d39d6cc17c436291a67221443b0e5a01fb37443ee1c14edbbe567e756e"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/evolution.png",
+      "bytes": 382472,
+      "sha256": "a6d4102b6bcfb0fe96c934f1e160fdf660f65ee84190e36a5ce90ee72ba7aadc"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/filter.png",
+      "bytes": 89909,
+      "sha256": "e9b71c869b2761b9d7299a3f2ef35b20de1af9956a4dca4a0464846d00242aaa"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/filtered.csv",
+      "bytes": 12905,
+      "sha256": "1b695ef74ecdfa45cade43a46e3a06eea918e9d279417467294899cffdc56912"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/input.csv",
+      "bytes": 7165,
+      "sha256": "401049749fac2c306ec12c458ca9c2f19b39d44a72f0880c9c9c4700100b6c70"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/prepared.csv",
+      "bytes": 7168,
+      "sha256": "762d70b88294efd7cf6e28168c77bb12632947f57de7033f6f57ccd0148202aa"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/preprocessing.png",
+      "bytes": 132185,
+      "sha256": "062b34a3c045203473434fc482bfbcb8d4a4a4133cd0a43b27664f0cb36e5d40"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/processed.csv",
+      "bytes": 12998,
+      "sha256": "7eb63a1cf7d7048cf63e12ac06ab3923e0296a1920bdb5fe6e64e18a2f0a7a78"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/provenance.json",
+      "bytes": 3950,
+      "sha256": "2a750ec6a64be162b6d3f84d5b3585e575f710962c1291949effb1df030167b1"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/request.json",
+      "bytes": 427,
+      "sha256": "6917ed6aadf4a2ce34b181446863e22c69fe490d65ff516083e1f41327c91e22"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/response.json",
+      "bytes": 9198,
+      "sha256": "54b0c1afe99251989e541ada6bb1376ff77ae84712a7051cddb25c8adc58931d"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/spectrum.png",
+      "bytes": 91839,
+      "sha256": "00fa711f6d4d5c5a90354da74221abc7d97b43bcccf8e12baf09b570f3cf8e55"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/spectrum_classic.csv",
+      "bytes": 64252,
+      "sha256": "4d97990de51e3606b58d81d6f69bb2c1f0d2a8c92e33ce53cb3bf201706129b0"
+    },
+    {
+      "path": "validation/v0.5/matlab/synthetic-parity/spectrum_robust.csv",
+      "bytes": 114684,
+      "sha256": "764953db97568189bd67acc6bd27318af1d34203c0d49397614eca98448c9466"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/age_model.csv",
+      "bytes": 21,
+      "sha256": "e7da5819a52ab6e17e4e43f2133de22c96c357f3e33e783e570c620e41a9a97e"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/cleaned.csv",
+      "bytes": 4244,
+      "sha256": "0c017324ec4569a3adffc84b5c99d8021549db5d4d43019f0c2433722eed6591"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/input.csv",
+      "bytes": 4224,
+      "sha256": "08e24557d021f9185097dd139b0317427f511219379a66ee0cf19afc1c8cfc52"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/prepared.csv",
+      "bytes": 4244,
+      "sha256": "0c017324ec4569a3adffc84b5c99d8021549db5d4d43019f0c2433722eed6591"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/preprocessing.png",
+      "bytes": 125874,
+      "sha256": "14c520ed8c5d92001633cbb8cb7b316c67ca880e38fb64852bbda941c9d6a7f2"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/processed.csv",
+      "bytes": 8687,
+      "sha256": "686b2f9824a60be74bce3ad5e04d553930bb9065bfab10869ff71f375ee7ffb9"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/provenance.json",
+      "bytes": 3504,
+      "sha256": "209790bc155c2c9969737389c5eebc699c0afb6db03ef38697a352d23f0d5872"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/request.json",
+      "bytes": 414,
+      "sha256": "441558f2542c0bbceaa70a3d46e04f38707ac4cfd6bd4ee0c42cf0a1c0787b8c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/response.json",
+      "bytes": 8016,
+      "sha256": "6f0bf6055c9a97b6aef143dd5d770f01bfb3f8cc810c6a6118fd0be5464ff2b3"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/spectrum.png",
+      "bytes": 94424,
+      "sha256": "61a319151557c11554f74663dbc1d83365840011b7a10411a532742d35f43468"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/spectrum_classic.csv",
+      "bytes": 40564,
+      "sha256": "5966e249e0024d2434b66ce0a4f20f1b53de02885cd6505760234195682c7f23"
+    },
+    {
+      "path": "validation/v0.5/matlab/tiepoint-age-conversion/spectrum_robust.csv",
+      "bytes": 72066,
+      "sha256": "022a350ed4d030a268a0df447b583ec512baad42c46c8af5f5ccc11e8b7a435b"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/age_model.csv",
+      "bytes": 67,
+      "sha256": "0262d10e8fd4abcf1e82c8555f85cb927e4176915f626b4ddf2b5f093d7b0720"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/control_points.csv",
+      "bytes": 209,
+      "sha256": "c295c7a42a5fcf7749ce95aee19d95b2ba34037bd00ab6d15baf4620364ad56b"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/depth_age.csv",
+      "bytes": 283,
+      "sha256": "a377afd283b084188c4b1650f4fef6e0f2b0f83aa2c31b25f24ea2f6ee69be9b"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/input.csv",
+      "bytes": 221,
+      "sha256": "37611bc3df082360ba2c1b4a714c15238d3ab98e4824112a9649ab6cf589d3e4"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/provenance.json",
+      "bytes": 2492,
+      "sha256": "ec07cc88e0688e741c8e9a23bfb62f9e1cec63703541f78a5ad03001885f3cee"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/request.json",
+      "bytes": 424,
+      "sha256": "8db09de9172da0b9b0a57ed8573be0222181102efa28c968898f95452ab27849"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/response.json",
+      "bytes": 6993,
+      "sha256": "48fbff6341b81e7e7b12e234cc5861419df2f759594c164cb1db9d11d192079e"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/sedimentation_rate.csv",
+      "bytes": 113,
+      "sha256": "f7a9190e3534f4a04571e1e93a46df2a59d50a1cbec88e524cdce93da5a12774"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/tune-cleaned.csv",
+      "bytes": 221,
+      "sha256": "37611bc3df082360ba2c1b4a714c15238d3ab98e4824112a9649ab6cf589d3e4"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/tuned.csv",
+      "bytes": 277,
+      "sha256": "eec758550f849917d030783459f7a5530a808dc88a33cda31c98dbb51802f91c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/tuning.png",
+      "bytes": 146733,
+      "sha256": "0c5854f888bc318bb40aebe7aeb8fd2197d245d97a5fdda334a108190a8748b7"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-plateau/input.csv",
+      "bytes": 210,
+      "sha256": "fd852be480c4987bbab47c18e26f43be29a64eefe595396140f5581d74d8a460"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-plateau/request.json",
+      "bytes": 416,
+      "sha256": "a0fac80115e79042caa8b59510036021d2850f8cf5185fdc3a0962e4b47e38ba"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/age_model.csv",
+      "bytes": 46,
+      "sha256": "869542393526914611919fbd494601f87eaa4c4277189cda1dae28bdc59c155f"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/control_points.csv",
+      "bytes": 125,
+      "sha256": "a81797822404d56549f348df7f65926d1b136a2210f8a4ea7d6eae37c1ce6583"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/depth_age.csv",
+      "bytes": 315,
+      "sha256": "c09d039aea0d546b9403362fb88de4177ecd93ad497c1399f96b27e188912913"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/input.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/provenance.json",
+      "bytes": 2492,
+      "sha256": "e42fd85e0c32f2fb665969455c198469a0e3fad195acf682a2e996ecea768611"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/request.json",
+      "bytes": 477,
+      "sha256": "cbb2a3a1ae6de18ac765b4f178bd069561049e11001f07e6f269a3e3f0d120ea"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/response.json",
+      "bytes": 6828,
+      "sha256": "bb3e9dfc3bf7a58ba8eacd77a8d5d23fec435edc2059bfd9b764aaee66775152"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/sedimentation_rate.csv",
+      "bytes": 110,
+      "sha256": "81fdf358fb17aa4bf9104f5d2c7a2272dd9f4432ad2590739346591cb2f48978"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/tune-cleaned.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/tuned.csv",
+      "bytes": 299,
+      "sha256": "e16651660e715c49c26e64ffdd589a50816832588575525765f7d002dd59ee81"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/tuning.png",
+      "bytes": 134983,
+      "sha256": "3f04a166d7d378310140afac4384010e8670fc66a582179c8fde20b0dffc04fd"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/age_model.csv",
+      "bytes": 34,
+      "sha256": "e023f01422ac4fcf161095d386e5d0fea014c178bd678a2f2027deeb7813483d"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/control_points.csv",
+      "bytes": 125,
+      "sha256": "a81797822404d56549f348df7f65926d1b136a2210f8a4ea7d6eae37c1ce6583"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/depth_age.csv",
+      "bytes": 255,
+      "sha256": "2c43f86fbdbd6ae4cf3bb29971fef4532e89d2c9113144b7dc9b520ae75c0d06"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/input.csv",
+      "bytes": 374,
+      "sha256": "a65d77303e128e1ed59e7ec4f6f14ffe05e4a7966120f9033eed37bd706f69cc"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/provenance.json",
+      "bytes": 2492,
+      "sha256": "7f8f0f98482c502606f07ad9bc96828eff063872b0eaae4ee4b775ff37ea497f"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/request.json",
+      "bytes": 433,
+      "sha256": "0b09437e59e8fab37b6aab5450f38ae8a194e6930f8f968c657649fab4f8b10b"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/response.json",
+      "bytes": 6660,
+      "sha256": "5215beb5faf059fe39710384945e77128d3f673e7f99df5d04ad426b2a0b0248"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/sedimentation_rate.csv",
+      "bytes": 70,
+      "sha256": "e0a562b376f228029ec87f19708216a21835acf91ad74fe401ea0a36135257e6"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/tune-cleaned.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/tuned.csv",
+      "bytes": 242,
+      "sha256": "06dbc66451eb088219a8838e4114d6f8f390e38d43d2edd14b6d6dfa136f6958"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/tuning.png",
+      "bytes": 138045,
+      "sha256": "292b0ffcbc48d28f1332c682a42226b03154623266dd1e855357682a23f1719e"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/age_model.csv",
+      "bytes": 34,
+      "sha256": "e023f01422ac4fcf161095d386e5d0fea014c178bd678a2f2027deeb7813483d"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/control_points.csv",
+      "bytes": 125,
+      "sha256": "a81797822404d56549f348df7f65926d1b136a2210f8a4ea7d6eae37c1ce6583"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/depth_age.csv",
+      "bytes": 255,
+      "sha256": "2c43f86fbdbd6ae4cf3bb29971fef4532e89d2c9113144b7dc9b520ae75c0d06"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/input.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/provenance.json",
+      "bytes": 2492,
+      "sha256": "e42fd85e0c32f2fb665969455c198469a0e3fad195acf682a2e996ecea768611"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/request.json",
+      "bytes": 429,
+      "sha256": "423d9d97b8b87586c8f83e7907a2e093fb3542cc4833431ed10efee1cd7ca69e"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/response.json",
+      "bytes": 6639,
+      "sha256": "1f42aca9ae730f5b71d75a1118e52bd0c566d4415dbb78a46a1b4cfc4b24bf58"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/sedimentation_rate.csv",
+      "bytes": 70,
+      "sha256": "e0a562b376f228029ec87f19708216a21835acf91ad74fe401ea0a36135257e6"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/tune-cleaned.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/tuned.csv",
+      "bytes": 242,
+      "sha256": "06dbc66451eb088219a8838e4114d6f8f390e38d43d2edd14b6d6dfa136f6958"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/tuning.png",
+      "bytes": 138045,
+      "sha256": "292b0ffcbc48d28f1332c682a42226b03154623266dd1e855357682a23f1719e"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/age_model.csv",
+      "bytes": 34,
+      "sha256": "e023f01422ac4fcf161095d386e5d0fea014c178bd678a2f2027deeb7813483d"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/control_points.csv",
+      "bytes": 125,
+      "sha256": "a81797822404d56549f348df7f65926d1b136a2210f8a4ea7d6eae37c1ce6583"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/depth_age.csv",
+      "bytes": 255,
+      "sha256": "2c43f86fbdbd6ae4cf3bb29971fef4532e89d2c9113144b7dc9b520ae75c0d06"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/input.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/provenance.json",
+      "bytes": 2492,
+      "sha256": "e42fd85e0c32f2fb665969455c198469a0e3fad195acf682a2e996ecea768611"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/request.json",
+      "bytes": 425,
+      "sha256": "2d15039b8c51ec10c3ee5f0f5b458e87d23e779985174f6ecc48df4d379eca7e"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/sedimentation_rate.csv",
+      "bytes": 70,
+      "sha256": "e0a562b376f228029ec87f19708216a21835acf91ad74fe401ea0a36135257e6"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/tune-cleaned.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/tuned.csv",
+      "bytes": 242,
+      "sha256": "06dbc66451eb088219a8838e4114d6f8f390e38d43d2edd14b6d6dfa136f6958"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/tuning.png",
+      "bytes": 138045,
+      "sha256": "767e1773a463197d742548f99508a74d5b130065712e3ef7989efaac8b92d8ed"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-incompatible-phase/input.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-incompatible-phase/request.json",
+      "bytes": 431,
+      "sha256": "f986a6b93f79972ccf89a3fd32089c06aca35725fec94e52831e8112f4df6a2b"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-no-extrema/input.csv",
+      "bytes": 226,
+      "sha256": "06e44b33866687e61015a1dcb87edccabb93cc5b6f8ece220d242483aa6361b3"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-no-extrema/request.json",
+      "bytes": 413,
+      "sha256": "2bea3cc2e2e2aaf66c4cab0d1fc05eaf8c666cedc6de1ee8701b483ad7bcd665"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/age_model.csv",
+      "bytes": 30,
+      "sha256": "cd582f6c21a25cc06c0465b0ba5e08951a36335e32be930aeab12c5e367f28bf"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/control_points.csv",
+      "bytes": 121,
+      "sha256": "f33e76c8c98859355166299cea2ffe286fffdf2da4fa82a78302c81d4feebc76"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/depth_age.csv",
+      "bytes": 223,
+      "sha256": "3cb0a341d1489c5af40db45914bd58dd82d7b6ba925ab6e6642e8ce783eaa795"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/input.csv",
+      "bytes": 227,
+      "sha256": "154afeb7ba952e6b0e4e7c14e49f03a530352b68690dec70225744347ded384a"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/provenance.json",
+      "bytes": 2492,
+      "sha256": "27995912293cf7bce1368541a6cb664cfe8c59436f3e7c246d7c996f44c89ff4"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/request.json",
+      "bytes": 420,
+      "sha256": "f69b86a2384e886a42890458da8f3f0856f73fff15e13e005d39218947947bd3"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/response.json",
+      "bytes": 6588,
+      "sha256": "77099700604ac33d741550ba5208f0378cb325b4de83ad96f0836512d4790852"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/sedimentation_rate.csv",
+      "bytes": 70,
+      "sha256": "e0a562b376f228029ec87f19708216a21835acf91ad74fe401ea0a36135257e6"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/tune-cleaned.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/tuned.csv",
+      "bytes": 210,
+      "sha256": "17bef00d364becea0ff798e40f215d14d29a01212b0bb282c7f3221cae77b3b1"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/tuning.png",
+      "bytes": 137565,
+      "sha256": "b2fa17609542a719799b019747e1ed900f3efb07ebdd11c635fc426b4ecfb001"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/age_model.csv",
+      "bytes": 30,
+      "sha256": "bb13c5ccedc0c893b54e11bffd2248fa2673a916664e562af98d504f5e3f4403"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/control_points.csv",
+      "bytes": 131,
+      "sha256": "05c49874caead2ff5f38741842df8d538528ca34377145e269764da92dfb1533"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/depth_age.csv",
+      "bytes": 227,
+      "sha256": "d8b6116df3edaab81d77a2e07c485eb27f6082d5c8422bca1619f44c5a25d896"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/input.csv",
+      "bytes": 227,
+      "sha256": "154afeb7ba952e6b0e4e7c14e49f03a530352b68690dec70225744347ded384a"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/provenance.json",
+      "bytes": 2492,
+      "sha256": "27995912293cf7bce1368541a6cb664cfe8c59436f3e7c246d7c996f44c89ff4"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/request.json",
+      "bytes": 428,
+      "sha256": "152fc83d37e3df69dfe8b82c44659c386b1a6981d4f402b8b8ce4ccf3db79375"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/response.json",
+      "bytes": 6618,
+      "sha256": "856cd81e00b9d860e7de1b7ef7a6a6987ca0ab04cbcacecc4c5bbb152cb3f96e"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/sedimentation_rate.csv",
+      "bytes": 70,
+      "sha256": "397965c5b2ec29a0ba806b31854be9d0048d0810264d2df24a962dd982b807f4"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/tune-cleaned.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/tuned.csv",
+      "bytes": 211,
+      "sha256": "323b366e65a0f2fdecd9bb4cf71af96206f9eaab8fa87e8e215e3b549a9c497f"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/tuning.png",
+      "bytes": 138247,
+      "sha256": "93a35485b0d69df4f9ba44114bc0c9f695034f3678e4c827abc958f4f274bada"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-selected-peak-plateau/input.csv",
+      "bytes": 210,
+      "sha256": "5e1cda0d1d6d839b8cd214daff311f16a512538946ecb7e57968281ae717f47f"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-selected-peak-plateau/request.json",
+      "bytes": 435,
+      "sha256": "60b9fc46884b7f16132479d3c3999ebc988a1b0d5206f7ab3155ba48968a0170"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-uncovered-endpoints/input.csv",
+      "bytes": 210,
+      "sha256": "4f8062e6d33edce38620ca8d6860a645adc81cbbdc2149f3d58c86996b92201c"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-uncovered-endpoints/request.json",
+      "bytes": 457,
+      "sha256": "8ebf79a50a992f2b5858f1f8152a2d914be6a1ed418a4d3a5c8278758b0b051a"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/age_model.csv",
+      "bytes": 34,
+      "sha256": "e023f01422ac4fcf161095d386e5d0fea014c178bd678a2f2027deeb7813483d"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/control_points.csv",
+      "bytes": 125,
+      "sha256": "a81797822404d56549f348df7f65926d1b136a2210f8a4ea7d6eae37c1ce6583"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/depth_age.csv",
+      "bytes": 255,
+      "sha256": "2c43f86fbdbd6ae4cf3bb29971fef4532e89d2c9113144b7dc9b520ae75c0d06"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/input.csv",
+      "bytes": 210,
+      "sha256": "fd852be480c4987bbab47c18e26f43be29a64eefe595396140f5581d74d8a460"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/provenance.json",
+      "bytes": 2492,
+      "sha256": "9009f2428088b06f87191d6ebab1961cc0c5a85aa48f7851e1864da1c8c65631"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/request.json",
+      "bytes": 443,
+      "sha256": "0cd77f2b2f43c32e97f012114d98814a557e7d3a870df9fd623cdd9d7a9ce50a"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/response.json",
+      "bytes": 6716,
+      "sha256": "9af760175f03b4b384c55286fa6622a11fec54279b5e74bf625ff33fc227dd75"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/sedimentation_rate.csv",
+      "bytes": 70,
+      "sha256": "e0a562b376f228029ec87f19708216a21835acf91ad74fe401ea0a36135257e6"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/tune-cleaned.csv",
+      "bytes": 210,
+      "sha256": "fd852be480c4987bbab47c18e26f43be29a64eefe595396140f5581d74d8a460"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/tuned.csv",
+      "bytes": 242,
+      "sha256": "9243a67671e027301c0a4ff9b7b3f60def9cbd7e52d56dde10e0ec7edc2109ee"
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/tuning.png",
+      "bytes": 138276,
+      "sha256": "3ca0d07a430b06b7b23e1024d96933134ed9edea84a1c53006db7d32e988935b"
+    },
+    {
+      "path": "validation/v0.5/matlab/validation-summary.json",
+      "bytes": 7733,
+      "sha256": "d8b78aa08f1f4a9b2f9729207c461e8229d45fda3e2bcb90643db9346eb7cdbb"
+    }
+  ],
+  "numerical_computation_repeated": false,
+  "original_report_bytes_preserved": true,
+  "junit_consistency": {
+    "testcases": 38,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "matches_summary": true
+  },
+  "visual_review": {
+    "reviewed_files": [
+      "validation/v0.5/matlab/interpolation-pro-original-gaps/interpolation.png",
+      "validation/v0.5/matlab/tune-both-half-period/tuning.png"
+    ],
+    "result": "Representative new MATLAB plots render correctly with readable axes, titles and legends. Interpolation gap zeroing and declared tuning/extrema/age model panels are visible. This is a visual rendering check, not an independent scientific validation."
+  },
+  "new_bridge_provenance_audit": [
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-default-dt/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-gui-endpoints/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-immutable/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-cubic/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-linear/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-makima/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-nearest/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-next/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-pchip/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-previous/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-spline/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-method-v5cubic/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-no-gap-fill/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/interpolation-pro-original-gaps/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "files": 3
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-both-half-period/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "files": 5
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-explicit-extrapolation/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "files": 5
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-three-columns/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "files": 5
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-filter-two-columns/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "files": 5
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-immutable-result/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "files": 5
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-peaks/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "files": 5
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-original-troughs/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "files": 5
+    },
+    {
+      "path": "validation/v0.5/matlab/tune-unselected-trough-plateau/provenance.json",
+      "declared": {
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "files": 5
+    }
+  ]
+}

@@ -123,6 +123,8 @@ Harness 还提供 `acycle_import_attachment`，将当前会话授权的文件附
 
 各桥接来源见 [UPSTREAM_COMPATIBILITY.md](UPSTREAM_COMPATIBILITY.md)、[SWA.md](SWA.md)、[COCO.md](COCO.md) 与 [INTERPOLATION_TUNING_SOURCES.md](INTERPOLATION_TUNING_SOURCES.md)。直接调用原函数和提取耦合 GUI 回调会明确区分；升级 Acycle 后应重新核对原文件哈希并运行对照，不能假定所有未来版本自动兼容。没有列出的 GUI 功能不应由模型承诺已经桥接。
 
+专用 Web 研究预设提供 Acycle、文件读取和展示工具，没有默认开放通用 shell。需要现场 Python 转换或超出当前接口的开发时，可使用本地 Codex，或给该 Harness agent 明确配置开发工具；应继续保留其 Acycle 插件、技能与 MATLAB 后端。Python 可以做文件/接口及 Acycle 未实现的扩展，已有 Acycle 科学计算仍优先桥接回 MATLAB。安装包不会自动把一个未知需求替换成 Python 数值实现。
+
 查看当前安装版本的完整参数 schema：
 
 ```sh

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "acycle_version": "0.5.0",
+  "expected_native_tools": 13,
+  "expected_skills": 10,
+  "harness_version": "0.2.1-rc.3",
+  "profile": "web",
+  "preset": "acycle",
+  "expected_total_skills": 11,
+  "newark_demo": {
+    "enabled": true,
+    "skill_name": "newark-relative-time-demo",
+    "autonomy_class": "preset-assisted",
+    "sources": [
+      {
+        "relative_path": "demo/newark-0.5.0/manifest.json",
+        "sha256": "c16fa49fc6b4feb4f83baaac0c61dbf7388fb0b793452cb9356fbb2a210954d4"
+      },
+      {
+        "relative_path": "demo/newark-0.5.0/SOURCES.md",
+        "sha256": "8ab5d2bc641454df05ca9f51f224e8db168ad36b5c28d727db073a384a1081d8"
+      },
+      {
+        "relative_path": "demo/newark-0.5.0/skills/newark-relative-time-demo/SKILL.md",
+        "sha256": "c39153a5ebbd5c872852e5b33090b88d3f0df517e2d6e9aa9c4ee65a99a5ad58"
+      },
+      {
+        "relative_path": "scripts/harness_conversation_support.mjs",
+        "sha256": "e519c122d2ba1a29844518138c31cb31ee87190cc865694de79ad11b14db1524"
+      }
+    ]
+  },
+  "workspace": "/workspace/acycle-local-check-v05/workspace",
+  "directory": "/workspace/acycle-local-check-v05/newark-deployment-cc3cdcb",
+  "runtime": "/workspace/acycle-local-check-v05/runtime",
+  "dsh_home": "/workspace/acycle-local-check-v05/newark-deployment-cc3cdcb/home",
+  "native_plugin": "/workspace/acycle-local-check-v05/runtime/node_modules/dsh-acycle/index.mjs",
+  "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "cli": "/workspace/acycle-local-check-v05/runtime/node_modules/@deepseek-ai/dsh/lib/bin.js",
+  "port": 3098,
+  "provider": "deepseek-official",
+  "model": "deepseek-flash",
+  "vision_source": "https://api-docs.deepseek.com/guides/vision/",
+  "environment": {
+    "ACYCLE_BACKEND": "local",
+    "ACYCLE_ROOT": "/workspace/upstream/acycle",
+    "ACYCLE_PYTHON": "/workspace/acycle-release-check-v05/bin/python",
+    "ACYCLE_WORKSPACE": "/workspace/acycle-local-check-v05/workspace",
+    "MATLAB_EXECUTABLE": "matlab",
+    "ACYCLE_MATLAB_TIMEOUT": "3600",
+    "ACYCLE_MATLAB_STARTUP_TIMEOUT": "180",
+    "DSH_HOME": "/workspace/acycle-local-check-v05/newark-deployment-cc3cdcb/home"
+  },
+  "credential_reference": "DEEPSEEK_API_KEY",
+  "credentials_stored": false,
+  "legacy_desktop_modified": false
+}

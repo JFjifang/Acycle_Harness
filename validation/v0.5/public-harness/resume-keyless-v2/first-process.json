@@ -1,0 +1,235 @@
+{
+  "schema_version": 2,
+  "case_id": "keyless-sdk-infrastructure",
+  "status": "completed",
+  "mode": "mock",
+  "scenario_path": "/workspace/Acycle_Harness/demo/newark-0.5.0/scenarios.json",
+  "scenario_sha256": "f7c82897d49e8f77139e196a43a583e0d30e9c3ba22730501ba5facb1c999f0b",
+  "autonomy_class": "scripted-infrastructure-only",
+  "preset_assistance": {
+    "public_skill": {
+      "name": "newark-relative-time-demo",
+      "path": "/workspace/Acycle_Harness/demo/newark-0.5.0/skills/newark-relative-time-demo/SKILL.md",
+      "sha256": "c39153a5ebbd5c872852e5b33090b88d3f0df517e2d6e9aa9c4ee65a99a5ad58"
+    },
+    "public_manifest": {
+      "path": "/workspace/Acycle_Harness/demo/newark-0.5.0/manifest.json",
+      "sha256": "c16fa49fc6b4feb4f83baaac0c61dbf7388fb0b793452cb9356fbb2a210954d4"
+    },
+    "public_sources": {
+      "path": "/workspace/Acycle_Harness/demo/newark-0.5.0/SOURCES.md",
+      "sha256": "8ab5d2bc641454df05ca9f51f224e8db168ad36b5c28d727db073a384a1081d8"
+    },
+    "disclosure": "The public demo skill and scientific priors are model-visible. This is not blind method selection. Scenario acceptance and execution budgets are not injected into model messages."
+  },
+  "scope": "Keyless infrastructure fixture only; no real model or scientific execution.",
+  "started_at_utc": "2026-10-25T11:25:46.786Z",
+  "runtime": {
+    "sdk_client": "0.2.1-rc.3",
+    "dsh": "0.2.1-rc.3",
+    "profile": "sdk-minimal",
+    "model": "fixture",
+    "plugin_path": "/workspace/Acycle_Harness/plugin/index.mjs",
+    "plugin_sha256": "1fb84748d35ee4282cf91da55c9f5b7bb67dfab8115b7fce15de9e9f640e9abe",
+    "model_visible_skill_names": [
+      "acycle-age-model",
+      "acycle-astronomical-tuning",
+      "acycle-coco",
+      "acycle-intake",
+      "acycle-interpolation-pro",
+      "acycle-mini-robot",
+      "acycle-reproduction",
+      "acycle-sensitivity-steering",
+      "acycle-spectral-interpretation",
+      "acycle-swa",
+      "newark-relative-time-demo"
+    ],
+    "catalog_evidence": {
+      "skills": {
+        "source": "current_session_event",
+        "session_id": "session-d8d3c4c9c151449dbc01732c54163bd0",
+        "event_seq": 7
+      },
+      "tools": {
+        "source": "current_session_event",
+        "session_id": "session-d8d3c4c9c151449dbc01732c54163bd0",
+        "event_seq": 8
+      }
+    },
+    "actual_model": {
+      "provider": "acycle-fixture",
+      "model": "fixture",
+      "maxTokens": 8192
+    },
+    "model_visible_tool_names": [
+      "acycle_analyze",
+      "acycle_capabilities",
+      "acycle_coco",
+      "acycle_compare",
+      "acycle_ecoco",
+      "acycle_get_run",
+      "acycle_import_attachment",
+      "acycle_inspect",
+      "acycle_interpolate_pro",
+      "acycle_rerun",
+      "acycle_sensitivity",
+      "acycle_swa",
+      "acycle_tune",
+      "bash",
+      "present",
+      "read_image",
+      "skill",
+      "working_directory"
+    ]
+  },
+  "workspace": "/workspace/harness-conversation-runs/v05-resume-keyless-v2",
+  "dsh_home": "/workspace/harness-conversation-runs/v05-resume-keyless-v2/.harness-home",
+  "attachment": {
+    "source_file": "/workspace/Acycle_Harness/benchmarks/data/weedon_2020_lavernock_0_13_17m.csv",
+    "sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+    "bytes": 5609,
+    "ref": {
+      "attachmentId": "sha256:b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+      "name": "observations.csv",
+      "bytes": 5609
+    }
+  },
+  "prompt_policy": "Only scenario user_prompt strings and the uploaded FileBlock are supplied as user input; acceptance and execution_policy fields are never model-visible. A declared public demo skill and its public files are registered separately and disclosed in preset_assistance.",
+  "turns": [
+    {
+      "index": 0,
+      "scenario_turn_index": 0,
+      "user_prompt": "请接收附件并检查分析环境。",
+      "execution_policy": {
+        "kind": "scientific",
+        "minimum_completed_runs": 1,
+        "maximum_scientific_calls": 2,
+        "maximum_tool_calls": 24
+      },
+      "started_at_utc": "2026-10-25T11:25:47.213Z",
+      "tool_calls": [
+        {
+          "turn": 1,
+          "step": 1,
+          "callId": "fixture-call-0",
+          "name": "skill",
+          "arguments": "{\"name\":\"newark-relative-time-demo\"}",
+          "event_seq": 12
+        },
+        {
+          "turn": 1,
+          "step": 2,
+          "callId": "fixture-call-1",
+          "name": "acycle_capabilities",
+          "arguments": "{}",
+          "event_seq": 17
+        },
+        {
+          "turn": 1,
+          "step": 3,
+          "callId": "fixture-call-2",
+          "name": "acycle_import_attachment",
+          "arguments": "{}",
+          "event_seq": 22
+        }
+      ],
+      "tool_results": [
+        {
+          "turn": 1,
+          "step": 1,
+          "message": {
+            "role": "tool",
+            "source": {
+              "kind": "tool",
+              "callId": "fixture-call-0"
+            },
+            "toolCallId": "fixture-call-0",
+            "content": [
+              {
+                "type": "text",
+                "text": "<skill_content name=\"newark-relative-time-demo\">\n<skill_resources>\nBase directory for this skill: /workspace/Acycle_Harness/demo/newark-0.5.0/skills/newark-relative-time-demo\nResolve relative paths mentioned by this skill against the base directory before using them. Load referenced resources only as needed.\n</skill_resources>\n\n<skill_instructions>\n\nUse this skill only when the user explicitly chooses the Newark demonstration and supplies the corresponding official example file. This is a workflow-guided demonstration, not unrestricted blind method selection. Locate and read the adjacent demo package's `manifest.json` and `SOURCES.md`; the manifest is two directories above this skill directory. Verify that the imported/workspace input hash matches the manifest. If another file is supplied, establish its scientific context rather than applying Newark parameters.\n\nTell the user briefly that you are using the public demonstration assumptions: a 405-kyr relative chronology, 210 Ma only for approximate orbital target periods, and 19 simulations for quick exploration. Loading this named demonstration constitutes permission to use its declared priors; no repeated confirmation is needed. If the user changes the study assumptions, preserve the earlier version and make the change explicit.\n\nUse the installed Acycle intake, mini-robot, COCO, age-model and sensitivity skills together with the current tool schemas. Inspect supported capabilities. Import the current authorized attachment using the host bridge, or use its exact workspace path. Preserve raw bytes and source attribution. Every numerical operation, extrema selection, interpolation, tuning and figure must execute in MATLAB using Acycle sources. Python may transport files, coordinate requests and present artifacts. Do not use Python/NumPy to derive numeric QA, spectral results, control points or charts.\n\nFollow the public research sequence, retaining the manifest settings unless the user requests a change:\n\n1. Establish input units and numerical quality in MATLAB through original Acycle Interpolation Pro, using the manifest's interpolation preset. Retain the original input and the actual `interpolated_csv` output, grid/gap diagnostic and source linkage. Do not replace the 0.85344-m example grid with the differently sourced 0.85-m grid.\n2. Run original Acycle preprocessing, depth-domain MTM and EvoFFT on that Interpolation Pro artifact with the manifest's depth preset. The depth analysis may also generate the declared Gaussian filtered artifact in the same MATLAB pass; reuse that actual output to avoid redundant computation.\n3. Run full-record COCO and complete-window eCOCO on the same Interpolation Pro artifact with the manifest presets. Keep the 5–25 cm/kyr grid, resolved-period counts, NaN cells and original Monte Carlo outputs. The period/age prior is supplied context, never a number inferred from the strongest observed peak.\n4. Use the actual MATLAB filtered file as input to the supported tuning operation. Extract maxima in MATLAB; assign the first selected maximum relative time zero and consecutive maxima 405-kyr spacing. Keep the manifest's trim policy. Use Acycle tuning/interpolation and retain the controls, selected extrema, full provenance and age-depth figure. If extrema are insufficient or controls are invalid, report that stage instead of inventing a usable chronology.\n5. Analyse the original raw proxy in relative time through the completed tuning run's controls, using the supported `tuning_run_id` linkage and manifest time-diagnostic preset. Do not feed the narrow-band filtered output to this diagnostic. Respect the trimmed control range and report the actual regridding used. The raw source hash differs from the formatted Interpolation Pro output hash; preserve both and their lineage.\n6. Return key original MATLAB images, downloadable source artifacts and a short interpretation. Mark the chronology “405 kyr假设下的相对时间轴”. Include no more than a few main observations in the conversation; preserve tables and technical provenance in artifacts.\n\nUse live, newly completed outputs. Reopening a saved run is allowed when explicitly presenting that saved result; label its origin. Never replace a failed live calculation with a successful rehearsal result, hide a parameter search, silently substitute another method, or convert this scenario's deliverable list into a claim that all stages passed.\n\nInterpretation requirements:\n\n- A depth spectrum peak is an exploratory candidate. Do not assign astronomical names by appearance alone.\n- The 60-m centre is a sourced regional prior; the 48–80 m nominal bandwidth is an explicit demo choice. It was not chosen by matching this run's strongest peak.\n- Use rate-global COCO Monte Carlo results. eCOCO's global correction applies within each window, not across the full map. With 19 simulations, do not claim p < 0.05.\n- Inspect target resolution at candidate rates; retain unresolved cells and multiple candidate ridges. An all-NaN map is an unresolved stage, not evidence of no orbital forcing and not permission to search silently for a pleasing map.\n- A 405-kyr time-spectrum peak is partly imposed by the tuning hypothesis. Other time-domain peaks also depend on this model; neither supplies independent absolute dating.\n- Peak/trough selection is a phase convention. The first control's relative zero is not an absolute age. No formal age uncertainty model is provided.\n- EvoFFT's zero-padded edges and eCOCO's unpadded complete windows have different support. Do not interpret map edges as equally constrained.\n\nFor a follow-up, use saved-run steering where supported and change only requested parameters. In particular, an eCOCO window/step change remains the original eCOCO method. A tuning-phase change starts from the same filtered file, retains period and endpoint policy, creates new controls and then reapplies them to the original proxy. A depth-only detrending request does not authorize quietly rebuilding all derived chronologies. Keep parent links, input hashes and actual effective parameters. Compare before and after using saved MATLAB results.\n\nDo not promise a 3–5-minute live completion time. That interval is a possible speaking plan; execution time depends on the actual backend and client. Numerical completion, artifact delivery and pixels rendered in the user's client are separate observations.\n\n</skill_instructions>\n</skill_content>"
+              }
+            ],
+            "isError": false,
+            "id": "d53d03dc-5385-436e-af33-415292b833f1"
+          }
+        },
+        {
+          "turn": 1,
+          "step": 2,
+          "message": {
+            "role": "tool",
+            "source": {
+              "kind": "tool",
+              "callId": "fixture-call-1"
+            },
+            "toolCallId": "fixture-call-1",
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"version\":\"0.5.0\",\"scientific_backend\":\"MATLAB/Acycle\",\"backend\":\"local\",\"matlab_available\":false,\"acycle_root\":null,\"github_repository\":null,\"remote_backend_configured\":false,\"execution_note\":\"Local backend requires MATLAB_EXECUTABLE and ACYCLE_ROOT.\",\"python_numerical_fallback\":false,\"operations\":[\"mini_robot\",\"mtm_rednoise\",\"evolution\",\"filter_envelope\",\"age_model\",\"swa\",\"coco\",\"ecoco\",\"interpolate_pro\",\"tune\"],\"limits\":[\"pointwise significance is not proof of astronomical forcing\",\"Acycle GUI-only methods outside this core require a sourced MATLAB extension\"],\"harness\":{\"attachment_import_available\":true,\"image_delivery_available\":true,\"user_image_previews_do_not_imply_model_vision\":true}}"
+              }
+            ],
+            "isError": false,
+            "id": "4f35de47-dbbe-41f3-8101-b29d2e314091"
+          }
+        },
+        {
+          "turn": 1,
+          "step": 3,
+          "message": {
+            "role": "tool",
+            "source": {
+              "kind": "tool",
+              "callId": "fixture-call-2"
+            },
+            "toolCallId": "fixture-call-2",
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"status\":\"imported\",\"input_path\":\"/workspace/harness-conversation-runs/v05-resume-keyless-v2/.acycle/imports/b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4/observations.csv\",\"original_name\":\"observations.csv\",\"bytes\":5609,\"sha256\":\"b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4\",\"attachment\":{\"attachmentId\":\"sha256:b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4\",\"name\":\"observations.csv\",\"bytes\":5609},\"source_message_id\":\"eca1279e-b59c-4069-ad0c-f41006ab705b\",\"source_session_id\":\"session-d8d3c4c9c151449dbc01732c54163bd0\",\"import_receipt\":\"/workspace/harness-conversation-runs/v05-resume-keyless-v2/.acycle/imports/b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4/.source-93af6eef-0b46-40b2-8db5-b8db1b946d5f.json\",\"transformation\":\"Verbatim byte copy only; scientific preparation remains in MATLAB.\"}"
+              }
+            ],
+            "isError": false,
+            "id": "be48c14c-27a8-4671-abdd-7641811aa78a"
+          }
+        }
+      ],
+      "emitted_images": [],
+      "emitted_files": [],
+      "notifications_count": 31,
+      "event_log": "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2/first-process.turn-1.events.jsonl",
+      "terminal": {
+        "kind": "completed"
+      },
+      "final_response": "Keyless infrastructure fixture completed; no scientific or real-model claim.",
+      "duration_seconds": 0.109,
+      "events_file": "/workspace/Acycle_Harness/validation/v0.5/harness/resume-keyless-v2/first-process.turn-1.json",
+      "scientific_outcome": {
+        "scientific_calls": 0,
+        "completed_runs": [],
+        "failures": []
+      }
+    }
+  ],
+  "errors": [],
+  "initialized": true,
+  "session_id": "session-d8d3c4c9c151449dbc01732c54163bd0",
+  "selected_user_turns_this_invocation": [
+    0
+  ],
+  "next_scenario_turn_index": 1,
+  "remaining_planned_user_turns": 1,
+  "workflow_completion_is_not_scientific_acceptance": true,
+  "infrastructure_assertions": {
+    "official_profile_and_agent_loop": true,
+    "skill_loaded_through_official_tool": true,
+    "attachment_imported_from_current_session": true,
+    "imported_bytes_sha256_matches": true,
+    "two_distinct_user_messages_retained": false,
+    "second_turn_reuses_prior_tool_result": false,
+    "real_model_or_scientific_acceptance": false
+  },
+  "acceptance": "Not inferred from transport completion; evaluate the separate predeclared scientific and conversation criteria.",
+  "finished_at_utc": "2026-10-25T11:25:47.360Z"
+}

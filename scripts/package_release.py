@@ -57,7 +57,7 @@ def main():
                 continue
             relative=p.relative_to(ROOT)
             compact_version_evidence = relative.parts[0] == 'validation' and len(relative.parts) == 3 and relative.parts[1] in {'v0.4','v0.5'} and p.suffix in {'.md', '.json'}
-            current_delivery_evidence = relative.parts[:2] == ('validation','v0.5') and len(relative.parts)>3 and relative.parts[2] in {'local','engineering','web'}
+            current_delivery_evidence = relative.parts[:2] == ('validation','v0.5') and len(relative.parts)>3 and relative.parts[2] in {'local','engineering','web','public-harness','matlab-release'}
             compact_paper_evidence = relative.as_posix() in {
                 'validation/artifacts/expanded-release/swa-lavernock-publication/swa-spectrum.csv',
                 'validation/artifacts/expanded-release/swa-lavernock-publication/swa-spectrum.png',
@@ -79,7 +79,10 @@ def main():
         with zipfile.ZipFile(handoff) as kit:
             for entry in kit.infolist():
                 output.writestr(entry,kit.read(entry.filename))
-        for evidence in ['public-harness','scientific-runs']:
+        # The dedicated demo carries the successful rehearsal's originals.
+        # Historical failed-attempt originals remain in the full research ZIP;
+        # their public traces, hashes and reviews are also in the deployment kit.
+        for evidence in ['scientific-runs/fixedtransport']:
             for p in sorted((ROOT/'validation'/'v0.5'/evidence).rglob('*')):
                 if p.is_file():
                     output.write(p,Path('acycle-deepseek')/p.relative_to(ROOT))

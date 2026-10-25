@@ -1,0 +1,19 @@
+{
+  "attempts": 1,
+  "automatic_retry": false,
+  "status": "process_failed",
+  "stdout_stderr_log": "/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3/matlab.log",
+  "startup_marker": "/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3/matlab-started.json",
+  "startup_timeout_seconds": 180,
+  "execution_timeout_seconds": 300,
+  "launched_process_group_only": true,
+  "command": [
+    "/workspace/acycle-local-check-v05/fake-matlab",
+    "-batch",
+    "fid=fopen('/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3/matlab-started.json','w');fprintf(fid,'%s','{\"started\":true}');fclose(fid);r=struct('release',version('-release'),'version',version,'toolboxes',ver);names={'pmtm','chi2inv','smooth','hilbert'};r.required_functions=cellfun(@which,names,'UniformOutput',false);fid=fopen('/workspace/acycle-local-check-v05/workspace/.acycle/diagnostics/doctor-20261025T104419Z-197991c3/probe.json','w');fprintf(fid,'%s',jsonencode(r));fclose(fid);assert(all(~cellfun(@isempty,r.required_functions)),'Required MATLAB toolbox function missing');"
+  ],
+  "pid": 29893,
+  "returncode": 7,
+  "startup_observed": false,
+  "elapsed_seconds": 0.1009616619994631
+}

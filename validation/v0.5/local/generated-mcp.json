@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "scope": "Generated Codex MCP configuration executed from a separate working directory with installed wheel and no PYTHONPATH; no API or MATLAB",
+  "version": "0.5.0",
+  "command": "/workspace/acycle-release-check-v05/bin/python",
+  "args": [
+    "-m",
+    "acycle_deepseek.mcp",
+    "--workspace",
+    "/workspace/acycle-local-check-v05/workspace"
+  ],
+  "tools": [
+    "acycle_capabilities",
+    "acycle_inspect",
+    "acycle_analyze",
+    "acycle_swa",
+    "acycle_coco",
+    "acycle_ecoco",
+    "acycle_interpolate_pro",
+    "acycle_tune",
+    "acycle_rerun",
+    "acycle_sensitivity",
+    "acycle_compare",
+    "acycle_get_run"
+  ],
+  "virtualenv_symlink_preserved": true,
+  "configuration_sha256": "505da8ad1b6e999cc9f2044d06d65ea2cc1981091b809ac5b1a2f9709ddb61b4",
+  "api_called": false,
+  "matlab_executed": false
+}

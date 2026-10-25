@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" name="test_acycle_batch" skipped="0" tests="10" time="45.1078">
+    <testcase classname="test_acycle_batch" name="testOriginalNumericalParity" time="11.0614"/>
+    <testcase classname="test_acycle_batch" name="testOriginalLowessAndOfficialExamples" time="19.6458"/>
+    <testcase classname="test_acycle_batch" name="testAgeModelAndGaussianFilter" time="1.5368"/>
+    <testcase classname="test_acycle_batch" name="testPublishedPaperDataWorkflow" time="7.1452"/>
+    <testcase classname="test_acycle_batch" name="testTiePointAgeModel" time="0.95228"/>
+    <testcase classname="test_acycle_batch" name="testNegativeControlUsesPointwiseLanguage" time="1.0111"/>
+    <testcase classname="test_acycle_batch" name="testOriginalProxyTrimmedToTuningCoverage" time="0.88619"/>
+    <testcase classname="test_acycle_batch" name="testRejectsNonScientificParameters" time="0.17448"/>
+    <testcase classname="test_acycle_batch" name="testPreventsOutputOverwrite" time="1.195"/>
+    <testcase classname="test_acycle_batch" name="testNonphysicalFitUsesOriginalGridSearch" time="1.4996"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" name="test_acycle_coco" skipped="0" tests="7" time="18.9231">
+    <testcase classname="test_acycle_coco" name="testCocoOriginalParityAndKnownRate" time="5.2052"/>
+    <testcase classname="test_acycle_coco" name="testEcocoOriginalParityAndPhysicalWindows" time="4.3573"/>
+    <testcase classname="test_acycle_coco" name="testExplicitUnitsAndSixPeriodMode" time="1.6595"/>
+    <testcase classname="test_acycle_coco" name="testEcocoBlockedStrictConsensusExecutes" time="2.72"/>
+    <testcase classname="test_acycle_coco" name="testEcocoInterleavedSplitBeforeInterpolationExecutes" time="2.6201"/>
+    <testcase classname="test_acycle_coco" name="testCocoLoessUsesOriginalCallback" time="1.5292"/>
+    <testcase classname="test_acycle_coco" name="testRejectsUnknownTargetAndHeldoutLeakage" time="0.83196"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" name="test_acycle_interpolate_pro" skipped="0" tests="7" time="8.2304">
+    <testcase classname="test_acycle_interpolate_pro" name="testAllNineOriginalGuiMethods" time="5.3417"/>
+    <testcase classname="test_acycle_interpolate_pro" name="testOriginalGapThresholdAndStrictInteriorZeroing" time="0.62123"/>
+    <testcase classname="test_acycle_interpolate_pro" name="testDefaultDoesNotZeroFillAndPreservesGuiTail" time="0.59544"/>
+    <testcase classname="test_acycle_interpolate_pro" name="testGuiFallbackVersusExplicitStrictGrid" time="0.53376"/>
+    <testcase classname="test_acycle_interpolate_pro" name="testDefaultMedianPrecisionMatchesGuiEditbox" time="0.50804"/>
+    <testcase classname="test_acycle_interpolate_pro" name="testRejectsAmbiguousInputAndUnsafeAllocation" time="0.036705"/>
+    <testcase classname="test_acycle_interpolate_pro" name="testPreventsCompletedOutputOverwrite" time="0.5935"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" name="test_acycle_swa" skipped="0" tests="4" time="6.774">
+    <testcase classname="test_acycle_swa" name="testLavernockOriginalParityAndPublicationAudit" time="2.7553"/>
+    <testcase classname="test_acycle_swa" name="testNewarkMtmOriginalParity" time="3.9443"/>
+    <testcase classname="test_acycle_swa" name="testRejectsAmbiguousPreprocessing" time="0.015158"/>
+    <testcase classname="test_acycle_swa" name="testRejectsDuplicateCoordinates" time="0.059267"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" name="test_acycle_tune" skipped="0" tests="8" time="9.956">
+    <testcase classname="test_acycle_tune" name="testSingleExtremaUseOriginalPeakAndTimeFunctions" time="3.3815"/>
+    <testcase classname="test_acycle_tune" name="testBothExtremaUseHalfCyclesAndFirstMatchingAnchor" time="1.0164"/>
+    <testcase classname="test_acycle_tune" name="testExplicitExtrapolationUsesOriginalRatesAndUnits" time="1.0462"/>
+    <testcase classname="test_acycle_tune" name="testFilterCsvEnvelopeDoesNotChangeTuning" time="1.9578"/>
+    <testcase classname="test_acycle_tune" name="testRejectsSelectedPlateausWithoutChangingDetector" time="1.3074"/>
+    <testcase classname="test_acycle_tune" name="testRejectsIncompatibleAnchorAndImplicitExtrapolation" time="0.16596"/>
+    <testcase classname="test_acycle_tune" name="testRejectsInsufficientControlPoints" time="0.089059"/>
+    <testcase classname="test_acycle_tune" name="testPreventsCompletedOutputOverwrite" time="0.99179"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" name="test_paper_coco" skipped="0" tests="3" time="60.8919">
+    <testcase classname="test_paper_coco" name="testPETM2000DrawPublishedRateComparison" time="43.6683"/>
+    <testcase classname="test_paper_coco" name="testCambrianPublishedAluminiumEcocoWorkflow" time="9.1183"/>
+    <testcase classname="test_paper_coco" name="testPETMPublishedSupplementaryProtocol" time="8.1053"/>
+  </testsuite>
+</testsuites>

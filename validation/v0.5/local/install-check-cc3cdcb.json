@@ -1,0 +1,131 @@
+{
+  "created_at_utc": "2026-10-25T11:01:55.012005+00:00",
+  "expected_version": "0.5.0",
+  "python_executable": "/workspace/acycle-release-check-v05/bin/python",
+  "workspace": "/workspace/acycle-local-check-v05/workspace",
+  "bundle_root": "/workspace/Acycle_Harness",
+  "status": "passed",
+  "checks": {
+    "python_package": {
+      "status": "passed",
+      "version": "0.5.0",
+      "package_root": "/workspace/acycle-release-check-v05/lib/python3.12/site-packages/acycle_deepseek",
+      "matlab_root": "/workspace/acycle-release-check-v05/lib/python3.12/site-packages/acycle_deepseek/matlab",
+      "tools": [
+        "acycle_capabilities",
+        "acycle_inspect",
+        "acycle_analyze",
+        "acycle_swa",
+        "acycle_coco",
+        "acycle_ecoco",
+        "acycle_interpolate_pro",
+        "acycle_tune",
+        "acycle_rerun",
+        "acycle_sensitivity",
+        "acycle_compare",
+        "acycle_get_run"
+      ]
+    },
+    "release_archives": {
+      "status": "passed",
+      "sha256": {
+        "acycle_deepseek-0.5.0-py3-none-any.whl": "8233d9c3ea44586f49b1220af68ed344832224edbec7d550fff976064a5a750a",
+        "dsh-acycle-0.5.0.tgz": "53cf77151f57de50e9d42f553ae87b82a6f7da5eeff3aea8e2b2e8b7c249f6d7"
+      },
+      "installed_files_match_wheel": true,
+      "native_archive_skills": 10
+    },
+    "mcp": {
+      "status": "passed",
+      "version": "0.5.0",
+      "tools": [
+        "acycle_analyze",
+        "acycle_capabilities",
+        "acycle_coco",
+        "acycle_compare",
+        "acycle_ecoco",
+        "acycle_get_run",
+        "acycle_inspect",
+        "acycle_interpolate_pro",
+        "acycle_rerun",
+        "acycle_sensitivity",
+        "acycle_swa",
+        "acycle_tune"
+      ],
+      "capabilities_called": true,
+      "scientific_tool_called": false
+    },
+    "native_plugin": {
+      "status": "passed",
+      "dsh_tools_version": "0.2.1-rc.3",
+      "plugin_path": "/workspace/acycle-local-check-v05/runtime/node_modules/dsh-acycle/index.mjs",
+      "registered_tools": [
+        "acycle_capabilities",
+        "acycle_inspect",
+        "acycle_analyze",
+        "acycle_swa",
+        "acycle_coco",
+        "acycle_ecoco",
+        "acycle_interpolate_pro",
+        "acycle_tune",
+        "acycle_rerun",
+        "acycle_sensitivity",
+        "acycle_compare",
+        "acycle_get_run",
+        "acycle_import_attachment"
+      ],
+      "registered_skills": [
+        "acycle-age-model",
+        "acycle-astronomical-tuning",
+        "acycle-coco",
+        "acycle-intake",
+        "acycle-interpolation-pro",
+        "acycle-mini-robot",
+        "acycle-reproduction",
+        "acycle-sensitivity-steering",
+        "acycle-spectral-interpretation",
+        "acycle-swa"
+      ],
+      "capabilities": {
+        "version": "0.5.0",
+        "scientific_backend": "MATLAB/Acycle",
+        "backend": "local",
+        "matlab_available": false,
+        "acycle_root": null,
+        "github_repository": null,
+        "remote_backend_configured": false,
+        "execution_note": "Local backend requires MATLAB_EXECUTABLE and ACYCLE_ROOT.",
+        "python_numerical_fallback": false,
+        "operations": [
+          "mini_robot",
+          "mtm_rednoise",
+          "evolution",
+          "filter_envelope",
+          "age_model",
+          "swa",
+          "coco",
+          "ecoco",
+          "interpolate_pro",
+          "tune"
+        ],
+        "limits": [
+          "pointwise significance is not proof of astronomical forcing",
+          "Acycle GUI-only methods outside this core require a sourced MATLAB extension"
+        ],
+        "harness": {
+          "attachment_import_available": false,
+          "image_delivery_available": false,
+          "user_image_previews_do_not_imply_model_vision": true
+        }
+      },
+      "disposal": "passed",
+      "scope": "Official Cordis, tools and skills registries with fixed workspace fixture; not a full GUI session.",
+      "installed_files_match_archive": true
+    }
+  },
+  "errors": [],
+  "api_called": false,
+  "matlab_executed": false,
+  "host_configuration_modified": false,
+  "scope": "Installed-package, MCP and optional native-registry checks only. These do not establish real-model, scientific or GUI acceptance."
+}

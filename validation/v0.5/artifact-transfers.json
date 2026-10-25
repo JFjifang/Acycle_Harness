@@ -1,0 +1,1927 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T11:33:57.647872+00:00",
+  "live_cache_monitor_stopped": true,
+  "scope": "Independent delivery and saved MATLAB JSON/source-reference audit. Only byte hashes and metadata were inspected; no scientific calculation was recomputed. Successful remote execution is distinct from conversation acceptance and scientific reproduction.",
+  "summary": {
+    "delivered_artifacts": 15,
+    "matlab_success": 15,
+    "matlab_error": 0,
+    "all_delivered_zip_digests_match_github": true,
+    "artifact_reference_chains_verified": 5,
+    "source_registries_present_and_matching": 15,
+    "consumed_artifacts": 15,
+    "by_attempt": {
+      "initial_attempt": 6,
+      "fixed_transport": 9
+    }
+  },
+  "orphan_run": {
+    "receipt": "validation/v0.5/orphan-run.json",
+    "excluded_from_delivered_artifact_count": true,
+    "delivered_to_any_current_session": false
+  },
+  "ci_receipts": [
+    "validation/v0.5/matlab-ci.json",
+    "validation/v0.5/matlab-final-ci.json",
+    "validation/v0.5/matlab-transport-ci.json",
+    "validation/v0.5/matlab-release-ci.json"
+  ],
+  "limitations": [
+    "Initial-attempt local tool failures and model-created two-column projection are preserved by the conversation recorder and orphan receipt; remote artifact delivery alone does not approve that attempt.",
+    "Absolute source paths identify this execution workspace. Portable scientific-output archives and conversation acceptance are maintained separately by the Harness recorder.",
+    "Registry matching audits the original MATLAB provenance JSON. It is not an independent re-execution of Acycle mathematics."
+  ],
+  "runs": [
+    {
+      "attempt": "initial_attempt",
+      "local_run_id": "20261025T102957Z-af924b44ffa5",
+      "parent_run_id": null,
+      "operation": "interpolate_pro",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "actual_saved_input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "method": "linear",
+        "dt": 0.85344,
+        "coordinate_unit": "m",
+        "gap_policy": "interpolate",
+        "gap_multiplier": 10,
+        "endpoint_policy": "strict_grid"
+      },
+      "input_lineage": null,
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "71251d3015758044c1ac20e16f806e27cbfb4f2a721dd4c96b96ccbedd549e5a",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 1,
+        "mismatch_paths": [],
+        "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "transport_metadata": {
+        "token": "acycle-cc8ad5cb2f9a41d5b13bf264101219ce",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "b9d064d4918ce01c6f05ba3f84c77f1054d7af65",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7"
+      },
+      "transport_input_sha_matches_saved_input": null,
+      "artifact_reference_chain": null,
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T10:33:11.464043+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-cc8ad5cb2f9a41d5b13bf264101219ce.json",
+        "request_token": "acycle-cc8ad5cb2f9a41d5b13bf264101219ce",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40185016563,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40185016563",
+        "artifact_id": 12596041390,
+        "artifact_name": "acycle-output-acycle-cc8ad5cb2f9a41d5b13bf264101219ce",
+        "workflow_head_sha": "b9d064d4918ce01c6f05ba3f84c77f1054d7af65",
+        "artifact_created_at": "2026-10-25T10:32:31Z",
+        "size_in_bytes": 935601,
+        "sha256": "cdf40f438014000379e3ecff2b1a60a60e194d7587743f91ffaf5037ce2f412a",
+        "github_digest": "sha256:cdf40f438014000379e3ecff2b1a60a60e194d7587743f91ffaf5037ce2f412a",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/a9c3a65e-c0f5-4e4b-b187-df10af0c8237/v05-12596041390.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12596041390.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-cc8ad5cb2f9a41d5b13bf264101219ce.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T102957Z-af924b44ffa5/request.json",
+        "result": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T102957Z-af924b44ffa5/result.json",
+        "outputs": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T102957Z-af924b44ffa5/outputs"
+      },
+      "response_json_sha256": "a6178e0467af6aa7ce20acb5375416143fdefa37535db8b870b03afbdda6901b",
+      "transport_json_sha256": "3cf3a801482b85696a022a4517209773268680e076c97a6197a8d5b95a150df2",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "initial_attempt",
+      "local_run_id": "20261025T103317Z-c23be0fceaeb",
+      "parent_run_id": null,
+      "operation": "analyze",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "actual_saved_input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "detrend": "lowess",
+        "span": 0.35,
+        "coordinate_unit": "m",
+        "mtm_nw": 2,
+        "evolution": true,
+        "evolution_window": 600,
+        "evolution_step": 50.35295999999953,
+        "filter_method": "gaussian",
+        "filter_band": [
+          0.0125,
+          0.020833333333333332
+        ],
+        "smooth_fraction": 0.25,
+        "dt": 0.853439999999992,
+        "nfft": 11720,
+        "fmax": 0.5858642669666346,
+        "fit_fmax": 0.5858642669666346
+      },
+      "input_lineage": {
+        "run_id": "20261025T102957Z-af924b44ffa5",
+        "operation": "interpolate_pro",
+        "artifact_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolated.csv",
+        "sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0"
+      },
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "f3c8983a93511d2a413203416ed3648f569d66f86b39d8cde00a6323cc617814",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 12,
+        "mismatch_paths": [],
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle",
+        "plot_backend": "MATLAB (original redconfML plot; other GUI plots adapted)"
+      },
+      "transport_metadata": {
+        "token": "acycle-fc8c3824d2a5490581d33ab7cd9a9b19",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "b9d064d4918ce01c6f05ba3f84c77f1054d7af65",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7"
+      },
+      "transport_input_sha_matches_saved_input": null,
+      "artifact_reference_chain": null,
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T10:36:46.743781+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-fc8c3824d2a5490581d33ab7cd9a9b19.json",
+        "request_token": "acycle-fc8c3824d2a5490581d33ab7cd9a9b19",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40185255649,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40185255649",
+        "artifact_id": 12595946985,
+        "artifact_name": "acycle-output-acycle-fc8c3824d2a5490581d33ab7cd9a9b19",
+        "workflow_head_sha": "b9d064d4918ce01c6f05ba3f84c77f1054d7af65",
+        "artifact_created_at": "2026-10-25T10:35:43Z",
+        "size_in_bytes": 4389103,
+        "sha256": "7f0e4dd4f2582c91720012007b88993fb2c7ab5f62356b8f7221253860465cd4",
+        "github_digest": "sha256:7f0e4dd4f2582c91720012007b88993fb2c7ab5f62356b8f7221253860465cd4",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/2fbe135e-65f2-4077-a95c-799a02ef95ba/v05-12595946985.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12595946985.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-fc8c3824d2a5490581d33ab7cd9a9b19.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103317Z-c23be0fceaeb/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T103317Z-c23be0fceaeb/request.json",
+        "result": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T103317Z-c23be0fceaeb/result.json",
+        "outputs": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T103317Z-c23be0fceaeb/outputs"
+      },
+      "response_json_sha256": "5686fb1cc15cf49c99fdb598b93ad9e566b52c744d7ea82c30987137ae78349a",
+      "transport_json_sha256": "a5ab7d387c86d4c7545c2e779ea30813f0ea7be0b37a80012ece3439765546fa",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "initial_attempt",
+      "local_run_id": "20261025T103651Z-21f20570b673",
+      "parent_run_id": null,
+      "operation": "coco",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "actual_saved_input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "depth_unit": "m",
+        "middle_age_ma": 210,
+        "sedimentation_rate_min": 5,
+        "sedimentation_rate_max": 25,
+        "sedimentation_rate_step": 1,
+        "method": "adaptive",
+        "correlation": "Spearman",
+        "red_noise": 0,
+        "detrend": "lowess",
+        "span": 0.35,
+        "nsim": 19,
+        "seed": 1,
+        "max_frequency": 0.0678797861111111,
+        "slices": 1,
+        "nfft": 4096
+      },
+      "input_lineage": {
+        "run_id": "20261025T102957Z-af924b44ffa5",
+        "operation": "interpolate_pro",
+        "artifact_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolated.csv",
+        "sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0"
+      },
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "4e4b879019395c570095dbc1d3d60fb64c7bbeadff8aa43844fa67bf4e87ac2d",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 104,
+        "mismatch_paths": [],
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle original functions",
+        "plot_backend": "MATLAB/Acycle original publication plotting functions"
+      },
+      "transport_metadata": {
+        "token": "acycle-7c02dfad50084134ba2649edecb5634d",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "b9d064d4918ce01c6f05ba3f84c77f1054d7af65",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7"
+      },
+      "transport_input_sha_matches_saved_input": null,
+      "artifact_reference_chain": null,
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T10:40:07.787130+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-7c02dfad50084134ba2649edecb5634d.json",
+        "request_token": "acycle-7c02dfad50084134ba2649edecb5634d",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40185497994,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40185497994",
+        "artifact_id": 12595363571,
+        "artifact_name": "acycle-output-acycle-7c02dfad50084134ba2649edecb5634d",
+        "workflow_head_sha": "b9d064d4918ce01c6f05ba3f84c77f1054d7af65",
+        "artifact_created_at": "2026-10-25T10:39:11Z",
+        "size_in_bytes": 522743,
+        "sha256": "fee0fb3f1aabf607dee5cda5a35cda0ce02e79bcfd610531af74a346bbe701ff",
+        "github_digest": "sha256:fee0fb3f1aabf607dee5cda5a35cda0ce02e79bcfd610531af74a346bbe701ff",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/ba06aa00-a565-445c-85d5-2b218c2c2f24/v05-12595363571.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12595363571.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-7c02dfad50084134ba2649edecb5634d.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T103651Z-21f20570b673/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T103651Z-21f20570b673/request.json",
+        "result": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T103651Z-21f20570b673/result.json",
+        "outputs": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T103651Z-21f20570b673/outputs"
+      },
+      "response_json_sha256": "ae4610bd1d15e2663ae121f87e9da4936641e2571a05b850ca4ac4e27ba72090",
+      "transport_json_sha256": "fc9abf394361e0dd715a1e029fe8274d0a50fbd4f6b3d2343d0a5208a76fb8f2",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "initial_attempt",
+      "local_run_id": "20261025T104008Z-943b58424d17",
+      "parent_run_id": null,
+      "operation": "ecoco",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "actual_saved_input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "depth_unit": "m",
+        "middle_age_ma": 210,
+        "sedimentation_rate_min": 5,
+        "sedimentation_rate_max": 25,
+        "sedimentation_rate_step": 1,
+        "method": "adaptive",
+        "correlation": "Spearman",
+        "red_noise": 0,
+        "detrend": "lowess",
+        "span": 0.35,
+        "window": 600,
+        "step": 100,
+        "nsim": 19,
+        "seed": 1,
+        "max_frequency": 0.0678797861111111,
+        "nfft": 1024
+      },
+      "input_lineage": {
+        "run_id": "20261025T102957Z-af924b44ffa5",
+        "operation": "interpolate_pro",
+        "artifact_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T102957Z-af924b44ffa5/outputs/interpolated.csv",
+        "sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0"
+      },
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "c10a581eb90300e2f25ee88ffabcd9abac60073035fdc8334b357ca2b2e1e8f8",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 104,
+        "mismatch_paths": [],
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle original functions",
+        "plot_backend": "MATLAB/Acycle original publication plotting functions"
+      },
+      "transport_metadata": {
+        "token": "acycle-527c79a6d6eb427db147e9ea8b77d015",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7"
+      },
+      "transport_input_sha_matches_saved_input": null,
+      "artifact_reference_chain": null,
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T10:43:28.357143+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-527c79a6d6eb427db147e9ea8b77d015.json",
+        "request_token": "acycle-527c79a6d6eb427db147e9ea8b77d015",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40185718350,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40185718350",
+        "artifact_id": 12596401692,
+        "artifact_name": "acycle-output-acycle-527c79a6d6eb427db147e9ea8b77d015",
+        "workflow_head_sha": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+        "artifact_created_at": "2026-10-25T10:42:42Z",
+        "size_in_bytes": 652026,
+        "sha256": "6b567acd1a9192a0dd94b1e2dd9bf31846d69358140f538e52e0ae62a801bbe8",
+        "github_digest": "sha256:6b567acd1a9192a0dd94b1e2dd9bf31846d69358140f538e52e0ae62a801bbe8",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/4d27fbd8-7388-4021-889e-9c643168c49a/v05-12596401692.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12596401692.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-527c79a6d6eb427db147e9ea8b77d015.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104008Z-943b58424d17/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T104008Z-943b58424d17/request.json",
+        "result": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T104008Z-943b58424d17/result.json",
+        "outputs": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T104008Z-943b58424d17/outputs"
+      },
+      "response_json_sha256": "eb6a53af1e5ce5fcfe3ce222856afeee9cc40d22b96d620a6725486a27464136",
+      "transport_json_sha256": "65fa443d8a7a3c9d93933f08acd078004320b57c3d57fea0c17cbc6e629fc639",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "initial_attempt",
+      "local_run_id": "20261025T104547Z-631960023604",
+      "parent_run_id": null,
+      "operation": "tune",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff",
+      "actual_saved_input_sha256": "b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "anchor_age_kyr": 0,
+        "anchor_phase": "peak",
+        "depth_unit": "m",
+        "endpoint_policy": "trim",
+        "extrema": "peaks",
+        "period_kyr": 405
+      },
+      "input_lineage": null,
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "934ed79b879de54ce26b8dc1a76facdf8a354b5d8e3633c8ef116404f6b7ed60",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 5,
+        "mismatch_paths": [],
+        "input_sha256": "b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "transport_metadata": {
+        "token": "acycle-bc39c16348ff4a4389bb383bd35207a5",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7"
+      },
+      "transport_input_sha_matches_saved_input": null,
+      "artifact_reference_chain": null,
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T10:49:46.775541+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-bc39c16348ff4a4389bb383bd35207a5.json",
+        "request_token": "acycle-bc39c16348ff4a4389bb383bd35207a5",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40186105313,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40186105313",
+        "artifact_id": 12595898658,
+        "artifact_name": "acycle-output-acycle-bc39c16348ff4a4389bb383bd35207a5",
+        "workflow_head_sha": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+        "artifact_created_at": "2026-10-25T10:48:56Z",
+        "size_in_bytes": 484324,
+        "sha256": "077b805baf124aaaa162ddbb0824e1f226d79ae59b4097604db7719ed7e419c4",
+        "github_digest": "sha256:077b805baf124aaaa162ddbb0824e1f226d79ae59b4097604db7719ed7e419c4",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/00572c21-1435-4a4c-ad97-93dca3b3ddc3/v05-12595898658.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12595898658.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-bc39c16348ff4a4389bb383bd35207a5.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104547Z-631960023604/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T104547Z-631960023604/request.json",
+        "result": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T104547Z-631960023604/result.json",
+        "outputs": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T104547Z-631960023604/outputs"
+      },
+      "response_json_sha256": "a67b8016968b9a0c6306d47eb3b0218feb121b2d64c8e72aa1aa9139c6a76dfa",
+      "transport_json_sha256": "edc9acf6cb8b407b15de70e577f381f3c52a70a4b2e2e07efb3d25b122cd0043",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "initial_attempt",
+      "local_run_id": "20261025T104951Z-73f1bcd33790",
+      "parent_run_id": null,
+      "operation": "analyze",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "actual_saved_input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "coordinate_unit": "kyr",
+        "detrend": "lowess",
+        "span": 0.35,
+        "dt": 5,
+        "mtm_nw": 2,
+        "evolution": true,
+        "evolution_window": 2430,
+        "evolution_step": 405,
+        "age_model": [
+          [
+            6.82752,
+            0
+          ],
+          [
+            56.32704,
+            405
+          ],
+          [
+            116.92128,
+            810
+          ],
+          [
+            184.34304,
+            1215
+          ],
+          [
+            237.25632,
+            1620
+          ],
+          [
+            296.99712,
+            2025
+          ],
+          [
+            352.47072,
+            2430
+          ],
+          [
+            412.21152,
+            2835
+          ],
+          [
+            480.48672,
+            3240
+          ],
+          [
+            528.27936,
+            3645
+          ],
+          [
+            580.3392,
+            4050
+          ],
+          [
+            649.46784,
+            4455
+          ],
+          [
+            707.50176,
+            4860
+          ],
+          [
+            775.77696,
+            5265
+          ],
+          [
+            838.93152,
+            5670
+          ],
+          [
+            894.40512,
+            6075
+          ],
+          [
+            952.43904,
+            6480
+          ],
+          [
+            1010.47296,
+            6885
+          ],
+          [
+            1068.50688,
+            7290
+          ],
+          [
+            1125.68736,
+            7695
+          ],
+          [
+            1177.7472,
+            8100
+          ],
+          [
+            1228.9536,
+            8505
+          ],
+          [
+            1287.84096,
+            8910
+          ],
+          [
+            1355.26272,
+            9315
+          ],
+          [
+            1412.4432,
+            9720
+          ],
+          [
+            1466.20992,
+            10125
+          ],
+          [
+            1519.97664,
+            10530
+          ],
+          [
+            1575.45024,
+            10935
+          ],
+          [
+            1606.17408,
+            11340
+          ],
+          [
+            1665.91488,
+            11745
+          ],
+          [
+            1721.38848,
+            12150
+          ],
+          [
+            1780.27584,
+            12555
+          ],
+          [
+            1846.84416,
+            12960
+          ],
+          [
+            1910.85216,
+            13365
+          ],
+          [
+            1944.98976,
+            13770
+          ]
+        ],
+        "coordinate_range": [
+          6.82752,
+          1944.98976
+        ],
+        "depth_unit": "m",
+        "smooth_fraction": 0.25,
+        "nfft": 13775,
+        "fmax": 0.1,
+        "fit_fmax": 0.1
+      },
+      "input_lineage": null,
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "b1cfacc7e3d8dbd5847c2e6a0dddbe909b8b6921afa3092202c68c88f009cb4f",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 12,
+        "mismatch_paths": [],
+        "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle",
+        "plot_backend": "MATLAB (original redconfML plot; other GUI plots adapted)"
+      },
+      "transport_metadata": {
+        "token": "acycle-e31abe7cdff049109881903958605592",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7"
+      },
+      "transport_input_sha_matches_saved_input": null,
+      "artifact_reference_chain": null,
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T10:53:11.331806+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-e31abe7cdff049109881903958605592.json",
+        "request_token": "acycle-e31abe7cdff049109881903958605592",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40186372828,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40186372828",
+        "artifact_id": 12596028780,
+        "artifact_name": "acycle-output-acycle-e31abe7cdff049109881903958605592",
+        "workflow_head_sha": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+        "artifact_created_at": "2026-10-25T10:52:27Z",
+        "size_in_bytes": 3552536,
+        "sha256": "c68b87a1495cfd23fb9b67895a8fbb2d5723e56c65d37ab3d66675f453362357",
+        "github_digest": "sha256:c68b87a1495cfd23fb9b67895a8fbb2d5723e56c65d37ab3d66675f453362357",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/4e4168b3-45e5-4d7f-9f08-44652ec3fd00/v05-12596028780.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12596028780.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-e31abe7cdff049109881903958605592.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104951Z-73f1bcd33790/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T104951Z-73f1bcd33790/request.json",
+        "result": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T104951Z-73f1bcd33790/result.json",
+        "outputs": "validation/v0.5/scientific-runs/initial-attempt/newark_relative_time_complete/20261025T104951Z-73f1bcd33790/outputs"
+      },
+      "response_json_sha256": "c467d4c66a651ac259b34674e69ebc32de9d28328a4fff9e51ce7d634a02a060",
+      "transport_json_sha256": "3264300d2ed350471ff6a9b0e2e74dd2fe1e48471ad969ef829beb6abd06be8e",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "fixed_transport",
+      "local_run_id": "20261025T105410Z-2d857a4092b0",
+      "parent_run_id": null,
+      "operation": "interpolate_pro",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "actual_saved_input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "method": "linear",
+        "dt": 0.85344,
+        "coordinate_unit": "m",
+        "gap_policy": "interpolate",
+        "gap_multiplier": 10,
+        "endpoint_policy": "strict_grid"
+      },
+      "input_lineage": null,
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "71251d3015758044c1ac20e16f806e27cbfb4f2a721dd4c96b96ccbedd549e5a",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 1,
+        "mismatch_paths": [],
+        "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB interp1 via sourced Acycle Interpolation Pro GUI extraction",
+        "plot_backend": "MATLAB"
+      },
+      "transport_metadata": {
+        "token": "acycle-1ba7d87a1f5b4a69b3d570be325cf9f6",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "input_transport": "inline_gzip",
+        "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+        "input_artifact_reference": null
+      },
+      "transport_input_sha_matches_saved_input": true,
+      "artifact_reference_chain": null,
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T10:57:08.089351+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-1ba7d87a1f5b4a69b3d570be325cf9f6.json",
+        "request_token": "acycle-1ba7d87a1f5b4a69b3d570be325cf9f6",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40186662933,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40186662933",
+        "artifact_id": 12596378521,
+        "artifact_name": "acycle-output-acycle-1ba7d87a1f5b4a69b3d570be325cf9f6",
+        "workflow_head_sha": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "artifact_created_at": "2026-10-25T10:56:31Z",
+        "size_in_bytes": 935684,
+        "sha256": "4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+        "github_digest": "sha256:4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/c01304c7-c323-4ac2-9938-a3f7e94848d7/v05-12596378521.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12596378521.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-1ba7d87a1f5b4a69b3d570be325cf9f6.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105410Z-2d857a4092b0/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105410Z-2d857a4092b0/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T105410Z-2d857a4092b0/request.json",
+        "result": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T105410Z-2d857a4092b0/result.json",
+        "outputs": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T105410Z-2d857a4092b0/outputs"
+      },
+      "response_json_sha256": "a6178e0467af6aa7ce20acb5375416143fdefa37535db8b870b03afbdda6901b",
+      "transport_json_sha256": "de47f2bfdfc6bd63788f56ee681ec72db6b7f0c4d3e701765608a5307a61223f",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "fixed_transport",
+      "local_run_id": "20261025T105716Z-dbf6eaaeabb0",
+      "parent_run_id": null,
+      "operation": "analyze",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "actual_saved_input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "coordinate_unit": "m",
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "evolution": true,
+        "evolution_window": 600,
+        "evolution_step": 50.35295999999953,
+        "filter_method": "gaussian",
+        "filter_band": [
+          0.0125,
+          0.020833333333333332
+        ],
+        "smooth_fraction": 0.25,
+        "dt": 0.853439999999992,
+        "nfft": 11720,
+        "fmax": 0.5858642669666346,
+        "fit_fmax": 0.5858642669666346
+      },
+      "input_lineage": {
+        "run_id": "20261025T105410Z-2d857a4092b0",
+        "operation": "interpolate_pro",
+        "artifact_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105410Z-2d857a4092b0/outputs/interpolated.csv",
+        "sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0"
+      },
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "f3c8983a93511d2a413203416ed3648f569d66f86b39d8cde00a6323cc617814",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 12,
+        "mismatch_paths": [],
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle",
+        "plot_backend": "MATLAB (original redconfML plot; other GUI plots adapted)"
+      },
+      "transport_metadata": {
+        "token": "acycle-a8294564cc47468cb1d66a5d8aaa746f",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "input_transport": "github_artifact_reference",
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_artifact_reference": {
+          "artifact_id": 12596378521,
+          "artifact_sha256": "4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+          "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+          "member": "ci-output/interpolated.csv",
+          "repository": "JFjifang/Acycle_Harness",
+          "source_workflow_run_id": 40186662933
+        }
+      },
+      "transport_input_sha_matches_saved_input": true,
+      "artifact_reference_chain": {
+        "reference": {
+          "artifact_id": 12596378521,
+          "artifact_sha256": "4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+          "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+          "member": "ci-output/interpolated.csv",
+          "repository": "JFjifang/Acycle_Harness",
+          "source_workflow_run_id": 40186662933
+        },
+        "actual_parent_zip_sha256": "4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+        "actual_member_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "parent_zip_digest_matches_reference": true,
+        "member_bytes_match_reference": true,
+        "member_bytes_match_local_request": true,
+        "member_bytes_match_matlab_provenance": true
+      },
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T10:59:49.372825+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-a8294564cc47468cb1d66a5d8aaa746f.json",
+        "request_token": "acycle-a8294564cc47468cb1d66a5d8aaa746f",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40186862974,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40186862974",
+        "artifact_id": 12596299183,
+        "artifact_name": "acycle-output-acycle-a8294564cc47468cb1d66a5d8aaa746f",
+        "workflow_head_sha": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "artifact_created_at": "2026-10-25T10:58:59Z",
+        "size_in_bytes": 4389302,
+        "sha256": "59d83ccf48332f05bc638f04c20bf0da58878e864724e227ccb5b09d300b0224",
+        "github_digest": "sha256:59d83ccf48332f05bc638f04c20bf0da58878e864724e227ccb5b09d300b0224",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/cda09ab7-0844-40ac-b237-02c6822de268/v05-12596299183.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12596299183.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-a8294564cc47468cb1d66a5d8aaa746f.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105716Z-dbf6eaaeabb0/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105716Z-dbf6eaaeabb0/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T105716Z-dbf6eaaeabb0/request.json",
+        "result": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T105716Z-dbf6eaaeabb0/result.json",
+        "outputs": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T105716Z-dbf6eaaeabb0/outputs"
+      },
+      "response_json_sha256": "3f3b472376c159394f9526443075a3b617936343c374774b3829fb0552e29e18",
+      "transport_json_sha256": "402f384af0aad0746a7e2dd50e5995ddff18505bc98ad92aca89cab39d4ef1c1",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "fixed_transport",
+      "local_run_id": "20261025T105950Z-0531b1ec894c",
+      "parent_run_id": null,
+      "operation": "coco",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "actual_saved_input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "depth_unit": "m",
+        "middle_age_ma": 210,
+        "sedimentation_rate_min": 5,
+        "sedimentation_rate_max": 25,
+        "sedimentation_rate_step": 1,
+        "method": "adaptive",
+        "correlation": "Spearman",
+        "red_noise": 0,
+        "detrend": "lowess",
+        "span": 0.35,
+        "nsim": 19,
+        "seed": 1,
+        "max_frequency": 0.0678797861111111,
+        "slices": 1,
+        "nfft": 4096
+      },
+      "input_lineage": {
+        "run_id": "20261025T105410Z-2d857a4092b0",
+        "operation": "interpolate_pro",
+        "artifact_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105410Z-2d857a4092b0/outputs/interpolated.csv",
+        "sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0"
+      },
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "4e4b879019395c570095dbc1d3d60fb64c7bbeadff8aa43844fa67bf4e87ac2d",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 104,
+        "mismatch_paths": [],
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle original functions",
+        "plot_backend": "MATLAB/Acycle original publication plotting functions"
+      },
+      "transport_metadata": {
+        "token": "acycle-7e40909cc9c44e4e9727313f3c640cd8",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "input_transport": "github_artifact_reference",
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_artifact_reference": {
+          "artifact_id": 12596378521,
+          "artifact_sha256": "4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+          "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+          "member": "ci-output/interpolated.csv",
+          "repository": "JFjifang/Acycle_Harness",
+          "source_workflow_run_id": 40186662933
+        }
+      },
+      "transport_input_sha_matches_saved_input": true,
+      "artifact_reference_chain": {
+        "reference": {
+          "artifact_id": 12596378521,
+          "artifact_sha256": "4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+          "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+          "member": "ci-output/interpolated.csv",
+          "repository": "JFjifang/Acycle_Harness",
+          "source_workflow_run_id": 40186662933
+        },
+        "actual_parent_zip_sha256": "4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+        "actual_member_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "parent_zip_digest_matches_reference": true,
+        "member_bytes_match_reference": true,
+        "member_bytes_match_local_request": true,
+        "member_bytes_match_matlab_provenance": true
+      },
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T11:02:19.874764+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-7e40909cc9c44e4e9727313f3c640cd8.json",
+        "request_token": "acycle-7e40909cc9c44e4e9727313f3c640cd8",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40187022768,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40187022768",
+        "artifact_id": 12596393940,
+        "artifact_name": "acycle-output-acycle-7e40909cc9c44e4e9727313f3c640cd8",
+        "workflow_head_sha": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "artifact_created_at": "2026-10-25T11:01:39Z",
+        "size_in_bytes": 522952,
+        "sha256": "cabe780dcf8cae78a8a7ee126ceeb889800d3f24f8821621c1d86662ccc23c8d",
+        "github_digest": "sha256:cabe780dcf8cae78a8a7ee126ceeb889800d3f24f8821621c1d86662ccc23c8d",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/36fc3c3e-578a-4d94-a943-8a1592a0408c/v05-12596393940.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12596393940.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-7e40909cc9c44e4e9727313f3c640cd8.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105950Z-0531b1ec894c/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105950Z-0531b1ec894c/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T105950Z-0531b1ec894c/request.json",
+        "result": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T105950Z-0531b1ec894c/result.json",
+        "outputs": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T105950Z-0531b1ec894c/outputs"
+      },
+      "response_json_sha256": "ae4610bd1d15e2663ae121f87e9da4936641e2571a05b850ca4ac4e27ba72090",
+      "transport_json_sha256": "cfffda59a9e8cd40d2fd08210b372ae4673cde541e267fff014f6d1ae05f980d",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "fixed_transport",
+      "local_run_id": "20261025T110220Z-a5880602e02b",
+      "parent_run_id": null,
+      "operation": "ecoco",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "actual_saved_input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "depth_unit": "m",
+        "middle_age_ma": 210,
+        "sedimentation_rate_min": 5,
+        "sedimentation_rate_max": 25,
+        "sedimentation_rate_step": 1,
+        "method": "adaptive",
+        "correlation": "Spearman",
+        "red_noise": 0,
+        "detrend": "lowess",
+        "span": 0.35,
+        "window": 600,
+        "step": 100,
+        "nsim": 19,
+        "seed": 1,
+        "max_frequency": 0.0678797861111111,
+        "nfft": 1024
+      },
+      "input_lineage": {
+        "run_id": "20261025T105410Z-2d857a4092b0",
+        "operation": "interpolate_pro",
+        "artifact_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105410Z-2d857a4092b0/outputs/interpolated.csv",
+        "sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0"
+      },
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "c10a581eb90300e2f25ee88ffabcd9abac60073035fdc8334b357ca2b2e1e8f8",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 104,
+        "mismatch_paths": [],
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle original functions",
+        "plot_backend": "MATLAB/Acycle original publication plotting functions"
+      },
+      "transport_metadata": {
+        "token": "acycle-dbcdb6592e5c4b4fa2bfea8a772f2e22",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "input_transport": "github_artifact_reference",
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_artifact_reference": {
+          "artifact_id": 12596378521,
+          "artifact_sha256": "4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+          "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+          "member": "ci-output/interpolated.csv",
+          "repository": "JFjifang/Acycle_Harness",
+          "source_workflow_run_id": 40186662933
+        }
+      },
+      "transport_input_sha_matches_saved_input": true,
+      "artifact_reference_chain": {
+        "reference": {
+          "artifact_id": 12596378521,
+          "artifact_sha256": "4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+          "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+          "member": "ci-output/interpolated.csv",
+          "repository": "JFjifang/Acycle_Harness",
+          "source_workflow_run_id": 40186662933
+        },
+        "actual_parent_zip_sha256": "4c5b47b6761869dfd9d6be1557bfb82d09db5322c5d3a04f6c72c7aa62ec05aa",
+        "actual_member_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "parent_zip_digest_matches_reference": true,
+        "member_bytes_match_reference": true,
+        "member_bytes_match_local_request": true,
+        "member_bytes_match_matlab_provenance": true
+      },
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T11:04:42.736259+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-dbcdb6592e5c4b4fa2bfea8a772f2e22.json",
+        "request_token": "acycle-dbcdb6592e5c4b4fa2bfea8a772f2e22",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40187205181,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40187205181",
+        "artifact_id": 12596930202,
+        "artifact_name": "acycle-output-acycle-dbcdb6592e5c4b4fa2bfea8a772f2e22",
+        "workflow_head_sha": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "artifact_created_at": "2026-10-25T11:04:02Z",
+        "size_in_bytes": 652216,
+        "sha256": "29ea6230bd8e40cadf7749c3f5ca1175a8d075f825202006b8375e539717decc",
+        "github_digest": "sha256:29ea6230bd8e40cadf7749c3f5ca1175a8d075f825202006b8375e539717decc",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/2ab18f9f-1ba6-467f-8e25-54d555bea591/v05-12596930202.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12596930202.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-dbcdb6592e5c4b4fa2bfea8a772f2e22.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T110220Z-a5880602e02b/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T110220Z-a5880602e02b/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T110220Z-a5880602e02b/request.json",
+        "result": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T110220Z-a5880602e02b/result.json",
+        "outputs": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T110220Z-a5880602e02b/outputs"
+      },
+      "response_json_sha256": "eb6a53af1e5ce5fcfe3ce222856afeee9cc40d22b96d620a6725486a27464136",
+      "transport_json_sha256": "13c7a921d90af34a1baadb5fe1c4373c55e413286e00554067ea53cf75f71190",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "fixed_transport",
+      "local_run_id": "20261025T110455Z-2b96156ba364",
+      "parent_run_id": null,
+      "operation": "tune",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+      "actual_saved_input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "depth_unit": "m",
+        "period_kyr": 405,
+        "anchor_age_kyr": 0,
+        "anchor_phase": "peak",
+        "extrema": "peaks",
+        "endpoint_policy": "trim"
+      },
+      "input_lineage": {
+        "run_id": "20261025T105716Z-dbf6eaaeabb0",
+        "operation": "analyze",
+        "artifact_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105716Z-dbf6eaaeabb0/outputs/filtered.csv",
+        "sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5"
+      },
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "d60612768b71ae5ead21b76728752fb577b0a790192334a7eca743c6e6df24ae",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 5,
+        "mismatch_paths": [],
+        "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "transport_metadata": {
+        "token": "acycle-1183ec59aec347d2afbe68b11c4bf93d",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "input_transport": "github_artifact_reference",
+        "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+        "input_artifact_reference": {
+          "artifact_id": 12596299183,
+          "artifact_sha256": "59d83ccf48332f05bc638f04c20bf0da58878e864724e227ccb5b09d300b0224",
+          "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+          "member": "ci-output/filtered.csv",
+          "repository": "JFjifang/Acycle_Harness",
+          "source_workflow_run_id": 40186862974
+        }
+      },
+      "transport_input_sha_matches_saved_input": true,
+      "artifact_reference_chain": {
+        "reference": {
+          "artifact_id": 12596299183,
+          "artifact_sha256": "59d83ccf48332f05bc638f04c20bf0da58878e864724e227ccb5b09d300b0224",
+          "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+          "member": "ci-output/filtered.csv",
+          "repository": "JFjifang/Acycle_Harness",
+          "source_workflow_run_id": 40186862974
+        },
+        "actual_parent_zip_sha256": "59d83ccf48332f05bc638f04c20bf0da58878e864724e227ccb5b09d300b0224",
+        "actual_member_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+        "parent_zip_digest_matches_reference": true,
+        "member_bytes_match_reference": true,
+        "member_bytes_match_local_request": true,
+        "member_bytes_match_matlab_provenance": true
+      },
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T11:07:21.084196+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-1183ec59aec347d2afbe68b11c4bf93d.json",
+        "request_token": "acycle-1183ec59aec347d2afbe68b11c4bf93d",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40187379831,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40187379831",
+        "artifact_id": 12597480114,
+        "artifact_name": "acycle-output-acycle-1183ec59aec347d2afbe68b11c4bf93d",
+        "workflow_head_sha": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "artifact_created_at": "2026-10-25T11:06:52Z",
+        "size_in_bytes": 502204,
+        "sha256": "242e01b774155c8330bdbd96263d306af43837a84bab9d1856f6f1ae075efd1f",
+        "github_digest": "sha256:242e01b774155c8330bdbd96263d306af43837a84bab9d1856f6f1ae075efd1f",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/f6b28391-0b42-463d-949b-2014b4b01c2e/v05-12597480114.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12597480114.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-1183ec59aec347d2afbe68b11c4bf93d.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T110455Z-2b96156ba364/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T110455Z-2b96156ba364/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T110455Z-2b96156ba364/request.json",
+        "result": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T110455Z-2b96156ba364/result.json",
+        "outputs": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T110455Z-2b96156ba364/outputs"
+      },
+      "response_json_sha256": "528e8999c033bd370cee2c71dbcb1db2b7e8a1c3d1c48110c9a94831d225d358",
+      "transport_json_sha256": "66006a1f6af2e14f5da22a09b651753efb6a9f3ac03ec5f9377e2b0dbffbb4b8",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "fixed_transport",
+      "local_run_id": "20261025T110726Z-6e76718b431c",
+      "parent_run_id": null,
+      "operation": "analyze",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "actual_saved_input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "coordinate_unit": "kyr",
+        "detrend": "lowess",
+        "span": 0.35,
+        "dt": 5,
+        "mtm_nw": 2,
+        "evolution": true,
+        "evolution_window": 2430,
+        "evolution_step": 405,
+        "age_model": [
+          [
+            6.82752,
+            0
+          ],
+          [
+            56.32704,
+            405
+          ],
+          [
+            116.92128,
+            810
+          ],
+          [
+            184.34304,
+            1215
+          ],
+          [
+            237.25632,
+            1620
+          ],
+          [
+            296.99712,
+            2025
+          ],
+          [
+            352.47072,
+            2430
+          ],
+          [
+            412.21152,
+            2835
+          ],
+          [
+            480.48672,
+            3240
+          ],
+          [
+            528.27936,
+            3645
+          ],
+          [
+            580.3392,
+            4050
+          ],
+          [
+            649.46784,
+            4455
+          ],
+          [
+            707.50176,
+            4860
+          ],
+          [
+            775.77696,
+            5265
+          ],
+          [
+            838.93152,
+            5670
+          ],
+          [
+            894.40512,
+            6075
+          ],
+          [
+            952.43904,
+            6480
+          ],
+          [
+            1010.47296,
+            6885
+          ],
+          [
+            1068.50688,
+            7290
+          ],
+          [
+            1125.68736,
+            7695
+          ],
+          [
+            1177.7472,
+            8100
+          ],
+          [
+            1228.9536,
+            8505
+          ],
+          [
+            1287.84096,
+            8910
+          ],
+          [
+            1355.26272,
+            9315
+          ],
+          [
+            1412.4432,
+            9720
+          ],
+          [
+            1466.20992,
+            10125
+          ],
+          [
+            1519.97664,
+            10530
+          ],
+          [
+            1575.45024,
+            10935
+          ],
+          [
+            1606.17408,
+            11340
+          ],
+          [
+            1665.91488,
+            11745
+          ],
+          [
+            1721.38848,
+            12150
+          ],
+          [
+            1780.27584,
+            12555
+          ],
+          [
+            1846.84416,
+            12960
+          ],
+          [
+            1910.85216,
+            13365
+          ],
+          [
+            1944.98976,
+            13770
+          ]
+        ],
+        "coordinate_range": [
+          6.82752,
+          1944.98976
+        ],
+        "depth_unit": "m",
+        "smooth_fraction": 0.25,
+        "nfft": 13775,
+        "fmax": 0.1,
+        "fit_fmax": 0.1
+      },
+      "input_lineage": null,
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "b1cfacc7e3d8dbd5847c2e6a0dddbe909b8b6921afa3092202c68c88f009cb4f",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 12,
+        "mismatch_paths": [],
+        "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle",
+        "plot_backend": "MATLAB (original redconfML plot; other GUI plots adapted)"
+      },
+      "transport_metadata": {
+        "token": "acycle-1268831641654362aacf9c29b947aafa",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "input_transport": "inline_gzip",
+        "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+        "input_artifact_reference": null
+      },
+      "transport_input_sha_matches_saved_input": true,
+      "artifact_reference_chain": null,
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T11:10:23.116717+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-1268831641654362aacf9c29b947aafa.json",
+        "request_token": "acycle-1268831641654362aacf9c29b947aafa",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40187551896,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40187551896",
+        "artifact_id": 12597560067,
+        "artifact_name": "acycle-output-acycle-1268831641654362aacf9c29b947aafa",
+        "workflow_head_sha": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "artifact_created_at": "2026-10-25T11:09:31Z",
+        "size_in_bytes": 3552613,
+        "sha256": "ea3cd5f0b0904d845111177f6f3481738e1390f9478d1578c28dc5135d4ddc16",
+        "github_digest": "sha256:ea3cd5f0b0904d845111177f6f3481738e1390f9478d1578c28dc5135d4ddc16",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/2ac4d316-7383-4377-b9d6-bc3526b1e589/v05-12597560067.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12597560067.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-1268831641654362aacf9c29b947aafa.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T110726Z-6e76718b431c/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T110726Z-6e76718b431c/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T110726Z-6e76718b431c/request.json",
+        "result": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T110726Z-6e76718b431c/result.json",
+        "outputs": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T110726Z-6e76718b431c/outputs"
+      },
+      "response_json_sha256": "c467d4c66a651ac259b34674e69ebc32de9d28328a4fff9e51ce7d634a02a060",
+      "transport_json_sha256": "2053e9e7dacec19b625826883b134de0361d992e48a1d3c7b637558239233010",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "fixed_transport",
+      "local_run_id": "20261025T111033Z-221e2d5fa8d7",
+      "parent_run_id": null,
+      "operation": "tune",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+      "actual_saved_input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "anchor_age_kyr": 0,
+        "anchor_phase": "trough",
+        "depth_unit": "m",
+        "endpoint_policy": "trim",
+        "extrema": "troughs",
+        "period_kyr": 405
+      },
+      "input_lineage": {
+        "run_id": "20261025T105716Z-dbf6eaaeabb0",
+        "operation": "analyze",
+        "artifact_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T105716Z-dbf6eaaeabb0/outputs/filtered.csv",
+        "sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5"
+      },
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "d60612768b71ae5ead21b76728752fb577b0a790192334a7eca743c6e6df24ae",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 5,
+        "mismatch_paths": [],
+        "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle original getpks, findduplicate and depthtotime",
+        "plot_backend": "MATLAB"
+      },
+      "transport_metadata": {
+        "token": "acycle-415e257ab87746d5bf8f246c75c3f87a",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "input_transport": "github_artifact_reference",
+        "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+        "input_artifact_reference": {
+          "artifact_id": 12596299183,
+          "artifact_sha256": "59d83ccf48332f05bc638f04c20bf0da58878e864724e227ccb5b09d300b0224",
+          "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+          "member": "ci-output/filtered.csv",
+          "repository": "JFjifang/Acycle_Harness",
+          "source_workflow_run_id": 40186862974
+        }
+      },
+      "transport_input_sha_matches_saved_input": true,
+      "artifact_reference_chain": {
+        "reference": {
+          "artifact_id": 12596299183,
+          "artifact_sha256": "59d83ccf48332f05bc638f04c20bf0da58878e864724e227ccb5b09d300b0224",
+          "input_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+          "member": "ci-output/filtered.csv",
+          "repository": "JFjifang/Acycle_Harness",
+          "source_workflow_run_id": 40186862974
+        },
+        "actual_parent_zip_sha256": "59d83ccf48332f05bc638f04c20bf0da58878e864724e227ccb5b09d300b0224",
+        "actual_member_sha256": "1b97d448334d37fb2e4f389e7b0011e813ffdacc0faaf41bddca97ad003dcaa5",
+        "parent_zip_digest_matches_reference": true,
+        "member_bytes_match_reference": true,
+        "member_bytes_match_local_request": true,
+        "member_bytes_match_matlab_provenance": true
+      },
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T11:13:03.049864+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-415e257ab87746d5bf8f246c75c3f87a.json",
+        "request_token": "acycle-415e257ab87746d5bf8f246c75c3f87a",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40187761071,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40187761071",
+        "artifact_id": 12597520547,
+        "artifact_name": "acycle-output-acycle-415e257ab87746d5bf8f246c75c3f87a",
+        "workflow_head_sha": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "artifact_created_at": "2026-10-25T11:12:17Z",
+        "size_in_bytes": 508723,
+        "sha256": "584953c5fc8656dc07730f06fde78e9c08ffdee489d503042203d4cfd067dd16",
+        "github_digest": "sha256:584953c5fc8656dc07730f06fde78e9c08ffdee489d503042203d4cfd067dd16",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/b311c961-129c-4612-bc44-059ed4915555/v05-12597520547.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12597520547.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-415e257ab87746d5bf8f246c75c3f87a.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T111033Z-221e2d5fa8d7/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T111033Z-221e2d5fa8d7/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T111033Z-221e2d5fa8d7/request.json",
+        "result": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T111033Z-221e2d5fa8d7/result.json",
+        "outputs": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T111033Z-221e2d5fa8d7/outputs"
+      },
+      "response_json_sha256": "aa9ecc770f5cce7d1f0185acdb4e3427f038091c7a7817bdebc6cc5b18add556",
+      "transport_json_sha256": "dfe012a16b630a46d7b74f43a9a839e99c9934ca5828c9d0b7a4c954e0e0cf66",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "fixed_transport",
+      "local_run_id": "20261025T111312Z-bc14efa3b318",
+      "parent_run_id": null,
+      "operation": "analyze",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "actual_saved_input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "coordinate_unit": "kyr",
+        "detrend": "lowess",
+        "dt": 5,
+        "evolution": true,
+        "evolution_step": 405,
+        "evolution_window": 2430,
+        "mtm_nw": 2,
+        "span": 0.35,
+        "age_model": [
+          [
+            30.72384,
+            0
+          ],
+          [
+            83.63712,
+            405
+          ],
+          [
+            154.47264,
+            810
+          ],
+          [
+            210.79968,
+            1215
+          ],
+          [
+            265.41984,
+            1620
+          ],
+          [
+            325.16064,
+            2025
+          ],
+          [
+            380.63424,
+            2430
+          ],
+          [
+            448.056,
+            2835
+          ],
+          [
+            506.08992,
+            3240
+          ],
+          [
+            552.17568,
+            3645
+          ],
+          [
+            617.89056,
+            4050
+          ],
+          [
+            676.77792,
+            4455
+          ],
+          [
+            739.93248,
+            4860
+          ],
+          [
+            810.768,
+            5265
+          ],
+          [
+            866.2416,
+            5670
+          ],
+          [
+            922.56864,
+            6075
+          ],
+          [
+            981.456,
+            6480
+          ],
+          [
+            1040.34336,
+            6885
+          ],
+          [
+            1096.6704,
+            7290
+          ],
+          [
+            1152.99744,
+            7695
+          ],
+          [
+            1202.49696,
+            8100
+          ],
+          [
+            1257.11712,
+            8505
+          ],
+          [
+            1324.53888,
+            8910
+          ],
+          [
+            1384.27968,
+            9315
+          ],
+          [
+            1439.75328,
+            9720
+          ],
+          [
+            1492.66656,
+            10125
+          ],
+          [
+            1547.28672,
+            10530
+          ],
+          [
+            1588.25184,
+            10935
+          ],
+          [
+            1636.04448,
+            11340
+          ],
+          [
+            1694.0784,
+            11745
+          ],
+          [
+            1750.40544,
+            12150
+          ],
+          [
+            1811.85312,
+            12555
+          ],
+          [
+            1881.8352,
+            12960
+          ],
+          [
+            1919.38656,
+            13365
+          ],
+          [
+            1972.29984,
+            13770
+          ]
+        ],
+        "coordinate_range": [
+          30.72384,
+          1972.29984
+        ],
+        "depth_unit": "m",
+        "smooth_fraction": 0.25,
+        "nfft": 13775,
+        "fmax": 0.1,
+        "fit_fmax": 0.1
+      },
+      "input_lineage": null,
+      "steering": null,
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "b1cfacc7e3d8dbd5847c2e6a0dddbe909b8b6921afa3092202c68c88f009cb4f",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 12,
+        "mismatch_paths": [],
+        "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle",
+        "plot_backend": "MATLAB (original redconfML plot; other GUI plots adapted)"
+      },
+      "transport_metadata": {
+        "token": "acycle-f71b6c7584ad4e289b2004f50db181d7",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "input_transport": "inline_gzip",
+        "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+        "input_artifact_reference": null
+      },
+      "transport_input_sha_matches_saved_input": true,
+      "artifact_reference_chain": null,
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T11:16:39.844092+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-f71b6c7584ad4e289b2004f50db181d7.json",
+        "request_token": "acycle-f71b6c7584ad4e289b2004f50db181d7",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40187941009,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40187941009",
+        "artifact_id": 12596861145,
+        "artifact_name": "acycle-output-acycle-f71b6c7584ad4e289b2004f50db181d7",
+        "workflow_head_sha": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "artifact_created_at": "2026-10-25T11:15:48Z",
+        "size_in_bytes": 3542954,
+        "sha256": "c04729cfa12f15e9b8d8c005ed4d771d310ecb12f982175781d4f0a75f286b5c",
+        "github_digest": "sha256:c04729cfa12f15e9b8d8c005ed4d771d310ecb12f982175781d4f0a75f286b5c",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/aa5b85ca-e800-4040-a02f-3a1455344ab4/v05-12596861145.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12596861145.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-f71b6c7584ad4e289b2004f50db181d7.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T111312Z-bc14efa3b318/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T111312Z-bc14efa3b318/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T111312Z-bc14efa3b318/request.json",
+        "result": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T111312Z-bc14efa3b318/result.json",
+        "outputs": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T111312Z-bc14efa3b318/outputs"
+      },
+      "response_json_sha256": "c02d65eec5ed3aea8095bea15d62a0800debad6616120ff9221019e5070d2d7e",
+      "transport_json_sha256": "cd6bb9b32b25630ffbe2bbff4589353dcb2152517e3349641be59621efed4714",
+      "consumer_removed_pending_request": true
+    },
+    {
+      "attempt": "fixed_transport",
+      "local_run_id": "20261025T112631Z-40fc9822b7b9",
+      "parent_run_id": "20261025T110220Z-a5880602e02b",
+      "operation": "ecoco",
+      "matlab_status": "success",
+      "matlab_error": null,
+      "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "actual_saved_input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+      "saved_input_bytes_match_request": true,
+      "effective_parameters": {
+        "depth_unit": "m",
+        "middle_age_ma": 210,
+        "sedimentation_rate_min": 5,
+        "sedimentation_rate_max": 25,
+        "sedimentation_rate_step": 1,
+        "method": "adaptive",
+        "correlation": "Spearman",
+        "red_noise": 0,
+        "detrend": "lowess",
+        "span": 0.35,
+        "window": 800,
+        "step": 200,
+        "nsim": 19,
+        "seed": 1,
+        "max_frequency": 0.0678797861111111,
+        "nfft": 1024
+      },
+      "input_lineage": null,
+      "steering": {
+        "baseline_run_id": "20261025T110220Z-a5880602e02b",
+        "operation_preserved": "ecoco",
+        "parameter_patch": {
+          "window": 800,
+          "step": 200
+        },
+        "removed_or_reset_parameters": {
+          "nfft": {
+            "previous_value": 1024,
+            "reason": "dependent MATLAB default recalculated for the explicit parameter change"
+          }
+        },
+        "parameter_basis": "saved effective defaults plus explicit baseline input settings"
+      },
+      "source_registry_audit": {
+        "available": true,
+        "all_recorded_source_hashes_match": true,
+        "member": "ci-output/provenance.json",
+        "json_sha256": "c10a581eb90300e2f25ee88ffabcd9abac60073035fdc8334b357ca2b2e1e8f8",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 104,
+        "mismatch_paths": [],
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_sha256_matches_request": true,
+        "matlab_release": "2024b",
+        "numerical_backend": "MATLAB/Acycle original functions",
+        "plot_backend": "MATLAB/Acycle original publication plotting functions"
+      },
+      "transport_metadata": {
+        "token": "acycle-4d2fcf1370384e5eb4f7d46970402185",
+        "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+        "source_commit": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "input_transport": "inline_gzip",
+        "input_sha256": "625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0",
+        "input_artifact_reference": null
+      },
+      "transport_input_sha_matches_saved_input": true,
+      "artifact_reference_chain": null,
+      "transfer_receipt": {
+        "schema_version": 1,
+        "status": "delivered",
+        "completed_at": "2026-10-25T11:29:49.069062+00:00",
+        "request_path": "/workspace/acycle-v05-artifact-cache/pending/acycle-4d2fcf1370384e5eb4f7d46970402185.json",
+        "request_token": "acycle-4d2fcf1370384e5eb4f7d46970402185",
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40188877196,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40188877196",
+        "artifact_id": 12597238200,
+        "artifact_name": "acycle-output-acycle-4d2fcf1370384e5eb4f7d46970402185",
+        "workflow_head_sha": "cc3cdcb7ecfc20dd4f681a97aa1df777f543ee7b",
+        "artifact_created_at": "2026-10-25T11:28:54Z",
+        "size_in_bytes": 597666,
+        "sha256": "206fd3dcfe4239d1f37d07b526fbeb04dd4dbf406b3bb83ca78372b20b70acf1",
+        "github_digest": "sha256:206fd3dcfe4239d1f37d07b526fbeb04dd4dbf406b3bb83ca78372b20b70acf1",
+        "digest_matches_github": true,
+        "source_path": "/workspace/attachments/0b9286d7-324c-4a44-adff-4d0a4b211b6c/v05-12597238200.zip",
+        "destination": "/workspace/acycle-v05-artifact-cache/12597238200.zip",
+        "transport": "github_connector_to_sediment_download_file",
+        "atomic_delivery": true,
+        "recomputed": false
+      },
+      "transfer_receipt_source_path": "/workspace/acycle-v05-artifact-cache/transfers/acycle-4d2fcf1370384e5eb4f7d46970402185.json",
+      "request_source_path": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T112631Z-40fc9822b7b9/request.json",
+      "output_source_directory": "/workspace/harness-conversation-runs/v05-newark-fixedtransport/.acycle/runs/20261025T112631Z-40fc9822b7b9/outputs",
+      "portable_archive_paths": {
+        "request": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T112631Z-40fc9822b7b9/request.json",
+        "result": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T112631Z-40fc9822b7b9/result.json",
+        "outputs": "validation/v0.5/scientific-runs/fixedtransport/newark_relative_time_complete/20261025T112631Z-40fc9822b7b9/outputs"
+      },
+      "response_json_sha256": "bf25c5b772c922e85e85f4cfb2448e0b959959bfb9ef69136c134e909a333673",
+      "transport_json_sha256": "7f16500acb27b7f10c6917ef196810a60c66583957b57a639b791ce72afbd2f1",
+      "consumer_removed_pending_request": true
+    }
+  ]
+}

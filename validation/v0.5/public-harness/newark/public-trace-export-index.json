@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-25T11:00:58.383092+00:00",
+  "source_root": "/workspace/Acycle_Harness/validation/v0.5/harness/newark",
+  "public_root": "/workspace/Acycle_Harness/validation/v0.5/public-harness/newark",
+  "scope": "Public user-visible conversation and tool evidence; private reasoning omitted structurally. Originals untouched.",
+  "policy": {
+    "typed_reasoning_blocks_and_deltas_removed": true,
+    "nested_provider_reasoning_fields_removed": true,
+    "strings_not_interpreted": true,
+    "scientific_tool_summaries_preserved": true,
+    "model_reasoning_effort_configuration_preserved": true
+  },
+  "files": [
+    {
+      "path": "first-turn.json",
+      "original_sha256": "dd6d6e7ec984126cbabf1652c2c3beb3bb765f532e79ebfe71330e910a6bb90e",
+      "public_sha256": "dd6d6e7ec984126cbabf1652c2c3beb3bb765f532e79ebfe71330e910a6bb90e",
+      "original_bytes": 246206,
+      "public_bytes": 246206,
+      "structural_removals": {}
+    },
+    {
+      "path": "first-turn.turn-1.events.jsonl",
+      "original_sha256": "0019093a982e5d013d4e70c3d793f7ca7892694a680462f433baede66fd29503",
+      "public_sha256": "dd8cc579760313c59877b4e31f1fe0bd1de3e6db123892389afeff17bce73681",
+      "original_bytes": 775409,
+      "public_bytes": 351647,
+      "structural_removals": {
+        "removed_block:reasoning": 96,
+        "removed_block:reasoning-chunks": 19
+      }
+    }
+  ]
+}

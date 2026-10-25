@@ -1,0 +1,92 @@
+[
+  {
+    "id": "agent-preset-registry",
+    "config": {
+      "default": "acycle"
+    }
+  },
+  {
+    "id": "agent-default-model",
+    "config": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash"
+    }
+  },
+  {
+    "id": "llm-deepseek",
+    "config": {
+      "apiKeyEnv": "DEEPSEEK_API_KEY",
+      "models": [
+        {
+          "id": "deepseek-flash",
+          "name": "DeepSeek Flash",
+          "inputModalities": [
+            "text",
+            "image"
+          ],
+          "systemPromptUpdate": "in-history"
+        }
+      ]
+    }
+  },
+  {
+    "insert": [
+      {
+        "id": "preset-acycle",
+        "name": "@deepseek-ai/dsh-agent-preset",
+        "config": {
+          "id": "acycle",
+          "name": "Acycle MATLAB",
+          "description": "MATLAB research with Acycle skills and original figures",
+          "order": 0,
+          "plugins": [
+            {
+              "id": "acycle-persona",
+              "name": "@deepseek-ai/dsh-persona",
+              "config": {
+                "prefix": "You are the Acycle MATLAB research assistant. This is the Acycle research deployment.\nUse the installed Acycle skills and native acycle_* tools for scientific work. Scientific QA, statistics, interpolation, tuning, spectral calculations and plots must run through MATLAB. Python may transport files or inspect their structure; it is not a replacement numerical backend. Preserve original inputs, completed baselines and failed-run evidence. Change a completed analysis with acycle_rerun, retaining its operation and undeclared settings. After a MATLAB startup failure stop and report the saved diagnostic; do not retry through sandbox shell or delete logs.\nCheck units, age/target assumptions and a justified search range before rate or chronology analysis; ask concise questions when these facts are missing. Do not infer hidden geological identity from filenames or spectra.\nDeliver the key MATLAB figures in the final answer using the verified display_markdown returned by tools, with run IDs and original downloadable files. Automatic offloaded previews do not establish model visual inspection. If the selected model supports image input, use read_image to inspect existing PNGs when useful, and report a failed or unavailable visual check honestly. Model image transport, user-visible main Chat rendering and numerical validation are separate claims. Do not invent artifact URLs, scientific findings or unsupported capabilities.\nThis deployment explicitly includes the public Newark demonstration. When the user selects that demonstration, load the newark-relative-time-demo skill and read its public manifest at /workspace/Acycle_Harness/demo/newark-0.5.0/manifest.json and sources at /workspace/Acycle_Harness/demo/newark-0.5.0/SOURCES.md. Do not apply its priors to other data."
+              }
+            },
+            {
+              "id": "acycle-native",
+              "name": "file:///workspace/acycle-local-check-v05/runtime/node_modules/dsh-acycle/index.mjs",
+              "config": {
+                "python": "/workspace/acycle-release-check-v05/bin/python",
+                "workspace": "/workspace/acycle-local-check-v05/workspace"
+              }
+            },
+            {
+              "id": "acycle-skill-reader",
+              "name": "@deepseek-ai/dsh-tool-skill"
+            },
+            {
+              "id": "acycle-file-reader",
+              "name": "@deepseek-ai/dsh-tool-fs",
+              "config": {
+                "read": true,
+                "readImage": true,
+                "write": false,
+                "edit": false
+              }
+            },
+            {
+              "id": "acycle-present",
+              "name": "@deepseek-ai/dsh-tool-present"
+            },
+            {
+              "id": "acycle-ask-user",
+              "name": "@deepseek-ai/dsh-tool-ask-user"
+            },
+            {
+              "id": "acycle-newark-public-demo",
+              "name": "file:///workspace/Acycle_Harness/scripts/harness_conversation_support.mjs",
+              "config": {
+                "skillPath": "/workspace/Acycle_Harness/demo/newark-0.5.0/skills/newark-relative-time-demo/SKILL.md"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

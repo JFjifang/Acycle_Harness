@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T10:57:41.168928+00:00",
+  "classification": "orphaned successful remote run after local HTTP 503; never delivered to a current Session or substituted for consumed results",
+  "run": {
+    "conclusion": "success",
+    "createdAt": "2026-10-25T10:43:55Z",
+    "event": "workflow_dispatch",
+    "headSha": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+    "jobs": [
+      {
+        "completedAt": "2026-10-25T10:47:05Z",
+        "conclusion": "success",
+        "databaseId": 121146714507,
+        "name": "matlab",
+        "startedAt": "2026-10-25T10:43:58Z",
+        "status": "completed",
+        "steps": [
+          {
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 3,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 4,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Install Python orchestration",
+            "number": 5,
+            "status": "completed"
+          },
+          {
+            "conclusion": "skipped",
+            "name": "Python contract tests",
+            "number": 6,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run matlab-actions/setup-matlab@v2",
+            "number": 7,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Prepare remote request",
+            "number": 8,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Execute MATLAB request",
+            "number": 9,
+            "status": "completed"
+          },
+          {
+            "conclusion": "skipped",
+            "name": "MATLAB numerical and example validation",
+            "number": 10,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Upload MATLAB outputs",
+            "number": 11,
+            "status": "completed"
+          },
+          {
+            "conclusion": "skipped",
+            "name": "Upload compact validation report",
+            "number": 12,
+            "status": "completed"
+          },
+          {
+            "conclusion": "skipped",
+            "name": "Upload numerical validation tables",
+            "number": 13,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run matlab-actions/setup-matlab@v2",
+            "number": 23,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 24,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 25,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 26,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 27,
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40185972533/job/121146714507"
+      }
+    ],
+    "name": "acycle-08a544bb9dca4e40a603a53a91224130",
+    "status": "completed",
+    "url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40185972533"
+  },
+  "artifact": {
+    "id": 12595878473,
+    "name": "acycle-output-acycle-08a544bb9dca4e40a603a53a91224130",
+    "size_in_bytes": 484329,
+    "url": "https://api.github.com/repos/JFjifang/Acycle_Harness/actions/artifacts/12595878473",
+    "archive_download_url": "https://api.github.com/repos/JFjifang/Acycle_Harness/actions/artifacts/12595878473/zip",
+    "expired": false,
+    "created_at": "2026-10-25T10:46:45Z",
+    "expires_at": "2026-11-08T10:46:44Z",
+    "updated_at": "2026-10-25T10:46:45Z",
+    "digest": "sha256:442ecb70b724a87ce0cf984a5cba7f0e1d441e3c4e54c80aad0e1b6eeb5e4897",
+    "workflow_run": {
+      "id": 40185972533,
+      "repository_id": 1432829447,
+      "head_repository_id": 1432829447,
+      "head_branch": "main",
+      "head_sha": "d767cab0a63b6830ee1dee997d26a68f513ab384"
+    }
+  },
+  "archive_path": "validation/v0.5/failure-evidence/orphan-40185972533/original-artifact.zip",
+  "source_download_path": "/workspace/attachments/9a2f9173-a78c-4b27-9e5b-45c8be9352d1/v05-orphan-12595878473.zip",
+  "artifact_sha256": "442ecb70b724a87ce0cf984a5cba7f0e1d441e3c4e54c80aad0e1b6eeb5e4897",
+  "digest_matches_github": true,
+  "download_transport": "github_connector_to_sediment_download_file",
+  "cache_delivery": false,
+  "replacement_of_current_output": false,
+  "matlab_status": "success",
+  "operation": "tune",
+  "parameters": {
+    "anchor_age_kyr": 0,
+    "anchor_phase": "peak",
+    "depth_unit": "m",
+    "endpoint_policy": "trim",
+    "extrema": "peaks",
+    "period_kyr": 405
+  },
+  "input_sha256": "b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff",
+  "source_registry_all_matches": true,
+  "transport": {
+    "token": "acycle-08a544bb9dca4e40a603a53a91224130",
+    "remote_output_dir": "/home/runner/work/Acycle_Harness/Acycle_Harness/ci-output",
+    "source_commit": "d767cab0a63b6830ee1dee997d26a68f513ab384",
+    "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7"
+  },
+  "matching_local_failed_request": {
+    "path": "/workspace/harness-conversation-runs/v05-newark/.acycle/runs/20261025T104353Z-5c159b838ec0/request.json",
+    "run_id": "20261025T104353Z-5c159b838ec0",
+    "created_at": "2026-10-25T10:43:53.919192+00:00",
+    "status": "failed",
+    "error": "GitHubBackendError: GitHub CLI failed: gh: HTTP 503",
+    "input_sha256_matches": true,
+    "parameters_match": true,
+    "attribution_basis": "Exact input SHA and parameter equality, remote creation immediately after the local attempt, and token from remote transport. The locally failed request did not preserve its dispatch token."
+  },
+  "actually_consumed_later_retry": {
+    "local_run_id": "20261025T104547Z-631960023604",
+    "github_run_id": 40186105313,
+    "artifact_id": 12595898658,
+    "kept_distinct": true
+  },
+  "files": [
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/age_model.csv",
+      "sha256": "5eff30d9e1469a3e662eeac73b72a7903333fa521e6b1a6b5c6ba302fe1599eb",
+      "bytes": 541
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/analysis.mat",
+      "sha256": "4649872127ff1604fc150e9631c26a1ee8cd115e87a36010e356b6e8f76f1536",
+      "bytes": 122576
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/control_points.csv",
+      "sha256": "7722e982dec7ac74be68887e4c3b3048044d7e246c80fc2e85068e5c0ceb89c2",
+      "bytes": 1409
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/depth_age.csv",
+      "sha256": "3c86a33d0a9f7c2b950fcf574f530eb0a46c8061ddb504bc35f46a47478e6658",
+      "bytes": 56225
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/provenance.json",
+      "sha256": "934ed79b879de54ce26b8dc1a76facdf8a354b5d8e3633c8ef116404f6b7ed60",
+      "bytes": 2492
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/response.json",
+      "sha256": "a67b8016968b9a0c6306d47eb3b0218feb121b2d64c8e72aa1aa9139c6a76dfa",
+      "bytes": 7874
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/sedimentation_rate.csv",
+      "sha256": "455bbbbbc155190a981713ae58417448001fac85e2581b052e750f0f67622a25",
+      "bytes": 1301
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/transport.json",
+      "sha256": "fad2cf4cb26f33cb63bba91219deaa3782892ca18ea8beddf284da3bb1322969",
+      "bytes": 258
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/tune-cleaned.csv",
+      "sha256": "b5d6915c3be09107f16b736d3f2e92fbee78e3fa6500b96d5ef2c59a943ad8ff",
+      "bytes": 68532
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/tuned.csv",
+      "sha256": "0df2894638b2bf77f091889b0c07ddc67fb4174637531a7deb6b71bbd5cad8d1",
+      "bytes": 76358
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/tuning.fig",
+      "sha256": "8f565d65e7e042dc1291b82baa727777b011508e297417b26fecdd0eb2a82c3a",
+      "bytes": 60708
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/tuning.pdf",
+      "sha256": "ad8e7a8ee2c2a664272bd1eb66310e647bb19a50cd5b634182b82268d7acab39",
+      "bytes": 39811
+    },
+    {
+      "path": "validation/v0.5/failure-evidence/orphan-40185972533/original/ci-output/tuning.png",
+      "sha256": "dff42ad220e5dfa803092dbe95830191fb3e09ec2bd712a076ad8f931c05bc02",
+      "bytes": 189986
+    }
+  ]
+}

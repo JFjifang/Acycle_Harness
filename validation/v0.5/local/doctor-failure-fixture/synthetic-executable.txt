@@ -1,0 +1,3 @@
+#!/bin/sh
+printf "synthetic doctor startup failure\n"
+exit 7

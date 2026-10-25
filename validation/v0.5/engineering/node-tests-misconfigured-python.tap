@@ -1,0 +1,128 @@
+✔ compact model result preserves statistics, warnings and source mismatches (1.628827ms)
+✔ missing attachment services preserve science and path delivery (0.489635ms)
+✔ failed presentation cannot turn a completed MATLAB result into a failed analysis (7.569333ms)
+✔ artifact delivery excludes a symlink escaping recorded outputs and oversized files (3.387039ms)
+✖ official SystemPrompt always includes Acycle workflow rules and removes them with the plugin (107.559534ms)
+✖ official registry imports only current Session user refs, preserving bytes and source (22.015635ms)
+✖ multiple files require selection; official host paths auto-import for Python intake (24.896524ms)
+✖ official short handles resolve only unique current Session refs, with real prefix collisions requiring selection (22.278929ms)
+✖ bare filenames prefer current uploads, preserve explicit workspace paths, and reject ambiguous uploads (17.864977ms)
+✖ every import preserves its own source receipt across messages and Sessions without changing prior records (17.985999ms)
+✖ import rejects byte limits and a symlinked destination, leaving source intact (22.748769ms)
+✖ official sha256 refs detect altered source bytes and remove partial imports (17.532447ms)
+✖ official image/file refs and present deliver both spectrum and evolution with original bytes (19.870722ms)
+✖ path intake remains usable without attachments; attachment import gives an actionable error (19.620466ms)
+✔ bridge transports JSON literally without shell expansion (12.072609ms)
+✔ bridge observes cancellation and waits for subprocess exit (103.838551ms)
+✔ native cancellation lets Python stop a TERM-ignoring MATLAB process group and save evidence (5062.546303ms)
+ℹ {"fixture":"TERM-ignoring process; no MATLAB science","status":"interrupted","returncode":-9,"attempts":1,"automatic_retry":false,"elapsed_seconds":5.032803493999381,"child_reaped":true}
+✔ bridge reports errors and rejects non-JSON output (12.735245ms)
+✔ bridge retains structured failed-run diagnostics while rejecting the tool call (24.713267ms)
+✔ packaged skill metadata strips frontmatter and resolves resources (2.075639ms)
+✔ optional SystemPrompt service does not block legacy plugin registration (25.31081ms)
+✔ new preparation and tuning operations count toward the science budget (0.516006ms)
+✔ v0.5 structured RunError survives native error prefixes and isError omissions (0.262414ms)
+✔ a successful early stage does not erase a later failed scientific stage (0.164207ms)
+✔ read-only retrieval and success-shaped prose cannot satisfy a fresh scientific stage (0.132519ms)
+✔ public scenario budgets override legacy defaults without becoming model instructions (0.242345ms)
+✔ continuation inherits only a matching actual Session catalog and labels it historical (1.947246ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 17
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5574.799742
+
+✖ failing tests:
+
+test at plugin/tests/official-attachments.test.mjs:78:1
+✖ official SystemPrompt always includes Acycle workflow rules and removes them with the plugin (107.559534ms)
+  Error: Acycle bridge exited 1: /workspace/Acycle_Harness/.venv/bin/python: Error while finding module specification for 'acycle_deepseek.harness_bridge' (ModuleNotFoundError: No module named 'acycle_deepseek')
+  
+      at ChildProcess.<anonymous> (file:///workspace/Acycle_Harness/plugin/index.mjs:70:23)
+      at ChildProcess.emit (node:events:509:28)
+      at maybeClose (node:internal/child_process:1141:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+test at plugin/tests/official-attachments.test.mjs:98:1
+✖ official registry imports only current Session user refs, preserving bytes and source (22.015635ms)
+  Error: Acycle bridge exited 1: /workspace/Acycle_Harness/.venv/bin/python: Error while finding module specification for 'acycle_deepseek.harness_bridge' (ModuleNotFoundError: No module named 'acycle_deepseek')
+  
+      at ChildProcess.<anonymous> (file:///workspace/Acycle_Harness/plugin/index.mjs:70:23)
+      at ChildProcess.emit (node:events:509:28)
+      at maybeClose (node:internal/child_process:1141:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+test at plugin/tests/official-attachments.test.mjs:127:1
+✖ multiple files require selection; official host paths auto-import for Python intake (24.896524ms)
+  Error: Acycle bridge exited 1: /workspace/Acycle_Harness/.venv/bin/python: Error while finding module specification for 'acycle_deepseek.harness_bridge' (ModuleNotFoundError: No module named 'acycle_deepseek')
+  
+      at ChildProcess.<anonymous> (file:///workspace/Acycle_Harness/plugin/index.mjs:70:23)
+      at ChildProcess.emit (node:events:509:28)
+      at maybeClose (node:internal/child_process:1141:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+test at plugin/tests/official-attachments.test.mjs:147:1
+✖ official short handles resolve only unique current Session refs, with real prefix collisions requiring selection (22.278929ms)
+  Error: Acycle bridge exited 1: /workspace/Acycle_Harness/.venv/bin/python: Error while finding module specification for 'acycle_deepseek.harness_bridge' (ModuleNotFoundError: No module named 'acycle_deepseek')
+  
+      at ChildProcess.<anonymous> (file:///workspace/Acycle_Harness/plugin/index.mjs:70:23)
+      at ChildProcess.emit (node:events:509:28)
+      at maybeClose (node:internal/child_process:1141:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+test at plugin/tests/official-attachments.test.mjs:177:1
+✖ bare filenames prefer current uploads, preserve explicit workspace paths, and reject ambiguous uploads (17.864977ms)
+  Error: Acycle bridge exited 1: /workspace/Acycle_Harness/.venv/bin/python: Error while finding module specification for 'acycle_deepseek.harness_bridge' (ModuleNotFoundError: No module named 'acycle_deepseek')
+  
+      at ChildProcess.<anonymous> (file:///workspace/Acycle_Harness/plugin/index.mjs:70:23)
+      at ChildProcess.emit (node:events:509:28)
+      at maybeClose (node:internal/child_process:1141:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+test at plugin/tests/official-attachments.test.mjs:206:1
+✖ every import preserves its own source receipt across messages and Sessions without changing prior records (17.985999ms)
+  Error: Acycle bridge exited 1: /workspace/Acycle_Harness/.venv/bin/python: Error while finding module specification for 'acycle_deepseek.harness_bridge' (ModuleNotFoundError: No module named 'acycle_deepseek')
+  
+      at ChildProcess.<anonymous> (file:///workspace/Acycle_Harness/plugin/index.mjs:70:23)
+      at ChildProcess.emit (node:events:509:28)
+      at maybeClose (node:internal/child_process:1141:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+test at plugin/tests/official-attachments.test.mjs:236:1
+✖ import rejects byte limits and a symlinked destination, leaving source intact (22.748769ms)
+  Error: Acycle bridge exited 1: /workspace/Acycle_Harness/.venv/bin/python: Error while finding module specification for 'acycle_deepseek.harness_bridge' (ModuleNotFoundError: No module named 'acycle_deepseek')
+  
+      at ChildProcess.<anonymous> (file:///workspace/Acycle_Harness/plugin/index.mjs:70:23)
+      at ChildProcess.emit (node:events:509:28)
+      at maybeClose (node:internal/child_process:1141:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+test at plugin/tests/official-attachments.test.mjs:256:1
+✖ official sha256 refs detect altered source bytes and remove partial imports (17.532447ms)
+  Error: Acycle bridge exited 1: /workspace/Acycle_Harness/.venv/bin/python: Error while finding module specification for 'acycle_deepseek.harness_bridge' (ModuleNotFoundError: No module named 'acycle_deepseek')
+  
+      at ChildProcess.<anonymous> (file:///workspace/Acycle_Harness/plugin/index.mjs:70:23)
+      at ChildProcess.emit (node:events:509:28)
+      at maybeClose (node:internal/child_process:1141:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+test at plugin/tests/official-attachments.test.mjs:269:1
+✖ official image/file refs and present deliver both spectrum and evolution with original bytes (19.870722ms)
+  Error: Acycle bridge exited 1: /workspace/Acycle_Harness/.venv/bin/python: Error while finding module specification for 'acycle_deepseek.harness_bridge' (ModuleNotFoundError: No module named 'acycle_deepseek')
+  
+      at ChildProcess.<anonymous> (file:///workspace/Acycle_Harness/plugin/index.mjs:70:23)
+      at ChildProcess.emit (node:events:509:28)
+      at maybeClose (node:internal/child_process:1141:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+test at plugin/tests/official-attachments.test.mjs:305:1
+✖ path intake remains usable without attachments; attachment import gives an actionable error (19.620466ms)
+  Error: Acycle bridge exited 1: /workspace/Acycle_Harness/.venv/bin/python: Error while finding module specification for 'acycle_deepseek.harness_bridge' (ModuleNotFoundError: No module named 'acycle_deepseek')
+  
+      at ChildProcess.<anonymous> (file:///workspace/Acycle_Harness/plugin/index.mjs:70:23)
+      at ChildProcess.emit (node:events:509:28)
+      at maybeClose (node:internal/child_process:1141:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:306:5)

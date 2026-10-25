@@ -1,0 +1,20 @@
+[
+  {
+    "id": "session-title-llm",
+    "disabled": true
+  },
+  {
+    "insert": [
+      {
+        "id": "acycle-web-acceptance-fixture",
+        "name": "file:///workspace/Acycle_Harness/scripts/harness_web_fixture.mjs",
+        "config": {
+          "runtime": "/workspace/harness-conversation-runtime",
+          "mode": "replay",
+          "runId": "20261025T071158Z-b0f32143454c",
+          "audit": "/workspace/Acycle_Harness/validation/v0.5/web/main-chat-live-browser-verified.agent.json"
+        }
+      }
+    ]
+  }
+]

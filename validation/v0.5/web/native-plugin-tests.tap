@@ -1,0 +1,137 @@
+TAP version 13
+# Subtest: compact model result preserves statistics, warnings and source mismatches
+ok 1 - compact model result preserves statistics, warnings and source mismatches
+  ---
+  duration_ms: 3.458343
+  type: 'test'
+  ...
+# Subtest: missing attachment services preserve science and path delivery
+ok 2 - missing attachment services preserve science and path delivery
+  ---
+  duration_ms: 1.281534
+  type: 'test'
+  ...
+# Subtest: failed presentation cannot turn a completed MATLAB result into a failed analysis
+ok 3 - failed presentation cannot turn a completed MATLAB result into a failed analysis
+  ---
+  duration_ms: 12.955915
+  type: 'test'
+  ...
+# Subtest: artifact delivery excludes a symlink escaping recorded outputs and oversized files
+ok 4 - artifact delivery excludes a symlink escaping recorded outputs and oversized files
+  ---
+  duration_ms: 3.587077
+  type: 'test'
+  ...
+# Subtest: official SystemPrompt always includes Acycle workflow rules and removes them with the plugin
+ok 5 - official SystemPrompt always includes Acycle workflow rules and removes them with the plugin
+  ---
+  duration_ms: 229.049301
+  type: 'test'
+  ...
+# Subtest: official registry imports only current Session user refs, preserving bytes and source
+ok 6 - official registry imports only current Session user refs, preserving bytes and source
+  ---
+  duration_ms: 74.01877
+  type: 'test'
+  ...
+# Subtest: multiple files require selection; official host paths auto-import for Python intake
+ok 7 - multiple files require selection; official host paths auto-import for Python intake
+  ---
+  duration_ms: 114.648221
+  type: 'test'
+  ...
+# Subtest: official short handles resolve only unique current Session refs, with real prefix collisions requiring selection
+ok 8 - official short handles resolve only unique current Session refs, with real prefix collisions requiring selection
+  ---
+  duration_ms: 62.045851
+  type: 'test'
+  ...
+# Subtest: bare filenames prefer current uploads, preserve explicit workspace paths, and reject ambiguous uploads
+ok 9 - bare filenames prefer current uploads, preserve explicit workspace paths, and reject ambiguous uploads
+  ---
+  duration_ms: 176.528413
+  type: 'test'
+  ...
+# Subtest: every import preserves its own source receipt across messages and Sessions without changing prior records
+ok 10 - every import preserves its own source receipt across messages and Sessions without changing prior records
+  ---
+  duration_ms: 61.895455
+  type: 'test'
+  ...
+# Subtest: import rejects byte limits and a symlinked destination, leaving source intact
+ok 11 - import rejects byte limits and a symlinked destination, leaving source intact
+  ---
+  duration_ms: 47.519998
+  type: 'test'
+  ...
+# Subtest: official sha256 refs detect altered source bytes and remove partial imports
+ok 12 - official sha256 refs detect altered source bytes and remove partial imports
+  ---
+  duration_ms: 46.437793
+  type: 'test'
+  ...
+# Subtest: official image/file refs and present deliver both spectrum and evolution with original bytes
+ok 13 - official image/file refs and present deliver both spectrum and evolution with original bytes
+  ---
+  duration_ms: 98.799883
+  type: 'test'
+  ...
+# Subtest: path intake remains usable without attachments; attachment import gives an actionable error
+ok 14 - path intake remains usable without attachments; attachment import gives an actionable error
+  ---
+  duration_ms: 69.566545
+  type: 'test'
+  ...
+# Subtest: bridge transports JSON literally without shell expansion
+ok 15 - bridge transports JSON literally without shell expansion
+  ---
+  duration_ms: 11.996475
+  type: 'test'
+  ...
+# Subtest: bridge observes cancellation and waits for subprocess exit
+ok 16 - bridge observes cancellation and waits for subprocess exit
+  ---
+  duration_ms: 103.301139
+  type: 'test'
+  ...
+# Subtest: native cancellation lets Python stop a TERM-ignoring MATLAB process group and save evidence
+ok 17 - native cancellation lets Python stop a TERM-ignoring MATLAB process group and save evidence
+  ---
+  duration_ms: 5062.894181
+  type: 'test'
+  ...
+# {"fixture":"TERM-ignoring process; no MATLAB science","status":"interrupted","returncode":-9,"attempts":1,"automatic_retry":false,"elapsed_seconds":5.033373209000274,"child_reaped":true}
+# Subtest: bridge reports errors and rejects non-JSON output
+ok 18 - bridge reports errors and rejects non-JSON output
+  ---
+  duration_ms: 12.51917
+  type: 'test'
+  ...
+# Subtest: bridge retains structured failed-run diagnostics while rejecting the tool call
+ok 19 - bridge retains structured failed-run diagnostics while rejecting the tool call
+  ---
+  duration_ms: 17.526319
+  type: 'test'
+  ...
+# Subtest: packaged skill metadata strips frontmatter and resolves resources
+ok 20 - packaged skill metadata strips frontmatter and resolves resources
+  ---
+  duration_ms: 0.961874
+  type: 'test'
+  ...
+# Subtest: optional SystemPrompt service does not block legacy plugin registration
+ok 21 - optional SystemPrompt service does not block legacy plugin registration
+  ---
+  duration_ms: 14.282278
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6266.562394

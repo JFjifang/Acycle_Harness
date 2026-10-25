@@ -1,0 +1,162 @@
+{
+  "schema_version": 2,
+  "status": "requires_scientific_correction",
+  "scope": "Manual review of the original user-visible first-turn final answer, saved MATLAB metadata and actual eCOCO PNG; no private reasoning reviewed and no numerical science recalculated.",
+  "model_final_edited": false,
+  "behavior_status": "passed_observed_matlab_only_science",
+  "dimensions": {
+    "preset_assisted_execution": {
+      "status": "passed",
+      "note": "The original short user prompt, attachment and public skill/preset produced the six required MATLAB stages plus two additional phase-sensitivity stages. This is not blind method selection."
+    },
+    "matlab_only_scientific_processing": {
+      "status": "passed",
+      "note": "Observed shell calls only read public preset/source files and saved MATLAB tables. No Python/numpy/awk numerical analysis, scientific replacement, parameter search, failed-stage retry or model-created transport projection occurred."
+    },
+    "phase_sensitivity_scope": {
+      "status": "completed_in_first_user_turn",
+      "note": "The model added trough tuning and original-proxy time diagnostics to assess reliability. These are not a separately validated third user turn."
+    },
+    "scientific_interpretation": {
+      "status": "requires_correction",
+      "note": "The final answer contains useful explicit limitations but also factual errors and overconfident inferences. Successful tools and image transport do not establish correctness of the narrative."
+    }
+  },
+  "supported_disclosures": [
+    {
+      "quote": "405 kyr 建立相对时间轴；210 Ma 仅用于轨道目标近似；19 次模拟用于快速探索",
+      "assessment": "Correctly discloses the public chronology prior, target-age approximation and exploratory simulation budget."
+    },
+    {
+      "quote": "COCO 最佳 7 cm/kyr（Spearman ρ=0.378）",
+      "assessment": "Matches saved MATLAB best_rate_cm_kyr=7 and best_correlation=0.37781441804226334; saved minimum_rate_global_p=0.95 does not support a significant rate."
+    },
+    {
+      "quote": "405 kyr 时间域峰不是独立证据，它由控制点施加",
+      "assessment": "Correct. Both phase branches depend on the same imposed 405 kyr controls and filtered source."
+    },
+    {
+      "quote": "原 `getpks` 无 prominence/最小间距判据",
+      "assessment": "Correct limitation; the final also identifies possible extra extrema near 1575–1606 m and 1910–1945 m, possible missed cycles, and the lack of a formal age-uncertainty model or independent stratigraphic dating."
+    },
+    {
+      "quote": "两端为补零窗，边缘约束较弱",
+      "assessment": "Correct local caption for EvoFFT. eCOCO saved metadata separately specifies complete unpadded windows and no map-wide correction."
+    }
+  ],
+  "corrections": [
+    {
+      "id": "pro_input_output_hash_label",
+      "severity": "factual",
+      "quote": "Interpolation Pro | ... | `625d94a0…`",
+      "evidence": "The table labels this column input hash. Pro input is original 1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2; 625d94a05578a6ef867b0de618f950560d8410e3730d312857923ac6685d1ad0 is the Pro output consumed downstream. Actual tool lineage is correct.",
+      "correction": "Label 625d… as the Pro output hash, retaining 1cd… as its input hash."
+    },
+    {
+      "id": "nonmonotone_exploratory_track",
+      "severity": "factual_and_inference",
+      "quote": "eCOCO 追踪速率自 300 m 的 6 cm/kyr 单调升至 1600 m 的 13 cm/kyr",
+      "evidence": {
+        "depth_centres_m": [
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900,
+          1000,
+          1100,
+          1200,
+          1300,
+          1400,
+          1500,
+          1600
+        ],
+        "matlab_tracked_rate_cm_kyr": [
+          6,
+          6,
+          7,
+          7,
+          8,
+          7,
+          7,
+          7,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13
+        ]
+      },
+      "correction": "The candidate track is not monotone. Its variation, together with an imposed tuning model, does not establish actual changing sedimentation rates; the two methods share data and assumptions and are not independent chronological validation."
+    },
+    {
+      "id": "partial_target_not_absent_short_eccentricity_test",
+      "severity": "factual",
+      "quote": "短偏心率检验实际未被执行",
+      "evidence": "MATLAB reports 6 of 9 distinct frequency-resolved orbital targets at the exploratory maximum, with target periods [405.69119637582526,130.69786204114564,123.8532110091743,98.85170322399951,94.88563498843362,35.463934068387225,21.726148900463244,20.621782053254513,17.678311449534377] kyr. It does not report that no short-eccentricity test was executed. The saved interpretation says no rate passes the global p < 0.05 criterion and any positive result would concern the resolved partial target.",
+      "correction": "State partial target resolution and lack of global significance; do not equate missing full nine-target resolution with absence of the short-eccentricity components/test."
+    },
+    {
+      "id": "phase_spectra_not_identical",
+      "severity": "factual_and_overstatement",
+      "quote": "完全相同的周期组 ... 仅功率排序在小数位上互换",
+      "evidence": {
+        "peak_branch_example_period_kyr": 122.11879432624113,
+        "trough_branch_example_period_kyr": 121.90265486725664,
+        "peak_branch_next_example_period_kyr": 123.43189964157705,
+        "trough_branch_next_example_period_kyr": 123.21109123434705,
+        "note": "Copied from saved MATLAB peak lists. Rankings and power also change; no spectrum is recomputed here."
+      },
+      "correction": "Broad period families are similar, but the spectra are not identical and selected phase/trim conventions affect the diagnostics."
+    },
+    {
+      "id": "phase_count_is_conditional",
+      "severity": "overstatement",
+      "quote": "这是本方案中最实质的可靠性证据——计数不依赖“峰或谷”约定",
+      "evidence": "Both branches select 35 extrema from the same bandpassed curve, use the same imposed 405 kyr interval and first-selected-extremum zero convention, but start at different depths (6.82752 versus 30.72384 m).",
+      "correction": "Equal counts are limited internal sensitivity evidence under shared filtering/phase conventions, not independent validation of cycle completeness, actual age span or geological chronology. Retain the admitted extra/missed-extremum limitations."
+    },
+    {
+      "id": "processing_independence_not_demonstrated",
+      "severity": "unsupported_inference",
+      "quote": "不受插值、重复值或零填充影响（本数据无需这些处理）",
+      "evidence": "An actual linear Interpolation Pro step was executed. No input gaps or duplicates were observed, but EvoFFT uses padded edge windows, as the final itself acknowledges. No controlled interpolation/edge-sensitivity comparison was performed.",
+      "correction": "Report absence of gaps/duplicates and distinguish Pro interpolation from EvoFFT padding. Do not assert independence from processing without the corresponding sensitivity evidence."
+    },
+    {
+      "id": "band_center_argument",
+      "severity": "unsupported_inference",
+      "quote": "谱峰 ... 不在其中心，说明它并非纯粹由选带造成",
+      "evidence": "The depth spectrum is computed from the processed unfiltered proxy; this workflow fact is relevant. Merely not lying at the selected band center does not establish freedom from selection effects.",
+      "correction": "Use the actual unfiltered-spectrum provenance and disclose the regional prior; remove the band-center inference."
+    },
+    {
+      "id": "ecoco_visual_caption_omits_features",
+      "severity": "visual_description",
+      "quote": "B 面板 ... 除 600–800 m ... 外几乎全为深蓝",
+      "evidence": "Direct inspection of the actual MATLAB PNG also shows a distinct low-global-p feature near 900 m and a narrower feature near 1100 m. Saved CSV rows include 900 m/7 cm/kyr global p=0.05 and 1100 m/7 cm/kyr global p=0.1; these are direct existing table entries, not recalculated statistics.",
+      "correction": "Describe the map faithfully and retain its within-window-only correction. Image transport success did not prevent this caption error."
+    },
+    {
+      "id": "control_count_is_not_interval_count",
+      "severity": "factual",
+      "quote": "定年隐含的 35 段速率",
+      "evidence": "MATLAB gives 35 selected control points with cycle_from_anchor 0 through 34. The saved sedimentation-rate output describes the 34 adjacent intervals, not 35 complete cycles.",
+      "correction": "Report 35 control points and 34 complete adjacent 405 kyr intervals; do not call 35 extrema 35 complete cycles."
+    }
+  ],
+  "additional_limitations_to_state": [
+    "The 5 kyr grid is an interpolation setting, not independent temporal resolution.",
+    "COCO/eCOCO Monte Carlo inference is conditional on the global LOWESS preprocessing; that nonlinear trend is not re-estimated for each null realization.",
+    "Actual client rendering/download is covered by separate Web acceptance receipts; this SDK report separately establishes tool artifacts, present events and model image transport."
+  ],
+  "figure_products_checked_outside_minimal_stage_roles": {
+    "depth_preprocess_png": true,
+    "depth_filter_png": true,
+    "note": "Actual files are included in the live tool artifact set and independently hash-checked by evaluator v2. Minimal stage-role checks alone are not the full figure review."
+  },
+  "no_private_reasoning_reviewed_or_exported": true
+}
