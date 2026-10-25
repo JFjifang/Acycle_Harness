@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "path_base": "validation/",
+  "note": "Original receipts retain execution-environment paths; use relative file map below when opening the bundle elsewhere.",
+  "runs": [
+    {
+      "run_id": "20261025T054948Z-c2484cc8d88f",
+      "parent_run_id": null,
+      "input_sha256": "f39dcc29be09cd5a07ef1dcdd20c6fa30499213c204ce4897ac02d9f6f086c21",
+      "parameters": {
+        "detrend": "lowess",
+        "span": 0.35,
+        "evolution": true,
+        "coordinate_unit": "m"
+      },
+      "original_record": "live-runs/20261025T054948Z-c2484cc8d88f/result.json",
+      "files": {
+        "live-runs/20261025T054948Z-c2484cc8d88f/input.txt": "f39dcc29be09cd5a07ef1dcdd20c6fa30499213c204ce4897ac02d9f6f086c21",
+        "live-runs/20261025T054948Z-c2484cc8d88f/request.json": "27036c6233abf9835351f0471152d449417d78ca628c0afa38c55f737278e7c1",
+        "live-runs/20261025T054948Z-c2484cc8d88f/result.json": "1bf830d476b52e9bfcf78a6358c102756d99c83ba7d8e13e47ed1f5ecc31bcde",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/evolution.csv": "6ad05e7a0ddd0ad28db1ff9f0c862e137d11fa68f5ac90afecf95d596d566dbe",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/prepared.csv": "736525018ce41952fa5665d72c1a828d060adde5c84786aaf4330015bda5ddcc",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/provenance.json": "a97f812880bac9433f30a569a68b76434a1b953c0f9aa4817c945befd777820a",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/evolution.fig": "117d5ed5ef58f224a60c6c204341fc9fcb28bb3f66eb299187ce82d13f468933",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/preprocessing.png": "75164f43d4b8a80cba74122b8b7bffbddd9dd435a6ef7a237fd8b8c3a1c8a6ed",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/evolution.png": "12ab18854b052f5df4c6b8ac601a7b15f3641490ec69d89f64907d8e2758cf7c",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/transport.json": "2d1fa9fc4d46c9a6ac0b1a2884319de35172cfab3377b23dcec3261b25b31894",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/analysis.mat": "e2a690782c1a5d3b68674d4398fd5c32aec1cfd91ac5021d83154ee688efe65e",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/spectrum.fig": "c99eb67b4f2972fc1419a58acda2f6120e1bbeab3bb68be3889058c81f771cb9",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/spectrum_robust.csv": "93d217121f84be6e99917cfa61db8102fc2f844cf3899911dc0718b01fecd57b",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/response.json": "4561305640da4078e9bb73c08fca79a14da86aa56a1ffe54b3bf3fed83d75d62",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/preprocessing.fig": "409434274a39d9744b4dff6bf68d8fb4eced60c6e85b20dff30d191a12df5a46",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/processed.csv": "6eb4bcb7270de963bc1fbc0ea95d8157bb5fbddc1d88a68bd80a39252ea5bc0b",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/cleaned.csv": "648f7e23b1d3728f08e122c473121fad2e3f5f153b305e6edf0955ed1001d16b",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/spectrum_classic.csv": "9b40f35c95113804e59e54c083f9c4b557a88fa21335d08373847334c6900c97",
+        "live-runs/20261025T054948Z-c2484cc8d88f/outputs/spectrum.png": "d96aa25bedac57154e8cd2c3b88cc9e2f9292d9b63c0298f823bc351d5b1f876"
+      }
+    },
+    {
+      "run_id": "20261025T055310Z-f5883a2371e6",
+      "parent_run_id": "20261025T054948Z-c2484cc8d88f",
+      "input_sha256": "f39dcc29be09cd5a07ef1dcdd20c6fa30499213c204ce4897ac02d9f6f086c21",
+      "parameters": {
+        "detrend": "lowess",
+        "span": 0.25,
+        "evolution": true,
+        "coordinate_unit": "m"
+      },
+      "original_record": "live-runs/20261025T055310Z-f5883a2371e6/result.json",
+      "files": {
+        "live-runs/20261025T055310Z-f5883a2371e6/input.txt": "f39dcc29be09cd5a07ef1dcdd20c6fa30499213c204ce4897ac02d9f6f086c21",
+        "live-runs/20261025T055310Z-f5883a2371e6/request.json": "c2de6ad4dad38e021a4f451e755ac9d67ff28e1cde6c184a9a0db1f8be81b346",
+        "live-runs/20261025T055310Z-f5883a2371e6/result.json": "f2e6d9cfe4cbae6d93a59a8179c8101f5f0638392f8849623cf8451bf828fb4f",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/evolution.csv": "4e908a8a8d00b42d97cbe8fc09644ade9f17534459ef67e9c99908cc477fc1f3",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/prepared.csv": "736525018ce41952fa5665d72c1a828d060adde5c84786aaf4330015bda5ddcc",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/provenance.json": "a97f812880bac9433f30a569a68b76434a1b953c0f9aa4817c945befd777820a",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/evolution.fig": "4956e6fbf42263d428b9bdaf6a8480b368193d8bd1679e60f6db71e2241906be",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/preprocessing.png": "b6efd5fba2100af32b0c6e732b710dacb25a671f0a20ffd89ddae9959b86a82d",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/evolution.png": "a2aa450f0bfa870ab0ee7f5beaf0c8128b3a28845a36e4c3f081e3040127a29f",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/transport.json": "e21b67bf5dc168fc743f7cc00acb11b73622fea149abbdb4627ec29ff467d747",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/analysis.mat": "10afb1177d930a9f1a04d72b2f8be572ad10f9f9647ed1fe65a7c57fe45f29d9",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/spectrum.fig": "ea6522da16e30039a3c4c7b5733b33b5569cfe6fab0bcd0d157213a78667e886",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/spectrum_robust.csv": "94b7ccb4c8a44b04a941fb1f658704ddc3d919a2795ff886ef7c270c7f5d27e5",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/response.json": "1939624474c633376cce9b4db2842e9373b9c8052b7f02927c6c3f119cd19298",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/preprocessing.fig": "ba717419320b6f4dd3cc545f143920556fd10082bba85186bcfcc064f8146997",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/processed.csv": "0ba63fa8aad80d1381bf9b77d6dc59682a1d7d810a4530e7ce444077428db492",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/cleaned.csv": "648f7e23b1d3728f08e122c473121fad2e3f5f153b305e6edf0955ed1001d16b",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/spectrum_classic.csv": "ecd6828dabce369073791b8609868fe350fbbfdaf51987a7a604f14d6222d18f",
+        "live-runs/20261025T055310Z-f5883a2371e6/outputs/spectrum.png": "1c86552df44b55e8382dffb195003019668a246d063f043fd4f4e12809d4a02d"
+      }
+    }
+  ]
+}

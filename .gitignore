@@ -9,4 +9,6 @@ node_modules/
 *.key
 .env
 validation/artifacts/
+validation/live-runs/
+validation/matlab-validation-report.zip
 

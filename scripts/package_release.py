@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Build wheel, native Harness package and a clean, inspectable source bundle."""
 import hashlib
+import argparse
 import json
 from pathlib import Path
 import shutil
 import subprocess
 import sys
+import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,12 +15,17 @@ VERSION = '0.2.0'
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--bundle-only', action='store_true', help='Reassemble evidence without rebuilding verified packages')
+    args = parser.parse_args()
     dist = ROOT / 'dist'
     dist.mkdir(exist_ok=True)
     shutil.copytree(ROOT/'skills', ROOT/'plugin'/'skills', dirs_exist_ok=True)
     shutil.copyfile(ROOT/'LICENSE', ROOT/'plugin'/'LICENSE')
-    subprocess.run([sys.executable, '-m', 'build'], cwd=ROOT, check=True)
-    subprocess.run(['npm','pack','--pack-destination',str(dist)], cwd=ROOT/'plugin', check=True)
+    if not args.bundle_only:
+        subprocess.run([sys.executable, '-m', 'build'], cwd=ROOT, check=True)
+        with tempfile.TemporaryDirectory(prefix='acycle-npm-') as cache:
+            subprocess.run(['npm','pack','--cache',cache,'--pack-destination',str(dist)], cwd=ROOT/'plugin', check=True)
     artifacts = [*dist.glob('*.whl'),*dist.glob('*.tar.gz'),*dist.glob('*.tgz')]
     hashes = {p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in artifacts}
     (dist/'SHA256SUMS.json').write_text(json.dumps(hashes,indent=2)+'\n')

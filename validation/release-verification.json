@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "wheel_sha256": "2a66cd46c28f2654023294a657e865e2c5810b88f8ee98a40b0c7028984ace5f",
+  "plugin_sha256": "e491bf1e9d3acc28cabe0c2b762493e9823943a587829d81282e5b663cfe1116",
+  "wheel_files_match_installed_and_source": [
+    "acycle_deepseek/__init__.py",
+    "acycle_deepseek/cli.py",
+    "acycle_deepseek/deepseek.py",
+    "acycle_deepseek/github_backend.py",
+    "acycle_deepseek/harness_bridge.py",
+    "acycle_deepseek/mcp.py",
+    "acycle_deepseek/tools.py",
+    "acycle_deepseek/matlab/SOURCES.md",
+    "acycle_deepseek/matlab/acycle_batch.m",
+    "acycle_deepseek/matlab/run_validation.m",
+    "acycle_deepseek/matlab/source_registry.json",
+    "acycle_deepseek/matlab/tests/test_acycle_batch.m"
+  ],
+  "plugin_files_match_installed_and_source": [
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "skills/acycle-age-model/SKILL.md",
+    "skills/acycle-intake/SKILL.md",
+    "skills/acycle-mini-robot/SKILL.md",
+    "skills/acycle-reproduction/SKILL.md",
+    "skills/acycle-sensitivity-steering/SKILL.md",
+    "skills/acycle-spectral-interpretation/SKILL.md",
+    "index.mjs",
+    "cordis.patch.yml"
+  ],
+  "matlab_sources_installed": "/workspace/acycle-release-check/lib/python3.12/site-packages/acycle_deepseek/matlab",
+  "native_plugin_smoke": "native-plugin-smoke.json"
+}

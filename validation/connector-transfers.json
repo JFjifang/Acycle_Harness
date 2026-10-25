@@ -1,0 +1,26 @@
+{
+  "transport": "github_connector_cache",
+  "requires_authorized_external_host": true,
+  "transfers": [
+    {
+      "repository": "JFjifang/Acycle_Harness",
+      "artifact_id": 12588103810,
+      "run_id": 40166934103,
+      "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40166934103",
+      "sha256": "2d6464237ebddfded8c163d4f3d719f86f3cfdfd5ed6687aca9f1216e6e0413a",
+      "bytes": 3536778,
+      "github_digest_verified": true,
+      "completed_at": "2026-10-25T05:53:07.935546+00:00"
+    },
+    {
+      "repository": "JFjifang/Acycle_Harness",
+      "artifact_id": 12588823224,
+      "run_id": 40167140923,
+      "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40167140923",
+      "sha256": "e16744321f5ad6d3e5d8386df6c4c615c6f0f92e5cad43df3fd1b1657bfc97d4",
+      "bytes": 3542063,
+      "github_digest_verified": true,
+      "completed_at": "2026-10-25T05:55:29.162861+00:00"
+    }
+  ]
+}

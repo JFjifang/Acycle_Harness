@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "dsh_tools_version": "0.2.1-rc.3",
+  "plugin_path": "/workspace/harness-runtime-smoke/node_modules/dsh-acycle/index.mjs",
+  "registered_tools": [
+    "acycle_capabilities",
+    "acycle_inspect",
+    "acycle_analyze",
+    "acycle_sensitivity",
+    "acycle_compare",
+    "acycle_get_run"
+  ],
+  "registered_skills": [
+    "acycle-age-model",
+    "acycle-intake",
+    "acycle-mini-robot",
+    "acycle-reproduction",
+    "acycle-sensitivity-steering",
+    "acycle-spectral-interpretation"
+  ],
+  "capabilities": {
+    "version": "0.2.0",
+    "scientific_backend": "MATLAB/Acycle",
+    "backend": "local",
+    "matlab_available": false,
+    "acycle_root": null,
+    "github_repository": null,
+    "remote_backend_configured": false,
+    "execution_note": "Local backend requires MATLAB_EXECUTABLE and ACYCLE_ROOT.",
+    "python_numerical_fallback": false,
+    "operations": [
+      "mini_robot",
+      "mtm_rednoise",
+      "evolution",
+      "filter_envelope",
+      "age_model"
+    ],
+    "limits": [
+      "pointwise significance is not proof of astronomical forcing",
+      "Acycle GUI-only methods outside this core require a sourced MATLAB extension"
+    ]
+  },
+  "disposal": "passed",
+  "scope": "Official Cordis, tools and skills registries with fixed workspace fixture; not a full GUI session."
+}

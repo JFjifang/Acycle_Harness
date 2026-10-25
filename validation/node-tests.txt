@@ -1,0 +1,12 @@
+✔ bridge transports JSON literally without shell expansion (16.551117ms)
+✔ bridge observes cancellation and waits for subprocess exit (103.598566ms)
+✔ bridge reports errors and rejects non-JSON output (12.318329ms)
+✔ packaged skill metadata strips frontmatter and resolves resources (2.350211ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 139.14984

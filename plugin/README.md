@@ -32,3 +32,7 @@ The release tarball was also installed and checked with the published official
 and Cordis 4.0.5. The smoke test checks tool execution, skill loading, and disposal;
 it uses a fixed-directory fixture and does not represent a full desktop UI test.
 The npm `latest` tag can lag these versions, so use explicit versions for verification.
+
+The lightweight npm package contains tools and skills. Paper benchmark datasets and
+their extraction scripts are in the full release bundle or the repository's
+`benchmarks/` directory; obtain those separately when following a reproduction skill.
