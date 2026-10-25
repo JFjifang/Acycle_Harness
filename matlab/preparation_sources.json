@@ -1,0 +1,31 @@
+{
+  "repository": "https://github.com/mingsongli/acycle",
+  "commit": "dcba4279168745b563e0535b954297023dd62fc7",
+  "scope": "Original dependencies and GUI callback extractions for Interpolation Pro and periodic extrema tuning. Runtime source changes are recorded; extracted callback compatibility requires review.",
+  "files": [
+    {
+      "relative_path": "code/guicode/interpolationGUI.m",
+      "sha256": "b980da4b59489b77f5e824cc9b3aedf9220d180bae1e9814bc74f60c2bc7a6c3"
+    },
+    {
+      "relative_path": "code/guicode/AC.m",
+      "sha256": "2fc348e34912b9449edf31c29fe869666e6c2f1a447b6917518ee85a36ffa8da"
+    },
+    {
+      "relative_path": "code/guicode/agescale.m",
+      "sha256": "dc2d59312d227201151d51ff6baea118f9b226c5a63ea00a9508dc32117a3cc4"
+    },
+    {
+      "relative_path": "code/seriesanalysis/getpks.m",
+      "sha256": "c3acd22152b97d813870fdd53f1f7589b4e2aca80de08cda6fdcfa2e65b87213"
+    },
+    {
+      "relative_path": "code/seriesanalysis/depthtotime.m",
+      "sha256": "89331b462993289dd01a337c139f250e98d5aef641a04cac489ef08e274a13b4"
+    },
+    {
+      "relative_path": "code/seriesanalysis/findduplicate.m",
+      "sha256": "5cf401e34dd8472e58c1aa66cb02f26d4996b217cd8e358723d1f1fcd5ca2b45"
+    }
+  ]
+}

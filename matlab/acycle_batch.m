@@ -10,6 +10,10 @@ try
             result = acycle_swa(request);
         case {'coco','ecoco'}
             result = acycle_coco(request);
+        case 'interpolate_pro'
+            result = acycle_interpolate_pro(request);
+        case 'tune'
+            result = acycle_tune(request);
         case 'analyze'
             result = runRequest(request);
         otherwise
@@ -62,7 +66,7 @@ assert(isstruct(p)&&isscalar(p),'Harness:Parameters','parameters must be a JSON 
 allowed = {'detrend','span','dt','mtm_nw','nfft','smooth_fraction','fmax', ...
     'evolution','evolution_window','evolution_step','filter_band','filter_method', ...
     'sedimentation_rate','depth_unit','first_age_kyr','age_model', ...
-    'coordinate_unit','fit_fmax','rolloff_exponent'};
+    'coordinate_unit','fit_fmax','rolloff_exponent','coordinate_range'};
 unknown = setdiff(fieldnames(p),allowed);
 assert(isempty(unknown),'Harness:UnknownParameter','Unknown parameters: %s',strjoin(unknown,', '));
 p.detrend = getDefault(p,'detrend','lowess');
@@ -91,6 +95,15 @@ clean = sortrows(clean);
 uniqueRowsBefore = size(clean,1);
 clean = findduplicate(clean);
 duplicateRows = uniqueRowsBefore-size(clean,1);
+if isfield(p,'coordinate_range')
+    range=p.coordinate_range(:);
+    assert(numel(range)==2 && all(isfinite(range)) && range(2)>range(1), ...
+        'Harness:CoordinateRange','coordinate_range requires two increasing finite input-coordinate bounds.');
+    % Explicit adapter selection occurs in MATLAB before depth-to-time conversion.
+    % This retains the original proxy only inside the saved tuning control interval.
+    clean=clean(clean(:,1)>=range(1) & clean(:,1)<=range(2),:);
+end
+selectedRows=size(clean,1);
 assert(size(clean,1)>=16 && all(diff(clean(:,1))>0), ...
     'Harness:Coordinates','At least 16 unique increasing coordinates are required.');
 sourceNames = {'RobotGUI','findduplicate','interpolate','acycleSamplingIsUneven', ...
@@ -290,7 +303,7 @@ provenance.toolboxes = ver;
 provenance.robust_fit_method = fitMethod;
 provenance.input_sha256 = fileSha256(request.input_path);
 summary = struct('input_rows',inputRows,'removed_nonfinite_rows',removedRows, ...
-    'merged_duplicate_rows',duplicateRows,'processed_rows',size(processed,1), ...
+    'merged_duplicate_rows',duplicateRows,'selected_rows',selectedRows,'processed_rows',size(processed,1), ...
     'interpolated',interpolated,'sample_interval',dt,'nyquist',nyquist, ...
     'coordinate_unit',p.coordinate_unit,'robust_ar1_rho',rho, ...
     'robust_ar1_s0',s0,'robust_fit_method',fitMethod,'peaks',peaks);

@@ -18,7 +18,7 @@ def prepare() -> None:
         raise ValueError('Remote request exceeds 60000-byte encoded limit')
     payload = json.loads(base64.b64decode(encoded, validate=True))
     operation=payload.get('operation','analyze')
-    if operation not in {'analyze','swa','coco','ecoco'}:
+    if operation not in {'analyze','swa','coco','ecoco','interpolate_pro','tune'}:
         raise ValueError('Unsupported MATLAB operation')
     parameters = payload.get('parameters', {})
     if not isinstance(parameters, dict):
