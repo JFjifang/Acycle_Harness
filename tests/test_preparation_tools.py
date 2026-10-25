@@ -317,3 +317,22 @@ def test_cancelled_run_retains_retrievable_diagnostics_before_propagating(projec
     restored = call(project, 'get_run', run_id=saved['run_id'])
     assert restored['status'] == 'cancelled'
     assert Path(restored['diagnostics']['matlab.log']).read_text() == 'Interrupted process fixture\n'
+
+
+def test_registered_unchanged_output_propagates_verified_transport_reference(project):
+    upstream = call(project, 'analyze', input_path='proxy.txt')
+    reference = {'repository': 'owner/project', 'artifact_id': 123,
+                 'member': 'filtered.csv', 'input_sha256': hashlib.sha256(FILTERED).hexdigest(),
+                 'artifact_sha256': 'a' * 64, 'source_workflow_run_id': 456}
+    upstream['result']['artifact_references'] = {'filtered_csv': reference}
+    saved_path(upstream).write_text(json.dumps(upstream))
+    downstream = tune_run(project, input_path=upstream['artifacts']['filtered_csv'])
+    assert project.calls[-1]['input_artifact_reference'] == reference
+    assert downstream['input_artifact_reference'] == reference
+    assert downstream['input_sha256'] == reference['input_sha256']
+
+    # A modified output remains a local input; it cannot point at old remote bytes.
+    Path(upstream['artifacts']['filtered_csv']).write_bytes(FILTERED + b'50,0,1\n')
+    modified = tune_run(project, input_path=upstream['artifacts']['filtered_csv'])
+    assert 'input_artifact_reference' not in project.calls[-1]
+    assert 'input_artifact_reference' not in modified

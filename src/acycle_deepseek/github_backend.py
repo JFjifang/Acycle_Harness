@@ -23,21 +23,38 @@ import zipfile
 from typing import Any
 
 MAX_ENCODED_REQUEST = 60000
+MAX_INPUT_BYTES = 1024 * 1024
+TEXT_INPUT_SUFFIXES = {'.csv', '.txt', '.dat', '.tsv'}
 
 
 class GitHubBackendError(RuntimeError):
     """A remote request could not be completed or its receipt was invalid."""
 
 
+def _transient_http_error(message: str) -> bool:
+    return re.search(r'HTTP (?:429|502|503|504)\b', message) is not None
+
+
 def _gh(arguments: list[str], *, payload: dict | None = None, timeout: float = 60) -> str:
-    process = subprocess.run(
-        ['gh', *arguments],
-        input=None if payload is None else json.dumps(payload),
-        capture_output=True, text=True, timeout=timeout, check=False,
-    )
-    if process.returncode:
-        raise GitHubBackendError('GitHub CLI failed: ' + _safe_error(process.stderr))
-    return process.stdout
+    # Only default GET API reads are retried. In particular, a dispatch POST is
+    # sent exactly once even if its response is lost or reports a server error.
+    mutations = {'--method', '-X', '--input', '--field', '-F', '--raw-field', '-f'}
+    read_only = (arguments[:1] == ['api'] and payload is None
+                 and not mutations.intersection(arguments))
+    attempts = 3 if read_only else 1
+    for attempt in range(attempts):
+        process = subprocess.run(
+            ['gh', *arguments],
+            input=None if payload is None else json.dumps(payload),
+            capture_output=True, text=True, timeout=timeout, check=False,
+        )
+        if not process.returncode:
+            return process.stdout
+        message = _safe_error(process.stderr)
+        if attempt + 1 == attempts or not _transient_http_error(message):
+            raise GitHubBackendError('GitHub CLI failed: ' + message)
+        time.sleep(2**attempt)
+    raise AssertionError('unreachable')
 
 
 def _safe_error(message: str) -> str:
@@ -96,24 +113,68 @@ def _download_artifact(repository: str, artifact: dict[str, Any], archive: Path,
     return transport, digest
 
 
-def _payload(request: dict[str, Any]) -> str:
+def _validate_artifact_reference(reference: dict[str, Any], repository: str) -> dict[str, Any]:
+    """Validate only transport provenance; this does not interpret numeric data."""
+    if not isinstance(reference, dict):
+        raise ValueError('input_artifact_reference must be an object')
+    keys = {'repository', 'artifact_id', 'member', 'input_sha256',
+            'artifact_sha256', 'source_workflow_run_id'}
+    if not keys <= reference.keys():
+        raise ValueError('Artifact reference lacks required provenance')
+    source_repository = reference['repository']
+    if (not isinstance(source_repository, str)
+            or not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', source_repository)
+            or not isinstance(repository, str)
+            or source_repository.lower() != repository.lower()):
+        raise ValueError('Input artifact must belong to the configured repository')
+    for key in ('artifact_id', 'source_workflow_run_id'):
+        if type(reference[key]) is not int or not 0 < reference[key] < 2**63:
+            raise ValueError(f'{key} must be a positive integer')
+    member = reference['member']
+    if not isinstance(member, str) or not member or len(member) > 1024:
+        raise ValueError('Invalid artifact member path')
+    path = PurePosixPath(member)
+    if (path.is_absolute() or '..' in path.parts or '\\' in member or ':' in member
+            or not path.parts or path.as_posix() != member or member.endswith('/')
+            or path.suffix.lower() not in TEXT_INPUT_SUFFIXES):
+        raise ValueError('Artifact member must be a canonical relative text-file path')
+    for key in ('input_sha256', 'artifact_sha256'):
+        if not isinstance(reference[key], str) or not re.fullmatch(r'[a-f0-9]{64}', reference[key]):
+            raise ValueError(f'{key} must be a SHA-256 digest')
+    return {key: reference[key] for key in sorted(keys)}
+
+
+def _payload(request: dict[str, Any], repository: str | None = None) -> str:
     source = Path(request['input_path']).resolve(strict=True)
-    if source.suffix.lower() not in {'.csv', '.txt', '.dat', '.tsv'}:
+    if source.suffix.lower() not in TEXT_INPUT_SUFFIXES:
         raise ValueError('GitHub backend accepts CSV/TXT/DAT/TSV inputs only')
-    # Bound the read as well as the final base64 request. Larger datasets should
-    # be run with a local MATLAB installation, avoiding workflow input limits.
-    if source.stat().st_size > 1024 * 1024:
+    if source.stat().st_size > MAX_INPUT_BYTES:
         raise ValueError('Dataset exceeds GitHub workflow input limit; use local MATLAB')
     parameters = request.get('parameters', {})
     if not isinstance(parameters, dict):
         raise ValueError('parameters must be an object')
+    data = source.read_bytes()
+    input_sha256 = hashlib.sha256(data).hexdigest()
     body = {
-        'input_bytes_b64': base64.b64encode(gzip.compress(source.read_bytes(), mtime=0)).decode('ascii'),
-        'input_compression': 'gzip',
+        'input_sha256': input_sha256,
         'input_suffix': source.suffix.lower(),
         'operation': request.get('operation', 'analyze'),
         'parameters': parameters,
     }
+    reference = request.get('input_artifact_reference')
+    if reference is not None:
+        reference = _validate_artifact_reference(
+            reference, repository or os.environ.get('ACYCLE_GITHUB_REPO', ''))
+        if reference['input_sha256'] != input_sha256:
+            raise ValueError('Input artifact reference does not match frozen input bytes')
+        if PurePosixPath(reference['member']).suffix.lower() != source.suffix.lower():
+            raise ValueError('Input artifact suffix does not match frozen input')
+        # Prefer registered exact-byte references even when inline data would
+        # fit: chained MATLAB outputs need not be uploaded for every stage.
+        body['input_artifact_reference'] = reference
+    else:
+        body['input_bytes_b64'] = base64.b64encode(gzip.compress(data, mtime=0)).decode('ascii')
+        body['input_compression'] = 'gzip'
     encoded = base64.b64encode(json.dumps(body, allow_nan=False).encode()).decode('ascii')
     if len(encoded) > MAX_ENCODED_REQUEST:
         raise ValueError('Request exceeds GitHub workflow input limit; use local MATLAB')
@@ -169,14 +230,36 @@ class GitHubBackend:
         self.workflow = 'matlab.yml'
 
     def run(self, request: dict[str, Any]) -> dict[str, Any]:
-        encoded = _payload(request)
+        encoded = _payload(request, self.repository)
         output_dir = Path(request['output_dir']).resolve()
         output_dir.mkdir(parents=True, exist_ok=True)
         token = 'acycle-' + uuid.uuid4().hex
         endpoint = f'repos/{self.repository}/actions/workflows/{self.workflow}'
-        _gh(['api', '--method', 'POST', endpoint + '/dispatches', '--input', '-'],
-            payload={'ref': self.ref, 'inputs': {'token': token, 'request': encoded}})
+        request_receipt = output_dir / 'remote-request.json'
+        dispatch_receipt = {
+            'request_token': token, 'repository': self.repository, 'ref': self.ref,
+            'input_sha256': hashlib.sha256(Path(request['input_path']).read_bytes()).hexdigest(),
+            'operation': request.get('operation', 'analyze'), 'dispatch_state': 'prepared',
+            'input_artifact_reference': request.get('input_artifact_reference'),
+        }
+        request_receipt.write_text(json.dumps(dispatch_receipt, indent=2), encoding='utf-8')
+        dispatch_error = None
+        try:
+            _gh(['api', '--method', 'POST', endpoint + '/dispatches', '--input', '-'],
+                payload={'ref': self.ref, 'inputs': {'token': token, 'request': encoded}})
+            dispatch_receipt['dispatch_state'] = 'sent'
+        except GitHubBackendError as exc:
+            dispatch_receipt['dispatch_error'] = _safe_error(str(exc))
+            if not _transient_http_error(str(exc)):
+                dispatch_receipt['dispatch_state'] = 'rejected'
+                request_receipt.write_text(json.dumps(dispatch_receipt, indent=2), encoding='utf-8')
+                raise
+            dispatch_error = _safe_error(str(exc))
+            dispatch_receipt['dispatch_state'] = 'ambiguous'
+        request_receipt.write_text(json.dumps(dispatch_receipt, indent=2), encoding='utf-8')
         deadline = time.monotonic() + self.timeout
+        recovery_deadline = min(deadline, time.monotonic() + float(
+            os.environ.get('ACYCLE_GITHUB_DISPATCH_RECOVERY_TIMEOUT', '90')))
         remote_run: dict[str, Any] | None = None
         while time.monotonic() < deadline:
             if remote_run is None:
@@ -185,6 +268,17 @@ class GitHubBackend:
                 if len(matching) > 1:
                     raise GitHubBackendError('Ambiguous workflow request token')
                 remote_run = matching[0] if matching else None
+                if remote_run is not None:
+                    dispatch_receipt.update({
+                        'dispatch_state': 'observed', 'run_id': remote_run['id'],
+                        'run_url': remote_run['html_url'],
+                        'recovered_after_ambiguous_response': dispatch_error is not None,
+                    })
+                    request_receipt.write_text(json.dumps(dispatch_receipt, indent=2), encoding='utf-8')
+                elif dispatch_error and time.monotonic() >= recovery_deadline:
+                    raise GitHubBackendError(
+                        'Dispatch response was ambiguous and no matching run was observed; '
+                        f'POST was not repeated. Inspect {request_receipt}. ' + dispatch_error)
             else:
                 remote_run = json.loads(_gh(['api', f'repos/{self.repository}/actions/runs/{remote_run["id"]}']))
             if remote_run is not None and remote_run.get('status') == 'completed':
@@ -218,11 +312,39 @@ class GitHubBackend:
             response = json.loads(responses[0].read_text())
             shutil.copytree(root, output_dir, dirs_exist_ok=True)
             response = _relocate(response, transport['remote_output_dir'], output_dir)
+            expected_input_sha256 = hashlib.sha256(Path(request['input_path']).read_bytes()).hexdigest()
+            if transport.get('input_sha256', expected_input_sha256) != expected_input_sha256:
+                raise GitHubBackendError('MATLAB transport input checksum differs from frozen input')
+            references = {}
+            for key, value in response.get('artifacts', {}).items():
+                if not isinstance(value, str):
+                    continue
+                local_file = Path(value).resolve()
+                if (not local_file.is_relative_to(output_dir) or not local_file.is_file()
+                        or local_file.suffix.lower() not in TEXT_INPUT_SUFFIXES
+                        or local_file.stat().st_size > MAX_INPUT_BYTES):
+                    continue
+                relative_file = local_file.relative_to(output_dir)
+                original_file = root / relative_file
+                if not original_file.is_file():
+                    continue
+                member = original_file.relative_to(extracted).as_posix()
+                references[key] = _validate_artifact_reference({
+                    'repository': self.repository, 'artifact_id': artifacts[0]['id'],
+                    'member': member, 'input_sha256': hashlib.sha256(local_file.read_bytes()).hexdigest(),
+                    'artifact_sha256': artifact_sha256, 'source_workflow_run_id': run_id,
+                }, self.repository)
+            response['artifact_references'] = references
         response['remote_execution'] = {
-            'backend': 'github-actions-matlab', 'run_id': run_id, 'run_url': run_url,
+            'backend': 'github-actions-matlab', 'repository': self.repository,
+            'artifact_id': artifacts[0]['id'], 'run_id': run_id, 'run_url': run_url,
             'head_sha': remote_run.get('head_sha'), 'conclusion': remote_run.get('conclusion'),
             'request_token': token, 'acycle_revision': transport.get('acycle_revision'),
             'artifact_transport': artifact_transport, 'artifact_sha256': artifact_sha256,
+            'input_transport': transport.get('input_transport', 'inline_gzip'),
+            'input_sha256': expected_input_sha256,
+            'input_artifact_reference': transport.get('input_artifact_reference'),
+            'dispatch_recovered_after_ambiguous_response': dispatch_error is not None,
         }
         (output_dir / 'response.json').write_text(json.dumps(response, indent=2), encoding='utf-8')
         if remote_run.get('conclusion') != 'success':

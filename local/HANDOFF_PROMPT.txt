@@ -16,6 +16,8 @@
 
 Harness固定走Node>=24.9和官方0.2.1-rc.3项目内Web/native模式。保留旧Desktop0.1.2-rc.1及其标准MCP/profile，不用另一个npm CLI修改它。运行local/deploy_harness.py --workspace . --acycle-root本机路径 --matlab本机可执行路径 --install；默认runtime、私有DSH_HOME、Web profile和manifest在local/generated/harness-web/。使用local/install_check.py --runtime local/generated/harness-web/runtime核对安装包；再用local/check_harness.py --output新的回执，证明真正acycle preset agent拥有13个工具、10个scoped skills、persona、可加载技能正文，技能目录确实在pre-step后进入实际请求，以及deepseek-official/deepseek-flash解析为text/image。只看根注册器不够。
 
+若明确选择公开Newark演示，为部署增加--newark-demo，使用独立--directory local/generated/newark-web --port 3081；已有普通runtime可通过--runtime复用。check和launch均指向该目录deployment.json。该模式实际preset额外挂载newark-relative-time-demo，10个通用skills加1个演示skill共11个，工具仍13个；确认公开来源hash及全部技能进入请求。普通模式默认不挂演示先验，不能在其他数据上套用。具体命令见demo/newark-0.5.0/HANDOFF.zh-CN.md。
+
 用local/launch_harness.py启动生成的私有Web。它设置MATLAB/Python路径并继承终端中的DEEPSEEK_API_KEY；不把Key值写入配置、日志、报告、handoff或提交，不打印Web本地token到报告。没有Key时完成无Key安装/agent/MATLAB工作，将真实模型部分标记not_run。浏览器地址从启动输出读取，默认127.0.0.1:3080。若端口冲突，生成新私有端口或明确重生成自己的配置，不结束无关进程。
 
 实际会话在acycle preset上传两列CSV/TXT/DAT/TSV。短提示说清必要单位和研究目标，等待第一轮回复与真实MATLAB结果，再发独立下一条消息调整参数。缺少必要单位、年代/目标、搜索范围时先读取已有说明，再澄清，不猜隐藏文件身份，不为了测试通过编造前提。完整公开Newark演示见demo/newark-0.5.0/manifest.json和scenarios.json；其预设先验允许公开给模型，验收规则和预期答案不应混入提示。
@@ -30,7 +32,7 @@ acycle_import_attachment只接受当前会话用户附件；多文件应选择�
 
 以本机真实证据逐项标记passed、failed、not_run或needs_human_clarification。无Keyactual-agent fixture、真实模型、MATLAB计算、主Chat渲染、模型读图、科学解释和论文定量复现分别报告。保存会话ID、每条独立用户消息、模型route、工具调用、runID、参数变化、输出路径及图件事件。不能把工具往返次数写成用户多轮数。
 
-历史0.4有明确未通过项：Newark解释错误；SWA额外NumPy QA越界；PETM第二个8m/4m窗口分支原MATLAB不可解析、无第二图；未知元数据虽先澄清但措辞有问题。0.5官方Web的main-chat-final-fixture已用text-only脚本provider验证既存图件主Chat/放大/刷新/下载，未调用模型或重算科学，也不是Mac Desktop验证。真实图片lane已有两次read_image像素经Files API上传；原live runner的懒加载等待超时保留failed，随后main-chat-live-browser-replay.json在同Session通过浏览器检查，新增模型/工具/科学调用均0。它是图像传输和交付证据，不是科学解释验收。完整科学结果以validation/v0.5/ACCEPTANCE.md和对应回执为准，不能提前宣布全部通过。
+历史0.4有明确未通过项：Newark解释错误；SWA额外NumPy QA越界；PETM第二个8m/4m窗口分支原MATLAB不可解析、无第二图；未知元数据虽先澄清但措辞有问题。0.5官方Web的main-chat-final-fixture已用text-only脚本provider验证既存图件主Chat/放大/刷新/下载，未调用模型或重算科学，也不是Mac Desktop验证。真实图片lane已有两次read_image像素经Files API上传；原live runner的懒加载等待超时保留failed，随后main-chat-live-browser-final.json在同Session通过浏览器检查，新增模型/工具/科学调用均0。它是图像传输和交付证据，不是科学解释验收。完整科学结果以validation/v0.5/ACCEPTANCE.md和对应回执为准，不能提前宣布全部通过。
 
 保留论文差异：Lavernock约0.82125m峰接近论文0.81m但5%FDR未复现；PETM首轮26.43cm/kyr、校正p约0.103948，按原日志独立复跑28.93cm/kyr、校正p约0.66967且仅4/6周期可解析，均未达8–15cm/kyr；Cambrian只预算缩减流程。不要用换区间、改参数、改显著性定义隐去未通过项，也不能只归因于版本。
 

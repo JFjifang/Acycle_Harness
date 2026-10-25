@@ -62,6 +62,8 @@ PowerShell 用 `.\.venv\Scripts\python.exe`，环境变量写成 `$env:ACYCLE_RO
 
 `check_harness.py` 不仅查根注册器：它创建实际 preset agent，检查 13 个原生工具、10 个 scoped skills、persona、可加载技能正文和模型图像能力，并捕获确定性 fixture 的真实 AgentLoop 请求，确认技能目录在官方 pre-step 后进入模型消息。这个检查不调用模型 API 或 MATLAB，也不证明浏览器已显示图件。可用 `doctor.py --harness-deployment local/generated/harness-web/deployment.json --check-harness` 联合检查。
 
+若明确选择 Newark 公开演示，为生成器增加 `--newark-demo`，建议用单独 `--directory local/generated/newark-web --port 3081`；已有普通部署可复用 `--runtime local/generated/harness-web/runtime`。随后 check/launch 均传该目录的 `deployment.json`。这样每个新会话的实际 preset 都挂载公开演示 skill，通用 10 个技能加演示 1 个，共 11 个，原生工具仍 13 个。manifest/SOURCES/skill/provider 哈希写入 deployment；普通模式默认不加载特定地层先验。复制即用的安装启动命令见 [演示 handoff](../demo/newark-0.5.0/HANDOFF.zh-CN.md)。
+
 ## 实际对话与图件
 
 在 Web 新会话中上传数据，用短提示提出问题；收到第一轮助手回复与 MATLAB 结果后，再发送独立的调整要求。缺少单位、年代范围、目标周期或速率搜索依据时，模型应先读取已有材料，再澄清必要信息，不应推测文件的隐藏身份。
@@ -91,7 +93,7 @@ doctor 失败日志持久保存在 `.acycle/diagnostics/doctor-<时间>-<唯一I
 
 本版状态看 [validation/v0.5/ACCEPTANCE.md](../validation/v0.5/ACCEPTANCE.md)。正式无 Key Web fixture [main-chat-final-fixture.json](../validation/v0.5/web/main-chat-final-fixture.json) 已验证主 Chat 两张既存 MATLAB 图、放大、刷新和 PNG/CSV/MAT/FIG 原字节下载；fixture 是 text-only scripted provider，没有调用真实模型或重算科学，也没有在用户 macOS Desktop 上验证。新的真实模型、MATLAB 和完整演示结果只能按各自正式回执表述。
 
-真实模型图像验收还记录了两次 `read_image` 保留像素并通过官方 Files API 上传；原 live runner 的懒加载等待超时仍保留为失败。随后 [同会话浏览器重放](../validation/v0.5/web/main-chat-live-browser-replay.json) 已通过主 Chat、放大、刷新及原文件下载，没有新增模型请求、工具调用或科学计算。它证明该路由的图像传输和 Web 交付，不代表数值解释正确或用户的 Mac Desktop 已测试。
+真实模型图像验收还记录了两次 `read_image` 保留像素并通过官方 Files API 上传；原 live runner 的懒加载等待超时仍保留为失败。随后 [同会话浏览器重放](../validation/v0.5/web/main-chat-live-browser-final.json) 已通过主 Chat、放大、刷新及原文件下载，没有新增模型请求、工具调用或科学计算。它证明该路由的图像传输和 Web 交付，不代表数值解释正确或用户的 Mac Desktop 已测试。
 
 0.4 历史真实会话 [conversation-evaluation.md](../validation/v0.4/conversation-evaluation.md) 和 [interpretation-review.json](../validation/v0.4/interpretation-review.json) 保留：Newark 两轮核心完成但解释有误；SWA 两轮方法保持完成但 NumPy 数值 QA 越界；PETM 第二个 8 m/4 m 分支不可解析、没有第二图；未知元数据先澄清但有过度推断。它们不证明 0.5 新调谐功能，不能改写成全部通过。
 

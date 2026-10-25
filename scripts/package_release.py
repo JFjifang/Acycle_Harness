@@ -30,7 +30,7 @@ def main():
     hashes = {p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in artifacts}
     (dist/'SHA256SUMS.json').write_text(json.dumps(hashes,indent=2)+'\n')
     archive = dist/f'acycle-deepseek-{VERSION}-bundle.zip'
-    source_dirs = ['src','matlab','skills','plugin','scripts','tests','docs','examples','benchmarks','local','.github']
+    source_dirs = ['src','matlab','skills','plugin','scripts','tests','docs','examples','benchmarks','local','demo','.github']
     source_files = ['README.md','LICENSE','pyproject.toml','setup.py','MANIFEST.in','.gitignore']
     paths = [ROOT/name for name in source_files]
     for name in source_dirs:
@@ -38,7 +38,8 @@ def main():
     # Include selected research evidence, not transport caches or credentials.
     paths.extend(p for p in (ROOT/'validation').glob('*') if p.is_file())
     for evidence in ['v0.2','v0.3','v0.4','v0.5','live-runs','live-runs-v03','artifacts/newark','artifacts/expanded-first','artifacts/expanded-final','artifacts/expanded-release']:
-        paths.extend(p for p in (ROOT/'validation'/evidence).rglob('*') if p.is_file())
+        paths.extend(p for p in (ROOT/'validation'/evidence).rglob('*') if p.is_file()
+                     and p.relative_to(ROOT).parts[:3] != ('validation','v0.5','harness'))
     paths.extend(artifacts+[dist/'SHA256SUMS.json'])
     with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_DEFLATED) as output:
         for p in sorted(set(paths)):
@@ -70,10 +71,7 @@ def main():
         with zipfile.ZipFile(handoff) as kit:
             for entry in kit.infolist():
                 output.writestr(entry,kit.read(entry.filename))
-        for p in sorted((ROOT/'demo'/f'newark-{VERSION}').rglob('*')):
-            if p.is_file() and not any(part in {'__pycache__','node_modules','.acycle'} for part in p.parts):
-                output.write(p,Path('acycle-deepseek')/p.relative_to(ROOT))
-        for evidence in ['web','harness','scientific-runs']:
+        for evidence in ['web','public-harness','scientific-runs']:
             for p in sorted((ROOT/'validation'/'v0.5'/evidence).rglob('*')):
                 if p.is_file():
                     output.write(p,Path('acycle-deepseek')/p.relative_to(ROOT))

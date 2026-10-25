@@ -220,6 +220,18 @@ Windows PowerShell 把第一条命令中的变量换成 `$env:ACYCLE_ROOT`、`$e
 
 官方来源：[Harness 仓库](https://github.com/deepseek-ai/deepseek-harness)、[DeepSeek 图像输入说明](https://api-docs.deepseek.com/guides/vision/)。这里使用官方 `dsh-web-app` 和 `dsh-web-frontend`，不是名称相近的 Web 搜索服务 `dsh-web`，也没有自建图件 viewer。
 
+### 可选：公开 Newark 演示自动挂载
+
+普通部署不加载特定地层的研究先验。明确选择公开 Newark 演示时，使用 `--newark-demo`；已有上节的同版本 runtime 可复用：
+
+```sh
+python local/deploy_harness.py --workspace . --acycle-root "$ACYCLE_ROOT" --matlab "$MATLAB_EXECUTABLE" --runtime local/generated/harness-web/runtime --directory local/generated/newark-web --port 3081 --newark-demo
+python local/check_harness.py --deployment local/generated/newark-web/deployment.json --output local-validation/newark-composition.json
+python local/launch_harness.py --deployment local/generated/newark-web/deployment.json
+```
+
+演示模式在实际 preset 作用域增加 `newark-relative-time-demo`，所以 **13 个工具、10 个通用 Acycle skills + 1 个公开演示 skill**。检查会确认全部 11 个技能出现在实际请求；deployment 保存公开 manifest/SOURCES/skill/provider 的来源哈希。persona 只指向这些公开材料并要求加载技能，没有私下提供算法答案。打开新会话后上传演示数据并输入“按 Newark 演示方案，对附件完成从深度记录到相对时间轴的分析，并评估可靠性”即可；无需每个会话手工 bootstrap。完整命令见 [演示 handoff](../demo/newark-0.5.0/HANDOFF.zh-CN.md)。
+
 ### 上传附件与查看结果
 
 在当前会话上传 CSV/TXT/DAT/TSV 后，模型可通过 `acycle_import_attachment` 导入工作区。无参数调用选择最近一条含文件的用户消息中的唯一文件；若该消息有多个文件，会返回 `selection_required` 和候选项，模型应根据你的指示选择。显式 `attachment_id` 也只能引用本会话用户提供的附件，不能用另一个会话的 ID 读取文件。
@@ -240,7 +252,7 @@ MATLAB 图件通过官方图片/文件引用和 Markdown 链接返回。配置�
 
 0.5 的正式无 Key 浏览器回执为 [main-chat-final-fixture.json](../validation/v0.5/web/main-chat-final-fixture.json)：实际 preset 已有 13 个原生工具、10 个 scoped skills；两张既存 MATLAB PNG 在主 Chat 加载、放大、刷新及 PNG/CSV/MAT/FIG 按原哈希下载均通过。它使用明确的 text-only scripted provider，验证用户展示不依赖模型视觉；没有执行新 MATLAB 科学计算，也不证明 macOS Desktop 已修复。真实模型读图和新完整科学流程看 0.5 验收总表，不合并成一个“图像已通过”。
 
-0.5 另有真实模型图像路径：官方 `deepseek-flash` 对两张既存 PNG 调用了 `read_image`，两个保留像素的 image block 经 Files API 上传。原 [main-chat-live.json](../validation/v0.5/web/main-chat-live.json) 仍标为失败，因为浏览器断言在滚动触发图片懒加载前超时；修正等待顺序后，仅重放同一会话的浏览器检查，[main-chat-live-browser-replay.json](../validation/v0.5/web/main-chat-live-browser-replay.json) 通过主 Chat 大图、放大、刷新和原文件下载，新模型请求与工具调用均为 0。没有重新计算科学，也不能据此认定图像解释或论文结论正确。可看实际截图：[谱图](../validation/v0.5/web/main-chat-live-browser-replay.chat-spectrum.png)、[演化图](../validation/v0.5/web/main-chat-live-browser-replay.chat-evolution.png)。
+0.5 另有真实模型图像路径：官方 `deepseek-flash` 对两张既存 PNG 调用了 `read_image`，两个保留像素的 image block 经 Files API 上传。原 [main-chat-live.json](../validation/v0.5/web/main-chat-live.json) 仍标为失败，因为浏览器断言在滚动触发图片懒加载前超时；修正等待顺序后，仅重放同一会话的浏览器检查，[main-chat-live-browser-final.json](../validation/v0.5/web/main-chat-live-browser-final.json) 通过主 Chat 大图、放大、刷新和原文件下载，新模型请求与工具调用均为 0。没有重新计算科学，也不能据此认定图像解释或论文结论正确。可看实际截图：[谱图](../validation/v0.5/web/main-chat-live-browser-final.chat-spectrum.png)、[演化图](../validation/v0.5/web/main-chat-live-browser-final.chat-evolution.png)。
 
 ## 7. 用户可以怎样提出研究问题
 

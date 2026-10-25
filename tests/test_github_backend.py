@@ -84,7 +84,8 @@ def test_failure_does_not_fallback_to_local_math(tmp_path, monkeypatch):
         GitHubBackend('owner/repo').run({'input_path': str(source), 'output_dir': str(tmp_path / 'result')})
 
 
-def test_remote_run_correlated_by_token_and_output_relocated(tmp_path, monkeypatch):
+@pytest.mark.parametrize('ambiguous_dispatch', [False, True])
+def test_remote_run_correlated_by_token_and_output_relocated(tmp_path, monkeypatch, ambiguous_dispatch):
     import io
     from types import SimpleNamespace
     from acycle_deepseek import github_backend as backend
@@ -98,6 +99,8 @@ def test_remote_run_correlated_by_token_and_output_relocated(tmp_path, monkeypat
         requests.append(args)
         if 'POST' in args:
             dispatches.append(kwargs['payload'])
+            if ambiguous_dispatch:
+                raise GitHubBackendError('GitHub CLI failed: HTTP 503')
             return ''
         if '/runs?' in args[-1]:
             return json.dumps({'workflow_runs': [
@@ -122,11 +125,22 @@ def test_remote_run_correlated_by_token_and_output_relocated(tmp_path, monkeypat
     monkeypatch.setattr(backend.subprocess, 'run', download)
     output = tmp_path / 'output'
     result = GitHubBackend('owner/repo', ref='feature', poll_interval=0.01).run({'input_path': str(source), 'output_dir': str(output)})
+    assert len(dispatches) == 1
     assert dispatches[0]['ref'] == 'feature'
     assert dispatches[0]['inputs']['token'] == token
     assert result['remote_execution']['run_id'] == 123
     assert result['artifacts']['spectrum'] == str(output / 'spectrum.csv')
     assert (output / 'spectrum.csv').exists()
+    reference = result['artifact_references']['spectrum']
+    assert reference['artifact_id'] == 456
+    assert reference['repository'] == 'owner/repo'
+    assert reference['member'] == 'ci-output/spectrum.csv'
+    assert reference['source_workflow_run_id'] == 123
+    assert reference['input_sha256'] == backend.hashlib.sha256((output / 'spectrum.csv').read_bytes()).hexdigest()
+    receipt = json.loads((output / 'remote-request.json').read_text())
+    assert receipt['recovered_after_ambiguous_response'] is ambiguous_dispatch
+    assert receipt['input_sha256'] == backend.hashlib.sha256(source.read_bytes()).hexdigest()
+    assert result['remote_execution']['dispatch_recovered_after_ambiguous_response'] is ambiguous_dispatch
     assert not any('/runs/99' in ' '.join(args) for args in requests)
 
 
@@ -160,3 +174,87 @@ def test_connector_wait_has_bounded_actionable_failure(tmp_path, monkeypatch):
     pending = json.loads((cache / 'pending' / 'acycle-test.json').read_text())
     assert pending['repo'] == 'owner/repo'
     assert pending['artifact_id'] == 42
+
+
+def test_large_registered_output_uses_exact_byte_artifact_reference(tmp_path):
+    import hashlib
+    import random
+    rng = random.Random(77)
+    data = ''.join(','.join(format(rng.random(), '.17g') for _ in range(3)) + '\n'
+                   for _ in range(2048)).encode()
+    source = tmp_path / 'filtered.csv'
+    source.write_bytes(data)
+    request = {'input_path': str(source), 'operation': 'tune', 'parameters': {'extrema': 'peaks'}}
+    assert len(data) > 100000
+    with pytest.raises(ValueError, match='workflow input limit'):
+        _payload(request)
+    reference = {'repository': 'owner/repo', 'artifact_id': 42, 'member': 'ci-output/filtered.csv',
+                 'input_sha256': hashlib.sha256(data).hexdigest(), 'artifact_sha256': 'a' * 64,
+                 'source_workflow_run_id': 43}
+    encoded = _payload({**request, 'input_artifact_reference': reference}, 'owner/repo')
+    payload = json.loads(base64.b64decode(encoded))
+    assert len(encoded) < 2000
+    assert payload['input_artifact_reference'] == reference
+    assert payload['input_sha256'] == hashlib.sha256(data).hexdigest()
+    assert 'input_bytes_b64' not in payload and 'input_compression' not in payload
+    assert source.read_bytes() == data
+    source.write_bytes(data + b'0,0,0\n')
+    with pytest.raises(ValueError, match='frozen input bytes'):
+        _payload({**request, 'input_artifact_reference': reference}, 'owner/repo')
+
+
+def test_readonly_transient_errors_retry_with_bounded_backoff(monkeypatch):
+    from types import SimpleNamespace
+    from acycle_deepseek import github_backend as backend
+    responses = iter([
+        SimpleNamespace(returncode=1, stdout='', stderr='HTTP 503'),
+        SimpleNamespace(returncode=1, stdout='', stderr='HTTP 502'),
+        SimpleNamespace(returncode=0, stdout='{"ok": true}', stderr=''),
+    ])
+    calls, delays = [], []
+    def run(args, **kwargs):
+        calls.append(args)
+        return next(responses)
+    monkeypatch.setattr(backend.subprocess, 'run', run)
+    monkeypatch.setattr(backend.time, 'sleep', delays.append)
+    assert backend._gh(['api', 'repos/owner/repo/actions/runs/42']) == '{"ok": true}'
+    assert len(calls) == 3 and len({tuple(call) for call in calls}) == 1
+    assert delays == [1, 2]
+
+
+@pytest.mark.parametrize('args,error', [(['api', 'repos/owner/repo'], 'HTTP 403'),
+                                      (['api', '--method', 'POST', 'repos/owner/repo/dispatches'], 'HTTP 503')])
+def test_forbidden_reads_and_dispatch_posts_are_never_retried(monkeypatch, args, error):
+    from types import SimpleNamespace
+    from acycle_deepseek import github_backend as backend
+    calls = []
+    def run(command, **kwargs):
+        calls.append(command)
+        return SimpleNamespace(returncode=1, stdout='', stderr=error)
+    monkeypatch.setattr(backend.subprocess, 'run', run)
+    with pytest.raises(GitHubBackendError, match=error):
+        backend._gh(args)
+    assert len(calls) == 1
+
+
+def test_ambiguous_dispatch_without_matching_run_fails_without_redispatch(tmp_path, monkeypatch):
+    from acycle_deepseek import github_backend as backend
+    source = tmp_path / 'data.csv'
+    source.write_text('0,1\n1,2\n')
+    monkeypatch.setenv('ACYCLE_GITHUB_DISPATCH_RECOVERY_TIMEOUT', '0')
+    calls = []
+    def gh(args, **kwargs):
+        calls.append(args)
+        if 'POST' in args:
+            raise GitHubBackendError('HTTP 503')
+        return json.dumps({'workflow_runs': []})
+    monkeypatch.setattr(backend, '_gh', gh)
+    output = tmp_path / 'output'
+    with pytest.raises(GitHubBackendError, match='POST was not repeated'):
+        GitHubBackend('owner/repo', timeout=1).run({'input_path': str(source), 'output_dir': str(output)})
+    assert sum('POST' in args for args in calls) == 1
+    receipt = json.loads((output / 'remote-request.json').read_text())
+    assert receipt['dispatch_state'] == 'ambiguous'
+    assert receipt['request_token'].startswith('acycle-')
+    assert receipt['repository'] == 'owner/repo'
+    assert receipt['input_sha256'] == backend.hashlib.sha256(source.read_bytes()).hexdigest()

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -28,6 +29,7 @@ def main() -> int:
     parser.add_argument('--plugin', help='Explicit native index.mjs for development; default is installed dsh-acycle')
     parser.add_argument('--package', help='Native tgz for --install; default is dist/dsh-acycle-0.5.0.tgz')
     parser.add_argument('--install', action='store_true', help='Install pinned npm runtime and local native package into the deployment only')
+    parser.add_argument('--newark-demo', action='store_true', help='Explicitly mount the public Newark demonstration skill in the actual agent preset')
     parser.add_argument('--port', type=int, default=3080)
     parser.add_argument('--force', action='store_true', help='Replace generated deployment configuration, never user Desktop settings')
     args = parser.parse_args()
@@ -75,14 +77,30 @@ def main() -> int:
         matlab = os.path.abspath(matlab)
     home = directory/'home'
     profile = home/'profiles/web'
+    demo = {'enabled': args.newark_demo}
+    persona = PERSONA
+    if args.newark_demo:
+        demo_root = bundle/'demo/newark-0.5.0'
+        provider = bundle/'scripts/harness_conversation_support.mjs'
+        skill = demo_root/'skills/newark-relative-time-demo/SKILL.md'
+        sources = [demo_root/'manifest.json', demo_root/'SOURCES.md', skill, provider]
+        if any(not path.is_file() for path in sources):
+            parser.error('The complete public Newark demo and its skill provider must be included in this handoff')
+        demo.update(skill_name='newark-relative-time-demo', autonomy_class='preset-assisted',
+                    sources=[{'relative_path': str(path.relative_to(bundle)),
+                              'sha256': hashlib.sha256(path.read_bytes()).hexdigest()} for path in sources])
+        persona += f'\nThis deployment explicitly includes the public Newark demonstration. When the user selects that demonstration, load the newark-relative-time-demo skill and read its public manifest at {demo_root / "manifest.json"} and sources at {demo_root / "SOURCES.md"}. Do not apply its priors to other data.'
     agent_plugins = [
-        {'id': 'acycle-persona', 'name': '@deepseek-ai/dsh-persona', 'config': {'prefix': PERSONA}},
+        {'id': 'acycle-persona', 'name': '@deepseek-ai/dsh-persona', 'config': {'prefix': persona}},
         {'id': 'acycle-native', 'name': plugin.as_uri(), 'config': {'python': python, 'workspace': str(workspace)}},
         {'id': 'acycle-skill-reader', 'name': '@deepseek-ai/dsh-tool-skill'},
         {'id': 'acycle-file-reader', 'name': '@deepseek-ai/dsh-tool-fs', 'config': {'read': True, 'readImage': True, 'write': False, 'edit': False}},
         {'id': 'acycle-present', 'name': '@deepseek-ai/dsh-tool-present'},
         {'id': 'acycle-ask-user', 'name': '@deepseek-ai/dsh-tool-ask-user'},
     ]
+    if args.newark_demo:
+        agent_plugins.append({'id': 'acycle-newark-public-demo', 'name': provider.as_uri(),
+                              'config': {'skillPath': str(skill)}})
     patch = [
         {'id': 'agent-preset-registry', 'config': {'default': 'acycle'}},
         {'id': 'agent-default-model', 'config': {'provider': 'deepseek-official', 'model': 'deepseek-flash'}},
@@ -94,6 +112,7 @@ def main() -> int:
     ]
     deployment = {'schema_version': 1, 'acycle_version': '0.5.0', 'expected_native_tools': 13,
                   'expected_skills': 10, 'harness_version': HARNESS_VERSION, 'profile': 'web', 'preset': 'acycle',
+                  'expected_total_skills': 11 if args.newark_demo else 10, 'newark_demo': demo,
                   'workspace': str(workspace), 'directory': str(directory), 'runtime': str(runtime),
                   'dsh_home': str(home), 'native_plugin': str(plugin), 'node': node,
                   'cli': str(runtime/'node_modules/@deepseek-ai/dsh/lib/bin.js'), 'port': args.port,
@@ -121,6 +140,7 @@ def main() -> int:
     print(json.dumps({'status': 'generated', 'deployment': str(directory/'deployment.json'),
                       'launch': [python, str(bundle/'local/launch_harness.py'), '--deployment', str(directory/'deployment.json')],
                       'profile': 'web', 'preset': 'acycle', 'harness_version': HARNESS_VERSION,
+                      'newark_demo': demo,
                       'legacy_desktop_modified': False, 'credentials_stored': False}, ensure_ascii=False))
     return 0
 

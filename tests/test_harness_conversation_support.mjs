@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { scientificNames, scientificOutcome, turnExecutionPolicy } from '../scripts/harness_conversation_support.mjs'
+import { mkdtemp, rm, writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import { tmpdir } from 'node:os'
+import { scientificNames, scientificOutcome, turnExecutionPolicy, inheritRecordedCatalog } from '../scripts/harness_conversation_support.mjs'
 
 const call = (name, callId) => ({ name, callId })
 const result = (callId, value, isError = false) => ({ message: {
@@ -56,4 +59,27 @@ test('public scenario budgets override legacy defaults without becoming model in
   assert.equal(turnExecutionPolicy(turn, { maxScientificCalls: '10' }).maximum_scientific_calls, 10)
   assert.throws(() => turnExecutionPolicy(turn, { maxScientificCalls: '2' }), /smaller/)
   assert.equal(turnExecutionPolicy({ execution_policy: { kind: 'read_only' } }).maximum_scientific_calls, 0)
+})
+
+test('continuation inherits only a matching actual Session catalog and labels it historical', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'acycle-catalog-test-'))
+  try {
+    const path = join(directory, 'first.turn-1.json')
+    const tools = Array.from({ length: 13 }, (_, index) => `acycle_tool_${index}`)
+    const skills = Array.from({ length: 10 }, (_, index) => `acycle-skill-${index}`)
+    const route = { provider: 'deepseek-official', model: 'deepseek-flash' }
+    await writeFile(path, JSON.stringify({ sessionId: 'original-session', events: [
+      { type: 'request/header', seq: 3, data: { header: { config: route, tools: tools.map(name => ({ name })) } } },
+      { type: 'user/message', seq: 4, data: { source: { kind: 'skill-catalog', entries: skills.map(name => ({ name })) } } },
+    ] }))
+    const previous = { session_id: 'original-session', runtime: { model_visible_tool_names: tools, model_visible_skill_names: skills }, turns: [{ events_file: path }] }
+    const inherited = await inheritRecordedCatalog(previous, join(directory, 'first.json'), route)
+    assert.equal(inherited.model_visible_tool_names.length, 13)
+    assert.equal(inherited.model_visible_skill_names.length, 10)
+    assert.equal(inherited.catalog_evidence.tools.source, 'prior_event_from_same_session')
+    assert.match(inherited.catalog_evidence.tools.note, /not a new/)
+    assert.deepEqual(await inheritRecordedCatalog({ ...previous, runtime: { expected_tools: 13, expected_skills: 10 } }, path, route), {})
+    assert.deepEqual(await inheritRecordedCatalog({ ...previous, session_id: 'another-session' }, path, route), {})
+    assert.deepEqual(await inheritRecordedCatalog(previous, path, { ...route, model: 'other-model' }), {})
+  } finally { await rm(directory, { recursive: true, force: true }) }
 })

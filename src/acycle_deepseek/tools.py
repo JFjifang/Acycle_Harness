@@ -260,21 +260,38 @@ def _analyze(root, arguments, operation='analyze', *, steering=None, explicit_pa
     record['explicit_parameter_names'] = sorted(parameters if explicit_parameters is None else explicit_parameters)
     if tuning_reference is not None:
         record['tuning_reference'] = tuning_reference
+    input_artifact_reference = None
     try:
         relative = source.relative_to(root / '.acycle' / 'runs')
         if len(relative.parts) >= 3 and relative.parts[1] == 'outputs':
             upstream = _get(root, relative.parts[0])
             record['input_lineage'] = {'run_id': upstream['run_id'], 'operation': upstream['operation'],
                                        'artifact_path': str(source), 'sha256': record['input_sha256']}
+            # Only an unchanged, registered output may be reused remotely.
+            # The backend independently validates the repository, ZIP member
+            # and both archive/input hashes; no scientific bytes are rewritten.
+            for key, value in upstream.get('artifacts', {}).items():
+                if not isinstance(value, str) or Path(value).resolve() != source:
+                    continue
+                expected = upstream.get('artifact_sha256', {}).get(key)
+                reference = upstream.get('result', {}).get('artifact_references', {}).get(key)
+                if (upstream.get('status') == 'completed' and expected == record['input_sha256']
+                        and isinstance(reference, dict) and reference.get('input_sha256') == expected):
+                    input_artifact_reference = dict(reference)
+                    record['input_artifact_reference'] = input_artifact_reference
+                    break
     except (ValueError, KeyError):
         pass
     if steering is not None:
         record['steering'] = steering
     _write(run_dir / 'request.json', record)
     try:
-        response = _execute({'input_path':str(frozen), 'output_dir':str(output),
-                             'acycle_root':os.environ.get('ACYCLE_ROOT',''),
-                             'operation':operation, 'parameters':parameters})
+        request = {'input_path':str(frozen), 'output_dir':str(output),
+                   'acycle_root':os.environ.get('ACYCLE_ROOT',''),
+                   'operation':operation, 'parameters':parameters}
+        if input_artifact_reference is not None:
+            request['input_artifact_reference'] = input_artifact_reference
+        response = _execute(request)
         record.update({'status':'completed', 'result':response})
         record['summary'] = response.get('summary', {})
         record['effective_parameters'] = response.get('parameters', parameters)

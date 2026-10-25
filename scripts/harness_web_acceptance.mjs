@@ -142,9 +142,11 @@ try {
   const loadMainChatFigure = async figure => {
     const image = page.locator('[data-chat-flow-kind="assistant-step"] img')
     return waitFor(async () => {
-      const matching = await image.evaluateAll((nodes, target) => nodes.findIndex(node =>
-        node.alt.includes(target.key) || decodeURIComponent(node.currentSrc || node.src).includes(target.path)), figure)
-      if (matching >= 0) await image.nth(matching).evaluate(node => node.scrollIntoView({ block: 'center', behavior: 'instant' }))
+      await image.evaluateAll((nodes, target) => {
+        const matching = nodes.find(node => node.alt.includes(target.key) ||
+          decodeURIComponent(node.currentSrc || node.src).includes(target.path))
+        matching?.scrollIntoView({ block: 'center', behavior: 'instant' })
+      }, figure)
       const images = await image.evaluateAll(nodes => nodes.map(node => ({ alt: node.alt, src: node.currentSrc,
         width: node.naturalWidth, height: node.naturalHeight, sidebar: Boolean(node.closest('[data-rightbar-col]')) })))
       const found = images.find(item => !item.sidebar && (item.alt.includes(figure.key) || decodeURIComponent(item.src).includes(figure.path)) && item.width > 0)
@@ -160,7 +162,7 @@ try {
   await page.getByRole('button', { name: 'View full image: ' + first.alt, exact: true }).click()
   const dialog = page.getByRole('dialog', { name: 'Image preview' })
   await dialog.waitFor({ state: 'visible' })
-  assert.ok(await dialog.getByRole('img').evaluate(image => image.naturalWidth > 0))
+  await waitFor(() => dialog.getByRole('img').evaluateAll(images => images.some(image => image.naturalWidth > 0)))
   receipt.lightbox = true
   const lightboxShot = output.replace(/\.json$/, '') + '.lightbox.png'
   await page.screenshot({ path: lightboxShot })
@@ -198,8 +200,12 @@ try {
     const replay = JSON.parse(await readFile(auditPath, 'utf8'))
     assert.equal(replay.headers.length, 0, 'Browser replay must not make another model request')
     assert.equal(replay.tools.length, 0, 'Browser replay must not execute another tool')
+    assert.equal(replay.blocked_model_requests, 0, 'Browser replay must not attempt another model request')
+    assert.deepEqual(replay.blocked_tool_calls, [], 'Browser replay must not attempt another tool')
     receipt.reuse.observed_new_model_requests = replay.headers.length
     receipt.reuse.observed_new_tool_calls = replay.tools.length
+    receipt.reuse.blocked_model_requests = replay.blocked_model_requests
+    receipt.reuse.blocked_tool_calls = replay.blocked_tool_calls
   }
   receipt.status = 'passed'
 } catch (error) {

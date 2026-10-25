@@ -19,3 +19,5 @@ validation/v0.2/*.zip
 validation/v0.4/scientific-runs/
 validation/v0.5/scientific-runs/
 validation/v0.5/matlab/
+validation/v0.5/matlab-final/
+validation/v0.5/harness/

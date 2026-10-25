@@ -78,3 +78,17 @@ def test_old_retrieval_is_not_a_new_scientific_run_and_structured_failures_remai
     assert [run['run_id'] for run in runs] == ['new']
     assert runs[0]['status'] == 'failed'
     assert len(errors) == 1
+
+
+def test_transport_projection_does_not_pretend_the_original_file_hash_matches(tmp_path):
+    runs, manifest = fixture_records(tmp_path)
+    source = Path(runs['depth']['artifacts']['filtered_csv'])
+    source.write_bytes(b'1,2,9\n3,4,9\n')
+    projected = tmp_path / 'projected.csv'
+    projected.write_bytes(b'1,2\n3,4\n')
+    runs['tune'].update(input_path=str(projected), input_sha256=audit.digest(projected), input_lineage={})
+    result = audit.first_stage_checks(list(runs.values()), manifest, LocalEvidence())
+    assert result['required_products'] == 'passed'
+    assert result['required_products_and_lineage'] == 'failed'
+    assert result['transport_projection']['status'] == 'exact_two_column_tokens_preserved'
+    assert result['transport_projection']['direct_file_hash_and_automatic_lineage_preserved'] is False

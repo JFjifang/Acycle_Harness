@@ -14,7 +14,7 @@ export async function apply(ctx, config) {
   const { LlmAdapter } = await import(pathToFileURL(require.resolve('@deepseek-ai/dsh-llm')).href)
   const audit = { mode: config.mode, fixture_adapter: config.mode === 'fixture',
     scientific_calls: [], session_id: null, preset: null, headers: [], tools: [], image_results: [],
-    final_text: '', completed: false }
+    final_text: '', completed: false, blocked_model_requests: 0, blocked_tool_calls: [] }
   let writes = Promise.resolve()
   const save = () => {
     let snapshot = JSON.stringify(audit, (key, value) =>
@@ -26,8 +26,17 @@ export async function apply(ctx, config) {
   }
   try { audit.deepseek_catalog = await ctx.llm.resolveModelInfo('deepseek-official', 'deepseek-flash') }
   catch (error) { audit.deepseek_catalog_error = error.message }
-  if (config.mode === 'replay') ctx.on('llm/stream', () => { throw new Error('Browser replay forbids new model requests') })
+  if (config.mode === 'replay') ctx.on('llm/stream', async () => {
+    audit.blocked_model_requests++
+    await save()
+    throw new Error('Browser replay forbids new model requests')
+  })
   ctx.on('tools/pre-execute', (exec, next) => {
+    if (config.mode === 'replay') {
+      audit.blocked_tool_calls.push(exec.name)
+      void save()
+      return { kind: 'deny', reason: 'Browser replay forbids all tool execution.' }
+    }
     if (SCIENTIFIC.has(exec.name)) {
       audit.scientific_calls.push(exec.name)
       return { kind: 'deny', reason: 'This UI acceptance test may inspect existing outputs only; scientific recalculation is disabled.' }
@@ -69,6 +78,7 @@ export async function apply(ctx, config) {
         return save()
       })
     }
+    if (config.mode === 'replay') void save()
   })
   if (config.mode !== 'fixture') { await save(); return }
   class FixtureAdapter extends LlmAdapter {

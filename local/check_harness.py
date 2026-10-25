@@ -34,7 +34,9 @@ with tempfile.TemporaryDirectory(prefix='acycle-agent-check-', dir=output.parent
             'workspace': deployment['workspace'], 'output': str(output),
             'expectedVersion': deployment.get('acycle_version', '0.5.0'),
             'expectedNativeTools': deployment.get('expected_native_tools', 13),
-            'expectedSkills': deployment.get('expected_skills', 10)}}]}], indent=2)+'\n')
+            'expectedSkills': deployment.get('expected_skills', 10),
+            'expectedTotalSkills': deployment.get('expected_total_skills', 10),
+            'demoSkill': deployment.get('newark_demo', {}).get('skill_name')}}]}], indent=2)+'\n')
     with socket.socket() as reservation:
         reservation.bind(('127.0.0.1', 0))
         port = reservation.getsockname()[1]
@@ -73,5 +75,6 @@ with tempfile.TemporaryDirectory(prefix='acycle-agent-check-', dir=output.parent
 report = json.loads(output.read_text())
 print(json.dumps({'status': report['status'], 'receipt': str(output), 'actual_agent_created': report.get('actual_agent_created'),
                   'preset': report.get('selected_preset'), 'skills': len(report.get('skills', [])),
+                  'total_scoped_skills': len(report.get('all_scoped_skills', [])),
                   'model_api_called': False, 'matlab_executed': False}))
 raise SystemExit(0 if report['status'] == 'passed' else 1)

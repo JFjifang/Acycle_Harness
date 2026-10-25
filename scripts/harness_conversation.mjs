@@ -9,7 +9,7 @@ import { readFile, writeFile, mkdir, access, rename, appendFile } from 'node:fs/
 import { basename, dirname, join, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { parseArgs } from 'node:util'
-import { scientificNames, scientificOutcome, turnExecutionPolicy, loadPublicSkill } from './harness_conversation_support.mjs'
+import { scientificNames, scientificOutcome, turnExecutionPolicy, loadPublicSkill, inheritRecordedCatalog } from './harness_conversation_support.mjs'
 
 const repository = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const { values } = parseArgs({ options: {
@@ -88,6 +88,10 @@ const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 if (previous?.scenario_sha256 && previous.scenario_sha256 !== hash(scenarioBytes)) throw new Error('Scenario changed since this Session started; use a new Session')
 const pluginSha = hash(await readFile(resolve(values.plugin)))
 if (previous && previous.runtime.plugin_sha256 !== pluginSha) throw new Error('Plugin changed since this Session started; preserve the prior receipt and start a new Session')
+const previousCatalog = previous ? await inheritRecordedCatalog(previous, resolve(previousPath), {
+  provider: values.mode === 'live' ? 'deepseek-official' : 'acycle-fixture',
+  model: values.mode === 'live' ? values.model : 'fixture',
+}) : {}
 const packageVersion = name => JSON.parse(require('node:fs').readFileSync(require.resolve(name + '/package.json'), 'utf8')).version
 const artifactContext = new Context()
 const attachments = new AttachmentStore(artifactContext, { dshHome })
@@ -142,6 +146,7 @@ const receipt = {
   } : null,
   scope: values.mode === 'live' ? 'Published official Harness SDK, sdk-minimal profile, AgentLoop, skills, durable file attachment and multiple independent user turns with a real DeepSeek provider. No desktop browser UI assertion.' : 'Keyless infrastructure fixture only; no real model or scientific execution.',
   started_at_utc: new Date().toISOString(), runtime: {
+    ...previousCatalog,
     sdk_client: packageVersion('@deepseek-ai/dsh-sdk-client'), dsh: packageVersion('@deepseek-ai/dsh'),
     profile: 'sdk-minimal', model: values.mode === 'live' ? values.model : 'fixture',
     plugin_path: resolve(values.plugin), plugin_sha256: pluginSha,
@@ -225,9 +230,13 @@ try {
           if (event.type === 'request/header') {
             receipt.runtime.actual_model = event.data.header?.config
             receipt.runtime.model_visible_tool_names = (event.data.header?.tools ?? []).map(tool => tool.name ?? tool.function?.name).filter(Boolean).sort()
+            receipt.runtime.catalog_evidence ??= {}
+            receipt.runtime.catalog_evidence.tools = { source: 'current_session_event', session_id: receipt.session_id, event_seq: event.seq }
           }
           if (event.type === 'user/message' && event.data.source?.kind === 'skill-catalog') {
             receipt.runtime.model_visible_skill_names = (event.data.source.entries ?? []).map(skill => skill.name).sort()
+            receipt.runtime.catalog_evidence ??= {}
+            receipt.runtime.catalog_evidence.skills = { source: 'current_session_event', session_id: receipt.session_id, event_seq: event.seq }
           }
           if (event.type === 'tool/call') {
             entry.tool_calls.push({ ...event.data, event_seq: event.seq })

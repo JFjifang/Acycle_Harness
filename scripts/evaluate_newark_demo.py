@@ -154,9 +154,26 @@ def first_stage_checks(runs, manifest, evidence):
             run = stages[name]
             if run:
                 check(name + '_uses_this_pro_artifact', run['input_sha256'] == pro_hash and run.get('input_lineage', {}).get('run_id') == pro['run_id'])
+    transport_projection = None
     if filtering and tuning:
         filtered_hash = digest(evidence.path(filtering['artifacts']['filtered_csv']))
-        check('tune_consumes_actual_filtered_file', tuning['input_sha256'] == filtered_hash and tuning.get('input_lineage', {}).get('run_id') == filtering['run_id'])
+        direct = tuning['input_sha256'] == filtered_hash and tuning.get('input_lineage', {}).get('run_id') == filtering['run_id']
+        check('tune_consumes_actual_filtered_file', direct)
+        if not direct:
+            # Structural provenance only: no numeric parsing, rounding, sample
+            # selection, interpolation, extrema finding or statistical work.
+            source = evidence.path(filtering['artifacts']['filtered_csv'])
+            target = evidence.path(tuning['input_path'])
+            source_lines, target_lines = source.read_bytes().splitlines(), target.read_bytes().splitlines()
+            exact_tokens = len(source_lines) == len(target_lines) and all(
+                len(line.split(b',')) >= 2 and b','.join(line.split(b',')[:2]) == projected
+                for line, projected in zip(source_lines, target_lines))
+            transport_projection = {'status': 'exact_two_column_tokens_preserved' if exact_tokens else 'not_equivalent',
+                                    'source_run_id': filtering['run_id'], 'target_run_id': tuning['run_id'],
+                                    'source_sha256': filtered_hash, 'target_sha256': digest(target),
+                                    'source_text_lines': len(source_lines), 'target_text_lines': len(target_lines),
+                                    'direct_file_hash_and_automatic_lineage_preserved': False,
+                                    'note': 'Independent byte-token audit of a model-created transport projection; it does not erase the failed attempt or claim that original whole-file bytes were retained as tuning input.'}
     if time_run and tuning:
         controls_hash = digest(evidence.path(tuning['artifacts']['age_model_csv']))
         reference = time_run.get('tuning_reference', {})
@@ -165,8 +182,12 @@ def first_stage_checks(runs, manifest, evidence):
         check('time_model_matches_saved_matlab_controls', time_run['parameters'].get('age_model') == tuning['summary'].get('age_model'))
         check('time_trim_matches_saved_valid_range', time_run['parameters'].get('coordinate_range') == tuning['summary'].get('valid_depth_range'))
     selected = {run['run_id'] for run in stages.values() if run}
+    product_checks = [item for item in checks if item['id'].endswith(('_completed', '_required_saved_products', '_matlab_figure_present'))]
     return {'stage_run_ids': {key: run['run_id'] if run else None for key, run in stages.items()},
             'checks': checks, 'required_products_and_lineage': status(all(check['status'] == 'passed' for check in checks)),
+            'required_products': status(all(item['status'] == 'passed' for item in product_checks)),
+            'transport_projection': transport_projection,
+            'failed_attempt_run_ids': [run['run_id'] for run in runs if run.get('status') == 'failed'],
             'additional_completed_runs_for_review': [run['run_id'] for run in completed if run['run_id'] not in selected]}
 
 

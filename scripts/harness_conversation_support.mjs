@@ -1,6 +1,6 @@
 /** Metadata-only helpers and optional public demo skill provider for SDK validation. */
 import { readFile } from 'node:fs/promises'
-import { dirname } from 'node:path'
+import { basename, dirname, join } from 'node:path'
 
 export const scientificNames = new Set(['acycle_analyze', 'acycle_swa', 'acycle_coco',
   'acycle_ecoco', 'acycle_interpolate_pro', 'acycle_tune', 'acycle_sensitivity', 'acycle_rerun'])
@@ -77,6 +77,47 @@ export async function loadPublicSkill(path) {
   const description = raw.match(/^description:\s*(.+)$/m)?.[1]?.replace(/^['"]|['"]$/g, '')
   if (!name || !description) throw new Error(`Missing public skill name/description: ${path}`)
   return { name, description, path, raw, content: raw.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '') }
+}
+
+/** Reuse only catalog arrays witnessed in this same Session's recorded events.
+ * Expected counts, capability claims, and an unverified previous array are not evidence.
+ */
+export async function inheritRecordedCatalog(previous, previousPath, { provider, model }) {
+  if (!previous?.session_id) return {}
+  const runtime = previous.runtime ?? {}
+  const sorted = values => Array.isArray(values) ? [...values].sort() : null
+  const same = (left, right) => left !== null && right !== null && JSON.stringify(left) === JSON.stringify(right)
+  let tools, skills, actualModel
+  for (const turn of [...(previous.turns ?? [])].reverse()) {
+    if (!turn.events_file) continue
+    let saved, path
+    for (const candidate of [turn.events_file, join(dirname(previousPath), basename(turn.events_file))]) {
+      try { saved = JSON.parse(await readFile(candidate, 'utf8')); path = candidate; break } catch { /* missing legacy trace */ }
+    }
+    if (!saved || saved.sessionId !== previous.session_id) continue
+    for (const event of [...(saved.events ?? [])].reverse()) {
+      if (!tools && event.type === 'request/header') {
+        const header = event.data.header
+        if (header?.config?.provider !== provider || header?.config?.model !== model) continue
+        const names = sorted((header.tools ?? []).map(tool => tool.name ?? tool.function?.name).filter(Boolean))
+        if (same(names, sorted(runtime.model_visible_tool_names))) {
+          tools = { names, event_seq: event.seq, events_file: path }
+          actualModel = header.config
+        }
+      }
+      if (!skills && event.type === 'user/message' && event.data.source?.kind === 'skill-catalog') {
+        const names = sorted((event.data.source.entries ?? []).map(skill => skill.name))
+        if (same(names, sorted(runtime.model_visible_skill_names))) skills = { names, event_seq: event.seq, events_file: path }
+      }
+    }
+  }
+  if (!tools) return {}
+  const origin = value => ({ source: 'prior_event_from_same_session', session_id: previous.session_id,
+    receipt: previousPath, event_seq: value.event_seq, events_file: value.events_file,
+    note: 'Verified historical catalog; not a new agent-composition check.' })
+  return { actual_model: actualModel, model_visible_tool_names: tools.names,
+    ...(skills ? { model_visible_skill_names: skills.names } : {}),
+    catalog_evidence: { tools: origin(tools), ...(skills ? { skills: origin(skills) } : {}) } }
 }
 
 // Mounted only when the scenario explicitly declares its public demo skill.

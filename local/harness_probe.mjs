@@ -50,6 +50,10 @@ export async function apply(ctx, config) {
       report.tools = assembly.tools.map(tool => tool.name ?? tool.function?.name)
       report.native_tool_count = report.tools.filter(name => name.startsWith('acycle_')).length
       report.skills = acycleSkills.map(skill => skill.name)
+      report.all_scoped_skills = skills.map(skill => skill.name)
+      report.demo_skill = config.demoSkill ?? null
+      report.demo_skill_loaded = config.demoSkill ? Boolean((await ctx.skills.get(config.demoSkill,
+        { scope: context.scope, cwd: config.workspace }))?.content) : null
       report.skill_body_loaded = Boolean(loaded?.content)
       report.persona_present = prompt.includes('This is the Acycle research deployment.')
       const capability = await ctx.tools.execute({ callId: `composition-${randomUUID()}`,
@@ -65,7 +69,7 @@ export async function apply(ctx, config) {
         { type: 'text', text: 'Inspect this deployment composition only. Do not call scientific tools.' }] }))
       await fixtureHandle.agent.whenIdle()
       const capturedText = JSON.stringify(captured?.messages ?? [])
-      report.skills_in_model_messages = acycleSkills.every(skill => capturedText.includes(skill.name))
+      report.skills_in_model_messages = skills.every(skill => capturedText.includes(skill.name))
       report.catalog_transport = 'Actual preset AgentLoop request captured by a deterministic keyless adapter; official deployment route resolved separately.'
       report.fixture_request_captured = Boolean(captured)
       report.prompt_sha256 = createHash('sha256').update(prompt).digest('hex')
@@ -78,6 +82,8 @@ export async function apply(ctx, config) {
       if (!report.tools.includes('acycle_rerun') || !report.tools.includes('read_image') || !report.tools.includes('present')) failures.push('Native research/image/presentation tools absent in actual scope')
       if (report.native_tool_count !== config.expectedNativeTools) failures.push(`Expected ${config.expectedNativeTools} scoped native tools; found ${report.native_tool_count}`)
       if (report.skills.length !== config.expectedSkills) failures.push(`Expected ${config.expectedSkills} scoped Acycle skills; found ${report.skills.length}`)
+      if (report.all_scoped_skills.length !== config.expectedTotalSkills) failures.push(`Expected ${config.expectedTotalSkills} total scoped skills; found ${report.all_scoped_skills.length}`)
+      if (config.demoSkill && !report.demo_skill_loaded) failures.push('The explicitly selected public demo skill is not readable in actual scope')
       if (report.capabilities.version !== config.expectedVersion || report.capabilities.python_numerical_fallback !== false) failures.push('Actual native bridge capability/version mismatch')
       if (!model.inputModalities?.includes('image')) failures.push('Actual route does not resolve image capability')
       report.failures = failures

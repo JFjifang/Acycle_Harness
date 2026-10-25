@@ -18,6 +18,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   matlab:
@@ -48,6 +49,8 @@ jobs:
           products: Signal_Processing_Toolbox Statistics_and_Machine_Learning_Toolbox Curve_Fitting_Toolbox
       - name: Prepare remote request
         if: env.ACYCLE_REQUEST != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: python scripts/ci_request.py
       - name: Execute MATLAB request
         if: env.ACYCLE_REQUEST != ''

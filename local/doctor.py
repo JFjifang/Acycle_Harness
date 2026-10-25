@@ -141,6 +141,8 @@ def main() -> int:
                     report['harness']['actual_agent_checked'] = result.get('status') == 'passed'
                     report['harness']['resolved_model'] = result.get('model')
                     report['harness']['scoped_skills'] = result.get('skills', [])
+                    report['harness']['all_scoped_skills'] = result.get('all_scoped_skills', [])
+                    report['harness']['demo_skill'] = result.get('demo_skill')
                     report['harness']['persona_present'] = result.get('persona_present', False)
                     report['harness']['skills_in_model_messages'] = result.get('skills_in_model_messages', False)
                 if completed.returncode or not report['harness']['actual_agent_checked']:
