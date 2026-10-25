@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "acycle-deepseek"
+version = "0.2.0"
+description = "MATLAB-first Acycle tools for DeepSeek Harness"
+requires-python = ">=3.10"
+license = "GPL-3.0-or-later"
+dependencies = []
+
+[project.scripts]
+acycle-deepseek = "acycle_deepseek.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+acycle_deepseek = ["matlab/**/*.m", "matlab/*.m", "matlab/*.json", "matlab/*.md"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+

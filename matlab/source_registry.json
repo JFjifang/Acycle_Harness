@@ -1,0 +1,76 @@
+{
+  "repository": "https://github.com/mingsongli/acycle",
+  "commit": "dcba4279168745b563e0535b954297023dd62fc7",
+  "files": [
+    {
+      "function": "RobotGUI",
+      "relative_path": "code/guicode/RobotGUI.m",
+      "sha256": "58b6b4bf799e94b2b5cde9f75117c7c718ac417328ee91642b24a2ef8cc699f9"
+    },
+    {
+      "function": "findduplicate",
+      "relative_path": "code/seriesanalysis/findduplicate.m",
+      "sha256": "5cf401e34dd8472e58c1aa66cb02f26d4996b217cd8e358723d1f1fcd5ca2b45"
+    },
+    {
+      "function": "interpolate",
+      "relative_path": "code/seriesanalysis/interpolate.m",
+      "sha256": "1a318132adaf427be8fcd207f359200bad2ee723b8f36a0f9a729627c85865b1"
+    },
+    {
+      "function": "acycleSamplingIsUneven",
+      "relative_path": "code/seriesanalysis/acycleSamplingIsUneven.m",
+      "sha256": "14c40be7e62b2e21fc13faf11a2ae01d34f66aaed5d186766c1271a24ff632f1"
+    },
+    {
+      "function": "redconfML",
+      "relative_path": "code/seriesanalysis/redconfML.m",
+      "sha256": "fc0b9fb572208733ad096960efdb55558ceb6dc0a5a25b4a46cd6aca8df6e46d"
+    },
+    {
+      "function": "rhoAR1",
+      "relative_path": "code/seriesanalysis/rhoAR1.m",
+      "sha256": "d3d9da911c604925c55d0983c6b50a4762d50047bd75cb36e58c9c7faef131f1"
+    },
+    {
+      "function": "moveMedian",
+      "relative_path": "code/seriesanalysis/moveMedian.m",
+      "sha256": "273e894ecdc63ceabaea780f53d8a0e2ddf58ee2ab26709206bbc7c9ad46612f"
+    },
+    {
+      "function": "minirhos0",
+      "relative_path": "code/seriesanalysis/minirhos0.m",
+      "sha256": "7f364438a7d9f127398deb7825f4693c4ddcfda082eae8baac47077c905f2ef1"
+    },
+    {
+      "function": "acycleMtmTaperCount",
+      "relative_path": "code/seriesanalysis/acycleMtmTaperCount.m",
+      "sha256": "03a993f38d252313930046b9fd9b7e0502991a53fc35bdaa6e69cdcf7d8785fe"
+    },
+    {
+      "function": "zeropad2",
+      "relative_path": "code/seriesanalysis/zeropad2.m",
+      "sha256": "6cfe10485ed673a6424dc36e413b6135f086eeb1296546366c5a978f0ee80975"
+    },
+    {
+      "function": "evofft",
+      "relative_path": "code/seriesanalysis/evofft.m",
+      "sha256": "3c7d47ceaddcf49ae54e7f7728b92c0ceb977e725042aab9e4638f5489cdbd26"
+    },
+    {
+      "function": "acycleBandpassFilter",
+      "relative_path": "code/seriesanalysis/acycleBandpassFilter.m",
+      "sha256": "0fd4683086d4f884685d3bb5a9c18336cb276c43d187c75aa8990485c209b292"
+    },
+    {
+      "function": "acycleSedimentationRateAgeModel",
+      "relative_path": "code/seriesanalysis/acycleSedimentationRateAgeModel.m",
+      "sha256": "c52658c4a03dcb01344df85aa04576d0b7082f97d58f109347255b7b937562f5"
+    },
+    {
+      "function": "depthtotime",
+      "relative_path": "code/seriesanalysis/depthtotime.m",
+      "sha256": "89331b462993289dd01a337c139f250e98d5aef641a04cac489ef08e274a13b4"
+    }
+  ]
+}
