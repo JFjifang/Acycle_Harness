@@ -32,7 +32,7 @@ See [GitHub Actions execution and cloud transport](docs/GITHUB_ACTIONS.md) for c
 
 ## Harness and model access
 
-See [plugin/README.md](plugin/README.md) for the native Cordis plugin. MCP is available through `python -m acycle_deepseek.mcp`. Both interfaces use the same six Python tools and MATLAB adapter. Set `DEEPSEEK_API_KEY` only in the process environment and run `scripts/live_deepseek_test.py` for a real model/tool test. The official API model ID `deepseek-flash` identifies DeepSeek-V4.1-Flash.
+See [plugin/README.md](plugin/README.md) for the native Cordis plugin. MCP is available through `python -m acycle_deepseek.mcp`. Both interfaces use the same nine Python tools and MATLAB adapter. Set `DEEPSEEK_API_KEY` only in the process environment and run `scripts/live_deepseek_test.py` or `scripts/live_extended_test.py` for a real model/tool test. The official API model ID `deepseek-flash` identifies DeepSeek-V4.1-Flash.
 
 Core methods: mini-robot preprocessing, MTM robust AR(1) pointwise thresholds, EvoFFT, Gaussian/Taner filtering and Hilbert envelopes, and sedimentation-rate/tie-point age conversion. New tools `acycle_swa`, `acycle_coco`, and `acycle_ecoco` expose original SWA/FDR and explicit orbital-target/rate-grid Monte Carlo workflows. All three support the same immutable runs, provenance and steering interfaces. See [SWA](docs/SWA.md), [COCO/eCOCO](docs/COCO.md) and [paper validation protocols](docs/PAPER_VALIDATION.md) for their distinct statistical meanings and supported modes.
 

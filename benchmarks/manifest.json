@@ -310,7 +310,7 @@
       },
       "paper_doi": "10.1038/s41467-022-33390-x",
       "paper_url": "https://doi.org/10.1038/s41467-022-33390-x",
-      "scope": "Modern COCO rate-consistency test on untuned MS below the Nanjemoy basal unconformity, using published 20 m LOESS, six targets, rate grid and 2000 draws. Original paper used Acycle 2.4.1; current COCO 2.0 phase-averaged inference differs. No exact p-value, PETM duration or full chronology reproduction.",
+      "scope": "Broader-interval modern COCO comparison on untuned MS below the Nanjemoy basal unconformity. Uses published six targets, 20 m LOESS, rate grid and 2000 draws, but extends below the actual published interval and uses median 0.005 m interpolation, Spearman and default NFFT/frequency settings. The original 8–15 cm/kyr comparison remains unchanged; see separate published-protocol case. No exact historical-paper reproduction.",
       "acceptance": [
         "completed original MATLAB COCO response",
         "original-source parity and full 2000-draw count",
@@ -380,6 +380,84 @@
       "diagnostic_reference": {
         "rate_cm_kyr": 0.4567901234567901,
         "basis": "Published first-subset wavelength approximately 1.85 m / 405 kyr; this is not a numerical eCOCO reproduction target."
+      }
+    },
+    {
+      "kind": "paper_method_validation",
+      "runnable": true,
+      "published_result_reproduction": false,
+      "execution_status": "not_asserted_by_manifest",
+      "id": "paper-petm-coco-published-protocol",
+      "tool": "acycle_coco",
+      "input": {
+        "root": "benchmarks",
+        "path": "data/petm_2022_ms_published_coco_interval.csv",
+        "sha256": "216f8a99011ec476365499d51393a79123a074dfdee067b176194c1d54b2efc6",
+        "extraction_receipt": "data/petm_2022_ms_published_coco_interval.provenance.json"
+      },
+      "parameters": {
+        "depth_unit": "m",
+        "method": "phase_averaged",
+        "orbital_periods_kyr": [
+          125,
+          95,
+          39.8,
+          23.3,
+          22,
+          18.7
+        ],
+        "sedimentation_rate_min": 0.13,
+        "sedimentation_rate_max": 30,
+        "sedimentation_rate_step": 0.1,
+        "nsim": 2000,
+        "seed": 1,
+        "red_noise": 1,
+        "correlation": "Pearson",
+        "detrend": "loess",
+        "detrend_window": 20,
+        "dt": 0.01,
+        "nfft": 5000,
+        "max_frequency": 0.06,
+        "slices": 1
+      },
+      "paper_doi": "10.1038/s41467-022-33390-x",
+      "paper_url": "https://doi.org/10.1038/s41467-022-33390-x",
+      "scope": "Independent modern COCO comparison using the MS protocol recovered from Supplementary Text 3, pages 22–23: raw 187.54–211.24 m interval, original 20 m LOESS, linear 0.01 m interpolation, Pearson, NFFT 5000, frequency 0–0.06 cycles/kyr, six periods and 2000 draws. Modern phase-averaged target/null still differ from historical Acycle 2.4.1; not an exact old-engine replay. The original broader-interval failed comparison is preserved.",
+      "acceptance": [
+        "completed original modern MATLAB COCO response",
+        "4364 raw observations; original MATLAB preparation yields 2370 points at 0.01 m",
+        "2000 completed draws with recorded protocol and original-source hashes",
+        "best-rate comparison against unchanged published 8–15 cm/kyr interval",
+        "MATLAB rate spectrum, null maxima and figures saved"
+      ],
+      "scientific_checks": [
+        {
+          "type": "summary_range",
+          "id": "published_petm_rate_range",
+          "field": "best_rate_cm_kyr",
+          "minimum": 8,
+          "maximum": 15,
+          "unit": "cm/kyr",
+          "rationale": "A priori broad published COCO optimal-rate interval; modern algorithm may disagree, in which case report a failed consistency check without retuning."
+        }
+      ],
+      "protocol_source": {
+        "file": "sources/petm_2022_supplement.pdf",
+        "sha256": "ca71136f8c11e535c8a8421dd09b2de14155297c34f47dc99054d4d2c608ff5b",
+        "section": "Supplementary Text 3",
+        "pages": [
+          22,
+          23
+        ],
+        "log_excerpt": "sources/petm_2022_coco_protocol.txt",
+        "processed_input_expected": {
+          "depth_range_m": [
+            187.542,
+            211.232
+          ],
+          "rows": 2370,
+          "spacing_m": 0.01
+        }
       }
     }
   ]

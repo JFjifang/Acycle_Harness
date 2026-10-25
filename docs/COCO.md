@@ -28,6 +28,10 @@ translated into Python. The only preprocessing callback extraction is documented
 below. `matlab/coco_sources.json` contains hashes of the conservative original
 dependency set, including background routines and orbital-resource tables. Each run
 records actual source hashes, MATLAB release, adapter hash and input checksum.
+The adapter makes two display-only adjustments to COCO figures: it expands the
+four-panel figure to 1100 × 1000 pixels so probability ticks remain legible, and
+replaces underscores in the method title with spaces to prevent TeX subscripts.
+Original plotting functions, curves and axes are retained; eCOCO layout is unchanged.
 Changed or removed snapshot files are recorded as source mismatches and produce
 a warning. Required callable entrypoints are checked before execution; a new
 Acycle revision is not labeled validated merely because it completes a run.
@@ -48,7 +52,9 @@ Specify exactly one of:
   to an integer Ma and uses its adjacent `AstroGeo22.txt` and `La04gisi.csv` resources.
   The wrapper converts its period column from years to kyr and records the rounded age.
 - `orbital_periods_kyr`: explicit positive, distinct periods. Modern coherent COCO
-  and all eCOCO modes require exactly nine; `phase_averaged` accepts 2–32 periods.
+  and all eCOCO modes require exactly nine; `phase_averaged` accepts 2–9 periods.
+  The numerical core accepts more, but the original publication audit caps the
+  participating-period count at nine, so this initial bridge rejects larger targets.
 
 Other options are `nsim` (default 199, range 1–10000), `seed` (default 1),
 `correlation` (`Spearman` default or `Pearson`), `red_noise` (0 no background-spectrum
@@ -57,6 +63,11 @@ AR(1) subtraction, 2 robust AR(1) subtraction, 3 SWA subtraction), `nfft`, and
 `max_frequency` in cycles/kyr. The latter defaults to 1.2 divided by the shortest
 target period and must contain every target frequency. COCO additionally accepts
 `slices` (default 1); eCOCO requires physical `window` and `step`.
+COCO alone also accepts `dt`, in the input depth unit. This calls original Acycle
+`interpolate` after optional LOWESS/LOESS and before the COCO core; merely passing
+an interval to the modern core would not work because it recalculates median dt.
+Omit `dt` for the original automatic median-spacing behavior. Explicit full-record
+resampling is not exposed for eCOCO held-out modes.
 `red_noise: 0` does **not** disable Monte Carlo testing; `nsim` controls the number
 of null realizations independently of background-spectrum subtraction.
 
@@ -95,6 +106,11 @@ in metres, target periods and original MATLAB figures. COCO CSV columns include
 rate, correlation, descriptive parametric p, missing orbit count, **rate-global**
 Monte Carlo p, contributing orbit count, and same-rate local Monte Carlo p.
 The parametric correlation p-value is never the formal significance result.
+For `phase_averaged`, the public summary reports the actual requested and resolved
+period counts, target construction and null conditioning. The original publication
+report hardcodes nine-period/coherent wording; it is retained unchanged in the MAT
+file for auditing, with its scope explicitly marked. The wrapper corrects only the
+public interpretation text, leaving numerical statistics and original plots intact.
 
 eCOCO writes a long-form map CSV plus the upstream tracked-rate table. Its global
 p-values correct the sedimentation-rate search **within each window**, not the

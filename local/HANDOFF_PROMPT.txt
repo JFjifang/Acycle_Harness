@@ -1,6 +1,6 @@
 请在当前 Acycle_Harness 项目中完成本地安装和实际 MATLAB 测试。
 
-先读取 docs/USER_GUIDE.zh-CN.md、docs/LOCAL_HANDOFF.zh-CN.md、当前 validation/ 验收记录和 tool schema。确认交付版本、仓库状态及当前操作系统。只在项目自己的虚拟环境、local/generated/、local-validation/ 和 .acycle/ 内写入安装/测试文件；保留已有研究数据、模型设置和客户端配置。
+先读取 docs/USER_GUIDE.zh-CN.md、docs/LOCAL_HANDOFF.zh-CN.md、当前 validation/ 验收记录和 tool schema。确认交付版本、仓库状态及当前操作系统，以及9个工具和8个skills；validation/v0.2/仅是历史记录。安装和测试产物写入项目自己的虚拟环境、local/generated/、local-validation/ 和 .acycle/；客户端配置仅按下文定向合并必要条目。保留已有研究数据、模型设置和其他客户端配置。
 
 寻找本机已安装的 MATLAB、所需工具箱与 Acycle 源码。优先使用已存在的安装；不要安装或修改 MATLAB 许可证。参考 Acycle 提交是 dcba4279168745b563e0535b954297023dd62fc7。若原目录有修改，另建参考 checkout，不重置用户目录。缺少路径或许可证时先完成独立可做的检查，再准确说明缺什么。
 
@@ -13,5 +13,7 @@
 刷新客户端工具后，实际调用一次 acycle_capabilities 和科学工具。保留基线，只改变一个可支持参数创建敏感性分支，检查parent_run_id及输入哈希，并用acycle_compare解释变化。输入行数以MATLAB summary.input_rows为准，处理后点数以processed_rows为准，不混用文本行数。
 
 在 local-validation/ 写一份本机验收报告：已运行与未运行分别列出；方法数值对照、真实论文数据流程、论文定量复现分别标记；列出调用原函数的位置和任何改动。当前桥不覆盖Acycle所有GUI功能。超出接口的任务先尝试桥接原始MATLAB，Python可做缺失功能或文件转换，随后尽可能返回MATLAB计算和作图。
+
+保留已知科研差异：Lavernock SWA约0.82125m峰的位置接近论文0.81m，但5%FDR条件未复现；PETM COCO首轮较宽区间上的2000次模拟得到约26.43cm/kyr、速率搜索校正p约0.103948，没有达到论文8–15cm/kyr的速率判据。已发现首轮输入区间、插值和相关类型与论文原始日志不一致，按日志复跑必须作为独立测试保留，不能把首轮差异直接归因于版本。Cambrian eCOCO只有预算缩减的真实数据流程验证。不要把工程执行通过写成论文全部复现，不要隐含更换区间或参数以掩盖未通过。phase_averaged最多接受9个显式周期，以当前schema为准。
 
 不要更改全局Codex/Harness模型配置，不发布、推送或部署外部服务。完成本地结果后给我报告和产物入口，以及下一轮值得做的敏感性设置。

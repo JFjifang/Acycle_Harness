@@ -229,7 +229,10 @@ if strcmp(operation,'coco')
         'MaxFrequency',p.max_frequency,'Seed',p.seed,'ShowPeriodograms',false);
     report=cocoAdaptivePublicationReport(corrCI,corrH0,details);
     figures=plotAdaptiveCocoPublication(corrCI,corrH0,details,report, ...
-        'Visible','off','TitlePrefix',sprintf('Acycle COCO (%s)',p.method));
+        'Visible','off','TitlePrefix',sprintf('Acycle COCO (%s)',strrep(p.method,'_',' ')));
+    % Display-only adaptation: the original default figure is too short for
+    % its dense logarithmic p ticks. Preserve all original plots and axes.
+    set(figures(1),'Units','pixels','Position',[50 50 1100 1000]);
     numerical=struct('corrCI',corrCI,'corrH0',corrH0,'nullCorrelation',nullCorrelation, ...
         'details',details,'report',report);
     artifacts.coco_csv=fullfile(out,'coco.csv');

@@ -1,0 +1,29 @@
+Source: Li et al. (2022), Nature Communications 13, 5618.
+DOI: 10.1038/s41467-022-33390-x
+Supplementary Text 3, printed pages 22–23, Magnetic susceptibility log.
+Original PDF: petm_2022_supplement.pdf
+PDF SHA-256: ca71136f8c11e535c8a8421dd09b2de14155297c34f47dc99054d4d2c608ff5b
+License: CC BY 4.0, subject to third-party credit lines.
+Extraction note: line wrapping normalized; numerical settings unchanged.
+
+24-Dec-2021 11:09:31
+HT-MS-comp-187.54-211.24-20-LOESS-rsp0.01-linear-2000sim-1slice-COCO-log.txt
+Data: 187.542 to 211.232m.
+Sampling rate: 0.01.
+Number of data points: 2370
+Data: Number of slices is 1.
+Number of simulations is 2000.
+Data: Remove red noise model: classic AR1 removed (F - Fred).
+Correlation method: Pearson.
+Zero padding for the data is 5000.
+Tested sedimentation rate step is 0.1 cm/kyr from 0.13 to 30 cm/kyr.
+Target age is 56000 ka.
+Zero padding is 5000.
+Freq. is 0-0.06 cycles/kyr.
+Astronomical solution: User-defined
+Astronomical cycles are: 125 95 39.8 23.3 22 18.7
+
+Audit note: the raw filename gives the selection interval 187.54–211.24 m;
+the following processed-data bounds belong to the detrended/interpolated
+series. The raw workbook observations selected in this repository span
+187.542–211.237 m. Do not confuse raw row count with the 2370 processed rows.

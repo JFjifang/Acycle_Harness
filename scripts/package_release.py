@@ -34,10 +34,11 @@ def main():
     source_files = ['README.md','LICENSE','pyproject.toml','setup.py','MANIFEST.in','.gitignore']
     paths = [ROOT/name for name in source_files]
     for name in source_dirs:
-        paths.extend(p for p in (ROOT/name).rglob('*') if p.is_file() and not any(part in {'node_modules','__pycache__','.pytest_cache'} for part in p.parts))
-    # Include reviewable receipts and reports, but not large downloaded CI caches.
+        paths.extend(p for p in (ROOT/name).rglob('*') if p.is_file() and not any(part in {'node_modules','__pycache__','.pytest_cache','generated'} for part in p.parts))
+    # Include selected research evidence, not transport caches or credentials.
     paths.extend(p for p in (ROOT/'validation').glob('*') if p.is_file())
-    paths.extend(p for p in (ROOT/'validation'/'live-runs').rglob('*') if p.is_file())
+    for evidence in ['v0.2','live-runs','live-runs-v03','artifacts/newark','artifacts/expanded-first','artifacts/expanded-final','artifacts/expanded-release']:
+        paths.extend(p for p in (ROOT/'validation'/evidence).rglob('*') if p.is_file())
     paths.extend(artifacts+[dist/'SHA256SUMS.json'])
     with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_DEFLATED) as output:
         for p in sorted(set(paths)):
@@ -56,9 +57,9 @@ def main():
             relative=p.relative_to(ROOT)
             if relative.parts[0]=='validation' and relative.name not in {
                 'ACCEPTANCE.md','NEWARK.md','matlab-summary.json','release-verification.json',
-                'native-plugin-smoke.json','python-tests.txt','node-tests.txt','paper-validation.json'}:
+                'native-plugin-smoke.json','python-tests.txt','node-tests.txt','paper-validation.json','local-handoff-checks.json'}:
                 continue
-            if relative.parts[:2]==('benchmarks','sources') and p.suffix!='.json':
+            if relative.parts[:2]==('benchmarks','sources') and p.suffix not in {'.json','.txt'}:
                 continue
             output.write(p,Path('acycle-deepseek')/relative)
     with zipfile.ZipFile(handoff) as check:

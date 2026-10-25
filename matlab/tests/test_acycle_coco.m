@@ -31,6 +31,8 @@ verifyLessThanOrEqual(testCase,abs(r.summary.best_rate_cm_kyr-10),1);
 verifyTrue(testCase,r.provenance.all_sources_match_reference);
 verifyTrue(testCase,all(pvalues(:,1)>=pvalues(:,3)|isnan(pvalues(:,1))));
 assertFigures(testCase,r);
+curveFigure=imfinfo(r.artifacts.coco_figure_1_png);
+verifyGreaterThan(testCase,curveFigure.Height,1000);
 end
 
 function testEcocoOriginalParityAndPhysicalWindows(testCase)

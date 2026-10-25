@@ -2,16 +2,19 @@
 
 本轮选择 SWA 方法论文及两篇 *Nature Communications* 应用论文：方法来源直接、原始数据公开、能给出可检验的数值或明确的运行流程。这里不以未经核实的引用次数宣称论文影响力。计算、预处理和绘图均由 MATLAB/Acycle 完成；Python 仅提取原表单元格、记录来源、调用工具并比较 MATLAB 返回的验收字段。
 
-三个新案例列在 [manifest](../benchmarks/manifest.json)。其中预先声明的数值检查和实际执行结果分开保存：manifest 不表示已通过；运行回执中的 `checks[].passed` 才是本次结果。算法版本不同导致的未通过必须保留，不能通过选择更好看的区间或参数把它改成“复现成功”。
+论文案例列在 [manifest](../benchmarks/manifest.json)。其中预先声明的数值检查和实际执行结果分开保存：manifest 不表示已通过；运行回执中的 `checks[].passed` 才是本次结果。未通过的数值比较必须保留，不能通过选择更好看的区间或参数把它改成“复现成功”。原始 CI 比较结果汇总在 [paper-validation.json](../validation/paper-validation.json)。
 
 | 案例 | 数据 | 本次验收范围 |
 | --- | --- | --- |
 | `paper-weedon-swa` | Lavernock 原始磁化率，439 点 | 原始 SWA 数值一致性；约 0.81 m 峰且超过 5% FDR |
-| `paper-petm-coco` | Howards Tract 不整合面以下磁化率，5027 点 | 原始 COCO 实现执行；2000 次模拟；最优速率与论文 8–15 cm/kyr 区间比较 |
+| `paper-petm-coco` | Howards Tract 较宽区间磁化率，5027 点 | 原始 COCO 实现执行；2000 次模拟；保留与论文 8–15 cm/kyr 区间不一致的结果 |
+| `paper-petm-coco-published-protocol` | 补充材料指定区间的原始磁化率，4364 点 | 独立按补充材料日志校正协议；2370 个插值后点；仍使用现代 COCO 内核 |
 | `paper-cambrian-ecoco` | Albjära-1 主分析 Al 指标，0–18 m、18001 点 | 预算缩减的原始现代 eCOCO 实现执行；8 个完整窗口与 MATLAB 图件 |
 | `official-newark` | Acycle 官方完整 Newark depth-rank，2344 点 | 完整核心工作流、频谱和图件；不等同于独立重建 Newark 年代框架 |
 
 COCO/eCOCO 的逐项原函数数值一致性由独立的合成数据测试覆盖；不重复计算论文案例的整套 2000/199 次模拟。论文案例另外检查其来源、完整执行和明确列出的结果指标。
+
+[CI 40173168648](https://github.com/JFjifang/Acycle_Harness/actions/runs/40173168648) 的 22 项机械/论文测试为 21 通过、1 未通过：PETM 较宽区间速率比较失败。SWA 的论文显著性未复现另外作为科学比较结果保留，不能因其机械测试通过而忽略。Cambrian 缩减流程完成，不代表全文复现。
 
 ## SWA：原始方法数据的谱峰检验
 
@@ -27,11 +30,15 @@ Weedon (2020), *Boletín Geológico y Minero* **131**, 207–230，[DOI:10.21701
 
 ## COCO：PETM 论文参数与现代实现的速率比较
 
-Li et al. (2022), “Astrochronology of the Paleocene-Eocene Thermal Maximum on the Atlantic Coastal Plain,” *Nature Communications* **13**, 5618，[论文](https://doi.org/10.1038/s41467-022-33390-x)、[开放全文 Methods](https://pmc.ncbi.nlm.nih.gov/articles/PMC9509358/)。提取 `Ca & MS` 表 D/E 列，深度下界来自 `Lithology information` 的 Nanjemoy 基底 187.50380981408108 m，至最深 MS 观测 214.558 m。
+Li et al. (2022), “Astrochronology of the Paleocene-Eocene Thermal Maximum on the Atlantic Coastal Plain,” *Nature Communications* **13**, 5618，[论文](https://doi.org/10.1038/s41467-022-33390-x)、[开放全文 Methods](https://pmc.ncbi.nlm.nih.gov/articles/PMC9509358/)。两个独立案例均提取 `Ca & MS` 表 D/E 列。
 
-本次采用论文的 20 m LOESS、线性插值、六个目标周期 `[125, 95, 39.8, 23.3, 22, 18.7]` kyr、经典红噪声处理、0.13–30 cm/kyr（步长 0.1）和 2000 次模拟；种子固定为 1。速率数组按 MATLAB 冒号语义生成，最后一点是 29.93。检查最优速率是否落在论文所报 COCO 的 8–15 cm/kyr 宽区间。
+最初的 `paper-petm-coco` 选择整个 Nanjemoy 不整合面以下数据至 214.558 m，采用 20 m LOESS、六周期、经典红噪声处理、论文速率网格和 2000 次模拟，但保留现代默认采样/相关设置。实际完成 2000 次模拟，用时 77.98 秒，最优速率 **26.43 cm/kyr**、速率网格全局 Monte Carlo p = **0.103948025987**，没有落入预先声明的 8–15 cm/kyr 区间。[MATLAB 原始比较回执](../validation/artifacts/expanded-final/paper-petm-coco-2000/published-comparison.json) 和这一失败案例均保留。
 
-论文采用 Acycle 2.4.1，本次是固定版本源码的 COCO 2.0 `phase_averaged`。现代 Monte Carlo 检验和目标生成方式有变化，不能声称精确复现旧版 p 值、整篇 PETM 年代模型或事件持续时间。公开回执应同时保留实际最优速率、Monte Carlo p 值、区间和不一致结果。
+补充材料的进一步审计找到明确差异：[Supplementary Text 3，pp.22–23](../benchmarks/sources/petm_2022_supplement.pdf) 含实际分析日志，[纯文本摘录](../benchmarks/sources/petm_2022_coco_protocol.txt) 可离线核对。原始文件名指定 187.54–211.24 m，经 20 m LOESS 和 0.01 m 线性插值后为 187.542–211.232 m、2370 点；采用 **Pearson**、NFFT **5000**、频率上限 **0.06 cycles/kyr**。初次案例实际使用更宽区间、0.005 m 中位间隔、Spearman、NFFT 8192 和 0.0641711 上限，因此不能把该次偏差仅归因于新旧算法，也不能声称其参数完整匹配原文。
+
+独立的 `paper-petm-coco-published-protocol` 根据这份可核实日志新建，原始 CSV 为 4364 点、187.542–211.237 m；所有去趋势与插值仍在 MATLAB 中完成。其他固定参数为一片段、六周期 `[125, 95, 39.8, 23.3, 22, 18.7]` kyr、0.13–30 cm/kyr（步长 0.1）、经典 AR1 相减和 2000 次模拟；种子 1 是本项目的可重现性选择。保留同一 8–15 cm/kyr 事前比较条件；新案例不是覆盖旧结果，也没有搜索参数以追求匹配。速率数组按 MATLAB 冒号语义生成，最后一点是 29.93。
+
+论文采用 Acycle 2.4.1，本项目使用固定源码的 COCO 2.0 `phase_averaged`。即使采用补充日志的显式参数，现代目标谱生成和 Monte Carlo 零假设检验仍不同；LOESS 的距离窗口以 Acycle 分数跨度映射，不能声称恢复了全部历史预处理细节或精确复现旧版 p 值。每个案例须保留实际结果及差异，均不代表整篇 PETM 年代模型或事件持续时间复现。
 
 ## eCOCO：寒武纪论文主指标的缩减流程
 
@@ -39,7 +46,9 @@ Zhao et al. (2022), “Synchronizing rock clocks in the late Cambrian,” *Natur
 
 原文使用 12 点平滑、全记录 8% LOESS。补充 Fig. 5 的完整 eCOCO 为 4 m 窗、0.01 m 步长、5000 次模拟，搜索 0.5–15 mm/kyr、步长 0.1 mm/kyr；正文 1–10 mm/kyr 是结果范围，不能误作搜索范围。
 
-本次只取论文第一个 0–18 m 子段，使用约 6 m LOESS、4 m 窗、2 m 步长、199 次模拟和较粗速率网格；省略原文 12 点平滑，并采用 500 Ma 的现代九周期目标。子段 LOESS 的边缘效应也不同。因此它验证真实主指标上的接口和原函数一致性，不复现整幅已发表 eCOCO 图。约 1.85 m / 405 kyr 对应约 0.457 cm/kyr，仅作为图中尺度的诊断参照，不作为硬性通过条件。
+本次只取论文第一个 0–18 m 子段，使用约 6 m LOESS、4 m 窗、2 m 步长、199 次模拟和较粗速率网格；省略原文 12 点平滑，并采用 500 Ma 的现代九周期目标。子段 LOESS 的边缘效应也不同。因此它验证真实主指标上的原始实现执行，不复现整幅已发表 eCOCO 图。约 1.85 m / 405 kyr 对应约 0.457 cm/kyr，仅作为图中尺度的诊断参照，不作为硬性通过条件。
+
+实际完成 **8 个窗口、199 次模拟**，用时 **13.60 秒**；跟踪速率依次为 0.50、1.15、0.20、1.50、1.30、1.30、0.80、0.20 cm/kyr。[MATLAB 比较回执](../validation/artifacts/expanded-final/paper-cambrian-ecoco-199/published-comparison.json) 保存完整差异说明。这些结果只能证明预算缩减的真实数据流程完成；没有通过已发表速率图或显著性结果的复现验收。
 
 COCO/eCOCO 的基础方法文献为 Li, Kump, Hinnov & Mann (2018), *Earth and Planetary Science Letters* **501**, 165–179，[DOI:10.1016/j.epsl.2018.08.041](https://doi.org/10.1016/j.epsl.2018.08.041)。本次没有另外宣称复现该论文的全部案例。
 
@@ -51,6 +60,7 @@ COCO/eCOCO 的基础方法文献为 Li, Kump, Hinnov & Mann (2018), *Earth and P
 python benchmarks/run.py --workspace . --case official-newark --receipt validation/newark-local.json
 python benchmarks/run.py --workspace . --case paper-weedon-swa --receipt validation/weedon-local.json
 python benchmarks/run.py --workspace . --case paper-petm-coco --receipt validation/petm-local.json
+python benchmarks/run.py --workspace . --case paper-petm-coco-published-protocol --receipt validation/petm-protocol-local.json
 python benchmarks/run.py --workspace . --case paper-cambrian-ecoco --receipt validation/cambrian-local.json
 ```
 

@@ -21,5 +21,15 @@
     "retrieved_utc": "2026-10-25",
     "dataset_doi": "10.1594/PANGAEA.896872",
     "license": "CC-BY-4.0"
+  },
+  {
+    "file": "sources/petm_2022_supplement.pdf",
+    "source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-022-33390-x/MediaObjects/41467_2022_33390_MOESM1_ESM.pdf",
+    "sha256": "ca71136f8c11e535c8a8421dd09b2de14155297c34f47dc99054d4d2c608ff5b",
+    "bytes": 10385486,
+    "retrieved_utc": "2026-10-25",
+    "paper_doi": "10.1038/s41467-022-33390-x",
+    "license": "CC-BY-4.0; subject to third-party credit lines",
+    "purpose": "Supplementary Text 3, pages 22\u201323, exact published COCO log; offline protocol audit"
   }
 ]

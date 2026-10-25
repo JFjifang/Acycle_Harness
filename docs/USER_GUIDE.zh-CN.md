@@ -2,7 +2,7 @@
 
 本工具把 Acycle 的核心 MATLAB 分析能力接到 Codex 和 DeepSeek Harness。模型负责理解问题、选择参数和解释结果；Python 负责工具接口、输入快照、文件传输和运行记录；科学计算、图形、CSV/MAT/PNG/FIG 输出在 MATLAB 中完成。原函数来源和版本写入每次运行。缺少 MATLAB 或所需函数时会报错，不会自动改用 Python 近似算法。
 
-首次本地测试建议按“安装 → doctor → Newark smoke → 接入客户端 → 研究数据”的顺序进行。可直接交给另一个本地 Codex/Harness 会话执行的交接文本见 [LOCAL_HANDOFF.zh-CN.md](LOCAL_HANDOFF.zh-CN.md)。本版本的具体测试结果应查阅 `validation/` 中对应版本的验收记录，不要把安装成功等同于数值验证。
+首次本地测试建议按“安装 → doctor → Newark smoke → 接入客户端 → 研究数据”的顺序进行。可直接交给另一个本地 Codex/Harness 会话执行的交接文本见 [LOCAL_HANDOFF.zh-CN.md](LOCAL_HANDOFF.zh-CN.md)。0.3 版提供 9 个工具和 8 个 skills。具体测试结果应查阅 `validation/` 中对应版本的验收记录；`validation/v0.2/` 是历史记录，不能用来证明新增方法或论文判据已经通过。
 
 ## 1. 安装条件与目录
 
@@ -125,9 +125,9 @@ SWA 是 Smoothed Window Averages，不是 spectral weighted average，也不是�
 
 必须明确 `depth_unit`，以及以 **cm/kyr** 表示的 `sedimentation_rate_min`、`sedimentation_rate_max`、`sedimentation_rate_step`。`middle_age_ma` 与 `orbital_periods_kyr` 二选一：前者交由 Acycle 计算该年龄的目标周期，后者显式给出以 kyr 为单位的目标。不要把以 Ma 表示的年龄与以 kyr 表示的周期混用。
 
-COCO 默认 `method=adaptive` 调用原 adaptive9b，需要 9 个目标周期；`phase_averaged` 对接另一条原 adaptive 路径，可使用 2–32 个显式周期。eCOCO 提供 `adaptive`、`blocked`、`interleaved`，均要求 9 个目标周期；`window`、`step` 以输入深度单位表示，不能误写成 kyr。完整窗口之外不自动补零。方法之间有不同的目标分辨率与统计含义，不应仅凭曲线高度比较“哪种更显著”。
+COCO 默认 `method=adaptive` 调用原 adaptive9b，需要 9 个目标周期；`phase_averaged` 对接另一条原 adaptive 路径，可使用 2–9 个显式周期。eCOCO 提供 `adaptive`、`blocked`、`interleaved`，均要求 9 个目标周期；`window`、`step` 以输入深度单位表示，不能误写成 kyr。完整窗口之外不自动补零。方法之间有不同的目标分辨率与统计含义，不应仅凭曲线高度比较“哪种更显著”。
 
-共享参数包括 `nsim`、`seed`、`correlation`（默认 Spearman，可选 Pearson）、`red_noise`、可选 `nfft` 和以 cycles/kyr 表示的 `max_frequency`。这与 SWA 的 reciprocal-coordinate `fmax` 不同。只有 COCO 支持 `slices`。深度统一转换为 m 后送入原算法，返回的 eCOCO 深度轴也为 m，即使输入原来是 cm 或 ft。
+共享参数包括 `nsim`、`seed`、`correlation`（默认 Spearman，可选 Pearson）、`red_noise`、可选 `nfft` 和以 cycles/kyr 表示的 `max_frequency`。`red_noise=0` 表示不扣除背景，不是关闭 Monte Carlo；模拟次数仍由 `nsim` 控制。这与 SWA 的 reciprocal-coordinate `fmax` 不同。只有 COCO 支持 `slices` 和可选的 `dt`；`dt` 以输入深度单位指定去趋势后的等距插值间隔，省略时沿用原函数的中位采样间隔。深度统一转换为 m 后送入原算法，返回的 eCOCO 深度轴也为 m，即使输入原来是 cm 或 ft。
 
 默认使用原算法内部线性去趋势。可选 `detrend=lowess` 或 `loess` 时必须明确 `span`（全记录比例）或 `detrend_window`（输入深度单位）的其中一个；这属于全局预处理假设，Monte Carlo 不会在每条替代序列上重新估计该趋势。blocked/interleaved 不接受这种全局非线性预处理。以 [COCO.md](COCO.md) 和当前 schema 为准；Monte Carlo 结果、支持目标数量及失效窗口都应保留，不能只导出一条看起来平滑的最优速率曲线。
 
@@ -137,6 +137,12 @@ COCO 默认 `method=adaptive` 调用原 adaptive9b，需要 9 个目标周期；
 
 ```sh
 python local/render_config.py --workspace . --acycle-root "$ACYCLE_ROOT" --matlab "$MATLAB_EXECUTABLE"
+```
+
+PowerShell 中用以下等价命令读取环境变量：
+
+```powershell
+.\.venv\Scripts\python.exe local/render_config.py --workspace . --acycle-root $env:ACYCLE_ROOT --matlab $env:MATLAB_EXECUTABLE
 ```
 
 生成的 `local/generated/codex-mcp.toml` 使用当前虚拟环境的绝对 Python 路径、绝对工作区和 Acycle 路径，并把工具超时设置为 3600 秒。MCP 默认 60 秒可能不足以完成 MATLAB 启动和 Monte Carlo 分析。若需要其他时限，同时调整 `tool_timeout_sec` 和 `ACYCLE_MATLAB_TIMEOUT`。
@@ -202,3 +208,16 @@ steering 示例：
 | GitHub 产物下载失败 | 本地执行不依赖 GitHub；远端模式另见 [GITHUB_ACTIONS.md](GITHUB_ACTIONS.md)，连接器缓存需要外部服务 |
 
 对论文的验证分三层记录：原函数数值一致性、真实论文数据流程、论文定量结论。通过前两层不能自动声称完整复现第三层。已选论文与输入提取信息见 [PAPER_VALIDATION.md](PAPER_VALIDATION.md) 和 `benchmarks/`。
+
+## 9. 本轮论文检查的实际状态
+
+新增 benchmark **并非全部达到论文判据**。这些未通过结果被保留，不能当作本地安装故障，也不能通过改换区间或挑选参数抹去。
+
+| 案例 | 已得到的结果 | 应如何表述 |
+| --- | --- | --- |
+| Newark | 官方全记录的实际 MATLAB 流程与相关数值/图件检查已运行；细项看当前回执 | 可以报告相应接口和原函数验证，不声称重新建立整套 Newark 年代框架 |
+| Weedon/Lavernock SWA | 找到约 0.82125 m 的峰，吻合论文约 0.81 m 的位置；原函数未给出支持该峰的 5% FDR 阈值 | 峰位置吻合，但预先声明的 5% FDR 条件未复现；NaN 不能解释成显著 |
+| PETM COCO 首轮 | 较宽输入区间上的 2000 次模拟得到最优速率约 26.43 cm/kyr，速率搜索校正后的 p 约 0.103948；没有落入论文的 8–15 cm/kyr 区间 | 首轮未复现论文速率判据；核对原始日志后发现输入区间、插值和相关类型不一致，需按日志独立复跑，不能把差异直接归因于版本 |
+| Cambrian eCOCO | 使用论文主 Al 指标的 0–18 m 子段、缩减窗口/步长/模拟设置 | 属于预算缩减的真实数据流程验证，不是已发表整幅 eCOCO 图或完整年代学结论复现 |
+
+本地重跑应分别保存执行状态与科学判据。若工程测试通过而论文特征检查未通过，原样报告两者；继续溯源方法版本、完整预处理和目标设定，不能把“程序成功结束”改写成“论文复现成功”。

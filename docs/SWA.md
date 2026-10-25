@@ -2,6 +2,8 @@
 
 SWA means **Smoothed Window Averages**, or 平滑窗口平均. The bridge invokes the MATLAB implementations distributed with Acycle; it does not reproduce the method in Python. The numerical source reference is Acycle commit `dcba4279168745b563e0535b954297023dd62fc7`. `matlab/swa_sources.json` records the original files and hashes; each result records actual hashes, MATLAB/toolbox versions and the adapter hash.
 
+Matching hashes establish agreement with these declared source files, not compatibility with an untested future Acycle release. Changed sources or interfaces require review and new direct-original parity tests. The registry inventories both supported paths; each run's provenance identifies the files relevant to its selected path.
+
 ## Two explicit methods
 
 `method: "lomb"` is the default and follows the dedicated Acycle `SWAgui.m` path into `code/package/swa/specswafdr.m`. That original routine performs linear detrending, a split cosine taper at both 5% ends, the Lomb–Scargle transform and three Hanning smoothings. It fits the SWA background and computes both pointwise chi-square and false-discovery-rate thresholds. It preserves irregularly sampled coordinates: **do not interpolate or gap-fill this input**. Parameters for LOWESS, interpolation, MTM bandwidth or zero padding are deliberately not accepted by this method. The separate Bayesian spectrum shown by the full Acycle GUI is outside this bridge.
@@ -33,6 +35,8 @@ All outputs are generated in MATLAB: cleaned and prepared CSVs, a 13-column spec
 `swa-prepared.csv` is the exact array passed to the original entry point. For Lomb this is the sorted finite input, because detrending and tapering take place inside `specswafdr`; it must not be described as an exported internally tapered series. For MTM it includes the explicitly selected wrapper detrending.
 
 Spectrum columns are frequency, power, SWA background; 90%, 95%, 99%, 99.9%, 99.99% pointwise chi-square levels; and 10%, 5%, 1%, 0.1%, 0.01% FDR levels. Acycle may return an all-NaN FDR column when no independent threshold is emitted, including coincident threshold levels. This is preserved, marked unavailable in metadata and omitted from the plot. Do not interpret it as a zero threshold or a p-value. Counts in `fdr_exceeding_frequency_bins` count ordinates, not independent peaks; unavailable values are JSON `null`.
+
+Threshold availability does not indicate whether the FDR procedure ran: both successful original paths execute it. A missing column alone does not establish a discovery count. For the validated Lavernock run below, the original source and diagnostic output establish that the procedure ran and rejected no ordinate at the five tested levels. Do not describe this as an unavailable or unexecuted test. FDR control is also distinct from a family-wise or global-null p-value.
 
 SWA was designed for red-noise backgrounds without prior high-pass filtering. Its assumptions do not generally cover white noise, power-law noise, arbitrary variance nonstationarity or strongly aliased sampling. Pointwise confidence is not FDR control; FDR control is conditional on the model and does not itself establish orbital forcing. Changing the method, interval or preprocessing creates a new analysis choice that should remain visible in a sensitivity record.
 
