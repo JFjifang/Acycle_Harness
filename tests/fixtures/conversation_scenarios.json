@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "purpose": "Predeclared real Harness conversations: user goals and later adjustments, not prescribed tool calls.",
+  "execution_contract": {
+    "new_session_and_workspace_per_case": true,
+    "deliver_attachment_through_official_store": true,
+    "model_visible_fields": ["attachment.name", "turns[].user_prompt", "selected clarification answer text"],
+    "never_inject_into_model_context": ["acceptance", "expected operations", "expected parameter fields", "fixture source paths", "prior test outcomes", "evaluation rubric"],
+    "conversation_rule": "Send the next user turn only after the preceding assistant turn ends. Preserve actual conversation history and tool results. A model/tool loop is not itself a new user turn.",
+    "clarification_rule": "A reasonable question is allowed. Respond only with the matching predeclared user fact; record the question, topic and exact answer as an additional user turn. Never answer a clarification by naming a tool, supplying a JSON request or prescribing a tool sequence. Unknown questions stop with needs_human_clarification; do not improvise geological facts.",
+    "scientific_evaluation": "Use real saved MATLAB results and source provenance. Do not require a preferred peak, significance result or sedimentation rate. This suite evaluates tool choice, execution and conversational steering, not publication reproduction.",
+    "comparison_rule": "A comparison must identify the prior and new runs, explain the intended parameter changes, and preserve prior input/output hashes. It may use returned summaries or reopen records; no exact read-only tool order is required.",
+    "artifact_rule": "Require persisted MATLAB CSV, MAT and PNG/FIG files and official Harness image/file content referencing actual outputs. Verify the original file bytes independently of any attachment preview normalization. Headless image content delivery does not prove desktop pixel rendering.",
+    "error_rule": "Preserve failed calls and retries. Report recovered execution separately from first-attempt success; do not delete a failed attempt or replace its numerical output.",
+    "budget": {"max_scientific_calls_per_user_turn": 2, "max_clarification_turns_per_case": 2},
+    "evaluation_result_states": ["passed", "passed_with_recovery", "needs_human_clarification", "method_selection_failed", "execution_failed", "steering_failed", "artifact_delivery_failed", "interpretation_review_failed", "expected_clarification_passed", "budget_exceeded"]
+  },
+  "cases": [
+    {
+      "id": "newark_baseline_steering",
+      "scientific_scope": "Exploratory depth-domain periodicity and an explicit detrending sensitivity check; no orbit identification or chronology claim.",
+      "attachment": {
+        "root": "acycle",
+        "path": "data/Examples/Example-LateTriassicNewarkDepthRank.txt",
+        "name": "newark_depth_proxy.txt",
+        "sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+        "expected_raw_rows": 2344,
+        "transformations": "None; upload original bytes."
+      },
+      "turns": [
+        {
+          "id": "baseline",
+          "user_prompt": "附件是深度（m）—代用指标数据。请用 Acycle 做一轮周期性初步分析，给出频谱和周期随深度变化的图，并解释结果的可信程度。",
+          "acceptance": {
+            "required_completed_operation": "analyze",
+            "required_effective_parameters": {"evolution": true, "coordinate_unit": "m"},
+            "required_artifact_roles": ["spectrum", "evolution", "numeric_tables", "matlab_workspace", "editable_figures"],
+            "minimum_delivered_images": 2,
+            "required_backend": "matlab",
+            "baseline_reference": "A completed analyze run produced during this turn; record its run ID before sending the next user turn.",
+            "interpretation_review": ["Depth wavelengths remain in metres unless an explicit age model is separately provided.", "Pointwise red-noise confidence is not described as proof of orbital forcing."]
+          }
+        },
+        {
+          "id": "span_adjustment",
+          "user_prompt": "把刚才平滑去趋势的跨度改成记录长度的 25%，其他设置沿用。保留原结果，比较哪些周期特征改变了。",
+          "acceptance": {
+            "required_completed_operation": "analyze",
+            "required_effective_parameters": {"span": 0.25, "evolution": true, "coordinate_unit": "m"},
+            "required_parent": "baseline",
+            "same_frozen_input_sha256": true,
+            "baseline_files_unchanged": true,
+            "allowed_explicit_parameter_changes": ["span"],
+            "clarification_dependent_parameter_changes": {"linear_baseline_has_no_span": ["detrend"]},
+            "minimum_delivered_images": 2,
+            "comparison_must_cover": ["baseline run ID", "new run ID", "changed span", "actual returned features and limitations"]
+          }
+        }
+      ],
+      "clarification_answers": {
+        "coordinate_and_proxy": "第一列是深度，单位米；第二列是代用指标值，先只讨论深度域周期。",
+        "analysis_scope": "先做探索性周期分析和随深度变化的图；没有独立年龄模型，不要换算成年代。",
+        "baseline_preprocessing_choice": "采用适合初步检查的平滑去趋势设置，并说明采用的假设。",
+        "linear_baseline_has_no_span": "可以改用局部线性平滑去趋势，跨度为记录长度的 25%，其他分析设置保持不变。"
+      }
+    },
+    {
+      "id": "lavernock_fdr_display",
+      "scientific_scope": "Select an FDR-capable method from the research question, then change display range without changing that method or fitted full-spectrum results. The fixture is approximately regularly sampled; do not call it irregular.",
+      "attachment": {
+        "root": "repository",
+        "path": "benchmarks/data/weedon_2020_lavernock_0_13_17m.csv",
+        "name": "lavernock_magnetic_susceptibility.csv",
+        "sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+        "expected_raw_rows": 439,
+        "transformations": "None; upload original bytes and retain original sample coordinates."
+      },
+      "turns": [
+        {
+          "id": "baseline",
+          "user_prompt": "附件是地层高度（m）—磁化率数据。请保留原始采样坐标，用 Acycle 中能控制误发现率的方法检查周期，给出谱图，并区分普通置信线与误发现率结果。",
+          "acceptance": {
+            "required_completed_operation": "swa",
+            "allowed_methods": ["lomb", "mtm"],
+            "required_effective_parameters": {"coordinate_unit": "m"},
+            "no_interpolation": true,
+            "minimum_delivered_images": 1,
+            "required_backend": "matlab",
+            "baseline_reference": "Record the completed SWA run and its selected method, without imposing Lomb or MTM through the harness runner.",
+            "interpretation_review": ["FDR thresholds and pointwise confidence are not conflated.", "Missing FDR threshold columns are not treated as zero thresholds or proof that FDR was never calculated.", "Do not require the published 5% FDR feature to be reproduced."]
+          }
+        },
+        {
+          "id": "display_adjustment",
+          "user_prompt": "图里现在只显示 0 到 2 cycles/m。沿用刚才的方法和全部计算设置，保留原图，说明这是否改变了原先的显著性计算。",
+          "acceptance": {
+            "required_completed_operation": "swa",
+            "required_effective_parameters": {"fmax": 2, "coordinate_unit": "m"},
+            "same_method_as_baseline": true,
+            "required_parent": "baseline",
+            "same_frozen_input_sha256": true,
+            "baseline_files_unchanged": true,
+            "allowed_explicit_parameter_changes": ["fmax"],
+            "unchanged_numeric_artifacts": ["spectrum_csv"],
+            "minimum_delivered_images": 1,
+            "interpretation_review": ["The display/peak-report limit does not refit the full-spectrum SWA background or recompute FDR over a selected smaller frequency family.", "The model must not switch to ordinary analyze/MTM-red-noise just to redraw the figure."]
+          }
+        }
+      ],
+      "clarification_answers": {
+        "coordinate_and_proxy": "第一列是地层高度，单位米；第二列是磁化率。不要重新采样或截短记录。",
+        "method_choice": "请根据数据和控制误发现率这个目标选择 Acycle 已支持的方法，并说明理由。",
+        "frequency_unit": "这里的 cycles/m 是每米的周期数，只调整图示上限，不改变数据区间。"
+      }
+    },
+    {
+      "id": "petm_ecoco_multi_steering",
+      "scientific_scope": "Diagnostic evolutionary rate-map execution and multi-parameter steering. Age and search bounds are supplied assumptions; low-budget maps are not a published chronology or significance reproduction.",
+      "attachment": {
+        "root": "repository",
+        "path": "benchmarks/data/petm_2022_ms_published_coco_interval.csv",
+        "name": "petm_depth_magnetic_susceptibility.csv",
+        "sha256": "216f8a99011ec476365499d51393a79123a074dfdee067b176194c1d54b2efc6",
+        "expected_raw_rows": 4364,
+        "transformations": "None; upload raw observations, not a previously interpolated result."
+      },
+      "turns": [
+        {
+          "id": "baseline",
+          "user_prompt": "附件是约 56 Ma 的深度（m）—磁化率数据。请用 Acycle 看沉积速率是否随深度变化：先在 8–16 cm/kyr 内粗查，窗口 6 m、每次移动 3 m，用 19 次随机模拟检查流程，给出速率图。这次只作诊断，不作年代结论。",
+          "acceptance": {
+            "required_completed_operation": "ecoco",
+            "allowed_methods": ["adaptive", "blocked", "interleaved"],
+            "required_effective_parameters": {"depth_unit": "m", "middle_age_ma": 56, "sedimentation_rate_min": 8, "sedimentation_rate_max": 16, "window": 6, "step": 3, "nsim": 19},
+            "sedimentation_rate_step": {"positive": true, "maximum_rate_count": 101, "must_be_reported": true},
+            "required_backend": "matlab",
+            "minimum_delivered_images": 1,
+            "required_artifact_roles": ["rate_map", "numeric_tables", "matlab_workspace", "editable_figures"],
+            "interpretation_review": ["19 draws are diagnostic; their nominal minimum Monte Carlo p is 0.05, not a basis for fine significance claims.", "Short windows may resolve only part of the astronomical target; retain unsupported cells and actual contributing-period information.", "Within-window rate-search correction is not map-wide correction across windows.", "The given search range is an exploration assumption and must not be described as a measured rate."]
+          }
+        },
+        {
+          "id": "window_and_step_adjustment",
+          "user_prompt": "把窗口改为 8 m、移动间隔改为 4 m，其余沿用刚才的设置和方法。保留原结果，比较两张速率图及其局限。",
+          "acceptance": {
+            "required_completed_operation": "ecoco",
+            "required_effective_parameters": {"window": 8, "step": 4, "nsim": 19, "middle_age_ma": 56, "depth_unit": "m"},
+            "same_method_as_baseline": true,
+            "required_parent": "baseline",
+            "same_frozen_input_sha256": true,
+            "baseline_files_unchanged": true,
+            "allowed_explicit_parameter_changes": ["window", "step"],
+            "allowed_derived_default_changes": ["nfft only when it was not explicitly set and the branch records the dependency reset caused by window change"],
+            "preserve": ["seed", "target periods/age", "rate grid", "correlation", "background method", "detrending", "simulation count"],
+            "minimum_delivered_images": 1,
+            "comparison_must_cover": ["both run IDs", "window and step changes", "different depth-window coverage", "actual map output", "diagnostic scope"],
+            "must_not_switch_operation": ["analyze", "coco", "swa"]
+          }
+        }
+      ],
+      "clarification_answers": {
+        "coordinate_and_proxy": "第一列是深度，单位米；第二列是磁化率。年龄以约 56 Ma 为这次诊断的假设。",
+        "rate_grid_resolution": "这是快速诊断，采用每 1 cm/kyr 一点的粗网格即可。",
+        "target_orbit_choice": "使用 Acycle 对约 56 Ma 年代的标准天文目标，并报告短窗口实际能够分辨哪些部分。",
+        "diagnostic_budget": "这次只运行 19 次随机模拟，并明确它不支持发表级显著性结论。",
+        "short_window_resolution": "保留我给出的窗口做运行诊断，明确报告未分辨的目标部分和缺失单元，不把它解释为完整天文年代模型。"
+      }
+    },
+    {
+      "id": "unknown_metadata_clarification",
+      "scientific_scope": "Negative control: a model must request missing units and age/target assumptions instead of inventing them to obtain a rate map.",
+      "attachment": {
+        "root": "acycle",
+        "path": "data/Examples/Example-LateTriassicNewarkDepthRank.txt",
+        "name": "unknown_series.txt",
+        "sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+        "expected_raw_rows": 2344,
+        "transformations": "None. This source has no header. Expose only the neutral attachment name and its bytes; do not expose the original path, title, provenance, metadata from another case, or the hidden fixture identity."
+      },
+      "turns": [
+        {
+          "id": "missing_context",
+          "user_prompt": "请把附件这两列数据做成随深度变化的沉积速率图，告诉我哪些速率可信。",
+          "acceptance": {
+            "expected_state": "awaiting_user_metadata",
+            "permitted_actions": ["list/import current-session attachment", "inspect the file", "explain required assumptions", "ask a concise clarification"],
+            "forbidden_scientific_operations_before_answer": ["coco", "ecoco"],
+            "max_matlab_runs": 0,
+            "must_request": ["coordinate meaning and depth unit", "geological age or explicit target periods", "a justified rate-search range or user agreement to a stated exploratory range"],
+            "must_not_invent": ["age", "coordinate unit", "target periods", "a measured sedimentation rate"],
+            "no_new_images_required": true,
+            "fixture_identity_must_remain_hidden": true
+          }
+        }
+      ],
+      "clarification_answers": {},
+      "stop_after_expected_clarification": true
+    }
+  ]
+}

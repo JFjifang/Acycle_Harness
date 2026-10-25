@@ -3,11 +3,18 @@ import { spawn } from 'node:child_process'
 import { readFile, readdir } from 'node:fs/promises'
 import { resolve, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { attachOutputs, deliveryConfig, importAttachment, renderResult, resolveInputAttachment } from './attachments.mjs'
 
 export const name = 'acycle-matlab'
 export const inject = ['tools', 'skills', 'workingDirectory']
 const skillRoot = fileURLToPath(new URL('./skills/', import.meta.url))
 const MAX_OUTPUT = 16 * 1024 * 1024
+const WORKFLOW_POLICY = `Acycle research workflow
+Use Acycle's original MATLAB implementation for its scientific quality assessment, numerical analysis, statistics, and plotting. Python may handle attachment bytes, checksums, file-format structure, transport, and functions Acycle does not implement; bridge scientific work back to MATLAB wherever possible. Do not replace available Acycle scientific QA or calculations with shell/Python statistics. The default MATLAB analysis pipeline already performs scientific QA; external numerical pre-analysis is unnecessary.
+Choose methods from the user's research question, documented data meaning, and applicable Acycle skills. For sedimentation-rate, age, or orbital interpretations, verify the required coordinate units, geological age constraints, orbital targets, and scientifically reasonable search range. If required information is missing, ask the user a concise clarification and wait before starting scientific analysis. Never infer units, age, or a rate range from a filename, numerical magnitudes, or a sample count. Structural attachment import and byte preview can proceed while clarification is pending.
+For conversational changes to a completed run, prefer acycle_rerun with the requested changes together in parameter_patch. Preserve the saved input, operation, method, and effective settings except for changes the user requested. Do not restart a generic analysis that silently changes the original method. Retrieve completed outputs for display instead of recalculating them.
+If a scientific tool fails and returns a run_id, report that run_id and its diagnostic, and stop the failed analysis attempt. Do not repeatedly resubmit a failed scientific computation or switch to Python as a numerical substitute. Do not alter authentication or execute gh auth to repair an analysis backend; report the setup problem for the operator. A presentation failure does not undo completed MATLAB results: reopen the saved run to recover its files.
+Image previews and downloadable files are for the user. Offloaded image references do not give a text-only model image pixels; do not claim visual inspection. Preserve statistical limitations and warnings in the answer.`
 
 /** No shell expansion; arguments and paths travel as JSON through stdin. */
 export function runBridge(request, { python = process.env.ACYCLE_PYTHON || 'python3', signal,
@@ -85,21 +92,47 @@ export async function apply(ctx, config = {}) {
   const python = config.python || process.env.ACYCLE_PYTHON || 'python3'
   const configuredWorkspace = config.workspace || process.env.ACYCLE_WORKSPACE
   const options = { python, timeoutMs: config.timeoutMs || 3_600_000 }
+  const delivery = deliveryConfig(config)
+  const systemPrompt = ctx.get('systemPrompt')
+  if (systemPrompt) systemPrompt.section({ name: 'acycle:research-workflow', order: 3200,
+    text: WORKFLOW_POLICY, interpolate: false })
+  const workspaceFor = async exec => resolve(configuredWorkspace || (exec.agent
+    ? await ctx.workingDirectory.ensure(exec.agent, exec.signal) : process.cwd()))
   const schemas = await runBridge({ action: 'schemas' }, options)
   for (const schema of schemas) {
     const fn = schema.function
     ctx.tools.register({
       name: fn.name, description: fn.description, parameters: fn.parameters,
       output: { schema: { type: 'object', additionalProperties: true },
-                render: (_args, value) => [{ type: 'text', text: JSON.stringify(value) }] },
+                render: renderResult },
       async execute(args, exec) {
-        const workspace = configuredWorkspace || (exec.agent
-          ? await ctx.workingDirectory.ensure(exec.agent, exec.signal) : process.cwd())
-        return runBridge({ action: 'call', name: fn.name, arguments: args,
-                           workspace: resolve(workspace) }, { ...options, signal: exec.signal })
+        const workspace = await workspaceFor(exec)
+        const input = await resolveInputAttachment(ctx, args, workspace, exec, delivery)
+        let value = await runBridge({ action: 'call', name: fn.name, arguments: input.args,
+                           workspace }, { ...options, signal: exec.signal })
+        if (input.imported) value = { ...value, imported_attachment: input.imported }
+        if (fn.name === 'acycle_capabilities') value = { ...value, harness: {
+          attachment_import_available: Boolean(ctx.get('attachments') && ctx.get('sessionQuery') && exec.agent),
+          image_delivery_available: Boolean(ctx.get('attachments')),
+          user_image_previews_do_not_imply_model_vision: true,
+        } }
+        return attachOutputs(ctx, value, workspace, exec, delivery, run_id => runBridge({
+          action: 'call', name: 'acycle_get_run', arguments: { run_id }, workspace,
+        }, { ...options, signal: exec.signal }))
       },
     })
   }
+  ctx.tools.register({
+    name: 'acycle_import_attachment',
+    description: 'Import a user-uploaded CSV/TXT/DAT/TSV from this Harness conversation into the Acycle workspace without changing bytes. Omit attachment_id for the latest single upload; multiple uploads return choices. Use the returned input_path for analysis.',
+    parameters: { type: 'object', additionalProperties: false, properties: {
+      attachment_id: { type: 'string', description: 'An attachment ID from this Session; omit for the latest single uploaded file.' },
+    } },
+    output: { schema: { type: 'object', additionalProperties: true }, render: renderResult },
+    async execute(args, exec) {
+      return importAttachment(ctx, args, await workspaceFor(exec), exec, delivery)
+    },
+  })
   const skills = await loadSkills()
   const byName = new Map(skills.map(skill => [skill.name, skill]))
   ctx.skills.registerProvider(() => ({

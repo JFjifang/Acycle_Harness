@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -98,23 +99,98 @@ def _execute(request):
     return response
 
 
-def _analyze(root, arguments, operation='analyze'):
-    source = _input_path(root, arguments['input_path'])
-    parameters = arguments.get('parameters', {})
+def _parameter_schema(operation):
+    if operation not in {'analyze', 'swa', 'coco', 'ecoco'}:
+        raise ValueError(f'Unsupported saved operation: {operation}')
+    return next(t for t in tool_schemas() if t['function']['name']=='acycle_'+operation)['function']['parameters']['properties']['parameters']
+
+
+def _validate_value(value, schema, name):
+    """Validate tool configuration only; scientific data checks remain in MATLAB."""
+    kind = schema.get('type')
+    valid = {'string': isinstance(value, str), 'boolean': isinstance(value, bool),
+             'number': isinstance(value, (int, float)) and not isinstance(value, bool),
+             'integer': (isinstance(value, int) and not isinstance(value, bool)) or
+                        (isinstance(value, float) and value.is_integer()),
+             'array': isinstance(value, list), 'object': isinstance(value, dict)}
+    if kind in valid and not valid[kind]:
+        raise ValueError(f'{name} must have type {kind}')
+    if kind in {'number', 'integer'}:
+        if not math.isfinite(value):
+            raise ValueError(f'{name} must be finite')
+        for key, passes in [('minimum', lambda a, b: a >= b), ('maximum', lambda a, b: a <= b),
+                            ('exclusiveMinimum', lambda a, b: a > b), ('exclusiveMaximum', lambda a, b: a < b)]:
+            if key in schema and not passes(value, schema[key]):
+                raise ValueError(f'{name} violates {key}={schema[key]}')
+    if 'enum' in schema and value not in schema['enum']:
+        raise ValueError(f'{name} must be one of {schema["enum"]}')
+    if kind == 'array':
+        if len(value) < schema.get('minItems', 0) or len(value) > schema.get('maxItems', float('inf')):
+            raise ValueError(f'{name} has an unsupported number of items')
+        for i, item in enumerate(value):
+            _validate_value(item, schema.get('items', {}), f'{name}[{i}]')
+
+
+def _validate_parameters(operation, parameters):
     if not isinstance(parameters, dict):
         raise ValueError('parameters must be an object')
-    schema = next(t for t in tool_schemas() if t['function']['name']=='acycle_'+operation)['function']['parameters']['properties']['parameters']
+    schema = _parameter_schema(operation)
     unknown = set(parameters) - set(schema['properties'])
     if unknown:
         raise ValueError(f'Unknown MATLAB parameters: {sorted(unknown)}')
     missing = set(schema.get('required', [])) - set(parameters)
     if missing:
         raise ValueError(f'Missing MATLAB parameters: {sorted(missing)}')
+    for key, value in parameters.items():
+        _validate_value(value, schema['properties'][key], key)
+    if operation == 'swa' and parameters.get('method', 'lomb') == 'lomb':
+        extras = {'mtm_nw', 'pad_factor', 'detrend'} & parameters.keys()
+        if extras:
+            raise ValueError(f'Lomb SWA does not accept MTM-only parameters: {sorted(extras)}')
+    if operation in {'coco', 'ecoco'}:
+        if ('middle_age_ma' in parameters) == ('orbital_periods_kyr' in parameters):
+            raise ValueError('Specify exactly one of middle_age_ma or orbital_periods_kyr')
+        method = parameters.get('method', 'adaptive')
+        periods = parameters.get('orbital_periods_kyr')
+        if periods is not None:
+            if len(set(periods)) != len(periods):
+                raise ValueError('orbital_periods_kyr must contain distinct periods')
+            if (operation == 'ecoco' or method == 'adaptive') and len(periods) != 9:
+                raise ValueError(f'{operation} {method} requires exactly 9 target periods')
+        detrend = parameters.get('detrend', 'linear')
+        trend_windows = {'span', 'detrend_window'} & parameters.keys()
+        if detrend == 'linear' and trend_windows:
+            raise ValueError('span/detrend_window require lowess or loess')
+        if detrend != 'linear' and len(trend_windows) != 1:
+            raise ValueError('lowess/loess requires exactly one of span or detrend_window')
+        if operation == 'ecoco' and method in {'blocked', 'interleaved'} and detrend != 'linear':
+            raise ValueError('Blocked/interleaved eCOCO requires linear detrending; global nonlinear preprocessing would mix held-out information')
+        if parameters['sedimentation_rate_max'] <= parameters['sedimentation_rate_min']:
+            raise ValueError('sedimentation_rate_max must exceed sedimentation_rate_min')
+
+
+def _analyze(root, arguments, operation='analyze', *, steering=None, explicit_parameters=None):
+    source = _input_path(root, arguments['input_path'])
+    parameters = arguments.get('parameters', {})
+    _validate_parameters(operation, parameters)
     parent = arguments.get('parent_run_id')
     if parent:
         previous = _get(root, parent)
         if previous.get('status') != 'completed':
             raise ValueError('Parent run must be completed')
+        previous_operation = previous.get('operation', 'analyze')
+        if previous_operation != operation:
+            raise ValueError(f'Parent operation is {previous_operation}, not {operation}. Use acycle_rerun to adjust it; an explicitly different analysis must start independently without parent_run_id.')
+        # A partial direct request must not silently reset a parent's method.
+        # Deliberately selecting another method remains explicit and auditable.
+        previous_parameters = {**previous.get('effective_parameters', {}), **previous.get('parameters', {})}
+        method_defaults = {'swa': {'method': 'lomb'},
+                           'coco': {'method': 'adaptive', 'detrend': 'linear'},
+                           'ecoco': {'method': 'adaptive', 'detrend': 'linear'},
+                           'analyze': {'detrend': 'lowess'}}[operation]
+        for key, default in method_defaults.items():
+            if key not in parameters and previous_parameters.get(key, default) != default:
+                raise ValueError(f'Omitted {key} would reset the parent method. Use acycle_rerun to preserve existing settings, or specify {key} explicitly.')
     run_id = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ-') + uuid.uuid4().hex[:12]
     run_dir = _run_path(root, run_id)
     run_dir.mkdir(parents=True)
@@ -128,6 +204,9 @@ def _analyze(root, arguments, operation='analyze'):
               'input_sha256':hashlib.sha256(frozen.read_bytes()).hexdigest(),
               'operation':operation, 'parameters':parameters, 'created_at':datetime.now(timezone.utc).isoformat(),
               'backend':os.environ.get('ACYCLE_BACKEND','local'), 'output_dir':str(output)}
+    record['explicit_parameter_names'] = sorted(parameters if explicit_parameters is None else explicit_parameters)
+    if steering is not None:
+        record['steering'] = steering
     _write(run_dir / 'request.json', record)
     try:
         response = _execute({'input_path':str(frozen), 'output_dir':str(output),
@@ -146,6 +225,100 @@ def _analyze(root, arguments, operation='analyze'):
     return record
 
 
+def _prepare_branch(root, baseline, patch):
+    """Apply a declared patch without changing the saved scientific operation."""
+    if baseline.get('status') != 'completed':
+        raise ValueError('Baseline must be completed')
+    operation = baseline.get('operation', 'analyze')
+    schema = _parameter_schema(operation)
+    if not isinstance(patch, dict):
+        raise ValueError('parameter_patch must be an object')
+    unknown = set(patch) - set(schema['properties'])
+    if unknown:
+        raise ValueError(f'Unknown MATLAB parameters for {operation}: {sorted(unknown)}')
+    if any(patch.get(key, '') is None for key in ('method', 'detrend')):
+        raise ValueError('Select method/detrend explicitly; null cannot silently reset an analysis method')
+    requested = baseline.get('parameters', {})
+    effective = baseline.get('effective_parameters', baseline.get('result', {}).get('parameters', requested))
+    if not isinstance(effective, dict) or not isinstance(requested, dict):
+        raise ValueError('Saved baseline parameter objects are invalid')
+    # Replay effective defaults, while preserving the user's explicit input
+    # semantics (for example coordinate_unit before MATLAB age conversion).
+    parameters = {**effective, **requested}
+    original_parameters = dict(parameters)
+    unknown = set(parameters) - set(schema['properties'])
+    if unknown:
+        raise ValueError(f'Saved baseline contains unsupported parameters; review version compatibility: {sorted(unknown)}')
+    explicit = set(baseline.get('explicit_parameter_names', requested))
+    removed = {}
+
+    def remove(key, reason):
+        if key in parameters:
+            removed[key] = {'previous_value': parameters.pop(key), 'reason': reason}
+        explicit.discard(key)
+
+    for key, value in patch.items():
+        if value is None:
+            remove(key, 'explicit null patch: remove optional setting or restore MATLAB default')
+        else:
+            parameters[key] = value
+            explicit.add(key)
+    if operation in {'coco', 'ecoco'}:
+        for first, second in [('middle_age_ma', 'orbital_periods_kyr'), ('span', 'detrend_window')]:
+            supplied = [key for key in (first, second) if key in patch and patch[key] is not None]
+            if len(supplied) == 2:
+                raise ValueError(f'parameter_patch cannot specify both {first} and {second}')
+            if supplied:
+                other = second if supplied[0] == first else first
+                remove(other, f'mutually exclusive with explicit {supplied[0]} patch')
+        if patch.get('detrend') == 'linear':
+            for key in ('span', 'detrend_window'):
+                if patch.get(key) is not None:
+                    raise ValueError(f'Linear detrending cannot be combined with {key}')
+                remove(key, 'explicit switch to linear detrending')
+    if operation == 'swa' and patch.get('method') == 'lomb':
+        for key in ('mtm_nw', 'pad_factor', 'detrend'):
+            if key in patch and patch[key] is not None:
+                raise ValueError(f'Lomb SWA cannot be combined with MTM-only {key}')
+            remove(key, 'explicit switch to original Lomb SWA')
+    # Only defaults derived from an explicitly changed setting are recalculated
+    # by MATLAB. Explicit user choices remain fixed and may fail MATLAB checks.
+    changed = {key for key in patch if key not in original_parameters or
+               key not in parameters or parameters[key] != original_parameters[key]}
+    reset_defaults = set()
+    if operation == 'analyze':
+        if {'sedimentation_rate', 'age_model', 'depth_unit'} & changed:
+            reset_defaults.update({'coordinate_unit', 'dt', 'nfft', 'fmax', 'fit_fmax', 'evolution_window', 'evolution_step'})
+        if 'dt' in changed:
+            reset_defaults.update({'nfft', 'fmax', 'fit_fmax', 'evolution_step'})
+        if 'evolution_window' in changed:
+            reset_defaults.add('evolution_step')
+    elif operation == 'swa' and 'method' in changed:
+        reset_defaults.add('fmax')
+    elif operation in {'coco', 'ecoco'}:
+        if {'middle_age_ma', 'orbital_periods_kyr'} & changed:
+            reset_defaults.add('max_frequency')
+        if {'dt', 'slices', 'window', 'depth_unit'} & changed:
+            reset_defaults.add('nfft')
+    for key in sorted(reset_defaults - explicit - patch.keys()):
+        remove(key, 'dependent MATLAB default recalculated for the explicit parameter change')
+    _validate_parameters(operation, parameters)
+    frozen = _input_path(root, baseline['input_path'])
+    if hashlib.sha256(frozen.read_bytes()).hexdigest() != baseline['input_sha256']:
+        raise ValueError('Frozen baseline input checksum changed; refusing to branch from modified data')
+    steering = {'baseline_run_id': baseline['run_id'], 'operation_preserved': operation,
+                'parameter_patch': patch, 'removed_or_reset_parameters': removed,
+                'parameter_basis': 'saved effective defaults plus explicit baseline input settings'}
+    return operation, parameters, explicit, steering
+
+
+def _run_branch(root, baseline, prepared, label):
+    operation, parameters, explicit, steering = prepared
+    return _analyze(root, {'input_path': baseline['input_path'], 'parameters': parameters,
+                          'parent_run_id': baseline['run_id'], 'label': label}, operation,
+                    steering=steering, explicit_parameters=explicit)
+
+
 def dispatch(name, args, workspace='.'):
     """Execute a tool. Python handles files/metadata and delegates analysis to MATLAB."""
     if not isinstance(args, dict):
@@ -161,7 +334,7 @@ def dispatch(name, args, workspace='.'):
     root = _root(workspace)
     if name == 'acycle_capabilities':
         remote = os.environ.get('ACYCLE_BACKEND','local') == 'github'
-        return {'version':'0.3.0', 'scientific_backend':'MATLAB/Acycle',
+        return {'version':'0.4.0', 'scientific_backend':'MATLAB/Acycle',
                 'backend':os.environ.get('ACYCLE_BACKEND','local'),
                 'matlab_available':bool(shutil.which(os.environ.get('MATLAB_EXECUTABLE','matlab'))),
                 'acycle_root':os.environ.get('ACYCLE_ROOT'),
@@ -176,13 +349,25 @@ def dispatch(name, args, workspace='.'):
         path = _input_path(root,args['input_path'])
         content = path.read_bytes()
         lines = content.decode('utf-8-sig').splitlines()
+        crlf = content.count(b'\r\n')
+        newline_counts = {'CRLF': crlf, 'LF': content.count(b'\n')-crlf,
+                          'CR': content.count(b'\r')-crlf}
+        styles = [style for style, count in newline_counts.items() if count]
+        newline_style = styles[0] if len(styles) == 1 else ('mixed' if styles else 'none')
         return {'input_path':str(path), 'bytes':len(content), 'sha256':hashlib.sha256(content).hexdigest(),
-                'line_count':len(lines), 'preview':lines[:8],
-                'note':'Structural preview only; scientific QA, duplicate handling, interpolation and plots run in MATLAB.'}
+                'line_count':len(lines), 'logical_line_count':len(lines), 'preview':lines[:8],
+                'newline_style':newline_style, 'newline_counts':newline_counts,
+                'ends_with_newline':content.endswith((b'\r', b'\n')),
+                'matlab_accepts_original_newlines':True,
+                'note':'Structural preview only. line_count/logical_line_count use universal CR, CRLF and LF handling; they are text-line counts, not validated sample counts. MATLAB already reads these original newline formats: do not convert the file or use shell wc -l to reinterpret a CR-only file as one row. Numerical QA, including spacing, ranges, means, missing data and duplicate handling, belongs in MATLAB; do not recompute it using Python, awk or shell arithmetic. Use the completed MATLAB summary.input_rows/processed_rows for scientific row counts.'}
     if name in {'acycle_analyze','acycle_swa','acycle_coco','acycle_ecoco'}:
         return _analyze(root,args,name.removeprefix('acycle_'))
     if name == 'acycle_get_run':
         return _get(root,args['run_id'])
+    if name == 'acycle_rerun':
+        baseline = _get(root, args['run_id'])
+        prepared = _prepare_branch(root, baseline, args['parameter_patch'])
+        return _run_branch(root, baseline, prepared, args.get('label', 'Conversation adjustment'))
     if name == 'acycle_sensitivity':
         baseline = _get(root,args['run_id'])
         if baseline['status'] != 'completed':
@@ -191,40 +376,39 @@ def dispatch(name, args, workspace='.'):
         operation = baseline.get('operation','analyze')
         allowed = {
             'analyze': {'span','mtm_nw','smooth_fraction','dt','evolution_window','evolution_step','filter_band','sedimentation_rate'},
-            'swa': {'mtm_nw','pad_factor','fmax','detrend'},
+            'swa': {'method','mtm_nw','pad_factor','fmax','detrend'},
             'coco': {'sedimentation_rate_min','sedimentation_rate_max','sedimentation_rate_step','middle_age_ma','orbital_periods_kyr','nsim','seed','correlation','red_noise','nfft','max_frequency','slices','dt','detrend','span','detrend_window','method'},
             'ecoco': {'sedimentation_rate_min','sedimentation_rate_max','sedimentation_rate_step','middle_age_ma','orbital_periods_kyr','nsim','seed','correlation','red_noise','nfft','max_frequency','window','step','method','detrend','span','detrend_window'},
         }.get(operation,set())
-        if parameter not in allowed:
+        if not isinstance(parameter, str) or parameter not in allowed:
             raise ValueError(f'Unsupported sensitivity parameter: {parameter}')
         values = args['values']
         if not isinstance(values,list) or not 1 <= len(values) <= 12:
             raise ValueError('Provide 1–12 parameter values')
+        # Validate the entire requested configuration sweep before the first
+        # MATLAB job, so a malformed later value cannot leave partial runs.
+        prepared = [_prepare_branch(root, baseline, {parameter: value}) for value in values]
         runs = []
-        for value in values:
-            params = dict(baseline['parameters'])
-            if operation in {'coco','ecoco'}:
-                alternatives={'middle_age_ma':'orbital_periods_kyr','orbital_periods_kyr':'middle_age_ma',
-                              'span':'detrend_window','detrend_window':'span'}
-                if parameter in alternatives:
-                    params.pop(alternatives[parameter],None)
-            params[parameter] = value
-            run = _analyze(root,{'input_path':baseline['input_path'], 'parameters':params,
-                                'parent_run_id':baseline['run_id'], 'label':f'{parameter}={value}'},operation)
-            runs.append({'run_id':run['run_id'], 'parameters':run['parameters'], 'summary':run['summary']})
+        for value, plan in zip(values, prepared):
+            run = _run_branch(root, baseline, plan, f'{parameter}={value}')
+            runs.append({'run_id':run['run_id'], 'operation':run['operation'],
+                         'parent_run_id':run['parent_run_id'], 'input_sha256':run['input_sha256'],
+                         'parameters':run['parameters'], 'effective_parameters':run['effective_parameters'],
+                         'steering':run['steering'], 'summary':run['summary'], 'artifacts':run['artifacts']})
         return {'baseline_run_id':baseline['run_id'], 'operation':operation, 'parameter':parameter, 'runs':runs}
     if name == 'acycle_compare':
         ids = args['run_ids']
         if not isinstance(ids,list) or not 2 <= len(ids) <= 20:
             raise ValueError('Provide 2–20 run IDs')
         records = [_get(root,r) for r in ids]
-        return {'runs':[{k:r.get(k) for k in ['run_id','status','operation','label','parent_run_id','input_sha256','parameters','effective_parameters','summary','artifacts','provenance']} for r in records],
+        return {'runs':[{k:r.get(k) for k in ['run_id','status','operation','label','parent_run_id','input_sha256','parameters','effective_parameters','steering','summary','artifacts','provenance']} for r in records],
                 'note':'Comparison reports existing MATLAB results and metadata; infer robustness with sampling, chronology and independent geological constraints.'}
     raise AssertionError('Unreachable tool dispatch')
 
 
 def tool_schemas():
     string = {'type':'string'}
+    parent_id = {'type':'string', 'description':'Completed parent of the same analysis operation. Use acycle_rerun for conversational adjustments; a different operation starts independently without parent_run_id.'}
     parameter_schema = {'type':'object','description':'MATLAB parameters. Defaults follow pinned Acycle mini robot: LOWESS span .35, NW 2. Frequencies follow input coordinate units (or kyr after age conversion).',
         'properties':{
             'detrend':{'type':'string','enum':['lowess','rlowess','loess','rloess','linear','mean','none']},
@@ -284,17 +468,30 @@ def tool_schemas():
             'method':{'type':'string','enum':['adaptive','blocked','interleaved']},
             'window':{'type':'number','exclusiveMinimum':0,'description':'Window length in the declared input depth_unit'},
             'step':{'type':'number','exclusiveMinimum':0,'description':'Window step in the declared input depth_unit'}}}
+    patch_properties = {}
+    for schema in (parameter_schema, swa_schema, coco_schema, ecoco_schema):
+        for key, value in schema['properties'].items():
+            choices = patch_properties.setdefault(key, {'anyOf': []})['anyOf']
+            if value not in choices:
+                choices.append(value)
+    for key, value in patch_properties.items():
+        if key not in {'method', 'detrend'}:
+            value['anyOf'].append({'type': 'null'})
+    patch_schema = {'type':'object', 'properties':patch_properties, 'additionalProperties':False,
+        'description':'Change only parameters supported by the baseline operation. Omitted values and the operation/method stay fixed. null removes optional fields or restores their MATLAB default, but cannot reset method/detrend. Select method/detrend explicitly. Mutually exclusive targets and detrending windows are replaced with a recorded explanation.'}
     specs = [
         ('acycle_capabilities','Inspect configured MATLAB backend and supported Acycle core. No numerical Python fallback.',{},[]),
-        ('acycle_inspect','Preview a two-column input file and its checksum. MATLAB performs scientific QA.',{'input_path':string},['input_path']),
+        ('acycle_inspect','Inspect exact input bytes, checksum, universal-newline logical line count and preview. CR-only data is supported without conversion. MATLAB performs all numerical QA.',{'input_path':string},['input_path']),
         ('acycle_analyze','Run Acycle original MATLAB computation and MATLAB plots. Creates immutable run with source provenance.',
-         {'input_path':string,'parameters':parameter_schema,'label':string,'parent_run_id':string},['input_path']),
+         {'input_path':string,'parameters':parameter_schema,'label':string,'parent_run_id':parent_id},['input_path']),
         ('acycle_swa','Run original MATLAB SWA (Smoothed Window Averages) and FDR; save original tables and MATLAB figures.',
-         {'input_path':string,'parameters':swa_schema,'label':string,'parent_run_id':string},['input_path']),
+         {'input_path':string,'parameters':swa_schema,'label':string,'parent_run_id':parent_id},['input_path']),
         ('acycle_coco','Run Acycle adaptive COCO in MATLAB to evaluate sedimentation rates with explicit orbital targets and Monte Carlo settings.',
-         {'input_path':string,'parameters':coco_schema,'label':string,'parent_run_id':string},['input_path','parameters']),
+         {'input_path':string,'parameters':coco_schema,'label':string,'parent_run_id':parent_id},['input_path','parameters']),
         ('acycle_ecoco','Run Acycle evolutionary COCO in MATLAB; retain window-wise rates, uncertainty and original statistical outputs.',
-         {'input_path':string,'parameters':ecoco_schema,'label':string,'parent_run_id':string},['input_path','parameters']),
+         {'input_path':string,'parameters':ecoco_schema,'label':string,'parent_run_id':parent_id},['input_path','parameters']),
+        ('acycle_rerun','Apply a conversational parameter change to a saved run. Preserve its frozen input and original analysis operation (including SWA/COCO/eCOCO), retain other effective settings, and create an immutable child run in MATLAB.',
+         {'run_id':string,'parameter_patch':patch_schema,'label':string},['run_id','parameter_patch']),
         ('acycle_sensitivity','Branch a completed run, varying one parameter in MATLAB; preserve baseline.',
          {'run_id':string,'parameter':string,'values':{'type':'array','items':{},'minItems':1,'maxItems':12}},['run_id','parameter','values']),
         ('acycle_compare','Read existing MATLAB results and parameters side by side without recomputing.',

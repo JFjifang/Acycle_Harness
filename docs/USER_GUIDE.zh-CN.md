@@ -1,8 +1,8 @@
-# Acycle Harness 0.3 用户文档
+# Acycle Harness 0.4 用户文档
 
 本工具把 Acycle 的核心 MATLAB 分析能力接到 Codex 和 DeepSeek Harness。模型负责理解问题、选择参数和解释结果；Python 负责工具接口、输入快照、文件传输和运行记录；科学计算、图形、CSV/MAT/PNG/FIG 输出在 MATLAB 中完成。原函数来源和版本写入每次运行。缺少 MATLAB 或所需函数时会报错，不会自动改用 Python 近似算法。
 
-首次本地测试建议按“安装 → doctor → Newark smoke → 接入客户端 → 研究数据”的顺序进行。可直接交给另一个本地 Codex/Harness 会话执行的交接文本见 [LOCAL_HANDOFF.zh-CN.md](LOCAL_HANDOFF.zh-CN.md)。0.3 版提供 9 个工具和 8 个 skills。具体测试结果应查阅 `validation/` 中对应版本的验收记录；`validation/v0.2/` 是历史记录，不能用来证明新增方法或论文判据已经通过。
+首次本地测试建议按“安装 → doctor → Newark smoke → 接入客户端 → 上传数据并连续对话”的顺序进行。可直接交给另一个本地 Codex/Harness 会话执行的交接文本见 [LOCAL_HANDOFF.zh-CN.md](LOCAL_HANDOFF.zh-CN.md)。0.4 版的 Python/MCP 提供 10 个工具，Harness 另有附件导入工具，合计 11 个；8 个 skills 不变。具体测试结果应查阅 `validation/` 中对应版本的验收记录。0.2/0.3 的计算和工具调用证据不能代替 0.4 的附件、图件回传及真实用户多轮会话验收。
 
 ## 1. 安装条件与目录
 
@@ -38,7 +38,7 @@ macOS/Linux：
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install .
-# 或：python -m pip install dist/acycle_deepseek-0.3.0-py3-none-any.whl
+# 或：python -m pip install dist/acycle_deepseek-0.4.0-py3-none-any.whl
 export ACYCLE_ROOT=/absolute/path/acycle
 export ACYCLE_BACKEND=local
 export MATLAB_EXECUTABLE=/Applications/MATLAB_R2024b.app/bin/matlab
@@ -88,9 +88,12 @@ run_validation(getenv('ACYCLE_ROOT'), fullfile(pwd,'local-validation','matlab-fu
 | `acycle_swa` | 原 Acycle SWA：Smoothed Window Averages，平滑窗口平均及原 FDR 结果 |
 | `acycle_coco` | 原 Acycle COCO：在给定目标周期和沉积速率网格上进行分析 |
 | `acycle_ecoco` | 原 Acycle eCOCO：以完整深度窗口重复分析，保留位置变化 |
+| `acycle_rerun` | 对已有运行应用参数修改，保留输入、其他设置与分析类型，生成独立子运行 |
 | `acycle_sensitivity` | 基于已完成运行改变一个参数，生成独立子运行 |
 | `acycle_compare` | 对照已保存参数、MATLAB summary、来源和输出 |
 | `acycle_get_run` | 读取已保存运行 |
+
+Harness 还提供 `acycle_import_attachment`，将当前会话授权的文件附件导入研究工作区。它属于 Harness 原生接入，不在 Python CLI 或 Codex MCP 的 10 个公共工具中。Codex 使用工作区内的数据路径；其客户端附件机制需要按实际客户端单独验证。
 
 查看当前安装版本的完整参数 schema：
 
@@ -162,14 +165,14 @@ CLI 示例中的 `python` 必须是已安装本包的解释器；实际部署更
 
 ```sh
 . local/generated/runtime.env.sh
-dsh plugin --profile web add /absolute/path/Acycle_Harness/dist/dsh-acycle-0.3.0.tgz
+dsh plugin --profile web add /absolute/path/Acycle_Harness/dist/dsh-acycle-0.4.0.tgz
 dsh web
 ```
 
 Windows 使用 `. .\local\generated\runtime.env.ps1`，然后执行对应 `dsh` 命令。没有全局 `dsh` 时，可使用官方 npm 入口并固定测试过的运行时版本：
 
 ```sh
-npx --yes @deepseek-ai/dsh@0.2.1-rc.3 plugin --profile web add /absolute/path/dsh-acycle-0.3.0.tgz
+npx --yes @deepseek-ai/dsh@0.2.1-rc.3 plugin --profile web add /absolute/path/dsh-acycle-0.4.0.tgz
 npx --yes @deepseek-ai/dsh@0.2.1-rc.3 web
 ```
 
@@ -177,9 +180,33 @@ npx --yes @deepseek-ai/dsh@0.2.1-rc.3 web
 
 Desktop profile 由桌面程序管理：先打开一次桌面程序使其初始化，完全退出后，用该安装附带的 `dsh` 管理 `desktop` profile，再重新启动；不要用另一套 npm CLI 修改它。命令和 profile 依据：[官方 CLI 说明](https://github.com/deepseek-ai/deepseek-harness/blob/22ddee3792402c3e70ec5f86a63c3e3e895a2f60/apps/cli/README.md)。
 
+### 上传附件与查看结果
+
+在当前会话上传 CSV/TXT/DAT/TSV 后，模型可通过 `acycle_import_attachment` 导入工作区。无参数调用选择最近一条含文件的用户消息中的唯一文件；若该消息有多个文件，会返回 `selection_required` 和候选项，模型应根据你的指示选择。显式 `attachment_id` 也只能引用本会话用户提供的附件，不能用另一个会话的 ID 读取文件。
+
+导入保留原始字节，保存到工作区 `.acycle/imports/<sha256>/<filename>`，并记录附件来源、会话/消息标识和哈希。普通分析请求中的 `input_path` 若匹配本会话授权附件的官方路径或无歧义文件名，也可自动导入。原上传对象不被修改；单文件默认导入上限为 32 MiB，超限会拒绝导入。原生插件需要 Harness 的附件和会话查询服务；缺少这些服务时，工作区内已有文件仍可分析，附件导入会明确报告缺失依赖。
+
+MATLAB 图件通过官方图片/文件引用和 Markdown 链接返回。配置了官方 `present` 且存在调用 agent 时，插件还会提交最多 4 个关键交付文件；否则回执标记为 `links_only`。默认最多预览 4 张图、回传 24 个文件、递交 3 个运行的产物，单产物上限 64 MiB；完整结果仍应从相应运行目录复查。
+
+科学执行与展示分别记录：`presentation.status` 为 `available`、`partial` 或 `paths_only`，`presentation.delivery.status` 标记 `presented`、`failed`、`links_only` 或 `not_requested`。超大产物仅跳过该附件，在 `presentation.skipped` 保留路径和原因，原始科学结果不受影响；`present` 失败也不要求重新计算，应先重新读取已有运行并修复展示问题。
+
+图片预览面向用户，模型不会收到其像素；模型可以解释 MATLAB 返回的数值，但不能因此声称已经看过图像。请在实际 Web/Desktop 客户端打开图件，并检查文件下载内容。图片事件已发出、客户端已显示，以及用户已核对坐标和曲线，是不同的验收项目。
+
 ## 7. 用户可以怎样提出研究问题
 
-首次输入建议说明数据文件、第一列单位、代理指标、年代范围/控制点和希望回答的问题。可直接使用下面的提示：
+完成安装后，预期使用方式是在 Harness 中附上两列数据，用简短提示提出分析要求，随后在同一会话中继续修改。首次输入建议说明第一列单位、代理指标和希望回答的问题；年代范围或独立控制点用于后续轨道解释，不应让模型根据谱峰自行猜出。可以先上传文件并输入：
+
+> 这是深度—磁化率数据，第一列是 m。先看看周期结构，给我谱图，暂时不要解释为轨道周期。
+
+等待模型完成并返回图件后，再发独立的下一条消息：
+
+> 保留刚才的结果，把去趋势窗口改为原来的两倍，再比较一次。
+
+缺少单位、年龄范围、目标周期或沉积速率搜索依据时，模型应先检查附件中的说明；仍不足时澄清必要信息，不能默默补造科学假设。操作已经明确时应直接调用工具。用户不必输入工具名或 JSON；模型负责把需求转成参数，并说明实际采用的设置。
+
+`acycle_rerun` 接受 `run_id`、`parameter_patch` 和可选 `label`，保留基线的冻结输入和分析类型。例如对 SWA 的修改仍运行 SWA，对 COCO 的修改仍运行 COCO；只有明确修改 `method` 才切换该类型内的方法。未修改的显式设置继续保留；确实依赖所改参数的默认值可由 MATLAB 重新计算，例如改变 eCOCO 窗口后重新确定未显式指定的 `nfft`，重置原因记录在 `steering.removed_or_reset_parameters`。可选参数的 `null` 表示移除该设置或恢复 MATLAB 默认值，但 `method`、`detrend` 必须明确选择，不能用 `null` 隐式重置。多个单参数取值可用 `acycle_sensitivity`；结果用 `acycle_compare` 对照，基线不会覆盖。
+
+需要更完整的研究指令时，也可以使用：
 
 > 先检查 `data/section.csv`。第一列是 m，第二列是磁化率。先运行 mini robot 和 SWA，保存参数、原函数来源、CSV、MAT、PNG、FIG。不要把谱峰直接解释为轨道周期。随后依据我给的年代范围提出 COCO 速率范围，解释目标周期和 Monte Carlo 设置，再运行明确的参数组；如需调整，保留基线并创建子运行。
 
@@ -191,6 +218,21 @@ steering 示例：
 
 不在 Acycle 中的任务可以由模型写辅助 Python，例如格式转换或额外统计，但要标记额外方法及来源；后续谱分析与作图仍优先通过现有接口回到 MATLAB。需要新 MATLAB 桥时应读取已安装源码，记录提取位置，不能凭函数名猜测数值兼容。
 
+### 连续会话的验收边界
+
+真实会话验收需要多条独立用户消息，并保存每轮的提示、工具调用、运行 ID、参数变化和图件事件。一次长提示中要求“先分析、再修改、再比较”，即使触发多次模型请求，也不等于用户多轮对话测试。模拟模型、CLI smoke、MCP 初始化以及插件注册器测试分别验证其对应层面。
+
+0.4 的真实 Harness 连续会话验收正在进行，现阶段不能根据 0.3 的工具回执宣称新流程已经通过。SDK 会话中的官方图片/文件事件也不等于浏览器或桌面端已经人工检查过画面；本机验收应在实际客户端打开图件和下载文件，分别记录通过、失败及未执行项目。
+
+预先声明的场景位于 [conversation_scenarios.json](../tests/fixtures/conversation_scenarios.json)。其中用户提示和验收规则分开保存；真实模型只接收用户提示和附件，不能把预期工具、参数字段或判分规则额外塞进提示。场景不要求得到某个谱峰、显著性结果或地质速率。
+
+| 场景 | 首轮要求 | 下一轮或预期行为 |
+| --- | --- | --- |
+| Newark 初步分析 | 上传完整原始数据，要求谱图和随深度变化图 | 将平滑去趋势跨度改为 25%，保留基线与其他设置并比较 |
+| Lavernock 误发现率 | 保留原采样坐标，由研究要求选择 FDR 方法 | 只将图示上限改为 2 cycles/m，保留方法与完整频谱的显著性计算 |
+| PETM 速率随深度变化 | 按明确年龄、速率范围、窗口和 19 次模拟做诊断 | 同时修改窗口及移动间隔，保留 eCOCO 类型、其他设置和原结果 |
+| 缺少科学背景 | 上传中性文件名的无表头数据，要求速率图 | 先澄清单位、年龄/目标和速率范围；不凭隐藏数据来源猜测，不运行依赖这些前提的分析 |
+
 ## 8. 保存、复查与常见问题
 
 每次科学调用生成 `.acycle/runs/<run_id>/`。`request.json` 保存请求，`input.*` 冻结输入，`outputs/` 保存 MATLAB 文件，`result.json` 保存完成/失败状态、实际参数、summary 和 provenance。查看 `effective_parameters`，不要只看省略默认值的原始请求。敏感性分支带 `parent_run_id`。日志、失败运行和没有支持目标的窗口也属于可复现记录。
@@ -201,6 +243,9 @@ steering 示例：
 | 找到 MATLAB 但启动失败 | 运行 `matlab -batch "ver"`，核查许可证、工具箱和本机登录环境 |
 | MCP 一分钟后超时 | 设置 MCP 工具超时；同时检查 MATLAB 内部超时和实际 Monte Carlo 规模 |
 | 模型看不到新增工具 | 核对 Python wheel 与 npm 包版本、解释器路径，刷新 MCP/重启 profile |
+| Harness 附件尚未成为可分析路径 | 使用当前会话授权的附件导入；多文件时选定目标，检查附件与会话查询服务 |
+| 工具完成但聊天里没有图件卡片 | 先看回传的图片/文件引用及 `links_only` 状态，再检查官方 `present` 和客户端；磁盘产物与界面显示分别核对 |
+| 展示状态为 `partial` | 查看 `presentation.skipped`、`warnings` 与 `delivery`；超限附件或展示失败不等于 MATLAB 计算失败，不要直接重算 |
 | 输入超出工作区 | 把数据复制到研究工作区，或把工作区指向正确研究目录；不要关闭路径检查 |
 | 源码哈希不匹配 | 对照是否使用另一个 Acycle 版本或本地改动；保留旧结果，单独运行升级验证 |
 | SWA 的 FDR 阈值为空 | 阅读原函数输出说明；不要把 NaN 变成 0 或凭图形补阈值 |

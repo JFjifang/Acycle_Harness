@@ -11,4 +11,6 @@ Inspect the original/processed series, trend, power spectrum, red-noise curves a
 
 Use `acycle_get_run` to reopen saved results. If a computation fails, report its failed stage and dependency; never supply a Python substitute under the same run identity. Successful execution is distinct from direct-call parity and from scientific validation of an interpretation.
 
+For follow-up requests use `acycle_rerun` with the selected baseline and only the requested parameter patch, or `acycle_sensitivity` for a one-parameter sweep. Preserve the baseline's method and data, retain the new parent link, and compare saved runs. Do not reconstruct the whole parameter set from memory or drop previously selected options.
+
 Deliver the run ID, supported workflow executed, key artifacts, two or three observations, and limitations relevant to the user's question.

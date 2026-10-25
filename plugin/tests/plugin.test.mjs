@@ -3,7 +3,7 @@ import test from 'node:test'
 import { mkdtemp, writeFile, mkdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { runBridge, loadSkills } from '../index.mjs'
+import { runBridge, loadSkills, apply } from '../index.mjs'
 
 async function fixture(body) {
   const root = await mkdtemp(join(tmpdir(), 'acycle-plugin-'))
@@ -39,4 +39,13 @@ test('packaged skill metadata strips frontmatter and resolves resources', async 
   assert.equal(skill.name, 'acycle-mini-robot')
   assert.equal(skill.content, 'Use MATLAB original functions.\n')
   assert.equal(skill.resourceBase.kind, 'directory')
+})
+
+test('optional SystemPrompt service does not block legacy plugin registration', async () => {
+  const { executable, root } = await fixture("print('[]')")
+  const registered = []
+  const ctx = { get: () => undefined, tools: { register: tool => registered.push(tool.name) },
+    skills: { registerProvider: () => {} } }
+  await apply(ctx, { workspace: root, python: executable })
+  assert.deepEqual(registered, ['acycle_import_attachment'])
 })

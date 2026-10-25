@@ -1,6 +1,6 @@
 # Acycle for DeepSeek Harness
 
-Version 0.3.0 adds original MATLAB SWA, COCO and eCOCO bridges and a local deployment handoff. Start with the [Chinese user guide](docs/USER_GUIDE.zh-CN.md), [local deployment handoff](docs/LOCAL_HANDOFF.zh-CN.md), or give a local Codex/Harness assistant [HANDOFF_PROMPT.txt](local/HANDOFF_PROMPT.txt).
+Version 0.4.0 adds session-scoped attachment import, MATLAB figure delivery in Harness, and method-preserving conversational reruns. Start with the [Chinese user guide](docs/USER_GUIDE.zh-CN.md), [local deployment handoff](docs/LOCAL_HANDOFF.zh-CN.md), or give a local Codex/Harness assistant [HANDOFF_PROMPT.txt](local/HANDOFF_PROMPT.txt).
 
 MATLAB-first cyclostratigraphy tools for the official [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness). Numerical processing, spectra, significance, filters, envelopes, age conversion, figures, CSV and MAT output execute in MATLAB, calling original [Acycle](https://github.com/mingsongli/acycle) functions. Python handles tool schemas, input snapshots, orchestration, provenance and model communication. There is no automatic Python numerical fallback.
 
@@ -32,7 +32,7 @@ See [GitHub Actions execution and cloud transport](docs/GITHUB_ACTIONS.md) for c
 
 ## Harness and model access
 
-See [plugin/README.md](plugin/README.md) for the native Cordis plugin. MCP is available through `python -m acycle_deepseek.mcp`. Both interfaces use the same nine Python tools and MATLAB adapter. Set `DEEPSEEK_API_KEY` only in the process environment and run `scripts/live_deepseek_test.py` or `scripts/live_extended_test.py` for a real model/tool test. The official API model ID `deepseek-flash` identifies DeepSeek-V4.1-Flash.
+See [plugin/README.md](plugin/README.md) for the native Cordis plugin. MCP is available through `python -m acycle_deepseek.mcp`. Both interfaces use the same ten Python tools and MATLAB adapter. The native Harness plugin additionally exposes `acycle_import_attachment`, making eleven tools in Harness; MCP uses workspace file paths. Set `DEEPSEEK_API_KEY` only in the process environment and run `scripts/live_deepseek_test.py` or `scripts/live_extended_test.py` for a real model/tool test. The official API model ID `deepseek-flash` identifies DeepSeek-V4.1-Flash.
 
 Core methods: mini-robot preprocessing, MTM robust AR(1) pointwise thresholds, EvoFFT, Gaussian/Taner filtering and Hilbert envelopes, and sedimentation-rate/tie-point age conversion. New tools `acycle_swa`, `acycle_coco`, and `acycle_ecoco` expose original SWA/FDR and explicit orbital-target/rate-grid Monte Carlo workflows. All three support the same immutable runs, provenance and steering interfaces. See [SWA](docs/SWA.md), [COCO/eCOCO](docs/COCO.md) and [paper validation protocols](docs/PAPER_VALIDATION.md) for their distinct statistical meanings and supported modes.
 

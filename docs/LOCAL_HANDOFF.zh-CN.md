@@ -1,6 +1,6 @@
 # 本地部署与续测 handoff
 
-适用目标：在自己的电脑用 Codex 或 DeepSeek Harness 调用本地 MATLAB，测试 Acycle Harness 0.3 的 Newark、SWA、COCO、eCOCO，并继续调整参数。本文和 `local/` 是交接材料；它们不会自动改写你现有的 Codex/Harness 配置。
+适用目标：在自己的电脑用 Codex 或 DeepSeek Harness 调用本地 MATLAB，测试 Acycle Harness 0.4 的 Newark、SWA、COCO、eCOCO，以及“提供数据 → 简短提示 → 查看图件 → 连续对话调整”。本文和 `local/` 是交接材料；它们不会自动改写你现有的 Codex/Harness 配置。
 
 ## 交接包应包含什么
 
@@ -10,10 +10,11 @@
 
 | 内容 | 用途 |
 | --- | --- |
-| `dist/acycle_deepseek-0.3.0-py3-none-any.whl` | 安装 Python 接口和随包 MATLAB 桥 |
-| `dist/dsh-acycle-0.3.0.tgz` | DeepSeek Harness 原生插件和 skills |
+| `dist/acycle_deepseek-0.4.0-py3-none-any.whl` | 安装 Python 接口和随包 MATLAB 桥 |
+| `dist/dsh-acycle-0.4.0.tgz` | DeepSeek Harness 原生插件和 skills |
 | `matlab/`、`src/`、`tests/` | 可检查和修改的实现；MATLAB 桥调用外部 Acycle 原函数 |
 | `benchmarks/`、`examples/` | 论文原始附件/提取记录、参考输入、请求示例 |
+| `tests/fixtures/conversation_scenarios.json` | 4 组预先声明的自然语言会话与独立验收规则 |
 | `docs/USER_GUIDE.zh-CN.md` | 详细安装、参数、steering 和排错说明 |
 | `local/HANDOFF_PROMPT.txt` | 可以直接粘贴给本地助手的完整任务文本 |
 | `local/doctor.py`、`render_config.py`、`smoke.py` | 本地自检、生成配置片段、实际 smoke |
@@ -27,7 +28,7 @@ Acycle 原仓库和 MATLAB 商业安装不包含在这个包中。`ACYCLE_ROOT` 
 
 > 请读取并执行当前项目 `local/HANDOFF_PROMPT.txt`。先确定本地路径与已安装环境，完成独立检查和小规模 MATLAB 测试，再给我实际结果。不要照抄历史云端的 `/workspace/...` 路径。
 
-该任务文本包含环境定位、安装边界、9 个工具与 8 个 skills 的检查、Newark/SWA/COCO/eCOCO 运行顺序、19 次 Monte Carlo 的诊断性质、客户端配置、敏感性分支、结果复查及本机验收报告要求。API Key 不在交接包中；需要真实模型时使用本地已有的运行环境凭据。
+该任务文本包含环境定位、安装边界、Python/MCP 的 10 个工具、Harness 的 11 个工具与 8 个 skills 的检查，以及 Newark/SWA/COCO/eCOCO、附件导入、图件回传、独立用户消息中的连续调整。19 次 Monte Carlo 仅用于诊断。API Key 不在交接包中；需要真实模型时使用本地已有的运行环境凭据。
 
 ## 手工部署的最短路线
 
@@ -37,24 +38,33 @@ Acycle 原仓库和 MATLAB 商业安装不包含在这个包中。`ACYCLE_ROOT` 
 4. 依次运行 `--case swa`、`--case coco --nsim 19`、`--case ecoco --nsim 19`。每次输出独立运行和回执。
 5. 运行 `python local/render_config.py --workspace . --acycle-root /absolute/path/acycle --matlab /absolute/path/matlab`，检查生成片段。
 6. 选择 Codex MCP 或 Harness 原生插件接入，刷新客户端后再做一次真实工具调用，避免只测 CLI 却声称客户端接入已验证。
+7. 在 Harness 真实会话中上传数据，以短提示开始；收到回复后再发送调整要求。核对附件导入、图件事件、客户端可见的图、独立子运行和比较结果，不能用一条预先写好全部参数的提示代替。
 
 `render_config.py` 只生成 `local/generated/` 中的片段；遇到与现有内容不同的同名文件会拒绝覆盖。只有明确要重生成这些片段时才使用 `--force`。它不会修改 `~/.codex/config.toml`、项目 `.codex/config.toml` 或 Harness profile。不要把生成片段连同本机绝对路径误当成适用于另一台电脑的配置。
+
+Harness 上传测试应使用当前会话的真实文件附件。`acycle_import_attachment` 不带参数时只自动选择最近含文件用户消息中的唯一附件，多文件必须明确选择；导入后的原字节位于工作区 `.acycle/imports/`。附件/会话查询服务缺失时不能宣称上传路径通过，可继续独立验证工作区文件模式。图件通过官方图片/文件引用返回；`present` 不可用时会报告 `links_only`。模型没有收到图片像素，不应把其文字解释当作图件视觉核验。
 
 ## 本地验收表
 
 | 检查 | 应保留的证据 |
 | --- | --- |
-| 包版本和解释器 | Python路径、包版本、所注册的9个工具；Harness应加载8个skills，不要混装旧wheel和新npm包 |
+| 包版本和解释器 | Python 路径、包版本；Python/MCP 10 个工具，Harness 11 个工具、8 个 skills；不要混装旧 wheel 和新 npm 包 |
 | MATLAB实际运行 | release、工具箱、成功启动记录；不能用可执行文件存在代替 |
 | Acycle来源 | checkout SHA、每个原函数hash、是否匹配参考 |
 | Newark | 请求、summary、谱图、演化图、数值输出 |
 | SWA | Lomb/MTM路径、原FDR含义、实际文件与图；非有限阈值的语义 |
 | COCO/eCOCO | 目标周期来源、深度单位、cm/kyr网格、窗口/步长、nsim、seed、支持/失效信息 |
-| 客户端 | Codex MCP或原生Harness实际工具调用回执，区分终端测试与客户端测试 |
-| Steering | 原基线存在、输入hash一致、子运行parent正确、比较结果 |
+| 附件 | 当前会话授权的附件 ref、导入后路径与输入哈希；其他会话附件不能靠猜 ID 读取 |
+| 客户端与图件 | 实际工具调用、官方图片/文件回传事件、`presentation.status`/`delivery.status`/`skipped`；在 Web/Desktop 中打开图件与下载文件的结果另外记录 |
+| 连续对话 | 每条独立用户提示、回复、澄清内容、后续调整及会话 ID；工具往返轮数不能当作用户轮数 |
+| Steering | 原基线存在、输入 hash 一致、子运行 parent 正确；`acycle_rerun` 保持分析类型与未改参数，比较结果可追溯 |
 | 研究解释 | 逐点/全局/选择后检验区分、未完成部分、论文复现边界 |
 
 本地 smoke 的 COCO 网格和 210 Ma 中间年龄是执行示例。不得把其最优速率直接作为 Newark 的地质结论。只有与论文对应的完整输入、预处理、目标、搜索范围、模拟设置和检验准则一致，才可以进一步讨论定量复现。实际复现参照 [PAPER_VALIDATION.md](PAPER_VALIDATION.md) 和 benchmark 的来源记录。
+
+0.4 的真实 Harness 连续会话尚在验收，不能沿用旧版注册器或 Python 客户端回执声称已通过。请本机报告逐项记录 `passed`、`failed`、`not_run`，把真实模型、模拟模型、MATLAB 执行和 GUI 目视检查分开。遇到缺少单位或年代背景的短提示时，应看到针对必要科学信息的澄清；用户补充后仍应在同一会话继续。
+
+使用 `tests/fixtures/conversation_scenarios.json` 可依次测试 Newark 去趋势调整、Lavernock FDR 图示范围调整、PETM eCOCO 多参数调整和缺少科学背景的澄清。每个场景使用新的会话与工作区；只把 `user_prompt` 和附件交给模型，接受规则、原数据隐藏身份和既有结果用于验收，不进入模型上下文。若模型提出合理澄清，只补充场景中已有的用户事实；没有事实可回答时标记 `needs_human_clarification`，不能为了跑通而编造条件。
 
 ## 已知科研差异必须随交接保留
 

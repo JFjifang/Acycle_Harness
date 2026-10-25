@@ -1,0 +1,9 @@
+{
+  "source_repository": "https://github.com/mingsongli/acycle",
+  "source_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+  "source_path": "data/Examples/Example-LateTriassicNewarkDepthRank.txt",
+  "source_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+  "selection": "First 8 original logical lines, exact bytes including CR terminators; no numerical parsing or processing.",
+  "fixture_sha256": "6dd7662c7f57d52961aae5b0a46e142b9259bee133e313d21591886eeb72aac7",
+  "purpose": "Structural newline regression only; not a scientific data subset test."
+}
