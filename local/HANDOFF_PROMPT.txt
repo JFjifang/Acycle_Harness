@@ -1,0 +1,17 @@
+请在当前 Acycle_Harness 项目中完成本地安装和实际 MATLAB 测试。
+
+先读取 docs/USER_GUIDE.zh-CN.md、docs/LOCAL_HANDOFF.zh-CN.md、当前 validation/ 验收记录和 tool schema。确认交付版本、仓库状态及当前操作系统。只在项目自己的虚拟环境、local/generated/、local-validation/ 和 .acycle/ 内写入安装/测试文件；保留已有研究数据、模型设置和客户端配置。
+
+寻找本机已安装的 MATLAB、所需工具箱与 Acycle 源码。优先使用已存在的安装；不要安装或修改 MATLAB 许可证。参考 Acycle 提交是 dcba4279168745b563e0535b954297023dd62fc7。若原目录有修改，另建参考 checkout，不重置用户目录。缺少路径或许可证时先完成独立可做的检查，再准确说明缺什么。
+
+建立项目 .venv，安装本项目或匹配的0.3.0 wheel。设置 ACYCLE_BACKEND=local、ACYCLE_ROOT、MATLAB_EXECUTABLE、ACYCLE_MATLAB_TIMEOUT。运行 local/doctor.py --run-matlab，把回执保存到 local-validation/。不得用 Python/Octave 替代 MATLAB 科学计算，不把静态找到可执行文件写成 MATLAB 验证成功。
+
+用 local/smoke.py 先跑 Newark mini robot，再分别跑 SWA、COCO、eCOCO。第一次 COCO/eCOCO 使用19次 Monte Carlo、固定seed，明确它只是运行检查，不能支持发表级显著性结论。逐项记录实际参数、输入SHA、运行ID、Acycle原函数来源、MATLAB版本、失败原因和输出路径。打开至少一张谱图与一张eCOCO图，确认坐标单位与非空内容。检查CSV、MAT、PNG、FIG并保留原结果；不能仅看到退出码0就宣布全部科学结论成立。
+
+如果当前客户端是 Codex，生成并检查 local/render_config.py 的 MCP 片段，把 acycle 条目合并到此受信任项目的 .codex/config.toml，不覆盖其他条目；设置足够的MCP工具超时。如果当前客户端是 DeepSeek Harness，检查官方dsh版本，在明确的web或headless profile安装匹配npm包，使启动进程继承ACYCLE_PYTHON和MATLAB环境。已有Desktop配置用其附带CLI处理，不混用另一个npm CLI。配置模型时只引用运行环境中的API Key，不把凭据写入代码、日志、handoff或提交。
+
+刷新客户端工具后，实际调用一次 acycle_capabilities 和科学工具。保留基线，只改变一个可支持参数创建敏感性分支，检查parent_run_id及输入哈希，并用acycle_compare解释变化。输入行数以MATLAB summary.input_rows为准，处理后点数以processed_rows为准，不混用文本行数。
+
+在 local-validation/ 写一份本机验收报告：已运行与未运行分别列出；方法数值对照、真实论文数据流程、论文定量复现分别标记；列出调用原函数的位置和任何改动。当前桥不覆盖Acycle所有GUI功能。超出接口的任务先尝试桥接原始MATLAB，Python可做缺失功能或文件转换，随后尽可能返回MATLAB计算和作图。
+
+不要更改全局Codex/Harness模型配置，不发布、推送或部署外部服务。完成本地结果后给我报告和产物入口，以及下一轮值得做的敏感性设置。

@@ -4,10 +4,10 @@ This native Cordis bundle registers Acycle tools and packaged research skills. P
 transports requests to MATLAB; Acycle original functions perform the scientific work.
 A missing MATLAB backend is an error, never a request to substitute Python numerics.
 
-1. Install the matching Python wheel with `python -m pip install acycle_deepseek-0.2.0-py3-none-any.whl`.
+1. Install the matching Python wheel with `python -m pip install acycle_deepseek-0.3.0-py3-none-any.whl`.
 2. Set `ACYCLE_PYTHON` to that Python executable, `ACYCLE_ROOT` to an Acycle source checkout,
    and configure a local MATLAB executable or the documented GitHub backend.
-3. Add the npm tarball using `dsh plugin --profile <profile> add /absolute/path/dsh-acycle-0.2.0.tgz`.
+3. Add the npm tarball using `dsh plugin --profile <profile> add /absolute/path/dsh-acycle-0.3.0.tgz`.
 4. Restart the profile. `acycle_capabilities` reports backend readiness.
 
 The bundle's `cordis.patch.yml` inserts `dsh-acycle`. Optional row config fields are

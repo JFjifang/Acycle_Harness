@@ -1,0 +1,466 @@
+{
+  "run_id": "20261025T071158Z-b0f32143454c",
+  "status": "completed",
+  "label": "Newark official full-record mini-robot validation",
+  "parent_run_id": null,
+  "input_path": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/input.txt",
+  "original_input_path": "/workspace/upstream/acycle/data/Examples/Example-LateTriassicNewarkDepthRank.txt",
+  "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+  "parameters": {
+    "detrend": "lowess",
+    "span": 0.35,
+    "mtm_nw": 2,
+    "smooth_fraction": 0.25,
+    "evolution": true,
+    "coordinate_unit": "m"
+  },
+  "created_at": "2026-10-25T07:11:58.667703+00:00",
+  "backend": "github",
+  "output_dir": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs",
+  "result": {
+    "status": "success",
+    "backend": "matlab",
+    "operation": "analyze",
+    "parameters": {
+      "detrend": "lowess",
+      "span": 0.35,
+      "mtm_nw": 2,
+      "smooth_fraction": 0.25,
+      "evolution": true,
+      "coordinate_unit": "m",
+      "dt": 0.853439999999992,
+      "nfft": 11720,
+      "fmax": 0.5858642669666346,
+      "fit_fmax": 0.5858642669666346,
+      "evolution_window": 699.863472,
+      "evolution_step": 9.387839999999912
+    },
+    "summary": {
+      "input_rows": 2344,
+      "removed_nonfinite_rows": 0,
+      "merged_duplicate_rows": 0,
+      "processed_rows": 2344,
+      "interpolated": false,
+      "sample_interval": 0.853439999999992,
+      "nyquist": 0.5858642669666346,
+      "coordinate_unit": "m",
+      "robust_ar1_rho": 0.43361925058512,
+      "robust_ar1_s0": 0.0445303101434226,
+      "robust_fit_method": "original_redconfML",
+      "peaks": [
+        {
+          "frequency": 0.017495946539105984,
+          "period": 57.156095999999465,
+          "power": 1.3850034691165047,
+          "pointwise_above_95": true
+        },
+        {
+          "frequency": 0.016296224490710144,
+          "period": 61.36390674846569,
+          "power": 1.1750712690699707,
+          "pointwise_above_95": true
+        },
+        {
+          "frequency": 0.018595691750135503,
+          "period": 53.77589677419304,
+          "power": 0.8338279384075484,
+          "pointwise_above_95": true
+        },
+        {
+          "frequency": 0.003699142982553837,
+          "period": 270.3328864864839,
+          "power": 0.6630209917211107,
+          "pointwise_above_95": true
+        },
+        {
+          "frequency": 0.004199027169385436,
+          "period": 238.15039999999775,
+          "power": 0.6304879940256631,
+          "pointwise_above_95": true
+        },
+        {
+          "frequency": 0.015296456117046948,
+          "period": 65.37461960784252,
+          "power": 0.5308003218258901,
+          "pointwise_above_95": true
+        },
+        {
+          "frequency": 0.05678684362406971,
+          "period": 17.609712676056173,
+          "power": 0.5167886319025494,
+          "pointwise_above_95": true
+        },
+        {
+          "frequency": 0.07568246588630417,
+          "period": 13.213100132100273,
+          "power": 0.465181575427103,
+          "pointwise_above_95": true
+        },
+        {
+          "frequency": 0.05768663516036659,
+          "period": 17.33503778162895,
+          "power": 0.4490324377170464,
+          "pointwise_above_95": true
+        },
+        {
+          "frequency": 0.07088357769272081,
+          "period": 14.107640056417358,
+          "power": 0.4416475670007713,
+          "pointwise_above_95": true
+        }
+      ]
+    },
+    "artifacts": {
+      "cleaned_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/cleaned.csv",
+      "prepared_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/prepared.csv",
+      "processed_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/processed.csv",
+      "preprocess_png": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.png",
+      "spectrum_png": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png",
+      "robust_spectrum_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum_robust.csv",
+      "classic_spectrum_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum_classic.csv",
+      "evolution_png": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png",
+      "evolution_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.csv",
+      "preprocess_fig": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.fig",
+      "spectrum_fig": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.fig",
+      "evolution_fig": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.fig",
+      "analysis_mat": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/analysis.mat",
+      "provenance_json": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/provenance.json"
+    },
+    "provenance": {
+      "source_repository": "https://github.com/mingsongli/acycle",
+      "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+      "installed_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+      "source_root": "/home/runner/work/Acycle_Harness/Acycle_Harness/upstream/acycle",
+      "files": [
+        {
+          "function": "RobotGUI",
+          "relative_path": "code/guicode/RobotGUI.m",
+          "sha256": "58b6b4bf799e94b2b5cde9f75117c7c718ac417328ee91642b24a2ef8cc699f9",
+          "matches_reference": true
+        },
+        {
+          "function": "findduplicate",
+          "relative_path": "code/seriesanalysis/findduplicate.m",
+          "sha256": "5cf401e34dd8472e58c1aa66cb02f26d4996b217cd8e358723d1f1fcd5ca2b45",
+          "matches_reference": true
+        },
+        {
+          "function": "interpolate",
+          "relative_path": "code/seriesanalysis/interpolate.m",
+          "sha256": "1a318132adaf427be8fcd207f359200bad2ee723b8f36a0f9a729627c85865b1",
+          "matches_reference": true
+        },
+        {
+          "function": "acycleSamplingIsUneven",
+          "relative_path": "code/seriesanalysis/acycleSamplingIsUneven.m",
+          "sha256": "14c40be7e62b2e21fc13faf11a2ae01d34f66aaed5d186766c1271a24ff632f1",
+          "matches_reference": true
+        },
+        {
+          "function": "redconfML",
+          "relative_path": "code/seriesanalysis/redconfML.m",
+          "sha256": "fc0b9fb572208733ad096960efdb55558ceb6dc0a5a25b4a46cd6aca8df6e46d",
+          "matches_reference": true
+        },
+        {
+          "function": "rhoAR1",
+          "relative_path": "code/seriesanalysis/rhoAR1.m",
+          "sha256": "d3d9da911c604925c55d0983c6b50a4762d50047bd75cb36e58c9c7faef131f1",
+          "matches_reference": true
+        },
+        {
+          "function": "moveMedian",
+          "relative_path": "code/seriesanalysis/moveMedian.m",
+          "sha256": "273e894ecdc63ceabaea780f53d8a0e2ddf58ee2ab26709206bbc7c9ad46612f",
+          "matches_reference": true
+        },
+        {
+          "function": "minirhos0",
+          "relative_path": "code/seriesanalysis/minirhos0.m",
+          "sha256": "7f364438a7d9f127398deb7825f4693c4ddcfda082eae8baac47077c905f2ef1",
+          "matches_reference": true
+        },
+        {
+          "function": "acycleMtmTaperCount",
+          "relative_path": "code/seriesanalysis/acycleMtmTaperCount.m",
+          "sha256": "03a993f38d252313930046b9fd9b7e0502991a53fc35bdaa6e69cdcf7d8785fe",
+          "matches_reference": true
+        },
+        {
+          "function": "zeropad2",
+          "relative_path": "code/seriesanalysis/zeropad2.m",
+          "sha256": "6cfe10485ed673a6424dc36e413b6135f086eeb1296546366c5a978f0ee80975",
+          "matches_reference": true
+        },
+        {
+          "function": "evofft",
+          "relative_path": "code/seriesanalysis/evofft.m",
+          "sha256": "3c7d47ceaddcf49ae54e7f7728b92c0ceb977e725042aab9e4638f5489cdbd26",
+          "matches_reference": true
+        }
+      ],
+      "all_used_sources_match_reference": true,
+      "adapter": "matlab-first-v1",
+      "numerical_backend": "MATLAB/Acycle",
+      "plot_backend": "MATLAB (original redconfML plot; other GUI plots adapted)",
+      "matlab_version": "24.2.0.3361896 (R2024b) Update 10",
+      "matlab_release": "2024b",
+      "toolboxes": [
+        {
+          "Name": "Curve Fitting Toolbox",
+          "Version": "24.2",
+          "Release": "(R2024b)",
+          "Date": "21-Jun-2024"
+        },
+        {
+          "Name": "MATLAB",
+          "Version": "24.2",
+          "Release": "(R2024b)",
+          "Date": "21-Jun-2024"
+        },
+        {
+          "Name": "Signal Processing Toolbox",
+          "Version": "24.2",
+          "Release": "(R2024b)",
+          "Date": "21-Jun-2024"
+        },
+        {
+          "Name": "Statistics and Machine Learning Toolbox",
+          "Version": "24.2",
+          "Release": "(R2024b)",
+          "Date": "21-Jun-2024"
+        }
+      ],
+      "robust_fit_method": "original_redconfML",
+      "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2"
+    },
+    "warnings": [
+      "Pointwise robust AR(1) levels do not control multiple testing and are not proof of orbital forcing.",
+      "EvoFFT retains Acycle mini-robot zero padding and normalized amplitude; edge windows contain synthetic zeros."
+    ],
+    "remote_execution": {
+      "backend": "github-actions-matlab",
+      "run_id": 40171879521,
+      "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40171879521",
+      "head_sha": "9dcae9348dc02cb23469ff49af5cc7b6f3b57ad8",
+      "conclusion": "success",
+      "request_token": "acycle-157290d888da49e4ab10185336684a19",
+      "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+      "artifact_transport": "github_connector_cache",
+      "artifact_sha256": "65bcb06806067744c1beb5612b462762f36678dfd483b22ea8c7643ef438c88c"
+    }
+  },
+  "summary": {
+    "input_rows": 2344,
+    "removed_nonfinite_rows": 0,
+    "merged_duplicate_rows": 0,
+    "processed_rows": 2344,
+    "interpolated": false,
+    "sample_interval": 0.853439999999992,
+    "nyquist": 0.5858642669666346,
+    "coordinate_unit": "m",
+    "robust_ar1_rho": 0.43361925058512,
+    "robust_ar1_s0": 0.0445303101434226,
+    "robust_fit_method": "original_redconfML",
+    "peaks": [
+      {
+        "frequency": 0.017495946539105984,
+        "period": 57.156095999999465,
+        "power": 1.3850034691165047,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.016296224490710144,
+        "period": 61.36390674846569,
+        "power": 1.1750712690699707,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.018595691750135503,
+        "period": 53.77589677419304,
+        "power": 0.8338279384075484,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.003699142982553837,
+        "period": 270.3328864864839,
+        "power": 0.6630209917211107,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.004199027169385436,
+        "period": 238.15039999999775,
+        "power": 0.6304879940256631,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.015296456117046948,
+        "period": 65.37461960784252,
+        "power": 0.5308003218258901,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.05678684362406971,
+        "period": 17.609712676056173,
+        "power": 0.5167886319025494,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.07568246588630417,
+        "period": 13.213100132100273,
+        "power": 0.465181575427103,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.05768663516036659,
+        "period": 17.33503778162895,
+        "power": 0.4490324377170464,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.07088357769272081,
+        "period": 14.107640056417358,
+        "power": 0.4416475670007713,
+        "pointwise_above_95": true
+      }
+    ]
+  },
+  "effective_parameters": {
+    "detrend": "lowess",
+    "span": 0.35,
+    "mtm_nw": 2,
+    "smooth_fraction": 0.25,
+    "evolution": true,
+    "coordinate_unit": "m",
+    "dt": 0.853439999999992,
+    "nfft": 11720,
+    "fmax": 0.5858642669666346,
+    "fit_fmax": 0.5858642669666346,
+    "evolution_window": 699.863472,
+    "evolution_step": 9.387839999999912
+  },
+  "artifacts": {
+    "cleaned_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/cleaned.csv",
+    "prepared_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/prepared.csv",
+    "processed_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/processed.csv",
+    "preprocess_png": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.png",
+    "spectrum_png": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.png",
+    "robust_spectrum_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum_robust.csv",
+    "classic_spectrum_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum_classic.csv",
+    "evolution_png": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.png",
+    "evolution_csv": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.csv",
+    "preprocess_fig": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/preprocessing.fig",
+    "spectrum_fig": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/spectrum.fig",
+    "evolution_fig": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/evolution.fig",
+    "analysis_mat": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/analysis.mat",
+    "provenance_json": "/workspace/Acycle_Harness/.acycle/runs/20261025T071158Z-b0f32143454c/outputs/provenance.json"
+  },
+  "provenance": {
+    "source_repository": "https://github.com/mingsongli/acycle",
+    "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+    "installed_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+    "source_root": "/home/runner/work/Acycle_Harness/Acycle_Harness/upstream/acycle",
+    "files": [
+      {
+        "function": "RobotGUI",
+        "relative_path": "code/guicode/RobotGUI.m",
+        "sha256": "58b6b4bf799e94b2b5cde9f75117c7c718ac417328ee91642b24a2ef8cc699f9",
+        "matches_reference": true
+      },
+      {
+        "function": "findduplicate",
+        "relative_path": "code/seriesanalysis/findduplicate.m",
+        "sha256": "5cf401e34dd8472e58c1aa66cb02f26d4996b217cd8e358723d1f1fcd5ca2b45",
+        "matches_reference": true
+      },
+      {
+        "function": "interpolate",
+        "relative_path": "code/seriesanalysis/interpolate.m",
+        "sha256": "1a318132adaf427be8fcd207f359200bad2ee723b8f36a0f9a729627c85865b1",
+        "matches_reference": true
+      },
+      {
+        "function": "acycleSamplingIsUneven",
+        "relative_path": "code/seriesanalysis/acycleSamplingIsUneven.m",
+        "sha256": "14c40be7e62b2e21fc13faf11a2ae01d34f66aaed5d186766c1271a24ff632f1",
+        "matches_reference": true
+      },
+      {
+        "function": "redconfML",
+        "relative_path": "code/seriesanalysis/redconfML.m",
+        "sha256": "fc0b9fb572208733ad096960efdb55558ceb6dc0a5a25b4a46cd6aca8df6e46d",
+        "matches_reference": true
+      },
+      {
+        "function": "rhoAR1",
+        "relative_path": "code/seriesanalysis/rhoAR1.m",
+        "sha256": "d3d9da911c604925c55d0983c6b50a4762d50047bd75cb36e58c9c7faef131f1",
+        "matches_reference": true
+      },
+      {
+        "function": "moveMedian",
+        "relative_path": "code/seriesanalysis/moveMedian.m",
+        "sha256": "273e894ecdc63ceabaea780f53d8a0e2ddf58ee2ab26709206bbc7c9ad46612f",
+        "matches_reference": true
+      },
+      {
+        "function": "minirhos0",
+        "relative_path": "code/seriesanalysis/minirhos0.m",
+        "sha256": "7f364438a7d9f127398deb7825f4693c4ddcfda082eae8baac47077c905f2ef1",
+        "matches_reference": true
+      },
+      {
+        "function": "acycleMtmTaperCount",
+        "relative_path": "code/seriesanalysis/acycleMtmTaperCount.m",
+        "sha256": "03a993f38d252313930046b9fd9b7e0502991a53fc35bdaa6e69cdcf7d8785fe",
+        "matches_reference": true
+      },
+      {
+        "function": "zeropad2",
+        "relative_path": "code/seriesanalysis/zeropad2.m",
+        "sha256": "6cfe10485ed673a6424dc36e413b6135f086eeb1296546366c5a978f0ee80975",
+        "matches_reference": true
+      },
+      {
+        "function": "evofft",
+        "relative_path": "code/seriesanalysis/evofft.m",
+        "sha256": "3c7d47ceaddcf49ae54e7f7728b92c0ceb977e725042aab9e4638f5489cdbd26",
+        "matches_reference": true
+      }
+    ],
+    "all_used_sources_match_reference": true,
+    "adapter": "matlab-first-v1",
+    "numerical_backend": "MATLAB/Acycle",
+    "plot_backend": "MATLAB (original redconfML plot; other GUI plots adapted)",
+    "matlab_version": "24.2.0.3361896 (R2024b) Update 10",
+    "matlab_release": "2024b",
+    "toolboxes": [
+      {
+        "Name": "Curve Fitting Toolbox",
+        "Version": "24.2",
+        "Release": "(R2024b)",
+        "Date": "21-Jun-2024"
+      },
+      {
+        "Name": "MATLAB",
+        "Version": "24.2",
+        "Release": "(R2024b)",
+        "Date": "21-Jun-2024"
+      },
+      {
+        "Name": "Signal Processing Toolbox",
+        "Version": "24.2",
+        "Release": "(R2024b)",
+        "Date": "21-Jun-2024"
+      },
+      {
+        "Name": "Statistics and Machine Learning Toolbox",
+        "Version": "24.2",
+        "Release": "(R2024b)",
+        "Date": "21-Jun-2024"
+      }
+    ],
+    "robust_fit_method": "original_redconfML",
+    "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2"
+  }
+}

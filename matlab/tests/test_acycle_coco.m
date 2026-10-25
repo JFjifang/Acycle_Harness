@@ -69,6 +69,31 @@ verifyEqual(testCase,r.summary.depth_to_metres_factor,.3048);
 verifyEqual(testCase,r.status,'success');
 end
 
+function testEcocoBlockedStrictConsensusExecutes(testCase)
+[data,p]=synthetic(600,.25);p.method='blocked';p.nsim=9;p.window=120;p.step=120;
+[r,s]=runFixture(testCase,'ecoco-blocked-strict',data,p,'ecoco');
+verifyEqual(testCase,r.summary.blocked_consensus_policy,'strict');
+verifyEqual(testCase,s.numerical.rho,s.numerical.details.strictConsensus.rho);
+verifyEqual(testCase,s.numerical.pGlobal,s.numerical.details.strictConsensus.pGlobal);
+verifyTrue(testCase,any(isfinite(s.numerical.rho),'all'));
+verifyTrue(testCase,all(isnan(s.numerical.rho(:,[1,end])),'all'));
+verifyEqual(testCase,s.numerical.details.nsimCompleted,9);
+verifyFalse(testCase,r.summary.map_global_applied);
+assertFigures(testCase,r);
+end
+
+function testEcocoInterleavedSplitBeforeInterpolationExecutes(testCase)
+[data,p]=synthetic(240,.25);p.method='interleaved';p.nsim=9;p.window=120;p.step=60;
+[r,s]=runFixture(testCase,'ecoco-interleaved',data,p,'ecoco');
+verifyFalse(testCase,r.summary.preparation.fullRecordInterpolation);
+verifyTrue(testCase,s.numerical.details.inputPreprocessing.splitBeforeInterpolation);
+verifyEmpty(testCase,s.prepared);
+verifyTrue(testCase,any(isfinite(s.numerical.rho),'all'));
+verifyEqual(testCase,s.numerical.details.nsimCompleted,9);
+verifyEqual(testCase,r.summary.depth_centres_m,[60,120,180],'AbsTol',1e-12);
+assertFigures(testCase,r);
+end
+
 function testCocoLoessUsesOriginalCallback(testCase)
 [data,p]=synthetic(); p.detrend='loess'; p.detrend_window=120;p.nsim=9;
 [r,s]=runFixture(testCase,'coco-loess-callback',data,p,'coco');
@@ -87,9 +112,11 @@ request=prepareFixture(testCase,'ecoco-disallow-leakage',data,p,'ecoco');
 verifyError(testCase,@()acycle_coco(request),'Harness:COCOPreprocessLeakage');
 end
 
-function [data,p]=synthetic()
+function [data,p]=synthetic(lastDepth,samplingInterval)
+if nargin<1,lastDepth=240;end
+if nargin<2,samplingInterval=.5;end
 periods=calculate_orbit9(0);periods=periods(:,2)/1000;
-x=(0:.5:240)';time=x/.1;
+x=(0:samplingInterval:lastDepth)';time=x/.1;
 weights=[1,.8,.8,.8,.8,.6,.4,.4,.4];
 y=sum(sin(2*pi*time./periods(:)').*weights,2)+.04*cos(2*pi*x/13.7)+.001*x;
 data=[x,y];

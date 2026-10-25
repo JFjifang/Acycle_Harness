@@ -11,4 +11,6 @@ node_modules/
 validation/artifacts/
 validation/live-runs/
 validation/matlab-validation-report.zip
+local/generated/
+local-validation/
 

@@ -1,0 +1,162 @@
+{
+  "status": "passed",
+  "case": "official-newark",
+  "scope": "Full official Newark depth-rank mini-robot workflow, not published astrochronology reproduction",
+  "run_id": "20261025T071158Z-b0f32143454c",
+  "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+  "parameters": {
+    "detrend": "lowess",
+    "span": 0.35,
+    "mtm_nw": 2,
+    "smooth_fraction": 0.25,
+    "evolution": true,
+    "coordinate_unit": "m"
+  },
+  "summary": {
+    "input_rows": 2344,
+    "removed_nonfinite_rows": 0,
+    "merged_duplicate_rows": 0,
+    "processed_rows": 2344,
+    "interpolated": false,
+    "sample_interval": 0.853439999999992,
+    "nyquist": 0.5858642669666346,
+    "coordinate_unit": "m",
+    "robust_ar1_rho": 0.43361925058512,
+    "robust_ar1_s0": 0.0445303101434226,
+    "robust_fit_method": "original_redconfML",
+    "peaks": [
+      {
+        "frequency": 0.017495946539105984,
+        "period": 57.156095999999465,
+        "power": 1.3850034691165047,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.016296224490710144,
+        "period": 61.36390674846569,
+        "power": 1.1750712690699707,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.018595691750135503,
+        "period": 53.77589677419304,
+        "power": 0.8338279384075484,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.003699142982553837,
+        "period": 270.3328864864839,
+        "power": 0.6630209917211107,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.004199027169385436,
+        "period": 238.15039999999775,
+        "power": 0.6304879940256631,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.015296456117046948,
+        "period": 65.37461960784252,
+        "power": 0.5308003218258901,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.05678684362406971,
+        "period": 17.609712676056173,
+        "power": 0.5167886319025494,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.07568246588630417,
+        "period": 13.213100132100273,
+        "power": 0.465181575427103,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.05768663516036659,
+        "period": 17.33503778162895,
+        "power": 0.4490324377170464,
+        "pointwise_above_95": true
+      },
+      {
+        "frequency": 0.07088357769272081,
+        "period": 14.107640056417358,
+        "power": 0.4416475670007713,
+        "pointwise_above_95": true
+      }
+    ]
+  },
+  "source_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+  "source_hashes_match_reference": true,
+  "matlab_release": "2024b",
+  "remote_execution": {
+    "backend": "github-actions-matlab",
+    "run_id": 40171879521,
+    "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40171879521",
+    "head_sha": "9dcae9348dc02cb23469ff49af5cc7b6f3b57ad8",
+    "conclusion": "success",
+    "request_token": "acycle-157290d888da49e4ab10185336684a19",
+    "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+    "artifact_transport": "github_connector_cache",
+    "artifact_sha256": "65bcb06806067744c1beb5612b462762f36678dfd483b22ea8c7643ef438c88c"
+  },
+  "checks": [
+    "2344 input and output rows",
+    "no nonfinite removal or duplicate merging",
+    "regular sampling preserved without interpolation",
+    "sample interval0.85344m",
+    "all14 MATLAB artifacts exist",
+    "actual original function hashes match pin"
+  ],
+  "artifact_paths": {
+    "cleaned_csv": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/cleaned.csv",
+    "prepared_csv": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/prepared.csv",
+    "processed_csv": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/processed.csv",
+    "preprocess_png": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/preprocessing.png",
+    "spectrum_png": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/spectrum.png",
+    "robust_spectrum_csv": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/spectrum_robust.csv",
+    "classic_spectrum_csv": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/spectrum_classic.csv",
+    "evolution_png": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/evolution.png",
+    "evolution_csv": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/evolution.csv",
+    "preprocess_fig": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/preprocessing.fig",
+    "spectrum_fig": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/spectrum.fig",
+    "evolution_fig": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/evolution.fig",
+    "analysis_mat": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/analysis.mat",
+    "provenance_json": "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/provenance.json"
+  },
+  "path_base": "validation/",
+  "files_sha256": {
+    "artifacts/newark/20261025T071158Z-b0f32143454c/input.txt": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/request.json": "62104bb3024bd3cec6d3e751da63371c47e54d250a9a5b897f5db92e9132f066",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/result.json": "5b2fc3fbaa9c7b8f6609402092c7138e2cfad5042931703296e297ddeab307f4",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/evolution.csv": "9b509a96e5b1bc6aeac542145234135cefde863dc3c1b07f5095869ffa701074",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/prepared.csv": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/provenance.json": "02f7e4e6971bc7a55096e856da0407c72c4edd01997154270f8ec07d2b22b29b",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/evolution.fig": "d17ddcf14e18807279c4911899314817cedddab945cca45be0ac0b98a0eae7dc",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/preprocessing.png": "873ff2e2565c5de8d44a6d61bc5a0a446dfadb385d213e1cb82f972e384bcdaa",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/evolution.png": "04ffc91dfb89fd86500771dac96ea904bc55da295bb9faddae0e1e8457f40356",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/transport.json": "b998dc4340346de84764d24f70f6809ac790373cbe0d9347028f87a34317a412",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/analysis.mat": "ec952413c3c19f513753c68caa08e57ba90cd8456145bbdb8fdb9ec3fc88c402",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/spectrum.fig": "f23d269269cc0b6a1d7ec08e3df22b11621c5d85181fa4372a20d71965765ade",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/spectrum_robust.csv": "d770b1979cf172fc6fdecfe66a28e2201e8a28f46ecae2726a6c3eab25b09082",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/response.json": "1621a94fb4ac94bce996930ea7305e68021a635cb56d6fee16dd481f3f2fc148",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/preprocessing.fig": "9cc50c6fcdae3ce5c17e62ccba0b3ded6d00491185061451e2a794defbe9dc29",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/processed.csv": "33b72df591e37cdf8bf5e520a79c8fb9d6c5db6dc60709e213a980537bf070c2",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/cleaned.csv": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/spectrum_classic.csv": "f0c2dbe84bcc3e81d60500dd579b59518d2f487879327e9b596f1d270f9af0a4",
+    "artifacts/newark/20261025T071158Z-b0f32143454c/outputs/spectrum.png": "9e6f659946cd2f4142597eacd1526d6d6bfad79ce0bfc97bb7ca124031304ed1"
+  },
+  "visual_review": {
+    "status": "passed",
+    "files": [
+      "spectrum.png",
+      "evolution.png"
+    ],
+    "observations": [
+      "Original MATLAB robust-AR1 spectrum and confidence legend render.",
+      "EvoFFT image has m depth axis, frequency axis and normalized-amplitude color scale.",
+      "No blank image or missing output observed."
+    ]
+  }
+}

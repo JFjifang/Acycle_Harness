@@ -11,7 +11,7 @@ import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '0.2.0'
+VERSION = '0.3.0'
 
 
 def main():
@@ -26,11 +26,11 @@ def main():
         subprocess.run([sys.executable, '-m', 'build'], cwd=ROOT, check=True)
         with tempfile.TemporaryDirectory(prefix='acycle-npm-') as cache:
             subprocess.run(['npm','pack','--cache',cache,'--pack-destination',str(dist)], cwd=ROOT/'plugin', check=True)
-    artifacts = [*dist.glob('*.whl'),*dist.glob('*.tar.gz'),*dist.glob('*.tgz')]
+    artifacts = [*dist.glob(f'*{VERSION}*.whl'),*dist.glob(f'*{VERSION}*.tar.gz'),*dist.glob(f'*{VERSION}*.tgz')]
     hashes = {p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in artifacts}
     (dist/'SHA256SUMS.json').write_text(json.dumps(hashes,indent=2)+'\n')
     archive = dist/f'acycle-deepseek-{VERSION}-bundle.zip'
-    source_dirs = ['src','matlab','skills','plugin','scripts','tests','docs','examples','benchmarks','.github']
+    source_dirs = ['src','matlab','skills','plugin','scripts','tests','docs','examples','benchmarks','local','.github']
     source_files = ['README.md','LICENSE','pyproject.toml','setup.py','MANIFEST.in','.gitignore']
     paths = [ROOT/name for name in source_files]
     for name in source_dirs:
@@ -45,7 +45,26 @@ def main():
                 output.write(p,Path('acycle-deepseek')/p.relative_to(ROOT))
     with zipfile.ZipFile(archive) as check:
         assert check.testzip() is None
-    print(json.dumps({'bundle':str(archive),'bytes':archive.stat().st_size,'sha256':hashlib.sha256(archive.read_bytes()).hexdigest(),'packages':hashes},indent=2))
+    handoff = dist/f'acycle-local-handoff-{VERSION}.zip'
+    # A separate self-contained deployment kit includes source, wheels, tools,
+    # guides and extracted CSV fixtures; publisher archives and historical
+    # cloud run outputs remain in the full research bundle.
+    with zipfile.ZipFile(handoff,'w',compression=zipfile.ZIP_DEFLATED) as output:
+        for p in sorted(set(paths)):
+            if not p.exists():
+                continue
+            relative=p.relative_to(ROOT)
+            if relative.parts[0]=='validation' and relative.name not in {
+                'ACCEPTANCE.md','NEWARK.md','matlab-summary.json','release-verification.json',
+                'native-plugin-smoke.json','python-tests.txt','node-tests.txt','paper-validation.json'}:
+                continue
+            if relative.parts[:2]==('benchmarks','sources') and p.suffix!='.json':
+                continue
+            output.write(p,Path('acycle-deepseek')/relative)
+    with zipfile.ZipFile(handoff) as check:
+        assert check.testzip() is None
+    print(json.dumps({'bundle':str(archive),'bytes':archive.stat().st_size,'sha256':hashlib.sha256(archive.read_bytes()).hexdigest(),
+                      'local_handoff':str(handoff),'handoff_bytes':handoff.stat().st_size,'packages':hashes},indent=2))
 
 
 if __name__ == '__main__':

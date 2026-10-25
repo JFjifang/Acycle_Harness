@@ -1,5 +1,7 @@
 # Acycle for DeepSeek Harness
 
+Version 0.3.0 adds original MATLAB SWA, COCO and eCOCO bridges and a local deployment handoff. Start with the [Chinese user guide](docs/USER_GUIDE.zh-CN.md), [local deployment handoff](docs/LOCAL_HANDOFF.zh-CN.md), or give a local Codex/Harness assistant [HANDOFF_PROMPT.txt](local/HANDOFF_PROMPT.txt).
+
 MATLAB-first cyclostratigraphy tools for the official [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness). Numerical processing, spectra, significance, filters, envelopes, age conversion, figures, CSV and MAT output execute in MATLAB, calling original [Acycle](https://github.com/mingsongli/acycle) functions. Python handles tool schemas, input snapshots, orchestration, provenance and model communication. There is no automatic Python numerical fallback.
 
 ## Install and run
@@ -32,7 +34,9 @@ See [GitHub Actions execution and cloud transport](docs/GITHUB_ACTIONS.md) for c
 
 See [plugin/README.md](plugin/README.md) for the native Cordis plugin. MCP is available through `python -m acycle_deepseek.mcp`. Both interfaces use the same six Python tools and MATLAB adapter. Set `DEEPSEEK_API_KEY` only in the process environment and run `scripts/live_deepseek_test.py` for a real model/tool test. The official API model ID `deepseek-flash` identifies DeepSeek-V4.1-Flash.
 
-Core methods: mini-robot preprocessing, MTM robust AR(1) pointwise thresholds, EvoFFT, Gaussian/Taner filtering and Hilbert envelopes, and sedimentation-rate/tie-point age conversion. Future Acycle versions are loaded at runtime; required functions are checked and actual source hashes are recorded. See [matlab/SOURCES.md](matlab/SOURCES.md) for adapted GUI code provenance.
+Core methods: mini-robot preprocessing, MTM robust AR(1) pointwise thresholds, EvoFFT, Gaussian/Taner filtering and Hilbert envelopes, and sedimentation-rate/tie-point age conversion. New tools `acycle_swa`, `acycle_coco`, and `acycle_ecoco` expose original SWA/FDR and explicit orbital-target/rate-grid Monte Carlo workflows. All three support the same immutable runs, provenance and steering interfaces. See [SWA](docs/SWA.md), [COCO/eCOCO](docs/COCO.md) and [paper validation protocols](docs/PAPER_VALIDATION.md) for their distinct statistical meanings and supported modes.
+
+Future Acycle versions are loaded at runtime; required functions are checked and actual source hashes are recorded. See [matlab/SOURCES.md](matlab/SOURCES.md) and the SWA/COCO source registries for original-code provenance. Full-record nonlinear preprocessing is rejected for held-out eCOCO modes to prevent leakage between training and validation data.
 
 ## Validation and limitations
 

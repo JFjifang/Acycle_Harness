@@ -261,12 +261,17 @@ for k=1:numel(figures)
     artifacts.([name,'_png'])=fullfile(out,[name,'.png']);
     artifacts.([name,'_fig'])=fullfile(out,[name,'.fig']);
     artifacts.([name,'_pdf'])=fullfile(out,[name,'.pdf']);
-    set(figures(k),'Visible','off','Position',[50 50 1000 800]);
+    % Preserve the original publication layout and panel-specific dimensions.
+    set(figures(k),'Visible','off');
     exportgraphics(figures(k),artifacts.([name,'_png']),'Resolution',150);
     exportgraphics(figures(k),artifacts.([name,'_pdf']),'ContentType','vector');
     savefig(figures(k),artifacts.([name,'_fig']));
 end
 provenance=sourceProvenance(root,request.input_path,operation,p,hasAge);
+if ~provenance.all_sources_match_reference
+    warnings{end+1}=['The installed Acycle source differs from the validated reference snapshot. ', ...
+        'The original entrypoints executed, but numerical compatibility of this revision is not established.'];
+end
 artifacts.provenance_json=fullfile(out,'provenance.json'); writeJson(artifacts.provenance_json,provenance);
 artifacts.details_json=fullfile(out,'details.json'); writeJson(artifacts.details_json,numerical.details);
 artifacts.analysis_mat=fullfile(out,'analysis.mat');
@@ -311,7 +316,12 @@ function provenance=sourceProvenance(root,input,operation,p,hasAge)
 reference=jsondecode(fileread(fullfile(fileparts(mfilename('fullpath')),'coco_sources.json')));
 files=reference.files;
 for k=1:numel(files)
-    actual=sha256(fullfile(root,files(k).relative_path));
+    sourceFile=fullfile(root,files(k).relative_path);
+    files(k).exists=isfile(sourceFile);
+    % A conservative snapshot includes helpers not used by every operation.
+    % A removed unused helper in a future release must not invalidate an
+    % otherwise completed analysis; record the mismatch instead.
+    actual='';if files(k).exists,actual=sha256(sourceFile);end
     files(k).matches_reference=strcmp(actual,files(k).sha256);
     files(k).sha256=actual;
 end
