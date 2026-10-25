@@ -1,12 +1,27 @@
-✔ bridge transports JSON literally without shell expansion (19.161652ms)
-✔ bridge observes cancellation and waits for subprocess exit (103.679579ms)
-✔ bridge reports errors and rejects non-JSON output (17.213213ms)
-✔ packaged skill metadata strips frontmatter and resolves resources (1.996761ms)
-ℹ tests 4
+✔ compact model result preserves statistics, warnings and source mismatches (1.505039ms)
+✔ missing attachment services preserve science and path delivery (0.536796ms)
+✔ failed presentation cannot turn a completed MATLAB result into a failed analysis (7.244284ms)
+✔ artifact delivery excludes a symlink escaping recorded outputs and oversized files (2.966103ms)
+✔ official SystemPrompt always includes Acycle workflow rules and removes them with the plugin (137.797282ms)
+✔ official registry imports only current Session user refs, preserving bytes and source (62.79066ms)
+✔ multiple files require selection; official host paths auto-import for Python intake (108.856957ms)
+✔ official short handles resolve only unique current Session refs, with real prefix collisions requiring selection (53.932259ms)
+✔ bare filenames prefer current uploads, preserve explicit workspace paths, and reject ambiguous uploads (158.261367ms)
+✔ every import preserves its own source receipt across messages and Sessions without changing prior records (52.350995ms)
+✔ import rejects byte limits and a symlinked destination, leaving source intact (43.224822ms)
+✔ official sha256 refs detect altered source bytes and remove partial imports (41.849977ms)
+✔ official image/file refs and present deliver both spectrum and evolution with original bytes (89.726854ms)
+✔ path intake remains usable without attachments; attachment import gives an actionable error (66.831266ms)
+✔ bridge transports JSON literally without shell expansion (12.290293ms)
+✔ bridge observes cancellation and waits for subprocess exit (102.633979ms)
+✔ bridge reports errors and rejects non-JSON output (11.907709ms)
+✔ packaged skill metadata strips frontmatter and resolves resources (0.774733ms)
+✔ optional SystemPrompt service does not block legacy plugin registration (12.384866ms)
+ℹ tests 19
 ℹ suites 0
-ℹ pass 4
+ℹ pass 19
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 146.572992
+ℹ duration_ms 987.940407

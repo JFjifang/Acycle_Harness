@@ -1,0 +1,1192 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-25T09:07:29.406269+00:00",
+  "scope": "Independent transport and saved MATLAB JSON audit for official Harness conversation attempts. No numerical analysis was recomputed. Transfer success, MATLAB success and conversation acceptance are distinct.",
+  "repository": "JFjifang/Acycle_Harness",
+  "monitor_stopped": true,
+  "summary": {
+    "iteration1_interrupted_artifacts": 1,
+    "iteration2_workflow_jobs": 6,
+    "iteration2_artifacts_delivered_and_digest_verified": 6,
+    "iteration2_matlab_success": 5,
+    "iteration2_matlab_error": 1,
+    "iteration2_source_registries_present_and_matching": 5,
+    "iteration2_source_registry_unavailable": 1,
+    "iteration2_code_commit": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+    "acycle_commit": "dcba4279168745b563e0535b954297023dd62fc7"
+  },
+  "limitations": [
+    "The interrupted iteration1 artifact is retained as evidence, not counted as successful live conversation acceptance.",
+    "PETM eCOCO baseline is an exploratory 19-simulation run with 12 resolved and 90 unresolved correlation cells and optima at the upper search boundary; it is not a validated chronology.",
+    "PETM window=8 m, step=4 m rerun failed with Harness:COCOUnresolved. Its artifact preserves the failure and partial preparation files; no successful map or provenance-registry match is claimed.",
+    "Source-registry checks audit the existing MATLAB JSON and its declared file hashes, without independently re-running or replacing Acycle calculations.",
+    "Portable scientific request/result/output archives are linked with repository-relative paths; absolute source and transfer paths retain the original execution-workspace audit trail."
+  ],
+  "runs": [
+    {
+      "iteration": 1,
+      "case_id": "lavernock_fdr_display",
+      "turn_id": "baseline",
+      "local_run_id": "20261025T084157Z-3a0928945f40",
+      "parent_run_id": null,
+      "operation": "swa",
+      "input_sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+      "requested_parameters": {
+        "method": "lomb",
+        "coordinate_unit": "m"
+      },
+      "effective_parameters": {
+        "method": "lomb",
+        "coordinate_unit": "m",
+        "fmax": 16.590563165905568
+      },
+      "steering": null,
+      "matlab_status": "success",
+      "matlab_error": null,
+      "matlab_summary": {
+        "input_rows": 439,
+        "removed_nonfinite_rows": 0,
+        "processed_rows": 439,
+        "interpolated": false,
+        "method": "lomb",
+        "coordinate_unit": "m",
+        "frequency_count": 218,
+        "fdr_levels": [
+          0.1,
+          0.05,
+          0.01,
+          0.001,
+          0.0001
+        ],
+        "fdr_threshold_available": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "fdr_exceeding_frequency_bins": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "peaks": [
+          {
+            "frequency": 1.21765601217656,
+            "period": 0.82125,
+            "power": 10.876497204899099,
+            "above_pointwise_95": true,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 0.228310502283105,
+            "period": 4.38,
+            "power": 8.40537723920532,
+            "above_pointwise_95": true,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 2.435312024353122,
+            "period": 0.41062499999999974,
+            "power": 4.5312935430924135,
+            "above_pointwise_95": true,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 1.7503805175038059,
+            "period": 0.5713043478260867,
+            "power": 3.5308547098975938,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 3.5007610350076135,
+            "period": 0.2856521739130432,
+            "power": 2.8287327426657773,
+            "above_pointwise_95": true,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 3.044140030441403,
+            "period": 0.32849999999999974,
+            "power": 1.7364213174438938,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 4.033485540334859,
+            "period": 0.24792452830188655,
+            "power": 1.5890974751021298,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 4.8706240487062455,
+            "period": 0.2053124999999998,
+            "power": 1.375375422052769,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 4.64231354642314,
+            "period": 0.21540983606557354,
+            "power": 1.3519552050587214,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 5.4794520547945265,
+            "period": 0.1824999999999998,
+            "power": 0.8656141561403214,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          }
+        ]
+      },
+      "source_registry": {
+        "available": true,
+        "all_recorded_hashes_match_reference": true,
+        "archive_member": "ci-output/swa-provenance.json",
+        "json_sha256": "5b5178c3bfbd96aa3aa2411d3f262cd4faea1073d56b856f580bb65411fd8bab",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 15,
+        "matching_file_count": 15,
+        "mismatched_paths": [],
+        "source_scope": "Acycle source functions recorded by the MATLAB adapter",
+        "numerical_backend": "MATLAB/Acycle original SWA functions",
+        "plot_backend": "MATLAB",
+        "matlab_release": "2024b",
+        "input_sha256_matches_request": true
+      },
+      "github": {
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40177653886,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40177653886",
+        "jobs": [
+          {
+            "id": 121121732347,
+            "name": "matlab",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "source_commit": "551ba440a190a0bc6f95b2319839fdf1847e5ca0",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "artifact_id": 12592798037,
+        "artifact_name": "acycle-output-acycle-ba28193ea21244458a2b61ef35e617ab",
+        "artifact_size_bytes": 218688,
+        "artifact_sha256": "c0007fcf3ea59c06c5cf3ae7f5e5277d83334de647ec222d014458326b9052a8",
+        "artifact_digest_matches_github": true
+      },
+      "transfer": {
+        "transport": "github_connector_to_sediment_download_file",
+        "status": "delivered",
+        "completed_at": "2026-10-25T08:44:43.154179+00:00",
+        "atomic_delivery": true,
+        "recomputed": false,
+        "cache_consumed": false,
+        "receipt_source_path": "/workspace/acycle-artifacts-v04/transfers/acycle-ba28193ea21244458a2b61ef35e617ab.json",
+        "zip_source_path": "/workspace/acycle-artifacts-v04/12592798037.zip"
+      },
+      "evidence": {
+        "request_source_path": "/workspace/harness-conversation-runs/lavernock-fdr/.acycle/runs/20261025T084157Z-3a0928945f40/request.json",
+        "outputs_source_path": null,
+        "response_archive_member": "ci-output/response.json",
+        "response_json_sha256": "4113d0229b950693361a2f3b9150d4dc5e8b9992fdea9396052c5caeb70a0e72",
+        "numerical_member_hashes": {
+          "ci-output/swa-spectrum.csv": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654"
+        }
+      },
+      "conversation_scope": "interrupted initial attempt; artifact delivered after consumer stopped; excluded from iteration2 acceptance",
+      "parameter_changes": null
+    },
+    {
+      "iteration": 2,
+      "case_id": "newark_baseline_steering",
+      "turn_id": "baseline",
+      "local_run_id": "20261025T085140Z-96d53b1e8278",
+      "parent_run_id": null,
+      "operation": "analyze",
+      "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "requested_parameters": {
+        "coordinate_unit": "m",
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "evolution": true
+      },
+      "effective_parameters": {
+        "coordinate_unit": "m",
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "evolution": true,
+        "smooth_fraction": 0.25,
+        "dt": 0.853439999999992,
+        "nfft": 11720,
+        "fmax": 0.5858642669666346,
+        "fit_fmax": 0.5858642669666346,
+        "evolution_window": 699.863472,
+        "evolution_step": 9.387839999999912
+      },
+      "steering": null,
+      "matlab_status": "success",
+      "matlab_error": null,
+      "matlab_summary": {
+        "input_rows": 2344,
+        "removed_nonfinite_rows": 0,
+        "merged_duplicate_rows": 0,
+        "processed_rows": 2344,
+        "interpolated": false,
+        "sample_interval": 0.853439999999992,
+        "nyquist": 0.5858642669666346,
+        "coordinate_unit": "m",
+        "robust_ar1_rho": 0.4336192508481934,
+        "robust_ar1_s0": 0.04453031015632312,
+        "robust_fit_method": "original_redconfML",
+        "peaks": [
+          {
+            "frequency": 0.017495946539105984,
+            "period": 57.156095999999465,
+            "power": 1.3850034691165054,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.016296224490710144,
+            "period": 61.36390674846569,
+            "power": 1.1750712690699705,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.018595691750135503,
+            "period": 53.77589677419304,
+            "power": 0.8338279384075483,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.003699142982553837,
+            "period": 270.3328864864839,
+            "power": 0.663020991721111,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.004199027169385436,
+            "period": 238.15039999999775,
+            "power": 0.6304879940256632,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.015296456117046948,
+            "period": 65.37461960784252,
+            "power": 0.5308003218258902,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.05678684362406971,
+            "period": 17.609712676056173,
+            "power": 0.516788631902549,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.07568246588630417,
+            "period": 13.213100132100273,
+            "power": 0.46518157542710303,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.05768663516036659,
+            "period": 17.33503778162895,
+            "power": 0.4490324377170467,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.07088357769272081,
+            "period": 14.107640056417358,
+            "power": 0.44164756700077135,
+            "pointwise_above_95": true
+          }
+        ]
+      },
+      "source_registry": {
+        "available": true,
+        "all_recorded_hashes_match_reference": true,
+        "archive_member": "ci-output/provenance.json",
+        "json_sha256": "02f7e4e6971bc7a55096e856da0407c72c4edd01997154270f8ec07d2b22b29b",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 11,
+        "matching_file_count": 11,
+        "mismatched_paths": [],
+        "source_scope": "Acycle source functions recorded by the MATLAB adapter",
+        "numerical_backend": "MATLAB/Acycle",
+        "plot_backend": "MATLAB (original redconfML plot; other GUI plots adapted)",
+        "matlab_release": "2024b",
+        "input_sha256_matches_request": true
+      },
+      "github": {
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40178299936,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178299936",
+        "jobs": [
+          {
+            "id": 121123678164,
+            "name": "matlab",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "source_commit": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "artifact_id": 12592309027,
+        "artifact_name": "acycle-output-acycle-2f011e8a763f4e7394b1ecd33e17c280",
+        "artifact_size_bytes": 11122858,
+        "artifact_sha256": "c31b00ed92bb07fc5b4fda59a7d1d04373f1eacb822526950e86af467d3ecc92",
+        "artifact_digest_matches_github": true
+      },
+      "transfer": {
+        "transport": "github_connector_to_sediment_download_file",
+        "status": "delivered",
+        "completed_at": "2026-10-25T08:54:28.020264+00:00",
+        "atomic_delivery": true,
+        "recomputed": false,
+        "cache_consumed": true,
+        "receipt_source_path": "/workspace/acycle-artifacts-v04/transfers/acycle-2f011e8a763f4e7394b1ecd33e17c280.json",
+        "zip_source_path": "/workspace/acycle-artifacts-v04/12592309027.zip"
+      },
+      "evidence": {
+        "request_source_path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/request.json",
+        "outputs_source_path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/outputs",
+        "response_archive_member": "ci-output/response.json",
+        "response_json_sha256": "78205af0dfc2232b91470782ca03a1091cb5c45838e6d66bcaac519a189a1748",
+        "numerical_member_hashes": {},
+        "request_path": "validation/v0.4/scientific-runs/newark_baseline_steering/20261025T085140Z-96d53b1e8278/request.json",
+        "result_path": "validation/v0.4/scientific-runs/newark_baseline_steering/20261025T085140Z-96d53b1e8278/result.json",
+        "outputs_path": "validation/v0.4/scientific-runs/newark_baseline_steering/20261025T085140Z-96d53b1e8278/outputs",
+        "artifact_original_hashes_path": "validation/v0.4/scientific-runs/newark_baseline_steering/20261025T085140Z-96d53b1e8278/artifact-original-hashes.json"
+      },
+      "conversation_scope": "fresh iteration2 workflow; conversation acceptance is recorded separately in harness receipts",
+      "parameter_changes": null
+    },
+    {
+      "iteration": 2,
+      "case_id": "newark_baseline_steering",
+      "turn_id": "span_adjustment",
+      "local_run_id": "20261025T085504Z-4c42b4a2ab62",
+      "parent_run_id": "20261025T085140Z-96d53b1e8278",
+      "operation": "analyze",
+      "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+      "requested_parameters": {
+        "coordinate_unit": "m",
+        "detrend": "lowess",
+        "span": 0.25,
+        "mtm_nw": 2,
+        "evolution": true,
+        "smooth_fraction": 0.25,
+        "dt": 0.853439999999992,
+        "nfft": 11720,
+        "fmax": 0.5858642669666346,
+        "fit_fmax": 0.5858642669666346,
+        "evolution_window": 699.863472,
+        "evolution_step": 9.387839999999912
+      },
+      "effective_parameters": {
+        "coordinate_unit": "m",
+        "detrend": "lowess",
+        "span": 0.25,
+        "mtm_nw": 2,
+        "evolution": true,
+        "smooth_fraction": 0.25,
+        "dt": 0.853439999999992,
+        "nfft": 11720,
+        "fmax": 0.5858642669666346,
+        "fit_fmax": 0.5858642669666346,
+        "evolution_window": 699.863472,
+        "evolution_step": 9.387839999999912
+      },
+      "steering": {
+        "baseline_run_id": "20261025T085140Z-96d53b1e8278",
+        "operation_preserved": "analyze",
+        "parameter_patch": {
+          "span": 0.25
+        },
+        "removed_or_reset_parameters": {},
+        "parameter_basis": "saved effective defaults plus explicit baseline input settings"
+      },
+      "matlab_status": "success",
+      "matlab_error": null,
+      "matlab_summary": {
+        "input_rows": 2344,
+        "removed_nonfinite_rows": 0,
+        "merged_duplicate_rows": 0,
+        "processed_rows": 2344,
+        "interpolated": false,
+        "sample_interval": 0.853439999999992,
+        "nyquist": 0.5858642669666346,
+        "coordinate_unit": "m",
+        "robust_ar1_rho": 0.4333355482401226,
+        "robust_ar1_s0": 0.04450777676369914,
+        "robust_fit_method": "original_redconfML",
+        "peaks": [
+          {
+            "frequency": 0.017495946539105984,
+            "period": 57.156095999999465,
+            "power": 1.3854524273223228,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.016296224490710144,
+            "period": 61.36390674846569,
+            "power": 1.1751156477922609,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.018595691750135503,
+            "period": 53.77589677419304,
+            "power": 0.8339609921781307,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.003799119819920156,
+            "period": 263.2188631578923,
+            "power": 0.6727088082400795,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.004299004006751756,
+            "period": 232.612018604649,
+            "power": 0.6457456095760452,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.015296456117046948,
+            "period": 65.37461960784252,
+            "power": 0.5298910782117258,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.05688682046143603,
+            "period": 17.57876414762725,
+            "power": 0.5166908462350669,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.07568246588630417,
+            "period": 13.213100132100273,
+            "power": 0.46517590723446,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.05768663516036659,
+            "period": 17.33503778162895,
+            "power": 0.44904969160880037,
+            "pointwise_above_95": true
+          },
+          {
+            "frequency": 0.07088357769272081,
+            "period": 14.107640056417358,
+            "power": 0.441667118641348,
+            "pointwise_above_95": true
+          }
+        ]
+      },
+      "source_registry": {
+        "available": true,
+        "all_recorded_hashes_match_reference": true,
+        "archive_member": "ci-output/provenance.json",
+        "json_sha256": "02f7e4e6971bc7a55096e856da0407c72c4edd01997154270f8ec07d2b22b29b",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 11,
+        "matching_file_count": 11,
+        "mismatched_paths": [],
+        "source_scope": "Acycle source functions recorded by the MATLAB adapter",
+        "numerical_backend": "MATLAB/Acycle",
+        "plot_backend": "MATLAB (original redconfML plot; other GUI plots adapted)",
+        "matlab_release": "2024b",
+        "input_sha256_matches_request": true
+      },
+      "github": {
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40178523725,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178523725",
+        "jobs": [
+          {
+            "id": 121124365673,
+            "name": "matlab",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "source_commit": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "artifact_id": 12593287127,
+        "artifact_name": "acycle-output-acycle-68d7f201d12d434bb50df80efdf9a871",
+        "artifact_size_bytes": 11114466,
+        "artifact_sha256": "75d4dae9f336ffa309e6ed17bbe91ca2cfb7d42afb9fe415ed4a51ee0e887cc5",
+        "artifact_digest_matches_github": true
+      },
+      "transfer": {
+        "transport": "github_connector_to_sediment_download_file",
+        "status": "delivered",
+        "completed_at": "2026-10-25T08:58:30.202887+00:00",
+        "atomic_delivery": true,
+        "recomputed": false,
+        "cache_consumed": true,
+        "receipt_source_path": "/workspace/acycle-artifacts-v04/transfers/acycle-68d7f201d12d434bb50df80efdf9a871.json",
+        "zip_source_path": "/workspace/acycle-artifacts-v04/12593287127.zip"
+      },
+      "evidence": {
+        "request_source_path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085504Z-4c42b4a2ab62/request.json",
+        "outputs_source_path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085504Z-4c42b4a2ab62/outputs",
+        "response_archive_member": "ci-output/response.json",
+        "response_json_sha256": "215b48b0585740db91087766bd348810b4051b772062f663cf5b935f0cb42219",
+        "numerical_member_hashes": {},
+        "request_path": "validation/v0.4/scientific-runs/newark_baseline_steering/20261025T085504Z-4c42b4a2ab62/request.json",
+        "result_path": "validation/v0.4/scientific-runs/newark_baseline_steering/20261025T085504Z-4c42b4a2ab62/result.json",
+        "outputs_path": "validation/v0.4/scientific-runs/newark_baseline_steering/20261025T085504Z-4c42b4a2ab62/outputs",
+        "artifact_original_hashes_path": "validation/v0.4/scientific-runs/newark_baseline_steering/20261025T085504Z-4c42b4a2ab62/artifact-original-hashes.json"
+      },
+      "conversation_scope": "fresh iteration2 workflow; conversation acceptance is recorded separately in harness receipts",
+      "parameter_changes": {
+        "span": {
+          "before": 0.35,
+          "requested_after": 0.25,
+          "effective_after": 0.25
+        }
+      },
+      "input_and_operation_preserved": true
+    },
+    {
+      "iteration": 2,
+      "case_id": "lavernock_fdr_display",
+      "turn_id": "baseline",
+      "local_run_id": "20261025T085659Z-f5aea2e779a4",
+      "parent_run_id": null,
+      "operation": "swa",
+      "input_sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+      "requested_parameters": {
+        "method": "lomb",
+        "coordinate_unit": "m"
+      },
+      "effective_parameters": {
+        "method": "lomb",
+        "coordinate_unit": "m",
+        "fmax": 16.590563165905568
+      },
+      "steering": null,
+      "matlab_status": "success",
+      "matlab_error": null,
+      "matlab_summary": {
+        "input_rows": 439,
+        "removed_nonfinite_rows": 0,
+        "processed_rows": 439,
+        "interpolated": false,
+        "method": "lomb",
+        "coordinate_unit": "m",
+        "frequency_count": 218,
+        "fdr_levels": [
+          0.1,
+          0.05,
+          0.01,
+          0.001,
+          0.0001
+        ],
+        "fdr_threshold_available": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "fdr_exceeding_frequency_bins": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "peaks": [
+          {
+            "frequency": 1.21765601217656,
+            "period": 0.82125,
+            "power": 10.876497204899099,
+            "above_pointwise_95": true,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 0.228310502283105,
+            "period": 4.38,
+            "power": 8.40537723920532,
+            "above_pointwise_95": true,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 2.435312024353122,
+            "period": 0.41062499999999974,
+            "power": 4.5312935430924135,
+            "above_pointwise_95": true,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 1.7503805175038059,
+            "period": 0.5713043478260867,
+            "power": 3.5308547098975938,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 3.5007610350076135,
+            "period": 0.2856521739130432,
+            "power": 2.8287327426657773,
+            "above_pointwise_95": true,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 3.044140030441403,
+            "period": 0.32849999999999974,
+            "power": 1.7364213174438938,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 4.033485540334859,
+            "period": 0.24792452830188655,
+            "power": 1.5890974751021298,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 4.8706240487062455,
+            "period": 0.2053124999999998,
+            "power": 1.375375422052769,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 4.64231354642314,
+            "period": 0.21540983606557354,
+            "power": 1.3519552050587214,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 5.4794520547945265,
+            "period": 0.1824999999999998,
+            "power": 0.8656141561403214,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          }
+        ]
+      },
+      "source_registry": {
+        "available": true,
+        "all_recorded_hashes_match_reference": true,
+        "archive_member": "ci-output/swa-provenance.json",
+        "json_sha256": "5b5178c3bfbd96aa3aa2411d3f262cd4faea1073d56b856f580bb65411fd8bab",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 15,
+        "matching_file_count": 15,
+        "mismatched_paths": [],
+        "source_scope": "Acycle source functions recorded by the MATLAB adapter",
+        "numerical_backend": "MATLAB/Acycle original SWA functions",
+        "plot_backend": "MATLAB",
+        "matlab_release": "2024b",
+        "input_sha256_matches_request": true
+      },
+      "github": {
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40178649016,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178649016",
+        "jobs": [
+          {
+            "id": 121124743829,
+            "name": "matlab",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "source_commit": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "artifact_id": 12592364405,
+        "artifact_name": "acycle-output-acycle-49cd873732fd403a9eda67fdb56944a6",
+        "artifact_size_bytes": 218692,
+        "artifact_sha256": "f931481e2e4756351c97092f72c286635c8002eedbb892e023b36ba4ad79b495",
+        "artifact_digest_matches_github": true
+      },
+      "transfer": {
+        "transport": "github_connector_to_sediment_download_file",
+        "status": "delivered",
+        "completed_at": "2026-10-25T08:59:09.443694+00:00",
+        "atomic_delivery": true,
+        "recomputed": false,
+        "cache_consumed": true,
+        "receipt_source_path": "/workspace/acycle-artifacts-v04/transfers/acycle-49cd873732fd403a9eda67fdb56944a6.json",
+        "zip_source_path": "/workspace/acycle-artifacts-v04/12592364405.zip"
+      },
+      "evidence": {
+        "request_source_path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/request.json",
+        "outputs_source_path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs",
+        "response_archive_member": "ci-output/response.json",
+        "response_json_sha256": "4113d0229b950693361a2f3b9150d4dc5e8b9992fdea9396052c5caeb70a0e72",
+        "numerical_member_hashes": {
+          "ci-output/swa-spectrum.csv": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654"
+        },
+        "request_path": "validation/v0.4/scientific-runs/lavernock_fdr_display/20261025T085659Z-f5aea2e779a4/request.json",
+        "result_path": "validation/v0.4/scientific-runs/lavernock_fdr_display/20261025T085659Z-f5aea2e779a4/result.json",
+        "outputs_path": "validation/v0.4/scientific-runs/lavernock_fdr_display/20261025T085659Z-f5aea2e779a4/outputs",
+        "artifact_original_hashes_path": "validation/v0.4/scientific-runs/lavernock_fdr_display/20261025T085659Z-f5aea2e779a4/artifact-original-hashes.json"
+      },
+      "conversation_scope": "fresh iteration2 workflow; conversation acceptance is recorded separately in harness receipts",
+      "parameter_changes": null
+    },
+    {
+      "iteration": 2,
+      "case_id": "petm_ecoco_multi_steering",
+      "turn_id": "baseline",
+      "local_run_id": "20261025T085704Z-c1db64ad1e01",
+      "parent_run_id": null,
+      "operation": "ecoco",
+      "input_sha256": "216f8a99011ec476365499d51393a79123a074dfdee067b176194c1d54b2efc6",
+      "requested_parameters": {
+        "depth_unit": "m",
+        "middle_age_ma": 56,
+        "sedimentation_rate_min": 8,
+        "sedimentation_rate_max": 16,
+        "sedimentation_rate_step": 0.5,
+        "window": 6,
+        "step": 3,
+        "method": "adaptive",
+        "nsim": 19,
+        "seed": 42,
+        "detrend": "linear",
+        "max_frequency": 0.06,
+        "correlation": "Pearson",
+        "red_noise": 1
+      },
+      "effective_parameters": {
+        "depth_unit": "m",
+        "middle_age_ma": 56,
+        "sedimentation_rate_min": 8,
+        "sedimentation_rate_max": 16,
+        "sedimentation_rate_step": 0.5,
+        "window": 6,
+        "step": 3,
+        "method": "adaptive",
+        "nsim": 19,
+        "seed": 42,
+        "detrend": "linear",
+        "max_frequency": 0.06,
+        "correlation": "Pearson",
+        "red_noise": 1,
+        "nfft": 2048
+      },
+      "steering": null,
+      "matlab_status": "success",
+      "matlab_error": null,
+      "matlab_summary": {
+        "input_rows": 4364,
+        "depth_unit_input": "m",
+        "depth_unit_analysis": "m",
+        "depth_to_metres_factor": 1,
+        "sampling_interval_m": 0.0049999999999954525,
+        "method": "adaptive",
+        "orbital_periods_kyr": [
+          405.69119637582526,
+          130.69786204114564,
+          123.8532110091743,
+          98.85170322399951,
+          94.88563498843362,
+          39.26793539467169,
+          23.09687826977435,
+          21.85275368387095,
+          18.575311716591422
+        ],
+        "target_source": "Acycle calculate_orbit9; age rounded to nearest integer Ma",
+        "rate_unit": "cm/kyr",
+        "rate_count": 17,
+        "nsim_requested": 19,
+        "seed": 42,
+        "minimum_resolvable_p": 0.05,
+        "preparation": {
+          "label": "Harness COCO/eCOCO",
+          "method": "finite rows; sort; mean duplicate values; conditional linear interpolation",
+          "originalRowCount": 4364,
+          "finiteRowCount": 4364,
+          "nonfiniteRowsRemoved": 0,
+          "uniqueDepthCount": 4364,
+          "duplicateRowsCollapsed": 0,
+          "interpolationApplied": true,
+          "interpolationMethod": "linear",
+          "originalDepthRange": [
+            187.542,
+            211.237
+          ],
+          "outputDepthRange": [
+            187.542,
+            211.237
+          ],
+          "spacingMinimum": 0.0009999999999763531,
+          "spacingMedian": 0.0049999999999954525,
+          "spacingMaximum": 1.1479999999999961,
+          "outputSpacing": 0.0049999999999954525,
+          "maximumSpacingDeviation": 1.1430000000000007,
+          "uniformityTolerance": 4.999999999995453e-08,
+          "maximumGapToMedianRatio": 229.60000000020804,
+          "outputPointCount": 4740,
+          "maximumOutputPointCount": 200000,
+          "inputAssumption": "proxy values were scientifically detrended before COCO/eCOCO"
+        },
+        "target_age_rounded_ma": 56,
+        "window_count": 6,
+        "window_m": 6,
+        "step_m": 3,
+        "depth_centres_m": [
+          190.542,
+          193.542,
+          196.542,
+          199.542,
+          202.542,
+          205.542
+        ],
+        "edge_padding": false,
+        "rate_global_p_scope": "maximum across sedimentation-rate grid within each window only; no correction across windows",
+        "map_global_applied": false,
+        "finite_correlation_cells": 12,
+        "unresolved_correlation_cells": 90,
+        "tracked_rate_cm_kyr": [
+          16,
+          16,
+          16,
+          16,
+          16,
+          16
+        ],
+        "nsim_completed": 19,
+        "target_mode": "coherent-nine / four-group-area",
+        "blocked_consensus_policy": "supported"
+      },
+      "source_registry": {
+        "available": true,
+        "all_recorded_hashes_match_reference": true,
+        "archive_member": "ci-output/provenance.json",
+        "json_sha256": "63637c144d36888bdc6c73995e9564abab1d9cac383fcdceaefb161f27274a0b",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 104,
+        "matching_file_count": 104,
+        "mismatched_paths": [],
+        "source_scope": "Conservative dependency snapshot, including COCO family helpers; not every listed function executes in each mode.",
+        "numerical_backend": "MATLAB/Acycle original functions",
+        "plot_backend": "MATLAB/Acycle original publication plotting functions",
+        "matlab_release": "2024b",
+        "input_sha256_matches_request": true
+      },
+      "github": {
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40178654192,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178654192",
+        "jobs": [
+          {
+            "id": 121124757649,
+            "name": "matlab",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "source_commit": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "artifact_id": 12593670007,
+        "artifact_name": "acycle-output-acycle-c3b249363335425a89a1c38cc0dd183b",
+        "artifact_size_bytes": 411299,
+        "artifact_sha256": "1c9ebe5931555fc0064886abfbcc16b7c438609d7393cc151cd6bc302d75fd53",
+        "artifact_digest_matches_github": true
+      },
+      "transfer": {
+        "transport": "github_connector_to_sediment_download_file",
+        "status": "delivered",
+        "completed_at": "2026-10-25T09:00:05.490534+00:00",
+        "atomic_delivery": true,
+        "recomputed": false,
+        "cache_consumed": true,
+        "receipt_source_path": "/workspace/acycle-artifacts-v04/transfers/acycle-c3b249363335425a89a1c38cc0dd183b.json",
+        "zip_source_path": "/workspace/acycle-artifacts-v04/12593670007.zip"
+      },
+      "evidence": {
+        "request_source_path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/request.json",
+        "outputs_source_path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs",
+        "response_archive_member": "ci-output/response.json",
+        "response_json_sha256": "745f20d2b90c52df1a66755e3169beea8d7ff31b795246ca4a8fc3b9f19aeda6",
+        "numerical_member_hashes": {},
+        "request_path": "validation/v0.4/scientific-runs/petm_ecoco_multi_steering/20261025T085704Z-c1db64ad1e01/request.json",
+        "result_path": "validation/v0.4/scientific-runs/petm_ecoco_multi_steering/20261025T085704Z-c1db64ad1e01/result.json",
+        "outputs_path": "validation/v0.4/scientific-runs/petm_ecoco_multi_steering/20261025T085704Z-c1db64ad1e01/outputs",
+        "artifact_original_hashes_path": "validation/v0.4/scientific-runs/petm_ecoco_multi_steering/20261025T085704Z-c1db64ad1e01/artifact-original-hashes.json"
+      },
+      "conversation_scope": "fresh iteration2 workflow; conversation acceptance is recorded separately in harness receipts",
+      "parameter_changes": null
+    },
+    {
+      "iteration": 2,
+      "case_id": "petm_ecoco_multi_steering",
+      "turn_id": "window_and_step_adjustment",
+      "local_run_id": "20261025T090037Z-45ea6434b881",
+      "parent_run_id": "20261025T085704Z-c1db64ad1e01",
+      "operation": "ecoco",
+      "input_sha256": "216f8a99011ec476365499d51393a79123a074dfdee067b176194c1d54b2efc6",
+      "requested_parameters": {
+        "depth_unit": "m",
+        "middle_age_ma": 56,
+        "sedimentation_rate_min": 8,
+        "sedimentation_rate_max": 16,
+        "sedimentation_rate_step": 0.5,
+        "window": 8,
+        "step": 4,
+        "method": "adaptive",
+        "nsim": 19,
+        "seed": 42,
+        "detrend": "linear",
+        "max_frequency": 0.06,
+        "correlation": "Pearson",
+        "red_noise": 1
+      },
+      "effective_parameters": null,
+      "steering": {
+        "baseline_run_id": "20261025T085704Z-c1db64ad1e01",
+        "operation_preserved": "ecoco",
+        "parameter_patch": {
+          "window": 8,
+          "step": 4
+        },
+        "removed_or_reset_parameters": {
+          "nfft": {
+            "previous_value": 2048,
+            "reason": "dependent MATLAB default recalculated for the explicit parameter change"
+          }
+        },
+        "parameter_basis": "saved effective defaults plus explicit baseline input settings"
+      },
+      "matlab_status": "error",
+      "matlab_error": {
+        "identifier": "Harness:COCOUnresolved",
+        "message": "No resolved eCOCO correlation cells; increase window or revise physically justified target/rate grid."
+      },
+      "matlab_summary": null,
+      "source_registry": {
+        "available": false,
+        "all_recorded_hashes_match_reference": null,
+        "unavailable_reason": "MATLAB rejected unresolved eCOCO cells before emitting the provenance registry; no all-hashes-match claim is made for this failed run."
+      },
+      "github": {
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40178885432,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178885432",
+        "jobs": [
+          {
+            "id": 121125457659,
+            "name": "matlab",
+            "status": "completed",
+            "conclusion": "failure"
+          }
+        ],
+        "source_commit": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "artifact_id": 12593405804,
+        "artifact_name": "acycle-output-acycle-af765c3ad19847c481106a683bc5de16",
+        "artifact_size_bytes": 83614,
+        "artifact_sha256": "681b8db0ff21bda7cc918790c1b5e0a568bbd644cf7544fe370b709f0e1cf72d",
+        "artifact_digest_matches_github": true
+      },
+      "transfer": {
+        "transport": "github_connector_to_sediment_download_file",
+        "status": "delivered",
+        "completed_at": "2026-10-25T09:03:17.969956+00:00",
+        "atomic_delivery": true,
+        "recomputed": false,
+        "cache_consumed": true,
+        "receipt_source_path": "/workspace/acycle-artifacts-v04/transfers/acycle-af765c3ad19847c481106a683bc5de16.json",
+        "zip_source_path": "/workspace/acycle-artifacts-v04/12593405804.zip"
+      },
+      "evidence": {
+        "request_source_path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T090037Z-45ea6434b881/request.json",
+        "outputs_source_path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T090037Z-45ea6434b881/outputs",
+        "response_archive_member": "ci-output/response.json",
+        "response_json_sha256": "b6b2175d35ba3e21759548e16bdeea6d75da81bd4e642121cc8e5b76ba0cdaa7",
+        "numerical_member_hashes": {},
+        "request_path": "validation/v0.4/scientific-runs/petm_ecoco_multi_steering/20261025T090037Z-45ea6434b881/request.json",
+        "result_path": "validation/v0.4/scientific-runs/petm_ecoco_multi_steering/20261025T090037Z-45ea6434b881/result.json",
+        "outputs_path": "validation/v0.4/scientific-runs/petm_ecoco_multi_steering/20261025T090037Z-45ea6434b881/outputs"
+      },
+      "conversation_scope": "fresh iteration2 workflow; conversation acceptance is recorded separately in harness receipts",
+      "parameter_changes": {
+        "window": {
+          "before": 6,
+          "requested_after": 8,
+          "effective_after": null
+        },
+        "step": {
+          "before": 3,
+          "requested_after": 4,
+          "effective_after": null
+        }
+      },
+      "input_and_operation_preserved": true
+    },
+    {
+      "iteration": 2,
+      "case_id": "lavernock_fdr_display",
+      "turn_id": "display_adjustment",
+      "local_run_id": "20261025T090045Z-50949987641b",
+      "parent_run_id": "20261025T085659Z-f5aea2e779a4",
+      "operation": "swa",
+      "input_sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+      "requested_parameters": {
+        "method": "lomb",
+        "coordinate_unit": "m",
+        "fmax": 2
+      },
+      "effective_parameters": {
+        "method": "lomb",
+        "coordinate_unit": "m",
+        "fmax": 2
+      },
+      "steering": {
+        "baseline_run_id": "20261025T085659Z-f5aea2e779a4",
+        "operation_preserved": "swa",
+        "parameter_patch": {
+          "fmax": 2
+        },
+        "removed_or_reset_parameters": {},
+        "parameter_basis": "saved effective defaults plus explicit baseline input settings"
+      },
+      "matlab_status": "success",
+      "matlab_error": null,
+      "matlab_summary": {
+        "input_rows": 439,
+        "removed_nonfinite_rows": 0,
+        "processed_rows": 439,
+        "interpolated": false,
+        "method": "lomb",
+        "coordinate_unit": "m",
+        "frequency_count": 218,
+        "fdr_levels": [
+          0.1,
+          0.05,
+          0.01,
+          0.001,
+          0.0001
+        ],
+        "fdr_threshold_available": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "fdr_exceeding_frequency_bins": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "peaks": [
+          {
+            "frequency": 1.21765601217656,
+            "period": 0.82125,
+            "power": 10.876497204899099,
+            "above_pointwise_95": true,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 0.228310502283105,
+            "period": 4.38,
+            "power": 8.40537723920532,
+            "above_pointwise_95": true,
+            "above_fdr_5": null
+          },
+          {
+            "frequency": 1.7503805175038059,
+            "period": 0.5713043478260867,
+            "power": 3.5308547098975938,
+            "above_pointwise_95": false,
+            "above_fdr_5": null
+          }
+        ]
+      },
+      "source_registry": {
+        "available": true,
+        "all_recorded_hashes_match_reference": true,
+        "archive_member": "ci-output/swa-provenance.json",
+        "json_sha256": "5b5178c3bfbd96aa3aa2411d3f262cd4faea1073d56b856f580bb65411fd8bab",
+        "reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "declared_match": true,
+        "file_count": 15,
+        "matching_file_count": 15,
+        "mismatched_paths": [],
+        "source_scope": "Acycle source functions recorded by the MATLAB adapter",
+        "numerical_backend": "MATLAB/Acycle original SWA functions",
+        "plot_backend": "MATLAB",
+        "matlab_release": "2024b",
+        "input_sha256_matches_request": true
+      },
+      "github": {
+        "repo": "JFjifang/Acycle_Harness",
+        "run_id": 40178895145,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178895145",
+        "jobs": [
+          {
+            "id": 121125485978,
+            "name": "matlab",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "source_commit": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "artifact_id": 12593291096,
+        "artifact_name": "acycle-output-acycle-eb8881ae7fb0472aa3b1d977dd2681f1",
+        "artifact_size_bytes": 175396,
+        "artifact_sha256": "48828d8376875f4c47291f5fb6336dab50642d9cc84e20f69b74433c9c061610",
+        "artifact_digest_matches_github": true
+      },
+      "transfer": {
+        "transport": "github_connector_to_sediment_download_file",
+        "status": "delivered",
+        "completed_at": "2026-10-25T09:03:19.575557+00:00",
+        "atomic_delivery": true,
+        "recomputed": false,
+        "cache_consumed": true,
+        "receipt_source_path": "/workspace/acycle-artifacts-v04/transfers/acycle-eb8881ae7fb0472aa3b1d977dd2681f1.json",
+        "zip_source_path": "/workspace/acycle-artifacts-v04/12593291096.zip"
+      },
+      "evidence": {
+        "request_source_path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T090045Z-50949987641b/request.json",
+        "outputs_source_path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T090045Z-50949987641b/outputs",
+        "response_archive_member": "ci-output/response.json",
+        "response_json_sha256": "191fe0a872f1fb3351f3b99d737fc41eaf8a8fa7efb43d6976a26bb151ec3861",
+        "numerical_member_hashes": {
+          "ci-output/swa-spectrum.csv": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654"
+        },
+        "request_path": "validation/v0.4/scientific-runs/lavernock_fdr_display/20261025T090045Z-50949987641b/request.json",
+        "result_path": "validation/v0.4/scientific-runs/lavernock_fdr_display/20261025T090045Z-50949987641b/result.json",
+        "outputs_path": "validation/v0.4/scientific-runs/lavernock_fdr_display/20261025T090045Z-50949987641b/outputs",
+        "artifact_original_hashes_path": "validation/v0.4/scientific-runs/lavernock_fdr_display/20261025T090045Z-50949987641b/artifact-original-hashes.json"
+      },
+      "conversation_scope": "fresh iteration2 workflow; conversation acceptance is recorded separately in harness receipts",
+      "parameter_changes": {
+        "fmax": {
+          "before": 16.590563165905568,
+          "requested_after": 2,
+          "effective_after": 2
+        }
+      },
+      "input_and_operation_preserved": true,
+      "full_spectrum_csv_byte_identical_to_baseline": true
+    }
+  ],
+  "archive_index": "validation/v0.4/scientific-runs/evidence-index.json"
+}

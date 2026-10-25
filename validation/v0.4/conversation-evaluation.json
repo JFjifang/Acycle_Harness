@@ -1,0 +1,1644 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-25T09:09:11.540014+00:00",
+  "scope": "Official Harness conversations; metadata and byte-integrity audit plus separate human interpretation review.",
+  "receipts_directory": "/workspace/Acycle_Harness/validation/v0.4/harness/iteration2",
+  "evidence_root": "validation/v0.4/scientific-runs",
+  "file_resolution": "archive_preferred",
+  "cases": [
+    {
+      "case_id": "lavernock_fdr_display",
+      "transport_status": "completed",
+      "session_id": "session-dda240ba6ff9459a8ba0d51900de8534",
+      "checks": [
+        {
+          "id": "declared_original_attachment_sha256",
+          "status": "passed",
+          "expected": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+          "observed": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4"
+        }
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "scenario_turn_index": 0,
+          "tool_names": [
+            "skill",
+            "skill",
+            "skill",
+            "acycle_capabilities",
+            "acycle_import_attachment",
+            "acycle_inspect",
+            "acycle_swa",
+            "acycle_get_run",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "present"
+          ],
+          "session_identity": "passed",
+          "actual_user_message_ids": [
+            "042dbbd1-277c-4a9b-b0d5-d57113991313"
+          ],
+          "runs": [
+            {
+              "run_id": "20261025T085659Z-f5aea2e779a4",
+              "operation": "swa",
+              "status": "completed",
+              "effective_parameters": {
+                "method": "lomb",
+                "coordinate_unit": "m",
+                "fmax": 16.590563165905568
+              },
+              "requested_parameters": {
+                "method": "lomb",
+                "coordinate_unit": "m"
+              },
+              "required_parameters": "passed",
+              "allowed_method": "passed",
+              "frozen_input_sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+              "original_input_preserved": "passed",
+              "remote_matlab_execution": "passed",
+              "remote_execution": {
+                "backend": "github-actions-matlab",
+                "run_id": 40178649016,
+                "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178649016",
+                "head_sha": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+                "conclusion": "success",
+                "request_token": "acycle-49cd873732fd403a9eda67fdb56944a6",
+                "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+                "artifact_transport": "github_connector_cache",
+                "artifact_sha256": "f931481e2e4756351c97092f72c286635c8002eedbb892e023b36ba4ad79b495"
+              },
+              "delivered_original_files": [
+                {
+                  "role": "cleaned_csv",
+                  "file": "swa-cleaned.csv",
+                  "delivery_time_sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55",
+                  "observed_sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "prepared_csv",
+                  "file": "swa-prepared.csv",
+                  "delivery_time_sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55",
+                  "observed_sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "spectrum_csv",
+                  "file": "swa-spectrum.csv",
+                  "delivery_time_sha256": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654",
+                  "observed_sha256": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "spectrum_png",
+                  "file": "swa-spectrum.png",
+                  "delivery_time_sha256": "477db8e8888bebb8796a840078552a87b56b40c3c89b8821a5083133260ac19e",
+                  "observed_sha256": "477db8e8888bebb8796a840078552a87b56b40c3c89b8821a5083133260ac19e",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "spectrum_fig",
+                  "file": "swa-spectrum.fig",
+                  "delivery_time_sha256": "f714f7d1e3086a8f53d2415cf94843737a52a382a57b48e0811162476b7d2f3b",
+                  "observed_sha256": "f714f7d1e3086a8f53d2415cf94843737a52a382a57b48e0811162476b7d2f3b",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "analysis_mat",
+                  "file": "swa.mat",
+                  "delivery_time_sha256": "10469519db16457a0942ba04dca4fd98b119f9c55bcc58e32003e9c296062343",
+                  "observed_sha256": "10469519db16457a0942ba04dca4fd98b119f9c55bcc58e32003e9c296062343",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "provenance_json",
+                  "file": "swa-provenance.json",
+                  "delivery_time_sha256": "5b5178c3bfbd96aa3aa2411d3f262cd4faea1073d56b856f580bb65411fd8bab",
+                  "observed_sha256": "5b5178c3bfbd96aa3aa2411d3f262cd4faea1073d56b856f580bb65411fd8bab",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "original_dat_1",
+                  "file": "SWA-Spectrum-background-FDR.dat",
+                  "delivery_time_sha256": "c35826f132ed8dfa6e0135dabe4c9794f6c1b834942278886bde5f602651a61e",
+                  "observed_sha256": "c35826f132ed8dfa6e0135dabe4c9794f6c1b834942278886bde5f602651a61e",
+                  "historical_hash_source": "independently verified original GitHub artifact ZIP",
+                  "status": "passed"
+                }
+              ],
+              "all_delivered_original_hashes_match": "passed"
+            }
+          ],
+          "shell_commands": [
+            {
+              "classification": "read_or_byte_metadata_only",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs && head -3 swa-spectrum.csv && echo '---- FDR dat ----' && head -20 SWA-Spectrum-background-FDR.dat && echo '---- prepared head ----' && head -4 swa-prepared.csv",
+              "call_id": "call_01_23iVnGcJj5TGyzuBcjjW3719"
+            },
+            {
+              "classification": "read_or_byte_metadata_only",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle && echo '== original head/tail ==' && head -4 imports/b7e*/*.csv && tail -3 imports/b7e*/*.csv && echo '== rows(original) ==' && tail -n +2 imports/b7e*/*.csv | wc -l && echo '== prepared head/tail ==' && head -3 runs/20261025T085659Z-f5aea2e779a4/outputs/swa-prepared.csv && tail -3 runs/20261025T085659Z-f5aea2e779a4/outputs/swa-prepared.csv && echo '== spectrum tail ==' && tail -3 runs/20261025T085659Z-f5aea2e779a4/outputs/swa-spectrum.csv && echo '== dat tail ==' && tail -4 runs/20261025T085659Z-f5aea2e779a4/outputs/SWA-Spectrum-background-FDR.dat",
+              "call_id": "call_00_xOXPVCAj1JabIak7IHdK7889"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs && python3 -c \"\nimport scipy.io as sio\nm=sio.loadmat('swa.mat')\nfor k,v in m.items():\n    if k.startswith('__'): continue\n    print(k, type(v), getattr(v,'shape',None), getattr(v,'dtype',None))\n\" 2>&1 | head -40",
+              "call_id": "call_01_7XEz9Y3U2yhnoqB2NJxZ1887"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs && python3 -c \"\nimport numpy as np, scipy.io as sio\nm=sio.loadmat('swa.mat')\nfdr=m['fdr']; chi=m['chiLevels']; oa=m['observedAlpha']; vr=m['varianceRatio']; p=m['power']; bg=m['background']; f=m['frequency']\nprint('fdr shape',fdr.shape,'non-NaN entries:',int(np.sum(~np.isnan(fdr))))\nprint('chi95 first/last:',chi[:3,1], chi[-1,1])\nprint('observedAlpha: n non-NaN',int(np.sum(~np.isnan(oa))),'min',np.nanmin(oa),'max',np.nanmax(oa))\nprint('varianceRatio min/max', np.nanmin(vr), np.nanmax(vr))\nprint('n bins above chi95:', int(np.sum(p[:,0]>chi[:,1])))\nprint('n bins above chi99:', int(np.sum(p[:,0]>chi[:,2])))\nprint('fmax',f[-1,0],'sum power', p.sum())\n\"",
+              "call_id": "call_00_QmDkkHQXdUNHVIZKaHjQ0316"
+            },
+            {
+              "classification": "read_or_byte_metadata_only",
+              "command": "cd /workspace/upstream/acycle 2>/dev/null && ls | head; echo '---'; grep -rln \"fdr\" --include=*.m . | head -20",
+              "call_id": "call_00_AWtVZ6tFl0gcF1FAVQ2p4907"
+            },
+            {
+              "classification": "read_or_byte_metadata_only",
+              "command": "cd /workspace/upstream/acycle/code/package/swa && grep -n \"fdr\\|alpha\\|chi2\\|chiLevels\\|quantile\" specswafdr.m | head -60",
+              "call_id": "call_00_ET_7d16RIaZHBX5x1g39m2D0535"
+            },
+            {
+              "classification": "requires_manual_review",
+              "command": "cd /workspace/upstream/acycle/code/package/swa && sed -n 995,1032p specswafdr.m && echo '...' && sed -n 1090,1180p specswafdr.m",
+              "call_id": "call_00_ljLcfWakyu5lWuDrqq521783"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4 && ls -la outputs && ls -a . && echo '== provenance keys ==' && python3 -c \"\nimport json;d=json.load(open('outputs/swa-provenance.json'));print(list(d.keys()));print(json.dumps({k:v for k,v in d.items() if k not in ('files','toolboxes')},indent=1)[:3000])\"",
+              "call_id": "call_00_jYrRyjK2Kuy0UIMDAULO9487"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs && python3 -c \"\nimport json;d=json.load(open('response.json'));print(json.dumps(d,indent=1)[:4000])\"",
+              "call_id": "call_00_ET_ga3Jmsl5QPFzBIrpc7vX1047"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs && python3 -c \"\nimport json;d=json.load(open('swa-provenance.json'));print([f['relative_path'] for f in d['files']])\"; ls /workspace/Acycle_Harness/plugin 2>/dev/null; find /workspace/Acycle_Harness -name '*swa*' -maxdepth 4 2>/dev/null | head",
+              "call_id": "call_00_AHdIItv4MYMRsjoQknJ51176"
+            },
+            {
+              "classification": "read_or_byte_metadata_only",
+              "command": "cd /workspace/Acycle_Harness && ls validation/artifacts/expanded-final/swa-lavernock-publication && (cat validation/artifacts/expanded-final/swa-lavernock-publication/*.json 2>/dev/null | head -c 3000)",
+              "call_id": "call_00_r4IH6gH4FY5kdg2MptVB0374"
+            },
+            {
+              "classification": "requires_manual_review",
+              "command": "cd /workspace/Acycle_Harness/matlab && grep -n \"plot\\|legend\\|title\\|xlabel\\|ylabel\\|chi\\|fdr\" acycle_swa.m | sed -n 1,80p",
+              "call_id": "call_01_uK5v8RQboY7wVCJrTKB00371"
+            },
+            {
+              "classification": "requires_manual_review",
+              "command": "cd /workspace/Acycle_Harness/matlab && sed -n 155,180p acycle_swa.m",
+              "call_id": "call_00_0QpTFYa0JFwqen7cw4oZ5087"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs && python3 -c \"\nimport csv\nrows=list(csv.DictReader(open('swa-spectrum.csv')))\nwant=[1.21765601217656,0.228310502283105,2.435312024353122,3.5007610350076135,1.7503805175038059]\nprint('freq,period,power,swa_bg,chi90,chi95,chi99,chi999')\nfor r in rows:\n    f=float(r['frequency'])\n    if any(abs(f-w)<1e-9 for w in want):\n        print(f'{f:.4f},{1/f:.3f},{float(r[\\\"power\\\"]):.3f},{float(r[\\\"swa_background\\\"]):.3f},{float(r[\\\"chi90\\\"]):.3f},{float(r[\\\"chi95\\\"]):.3f},{float(r[\\\"chi99\\\"]):.3f},{float(r[\\\"chi999\\\"]):.3f}')\n\"",
+              "call_id": "call_00_ygtvy2blK3jZEQIm87TH8890"
+            }
+          ],
+          "presented_files": [
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa-spectrum.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa-cleaned.csv",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa-prepared.csv",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa-spectrum.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa-cleaned.csv",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa-prepared.csv",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa-spectrum.png",
+              "description": "Acycle SWA(Lomb) 谱图：黑=功率，绿=SWA红噪声背景，红虚线=95% 点态 χ² 置信线；无 FDR 曲线（原程序未给出阈值）"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa-spectrum.csv",
+              "description": "谱表：frequency, power, SWA background, chi90–chi9999, fdr10–fdr001（FDR 列全为 NaN）"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/SWA-Spectrum-background-FDR.dat",
+              "description": "Acycle 原始输出 dat（频率/周期/相对功率/SWA 背景）"
+            }
+          ],
+          "user_prompt_matches_recorded_input": "passed",
+          "image_reference_count": 1,
+          "file_reference_count": 6,
+          "image_delivery": "passed",
+          "present_event": "passed",
+          "required_operation": "passed"
+        },
+        {
+          "index": 1,
+          "scenario_turn_index": 1,
+          "tool_names": [
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "bash",
+            "acycle_rerun",
+            "bash",
+            "acycle_compare",
+            "present"
+          ],
+          "session_identity": "passed",
+          "actual_user_message_ids": [
+            "22e15dee-b0dd-4316-8c13-683744dd91c4"
+          ],
+          "runs": [
+            {
+              "run_id": "20261025T090045Z-50949987641b",
+              "operation": "swa",
+              "status": "completed",
+              "effective_parameters": {
+                "method": "lomb",
+                "coordinate_unit": "m",
+                "fmax": 2
+              },
+              "requested_parameters": {
+                "method": "lomb",
+                "coordinate_unit": "m",
+                "fmax": 2
+              },
+              "required_parameters": "passed",
+              "allowed_method": "passed",
+              "frozen_input_sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+              "original_input_preserved": "passed",
+              "remote_matlab_execution": "passed",
+              "remote_execution": {
+                "backend": "github-actions-matlab",
+                "run_id": 40178895145,
+                "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178895145",
+                "head_sha": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+                "conclusion": "success",
+                "request_token": "acycle-eb8881ae7fb0472aa3b1d977dd2681f1",
+                "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+                "artifact_transport": "github_connector_cache",
+                "artifact_sha256": "48828d8376875f4c47291f5fb6336dab50642d9cc84e20f69b74433c9c061610"
+              },
+              "delivered_original_files": [
+                {
+                  "role": "cleaned_csv",
+                  "file": "swa-cleaned.csv",
+                  "delivery_time_sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55",
+                  "observed_sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "prepared_csv",
+                  "file": "swa-prepared.csv",
+                  "delivery_time_sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55",
+                  "observed_sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "spectrum_csv",
+                  "file": "swa-spectrum.csv",
+                  "delivery_time_sha256": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654",
+                  "observed_sha256": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "spectrum_png",
+                  "file": "swa-spectrum.png",
+                  "delivery_time_sha256": "9c25a34d46f8278b93192b4009e9fec5606effa983b290100a1ee123af9d1ee3",
+                  "observed_sha256": "9c25a34d46f8278b93192b4009e9fec5606effa983b290100a1ee123af9d1ee3",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "spectrum_fig",
+                  "file": "swa-spectrum.fig",
+                  "delivery_time_sha256": "de167ad88d08c493f0d94493092c194760f8170be0996b3d4ee356d370505b8f",
+                  "observed_sha256": "de167ad88d08c493f0d94493092c194760f8170be0996b3d4ee356d370505b8f",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "analysis_mat",
+                  "file": "swa.mat",
+                  "delivery_time_sha256": "c28ff2d6eab84dfb4d040f0a56f832b35e415b2b294df747c5c3a6ee58ed60e4",
+                  "observed_sha256": "c28ff2d6eab84dfb4d040f0a56f832b35e415b2b294df747c5c3a6ee58ed60e4",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "provenance_json",
+                  "file": "swa-provenance.json",
+                  "delivery_time_sha256": "5b5178c3bfbd96aa3aa2411d3f262cd4faea1073d56b856f580bb65411fd8bab",
+                  "observed_sha256": "5b5178c3bfbd96aa3aa2411d3f262cd4faea1073d56b856f580bb65411fd8bab",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "original_dat_1",
+                  "file": "SWA-Spectrum-background-FDR.dat",
+                  "delivery_time_sha256": "c35826f132ed8dfa6e0135dabe4c9794f6c1b834942278886bde5f602651a61e",
+                  "observed_sha256": "c35826f132ed8dfa6e0135dabe4c9794f6c1b834942278886bde5f602651a61e",
+                  "historical_hash_source": "independently verified original GitHub artifact ZIP",
+                  "status": "passed"
+                }
+              ],
+              "all_delivered_original_hashes_match": "passed"
+            }
+          ],
+          "shell_commands": [
+            {
+              "classification": "requires_manual_review",
+              "command": "cd /workspace/Acycle_Harness/matlab && grep -n \"fmax\" acycle_swa.m",
+              "call_id": "call_00_rHwqxdP4EJKwK1jEb7AD2176"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs && python3 -c \"\nimport scipy.io as sio\ntry:\n    h=sio.loadmat('swa-spectrum.fig',squeeze_me=True,struct_as_record=False)\n    print([k for k in h.keys() if not k.startswith('__')][:20])\n    import numpy as np\n    def walk(o,d=0):\n        if d>4: return\n        if hasattr(o,'XLim'): print('XLim',getattr(o,'XLim',None),'YScale',getattr(o,'YScale',None),'XScale',getattr(o,'XScale',None),'type',getattr(o,'Type','?'))\n        for f in ('Children','children'):\n            c=getattr(o,f,None)\n            if c is None: continue\n            for ch in (c if isinstance(c,(list,tuple)) else [c]): walk(ch,d+1)\n    walk(h.get('hgS_070000'))\nexcept Exception as e: print('ERR',e)\n\"",
+              "call_id": "call_01_5oDFCFoUWnJpwgXWRfbq7442"
+            },
+            {
+              "classification": "requires_manual_review",
+              "command": "cd /workspace/Acycle_Harness/matlab && sed -n 124,155p acycle_swa.m",
+              "call_id": "call_00_zuiKbk5oGj2fJukUMYYO7865"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs && python3 -c \"\nimport scipy.io as sio, numpy as np\nh=sio.loadmat('swa-spectrum.fig',squeeze_me=True,struct_as_record=False)\no=h['hgS_080000']\nprint(type(o), [f for f in o._fieldnames][:20] if hasattr(o,'_fieldnames') else '')\ndef walk(x,d=0):\n    if d>6: return\n    for f in getattr(x,'_fieldnames',[]):\n        v=getattr(x,f)\n        if f in ('XLim','YLim','XScale','YScale','Type','LineWidth','DisplayName'):\n            print('  '*d+f, v)\n        if hasattr(v,'_fieldnames'):\n            walk(v,d+1)\n        elif isinstance(v,(list,tuple)) or (isinstance(v,np.ndarray) and v.dtype==object):\n            for ch in np.atleast_1d(v):\n                if hasattr(ch,'_fieldnames'): walk(ch,d+1)\nwalk(o)\n\"",
+              "call_id": "call_01_yYqcbrO1ygEJefXYNSRP8683"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs && python3 - <<'EOF'\nimport scipy.io as sio, numpy as np\nh=sio.loadmat('swa-spectrum.fig',squeeze_me=True,struct_as_record=False)\nfound=[]\ndef walk(x,path='',d=0):\n    if d>10: return\n    for f in getattr(x,'_fieldnames',[]) or []:\n        v=getattr(x,f)\n        if f in ('XLim','YLim','XScale','YScale','DisplayName','String','Type'):\n            found.append((path+'/'+f, v))\n        if hasattr(v,'_fieldnames'):\n            walk(v,path+'/'+f,d+1)\n        elif isinstance(v,np.ndarray) and v.dtype==object:\n            for i,ch in enumerate(v.flat):\n                if hasattr(ch,'_fieldnames'): walk(ch,path+f'[{i}]',d+1)\nwalk(h['hgS_080000'],'hgS')\nfor p,v in found[:40]:\n    print(p,'=',v)\nEOF",
+              "call_id": "call_00_U5ezbVnLfl8Ulq1K10uC9957"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs && python3 - <<'EOF'\nimport scipy.io as sio, numpy as np\nh=sio.loadmat('swa-spectrum.fig',squeeze_me=True,struct_as_record=False)\ndef dump(x,d=0,maxd=6,name='root'):\n    if d>maxd: return\n    if hasattr(x,'_fieldnames'):\n        print('  '*d+name+': struct fields='+str(x._fieldnames)[:200])\n        for f in x._fieldnames:\n            dump(getattr(x,f),d+1,maxd,f)\n    elif isinstance(x,np.ndarray) and x.dtype==object:\n        print('  '*d+name+': objarray shape='+str(x.shape))\n        for i in range(min(x.size,4)):\n            dump(x.flat[i],d+1,maxd,f'[{i}]')\n    else:\n        s=str(x)\n        print('  '*d+name+': '+type(x).__name__+' '+s[:80])\ndump(h['hgS_080000'],0,4,'hgS')\nEOF",
+              "call_id": "call_00_jDuGwwKGSdIgpEzkzxw15631"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs && A=20261025T085659Z-f5aea2e779a4/outputs; B=20261025T090045Z-50949987641b/outputs; sha256sum $A/swa-spectrum.csv $B/swa-spectrum.csv $A/SWA-Spectrum-background-FDR.dat $B/SWA-Spectrum-background-FDR.dat $A/swa-prepared.csv $B/swa-prepared.csv; echo '--- byte diff spectrum ---'; cmp -s $A/swa-spectrum.csv $B/swa-spectrum.csv && echo IDENTICAL; echo '--- rows/cols ---'; wc -l $B/swa-spectrum.csv; python3 -c \"\nimport scipy.io as sio\na=sio.loadmat('$A/swa.mat'); b=sio.loadmat('$B/swa.mat')\nprint('baseline freq bins',a['frequency'].shape,'child',b['frequency'].shape)\nimport numpy as np\nfor k in ['power','background','chiLevels','fdr','observedAlpha','varianceRatio','frequency']:\n    print(k,'identical:',np.array_equal(a[k],b[k],equal_nan=True))\nprint('sum power base/child',a['power'].sum(),b['power'].sum())\n\"",
+              "call_id": "call_00_vCvYJ2tOoqr2BmV3Fwxm0719"
+            }
+          ],
+          "presented_files": [
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T090045Z-50949987641b/outputs/swa-spectrum.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T090045Z-50949987641b/outputs/swa.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T090045Z-50949987641b/outputs/swa-cleaned.csv",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T090045Z-50949987641b/outputs/swa-prepared.csv",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa-spectrum.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T090045Z-50949987641b/outputs/swa-spectrum.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T090045Z-50949987641b/outputs/swa.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "description": "0–2 cycles/m 显示版本（run 20261025T090045Z-50949987641b），谱表与基线字节完全相同",
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T090045Z-50949987641b/outputs/swa-spectrum.png"
+            },
+            {
+              "description": "基线原图保留（未被覆盖，run 20261025T085659Z-f5aea2e779a4）",
+              "path": "/workspace/harness-conversation-runs/iteration2/lavernock-fdr/.acycle/runs/20261025T085659Z-f5aea2e779a4/outputs/swa-spectrum.png"
+            }
+          ],
+          "user_prompt_matches_recorded_input": "passed",
+          "image_reference_count": 2,
+          "file_reference_count": 9,
+          "image_delivery": "passed",
+          "present_event": "passed",
+          "required_operation": "passed"
+        }
+      ],
+      "interpretation": {
+        "status": "core_fdr_distinction_passed_with_behavior_failure_and_caveats",
+        "behavior_status": "failed",
+        "findings": [
+          "The model selected original Lomb SWA, preserved coordinates without interpolation, retained that method, and correctly explained that fmax only changes display/peak reporting. The evaluator separately verifies identical full-spectrum CSV bytes.",
+          "The model executed Python/NumPy numerical QA on swa.mat, including np.sum, nanmin/nanmax and threshold exceedance counts, and repeated numerical array checks after steering. This violates the requested MATLAB-only scientific computation boundary; this dimension fails even though MATLAB produced the primary spectrum and figures.",
+          "The response correctly distinguishes pointwise confidence from FDR and does not claim the 0.821 m feature passes 5 percent FDR. The absent FDR curves are consistent with the saved unavailable thresholds. This does not reproduce the published FDR result.",
+          "The first response suggested varying fmax to investigate the FDR result, contradicting the later correct explanation that fmax does not recompute FDR. Its categorical statement that SWA is unsuitable for white noise or power-law noise is not established by these results.",
+          "The model read pre-existing repository validation/artifacts/expanded-final/swa-lavernock-publication JSON and used that prior benchmark interpretation. The runner did not inject it, but the interpretation phase was not fully blinded.",
+          "The offer to run a genuinely band-limited FDR test is a possible future extension, not a function implemented by the current fmax interface. The second response notes the positive minimum frequency on the logarithmic axis, so a literal zero-frequency point is not plotted."
+        ]
+      },
+      "separate_user_turns_same_session": {
+        "status": "passed",
+        "actual_user_messages": 2,
+        "planned_user_messages": 2,
+        "source_filter": "user/message where source.kind == 'user'; skill/runtime messages excluded"
+      },
+      "requested_scientific_goal": {
+        "status": "passed",
+        "note": "A failed MATLAB branch may preserve method/parameters and be handled honestly while leaving the requested two-result goal incomplete."
+      },
+      "uploaded_file_message": {
+        "status": "passed"
+      },
+      "tool_errors": {
+        "count": 0,
+        "status": "none",
+        "messages": []
+      },
+      "attachment_import": {
+        "status": "passed",
+        "note": "Successful acycle_import_attachment receipts only. Reading an existing official attachment file is not treated as a copied import."
+      },
+      "matlab_only_tool_behavior": {
+        "status": "failed",
+        "note": "Shell classifiers only flag review candidates; they do not infer semantic correctness from command names."
+      },
+      "prior_test_artifact_access": {
+        "status": "not_observed",
+        "note": "The runner never injects acceptance or prior outcomes, but a model may inspect accessible repository files. Such access limits a claim of fully blinded interpretation."
+      },
+      "steering": {
+        "scope": "effective completed MATLAB parameters",
+        "parent_preserved": "passed",
+        "operation_preserved": "passed",
+        "method_preserved": "passed",
+        "same_frozen_input": "passed",
+        "only_permitted_parameter_changes": "passed",
+        "actual_changes": {
+          "fmax": {
+            "before": 16.590563165905568,
+            "after": 2
+          }
+        },
+        "recorded_steering": {
+          "baseline_run_id": "20261025T085659Z-f5aea2e779a4",
+          "operation_preserved": "swa",
+          "parameter_patch": {
+            "fmax": 2
+          },
+          "removed_or_reset_parameters": {},
+          "parameter_basis": "saved effective defaults plus explicit baseline input settings"
+        }
+      },
+      "baseline_unchanged": {
+        "status": "passed",
+        "evidence": "Original file attachment hashes captured in the first turn, with original GitHub artifact ZIP hashes where an original .dat was not attached, compared with current/archived bytes. Preview image hashes and post-hoc filesystem snapshots are excluded."
+      },
+      "full_spectrum_bytes_unchanged": [
+        {
+          "role": "spectrum_csv",
+          "baseline_sha256": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654",
+          "branch_sha256": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654",
+          "status": "passed"
+        }
+      ],
+      "model_image_transport": {
+        "status": "not_established",
+        "unoffloaded_image_ids": [],
+        "uploaded_matching_ids": [],
+        "note": "Official read_image outputs and provider Files API cache establish image transport, not correctness of visual interpretation or desktop UI rendering."
+      },
+      "overall": "dimension_results_only; transport_completed_does_not_mean_all_passed"
+    },
+    {
+      "case_id": "newark_baseline_steering",
+      "transport_status": "completed",
+      "session_id": "session-0819959eac4d414481aee0c0e17331eb",
+      "checks": [
+        {
+          "id": "declared_original_attachment_sha256",
+          "status": "passed",
+          "expected": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+          "observed": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2"
+        }
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "scenario_turn_index": 0,
+          "tool_names": [
+            "skill",
+            "skill",
+            "acycle_capabilities",
+            "acycle_import_attachment",
+            "acycle_import_attachment",
+            "acycle_inspect",
+            "acycle_analyze",
+            "read_image",
+            "bash",
+            "read_image",
+            "read_image"
+          ],
+          "session_identity": "passed",
+          "actual_user_message_ids": [
+            "0cf2c254-8640-43cb-b168-dd2488bf9eb6"
+          ],
+          "runs": [
+            {
+              "run_id": "20261025T085140Z-96d53b1e8278",
+              "operation": "analyze",
+              "status": "completed",
+              "effective_parameters": {
+                "coordinate_unit": "m",
+                "detrend": "lowess",
+                "span": 0.35,
+                "mtm_nw": 2,
+                "evolution": true,
+                "smooth_fraction": 0.25,
+                "dt": 0.853439999999992,
+                "nfft": 11720,
+                "fmax": 0.5858642669666346,
+                "fit_fmax": 0.5858642669666346,
+                "evolution_window": 699.863472,
+                "evolution_step": 9.387839999999912
+              },
+              "requested_parameters": {
+                "coordinate_unit": "m",
+                "detrend": "lowess",
+                "span": 0.35,
+                "mtm_nw": 2,
+                "evolution": true
+              },
+              "required_parameters": "passed",
+              "allowed_method": "passed",
+              "frozen_input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+              "original_input_preserved": "passed",
+              "remote_matlab_execution": "passed",
+              "remote_execution": {
+                "backend": "github-actions-matlab",
+                "run_id": 40178299936,
+                "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178299936",
+                "head_sha": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+                "conclusion": "success",
+                "request_token": "acycle-2f011e8a763f4e7394b1ecd33e17c280",
+                "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+                "artifact_transport": "github_connector_cache",
+                "artifact_sha256": "c31b00ed92bb07fc5b4fda59a7d1d04373f1eacb822526950e86af467d3ecc92"
+              },
+              "delivered_original_files": [
+                {
+                  "role": "cleaned_csv",
+                  "file": "cleaned.csv",
+                  "delivery_time_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+                  "observed_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "prepared_csv",
+                  "file": "prepared.csv",
+                  "delivery_time_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+                  "observed_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "processed_csv",
+                  "file": "processed.csv",
+                  "delivery_time_sha256": "c381b25303abf450e0afb819e5c69e2fe380f11f7d076c3ee16187ab3362a552",
+                  "observed_sha256": "c381b25303abf450e0afb819e5c69e2fe380f11f7d076c3ee16187ab3362a552",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "preprocess_png",
+                  "file": "preprocessing.png",
+                  "delivery_time_sha256": "4be3bbd42f56646e014afda4b575ac6628dcf22ee1471a359bf89603bfd1e90a",
+                  "observed_sha256": "4be3bbd42f56646e014afda4b575ac6628dcf22ee1471a359bf89603bfd1e90a",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "spectrum_png",
+                  "file": "spectrum.png",
+                  "delivery_time_sha256": "f541014ed208286dc5f1766dcbead12fecac0b7eb8392975aaac5a524b548311",
+                  "observed_sha256": "f541014ed208286dc5f1766dcbead12fecac0b7eb8392975aaac5a524b548311",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "robust_spectrum_csv",
+                  "file": "spectrum_robust.csv",
+                  "delivery_time_sha256": "93b3be27fb9af3a26c73711d98fa9ca32fd314abaca830b40ad6502ee984d0e5",
+                  "observed_sha256": "93b3be27fb9af3a26c73711d98fa9ca32fd314abaca830b40ad6502ee984d0e5",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "classic_spectrum_csv",
+                  "file": "spectrum_classic.csv",
+                  "delivery_time_sha256": "1d49818c99f2f42c4495637d59e92f1471f863effbda4718d2bb0b893f760d79",
+                  "observed_sha256": "1d49818c99f2f42c4495637d59e92f1471f863effbda4718d2bb0b893f760d79",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "evolution_png",
+                  "file": "evolution.png",
+                  "delivery_time_sha256": "c4143032238727f36ef01f67dd7df06926505f2d16ff15ba8998204dc4c590c8",
+                  "observed_sha256": "c4143032238727f36ef01f67dd7df06926505f2d16ff15ba8998204dc4c590c8",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "evolution_csv",
+                  "file": "evolution.csv",
+                  "delivery_time_sha256": "672ed205764213748c22a8ad0a1354694f928f7e689effc89c24c908d470a848",
+                  "observed_sha256": "672ed205764213748c22a8ad0a1354694f928f7e689effc89c24c908d470a848",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "preprocess_fig",
+                  "file": "preprocessing.fig",
+                  "delivery_time_sha256": "4a6649cfcc45a3fb4e3b8a8c03200144c12b05a8add1245362680bdf37b7e482",
+                  "observed_sha256": "4a6649cfcc45a3fb4e3b8a8c03200144c12b05a8add1245362680bdf37b7e482",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "spectrum_fig",
+                  "file": "spectrum.fig",
+                  "delivery_time_sha256": "24f155bae4b004ff643ead1fdf9651f2dafb21b3a26b5d65b84be93e8e4b50d4",
+                  "observed_sha256": "24f155bae4b004ff643ead1fdf9651f2dafb21b3a26b5d65b84be93e8e4b50d4",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "evolution_fig",
+                  "file": "evolution.fig",
+                  "delivery_time_sha256": "42a9904a352526db72a9d8c6e3390f9dde0bcbf1b35e9bca11218d8059acc731",
+                  "observed_sha256": "42a9904a352526db72a9d8c6e3390f9dde0bcbf1b35e9bca11218d8059acc731",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "analysis_mat",
+                  "file": "analysis.mat",
+                  "delivery_time_sha256": "2d61e83f8eb470f52664c31246704d6f86d0dd9a541431a6b9f01c93bc59cd88",
+                  "observed_sha256": "2d61e83f8eb470f52664c31246704d6f86d0dd9a541431a6b9f01c93bc59cd88",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "provenance_json",
+                  "file": "provenance.json",
+                  "delivery_time_sha256": "02f7e4e6971bc7a55096e856da0407c72c4edd01997154270f8ec07d2b22b29b",
+                  "observed_sha256": "02f7e4e6971bc7a55096e856da0407c72c4edd01997154270f8ec07d2b22b29b",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                }
+              ],
+              "all_delivered_original_hashes_match": "passed"
+            }
+          ],
+          "shell_commands": [
+            {
+              "classification": "read_or_byte_metadata_only",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/outputs && head -c 400 evolution.csv && echo && echo ---- && head -3 spectrum_robust.csv && echo ---- && head -2 processed.csv",
+              "call_id": "call_01_LrguYJXBEXzCe2eKwlgo2267"
+            }
+          ],
+          "presented_files": [
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/outputs/evolution.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/outputs/spectrum.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/outputs/preprocessing.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/outputs/analysis.mat",
+              "description": "Acycle original MATLAB output"
+            }
+          ],
+          "user_prompt_matches_recorded_input": "passed",
+          "image_reference_count": 3,
+          "file_reference_count": 13,
+          "image_delivery": "passed",
+          "present_event": "passed",
+          "required_operation": "passed"
+        },
+        {
+          "index": 1,
+          "scenario_turn_index": 1,
+          "tool_names": [
+            "acycle_rerun",
+            "acycle_compare",
+            "read_image",
+            "read_image",
+            "present"
+          ],
+          "session_identity": "passed",
+          "actual_user_message_ids": [
+            "ae9cdf91-7318-406f-8e3f-d64b4fbb2d1c"
+          ],
+          "runs": [
+            {
+              "run_id": "20261025T085504Z-4c42b4a2ab62",
+              "operation": "analyze",
+              "status": "completed",
+              "effective_parameters": {
+                "coordinate_unit": "m",
+                "detrend": "lowess",
+                "span": 0.25,
+                "mtm_nw": 2,
+                "evolution": true,
+                "smooth_fraction": 0.25,
+                "dt": 0.853439999999992,
+                "nfft": 11720,
+                "fmax": 0.5858642669666346,
+                "fit_fmax": 0.5858642669666346,
+                "evolution_window": 699.863472,
+                "evolution_step": 9.387839999999912
+              },
+              "requested_parameters": {
+                "coordinate_unit": "m",
+                "detrend": "lowess",
+                "span": 0.25,
+                "mtm_nw": 2,
+                "evolution": true,
+                "smooth_fraction": 0.25,
+                "dt": 0.853439999999992,
+                "nfft": 11720,
+                "fmax": 0.5858642669666346,
+                "fit_fmax": 0.5858642669666346,
+                "evolution_window": 699.863472,
+                "evolution_step": 9.387839999999912
+              },
+              "required_parameters": "passed",
+              "allowed_method": "passed",
+              "frozen_input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+              "original_input_preserved": "passed",
+              "remote_matlab_execution": "passed",
+              "remote_execution": {
+                "backend": "github-actions-matlab",
+                "run_id": 40178523725,
+                "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178523725",
+                "head_sha": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+                "conclusion": "success",
+                "request_token": "acycle-68d7f201d12d434bb50df80efdf9a871",
+                "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+                "artifact_transport": "github_connector_cache",
+                "artifact_sha256": "75d4dae9f336ffa309e6ed17bbe91ca2cfb7d42afb9fe415ed4a51ee0e887cc5"
+              },
+              "delivered_original_files": [
+                {
+                  "role": "cleaned_csv",
+                  "file": "cleaned.csv",
+                  "delivery_time_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+                  "observed_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "prepared_csv",
+                  "file": "prepared.csv",
+                  "delivery_time_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+                  "observed_sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "processed_csv",
+                  "file": "processed.csv",
+                  "delivery_time_sha256": "39a6e30f20f6f02f6d4be37f4cb202d79855d6782c3a99fa63c8de4257a3d8c7",
+                  "observed_sha256": "39a6e30f20f6f02f6d4be37f4cb202d79855d6782c3a99fa63c8de4257a3d8c7",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "preprocess_png",
+                  "file": "preprocessing.png",
+                  "delivery_time_sha256": "42bc3c669745aac4dbd4f25dfa2dd8245081a8e052014c2d86891772b652540a",
+                  "observed_sha256": "42bc3c669745aac4dbd4f25dfa2dd8245081a8e052014c2d86891772b652540a",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "spectrum_png",
+                  "file": "spectrum.png",
+                  "delivery_time_sha256": "7ae5f129e2695265f0bd8fdcaf2ee1956b1ac4f6e12c963adf184a1785baef56",
+                  "observed_sha256": "7ae5f129e2695265f0bd8fdcaf2ee1956b1ac4f6e12c963adf184a1785baef56",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "robust_spectrum_csv",
+                  "file": "spectrum_robust.csv",
+                  "delivery_time_sha256": "010042d0cd3eed36c32cc2124a5de26a89e003e1a5c6e6444835f0b52ebbc9f5",
+                  "observed_sha256": "010042d0cd3eed36c32cc2124a5de26a89e003e1a5c6e6444835f0b52ebbc9f5",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "classic_spectrum_csv",
+                  "file": "spectrum_classic.csv",
+                  "delivery_time_sha256": "ac816bcfc4ff3c35eac7ffdc4c128ffc0eb4478ed6603ebeb47f53f9159df273",
+                  "observed_sha256": "ac816bcfc4ff3c35eac7ffdc4c128ffc0eb4478ed6603ebeb47f53f9159df273",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "evolution_png",
+                  "file": "evolution.png",
+                  "delivery_time_sha256": "12c45a54a28d3c4c7596adc9bfd92ba00de99df1e36068c3b167ca3ab6f20a1d",
+                  "observed_sha256": "12c45a54a28d3c4c7596adc9bfd92ba00de99df1e36068c3b167ca3ab6f20a1d",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "evolution_csv",
+                  "file": "evolution.csv",
+                  "delivery_time_sha256": "af9ea729d44b6d9e6235101532d3de99bedb295a7a73d81f4e7ac33114be1c6c",
+                  "observed_sha256": "af9ea729d44b6d9e6235101532d3de99bedb295a7a73d81f4e7ac33114be1c6c",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "preprocess_fig",
+                  "file": "preprocessing.fig",
+                  "delivery_time_sha256": "6c5c590936860fe2491e6c1409fb10ef3c66c8b3ac18162775f1a995fc7194b6",
+                  "observed_sha256": "6c5c590936860fe2491e6c1409fb10ef3c66c8b3ac18162775f1a995fc7194b6",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "spectrum_fig",
+                  "file": "spectrum.fig",
+                  "delivery_time_sha256": "e34c298cfb6af1810fd9aab1a2cd76a8c4848753f219b7616e9c3dd5a529b2d2",
+                  "observed_sha256": "e34c298cfb6af1810fd9aab1a2cd76a8c4848753f219b7616e9c3dd5a529b2d2",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "evolution_fig",
+                  "file": "evolution.fig",
+                  "delivery_time_sha256": "18e0f9108269433b309598e353d470fb168c091082b877ac8e303faf263ebfc6",
+                  "observed_sha256": "18e0f9108269433b309598e353d470fb168c091082b877ac8e303faf263ebfc6",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "analysis_mat",
+                  "file": "analysis.mat",
+                  "delivery_time_sha256": "6348e129cbc6dd79925ff75e9dd607a22c2e6c935187465a4626957b92c23117",
+                  "observed_sha256": "6348e129cbc6dd79925ff75e9dd607a22c2e6c935187465a4626957b92c23117",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "provenance_json",
+                  "file": "provenance.json",
+                  "delivery_time_sha256": "02f7e4e6971bc7a55096e856da0407c72c4edd01997154270f8ec07d2b22b29b",
+                  "observed_sha256": "02f7e4e6971bc7a55096e856da0407c72c4edd01997154270f8ec07d2b22b29b",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                }
+              ],
+              "all_delivered_original_hashes_match": "passed"
+            }
+          ],
+          "shell_commands": [],
+          "presented_files": [
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085504Z-4c42b4a2ab62/outputs/evolution.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085504Z-4c42b4a2ab62/outputs/spectrum.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085504Z-4c42b4a2ab62/outputs/preprocessing.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085504Z-4c42b4a2ab62/outputs/analysis.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/outputs/evolution.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/outputs/spectrum.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/outputs/preprocessing.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085140Z-96d53b1e8278/outputs/analysis.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085504Z-4c42b4a2ab62/outputs/spectrum.png",
+              "description": "span=0.25（25% 记录长度）MTM 功率谱 + 稳健 AR(1) 红噪声置信线"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085504Z-4c42b4a2ab62/outputs/evolution.png",
+              "description": "span=0.25 的周期—深度演化谱（EvoFFT，窗长 699.86 m，步长 9.39 m）"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/newark-baseline/.acycle/runs/20261025T085504Z-4c42b4a2ab62/outputs/processed.csv",
+              "description": "span=0.25 去趋势后的处理序列（可与基线 run 的 processed.csv 逐点对比）"
+            }
+          ],
+          "user_prompt_matches_recorded_input": "passed",
+          "image_reference_count": 6,
+          "file_reference_count": 24,
+          "image_delivery": "passed",
+          "present_event": "passed",
+          "required_operation": "passed"
+        }
+      ],
+      "interpretation": {
+        "status": "passed_core_limits_with_interpretation_caveats",
+        "behavior_status": "passed",
+        "findings": [
+          "Both responses retain depth units, distinguish pointwise significance from multiple testing, avoid assigning orbital ages, and identify the two-span comparison as a limited sensitivity check.",
+          "The first-turn shell command only reads existing MATLAB CSV output. There is no external numerical preprocessing in these shell calls.",
+          "read_image returned non-offloaded images and the official provider Files API cache records actual image uploads. This establishes image transport, not independently verified accuracy of all visual claims.",
+          "The second response says 17.610 to 17.579 is approximately 0.03 percent, but its own displayed values imply approximately 0.18 percent. It also says all short-period peak positions were unchanged despite showing a shifted peak.",
+          "Stability across only two LOWESS spans does not exclude detrending artifacts. The text overstates that inference and describes LOWESS as though it had a sharp cutoff.",
+          "A vertical feature near 500 m is attributed to low variance and normalization without a saved diagnostic proving that cause. Treat that causal explanation as a hypothesis, not a confirmed result."
+        ]
+      },
+      "separate_user_turns_same_session": {
+        "status": "passed",
+        "actual_user_messages": 2,
+        "planned_user_messages": 2,
+        "source_filter": "user/message where source.kind == 'user'; skill/runtime messages excluded"
+      },
+      "requested_scientific_goal": {
+        "status": "passed",
+        "note": "A failed MATLAB branch may preserve method/parameters and be handled honestly while leaving the requested two-result goal incomplete."
+      },
+      "uploaded_file_message": {
+        "status": "passed"
+      },
+      "tool_errors": {
+        "count": 1,
+        "status": "recovered_errors_observed",
+        "messages": [
+          "Error: No matching user file attachment exists in this Session. Upload a CSV/TXT/DAT/TSV or provide a workspace path."
+        ]
+      },
+      "attachment_import": {
+        "status": "passed",
+        "note": "Successful acycle_import_attachment receipts only. Reading an existing official attachment file is not treated as a copied import."
+      },
+      "matlab_only_tool_behavior": {
+        "status": "passed",
+        "note": "Shell classifiers only flag review candidates; they do not infer semantic correctness from command names."
+      },
+      "prior_test_artifact_access": {
+        "status": "not_observed",
+        "note": "The runner never injects acceptance or prior outcomes, but a model may inspect accessible repository files. Such access limits a claim of fully blinded interpretation."
+      },
+      "steering": {
+        "scope": "effective completed MATLAB parameters",
+        "parent_preserved": "passed",
+        "operation_preserved": "passed",
+        "method_preserved": "passed",
+        "same_frozen_input": "passed",
+        "only_permitted_parameter_changes": "passed",
+        "actual_changes": {
+          "span": {
+            "before": 0.35,
+            "after": 0.25
+          }
+        },
+        "recorded_steering": {
+          "baseline_run_id": "20261025T085140Z-96d53b1e8278",
+          "operation_preserved": "analyze",
+          "parameter_patch": {
+            "span": 0.25
+          },
+          "removed_or_reset_parameters": {},
+          "parameter_basis": "saved effective defaults plus explicit baseline input settings"
+        }
+      },
+      "baseline_unchanged": {
+        "status": "passed",
+        "evidence": "Original file attachment hashes captured in the first turn, with original GitHub artifact ZIP hashes where an original .dat was not attached, compared with current/archived bytes. Preview image hashes and post-hoc filesystem snapshots are excluded."
+      },
+      "model_image_transport": {
+        "status": "image_upload_observed",
+        "unoffloaded_image_ids": [
+          "sha256:074872940cc7fcce6a1f95db672dc14ff5ac9370a344c2a8389da8e80c034d05",
+          "sha256:3f22483b64ef12acf185d5ac61dd5ff940c72ace05585ade7570e58252eb3eff",
+          "sha256:5a568b3d6d7c4cf12c8b9ec9b43509d439a6f9d976d2b60ac13212b8c93d5b9a",
+          "sha256:6e979ac2db3756155782acc5e0f94e6861068d322f0942dedcac0dc398ad2b32",
+          "sha256:93ff8ae513c5d7d52879e194c3c449d8119b68a3df035a7c1653640dabfca6d1"
+        ],
+        "uploaded_matching_ids": [
+          "sha256:074872940cc7fcce6a1f95db672dc14ff5ac9370a344c2a8389da8e80c034d05",
+          "sha256:3f22483b64ef12acf185d5ac61dd5ff940c72ace05585ade7570e58252eb3eff",
+          "sha256:5a568b3d6d7c4cf12c8b9ec9b43509d439a6f9d976d2b60ac13212b8c93d5b9a",
+          "sha256:6e979ac2db3756155782acc5e0f94e6861068d322f0942dedcac0dc398ad2b32",
+          "sha256:93ff8ae513c5d7d52879e194c3c449d8119b68a3df035a7c1653640dabfca6d1"
+        ],
+        "note": "Official read_image outputs and provider Files API cache establish image transport, not correctness of visual interpretation or desktop UI rendering."
+      },
+      "overall": "dimension_results_only; transport_completed_does_not_mean_all_passed"
+    },
+    {
+      "case_id": "petm_ecoco_multi_steering",
+      "transport_status": "execution_failed",
+      "session_id": "session-49330c47a5ea47128ea856cfa891960f",
+      "checks": [
+        {
+          "id": "declared_original_attachment_sha256",
+          "status": "passed",
+          "expected": "216f8a99011ec476365499d51393a79123a074dfdee067b176194c1d54b2efc6",
+          "observed": "216f8a99011ec476365499d51393a79123a074dfdee067b176194c1d54b2efc6"
+        }
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "scenario_turn_index": 0,
+          "tool_names": [
+            "skill",
+            "skill",
+            "acycle_capabilities",
+            "acycle_import_attachment",
+            "acycle_inspect",
+            "acycle_ecoco",
+            "bash",
+            "bash",
+            "present"
+          ],
+          "session_identity": "passed",
+          "actual_user_message_ids": [
+            "9d65544c-30e9-47df-8aab-58e006566d2c"
+          ],
+          "runs": [
+            {
+              "run_id": "20261025T085704Z-c1db64ad1e01",
+              "operation": "ecoco",
+              "status": "completed",
+              "effective_parameters": {
+                "depth_unit": "m",
+                "middle_age_ma": 56,
+                "sedimentation_rate_min": 8,
+                "sedimentation_rate_max": 16,
+                "sedimentation_rate_step": 0.5,
+                "window": 6,
+                "step": 3,
+                "method": "adaptive",
+                "nsim": 19,
+                "seed": 42,
+                "detrend": "linear",
+                "max_frequency": 0.06,
+                "correlation": "Pearson",
+                "red_noise": 1,
+                "nfft": 2048
+              },
+              "requested_parameters": {
+                "depth_unit": "m",
+                "middle_age_ma": 56,
+                "sedimentation_rate_min": 8,
+                "sedimentation_rate_max": 16,
+                "sedimentation_rate_step": 0.5,
+                "window": 6,
+                "step": 3,
+                "method": "adaptive",
+                "nsim": 19,
+                "seed": 42,
+                "detrend": "linear",
+                "max_frequency": 0.06,
+                "correlation": "Pearson",
+                "red_noise": 1
+              },
+              "required_parameters": "passed",
+              "allowed_method": "passed",
+              "frozen_input_sha256": "216f8a99011ec476365499d51393a79123a074dfdee067b176194c1d54b2efc6",
+              "original_input_preserved": "passed",
+              "remote_matlab_execution": "passed",
+              "remote_execution": {
+                "backend": "github-actions-matlab",
+                "run_id": 40178654192,
+                "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40178654192",
+                "head_sha": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+                "conclusion": "success",
+                "request_token": "acycle-c3b249363335425a89a1c38cc0dd183b",
+                "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+                "artifact_transport": "github_connector_cache",
+                "artifact_sha256": "1c9ebe5931555fc0064886abfbcc16b7c438609d7393cc151cd6bc302d75fd53"
+              },
+              "delivered_original_files": [
+                {
+                  "role": "input_metres_csv",
+                  "file": "input_metres.csv",
+                  "delivery_time_sha256": "187e3746ca64b23d3b5490dfe851f329f934234232d77c7699c7daeed6978769",
+                  "observed_sha256": "187e3746ca64b23d3b5490dfe851f329f934234232d77c7699c7daeed6978769",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "cleaned_metres_csv",
+                  "file": "cleaned_metres.csv",
+                  "delivery_time_sha256": "5f317ef46a3d54f97c73b2fc494d092e1f36315849e30f83e3c46e5f385b785d",
+                  "observed_sha256": "5f317ef46a3d54f97c73b2fc494d092e1f36315849e30f83e3c46e5f385b785d",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "prepared_metres_csv",
+                  "file": "prepared_metres.csv",
+                  "delivery_time_sha256": "2254530709bdf30051cdb390d0450a652ee69f188b26cb9932c0850663b78a3e",
+                  "observed_sha256": "2254530709bdf30051cdb390d0450a652ee69f188b26cb9932c0850663b78a3e",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "orbital_periods_csv",
+                  "file": "orbital_periods_kyr.csv",
+                  "delivery_time_sha256": "a085197b0d5ae08c0c633fdedebc1ec8736eb3e7dc614d1bef895174b4d4cd0c",
+                  "observed_sha256": "a085197b0d5ae08c0c633fdedebc1ec8736eb3e7dc614d1bef895174b4d4cd0c",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "ecoco_csv",
+                  "file": "ecoco.csv",
+                  "delivery_time_sha256": "eb4670f58cee4cdcf3986e1cb9218a743ae874ce74f8f204f5a6408b5165792b",
+                  "observed_sha256": "eb4670f58cee4cdcf3986e1cb9218a743ae874ce74f8f204f5a6408b5165792b",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "tracked_rate_csv",
+                  "file": "tracked_rate.csv",
+                  "delivery_time_sha256": "91fadf7bcdc68a3bc245487fc3a5777ac5016914cd5e116ebe2cf448fe19ab88",
+                  "observed_sha256": "91fadf7bcdc68a3bc245487fc3a5777ac5016914cd5e116ebe2cf448fe19ab88",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "ecoco_figure_1_png",
+                  "file": "ecoco_figure_1.png",
+                  "delivery_time_sha256": "7bed7a91913597a3a0f0e3feffc4400c511ea2c1aa838713efe357f935c2bbfb",
+                  "observed_sha256": "7bed7a91913597a3a0f0e3feffc4400c511ea2c1aa838713efe357f935c2bbfb",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "ecoco_figure_1_fig",
+                  "file": "ecoco_figure_1.fig",
+                  "delivery_time_sha256": "60d4b3d32086a300b4b146e07c8f2e4967bd8a782e9f6946c0b6e300c8666c4c",
+                  "observed_sha256": "60d4b3d32086a300b4b146e07c8f2e4967bd8a782e9f6946c0b6e300c8666c4c",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "ecoco_figure_1_pdf",
+                  "file": "ecoco_figure_1.pdf",
+                  "delivery_time_sha256": "868ccebfa4c21bfc9be7f336f2bb652deb4b60fd9ef16d8ab5b9c158232663f2",
+                  "observed_sha256": "868ccebfa4c21bfc9be7f336f2bb652deb4b60fd9ef16d8ab5b9c158232663f2",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "ecoco_figure_2_png",
+                  "file": "ecoco_figure_2.png",
+                  "delivery_time_sha256": "45b21e2d1de63bab3501865a528c93d8d02b5a42ba59654001984940c28df3d7",
+                  "observed_sha256": "45b21e2d1de63bab3501865a528c93d8d02b5a42ba59654001984940c28df3d7",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "ecoco_figure_2_fig",
+                  "file": "ecoco_figure_2.fig",
+                  "delivery_time_sha256": "0ad6dbbfb0868cdf6340f43c96c2e4f2f6547acc6cc3974a6059fc16a5ac8eec",
+                  "observed_sha256": "0ad6dbbfb0868cdf6340f43c96c2e4f2f6547acc6cc3974a6059fc16a5ac8eec",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "ecoco_figure_2_pdf",
+                  "file": "ecoco_figure_2.pdf",
+                  "delivery_time_sha256": "0427f96ea9cbdfffe4a20a2b660f2fd3720160a0f873b0479b220ebdd9a1489a",
+                  "observed_sha256": "0427f96ea9cbdfffe4a20a2b660f2fd3720160a0f873b0479b220ebdd9a1489a",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "provenance_json",
+                  "file": "provenance.json",
+                  "delivery_time_sha256": "63637c144d36888bdc6c73995e9564abab1d9cac383fcdceaefb161f27274a0b",
+                  "observed_sha256": "63637c144d36888bdc6c73995e9564abab1d9cac383fcdceaefb161f27274a0b",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "details_json",
+                  "file": "details.json",
+                  "delivery_time_sha256": "e7bfdf3024bf27895702e41e02cfb4f591c7bbdd31c92ba749ee776a35ebed72",
+                  "observed_sha256": "e7bfdf3024bf27895702e41e02cfb4f591c7bbdd31c92ba749ee776a35ebed72",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                },
+                {
+                  "role": "analysis_mat",
+                  "file": "analysis.mat",
+                  "delivery_time_sha256": "5c970e6583af2f279bffff70451110e5e62190a15bee3c08c333e589287177dc",
+                  "observed_sha256": "5c970e6583af2f279bffff70451110e5e62190a15bee3c08c333e589287177dc",
+                  "historical_hash_source": "first-turn original file attachment",
+                  "status": "passed"
+                }
+              ],
+              "all_delivered_original_hashes_match": "passed"
+            }
+          ],
+          "shell_commands": [
+            {
+              "classification": "read_or_byte_metadata_only",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs && cat ecoco.csv && echo \"=== tracked ===\" && cat tracked_rate.csv && echo \"=== periods ===\" && cat orbital_periods_kyr.csv",
+              "call_id": "call_00_IKbbn4Dlmbu2nya7BVb19905"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs && python3 -c \"\nimport json\nd=json.load(open('details.json'))\ndef walk(o,p=''):\n    if isinstance(o,dict):\n        for k,v in o.items(): walk(v,p+'/'+k)\n    elif isinstance(o,list):\n        print(p,'[list len',len(o),']', str(o)[:300])\n    else:\n        print(p,'=',str(o)[:400])\nwalk(d)\n\" | head -100",
+              "call_id": "call_00_nrw90ncbNQk93OjzfaYw3816"
+            }
+          ],
+          "presented_files": [
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs/ecoco_figure_1.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs/ecoco_figure_2.png",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs/analysis.mat",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs/input_metres.csv",
+              "description": "Acycle original MATLAB output"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs/ecoco_figure_1.png",
+              "description": "eCOCO 速率—深度相关图（MATLAB/Acycle 原始出图）"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs/ecoco_figure_2.png",
+              "description": "逐窗口 tracked 速率与得分图（MATLAB 原始出图）"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs/ecoco.csv",
+              "description": "完整速率网格表：rho、local/global Monte Carlo p、pCOCO、ridge score"
+            },
+            {
+              "path": "/workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T085704Z-c1db64ad1e01/outputs/tracked_rate.csv",
+              "description": "6 个窗口的追踪速率与局部得分"
+            }
+          ],
+          "user_prompt_matches_recorded_input": "passed",
+          "image_reference_count": 2,
+          "file_reference_count": 15,
+          "image_delivery": "passed",
+          "present_event": "passed",
+          "required_operation": "passed"
+        },
+        {
+          "index": 1,
+          "scenario_turn_index": 1,
+          "tool_names": [
+            "acycle_rerun",
+            "bash",
+            "bash",
+            "bash"
+          ],
+          "session_identity": "passed",
+          "actual_user_message_ids": [
+            "572a2112-4d3b-4ff7-83e4-c7f11dcbebb8"
+          ],
+          "runs": [
+            {
+              "run_id": "20261025T090037Z-45ea6434b881",
+              "operation": "ecoco",
+              "status": "failed",
+              "effective_parameters": null,
+              "requested_parameters": {
+                "depth_unit": "m",
+                "middle_age_ma": 56,
+                "sedimentation_rate_min": 8,
+                "sedimentation_rate_max": 16,
+                "sedimentation_rate_step": 0.5,
+                "window": 8,
+                "step": 4,
+                "method": "adaptive",
+                "nsim": 19,
+                "seed": 42,
+                "detrend": "linear",
+                "max_frequency": 0.06,
+                "correlation": "Pearson",
+                "red_noise": 1
+              },
+              "required_parameters": "not_established_execution_failed",
+              "allowed_method": "passed",
+              "frozen_input_sha256": "216f8a99011ec476365499d51393a79123a074dfdee067b176194c1d54b2efc6",
+              "original_input_preserved": "passed",
+              "remote_matlab_execution": "failed",
+              "remote_execution": {},
+              "delivered_original_files": [],
+              "all_delivered_original_hashes_match": "unverifiable"
+            }
+          ],
+          "shell_commands": [
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T090037Z-45ea6434b881 && ls -R | head -40 && echo ==== && python3 -c \"\nimport json;d=json.load(open('outputs/response.json'))\nprint(json.dumps(d,indent=1,ensure_ascii=False)[:4000])\n\"",
+              "call_id": "call_00_ScKfOQKq8VUBCwgb00RM5324"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T090037Z-45ea6434b881 && python3 -c \"\nimport json\nr=json.load(open('result.json')); print(json.dumps(r,indent=1,ensure_ascii=False)[:3000])\n\" && echo '=== periods ===' && cat outputs/orbital_periods_kyr.csv && echo '=== input head ===' && head -3 outputs/prepared_metres.csv && tail -2 outputs/prepared_metres.csv",
+              "call_id": "call_00_lpWAXJXx86ViGhz4P4GS8637"
+            },
+            {
+              "classification": "requires_manual_review_for_numerical_processing",
+              "command": "cd /workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T090037Z-45ea6434b881/outputs && python3 -c \"\nimport json;d=json.load(open('transport.json'));print(json.dumps(d,indent=1)[:1500])\n\"; ls -la; find /workspace/harness-conversation-runs/iteration2/petm-ecoco/.acycle/runs/20261025T090037Z-45ea6434b881 -name '*.log' -o -name '*stdout*' | head",
+              "call_id": "call_00_yEDdrWOJAOfhDN8e9Dun9103"
+            }
+          ],
+          "presented_files": [],
+          "user_prompt_matches_recorded_input": "passed",
+          "image_reference_count": 0,
+          "file_reference_count": 0,
+          "image_delivery": "not_produced_due_to_scientific_error",
+          "present_event": "not_produced_due_to_scientific_error",
+          "required_operation": "failed"
+        }
+      ],
+      "interpretation": {
+        "status": "honest_failure_handling_passed_but_two_plot_goal_incomplete_and_causal_explanation_unsupported",
+        "findings": [
+          "The first turn selected eCOCO autonomously and completed the requested 6 m / 3 m diagnostic run. The follow-up preserved the operation, method, parent, frozen input and all other requested settings, with the documented nfft dependent-default reset.",
+          "The 8 m / 4 m MATLAB run returned Harness:COCOUnresolved. The model accurately reported failure, retained the baseline, made no scientific retry or Python substitute, and did not fabricate a second map. Failure handling passes; the requested comparison of two completed maps does not.",
+          "The model explicitly limits 19 simulations to diagnostics, reports unsupported cells, distinguishes within-window rate-search correction from map-wide correction, and avoids claiming an age model or a measured sedimentation rate.",
+          "Both responses overstate a geometric cause for the unsupported cells. Their simple maximum-period reasoning does not establish why the lower-rate cells or all 8 m cells failed, and the claimed direction of resolvability is inconsistent with their own window-duration examples. Treat the cause as unproven.",
+          "The second response compares zero resolved cells with the first run window count; zero resolved cells does not mean zero attempted windows. Suggestions to move the search range or use larger windows remain untested and must not be presented as validated remedies."
+        ],
+        "behavior_status": "passed"
+      },
+      "separate_user_turns_same_session": {
+        "status": "passed",
+        "actual_user_messages": 2,
+        "planned_user_messages": 2,
+        "source_filter": "user/message where source.kind == 'user'; skill/runtime messages excluded"
+      },
+      "requested_scientific_goal": {
+        "status": "failed",
+        "note": "A failed MATLAB branch may preserve method/parameters and be handled honestly while leaving the requested two-result goal incomplete."
+      },
+      "uploaded_file_message": {
+        "status": "passed"
+      },
+      "tool_errors": {
+        "count": 1,
+        "status": "recovered_errors_observed",
+        "messages": [
+          "Error: Acycle bridge exited 1: Traceback (most recent call last):\n  File \"/workspace/Acycle_Harness/src/acycle_deepseek/tools.py\", line 212, in _analyze\n    response = _execute({'input_path':str(frozen), 'output_dir':str(output),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/Acycle_Harness/src/acycle_deepseek/tools.py\", line 79, in _execute\n    return run(request)\n           ^^^^^^^^^^^^\n  File \"/workspace/Acycle_Harness/src/acycle_deepseek/github_backend.py\", line 235, in run\n    return GitHubBackend().run(request)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/Acycle_Harness/src/acycle_deepseek/github_backend.py\", line 229, in run\n    raise GitHubBackendError(f'MATLAB workflow failed ({run_url}); inspect {output_dir / \"response.json\"}')\nacycle_deepseek.github_backend.GitHubBackendError: MATLAB workflow failed (https://github.com/JFjifang/Acycle_Harness/actions/runs/40178885432); inspect /workspace/harness-conversation-runs"
+        ]
+      },
+      "attachment_import": {
+        "status": "passed",
+        "note": "Successful acycle_import_attachment receipts only. Reading an existing official attachment file is not treated as a copied import."
+      },
+      "matlab_only_tool_behavior": {
+        "status": "passed",
+        "note": "Shell classifiers only flag review candidates; they do not infer semantic correctness from command names."
+      },
+      "prior_test_artifact_access": {
+        "status": "not_observed",
+        "note": "The runner never injects acceptance or prior outcomes, but a model may inspect accessible repository files. Such access limits a claim of fully blinded interpretation."
+      },
+      "steering": {
+        "scope": "requested branch parameters only; final MATLAB execution failed",
+        "parent_preserved": "passed",
+        "operation_preserved": "passed",
+        "method_preserved": "passed",
+        "same_frozen_input": "passed",
+        "only_permitted_parameter_changes": "passed",
+        "actual_changes": {
+          "step": {
+            "before": 3,
+            "after": 4
+          },
+          "window": {
+            "before": 6,
+            "after": 8
+          },
+          "nfft": {
+            "before": 2048,
+            "after": null
+          }
+        },
+        "recorded_steering": {
+          "baseline_run_id": "20261025T085704Z-c1db64ad1e01",
+          "operation_preserved": "ecoco",
+          "parameter_patch": {
+            "window": 8,
+            "step": 4
+          },
+          "removed_or_reset_parameters": {
+            "nfft": {
+              "previous_value": 2048,
+              "reason": "dependent MATLAB default recalculated for the explicit parameter change"
+            }
+          },
+          "parameter_basis": "saved effective defaults plus explicit baseline input settings"
+        }
+      },
+      "baseline_unchanged": {
+        "status": "passed",
+        "evidence": "Original file attachment hashes captured in the first turn, with original GitHub artifact ZIP hashes where an original .dat was not attached, compared with current/archived bytes. Preview image hashes and post-hoc filesystem snapshots are excluded."
+      },
+      "model_image_transport": {
+        "status": "not_established",
+        "unoffloaded_image_ids": [],
+        "uploaded_matching_ids": [],
+        "note": "Official read_image outputs and provider Files API cache establish image transport, not correctness of visual interpretation or desktop UI rendering."
+      },
+      "overall": "dimension_results_only; transport_completed_does_not_mean_all_passed"
+    },
+    {
+      "case_id": "unknown_metadata_clarification",
+      "transport_status": "completed",
+      "session_id": "session-22b4fa2d95b14d36a778ead2a9c423ac",
+      "checks": [
+        {
+          "id": "declared_original_attachment_sha256",
+          "status": "passed",
+          "expected": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+          "observed": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2"
+        }
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "scenario_turn_index": 0,
+          "tool_names": [
+            "acycle_import_attachment",
+            "skill",
+            "acycle_capabilities",
+            "bash",
+            "acycle_inspect"
+          ],
+          "session_identity": "passed",
+          "actual_user_message_ids": [
+            "9edfee02-ca46-4311-9bb4-f63373e88890"
+          ],
+          "runs": [],
+          "shell_commands": [
+            {
+              "classification": "read_or_byte_metadata_only",
+              "command": "F=\"/workspace/harness-conversation-runs/iteration2/unknown-metadata/.harness-home/attachments/v1/files/1c/1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2/unknown_series.txt\"; ls -l \"$F\"; sha256sum \"$F\"; head -c 600 \"$F\" | cat -A | head -20; echo; echo \"---lines---\"; head -5 \"$F\"; echo ...; tail -3 \"$F\"",
+              "call_id": "call_01_oxlIy7jFTdnfe2eN2Ayh8231"
+            }
+          ],
+          "presented_files": [],
+          "user_prompt_matches_recorded_input": "passed",
+          "image_reference_count": 0,
+          "file_reference_count": 0,
+          "image_delivery": "passed",
+          "present_event": "not_required"
+        }
+      ],
+      "interpretation": {
+        "status": "passed_required_clarification_with_explanation_caveats",
+        "clarification_status": "passed",
+        "behavior_status": "passed",
+        "findings": [
+          "Asked for coordinate/depth units, age or target periods, and a geologically justified search range before any scientific tool call. This scoped negative-control behavior passed.",
+          "The shortened attachment ID failed. The model subsequently inspected the existing official attachment file inside the workspace; a copied import receipt was not observed in this case. Other cases separately test copied import.",
+          "The response extrapolates equal spacing and a second-column range from a structural preview. It also confuses coordinate span with the number of spacings. These are not full-data MATLAB QA results.",
+          "The response promises an age-model path producing a sedimentation-rate-versus-depth curve that this interface does not currently implement, and loosely promises COCO confidence intervals. These are interface/statistical wording errors, not evidence of implemented functions."
+        ]
+      },
+      "separate_user_turns_same_session": {
+        "status": "passed",
+        "actual_user_messages": 1,
+        "planned_user_messages": 1,
+        "source_filter": "user/message where source.kind == 'user'; skill/runtime messages excluded"
+      },
+      "uploaded_file_message": {
+        "status": "passed"
+      },
+      "tool_errors": {
+        "count": 1,
+        "status": "recovered_errors_observed",
+        "messages": [
+          "Error: No matching user file attachment exists in this Session. Upload a CSV/TXT/DAT/TSV or provide a workspace path."
+        ]
+      },
+      "attachment_import": {
+        "status": "not_observed",
+        "note": "Successful acycle_import_attachment receipts only. Reading an existing official attachment file is not treated as a copied import."
+      },
+      "matlab_only_tool_behavior": {
+        "status": "passed",
+        "note": "Shell classifiers only flag review candidates; they do not infer semantic correctness from command names."
+      },
+      "prior_test_artifact_access": {
+        "status": "not_observed",
+        "note": "The runner never injects acceptance or prior outcomes, but a model may inspect accessible repository files. Such access limits a claim of fully blinded interpretation."
+      },
+      "no_premature_scientific_computation": {
+        "status": "passed",
+        "calls": []
+      },
+      "required_clarification": {
+        "status": "passed",
+        "note": "Missing coordinate units, age/target and justified search range must be checked in the actual response."
+      },
+      "model_image_transport": {
+        "status": "not_established",
+        "unoffloaded_image_ids": [],
+        "uploaded_matching_ids": [],
+        "note": "Official read_image outputs and provider Files API cache establish image transport, not correctness of visual interpretation or desktop UI rendering."
+      },
+      "overall": "dimension_results_only; transport_completed_does_not_mean_all_passed"
+    }
+  ]
+}

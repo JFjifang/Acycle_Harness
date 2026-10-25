@@ -1,0 +1,9 @@
+{
+  "toml_parses": true,
+  "no_overwrite_on_conflict": true,
+  "special_paths_preserved": true,
+  "host_config_modified": false,
+  "four_smoke_requests_generated": true,
+  "actual_local_matlab_run": false,
+  "reason": "Cloud has no local MATLAB; real scientific execution is verified separately in GitHub Actions."
+}

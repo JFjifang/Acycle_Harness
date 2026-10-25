@@ -1,0 +1,11 @@
+{
+  "version": "0.4.0",
+  "live_conversation_commit": "ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5",
+  "matlab_implementation_commit": "c55b1a2ff58b6df8850ecd1c1971cee353443e8c",
+  "upstream_acycle_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+  "final_plugin_files": {
+    "plugin/index.mjs": "cf4380855c7f6b758e80c93f0c453590205b712fd3252d69e33d2b994e93daad",
+    "plugin/attachments.mjs": "e9f8ddd835f1c428d568bd8e80722e28ee398fdbf50b95f067991f034ad50ad7"
+  },
+  "post_live_changes": "Resolve Session-only official short handles, prefer uploaded bare filename over existing workspace file, retain per-import provenance receipts; documented and verified with 19 official-service/transport tests, no further live API or MATLAB claims."
+}

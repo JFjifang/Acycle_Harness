@@ -1,0 +1,121 @@
+{
+  "created_at_utc": "2026-10-25T09:12:41.232212+00:00",
+  "expected_version": "0.4.0",
+  "python_executable": "/workspace/acycle-release-check-v04/bin/python",
+  "workspace": "/tmp/acycle-local-installed-v04-frozen",
+  "bundle_root": "/workspace/Acycle_Harness",
+  "status": "passed",
+  "checks": {
+    "python_package": {
+      "status": "passed",
+      "version": "0.4.0",
+      "package_root": "/workspace/acycle-release-check-v04/lib/python3.12/site-packages/acycle_deepseek",
+      "matlab_root": "/workspace/acycle-release-check-v04/lib/python3.12/site-packages/acycle_deepseek/matlab",
+      "tools": [
+        "acycle_capabilities",
+        "acycle_inspect",
+        "acycle_analyze",
+        "acycle_swa",
+        "acycle_coco",
+        "acycle_ecoco",
+        "acycle_rerun",
+        "acycle_sensitivity",
+        "acycle_compare",
+        "acycle_get_run"
+      ]
+    },
+    "release_archives": {
+      "status": "passed",
+      "sha256": {
+        "acycle_deepseek-0.4.0-py3-none-any.whl": "d560f74b138fbf0124a45cd1668bc6fe35a5c92d6f91783197d006eb4bab69df",
+        "dsh-acycle-0.4.0.tgz": "737a1d21e5b6abca810ff70f4b437f53116d28f76f010b7e9ac291917792fd54"
+      },
+      "installed_files_match_wheel": true,
+      "native_archive_skills": 8
+    },
+    "mcp": {
+      "status": "passed",
+      "version": "0.4.0",
+      "tools": [
+        "acycle_analyze",
+        "acycle_capabilities",
+        "acycle_coco",
+        "acycle_compare",
+        "acycle_ecoco",
+        "acycle_get_run",
+        "acycle_inspect",
+        "acycle_rerun",
+        "acycle_sensitivity",
+        "acycle_swa"
+      ],
+      "capabilities_called": true,
+      "scientific_tool_called": false
+    },
+    "native_plugin": {
+      "status": "passed",
+      "dsh_tools_version": "0.2.1-rc.3",
+      "plugin_path": "/workspace/acycle-plugin-check-v04/runtime/node_modules/dsh-acycle/index.mjs",
+      "registered_tools": [
+        "acycle_capabilities",
+        "acycle_inspect",
+        "acycle_analyze",
+        "acycle_swa",
+        "acycle_coco",
+        "acycle_ecoco",
+        "acycle_rerun",
+        "acycle_sensitivity",
+        "acycle_compare",
+        "acycle_get_run",
+        "acycle_import_attachment"
+      ],
+      "registered_skills": [
+        "acycle-age-model",
+        "acycle-coco",
+        "acycle-intake",
+        "acycle-mini-robot",
+        "acycle-reproduction",
+        "acycle-sensitivity-steering",
+        "acycle-spectral-interpretation",
+        "acycle-swa"
+      ],
+      "capabilities": {
+        "version": "0.4.0",
+        "scientific_backend": "MATLAB/Acycle",
+        "backend": "local",
+        "matlab_available": false,
+        "acycle_root": null,
+        "github_repository": null,
+        "remote_backend_configured": false,
+        "execution_note": "Local backend requires MATLAB_EXECUTABLE and ACYCLE_ROOT.",
+        "python_numerical_fallback": false,
+        "operations": [
+          "mini_robot",
+          "mtm_rednoise",
+          "evolution",
+          "filter_envelope",
+          "age_model",
+          "swa",
+          "coco",
+          "ecoco"
+        ],
+        "limits": [
+          "pointwise significance is not proof of astronomical forcing",
+          "Acycle GUI-only methods outside this core require a sourced MATLAB extension"
+        ],
+        "harness": {
+          "attachment_import_available": false,
+          "image_delivery_available": false,
+          "user_image_previews_do_not_imply_model_vision": true
+        }
+      },
+      "disposal": "passed",
+      "scope": "Official Cordis, tools and skills registries with fixed workspace fixture; not a full GUI session.",
+      "installed_files_match_archive": true
+    }
+  },
+  "errors": [],
+  "api_called": false,
+  "matlab_executed": false,
+  "host_configuration_modified": false,
+  "scope": "Installed-package, MCP and optional native-registry checks only. These do not establish real-model, scientific or GUI acceptance."
+}

@@ -95,21 +95,14 @@ async function importRef(attachments, ref, messageId, workspace, exec, config) {
       const info = await lstat(destination)
       if (!info.isFile() || info.isSymbolicLink() || digest(await readFile(destination)) !== sha256) throw new Error('Existing imported file differs; refusing to overwrite it')
     }
+    const receipt = join(targetDirectory, `.source-${randomUUID()}.json`)
     const result = { status: 'imported', input_path: destination, original_name: ref.name,
       bytes, sha256, attachment: ref, source_message_id: messageId, source_session_id: exec.agent.id,
+      import_receipt: receipt,
       transformation: 'Verbatim byte copy only; scientific preparation remains in MATLAB.' }
-    const receipt = destination + '.source.json'
-    try {
-      const file = await open(receipt, 'wx', 0o600)
-      try { await file.writeFile(JSON.stringify(result, null, 2) + '\n') } finally { await file.close() }
-    } catch (error) {
-      if (error.code !== 'EEXIST') throw error
-      const info = await lstat(receipt)
-      if (info.isSymbolicLink() || !info.isFile()) throw new Error('Imported source receipt must be a regular file')
-      const prior = JSON.parse(await readFile(receipt, 'utf8'))
-      if (prior.sha256 !== sha256 || prior.input_path !== destination) throw new Error('Imported source receipt does not match the preserved input')
-    }
-    return { ...result, import_receipt: receipt }
+    const file = await open(receipt, 'wx', 0o600)
+    try { await file.writeFile(JSON.stringify(result, null, 2) + '\n') } finally { await file.close() }
+    return result
   } finally {
     await stream.close()
     try { await unlink(temporary) } catch (error) { if (error.code !== 'ENOENT') throw error }
@@ -118,14 +111,17 @@ async function importRef(attachments, ref, messageId, workspace, exec, config) {
 
 export async function importAttachment(ctx, args, workspace, exec, config) {
   const { attachments, groups } = await sessionFiles(ctx, exec)
+  const shortHandle = /^(?:sha256:)?([a-f0-9]{8})$/.exec(args.attachment_id ?? '')?.[1]
   const candidates = args.attachment_id
     ? groups.flatMap(group => group.refs.map(ref => ({ ref, messageId: group.message_id })))
-      .filter(item => item.ref.attachmentId === args.attachment_id)
+      .filter(item => item.ref.attachmentId === args.attachment_id || (shortHandle &&
+        item.ref.attachmentId.startsWith(`sha256:${shortHandle}`)))
     : (groups.at(-1)?.refs ?? []).map(ref => ({ ref, messageId: groups.at(-1).message_id }))
   if (candidates.length === 0) throw new Error('No matching user file attachment exists in this Session. Upload a CSV/TXT/DAT/TSV or provide a workspace path.')
   const unique = [...new Map(candidates.map(item => [`${item.ref.attachmentId}:${item.ref.name}`, item])).values()]
-  if (!args.attachment_id && unique.length > 1) return { status: 'selection_required',
-    attachments: unique.map(({ ref }) => ref), note: 'Choose attachment_id from this list using the user question; do not guess the scientific dataset.' }
+  if ((!args.attachment_id && unique.length > 1) ||
+      (shortHandle && new Set(unique.map(item => item.ref.attachmentId)).size > 1)) return { status: 'selection_required',
+    attachments: unique.map(({ ref }) => ref), note: 'Choose a full attachment_id from this list using the user question; the upload or short handle is ambiguous. Do not guess the scientific dataset.' }
   const selected = unique.at(-1)
   return importRef(attachments, selected.ref, selected.messageId, workspace, exec, config)
 }
@@ -133,17 +129,30 @@ export async function importAttachment(ctx, args, workspace, exec, config) {
 /** Accept an uploaded file's exact official host path or unambiguous display name, not arbitrary external paths. */
 export async function resolveInputAttachment(ctx, args, workspace, exec, config) {
   if (typeof args.input_path !== 'string' || !exec.agent || !getService(ctx, 'attachments') || !getService(ctx, 'sessionQuery')) return { args }
+  let authorized
+  const bareFilename = !isAbsolute(args.input_path) && basename(args.input_path) === args.input_path
+  if (bareFilename) {
+    authorized = await sessionFiles(ctx, exec)
+    const matches = authorized.groups.flatMap(group => group.refs.map(ref => ({ ref, messageId: group.message_id })))
+      .filter(({ ref }) => ref.name === args.input_path)
+    const distinct = [...new Map(matches.map(item => [item.ref.attachmentId, item])).values()]
+    if (distinct.length > 1) throw new Error('Multiple Session attachments match that filename; call acycle_import_attachment with an explicit attachment_id.')
+    if (distinct.length === 1) {
+      const imported = await importRef(authorized.attachments, distinct[0].ref, distinct[0].messageId, workspace, exec, config)
+      return { args: { ...args, input_path: imported.input_path }, imported }
+    }
+  }
   const candidate = resolve(workspace, args.input_path)
   const roots = [workspace, process.env.ACYCLE_ROOT].filter(Boolean)
   try {
     const actual = await realpath(candidate)
     if (roots.some(root => contained(resolve(root), actual))) return { args }
   } catch (error) { if (error.code !== 'ENOENT') throw error }
-  const { attachments, groups } = await sessionFiles(ctx, exec)
+  const { attachments, groups } = authorized ?? await sessionFiles(ctx, exec)
   const matches = groups.flatMap(group => group.refs.map(ref => ({ ref, messageId: group.message_id })))
     .filter(({ ref }) => {
       const hostPath = attachments.fileHostPath(ref)
-      return hostPath === candidate || (args.input_path === ref.name && basename(args.input_path) === args.input_path)
+      return hostPath === candidate
     })
   const distinct = [...new Map(matches.map(item => [`${item.ref.attachmentId}:${item.ref.name}`, item])).values()]
   if (distinct.length === 0) return { args }

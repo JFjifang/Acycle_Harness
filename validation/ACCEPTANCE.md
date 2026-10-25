@@ -1,22 +1,45 @@
-# Acycle Harness 0.3.0 验收记录
+# Acycle Harness 0.4.0 验收记录
 
-2026-10-25。Newark 官方样例已完成；新增 SWA、COCO、eCOCO 原始 MATLAB 桥，合计 9 个工具、8 个 skills。计算、Monte Carlo、作图及科学数据保存均在 MATLAB 中完成。Python 负责接口、输入快照、文件传输与运行记录，没有自动数值替代路径。
+2026-10-25。本版补齐当前 Harness 会话附件导入、MATLAB 原始图件/文件交付，以及保持分析类型和未改参数的连续对话分支。Python/MCP 有 10 个工具；原生 Harness 另有附件导入，共 11 个工具和 8 个 skills。**核心交互已实现，但本轮真实模型测试没有全部通过科研行为和完整任务判据，不能称为无需审核的自动科研系统。**
 
-## 工程验收
+## 没有预写调用步骤的真实会话
 
-| 项目 | 实际结果 | 证据 |
+采用发布的官方 Harness SDK/CLI `0.2.1-rc.3`、真实 `deepseek-flash`、Session/AgentLoop、skills、attachment store、session query 和 `present`。每组新会话只收到附件及简短自然语言目标；后续要求在上一条助手回复结束后作为独立用户消息发送。预期工具、JSON 参数、判分规则不进入模型上下文。四组事前场景见 `../tests/fixtures/conversation_scenarios.json`；实际轨迹见 `v0.4/harness/iteration2/`。
+
+| 场景 | 实际自主行为与后续调整 | 验收结论 |
 | --- | --- | --- |
-| Python 编排、协议和敏感性分支 | 55 项通过 | `python-tests.txt` |
-| Node 传输、取消、错误和 skill 资源 | 4 项通过 | `node-tests.txt` |
-| 实际 MATLAB R2024b | 23 项通过；独立论文判据另列 | `matlab-summary.json`、`matlab-junit.xml` |
-| 安装后的原生 Harness 插件 | 9 工具、8 skills 注册、调用与卸载成功 | `native-plugin-smoke.json` |
-| 安装后的 MCP stdio | 初始化、9 工具列表和实际 capabilities 调用成功 | `release-verification.json` |
-| DeepSeek-V4.1-Flash 真实 API | 6 轮请求、7 次成功工具调用；SWA/COCO/eCOCO 均执行真实 MATLAB | `deepseek-v03-live.json` |
-| 最终 wheel / npm 包 | 安装文件、包内文件和对应源码逐字节一致 | `release-verification.json` |
+| Newark | 自选初步分析与演化谱；下一用户轮将 LOWESS span 0.35 改为 0.25 | 两轮 MATLAB 完成、图件交付、父运行/输入/其余参数和原产物保留通过；首次短附件 ID 错误后恢复；科学解释仍有夸大与一处百分比错误 |
+| Lavernock | 自选 SWA Lomb/FDR；下一轮只改图示上限为 2 cycles/m | 两轮完成、原方法与完整频谱 CSV 保持、原图保留；**模型额外用 NumPy 统计 MATLAB 结果，违反 MATLAB 计算要求，该维度未通过** |
+| PETM | 自选 eCOCO，6 m/3 m/19 次模拟；下一轮改为 8 m/4 m | 第一轮完成；第二轮原 MATLAB 返回 `Harness:COCOUnresolved`，没有第二张速率图，完整比较目标未完成；模型如实停止并保留失败分支，没有更换方法、重试或 Python 数值替代 |
+| 未知元数据 | 中性附件名，要求沉积速率图但不提供单位、年龄和搜索依据 | 先澄清、没有启动科学计算，这一负例通过；短 ID 导入失败后读工作区已有文件；解释中仍有结构预览过度推断及未实现接口承诺 |
 
-最终 MATLAB CI：[40174469745](https://github.com/JFjifang/Acycle_Harness/actions/runs/40174469745)，计算与绘图代码提交 `c55b1a2`。MATLAB 测试包括原函数数值对照、合成已知速率、单位转换、指定间隔插值、完整窗口、blocked/interleaved 模式、输入拒绝、原始图件及论文数据。测试成功只表示这些工程断言通过；`matlab-summary.json` 另外列出独立论文判据，没有将科研未通过项改写为通过。
+三组科学场景共有 6 个真实 MATLAB 请求：5 个成功，1 个科学不可解析错误。不能将 6 次成功传输写成 6 次科学成功。SWA 的 NumPy 统计以及模型解释问题保留在原始记录中。PETM 错误也没有通过事后换范围/改目标来消除；19 次模拟只作诊断。
 
-原生插件验收使用官方 dsh 0.2.1-rc.3 的 tools/system-prompt/skill 注册器和 Cordis 4.0.5。MCP 验收使用实际安装后的 Python 子进程；未宣称运行过完整 Codex 或 Harness 桌面 UI。本云端没有本机 MATLAB，实际科学计算通过 GitHub Actions 执行；用户电脑上的 MATLAB 许可证和客户端接入需按 handoff 验收。
+本轮没有预写调用步骤，也没有向模型注入验收答案，但宿主仍允许读取项目文件：SWA 模型在自主选择方法并完成 MATLAB 后，读取了仓库里的旧论文验证记录。因而该案例的后续论文解释不是严格盲测，不能用它证明独立复现了论文结论。
+
+逐维度、原始文件 SHA、参数差异、错误及人工解释审查见 [conversation-evaluation.md](v0.4/conversation-evaluation.md)、对应 JSON 和 [interpretation-review.json](v0.4/interpretation-review.json)。GitHub 运行及独立传输核验见 `v0.4/github-matlab-runs.json`。首轮认证中断、擅自数值检查及缺失元数据时错误启动的失败轨迹保留在 `v0.4/harness/`；第二轮没有覆盖它们。
+
+## 附件、图件与方法保持
+
+- 附件在当前用户会话中解析，原字节导入 `.acycle/imports/`；模型无需知道内部存储路径。重复导入保留独立来源记录；官方短 handle 仅在本会话内唯一匹配时解析，同名裸文件名优先匹配当前附件。
+- CSV/MAT/PNG/FIG 来自 MATLAB；原始文件引用与用于展示的图片预览分开保存。官方 `deliverables/presented` 事件已实测。第一轮交付时形成的原文件 SHA 可用于核实第二轮之后基线字节仍未改变。
+- 自动预览为 offloaded 用户产物，不自动向模型提供图像像素。本轮 Newark 模型另行调用官方 `read_image`，非 offloaded 图像实际经 provider Files API 上传；这证明图像传输，不证明全部视觉解释正确。**未测试 Web/Desktop 的实际画面渲染。**
+- `acycle_rerun` 保持 operation、冻结输入和未改有效设置，并记录 parent。依赖修改参数的隐式默认值可以重算，原因写入 steering；显式设置不会静默重置。失败分支保留请求和诊断，不制造完成的图件。
+
+真实会话和 MATLAB 运行基于提交 `ccc954a88d5b05f7c2baef6c6661f64eef9f7fd5`。此后针对实际宿主短 handle、同名文件、重复导入来源做了小范围附件修复，并通过真实官方服务的无 Key 接口测试；**未宣称对这些末次修复又做了一轮真实 API/MATLAB 会话**。Python/MATLAB 科学实现未因此变动。
+
+## 工程与安装检查
+
+| 项目 | 证据与范围 |
+| --- | --- |
+| Python | 93 项通过；`python-tests.txt` |
+| Node/官方附件与会话服务 | 19 项通过，细节见 `node-tests.txt`；使用真实官方服务，不替代真实模型验收 |
+| 原始 MATLAB 数值测试 | 沿用未变更计算代码的 23 项通过；CI [40174469745](https://github.com/JFjifang/Acycle_Harness/actions/runs/40174469745)，代码 `c55b1a2`；本版另有上述实际会话请求 |
+| 最终 wheel/npm 与独立安装 | 包、安装文件、对应源码逐字节一致；`release-verification.json` |
+| 安装后的 MCP/native | 实际 stdio 初始化/10 工具/capabilities；官方注册器 11 工具/8 skills；`native-plugin-smoke.json` |
+| 本地自检入口 | `local-install-check-v04.json`；无 API、无 MATLAB、未修改用户 profile；本机许可证与 GUI 仍需按 handoff 实测 |
+
+无 Key mock 只证明 SDK/会话/附件基础设施，位于 `v0.4/harness/keyless_infrastructure*`。0.3 的 Python 手写模型循环和旧注册器回执归档在 `v0.3/`，不作为本版真实 Harness 连续用户会话的证据。
 
 ## Newark
 
@@ -41,18 +64,10 @@ Acycle 固定参考提交为 `dcba4279168745b563e0535b954297023dd62fc7`。SWA �
 
 `matlab/source_registry.json`、`swa_sources.json`、`coco_sources.json` 记录参考哈希；每次执行记录实际哈希和 adapter 哈希。未来 Acycle 版本的同名入口不构成已验证兼容，需重新运行对照。当前未覆盖全部 GUI、历史 COCO 算法或完整论文年代建模。
 
-## 真实模型记录与交付
+## 本地交付与限制
 
-三次新工具运行均成功并保留原始输入、请求、输出及传输凭据：
+`dist/acycle-local-handoff-0.4.0.zip` 为轻量独立交接包，包含源码、wheel/npm、中文用户指南、配置生成器、安装自检、MATLAB smoke、提取后的 CSV、场景和 `local/HANDOFF_PROMPT.txt`。完整 `acycle-deepseek-0.4.0-bundle.zip` 另含出版源附件、历史科研输出、本轮真实轨迹及可移植科学运行档案；原始路径通过 `v0.4/scientific-runs/evidence-index.json` 映射，不要求本机存在云端 `/workspace`。
 
-- SWA：`20261025T072936Z-7dc390007a72`，Actions `40172963619`。
-- COCO：`20261025T073241Z-98795147bb9a`，Actions `40173168574`。
-- eCOCO：`20261025T073632Z-d9b4dcbd12d9`，Actions `40173414618`。
+本地助手先读 `../local/HANDOFF_PROMPT.txt`。本机 Acycle checkout、MATLAB 安装/许可证另行提供；本地 MATLAB 不依赖 GitHub Actions 或云端产物连接器。安装核对、科学执行、真实客户端对话和 GUI 目视检查各自报告，未测项必须标明。
 
-COCO/eCOCO 的这次模型 smoke 使用 19 次模拟，只检查执行链路。`live-v03-evidence.json` 列出完整输出的相对路径和 SHA-256。原始模型答复保留；`deepseek-v03-answer-audit.json` 单独纠正其 Newark 缩略 hash 的一处转录错误及“没有 global test result”的过强 FDR 表述。工具执行通过不代替科学解释审查。
-
-当前云代理仍拒绝 GitHub 产物签名存储地址；通过已连接 GitHub 工具下载并核验 ZIP 哈希。该传输适配不参与计算。本地 MATLAB 路线不依赖 GitHub 或该连接器。
-
-`dist/acycle-local-handoff-0.3.0.zip` 为独立本地交接包，包含源码、安装包、中文指南、配置生成器、自检、smoke、提取 CSV 和 `local/HANDOFF_PROMPT.txt`。完整 `acycle-deepseek-0.3.0-bundle.zip` 另含出版源文件、Newark 和模型实际输出、前后 CI 图表及历史证据。原始记录中的历史绝对路径保留，换目录后使用证据索引中的相对路径。Acycle checkout 与 MATLAB 商业安装需自行提供。
-
-API Key 未写入源码、GitHub 或交付包；测试临时凭据文件已删除。0.2 的旧验收记录归档在 `validation/v0.2/`，其 9 项 MATLAB 测试与旧模型测试不能代替本轮结果。
+本版没有覆盖全部 Acycle GUI，也没有消除真实模型的科研解释错误或所有不遵从行为。论文判据未复现的结果继续保留。API Key 未写入源码、GitHub 或交付包，真实测试后已扫描并删除临时凭据文件。

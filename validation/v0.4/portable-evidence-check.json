@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "portable_command": "python scripts/evaluate_harness_conversations.py --review validation/v0.4/interpretation-review.json --evidence-root validation/v0.4/scientific-runs",
+  "live_comparison_command": "same command with --live-files",
+  "archive_resolution_preferred_over_existing_live_files": true,
+  "all_case_dimension_results_identical_to_live": true,
+  "cases": [
+    {
+      "case_id": "lavernock_fdr_display",
+      "archived_files_verified": 26,
+      "all_index_hashes_match": true
+    },
+    {
+      "case_id": "newark_baseline_steering",
+      "archived_files_verified": 38,
+      "all_index_hashes_match": true
+    },
+    {
+      "case_id": "petm_ecoco_multi_steering",
+      "archived_files_verified": 29,
+      "all_index_hashes_match": true
+    },
+    {
+      "case_id": "unknown_metadata_clarification",
+      "archived_files_verified": 0,
+      "all_index_hashes_match": true
+    }
+  ],
+  "scope": "Byte hashes, JSON records and parameters only; no model calls or scientific recalculation."
+}

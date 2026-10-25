@@ -124,9 +124,9 @@ export async function apply(ctx, config = {}) {
   }
   ctx.tools.register({
     name: 'acycle_import_attachment',
-    description: 'Import a user-uploaded CSV/TXT/DAT/TSV from this Harness conversation into the Acycle workspace without changing bytes. Omit attachment_id for the latest single upload; multiple uploads return choices. Use the returned input_path for analysis.',
+    description: 'Import a user-uploaded CSV/TXT/DAT/TSV from this Harness conversation into the Acycle workspace without changing bytes. Omit attachment_id for the latest single upload; a unique official 8-digit short handle is also accepted. Multiple uploads or ambiguous short handles return choices. Use the returned input_path for analysis.',
     parameters: { type: 'object', additionalProperties: false, properties: {
-      attachment_id: { type: 'string', description: 'An attachment ID from this Session; omit for the latest single uploaded file.' },
+      attachment_id: { type: 'string', description: 'A full sha256 attachment ID or its unique official 8-digit hexadecimal handle from this Session, optionally prefixed sha256:. Omit for the latest single uploaded file.' },
     } },
     output: { schema: { type: 'object', additionalProperties: true }, render: renderResult },
     async execute(args, exec) {

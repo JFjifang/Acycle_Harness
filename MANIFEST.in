@@ -1,3 +1,5 @@
 recursive-include matlab *.m *.json *.md
 recursive-include skills *.md
+recursive-include tests/fixtures *.txt *.json
+include scripts/ci_request.py
 include LICENSE README.md

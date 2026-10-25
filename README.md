@@ -40,6 +40,10 @@ Future Acycle versions are loaded at runtime; required functions are checked and
 
 ## Validation and limitations
 
+The real conversation suite uses the published official Harness SDK and `deepseek-flash`, uploads files through its attachment store, and sends independent user turns from [four predeclared scenarios](tests/fixtures/conversation_scenarios.json). Only the natural-language prompts and attachments reach the model; expected operations and acceptance rules stay outside its context. It tests Newark detrending changes, SWA display changes, eCOCO window changes, and clarification when scientific context is missing. See [current acceptance](validation/ACCEPTANCE.md) for separate execution, delivery, steering and scientific-behavior results, including failures. Transport completion alone is not acceptance.
+
+`scripts/harness_conversation.mjs --runtime /path/to/official-runtime --case CASE --workspace /new/study --output receipt.json` runs a case with the configured MATLAB backend. The [local handoff](docs/LOCAL_HANDOFF.zh-CN.md) explains runtime installation and the local MATLAB route. `--mode mock` checks infrastructure only; the older `live_*test.py` scripts test Python tool loops and do not establish a native Harness conversation.
+
 ```sh
 python -m pytest -q
 node --test plugin/tests/*.test.mjs

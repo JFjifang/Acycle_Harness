@@ -1,8 +1,13 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "status": "passed",
-  "wheel_sha256": "f74f09f53fc23888746d759a25b22f4acf8ddf517d88c1d64db6e1fdc1e827ac",
-  "plugin_sha256": "45e288d242bf4047ae3a61e97be56f5c405f2c14e7c25a129ad4a5d45b0249fc",
+  "checked_at_utc": "2026-10-25T09:12:41.191696+00:00",
+  "python_executable": "/workspace/acycle-release-check-v04/bin/python",
+  "installed_python_root": "/workspace/acycle-release-check-v04/lib/python3.12/site-packages/acycle_deepseek",
+  "installed_plugin_root": "/workspace/acycle-plugin-check-v04/package",
+  "wheel_sha256": "d560f74b138fbf0124a45cd1668bc6fe35a5c92d6f91783197d006eb4bab69df",
+  "plugin_sha256": "737a1d21e5b6abca810ff70f4b437f53116d28f76f010b7e9ac291917792fd54",
+  "sdist_sha256": "590f0e8aa2a9e1eaf4c30238ea87f53bba2422b7e14392cc5b78d3ad7644deb4",
   "wheel_files_match_installed_and_source": [
     "acycle_deepseek/__init__.py",
     "acycle_deepseek/cli.py",
@@ -36,16 +41,38 @@
     "skills/acycle-sensitivity-steering/SKILL.md",
     "skills/acycle-spectral-interpretation/SKILL.md",
     "skills/acycle-swa/SKILL.md",
+    "attachments.mjs",
     "index.mjs",
     "cordis.patch.yml"
   ],
-  "matlab_sources_installed": "/workspace/acycle-release-check/lib/python3.12/site-packages/acycle_deepseek/matlab",
+  "sdist_readme_manifest_and_fixture_files_match_source": [
+    "README.md",
+    "MANIFEST.in",
+    "scripts/ci_request.py",
+    "tests/fixtures/conversation_scenarios.json",
+    "tests/fixtures/newark_first8_cr.provenance.json",
+    "tests/fixtures/newark_first8_cr.txt"
+  ],
+  "matlab_sources_installed": "/workspace/acycle-release-check-v04/lib/python3.12/site-packages/acycle_deepseek/matlab",
   "native_plugin_smoke": "native-plugin-smoke.json",
   "installed_mcp_stdio": {
     "initialize": "passed",
-    "listed_tools": 9,
+    "version": "0.4.0",
+    "listed_tools": 10,
+    "tool_names": [
+      "acycle_capabilities",
+      "acycle_inspect",
+      "acycle_analyze",
+      "acycle_swa",
+      "acycle_coco",
+      "acycle_ecoco",
+      "acycle_rerun",
+      "acycle_sensitivity",
+      "acycle_compare",
+      "acycle_get_run"
+    ],
     "capabilities_call": "passed",
-    "scope": "Real installed subprocess protocol; not a full Codex client session or local licensed MATLAB run."
+    "scope": "Installed wheel subprocess protocol; no local scientific MATLAB or full GUI session."
   },
-  "matlab_code_commit": "c55b1a2"
+  "scope": "Package/source/independent-install byte parity; actual MCP protocol and optional official Harness registry smoke. Scientific and live conversation evidence is separate."
 }

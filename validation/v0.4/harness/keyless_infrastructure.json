@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "case_id": "keyless-sdk-infrastructure",
+  "status": "completed",
+  "mode": "mock",
+  "scope": "Keyless infrastructure fixture only; no real model or scientific execution.",
+  "started_at_utc": "2026-10-25T08:48:15.230Z",
+  "runtime": {
+    "sdk_client": "0.2.1-rc.3",
+    "dsh": "0.2.1-rc.3",
+    "profile": "sdk-minimal",
+    "model": "fixture",
+    "plugin_path": "/workspace/Acycle_Harness/plugin/index.mjs",
+    "plugin_sha256": "e0ecad020490ad75c98084b0edc7819ca6b9be7f319d6c7b7c065de4f2cef87e"
+  },
+  "workspace": "/workspace/harness-conversation-check/mock-final",
+  "dsh_home": "/workspace/harness-conversation-check/mock-final/.harness-home",
+  "attachment": {
+    "source_file": "/workspace/Acycle_Harness/benchmarks/data/weedon_2020_lavernock_0_13_17m.csv",
+    "sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+    "bytes": 5609,
+    "ref": {
+      "attachmentId": "sha256:b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+      "name": "observations.csv",
+      "bytes": 5609
+    }
+  },
+  "prompt_policy": "Only scenario user_prompt strings and the uploaded FileBlock are supplied as user input; acceptance fields are never model-visible.",
+  "turns": [
+    {
+      "index": 0,
+      "scenario_turn_index": 0,
+      "user_prompt": "请接收附件并检查分析环境。",
+      "started_at_utc": "2026-10-25T08:48:15.643Z",
+      "tool_calls": [
+        {
+          "turn": 1,
+          "step": 1,
+          "callId": "fixture-call-0",
+          "name": "skill",
+          "arguments": "{\"name\":\"acycle-intake\"}",
+          "event_seq": 12
+        },
+        {
+          "turn": 1,
+          "step": 2,
+          "callId": "fixture-call-1",
+          "name": "acycle_capabilities",
+          "arguments": "{}",
+          "event_seq": 17
+        },
+        {
+          "turn": 1,
+          "step": 3,
+          "callId": "fixture-call-2",
+          "name": "acycle_import_attachment",
+          "arguments": "{}",
+          "event_seq": 22
+        }
+      ],
+      "tool_results": [
+        {
+          "turn": 1,
+          "step": 1,
+          "message": {
+            "role": "tool",
+            "source": {
+              "kind": "tool",
+              "callId": "fixture-call-0"
+            },
+            "toolCallId": "fixture-call-0",
+            "content": [
+              {
+                "type": "text",
+                "text": "<skill_content name=\"acycle-intake\">\n<skill_resources>\nBase directory for this skill: /workspace/Acycle_Harness/plugin/skills/acycle-intake\nResolve relative paths mentioned by this skill against the base directory before using them. Load referenced resources only as needed.\n</skill_resources>\n\n<skill_instructions>\n\nUse `acycle_capabilities` to check the configured backend. When the user supplies a Harness file attachment and the tool list exposes `acycle_import_attachment`, call it to obtain the workspace `input_path`. A single file in the latest attached user message can be imported without arguments; with multiple files, select an `attachment_id` from the returned candidates according to the user's request. Do not search another session's attachments or guess a storage path. When that Harness-only tool is unavailable (for example through MCP), use a file already in the current workspace. Run `acycle_inspect` on the resolved path. Distinguish a depth series from an age series, identify the proxy and units, and preserve the original file. Establish whether the user wants exploratory periodicity, a specified hypothesis, or a chronology. Infer metadata from an accompanying paper or table before asking for missing information.\n\nNumerical processing and plots must run in MATLAB. Python is for Harness integration, transport and metadata; never silently switch to a Python analytical fallback when MATLAB is missing. Report an unavailable backend precisely and keep the request ready to rerun.\n\nUse the first two numeric columns only when their meaning is clear. Check duplicate coordinates, missing observations, sorting, irregular sampling and large gaps in the MATLAB result. Duplicate handling and interpolation change the effective dataset and must be visible in the report. Do not turn depth wavelengths into kyr without a stated rate or age-depth model.\n\nChoose the operation from the scientific question and sampling, without making the user supply tool names or JSON. `acycle_analyze` provides a first exploratory mini-robot spectrum/evolution workflow. For a request about false discoveries across a spectrum, consider the SWA skill and its sampling constraints. For explicitly constrained sedimentation-rate or evolutionary-rate testing, use the COCO/eCOCO skill; geological age/targets and a justified rate range cannot be invented from the proxy alone. Use a descriptive label and record the returned run ID, effective parameters, MATLAB/Acycle provenance and artifacts. If the requested feature is outside the bridged subset, say so and prefer a small MATLAB adapter to the installed Acycle routines.\n\nIn follow-up conversation, use `acycle_rerun` or `acycle_sensitivity` on the selected saved run. Preserve its analysis operation and untouched parameters; a request to change plot range, span, window or simulation count does not itself request a different method. Use the steering skill for branching and comparison.\n\nReturn a concise dataset summary, important assumptions, available analysis path, and the next scientific decision. Do not imply that basic file inspection constitutes numerical quality control or that a successful API call means an analysis succeeded.\n\n</skill_instructions>\n</skill_content>"
+              }
+            ],
+            "isError": false,
+            "id": "b99fb234-0ce0-4e99-892c-ca6696375c2a"
+          }
+        },
+        {
+          "turn": 1,
+          "step": 2,
+          "message": {
+            "role": "tool",
+            "source": {
+              "kind": "tool",
+              "callId": "fixture-call-1"
+            },
+            "toolCallId": "fixture-call-1",
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"version\":\"0.4.0\",\"scientific_backend\":\"MATLAB/Acycle\",\"backend\":\"local\",\"matlab_available\":false,\"acycle_root\":null,\"github_repository\":null,\"remote_backend_configured\":false,\"execution_note\":\"Local backend requires MATLAB_EXECUTABLE and ACYCLE_ROOT.\",\"python_numerical_fallback\":false,\"operations\":[\"mini_robot\",\"mtm_rednoise\",\"evolution\",\"filter_envelope\",\"age_model\",\"swa\",\"coco\",\"ecoco\"],\"limits\":[\"pointwise significance is not proof of astronomical forcing\",\"Acycle GUI-only methods outside this core require a sourced MATLAB extension\"],\"harness\":{\"attachment_import_available\":true,\"image_delivery_available\":true,\"user_image_previews_do_not_imply_model_vision\":true}}"
+              }
+            ],
+            "isError": false,
+            "id": "d1b8c35c-1f63-42ed-815c-31e1aefb7d68"
+          }
+        },
+        {
+          "turn": 1,
+          "step": 3,
+          "message": {
+            "role": "tool",
+            "source": {
+              "kind": "tool",
+              "callId": "fixture-call-2"
+            },
+            "toolCallId": "fixture-call-2",
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"status\":\"imported\",\"input_path\":\"/workspace/harness-conversation-check/mock-final/.acycle/imports/b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4/observations.csv\",\"original_name\":\"observations.csv\",\"bytes\":5609,\"sha256\":\"b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4\",\"attachment\":{\"attachmentId\":\"sha256:b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4\",\"name\":\"observations.csv\",\"bytes\":5609},\"source_message_id\":\"a2699ac9-3538-46b3-9d17-14033e6c1902\",\"source_session_id\":\"session-c49d2bda20ae40449560f6610012c24c\",\"transformation\":\"Verbatim byte copy only; scientific preparation remains in MATLAB.\",\"import_receipt\":\"/workspace/harness-conversation-check/mock-final/.acycle/imports/b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4/observations.csv.source.json\"}"
+              }
+            ],
+            "isError": false,
+            "id": "601b745f-e9c8-4baf-9d5f-c2730c0bf7a8"
+          }
+        }
+      ],
+      "emitted_images": [],
+      "emitted_files": [],
+      "notifications_count": 31,
+      "event_log": "/workspace/Acycle_Harness/validation/v0.4/harness/keyless_infrastructure.turn-1.events.jsonl",
+      "terminal": {
+        "kind": "completed"
+      },
+      "final_response": "Keyless infrastructure fixture completed; no scientific or real-model claim.",
+      "duration_seconds": 0.097,
+      "events_file": "/workspace/Acycle_Harness/validation/v0.4/harness/keyless_infrastructure.turn-1.json"
+    },
+    {
+      "index": 1,
+      "scenario_turn_index": 1,
+      "user_prompt": "保留刚才的文件，确认我们仍在同一会话。",
+      "started_at_utc": "2026-10-25T08:48:15.743Z",
+      "tool_calls": [
+        {
+          "turn": 2,
+          "step": 1,
+          "callId": "fixture-call-4",
+          "name": "acycle_inspect",
+          "arguments": "{\"input_path\":\"/workspace/harness-conversation-check/mock-final/.acycle/imports/b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4/observations.csv\"}",
+          "event_seq": 35
+        }
+      ],
+      "tool_results": [
+        {
+          "turn": 2,
+          "step": 1,
+          "message": {
+            "role": "tool",
+            "source": {
+              "kind": "tool",
+              "callId": "fixture-call-4"
+            },
+            "toolCallId": "fixture-call-4",
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"input_path\":\"/workspace/harness-conversation-check/mock-final/.acycle/imports/b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4/observations.csv\",\"bytes\":5609,\"sha256\":\"b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4\",\"line_count\":440,\"preview\":[\"stratigraphic_height_m,magnetic_susceptibility_1e-6_SI\",\"13.17,0.018\",\"13.14,0.02\",\"13.11,0.0505\",\"13.08,0.0475\",\"13.05,0.0505\",\"13.02,0.053\",\"12.99,0.0515\"],\"note\":\"Structural preview only; scientific QA, duplicate handling, interpolation and plots run in MATLAB.\"}"
+              }
+            ],
+            "isError": false,
+            "id": "f22aba75-a4ec-4c10-a6a9-2a80fd14ebca"
+          }
+        }
+      ],
+      "emitted_images": [],
+      "emitted_files": [],
+      "notifications_count": 15,
+      "event_log": "/workspace/Acycle_Harness/validation/v0.4/harness/keyless_infrastructure.turn-2.events.jsonl",
+      "terminal": {
+        "kind": "completed"
+      },
+      "final_response": "Keyless infrastructure fixture completed; no scientific or real-model claim.",
+      "duration_seconds": 0.042,
+      "events_file": "/workspace/Acycle_Harness/validation/v0.4/harness/keyless_infrastructure.turn-2.json"
+    }
+  ],
+  "errors": [],
+  "initialized": true,
+  "session_id": "session-c49d2bda20ae40449560f6610012c24c",
+  "infrastructure_assertions": {
+    "official_profile_and_agent_loop": true,
+    "skill_loaded_through_official_tool": true,
+    "attachment_imported_from_current_session": true,
+    "imported_bytes_sha256_matches": true,
+    "two_distinct_user_messages_retained": true,
+    "second_turn_reuses_prior_tool_result": true,
+    "real_model_or_scientific_acceptance": false
+  },
+  "acceptance": "Not inferred from transport completion; evaluate the separate predeclared scientific and conversation criteria.",
+  "finished_at_utc": "2026-10-25T08:48:15.814Z"
+}

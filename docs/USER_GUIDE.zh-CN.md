@@ -4,6 +4,8 @@
 
 首次本地测试建议按“安装 → doctor → Newark smoke → 接入客户端 → 上传数据并连续对话”的顺序进行。可直接交给另一个本地 Codex/Harness 会话执行的交接文本见 [LOCAL_HANDOFF.zh-CN.md](LOCAL_HANDOFF.zh-CN.md)。0.4 版的 Python/MCP 提供 10 个工具，Harness 另有附件导入工具，合计 11 个；8 个 skills 不变。具体测试结果应查阅 `validation/` 中对应版本的验收记录。0.2/0.3 的计算和工具调用证据不能代替 0.4 的附件、图件回传及真实用户多轮会话验收。
 
+本版已经执行真实 Harness 连续会话，证明了自主调用、图件交付及保持方法的参数调整；但存在模型额外使用 NumPy 统计、一个 MATLAB 分支失败和解释错误，**不能称为无需审核的全自动科研流程**。第 7 节列出实际验收范围，未通过项与原始记录保留。
+
 ## 1. 安装条件与目录
 
 | 项目 | 要求 |
@@ -63,9 +65,12 @@ $env:ACYCLE_MATLAB_TIMEOUT = '3600'
 检查配置，并实际启动一次 MATLAB：
 
 ```sh
+python local/install_check.py --workspace . --output local-validation/install.json
 python local/doctor.py --workspace . --run-matlab --output local-validation/doctor.json
 python local/smoke.py --workspace . --case analyze
 ```
+
+`install_check.py` 使用当前虚拟环境的隔离 Python 子进程核对 0.4.0、10 个共享工具、MATLAB 桥与实际 MCP 调用；存在交付包时还核对 wheel/npm 校验和及安装文件。它不调用模型 API 或 MATLAB，也不修改客户端配置。它与 doctor 分别检查软件安装和 MATLAB 运行条件。所有指定回执使用新路径，避免覆盖旧结果。
 
 doctor 不会安装 MATLAB、改许可证或修改 Acycle。未加 `--run-matlab` 时只做静态检查，`configuration_detected` 不代表许可证可用。`runtime_ready` 表示 MATLAB 已启动且关键函数可见，也不代替后续科学分析测试。完整数值测试从源码根目录运行：
 
@@ -180,17 +185,38 @@ npx --yes @deepseek-ai/dsh@0.2.1-rc.3 web
 
 Desktop profile 由桌面程序管理：先打开一次桌面程序使其初始化，完全退出后，用该安装附带的 `dsh` 管理 `desktop` profile，再重新启动；不要用另一套 npm CLI 修改它。命令和 profile 依据：[官方 CLI 说明](https://github.com/deepseek-ai/deepseek-harness/blob/22ddee3792402c3e70ec5f86a63c3e3e895a2f60/apps/cli/README.md)。
 
+### 可选：项目内的独立 Harness 检查环境
+
+若需要复跑注册器和 SDK 会话测试，可在项目自己的目录安装固定版本的官方包。以下操作不写全局 npm 或真实用户 Harness profile；把最后一个参数换成当前解压包中 npm 产物的绝对路径。Node.js 使用 ≥24.9。
+
+```sh
+npm install --prefix local/harness-runtime --save-exact @deepseek-ai/dsh-sdk-client@0.2.1-rc.3 @deepseek-ai/dsh-attachment@0.2.1-rc.3 @deepseek-ai/dsh-attachment-local@0.2.1-rc.3 @deepseek-ai/dsh-session-query@0.2.1-rc.3 @deepseek-ai/dsh-skill@0.2.1-rc.3 @deepseek-ai/dsh-tool-skill@0.2.1-rc.3 /absolute/path/Acycle_Harness/dist/dsh-acycle-0.4.0.tgz
+python local/install_check.py --workspace . --runtime local/harness-runtime --output local-validation/install-harness.json
+```
+
+第二条命令使用已安装的原生插件，核对 11 个工具和 8 个 skills、实际 capabilities 调用及卸载；不请求模型 API。未传 `--runtime` 时，原生检查明确标为 `not_run`。需要进一步检查官方 SDK、附件服务和同一会话状态，可运行无 Key 的模拟基础设施测试：
+
+```sh
+node scripts/harness_conversation.mjs --runtime local/harness-runtime --plugin local/harness-runtime/node_modules/dsh-acycle/index.mjs --mode mock --workspace local-validation/mock-workspace --output local-validation/harness-mock.json
+```
+
+该模拟不执行真实模型或科学计算，也不能证明后文的自然语言分析场景通过。每次运行使用新工作区和新回执文件。运行器的 `--runtime` 必须指向本机安装，不能使用旧云端路径。
+
 ### 上传附件与查看结果
 
 在当前会话上传 CSV/TXT/DAT/TSV 后，模型可通过 `acycle_import_attachment` 导入工作区。无参数调用选择最近一条含文件的用户消息中的唯一文件；若该消息有多个文件，会返回 `selection_required` 和候选项，模型应根据你的指示选择。显式 `attachment_id` 也只能引用本会话用户提供的附件，不能用另一个会话的 ID 读取文件。
 
+官方显示的 8 位十六进制短句柄也可使用，但必须在本会话内唯一对应一个完整附件 ID；前缀有歧义时返回完整 ID 候选项。裸文件名优先匹配本会话的唯一同名上传文件，防止误用工作区中旧的同名数据；不同内容的上传同名时须选择。明确要读工作区文件时使用 `./文件名` 或绝对路径。
+
 导入保留原始字节，保存到工作区 `.acycle/imports/<sha256>/<filename>`，并记录附件来源、会话/消息标识和哈希。普通分析请求中的 `input_path` 若匹配本会话授权附件的官方路径或无歧义文件名，也可自动导入。原上传对象不被修改；单文件默认导入上限为 32 MiB，超限会拒绝导入。原生插件需要 Harness 的附件和会话查询服务；缺少这些服务时，工作区内已有文件仍可分析，附件导入会明确报告缺失依赖。
+
+重复导入可以复用校验一致的文件字节，但每次另写 `.acycle/imports/<sha256>/.source-<uuid>.json`。返回的 `import_receipt` 指向本次来源记录，旧会话/消息记录保留，不能仅凭相同文件哈希假定来源相同。
 
 MATLAB 图件通过官方图片/文件引用和 Markdown 链接返回。配置了官方 `present` 且存在调用 agent 时，插件还会提交最多 4 个关键交付文件；否则回执标记为 `links_only`。默认最多预览 4 张图、回传 24 个文件、递交 3 个运行的产物，单产物上限 64 MiB；完整结果仍应从相应运行目录复查。
 
 科学执行与展示分别记录：`presentation.status` 为 `available`、`partial` 或 `paths_only`，`presentation.delivery.status` 标记 `presented`、`failed`、`links_only` 或 `not_requested`。超大产物仅跳过该附件，在 `presentation.skipped` 保留路径和原因，原始科学结果不受影响；`present` 失败也不要求重新计算，应先重新读取已有运行并修复展示问题。
 
-图片预览面向用户，模型不会收到其像素；模型可以解释 MATLAB 返回的数值，但不能因此声称已经看过图像。请在实际 Web/Desktop 客户端打开图件，并检查文件下载内容。图片事件已发出、客户端已显示，以及用户已核对坐标和曲线，是不同的验收项目。
+插件自动回传的图片预览标记为 `offloaded`，这一步面向用户，不把图片像素交给模型。若宿主另有 `read_image` 且当前模型路由支持图像，模型可以额外调用它读图；须从该调用及实际模型输入证明，不能仅凭自动预览或文字数值声称已经看图。本轮真实会话中已观察到这种额外读图路径，但仍未代替 Web/Desktop 的画面核验。请在实际客户端打开图件并检查下载内容，分别记录自动图件回传、模型额外读图、客户端显示和用户目视检查。
 
 ## 7. 用户可以怎样提出研究问题
 
@@ -222,7 +248,16 @@ steering 示例：
 
 真实会话验收需要多条独立用户消息，并保存每轮的提示、工具调用、运行 ID、参数变化和图件事件。一次长提示中要求“先分析、再修改、再比较”，即使触发多次模型请求，也不等于用户多轮对话测试。模拟模型、CLI smoke、MCP 初始化以及插件注册器测试分别验证其对应层面。
 
-0.4 的真实 Harness 连续会话验收正在进行，现阶段不能根据 0.3 的工具回执宣称新流程已经通过。SDK 会话中的官方图片/文件事件也不等于浏览器或桌面端已经人工检查过画面；本机验收应在实际客户端打开图件和下载文件，分别记录通过、失败及未执行项目。
+0.4 已执行四组真实 Harness 场景，使用官方 SDK/Session/AgentLoop 和真实模型；三组科学场景的两条用户消息均独立发送，缺元数据场景只要求先澄清。6 个真实 MATLAB 请求中 5 个完成、1 个不可解析。SDK 的官方图片/文件事件已验证，Web/Desktop 画面未测试；本机应单独打开图件和下载文件，记录实际结果。
+
+| 场景 | 已验证内容 | 未通过或需要审查的部分 |
+| --- | --- | --- |
+| Newark | 两轮 MATLAB 分析、span 调整、图件交付、原输入/方法/其余设置与基线文件保留 | 短附件 ID 首次失败后恢复；解释存在百分比错误和未经诊断证明的原因推断；宿主额外读图已传入模型，但不保证每项视觉解释正确 |
+| Lavernock SWA | 自主选择 Lomb/FDR，两轮保持方法，仅改图示上限，完整频谱 CSV 字节不变 | 模型额外用 NumPy 统计 MATLAB 数组，违反 MATLAB 计算要求；它还读取旧论文验证记录，因此后续解释不是严格盲测 |
+| PETM eCOCO | 6 m/3 m 基线完成；8 m/4 m 分支请求保留原类型、方法、输入和其他设置 | 原 MATLAB 返回 `Harness:COCOUnresolved`，没有第二张图，完整比较未完成；模型如实停止，部分失败原因解释仍无充分依据 |
+| 未知元数据 | 先询问单位、年代/目标和速率搜索依据，没有启动科学计算 | 短 ID 导入失败后读取已有附件路径；文本过度推断结构预览，并承诺了当前接口未实现的功能 |
+
+逐维度证据见 [conversation-evaluation.md](../validation/v0.4/conversation-evaluation.md) 和 [interpretation-review.json](../validation/v0.4/interpretation-review.json)。末次短句柄、同名文件优先级和重复导入来源记录修复通过真实官方服务的无 Key 接口测试，但没有再次执行一轮真实 API/MATLAB 会话。首轮失败及第二轮的违规、未完成结果均未被覆盖。
 
 预先声明的场景位于 [conversation_scenarios.json](../tests/fixtures/conversation_scenarios.json)。其中用户提示和验收规则分开保存；真实模型只接收用户提示和附件，不能把预期工具、参数字段或判分规则额外塞进提示。场景不要求得到某个谱峰、显著性结果或地质速率。
 
@@ -232,6 +267,14 @@ steering 示例：
 | Lavernock 误发现率 | 保留原采样坐标，由研究要求选择 FDR 方法 | 只将图示上限改为 2 cycles/m，保留方法与完整频谱的显著性计算 |
 | PETM 速率随深度变化 | 按明确年龄、速率范围、窗口和 19 次模拟做诊断 | 同时修改窗口及移动间隔，保留 eCOCO 类型、其他设置和原结果 |
 | 缺少科学背景 | 上传中性文件名的无表头数据，要求速率图 | 先澄清单位、年龄/目标和速率范围；不凭隐藏数据来源猜测，不运行依赖这些前提的分析 |
+
+已有本地 MATLAB 和独立 Harness 环境后，自动化真实会话的示例如下。运行进程应继承本地 MATLAB 设置与运行环境中的 `DEEPSEEK_API_KEY`；这一项会调用真实模型并可能执行 MATLAB，和上面的无 Key 安装检查不同。
+
+```sh
+node scripts/harness_conversation.mjs --runtime local/harness-runtime --plugin local/harness-runtime/node_modules/dsh-acycle/index.mjs --case newark_baseline_steering --workspace local-validation/newark-conversation --output local-validation/newark-conversation.json
+```
+
+其余 case ID 为 `lavernock_fdr_display`、`petm_ecoco_multi_steering`、`unknown_metadata_clarification`，每组使用新的工作区和回执。若回执为 `needs_human_clarification`，先阅读模型的问题，再从该场景 `clarification_answers` 中选择确实回答该问题的主题，用 `--resume <旧回执>`、`--answer-topic <主题>`、`--output <新回执>` 继续原会话；保留相同 `--case` 和运行环境。不匹配已知事实时停止等待用户回答，不能为通过测试而选择无关答案。运行器的 `completed` 只表示会话结束，仍需按场景独立核对方法、分支、产物与解释。
 
 ## 8. 保存、复查与常见问题
 

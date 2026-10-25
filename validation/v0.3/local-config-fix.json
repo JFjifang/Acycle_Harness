@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-10-25T07:59:32.500987+00:00",
+  "status": "passed",
+  "scope": "Fixed render_config.py copied into an independent /tmp directory; existing release-check venv, no package reinstall or MATLAB execution. ZIP must be rebuilt before final artifact acceptance.",
+  "script_sha256": "06faae6f927c0c2813c511a206003f0ee01b946ba6857b42ee599562788f804b",
+  "working_directory": "/tmp/acycle-config-fixed-6fnal8id",
+  "generated_python_command": "/workspace/acycle-release-check/bin/python",
+  "virtualenv_symlink_preserved": true,
+  "simple_python_command_resolved_from_PATH": true,
+  "missing_python_command_fails_before_writing": true,
+  "explicit_matlab_path_preserved": true,
+  "mcp_initialize_version": "0.3.0",
+  "mcp_tools": [
+    "acycle_capabilities",
+    "acycle_inspect",
+    "acycle_analyze",
+    "acycle_swa",
+    "acycle_coco",
+    "acycle_ecoco",
+    "acycle_sensitivity",
+    "acycle_compare",
+    "acycle_get_run"
+  ],
+  "mcp_tools_count": 9,
+  "host_configuration_modified": false,
+  "actual_local_matlab_run": false
+}

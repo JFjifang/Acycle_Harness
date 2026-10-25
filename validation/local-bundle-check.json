@@ -1,166 +1,39 @@
 {
-  "checked_at_utc": "2026-10-25T08:04:16.105539+00:00",
-  "artifact": "acycle-local-handoff-0.3.0.zip",
-  "artifact_sha256": "7839a9484cd016e7f5b95eac86e504ee13f242e312d7923ce202d1edd4e6668b",
-  "artifact_bytes": 645040,
-  "scope": "Independent offline inspection of this exact ZIP, extracted in /tmp. Existing release-check Python environment was used; no install, package mutation, network or scientific MATLAB execution. Later bundle-only evidence/document updates change the ZIP hash.",
-  "python_executable": "/workspace/acycle-release-check/bin/python",
-  "extraction_directory": "/tmp/acycle-offline-handoff-1xd0qq76",
-  "checks": {
-    "zip_crc_and_path_containment": true,
-    "zip_members": 111,
-    "embedded_packages": {
-      "acycle_deepseek-0.3.0-py3-none-any.whl": "f74f09f53fc23888746d759a25b22f4acf8ddf517d88c1d64db6e1fdc1e827ac",
-      "dsh-acycle-0.3.0.tgz": "45e288d242bf4047ae3a61e97be56f5c405f2c14e7c25a129ad4a5d45b0249fc"
-    },
-    "installed_python_package": {
-      "version": "0.3.0",
-      "tools": [
-        "acycle_capabilities",
-        "acycle_inspect",
-        "acycle_analyze",
-        "acycle_swa",
-        "acycle_coco",
-        "acycle_ecoco",
-        "acycle_sensitivity",
-        "acycle_compare",
-        "acycle_get_run"
-      ],
-      "package_root": "/workspace/acycle-release-check/lib/python3.12/site-packages/acycle_deepseek",
-      "matlab_root": "/workspace/acycle-release-check/lib/python3.12/site-packages/acycle_deepseek/matlab"
-    },
-    "matlab_bridge_files": [
-      "SOURCES.md",
-      "acycle_batch.m",
-      "acycle_coco.m",
-      "acycle_swa.m",
-      "coco_sources.json",
-      "run_validation.m",
-      "source_registry.json",
-      "swa_sources.json",
-      "tests/test_acycle_batch.m",
-      "tests/test_acycle_coco.m",
-      "tests/test_acycle_swa.m",
-      "tests/test_paper_coco.m"
-    ],
-    "installed_package_matches_embedded_wheel": true,
-    "source_matlab_matches_embedded_wheel": true,
-    "npm_skills": [
-      "package/skills/acycle-age-model/SKILL.md",
-      "package/skills/acycle-coco/SKILL.md",
-      "package/skills/acycle-intake/SKILL.md",
-      "package/skills/acycle-mini-robot/SKILL.md",
-      "package/skills/acycle-reproduction/SKILL.md",
-      "package/skills/acycle-sensitivity-steering/SKILL.md",
-      "package/skills/acycle-spectral-interpretation/SKILL.md",
-      "package/skills/acycle-swa/SKILL.md"
-    ],
-    "source_npm_skills_match": true,
-    "smoke_dry_run": {
-      "request_count": 4,
-      "tools": [
-        "acycle_analyze",
-        "acycle_swa",
-        "acycle_coco",
-        "acycle_ecoco"
-      ],
-      "input_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
-      "input_path": "/workspace/upstream/acycle/data/Examples/Example-LateTriassicNewarkDepthRank.txt",
-      "diagnostic_monte_carlo_count": 19,
-      "actual_runs": 0
-    },
-    "generated_interpreter": {
-      "expected_virtualenv_executable": "/workspace/acycle-release-check/bin/python",
-      "observed": "/workspace/acycle-release-check/bin/python",
-      "preserves_virtualenv": true,
-      "explanation": "Dereferencing a virtualenv Python symlink can select its base interpreter without the installed package."
-    },
-    "actual_mcp_from_generated_config": {
-      "version": "0.3.0",
-      "tool_count": 9,
-      "tools": [
-        "acycle_capabilities",
-        "acycle_inspect",
-        "acycle_analyze",
-        "acycle_swa",
-        "acycle_coco",
-        "acycle_ecoco",
-        "acycle_sensitivity",
-        "acycle_compare",
-        "acycle_get_run"
-      ],
-      "working_directory": "/tmp/acycle-offline-handoff-1xd0qq76/acycle-deepseek"
-    },
-    "documented_commands": [
-      [
-        "local/smoke.py",
-        "--workspace",
-        ".",
-        "--case",
-        "all",
-        "--dry-run"
-      ],
-      [
-        "-m",
-        "acycle_deepseek.cli",
-        "--workspace",
-        ".",
-        "tools"
-      ],
-      [
-        "local/render_config.py",
-        "--workspace",
-        ".",
-        "--acycle-root",
-        "/workspace/upstream/acycle",
-        "--matlab",
-        "/tmp/acycle-offline-handoff-1xd0qq76/MATLAB path/bin/matlab"
-      ]
-    ],
-    "relocated_config_generation": {
-      "toml_parsed": true,
-      "absolute_workspace_correct": true,
-      "no_original_project_dependency": true,
-      "host_configuration_modified": false,
-      "api_key_written": false
-    },
-    "relative_document_links": [
-      "docs/USER_GUIDE.zh-CN.md:LOCAL_HANDOFF.zh-CN.md",
-      "docs/USER_GUIDE.zh-CN.md:UPSTREAM_COMPATIBILITY.md",
-      "docs/USER_GUIDE.zh-CN.md:SWA.md",
-      "docs/USER_GUIDE.zh-CN.md:COCO.md",
-      "docs/USER_GUIDE.zh-CN.md:GITHUB_ACTIONS.md",
-      "docs/USER_GUIDE.zh-CN.md:PAPER_VALIDATION.md",
-      "docs/LOCAL_HANDOFF.zh-CN.md:../local/HANDOFF_PROMPT.txt",
-      "docs/LOCAL_HANDOFF.zh-CN.md:USER_GUIDE.zh-CN.md",
-      "docs/LOCAL_HANDOFF.zh-CN.md:PAPER_VALIDATION.md"
-    ],
-    "local_helpers_have_no_original_project_path": true
-  },
-  "actual_local_matlab_run": false,
+  "version": "0.4.0",
   "status": "passed",
-  "stable_payload": {
-    "excluded_receipts": [
-      "acycle-deepseek/validation/local-bundle-check.json"
-    ],
-    "file_count": 110,
-    "algorithm": "SHA256 of UTF-8 concatenation of sorted ZIP member name, NUL, lowercase file SHA256 hex, LF; exclude only the listed receipt.",
-    "sha256": "dbb5237c3195da5da040745060da96e32ff4e2d5e01e829039feae25ebf16e40",
-    "key_file_sha256": {
-      "acycle-deepseek/dist/acycle_deepseek-0.3.0-py3-none-any.whl": "f74f09f53fc23888746d759a25b22f4acf8ddf517d88c1d64db6e1fdc1e827ac",
-      "acycle-deepseek/dist/dsh-acycle-0.3.0.tgz": "45e288d242bf4047ae3a61e97be56f5c405f2c14e7c25a129ad4a5d45b0249fc",
-      "acycle-deepseek/docs/LOCAL_HANDOFF.zh-CN.md": "8db986430d08b6b2ee0281db3069ed2d1b2014a948ad400181a836f8ad926957",
-      "acycle-deepseek/docs/USER_GUIDE.zh-CN.md": "0836747ec5b64548791abd11359b0b65e1b9b24505149f5374d24d46bac32806",
-      "acycle-deepseek/local/HANDOFF_PROMPT.txt": "8914b0b8bb8fdf706ee335410024269f8d5e1ea984005d0a9e7390514981fbcc",
-      "acycle-deepseek/local/README.md": "9b86ea9b5e653889d6345f5b57fd946795c55e014b486b9de20fbb390af05b70",
-      "acycle-deepseek/local/doctor.py": "c72a0ee0f9d110e0ca0a7a6a3f877379a527dacdbc182c6f75eea0f60f4a817b",
-      "acycle-deepseek/local/render_config.py": "06faae6f927c0c2813c511a206003f0ee01b946ba6857b42ee599562788f804b",
-      "acycle-deepseek/local/smoke.py": "039ee8ed18da5ebe935c8e27b12b6674f6800731e342b8cea8e358bd6a911a2d",
-      "acycle-deepseek/matlab/acycle_batch.m": "6f0c063239fc3198c034f8cfce9c976205216dfc50babd7e7ede3f3783d57a96",
-      "acycle-deepseek/matlab/acycle_coco.m": "18f6c4120fb8258d1dc8acdccf6a4b419accc7a74f4275ef7b092321afe121aa",
-      "acycle-deepseek/matlab/acycle_swa.m": "a5b9c3252ea6b165e99721ee5ed1944a1ed28e20ccc59dff7b2e20120d722b23"
+  "archives": {
+    "acycle-local-handoff-0.4.0.zip": {
+      "crc": "passed",
+      "required_entries": "passed",
+      "packaged_checksums": "passed",
+      "no_runtime_cache_or_credentials": "passed",
+      "members": 136
     },
-    "finalization_note": "Repacking only to add/update this acceptance receipt changes the outer ZIP SHA256. This excluded-receipt payload digest must remain identical."
+    "acycle-deepseek-0.4.0-bundle.zip": {
+      "crc": "passed",
+      "required_entries": "passed",
+      "packaged_checksums": "passed",
+      "no_runtime_cache_or_credentials": "passed",
+      "members": 1252
+    }
   },
-  "external_acycle_commit": "dcba4279168745b563e0535b954297023dd62fc7"
+  "local_matlab_executed": false,
+  "desktop_gui_tested": false,
+  "extracted_handoff_installed_check": {
+    "status": "passed",
+    "path_with_spaces": true,
+    "mcp_tools": 10,
+    "native_tools": 11,
+    "package_bytes_verified": true,
+    "host_configuration_modified": false,
+    "matlab_executed": false,
+    "api_called": false,
+    "sdist_changed_after_install_check": "Only source archive packaging was corrected; final sdist independently passed 93 tests. Wheel and npm unchanged."
+  },
+  "final_packages": {
+    "acycle_deepseek-0.4.0-py3-none-any.whl": "d560f74b138fbf0124a45cd1668bc6fe35a5c92d6f91783197d006eb4bab69df",
+    "acycle_deepseek-0.4.0.tar.gz": "590f0e8aa2a9e1eaf4c30238ea87f53bba2422b7e14392cc5b78d3ad7644deb4",
+    "dsh-acycle-0.4.0.tgz": "737a1d21e5b6abca810ff70f4b437f53116d28f76f010b7e9ac291917792fd54"
+  },
+  "final_delivery_source_bytes_match": true
 }

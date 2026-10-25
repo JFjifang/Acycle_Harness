@@ -1,0 +1,44 @@
+.............F.......................................................... [ 77%]
+.....................                                                    [100%]
+=================================== FAILURES ===================================
+______________ test_request_roundtrip_and_no_credential_transport ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-31/test_request_roundtrip_and_no_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f1953278bf0>
+
+    def test_request_roundtrip_and_no_credential_transport(tmp_path, monkeypatch):
+        source = tmp_path / 'stratigraphy.csv'
+        content = b'depth,proxy\n0,1\n1,0.5\n'
+        source.write_bytes(content)
+        monkeypatch.setenv('DEEPSEEK_API_KEY', 'private-test-token')
+        encoded = _payload({'input_path': str(source), 'parameters': {'span': 0.3}})
+        decoded = json.loads(base64.b64decode(encoded))
+        assert gzip.decompress(base64.b64decode(decoded['input_bytes_b64'])) == content
+        assert decoded['parameters'] == {'span': 0.3}
+        assert 'private-test-token' not in json.dumps(decoded)
+        monkeypatch.chdir(tmp_path)
+        monkeypatch.setenv('ACYCLE_REQUEST', encoded)
+        monkeypatch.setenv('ACYCLE_TOKEN', 'acycle-' + 'a' * 32)
+        script = Path(__file__).resolve().parents[1] / 'scripts' / 'ci_request.py'
+        spec = importlib.util.spec_from_file_location('ci_request', script)
+        module = importlib.util.module_from_spec(spec)
+>       spec.loader.exec_module(module)
+
+/tmp/acycle-v04-sdist-sxmqw9dr/acycle_deepseek-0.4.0/tests/test_github_backend.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1132: in get_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_frozen_importlib_external.SourceFileLoader object at 0x7f195327b3e0>
+path = '/tmp/acycle-v04-sdist-sxmqw9dr/acycle_deepseek-0.4.0/scripts/ci_request.py'
+
+>   ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/tmp/acycle-v04-sdist-sxmqw9dr/acycle_deepseek-0.4.0/scripts/ci_request.py'
+
+<frozen importlib._bootstrap_external>:1190: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_github_backend.py::test_request_roundtrip_and_no_credential_transport
+1 failed, 92 passed in 0.31s
