@@ -17,8 +17,9 @@ def prepare() -> None:
     if len(encoded) > 60000:
         raise ValueError('Remote request exceeds 60000-byte encoded limit')
     payload = json.loads(base64.b64decode(encoded, validate=True))
-    if payload.get('operation', 'analyze') != 'analyze':
-        raise ValueError('Only analyze requests are supported')
+    operation=payload.get('operation','analyze')
+    if operation not in {'analyze','swa','coco','ecoco'}:
+        raise ValueError('Unsupported MATLAB operation')
     parameters = payload.get('parameters', {})
     if not isinstance(parameters, dict):
         raise ValueError('parameters must be an object')
@@ -41,7 +42,7 @@ def prepare() -> None:
         'input_path': str(input_path),
         'output_dir': str(output),
         'acycle_root': str(root / 'upstream' / 'acycle'),
-        'operation': 'analyze',
+        'operation': operation,
         'parameters': parameters,
     }
     (root / 'ci-request.json').write_text(json.dumps(request), encoding='utf-8')

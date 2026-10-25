@@ -11,6 +11,28 @@ import shutil
 from acycle_deepseek.tools import dispatch
 
 
+def check_summary(case, summary):
+    """Compare saved MATLAB summaries with predeclared expectations only."""
+    outcomes = []
+    for check in case.get('scientific_checks', []):
+        if check['type'] == 'summary_range':
+            actual = summary.get(check['field'])
+            passed = isinstance(actual, (int, float)) and check['minimum'] <= actual <= check['maximum']
+        elif check['type'] == 'peak_period':
+            peaks = summary.get('peaks', [])
+            if isinstance(peaks, dict):
+                peaks = [peaks]
+            actual = [peak for peak in peaks
+                      if abs(peak.get('period', float('inf')) - check['target']) <= check['absolute_tolerance']]
+            passed = bool(actual) and (not check.get('require_above_fdr_5') or
+                                      any(peak.get('above_fdr_5') == 1 for peak in actual))
+        else:
+            raise ValueError(f'Unsupported benchmark check: {check["type"]}')
+        outcomes.append({'id': check['id'], 'passed': passed, 'actual': actual,
+                         'expectation': check})
+    return outcomes
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--workspace', default='.')
@@ -35,7 +57,8 @@ def main():
     receipt = {'schema_version': 1, 'claim': 'MATLAB workflow execution; paper-data cases are not full reproductions', 'cases': []}
     failed = False
     for case in cases:
-        item = {'id': case['id'], 'scope': case['scope']}
+        item = {'id': case['id'], 'scope': case['scope'],
+                'tool': case.get('tool', 'acycle_analyze')}
         try:
             if case['input']['root'] == 'acycle':
                 if not os.environ.get('ACYCLE_ROOT'):
@@ -49,13 +72,18 @@ def main():
                 raise RuntimeError(f'Input checksum mismatch for {case["id"]}')
             target = inputs / (case['id'] + source.suffix)
             shutil.copyfile(source, target)
-            result = dispatch('acycle_analyze', {'input_path': str(target),
+            result = dispatch(item['tool'], {'input_path': str(target),
                               'parameters': case['parameters'], 'label': case['id']}, workspace)
             item.update(status=result['status'], run_id=result['run_id'],
                         input_sha256=actual, provenance=result.get('provenance'),
                         artifacts=result.get('artifacts'), summary=result.get('summary'))
             if result['status'] != 'completed':
                 failed = True
+            else:
+                item['checks'] = check_summary(case, result.get('summary') or {})
+                if any(not check['passed'] for check in item['checks']):
+                    item['status'] = 'acceptance_failed'
+                    failed = True
         except Exception as error:
             failed = True
             item.update(status='failed', error=str(error))

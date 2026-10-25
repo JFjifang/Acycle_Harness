@@ -12,5 +12,14 @@
     "sha256": "809f3c76bb09442ccb35e678254955ba072a086c2093faaeeacbe9d2ebc99c2f",
     "bytes": 10919258,
     "retrieved_utc": "2026-10-25"
+  },
+  {
+    "file": "sources/weedon_lavernock_2018.tsv",
+    "source_url": "https://doi.pangaea.de/10.1594/PANGAEA.896872?format=textfile",
+    "sha256": "27902255d9efbac6a65bea0b916bf17ae1267375530f675e1be722ae0634cd43",
+    "bytes": 45416,
+    "retrieved_utc": "2026-10-25",
+    "dataset_doi": "10.1594/PANGAEA.896872",
+    "license": "CC-BY-4.0"
   }
 ]

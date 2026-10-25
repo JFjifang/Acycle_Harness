@@ -81,3 +81,11 @@ jobs:
             validation/matlab/**/*.png
           if-no-files-found: warn
           retention-days: 14
+      - name: Upload numerical validation tables
+        if: always() && env.ACYCLE_REQUEST == ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: acycle-validation-data
+          path: validation/matlab/**/*.csv
+          if-no-files-found: warn
+          retention-days: 14

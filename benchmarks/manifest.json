@@ -160,7 +160,7 @@
         "evolution": true,
         "coordinate_unit": "m"
       },
-      "scope": "Official Newark depth-rank example; additional core workflow coverage.",
+      "scope": "Full official Newark depth-rank record (2344 finite observations); MATLAB mini-robot, MTM/evoFFT and figure output. This is not independent reproduction of a Newark astrochronology.",
       "documentation_url": "https://github.com/mingsongli/acycle/wiki/Examples",
       "acceptance": [
         "completed MATLAB response",
@@ -168,7 +168,11 @@
         "MATLAB processed data and spectra",
         "MATLAB figures saved"
       ],
-      "execution_status": "not_asserted_by_manifest"
+      "execution_status": "not_asserted_by_manifest",
+      "validation_receipts": [
+        "validation/newark-result.json",
+        "validation/newark-evidence.json"
+      ]
     },
     {
       "id": "paper-petm-ms",
@@ -229,6 +233,154 @@
         "MATLAB figures saved"
       ],
       "execution_status": "not_asserted_by_manifest"
+    },
+    {
+      "kind": "paper_method_validation",
+      "runnable": true,
+      "published_result_reproduction": false,
+      "execution_status": "not_asserted_by_manifest",
+      "id": "paper-weedon-swa",
+      "tool": "acycle_swa",
+      "input": {
+        "root": "benchmarks",
+        "path": "data/weedon_2020_lavernock_0_13_17m.csv",
+        "sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+        "extraction_receipt": "data/weedon_2020_lavernock_0_13_17m.provenance.json"
+      },
+      "parameters": {
+        "method": "lomb",
+        "coordinate_unit": "m"
+      },
+      "paper_doi": "10.21701/bolgeomin.131.2.001",
+      "paper_url": "https://doi.org/10.21701/bolgeomin.131.2.001",
+      "method_origin_doi": "10.1017/S0016756818000808",
+      "dataset_doi": "10.1594/PANGAEA.896872",
+      "scope": "SWA method-paper feature check on untuned Lavernock MS: published approximately 0.81 m spectral peak exceeding 5% FDR. No Bayesian probability or stage-duration reproduction.",
+      "acceptance": [
+        "completed original MATLAB SWA response",
+        "439 original observations retained without interpolation",
+        "peak wavelength 0.81 +/- 0.07 m and exceeds 5% FDR",
+        "MATLAB spectrum and figures saved"
+      ],
+      "scientific_checks": [
+        {
+          "type": "peak_period",
+          "id": "published_lavernock_peak",
+          "target": 0.81,
+          "absolute_tolerance": 0.07,
+          "require_above_fdr_5": true,
+          "unit": "m",
+          "rationale": "A priori interval around the rounded published wavelength; approximately one independent spectral resolution element at 0.81 m for a 13.14 m record (~0.05 m), plus rounding allowance."
+        }
+      ]
+    },
+    {
+      "kind": "paper_method_validation",
+      "runnable": true,
+      "published_result_reproduction": false,
+      "execution_status": "not_asserted_by_manifest",
+      "id": "paper-petm-coco",
+      "tool": "acycle_coco",
+      "input": {
+        "root": "benchmarks",
+        "path": "data/petm_2022_ms_below_nanjemoy.csv",
+        "sha256": "d984dca509df88449f13994c72648441c5d59788056c2deaef0848c1d8a764f3",
+        "extraction_receipt": "data/petm_2022_ms_below_nanjemoy.provenance.json"
+      },
+      "parameters": {
+        "depth_unit": "m",
+        "method": "phase_averaged",
+        "orbital_periods_kyr": [
+          125,
+          95,
+          39.8,
+          23.3,
+          22,
+          18.7
+        ],
+        "sedimentation_rate_min": 0.13,
+        "sedimentation_rate_max": 30,
+        "sedimentation_rate_step": 0.1,
+        "nsim": 2000,
+        "seed": 1,
+        "red_noise": 1,
+        "correlation": "Spearman",
+        "detrend": "loess",
+        "detrend_window": 20
+      },
+      "paper_doi": "10.1038/s41467-022-33390-x",
+      "paper_url": "https://doi.org/10.1038/s41467-022-33390-x",
+      "scope": "Modern COCO rate-consistency test on untuned MS below the Nanjemoy basal unconformity, using published 20 m LOESS, six targets, rate grid and 2000 draws. Original paper used Acycle 2.4.1; current COCO 2.0 phase-averaged inference differs. No exact p-value, PETM duration or full chronology reproduction.",
+      "acceptance": [
+        "completed original MATLAB COCO response",
+        "original-source parity and full 2000-draw count",
+        "best-rate diagnostic compared against published broad COCO interval 8–15 cm/kyr",
+        "MATLAB rate spectrum, null maxima and figures saved"
+      ],
+      "scientific_checks": [
+        {
+          "type": "summary_range",
+          "id": "published_petm_rate_range",
+          "field": "best_rate_cm_kyr",
+          "minimum": 8,
+          "maximum": 15,
+          "unit": "cm/kyr",
+          "rationale": "A priori broad published COCO optimal-rate interval; modern algorithm may disagree, in which case report a failed consistency check without retuning."
+        }
+      ]
+    },
+    {
+      "kind": "paper_data_workflow",
+      "runnable": true,
+      "published_result_reproduction": false,
+      "execution_status": "not_asserted_by_manifest",
+      "id": "paper-cambrian-ecoco",
+      "tool": "acycle_ecoco",
+      "input": {
+        "root": "benchmarks",
+        "path": "data/cambrian_2022_al_0_18m.csv",
+        "sha256": "83fb4573b6b92043ddc4d664338c678d58f8f9683fe6e38358bb06ef6e433a8d",
+        "extraction_receipt": "data/cambrian_2022_al_0_18m.provenance.json"
+      },
+      "parameters": {
+        "depth_unit": "m",
+        "method": "adaptive",
+        "middle_age_ma": 500,
+        "sedimentation_rate_min": 0.05,
+        "sedimentation_rate_max": 1.5,
+        "sedimentation_rate_step": 0.05,
+        "nsim": 199,
+        "seed": 1,
+        "red_noise": 0,
+        "detrend": "loess",
+        "detrend_window": 6,
+        "window": 4,
+        "step": 2
+      },
+      "paper_doi": "10.1038/s41467-022-29651-4",
+      "paper_url": "https://doi.org/10.1038/s41467-022-29651-4",
+      "scope": "Reduced modern eCOCO workflow on primary untuned Al in the first published 0–18 m subset. Approximate 6 m LOESS, omitted original 12-point smoothing, 2 m window step, 199 draws, coarser rate grid and modern nine-period age-500 target differ from the paper. A published ~0.457 cm/kyr scale is a diagnostic reference only.",
+      "acceptance": [
+        "completed original MATLAB eCOCO response",
+        "eight complete 4 m windows with no edge padding",
+        "original-source numerical parity",
+        "MATLAB maps, tracked rates and figures saved"
+      ],
+      "scientific_checks": [
+        {
+          "type": "summary_range",
+          "id": "complete_windows",
+          "field": "window_count",
+          "minimum": 8,
+          "maximum": 8,
+          "unit": "windows",
+          "rationale": "0–18 m input, 4 m windows at 2 m steps, no edge padding; structural workflow assertion only."
+        }
+      ],
+      "diagnostic_reference": {
+        "rate_cm_kyr": 0.4567901234567901,
+        "basis": "Published first-subset wavelength approximately 1.85 m / 405 kyr; this is not a numerical eCOCO reproduction target."
+      }
     }
   ]
 }

@@ -26,9 +26,9 @@ try {
   await ctx.plugin(WorkingDirectoryFixture)
   const fiber = await ctx.plugin(plugin, { workspace })
   const tools = ctx.tools.schemas()
-  assert.equal(tools.length, 6)
+  assert.equal(tools.length, 9)
   const skills = await ctx.skills.list()
-  assert.equal(skills.length, 6)
+  assert.equal(skills.length, 8)
   for (const skill of skills) assert.ok((await ctx.skills.get(skill.name)).content.length > 100)
   const outcome = await ctx.tools.execute({ callId: 'acycle-smoke-1', name: 'acycle_capabilities',
     arguments: {}, signal: new AbortController().signal })

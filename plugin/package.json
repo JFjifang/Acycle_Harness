@@ -1,6 +1,6 @@
 {
   "name": "dsh-acycle",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Acycle MATLAB research tools and skills for DeepSeek Harness",
   "license": "GPL-3.0-or-later",
   "type": "module",

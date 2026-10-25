@@ -62,17 +62,27 @@ function testOriginalLowessAndOfficialExamples(testCase)
 % These are official Acycle fixtures, not claims of full paper reproduction.
 files={'Example-La2004-1E.5T-1P-0-2000.txt', ...
     'Example-Guandao2AnisianGR.txt','Example-WayaoCarnianGR0.txt', ...
-    'Example-SvalbardPETM-logFe.txt'};
+    'Example-SvalbardPETM-logFe.txt','Example-LateTriassicNewarkDepthRank.txt'};
 for k=1:numel(files)
     input=fullfile(testCase.TestData.acycleRoot,'data','Examples',files{k});
     [~,name]=fileparts(input);
-    [r,s]=runFixture(testCase,name,input,struct('evolution',true));
+    coordinateUnit='m';
+    if startsWith(files{k},'Example-La2004'), coordinateUnit='kyr'; end
+    [r,s]=runFixture(testCase,name,input,struct('evolution',true, ...
+        'coordinate_unit',coordinateUnit));
     trend=smooth(s.prepared(:,1),s.prepared(:,2),0.35,'lowess');
     verifyEqual(testCase,s.trend,trend,'AbsTol',1e-12);
     verifyEqual(testCase,s.processed(:,2),s.prepared(:,2)-trend,'AbsTol',1e-12);
     verifyEqual(testCase,r.status,'success');
     verifyTrue(testCase,all(isfinite(s.robust),'all'));
     verifyGreaterThan(testCase,r.summary.processed_rows,100);
+    if contains(files{k},'Newark')
+        verifyEqual(testCase,r.summary.input_rows,2344);
+        verifyEqual(testCase,r.summary.removed_nonfinite_rows,0);
+        verifyEqual(testCase,r.summary.merged_duplicate_rows,0);
+        verifyEqual(testCase,r.summary.coordinate_unit,'m');
+        verifyEqual(testCase,r.summary.sample_interval,0.85344,'AbsTol',1e-7);
+    end
     assertFigures(testCase,r);
 end
 end

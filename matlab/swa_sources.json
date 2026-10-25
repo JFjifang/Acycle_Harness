@@ -1,0 +1,87 @@
+{
+  "commit": "dcba4279168745b563e0535b954297023dd62fc7",
+  "source_repository": "https://github.com/mingsongli/acycle",
+  "method": "Smoothed Window Averages",
+  "files": [
+    {
+      "relative_path": "code/guicode/SWAgui.m",
+      "sha256": "24d768cb0cfacd6a4fb67cf39ebaf30416b9c28e6cf410c6cdcfa66d9f1cc761"
+    },
+    {
+      "relative_path": "code/package/swa/ctaper.m",
+      "sha256": "d5c1baa110a38fa9e4186b243f6f51bf7c2051772a5d4c584cc5b5d8dc735e60"
+    },
+    {
+      "relative_path": "code/package/swa/gammcf.m",
+      "sha256": "8803334a63c51ae46432dbb9ce8bd88408ac2ea21b5f37ad21cf978a73a9baac"
+    },
+    {
+      "relative_path": "code/package/swa/gammln.m",
+      "sha256": "a80325520e372fd713d252cd83510d4286ce951c396f3ebef22444594b7c8285"
+    },
+    {
+      "relative_path": "code/package/swa/gammp.m",
+      "sha256": "afad21bc0025e967f30a8a7539bef465bb423be7b98506c3c90e35f4027ee1e0"
+    },
+    {
+      "relative_path": "code/package/swa/gamser.m",
+      "sha256": "bd3f9b7b35b5fa276d4da1cdeddda8bef70c06bba865d504fba6898bef5cf5d9"
+    },
+    {
+      "relative_path": "code/package/swa/getchi2.m",
+      "sha256": "10b201c4ab44dea1099194e2d3ba17ea27395be8e601b99c01f1ea721c872b9c"
+    },
+    {
+      "relative_path": "code/package/swa/hpsort.m",
+      "sha256": "33cd232432789ff791ba47ef69ab32308aa092fac0d508f43bbfd3d9c23d288e"
+    },
+    {
+      "relative_path": "code/package/swa/lfitls.m",
+      "sha256": "43cc4b85e0ae31f0e1a0652d80d3d6bb09fb989c92c3fbccc9e8de43e15c4f50"
+    },
+    {
+      "relative_path": "code/package/swa/period.m",
+      "sha256": "725ce39866dde1cd62d799ef643542e45b8d5bd967d57ca852396b5d6fdfa506"
+    },
+    {
+      "relative_path": "code/package/swa/rho.m",
+      "sha256": "8e406a8d92e0a0aabd2d58d73431ccdc81549bfcfdd169c71fd675312d97d179"
+    },
+    {
+      "relative_path": "code/package/swa/solve.m",
+      "sha256": "36a2f73cea23d0da4c6bdc8f6d77a9680f0a844ada41cca2a0293a8b0a647560"
+    },
+    {
+      "relative_path": "code/package/swa/specbayes.m",
+      "sha256": "c28043f2ffd62bd21e3a6b0542d7fc8914f3010a777df61120f661f54d2b7a42"
+    },
+    {
+      "relative_path": "code/package/swa/specswa.m",
+      "sha256": "b5ec40bc53903f285f233dc168093129828f5d69ad6fbf02bbae1b04c9121629"
+    },
+    {
+      "relative_path": "code/package/swa/specswafdr.m",
+      "sha256": "4c8b338ec23ac375bfcf0a1c381433ff9b2abd665758b5d1bb598897c16dade0"
+    },
+    {
+      "relative_path": "code/package/swa/spectralswafdr.m",
+      "sha256": "c5c531c80450a12f81a5e1c68e48ddb489b839b978686168f77d9abc34b00880"
+    },
+    {
+      "relative_path": "code/package/swa/strAssign.m",
+      "sha256": "499d87bbc6fc94a20001033872e8bd825fe3e748f315ab2153aa62c841d36e1e"
+    },
+    {
+      "relative_path": "code/package/swa/writeFmt.m",
+      "sha256": "6096ab6dca08a733c216b68967163c5224225b191a8a034213484ec7969fc7bc"
+    },
+    {
+      "relative_path": "code/seriesanalysis/acycleMtmTaperCount.m",
+      "sha256": "03a993f38d252313930046b9fd9b7e0502991a53fc35bdaa6e69cdcf7d8785fe"
+    },
+    {
+      "relative_path": "code/seriesanalysis/acycleSamplingIsUneven.m",
+      "sha256": "14c40be7e62b2e21fc13faf11a2ae01d34f66aaed5d186766c1271a24ff632f1"
+    }
+  ]
+}

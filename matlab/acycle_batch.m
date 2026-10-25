@@ -4,7 +4,17 @@ function result = acycle_batch(requestPath,responsePath)
 % See SOURCES.md for the small GUI callback extraction and exact provenance.
 try
     request = jsondecode(fileread(requestPath));
-    result = runRequest(request);
+    operation = getDefault(request,'operation','analyze');
+    switch operation
+        case 'swa'
+            result = acycle_swa(request);
+        case {'coco','ecoco'}
+            result = acycle_coco(request);
+        case 'analyze'
+            result = runRequest(request);
+        otherwise
+            error('Harness:Operation','Unsupported operation: %s',operation);
+    end
     writeJson(responsePath,result);
 catch err
     result = struct('status','error','backend','matlab','error', ...
