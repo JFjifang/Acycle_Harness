@@ -1,0 +1,64 @@
+{
+  "run_id": 40174469745,
+  "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40174469745",
+  "source_commit": "c55b1a2ff58b6df8850ecd1c1971cee353443e8c",
+  "conclusion": "success",
+  "engineering_tests": {
+    "passed": 23,
+    "failed": 0,
+    "incomplete": 0
+  },
+  "publication_checks": [
+    {
+      "case": "paper-cambrian-ecoco-199",
+      "publication_criterion": "not_claimed",
+      "evidence_file": "paper-cambrian-ecoco-199/published-comparison.json"
+    },
+    {
+      "case": "paper-petm-coco-2000",
+      "publication_criterion": "failed",
+      "evidence_file": "paper-petm-coco-2000/published-comparison.json"
+    },
+    {
+      "case": "paper-petm-published-protocol-coco-2000",
+      "publication_criterion": "failed",
+      "evidence_file": "paper-petm-published-protocol-coco-2000/published-comparison.json"
+    },
+    {
+      "case": "swa-lavernock-publication",
+      "publication_criterion": "failed",
+      "evidence_file": "swa-lavernock-publication/publication-comparison.json"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 12591532754,
+      "sha256": "fa244617ec48a8bff1f3c6c48963c07f3c14ed4119045d2da37092255ba0c10b",
+      "bytes": 10611491
+    },
+    {
+      "id": 12591542718,
+      "sha256": "32aa6e6224ccf29572dfe82501c9e02aa699c1fe936d1ddf727cd6a7768ecd29",
+      "bytes": 16279405
+    }
+  ],
+  "transport": "GitHub connector; ZIP SHA256 values match GitHub artifact receipts",
+  "local_directory": "validation/artifacts/expanded-release",
+  "prior_failed_receipts_retained": [
+    "validation/expanded-ci-5498e0b.json",
+    "validation/artifacts/expanded-first/",
+    "validation/artifacts/expanded-final/"
+  ],
+  "visual_review": {
+    "status": "passed",
+    "files": [
+      "validation/artifacts/expanded-release/paper-petm-coco-2000/coco_figure_1.png",
+      "validation/artifacts/expanded-release/paper-petm-published-protocol-coco-2000/coco_figure_1.png"
+    ],
+    "observations": [
+      "Original MATLAB numerical curves and panel content retained.",
+      "Updated figure title and Global/Local p tick labels are readable without overlap.",
+      "Exploratory labels show p=0.1039 and p=0.6697, matching numeric receipts."
+    ]
+  }
+}

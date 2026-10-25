@@ -6,20 +6,25 @@
     "acycle_capabilities",
     "acycle_inspect",
     "acycle_analyze",
+    "acycle_swa",
+    "acycle_coco",
+    "acycle_ecoco",
     "acycle_sensitivity",
     "acycle_compare",
     "acycle_get_run"
   ],
   "registered_skills": [
     "acycle-age-model",
+    "acycle-coco",
     "acycle-intake",
     "acycle-mini-robot",
     "acycle-reproduction",
     "acycle-sensitivity-steering",
-    "acycle-spectral-interpretation"
+    "acycle-spectral-interpretation",
+    "acycle-swa"
   ],
   "capabilities": {
-    "version": "0.2.0",
+    "version": "0.3.0",
     "scientific_backend": "MATLAB/Acycle",
     "backend": "local",
     "matlab_available": false,
@@ -33,7 +38,10 @@
       "mtm_rednoise",
       "evolution",
       "filter_envelope",
-      "age_model"
+      "age_model",
+      "swa",
+      "coco",
+      "ecoco"
     ],
     "limits": [
       "pointwise significance is not proof of astronomical forcing",

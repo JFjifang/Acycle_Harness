@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" name="test_acycle_batch" skipped="0" tests="9" time="50.3433">
+    <testcase classname="test_acycle_batch" name="testOriginalNumericalParity" time="12.8774"/>
+    <testcase classname="test_acycle_batch" name="testOriginalLowessAndOfficialExamples" time="19.2943"/>
+    <testcase classname="test_acycle_batch" name="testAgeModelAndGaussianFilter" time="2.2743"/>
+    <testcase classname="test_acycle_batch" name="testPublishedPaperDataWorkflow" time="9.4466"/>
+    <testcase classname="test_acycle_batch" name="testTiePointAgeModel" time="1.307"/>
+    <testcase classname="test_acycle_batch" name="testNegativeControlUsesPointwiseLanguage" time="1.3725"/>
+    <testcase classname="test_acycle_batch" name="testRejectsNonScientificParameters" time="0.20128"/>
+    <testcase classname="test_acycle_batch" name="testPreventsOutputOverwrite" time="1.6575"/>
+    <testcase classname="test_acycle_batch" name="testNonphysicalFitUsesOriginalGridSearch" time="1.9124"/>
+  </testsuite>
+</testsuites>

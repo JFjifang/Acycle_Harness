@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-25T07:44:29.805989+00:00",
+  "scope": "Archived original local run records and MATLAB outputs for real DeepSeek API routing smoke; not publication inference. Original JSON absolute paths are preserved as historical execution evidence; use relative archived paths in this manifest. Exact GitHub ZIP bytes are retained under each run transport directory.",
+  "transcript": "validation/deepseek-v03-live.json",
+  "transcript_sha256": "378e65e6d2c505608a7f1c5ebd3b0ee9752f6246ba85c178e600a12427c563f0",
+  "audit": "validation/deepseek-v03-answer-audit.json",
+  "runs": [
+    {
+      "run_id": "20261025T072936Z-7dc390007a72",
+      "operation": "swa",
+      "directory": "validation/live-runs-v03/20261025T072936Z-7dc390007a72",
+      "original_files_preserved": true,
+      "original_file_count": 13,
+      "file_count_including_transport_evidence": 15,
+      "files": [
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/input.csv",
+          "bytes": 5609,
+          "sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/outputs/SWA-Spectrum-background-FDR.dat",
+          "bytes": 14727,
+          "sha256": "c35826f132ed8dfa6e0135dabe4c9794f6c1b834942278886bde5f602651a61e"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/outputs/response.json",
+          "bytes": 9126,
+          "sha256": "3f39215ed924b5be8fa985653b1ecc0859dd54fd781328362a0bfb325a2d360b"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/outputs/swa-cleaned.csv",
+          "bytes": 5106,
+          "sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/outputs/swa-prepared.csv",
+          "bytes": 5106,
+          "sha256": "0d59700128613077f5495ad6c1cf5ffd0718c8599ac727c1b453eefe0b3a3f55"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/outputs/swa-provenance.json",
+          "bytes": 4110,
+          "sha256": "5b5178c3bfbd96aa3aa2411d3f262cd4faea1073d56b856f580bb65411fd8bab"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/outputs/swa-spectrum.csv",
+          "bytes": 34955,
+          "sha256": "857948cd05ac9a204fe91a4009566ed9ca9b61d45b29326878a9515401e30654"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/outputs/swa-spectrum.fig",
+          "bytes": 21253,
+          "sha256": "c6bf545c73e4c4847a27f5985ec3ee07f6fc6bc2a74b3697f80753d6d59fa503"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/outputs/swa-spectrum.png",
+          "bytes": 140973,
+          "sha256": "64b97f4f4fa05cfb52086665873efc8d46c0040af5927112329d0fd888a7e9b4"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/outputs/swa.mat",
+          "bytes": 39053,
+          "sha256": "1a10b6d65827226d4cb1ba6f186bc9b261a9ee34a54170c6d1a30bf59b45fc75"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/outputs/transport.json",
+          "bytes": 258,
+          "sha256": "f8a3a71fec6ea588c44afbaef7a21d31ae72423a91a7a1ab9ccf45e50d284c2d"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/request.json",
+          "bytes": 703,
+          "sha256": "4f2a7bf2ecd27ceefedef03e92870938400660cf8e976acda372e534883dd073"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/result.json",
+          "bytes": 18269,
+          "sha256": "372e6228fbde825fe7d5be70c770c137dcc64bf86941b637ed61617c6d3e4638"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/transport/12590584150.zip",
+          "bytes": 218690,
+          "sha256": "bb53ca99d2a287a22a78a96bff2f9281cd247bc3b6457ea31cd95728ef3ad6ce"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/transport/receipt.json",
+          "bytes": 5556,
+          "sha256": "f496ea8047dff84df7b08f6dca254cabf89a74cb9e2b2bb98585607bfec08f10"
+        }
+      ],
+      "transport_receipt": "validation/live-runs-v03/20261025T072936Z-7dc390007a72/transport/receipt.json",
+      "remote_execution": {
+        "backend": "github-actions-matlab",
+        "run_id": 40172963619,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40172963619",
+        "head_sha": "5a16874266d493e07b2741ec02ebf57265ce15b9",
+        "conclusion": "success",
+        "request_token": "acycle-ea279750175646b288399e7c01acc2e1",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "artifact_transport": "github_connector_cache",
+        "artifact_sha256": "bb53ca99d2a287a22a78a96bff2f9281cd247bc3b6457ea31cd95728ef3ad6ce"
+      }
+    },
+    {
+      "run_id": "20261025T073241Z-98795147bb9a",
+      "operation": "coco",
+      "directory": "validation/live-runs-v03/20261025T073241Z-98795147bb9a",
+      "original_files_preserved": true,
+      "original_file_count": 20,
+      "file_count_including_transport_evidence": 22,
+      "files": [
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/input.txt",
+          "bytes": 39218,
+          "sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/analysis.mat",
+          "bytes": 147630,
+          "sha256": "01940b7587b635db3745c61578346f655094c38e7e68c52e602cbd5931f443e2"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/cleaned_metres.csv",
+          "bytes": 39212,
+          "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/coco.csv",
+          "bytes": 462,
+          "sha256": "3f040caa883eb9cf0ecb2bcc75702f8e5db22e585f5de9bb691c0ca708554335"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/coco_figure_1.fig",
+          "bytes": 22575,
+          "sha256": "a030fd07739169594de5c367a0f11505ddd8e783ef87f52b31d14d83ae30d079"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/coco_figure_1.pdf",
+          "bytes": 14396,
+          "sha256": "44c0f9b200bed60ec9271cec0cdd2fc87092e5577462e3c0926bcca2a42417a4"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/coco_figure_1.png",
+          "bytes": 74664,
+          "sha256": "88d01b0c7a30566d4e82a3e6f7fcc6e1cacc92aa86d7fd1920db3d554c6f1f62"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/coco_figure_2.fig",
+          "bytes": 12212,
+          "sha256": "8fe45933a919eeadbdf6b06cd6b88a64564e9dd2e958165a3e9206c8df717829"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/coco_figure_2.pdf",
+          "bytes": 5609,
+          "sha256": "6c25424c839de1643379586213d6813d3e2fed7c3394fe6a4c5f49b39a340e3d"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/coco_figure_2.png",
+          "bytes": 57852,
+          "sha256": "09a429fc4b31b6e421a66053b6c9b1ce2092e141073df2804614619d9cba374a"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/details.json",
+          "bytes": 3274,
+          "sha256": "476fa36d5fb3ccc3295069886a97df7c010793a7744433ec2dd9744a7d4167de"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/input_metres.csv",
+          "bytes": 39212,
+          "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/null_max.csv",
+          "bytes": 340,
+          "sha256": "2f8da4f758b97f7782435993f80952dd410790a9088d08eb58e3e5c43ded2ddf"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/orbital_periods_kyr.csv",
+          "bytes": 153,
+          "sha256": "11050a47719a7ea6b14033d8e8f916113213bdb71c6ca250833c6a2e1661016d"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/prepared_metres.csv",
+          "bytes": 39212,
+          "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/provenance.json",
+          "bytes": 22571,
+          "sha256": "e84808ec8ee175f834bd572ff6510707efff201f87e1df04daf9e66db5ecf20b"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/response.json",
+          "bytes": 29580,
+          "sha256": "92da8552b682e37fc455fb7096aa078d5024a61534bb5719f51a89383475ccff"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/outputs/transport.json",
+          "bytes": 258,
+          "sha256": "464f9479c683e700cf5a9f59fed5a562143f9e35c52d5b53d1f00c0fa163daa4"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/request.json",
+          "bytes": 869,
+          "sha256": "d70882b4c2c7b2eb9a966c8d80d79f8098db1d9edcfea11f1d12f8e7c5028edb"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/result.json",
+          "bytes": 60385,
+          "sha256": "9070a6bfbc0ed178b184fb3634fa18549ffd8a527eb0cb9e20e05ab0cbdd6c9f"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/transport/12590734297.zip",
+          "bytes": 352714,
+          "sha256": "7bdd3de7cd9409ff53fe46e17c64284af903c0c3b95f06ced0bc757ec136eb50"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/transport/receipt.json",
+          "bytes": 8278,
+          "sha256": "5a9d30f4edc9ff432fcf99bf08e1935d90e8d5904572486ed780a77eefb7cda7"
+        }
+      ],
+      "transport_receipt": "validation/live-runs-v03/20261025T073241Z-98795147bb9a/transport/receipt.json",
+      "remote_execution": {
+        "backend": "github-actions-matlab",
+        "run_id": 40173168574,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40173168574",
+        "head_sha": "5498e0bee557f3c16807ce5c56a1131640a50ba5",
+        "conclusion": "success",
+        "request_token": "acycle-ff73dff71f234012abbe8db02b32dc2c",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "artifact_transport": "github_connector_cache",
+        "artifact_sha256": "7bdd3de7cd9409ff53fe46e17c64284af903c0c3b95f06ced0bc757ec136eb50"
+      }
+    },
+    {
+      "run_id": "20261025T073632Z-d9b4dcbd12d9",
+      "operation": "ecoco",
+      "directory": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9",
+      "original_files_preserved": true,
+      "original_file_count": 20,
+      "file_count_including_transport_evidence": 22,
+      "files": [
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/input.txt",
+          "bytes": 39218,
+          "sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/analysis.mat",
+          "bytes": 144003,
+          "sha256": "281394db9f0187c0a0da63e5bec66d519c67ffe3579476c64b342aee7cc4ca51"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/cleaned_metres.csv",
+          "bytes": 39212,
+          "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/details.json",
+          "bytes": 8051,
+          "sha256": "09b3ad68c68d802e5f8bb2afb364c5a08df9197ac747a63372d86e287fc99ab3"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/ecoco.csv",
+          "bytes": 1394,
+          "sha256": "2f15a80e48d00fabf3b9e006c5cfe53fe357d99af57cd5f9fcfaf900b5d3d509"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/ecoco_figure_1.fig",
+          "bytes": 59084,
+          "sha256": "bf776778db23dfd9dbe4b302fcb0ed61db7f8b4175479ac90cd88c19ec405ab6"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/ecoco_figure_1.pdf",
+          "bytes": 33376,
+          "sha256": "c8442d3cda9ae07a2f666c7347404c6133f97ebca6bb197ac30d41ea675c1a32"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/ecoco_figure_1.png",
+          "bytes": 112784,
+          "sha256": "49310dd672727982483927f23614c84a574d68b249472c34b9eeccad2d83656d"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/ecoco_figure_2.fig",
+          "bytes": 18467,
+          "sha256": "402de818f00216b85d63537d2f4ee6841e0164064ad37aac954d8a86dc9fbb58"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/ecoco_figure_2.pdf",
+          "bytes": 18905,
+          "sha256": "1ac3598a56f287273489b0b794b4222c442d14c71ba96783bc209f9c91920c66"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/ecoco_figure_2.png",
+          "bytes": 58614,
+          "sha256": "bfd3a6221aa66f5c9e722ab0e32d6f76135324d0e7978f991110d148524eb7e7"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/input_metres.csv",
+          "bytes": 39212,
+          "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/orbital_periods_kyr.csv",
+          "bytes": 153,
+          "sha256": "11050a47719a7ea6b14033d8e8f916113213bdb71c6ca250833c6a2e1661016d"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/prepared_metres.csv",
+          "bytes": 39212,
+          "sha256": "3d3704d91c9d644321157c893450bc147d518e5108f200d446fefd8aeec008f4"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/provenance.json",
+          "bytes": 22572,
+          "sha256": "2c68129f5400a145e58c64280f8a96827ffda4642ea0f2e9ce0ac90383894be3"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/response.json",
+          "bytes": 29761,
+          "sha256": "705bc3216a77fa84572770158ab870938d192be1ed45b0c927a7f0735d419754"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/tracked_rate.csv",
+          "bytes": 171,
+          "sha256": "ee046606be0555d18b8ca156092f6c9c27f8a57aaf7fa0007df35bddc7e91835"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/outputs/transport.json",
+          "bytes": 258,
+          "sha256": "da0c1ec05a4d4a035943122b1364af70f5608af8546e02d42fb22a7dc0f0f517"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/request.json",
+          "bytes": 907,
+          "sha256": "54c0ffa0062a99c2dd732e18c9c6a2e0d1ae2361c544b59de5056ef2cb41f426"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/result.json",
+          "bytes": 60660,
+          "sha256": "b161f178ed272061b6da1a0a88407a402744b890039e527bb3374126d09578f6"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/transport/12590679952.zip",
+          "bytes": 444040,
+          "sha256": "0fb304d17c44587066ada0e895757d7683961c486da989e954e3817b7c466812"
+        },
+        {
+          "path": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/transport/receipt.json",
+          "bytes": 8300,
+          "sha256": "f2d9a76fb49c65cc41f6682b5b68f4a7de245ab20024cac8b456f677e56a05a2"
+        }
+      ],
+      "transport_receipt": "validation/live-runs-v03/20261025T073632Z-d9b4dcbd12d9/transport/receipt.json",
+      "remote_execution": {
+        "backend": "github-actions-matlab",
+        "run_id": 40173414618,
+        "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40173414618",
+        "head_sha": "5498e0bee557f3c16807ce5c56a1131640a50ba5",
+        "conclusion": "success",
+        "request_token": "acycle-777d972df26a40c0ab7d8cd19d86c7ea",
+        "acycle_revision": "dcba4279168745b563e0535b954297023dd62fc7",
+        "artifact_transport": "github_connector_cache",
+        "artifact_sha256": "0fb304d17c44587066ada0e895757d7683961c486da989e954e3817b7c466812"
+      }
+    }
+  ],
+  "audit_sha256": "f71621720a2bf1532dbda30100eeb0d80c21f8a35ae870c26d15573ffdf7895a"
+}

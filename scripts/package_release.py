@@ -55,9 +55,9 @@ def main():
             if not p.exists():
                 continue
             relative=p.relative_to(ROOT)
-            if relative.parts[0]=='validation' and relative.name not in {
+            if relative.parts[0]=='validation' and (len(relative.parts)!=2 or relative.name not in {
                 'ACCEPTANCE.md','NEWARK.md','matlab-summary.json','release-verification.json',
-                'native-plugin-smoke.json','python-tests.txt','node-tests.txt','paper-validation.json','local-handoff-checks.json'}:
+                'native-plugin-smoke.json','python-tests.txt','node-tests.txt','paper-validation.json','local-handoff-checks.json','local-bundle-check.json','local-config-fix.json'}):
                 continue
             if relative.parts[:2]==('benchmarks','sources') and p.suffix not in {'.json','.txt'}:
                 continue

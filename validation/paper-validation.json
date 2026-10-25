@@ -1,0 +1,399 @@
+{
+  "schema_version": 1,
+  "recorded_date_utc": "2026-10-25",
+  "status": "partial_validation_scientific_criteria_unmet",
+  "execution_backend": "MATLAB R2024b; Acycle original source",
+  "source_reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+  "workflow_run": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40174469745",
+  "workflow_summary": {
+    "path": "validation/artifacts/expanded-release/validation-summary.json",
+    "sha256": "f459df5bec336e201370effb96a27cab67e067a1e35344f1ef35144338aeb718",
+    "passed": 23,
+    "failed": 0,
+    "incomplete": 0,
+    "scope": "Engineering checks include execution, original-source parity and preserved scientific-comparison records; passing them does not assert published scientific criteria."
+  },
+  "scientific_unmet_case_ids": [
+    "paper-weedon-swa",
+    "paper-petm-coco",
+    "paper-petm-coco-published-protocol"
+  ],
+  "cases": [
+    {
+      "id": "paper-weedon-swa",
+      "status": "acceptance_failed",
+      "workflow_completed": true,
+      "source_comparison": {
+        "path": "validation/artifacts/expanded-release/swa-lavernock-publication/publication-comparison.json",
+        "sha256": "f12fd50c304dbb72279eaa51588864cff4b8453e1f688569eda927d38b54c438"
+      },
+      "matlab_comparison": {
+        "status": "not_reproduced",
+        "paper_doi": "10.21701/bolgeomin.131.2.001",
+        "paper_figure": "Figure 11; reported target discussed on page 226",
+        "dataset_doi": "10.1594/PANGAEA.896872",
+        "input_sha256": "b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4",
+        "source_reference_commit": "dcba4279168745b563e0535b954297023dd62fc7",
+        "all_used_sources_match_reference": true,
+        "declared_interval_m": [
+          0,
+          13.17
+        ],
+        "actual_interval_m": [
+          0.03,
+          13.17
+        ],
+        "input_rows": 439,
+        "method": "original specswafdr; no interpolation",
+        "declared_target_period_m": 0.81,
+        "declared_period_tolerance_m": 0.07,
+        "declared_fdr_level": 0.05,
+        "peak_location_matched": true,
+        "fdr5_reproduced": false,
+        "publication_reproduction_passed": false,
+        "original_function_parity_passed": true,
+        "observed_peaks": {
+          "frequency": 1.21765601217656,
+          "period": 0.82125,
+          "power": 10.876497204899099,
+          "background": 3.004529975484888,
+          "power_background_ratio": 3.6200328482806325,
+          "above_fdr_5": false
+        },
+        "raw_fdr_thresholds_available": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "max_power_background_ratio": 3.6200328482806325,
+        "coalesced_column_inference_used": false,
+        "retuned_to_match_paper": false,
+        "initial_failed_ci": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40172473806",
+        "interpretation": "Source parity does not imply paper reproduction. The initial pinned Acycle run reproduced the peak location but did not return any FDR rejection; the scientific criterion remains unmet."
+      },
+      "scientific_criterion_passed": false,
+      "claim": "Peak location and direct-original numerical parity pass; published 5% FDR feature is not reproduced.",
+      "prior_comparison_sources": [
+        {
+          "path": "validation/artifacts/expanded-final/swa-lavernock-publication/publication-comparison.json",
+          "sha256": "f12fd50c304dbb72279eaa51588864cff4b8453e1f688569eda927d38b54c438"
+        }
+      ]
+    },
+    {
+      "id": "paper-petm-coco",
+      "status": "acceptance_failed",
+      "workflow_completed": true,
+      "source_comparison": {
+        "path": "validation/artifacts/expanded-release/paper-petm-coco-2000/published-comparison.json",
+        "sha256": "16a92e4ef139acd4d56371db921a92c7bf47d281f47329637a4e7e8aed7e50a3"
+      },
+      "matlab_comparison": {
+        "paper_doi": "10.1038/s41467-022-33390-x",
+        "validation_level": "published-range comparison using modern COCO engine",
+        "published_optimal_mean_rate_cm_kyr": [
+          8,
+          15
+        ],
+        "observed_best_rate_cm_kyr": 26.43,
+        "within_predeclared_published_range": false,
+        "nsim_requested": 2000,
+        "nsim_completed": 2000,
+        "minimum_resolvable_p": 0.0004997501249375312,
+        "observed_rate_global_p": 0.10394802598700649,
+        "resolved_period_count_at_best": 5,
+        "requested_period_count": 6,
+        "all_period_rate_range_cm_kyr": [
+          0.05347593582882837,
+          21.643999999980316
+        ],
+        "duration_seconds": 75.588612,
+        "parameters": {
+          "depth_unit": "m",
+          "orbital_periods_kyr": [
+            125,
+            95,
+            39.8,
+            23.3,
+            22,
+            18.7
+          ],
+          "sedimentation_rate_min": 0.13,
+          "sedimentation_rate_max": 30,
+          "sedimentation_rate_step": 0.1,
+          "method": "phase_averaged",
+          "nsim": 2000,
+          "seed": 1,
+          "correlation": "Spearman",
+          "red_noise": 1,
+          "detrend": "loess",
+          "detrend_window": 20
+        },
+        "differences_from_paper": [
+          "Modern phase-averaged per-orbit target and null implementation; not a replay of the historical COCO algorithm.",
+          "Below-Nanjemoy source rows are used as one complete interval; published peak selection and tuning are not repeated.",
+          "Broader input interval 187.507-214.558 m differs from the published processed 187.542-211.232 m interval documented in Supplementary Text 3.",
+          "Automatic 0.005-m median interpolation differs from the published explicit 0.01-m grid.",
+          "Spearman correlation differs from the published Pearson correlation; default NFFT and maximum frequency also differ from the logged 5000 and 0.06 cycles/kyr.",
+          "20-m LOESS expressed as original Acycle fractional-span smoothing; exact distance kernel is not asserted.",
+          "Fixed seed 1 is a reproducibility choice; the paper does not establish the same random draws."
+        ]
+      },
+      "scientific_criterion_passed": false,
+      "protocol_match": false,
+      "claim": "Broader-interval modern COCO best rate is outside the unchanged published range; supplementary-log audit also identifies concrete protocol mismatches.",
+      "protocol_audit": {
+        "primary_source": "benchmarks/sources/petm_2022_supplement.pdf",
+        "source_sha256": "ca71136f8c11e535c8a8421dd09b2de14155297c34f47dc99054d4d2c608ff5b",
+        "pages": [
+          22,
+          23
+        ],
+        "published_processed_depth_m": [
+          187.542,
+          211.232
+        ],
+        "actual_raw_depth_m": [
+          187.507,
+          214.558
+        ],
+        "published_processed_points": 2370,
+        "actual_prepared_points": 5411,
+        "published_spacing_m": 0.01,
+        "actual_spacing_m": 0.005,
+        "published_correlation": "Pearson",
+        "actual_correlation": "Spearman",
+        "published_nfft": 5000,
+        "actual_nfft": 8192,
+        "published_max_frequency_cycles_per_kyr": 0.06,
+        "actual_max_frequency_cycles_per_kyr": 0.06417112299465241,
+        "interpretation": "Differences are evidenced, but their individual effects have not been isolated. No settings were retuned to rescue this run."
+      },
+      "prior_comparison_sources": [
+        {
+          "path": "validation/artifacts/expanded-final/paper-petm-coco-2000/published-comparison.json",
+          "sha256": "efaf786466a7d3a70246e21eb8105b30c28e2fa5ccb07fdb5c1f53046cf70a77"
+        }
+      ]
+    },
+    {
+      "id": "paper-cambrian-ecoco",
+      "status": "workflow_passed",
+      "workflow_completed": true,
+      "source_comparison": {
+        "path": "validation/artifacts/expanded-release/paper-cambrian-ecoco-199/published-comparison.json",
+        "sha256": "ffac596b9372d3dac8b5ac397b88dd5d5ecf8c2587c316f0f7753bce8a597974"
+      },
+      "matlab_comparison": {
+        "paper_doi": "10.1038/s41467-022-29651-4",
+        "validation_level": "reduced real-paper-data eCOCO execution; no reproduction claim",
+        "published_main_sedimentation_rate_interval_cm_kyr": [
+          0.1,
+          1
+        ],
+        "published_rate_search_cm_kyr": [
+          0.05,
+          0.01,
+          1.5
+        ],
+        "published_window_m": 4,
+        "published_step_m": 0.01,
+        "published_nsim": 5000,
+        "observed_tracked_rate_cm_kyr": [
+          0.5,
+          1.15,
+          0.2,
+          1.5,
+          1.3,
+          1.3,
+          0.7999999999999999,
+          0.2
+        ],
+        "nsim_requested": 199,
+        "nsim_completed": 199,
+        "minimum_resolvable_p": 0.005,
+        "duration_seconds": 12.812972,
+        "parameters": {
+          "depth_unit": "m",
+          "middle_age_ma": 500,
+          "sedimentation_rate_min": 0.05,
+          "sedimentation_rate_max": 1.5,
+          "sedimentation_rate_step": 0.05,
+          "method": "adaptive",
+          "nsim": 199,
+          "seed": 1,
+          "correlation": "Spearman",
+          "red_noise": 0,
+          "detrend": "loess",
+          "detrend_window": 6,
+          "window": 4,
+          "step": 2
+        },
+        "differences_from_paper": [
+          "Only raw aluminium observations from 0-18 m of the approximately 74-m published section are tested.",
+          "Published 12-point smoothing is not applied; its precise method was not established from the source.",
+          "6-m LOESS approximates the full-record 8-percent span but subset boundary effects differ.",
+          "Modern nine-period age-500-Ma target differs from the seven-target historical implementation.",
+          "Step 2 m, rate step 0.05 cm/kyr and 199 null draws are reduced testing settings.",
+          "No hard rate or significance reproduction assertion is made for this changed workflow."
+        ]
+      },
+      "scientific_criterion_passed": null,
+      "publication_reproduction_claimed": false,
+      "claim": "Eight-window real-paper-data execution passes the reduced workflow checks; no full published map or significant rate reproduction is claimed.",
+      "prior_comparison_sources": [
+        {
+          "path": "validation/artifacts/expanded-final/paper-cambrian-ecoco-199/published-comparison.json",
+          "sha256": "e9bd8fcd65445c1c00f2a64b1599d0bc2757205d4ae2104bebc09e0c71599ac4"
+        }
+      ]
+    },
+    {
+      "id": "paper-petm-coco-published-protocol",
+      "status": "acceptance_failed",
+      "workflow_completed": true,
+      "source_comparison": {
+        "path": "validation/artifacts/expanded-release/paper-petm-published-protocol-coco-2000/published-comparison.json",
+        "sha256": "2211a6ef26c98154e96cfa45354c0e52ae55ca8e00e8ac777c73cd15765ecd71"
+      },
+      "matlab_comparison": {
+        "paper_doi": "10.1038/s41467-022-33390-x",
+        "validation_level": "published supplementary protocol with modern COCO engine",
+        "protocol_source": "Supplementary Text 3, magnetic-susceptibility COCO log, pp. 22-23",
+        "published_processed_depth_bounds_m": [
+          187.542,
+          211.232
+        ],
+        "published_processed_point_count": 2370,
+        "actual_processed_depth_bounds_m": [
+          187.542,
+          211.232
+        ],
+        "actual_processed_point_count": 2370,
+        "published_optimal_mean_rate_cm_kyr": [
+          8,
+          15
+        ],
+        "observed_best_rate_cm_kyr": 28.93,
+        "within_predeclared_published_range": false,
+        "nsim_requested": 2000,
+        "nsim_completed": 2000,
+        "minimum_resolvable_p": 0.0004997501249375312,
+        "observed_rate_global_p": 0.6696651674162919,
+        "global_p_confidence_interval": [
+          0.6485767557412889,
+          0.6897733652303664
+        ],
+        "resolved_period_count_at_best": 4,
+        "requested_period_count": 6,
+        "all_period_rate_range_cm_kyr": [
+          0.10695187165765674,
+          18.959999999982756
+        ],
+        "duration_seconds": 9.705706,
+        "parameters": {
+          "depth_unit": "m",
+          "orbital_periods_kyr": [
+            125,
+            95,
+            39.8,
+            23.3,
+            22,
+            18.7
+          ],
+          "sedimentation_rate_min": 0.13,
+          "sedimentation_rate_max": 30,
+          "sedimentation_rate_step": 0.1,
+          "method": "phase_averaged",
+          "nsim": 2000,
+          "seed": 1,
+          "correlation": "Pearson",
+          "red_noise": 1,
+          "slices": 1,
+          "detrend": "loess",
+          "detrend_window": 20,
+          "dt": 0.01,
+          "nfft": 5000,
+          "max_frequency": 0.06
+        },
+        "prior_broader_interval_case": "paper-petm-coco-2000 retained as a separate comparison",
+        "differences_from_paper": [
+          "Modern phase-averaged per-spectrum adaptive amplitudes and full-search stationary AR(1) null differ from the historical Acycle 2.4.1 engine.",
+          "20-m LOESS is represented by original Acycle fractional-span smoothing, not a newly inferred distance-kernel algorithm.",
+          "Seed 1 is fixed for reproducibility; the same historical random draws are not claimed."
+        ]
+      },
+      "scientific_criterion_passed": false,
+      "explicit_protocol_fields_matched": true,
+      "historical_algorithm_reproduced": false,
+      "claim": "Published explicit processed bounds, row count and settings matched; modern full-search maximum does not satisfy the unchanged 8–15 cm/kyr criterion and is not a supported geological sedimentation-rate estimate.",
+      "interpretation": {
+        "full_six_period_model_supported_at_global_maximum": false,
+        "resolved_period_count_at_maximum": 4,
+        "requested_period_count": 6,
+        "all_period_rate_range_cm_kyr": [
+          0.10695187165765674,
+          18.959999999982756
+        ],
+        "global_p_above_significance_threshold": true,
+        "threshold": 0.05,
+        "monte_carlo_interval_far_from_threshold": true,
+        "insufficient_draw_precision_is_not_the_failure_explanation": true,
+        "local_p_substituted_for_global": false,
+        "search_truncated_to_match_paper": false,
+        "historical_preprocessed_values_fully_matched": false,
+        "algorithm_version_as_sole_cause_established": false
+      },
+      "prior_comparison_sources": [
+        {
+          "path": "validation/artifacts/protocol-a595144/paper-petm-published-protocol-coco-2000/published-comparison.json",
+          "sha256": "a9b77ac8b10666b3cb039b34a58af446791dff0e90d4793517b4defa2fdc5d4e"
+        }
+      ]
+    }
+  ],
+  "independent_protocol_correction": {
+    "case_id": "paper-petm-coco-published-protocol",
+    "status": "executed_scientific_criterion_failed",
+    "reason": "Primary Supplementary Text 3 contains previously unverified exact input bounds, spacing, Pearson correlation, NFFT and frequency limit. This new case preserves the prior broader-interval failure and uses the same predeclared 8–15 cm/kyr criterion.",
+    "fixture": "benchmarks/data/petm_2022_ms_published_coco_interval.csv",
+    "fixture_sha256": "216f8a99011ec476365499d51393a79123a074dfdee067b176194c1d54b2efc6",
+    "modern_target_and_null_still_differ": true,
+    "comparison_path": "validation/artifacts/expanded-release/paper-petm-published-protocol-coco-2000/published-comparison.json",
+    "protocol_fields_matched": true,
+    "published_rate_range_reproduced": false
+  },
+  "interpretation": "Engineering checks pass, while three predeclared scientific comparisons remain unmet. The PETM search maxima are diagnostics, not demonstrated geological rates. The corrected protocol retains 4 of 6 resolved periods at its global maximum and a high full-search p value with a well-resolved Monte Carlo interval. Cambrian is a reduced workflow only; no full paper reproduction is claimed.",
+  "scientific_summary": {
+    "comparisons_with_unmet_scientific_criteria": 3,
+    "reduced_paper_data_workflow_passes": 1,
+    "full_paper_reproductions_claimed": 0
+  },
+  "prior_workflow_runs": [
+    {
+      "workflow_run": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40173168648",
+      "workflow_summary": {
+        "path": "validation/artifacts/expanded-final/validation-summary.json",
+        "sha256": "1a7bf6bab7ac06d30fb71354b38cde6570caf6c77b1e5c27a35782d3b510b006",
+        "passed": 21,
+        "failed": 1,
+        "incomplete": 0
+      }
+    },
+    {
+      "workflow_run": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40174219143",
+      "workflow_summary": {
+        "path": "validation/artifacts/protocol-a595144/validation-summary.json",
+        "sha256": "d780a65e33d7fb6f193cb4b7f135aa0e8c5b7b5cdb7055002015733c2ce97b08",
+        "passed": 23,
+        "failed": 0,
+        "incomplete": 0,
+        "scope": "Engineering checks include execution, original-source parity and preserved scientific-comparison records; passing them does not assert published scientific criteria."
+      }
+    }
+  ],
+  "workflow_head_commit": "c55b1a2ff58b6df8850ecd1c1971cee353443e8c",
+  "transport_verification_receipt": "validation/expanded-ci-release.json"
+}

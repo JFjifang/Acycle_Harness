@@ -1,0 +1,21 @@
+{
+  "run_id": 40173168648,
+  "run_url": "https://github.com/JFjifang/Acycle_Harness/actions/runs/40173168648",
+  "source_commit": "5498e0bee557f3c16807ce5c56a1131640a50ba5",
+  "conclusion": "failure",
+  "engineering_scope_note": "All source-contract, synthetic and workflow tests passed; predeclared PETM publication-range criterion failed.",
+  "artifacts": [
+    {
+      "id": 12590887692,
+      "sha256": "26500d1f75c3055f8e105ca038b3a2e1ab63dcd442b9fc74c9f2225a5b2a8601",
+      "bytes": 10161980
+    },
+    {
+      "id": 12591321868,
+      "sha256": "4e5d49877375f0b30cdba7f33db9ae970afb795371110fd6f86767e016b8176d",
+      "bytes": 16109659
+    }
+  ],
+  "transport": "GitHub connector; checksums match GitHub receipts",
+  "local_directory": "validation/artifacts/expanded-final"
+}

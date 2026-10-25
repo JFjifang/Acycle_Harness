@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-25T07:45:56.958980+00:00",
+  "reviewer": "Codex evidence audit (not a second DeepSeek run)",
+  "source_transcript": "validation/deepseek-v03-live.json",
+  "source_transcript_sha256": "378e65e6d2c505608a7f1c5ebd3b0ee9752f6246ba85c178e600a12427c563f0",
+  "original_answer_sha256": "151dbf4f0741b2d4d7466b54b0fe0b071b0a1d5f390327d77477abc515291d15",
+  "original_answer_modified": false,
+  "overall": "Tool-routing and execution acceptance passes. Generated prose has one incorrect abbreviated input-hash suffix and an overbroad FDR sentence; consult this audit and machine provenance rather than treating model prose as authoritative scientific evidence.",
+  "scientific_calculations_repeated_in_python": false,
+  "original_source_hash_checks": [
+    {
+      "run_id": "20261025T072936Z-7dc390007a72",
+      "upstream_files_independently_hash_checked": 15,
+      "all_match": true
+    },
+    {
+      "run_id": "20261025T073241Z-98795147bb9a",
+      "upstream_files_independently_hash_checked": 103,
+      "all_match": true
+    },
+    {
+      "run_id": "20261025T073632Z-d9b4dcbd12d9",
+      "upstream_files_independently_hash_checked": 103,
+      "all_match": true
+    }
+  ],
+  "checks": [
+    {
+      "claim": "All three requests ran once each, in order, with no failures and no retries",
+      "verdict": "supported",
+      "evidence_or_correction": "Seven successful tool calls contain exactly SWA, COCO, eCOCO in that order, once each. All run status fields are completed; remote conclusions success."
+    },
+    {
+      "claim": "MATLAB R2024b, R2024b Update 10, Acycle revision dcba427",
+      "verdict": "supported",
+      "evidence_or_correction": "All three provenance records report MATLAB 24.2.0.3361896 (R2024b) Update 10 and upstream dcba4279168745b563e0535b954297023dd62fc7."
+    },
+    {
+      "claim": "Local matlab_available: false did not block them",
+      "verdict": "supported",
+      "evidence_or_correction": "The capabilities report GitHub backend configured; all three remote jobs completed."
+    },
+    {
+      "claim": "Every figure below is a MATLAB product",
+      "verdict": "supported",
+      "evidence_or_correction": "Recorded plot backends are MATLAB for SWA and original Acycle MATLAB publication plotting functions for COCO/eCOCO; outputs are archived."
+    },
+    {
+      "claim": "Runs and remote execution IDs; parent null; completed / success",
+      "verdict": "supported",
+      "evidence_or_correction": "All three table run IDs, Actions run IDs, status values and null parent_run_id values match immutable archived result records."
+    },
+    {
+      "claim": "SWA method lomb, coordinate_unit m, fmax 16.590563165905568",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches SWA effective_parameters; fmax is spatial frequency per metre, not a temporal frequency."
+    },
+    {
+      "claim": "SWA input_rows 439, removed_nonfinite_rows 0, processed_rows 439, interpolated false; 440 structural lines include the header",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches MATLAB summary, CSV header, and inspector line_count. The model correctly distinguishes structural lines from numeric samples."
+    },
+    {
+      "claim": "SWA 218 frequency bins; peaks above pointwise 95% at 0.821 m, 4.38 m, 0.411 m, 0.286 m",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches the rounded spatial periods and above_pointwise_95 flags in the SWA summary. These are spatial wavelengths in metres; no time conversion was claimed."
+    },
+    {
+      "claim": "No global test result exists here ... no FDR-confirmed peak at any of the five levels",
+      "verdict": "qualification_required",
+      "evidence_or_correction": "The historical adapter returns all fdr_threshold_available=false and above_fdr_5=null. This supports only absence of an interpretable separately returned threshold in this tool result. It does not establish that the original SWA algorithm performed no FDR calculation or that a correctly interpreted FDR procedure had zero discoveries. Preferred wording: This archived adapter response cannot support an FDR discovery claim."
+    },
+    {
+      "claim": "COCO input_rows 2344, all finite, 0 duplicates collapsed, no interpolation",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches MATLAB preparation originalRowCount, finiteRowCount, duplicateRowsCollapsed and interpolationApplied."
+    },
+    {
+      "claim": "Target at 210 Ma (rounded), 9 periods 405.69 to 17.68 kyr; grid 8 to 16 cm/kyr, 9 rates; nsim 19, seed 1",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches target_age_rounded_ma, orbital_periods_kyr, rate_count, rate_unit, effective_parameters and summary. No depth/time/rate unit mismatch found."
+    },
+    {
+      "claim": "No rate passes global p < 0.05; best exploratory rate 8 cm/kyr, correlation 0.364, minimum_rate_global_p 0.95, Wilson CI [0.7536, 0.9906]",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches COCO summary and rounding. The interval refers to the Monte Carlo p estimate, not to sedimentation-rate uncertainty."
+    },
+    {
+      "claim": "Best rate uses only 7/9 distinct resolved periods; does not address the complete nine-period target",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches the upstream interpretation qualification."
+    },
+    {
+      "claim": "eCOCO same 2344 input rows; window 500 m / step 500 m, no padding; 3 windows centred at 250/750/1250 m",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches eCOCO summary exactly. Windows are defined by the upstream method; the model did not invent an extra edge window."
+    },
+    {
+      "claim": "Tracked rates [11,11,11] cm/kyr; 27 finite cells, 0 unresolved; nsim_completed 19; nfft 1024 vs COCO 4096",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches eCOCO summary and both effective-parameter records. The differing nfft is explicitly disclosed."
+    },
+    {
+      "claim": "Descriptive ridge, no correction across windows; map_global_applied false",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches rate_global_p_scope and map_global_applied. The model correctly avoids a map-wide significance claim."
+    },
+    {
+      "claim": "Identical source repository, reference commit, and matching original-source flags for all three runs",
+      "verdict": "supported_with_scope",
+      "evidence_or_correction": "Repository and upstream reference commit agree and original-source matching flags are true. Full provenance is not identical: SWA adapter head is 5a16874266d493e07b2741ec02ebf57265ce15b9; COCO/eCOCO adapter head is 5498e0bee557f3c16807ce5c56a1131640a50ba5. Manifest preserves these heads."
+    },
+    {
+      "claim": "Upstream API is Acycle v3.1.1 modern programmatic COCO/eCOCO, not historical legacy-paper implementation",
+      "verdict": "supported_with_scope",
+      "evidence_or_correction": "This API qualification applies to COCO/eCOCO; SWA separately calls original specswafdr. It is recorded verbatim in both COCO/eCOCO provenance records."
+    },
+    {
+      "claim": "Input hash Lavernock b7e212c7...57c1c4",
+      "verdict": "supported",
+      "evidence_or_correction": "Correct shortened prefix/suffix of b7e212c7f71b630c1f9b55429bc0b1085b58ee1480927be428cfef12cb57c1c4."
+    },
+    {
+      "claim": "Input hash Newark 1cd82c19...75b65ac2",
+      "verdict": "incorrect_transcription",
+      "evidence_or_correction": "The shortened suffix is incorrect. Correct full SHA-256 for both Newark input files is 1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2, or 1cd82c19...e4b65ac2. Machine records, inputs and artifact integrity remain correct; do not use the generated prose as a checksum."
+    },
+    {
+      "claim": "Output paths and listed artifacts",
+      "verdict": "supported_with_portability_note",
+      "evidence_or_correction": "Listed paths and files existed in the execution workspace. For the portable package use validation/live-runs-v03/<run_id>/outputs; historical absolute paths are deliberately preserved in the raw answer and run JSON."
+    },
+    {
+      "claim": "19 draws are diagnostics only; minimum_resolvable_p 0.05; fewer than 999 draws exploratory/testing",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches both Monte Carlo summaries and warnings. The model does not claim a published Newark chronology or astronomical forcing."
+    },
+    {
+      "claim": "SWA returned no FDR thresholds, all null; no FDR-level claim possible from run 1",
+      "verdict": "supported_with_scope",
+      "evidence_or_correction": "Accurate about the historical adapter fields, with the qualification above. Null metadata cannot be treated as zero discoveries or proof that the original algorithm omitted FDR."
+    },
+    {
+      "claim": "Pointwise SWA exceedance is not global significance; assumed target/grid; no independent COCO/eCOCO confirmations",
+      "verdict": "supported",
+      "evidence_or_correction": "Appropriate limitations; no unit conversion, independent confirmation or publication significance is invented."
+    },
+    {
+      "claim": "eCOCO local score range is not a confidence interval; uncorrected windows; descriptive ridge",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches upstream tool warnings and the model uses the limitation correctly."
+    },
+    {
+      "claim": "Both COCO/eCOCO red_noise 0 and nfft differs; no sensitivity branches or baseline comparison",
+      "verdict": "supported",
+      "evidence_or_correction": "Matches effective_parameters, null parent_run_id and the exact bounded three-operation request."
+    }
+  ]
+}

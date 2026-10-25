@@ -1,0 +1,64 @@
+{
+  "matlab_version": "24.2.0.3361896 (R2024b) Update 10",
+  "release": "2024b",
+  "acycle_root": "/home/runner/work/Acycle_Harness/Acycle_Harness/upstream/acycle",
+  "passed": 9,
+  "failed": 0,
+  "incomplete": 0,
+  "tests": [
+    {
+      "name": "test_acycle_batch/testOriginalNumericalParity",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 12.877377
+    },
+    {
+      "name": "test_acycle_batch/testOriginalLowessAndOfficialExamples",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 19.294313000000002
+    },
+    {
+      "name": "test_acycle_batch/testAgeModelAndGaussianFilter",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 2.2742929999999997
+    },
+    {
+      "name": "test_acycle_batch/testPublishedPaperDataWorkflow",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 9.4465560000000011
+    },
+    {
+      "name": "test_acycle_batch/testTiePointAgeModel",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.3070080000000002
+    },
+    {
+      "name": "test_acycle_batch/testNegativeControlUsesPointwiseLanguage",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.3725279999999997
+    },
+    {
+      "name": "test_acycle_batch/testRejectsNonScientificParameters",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 0.20128100000000002
+    },
+    {
+      "name": "test_acycle_batch/testPreventsOutputOverwrite",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.657478
+    },
+    {
+      "name": "test_acycle_batch/testNonphysicalFitUsesOriginalGridSearch",
+      "passed": true,
+      "failed": false,
+      "duration_seconds": 1.912428
+    }
+  ]
+}

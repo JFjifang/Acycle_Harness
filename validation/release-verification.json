@@ -1,7 +1,8 @@
 {
+  "version": "0.3.0",
   "status": "passed",
-  "wheel_sha256": "2a66cd46c28f2654023294a657e865e2c5810b88f8ee98a40b0c7028984ace5f",
-  "plugin_sha256": "e491bf1e9d3acc28cabe0c2b762493e9823943a587829d81282e5b663cfe1116",
+  "wheel_sha256": "f74f09f53fc23888746d759a25b22f4acf8ddf517d88c1d64db6e1fdc1e827ac",
+  "plugin_sha256": "45e288d242bf4047ae3a61e97be56f5c405f2c14e7c25a129ad4a5d45b0249fc",
   "wheel_files_match_installed_and_source": [
     "acycle_deepseek/__init__.py",
     "acycle_deepseek/cli.py",
@@ -12,23 +13,39 @@
     "acycle_deepseek/tools.py",
     "acycle_deepseek/matlab/SOURCES.md",
     "acycle_deepseek/matlab/acycle_batch.m",
+    "acycle_deepseek/matlab/acycle_coco.m",
+    "acycle_deepseek/matlab/acycle_swa.m",
+    "acycle_deepseek/matlab/coco_sources.json",
     "acycle_deepseek/matlab/run_validation.m",
     "acycle_deepseek/matlab/source_registry.json",
-    "acycle_deepseek/matlab/tests/test_acycle_batch.m"
+    "acycle_deepseek/matlab/swa_sources.json",
+    "acycle_deepseek/matlab/tests/test_acycle_batch.m",
+    "acycle_deepseek/matlab/tests/test_acycle_coco.m",
+    "acycle_deepseek/matlab/tests/test_acycle_swa.m",
+    "acycle_deepseek/matlab/tests/test_paper_coco.m"
   ],
   "plugin_files_match_installed_and_source": [
     "LICENSE",
     "package.json",
     "README.md",
     "skills/acycle-age-model/SKILL.md",
+    "skills/acycle-coco/SKILL.md",
     "skills/acycle-intake/SKILL.md",
     "skills/acycle-mini-robot/SKILL.md",
     "skills/acycle-reproduction/SKILL.md",
     "skills/acycle-sensitivity-steering/SKILL.md",
     "skills/acycle-spectral-interpretation/SKILL.md",
+    "skills/acycle-swa/SKILL.md",
     "index.mjs",
     "cordis.patch.yml"
   ],
   "matlab_sources_installed": "/workspace/acycle-release-check/lib/python3.12/site-packages/acycle_deepseek/matlab",
-  "native_plugin_smoke": "native-plugin-smoke.json"
+  "native_plugin_smoke": "native-plugin-smoke.json",
+  "installed_mcp_stdio": {
+    "initialize": "passed",
+    "listed_tools": 9,
+    "capabilities_call": "passed",
+    "scope": "Real installed subprocess protocol; not a full Codex client session or local licensed MATLAB run."
+  },
+  "matlab_code_commit": "c55b1a2"
 }

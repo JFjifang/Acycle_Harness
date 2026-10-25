@@ -16,6 +16,8 @@ COCO/eCOCO 的逐项原函数数值一致性由独立的合成数据测试覆盖
 
 [CI 40173168648](https://github.com/JFjifang/Acycle_Harness/actions/runs/40173168648) 的 22 项机械/论文测试为 21 通过、1 未通过：PETM 较宽区间速率比较失败。SWA 的论文显著性未复现另外作为科学比较结果保留，不能因其机械测试通过而忽略。Cambrian 缩减流程完成，不代表全文复现。
 
+最终 [CI 40174469745](https://github.com/JFjifang/Acycle_Harness/actions/runs/40174469745) 完成 **23/23 项工程验证**；论文比较独立报告为 **三项未通过**：SWA 的 5% FDR、PETM 较宽区间和 PETM 补充日志协议的速率范围。工程验证覆盖接口执行、原函数一致性和比较记录保存，不将预期之外的科学结果改写为通过。Cambrian 仅通过缩减工作流验收。最终结果与此前补齐协议的 [CI 40174219143](https://github.com/JFjifang/Acycle_Harness/actions/runs/40174219143) 一致；各比较及 SHA-256 已汇入最终聚合回执。
+
 ## SWA：原始方法数据的谱峰检验
 
 Weedon, Page & Jenkyns (2019), *Geological Magazine* **156**, 1469–1509，[DOI:10.1017/S0016756818000808](https://doi.org/10.1017/S0016756818000808)，是 Smoothed Window Averages 的方法来源之一；文章于 2018-12-17 在线发表，卷期年份为 2019。数据来自 [PANGAEA.896872](https://doi.org/10.1594/PANGAEA.896872)，保留未调谐的地层高度和原始磁化率，不使用其 tuned-time 或 E-filter 列。
@@ -24,7 +26,7 @@ Weedon (2020), *Boletín Geológico y Minero* **131**, 207–230，[DOI:10.21701
 
 预先给定波长容差为 ±0.07 m：记录跨度 13.14 m 下，该峰附近一个独立谱分辨单元约为 0.05 m，并留出论文四舍五入余量。必须同时满足峰的位置和 5% FDR，单独超过点态 95% 阈值不够。不复现贝叶斯概率、天文调谐或阶的持续时间；2020 文献还修正了早期贝叶斯分析的预白化解释。
 
-**实际发现：论文 FDR 特征尚未复现。** [首次扩展 MATLAB CI](https://github.com/JFjifang/Acycle_Harness/actions/runs/40172473806) 的原函数数值一致性检查通过，谱峰位于 1.21765601217656 cycles/m（约 0.82125 m），但原始函数返回的全部 FDR 阈值列均为 `NaN`，因此未满足预先声明的“超过 5% FDR”条件。[实际频谱表](../validation/artifacts/expanded-first/swa-lavernock-publication/swa-spectrum.csv) 与 [MATLAB 图件](../validation/artifacts/expanded-first/swa-lavernock-publication/swa-spectrum.png) 保留了这次未通过结果。`NaN` 表示原函数没有给出该阈值，不能解释成“显著”或改用点态阈值代替。
+**实际发现：论文 FDR 特征尚未复现。** [首次扩展 MATLAB CI](https://github.com/JFjifang/Acycle_Harness/actions/runs/40172473806) 的原函数数值一致性检查通过，谱峰位于 1.21765601217656 cycles/m（约 0.82125 m），但原始函数返回的全部 FDR 阈值列均为 `NaN`，因此未满足预先声明的“超过 5% FDR”条件。[实际频谱表](../validation/artifacts/expanded-release/swa-lavernock-publication/swa-spectrum.csv) 与 [MATLAB 图件](../validation/artifacts/expanded-release/swa-lavernock-publication/swa-spectrum.png) 保留了这次未通过结果。`NaN` 表示原函数没有给出该阈值，不能解释成“显著”或改用点态阈值代替。
 
 重新核对论文图、数据列、区间、去趋势和谱平滑后，没有找到支持修改输入以获得显著性的依据。一个需进一步溯源的具体差异是：2019 §3.b 和 2020 p.211 描述比较所有候选窗口的总体最小 RMSE；固定版本的 `specswafdr.m` 则优先减少背景斜率反转，在 `revmin == 0` 时提前停止窗口搜索，并限制末端平滑次数。该差异可能改变背景拟合，但目前没有证明它就是未复现的原因。本桥接保留原始实现和原验收条件，没有为了通过论文检查改动算法或缩短数据区间。
 
@@ -32,13 +34,15 @@ Weedon (2020), *Boletín Geológico y Minero* **131**, 207–230，[DOI:10.21701
 
 Li et al. (2022), “Astrochronology of the Paleocene-Eocene Thermal Maximum on the Atlantic Coastal Plain,” *Nature Communications* **13**, 5618，[论文](https://doi.org/10.1038/s41467-022-33390-x)、[开放全文 Methods](https://pmc.ncbi.nlm.nih.gov/articles/PMC9509358/)。两个独立案例均提取 `Ca & MS` 表 D/E 列。
 
-最初的 `paper-petm-coco` 选择整个 Nanjemoy 不整合面以下数据至 214.558 m，采用 20 m LOESS、六周期、经典红噪声处理、论文速率网格和 2000 次模拟，但保留现代默认采样/相关设置。实际完成 2000 次模拟，用时 77.98 秒，最优速率 **26.43 cm/kyr**、速率网格全局 Monte Carlo p = **0.103948025987**，没有落入预先声明的 8–15 cm/kyr 区间。[MATLAB 原始比较回执](../validation/artifacts/expanded-final/paper-petm-coco-2000/published-comparison.json) 和这一失败案例均保留。
+最初的 `paper-petm-coco` 选择整个 Nanjemoy 不整合面以下数据至 214.558 m，采用 20 m LOESS、六周期、经典红噪声处理、论文速率网格和 2000 次模拟，但保留现代默认采样/相关设置。实际完成 2000 次模拟，最终运行用时 75.59 秒，最优速率 **26.43 cm/kyr**、速率网格全局 Monte Carlo p = **0.103948025987**，没有落入预先声明的 8–15 cm/kyr 区间。[MATLAB 原始比较回执](../validation/artifacts/expanded-release/paper-petm-coco-2000/published-comparison.json) 和这一失败案例均保留。
 
 补充材料的进一步审计找到明确差异：[Supplementary Text 3，pp.22–23](../benchmarks/sources/petm_2022_supplement.pdf) 含实际分析日志，[纯文本摘录](../benchmarks/sources/petm_2022_coco_protocol.txt) 可离线核对。原始文件名指定 187.54–211.24 m，经 20 m LOESS 和 0.01 m 线性插值后为 187.542–211.232 m、2370 点；采用 **Pearson**、NFFT **5000**、频率上限 **0.06 cycles/kyr**。初次案例实际使用更宽区间、0.005 m 中位间隔、Spearman、NFFT 8192 和 0.0641711 上限，因此不能把该次偏差仅归因于新旧算法，也不能声称其参数完整匹配原文。
 
 独立的 `paper-petm-coco-published-protocol` 根据这份可核实日志新建，原始 CSV 为 4364 点、187.542–211.237 m；所有去趋势与插值仍在 MATLAB 中完成。其他固定参数为一片段、六周期 `[125, 95, 39.8, 23.3, 22, 18.7]` kyr、0.13–30 cm/kyr（步长 0.1）、经典 AR1 相减和 2000 次模拟；种子 1 是本项目的可重现性选择。保留同一 8–15 cm/kyr 事前比较条件；新案例不是覆盖旧结果，也没有搜索参数以追求匹配。速率数组按 MATLAB 冒号语义生成，最后一点是 29.93。
 
-论文采用 Acycle 2.4.1，本项目使用固定源码的 COCO 2.0 `phase_averaged`。即使采用补充日志的显式参数，现代目标谱生成和 Monte Carlo 零假设检验仍不同；LOESS 的距离窗口以 Acycle 分数跨度映射，不能声称恢复了全部历史预处理细节或精确复现旧版 p 值。每个案例须保留实际结果及差异，均不代表整篇 PETM 年代模型或事件持续时间复现。
+**独立协议案例仍未复现论文速率范围。** [实际比较回执](../validation/artifacts/expanded-release/paper-petm-published-protocol-coco-2000/published-comparison.json) 确认 MATLAB 处理后恰为 **2370 点、187.542–211.232 m**，且完成 **2000 次模拟**。全搜索最大相关位置为 **28.93 cm/kyr**，速率网格全局 p = **0.669665167416**，该 p 的 95% Monte Carlo 置信区间为 **0.64858–0.68977**；这不是沉积速率置信区间。区间远离 0.05，本次未检出显著结果不能解释成“模拟次数不足”，也不能换用局部 p 值取得显著结论。在这个搜索峰位置，六个请求周期仅 **4 个可分辨**，六周期同时可分辨的速率上界约为 **18.96 cm/kyr**。因此 **28.93 不能解释为完整六周期模型支持的实际地质沉积速率，也不支持显著天文强迫结论**。原始 8–15 cm/kyr 比较仍为未通过，没有截断搜索范围或改选次级峰来制造吻合。
+
+论文采用 Acycle 2.4.1，本项目使用固定源码的 COCO 2.0 `phase_averaged`。现代实现逐谱重估振幅，以平稳 AR1 和完整速率搜索构造零假设，与历史随机谱检验不同。LOESS 的距离窗口以 Acycle 分数跨度映射，历史去趋势后逐点数据也未完全核对，不能声称恢复了全部历史预处理细节或精确复现旧版 p 值。这些是已知差异，不是已经确定的唯一失败原因；没有开展逐项控制实验或完整历史内核重演来分离它们的影响。每个案例须保留实际结果及差异，均不代表整篇 PETM 年代模型或事件持续时间复现。
 
 ## eCOCO：寒武纪论文主指标的缩减流程
 
@@ -48,7 +52,7 @@ Zhao et al. (2022), “Synchronizing rock clocks in the late Cambrian,” *Natur
 
 本次只取论文第一个 0–18 m 子段，使用约 6 m LOESS、4 m 窗、2 m 步长、199 次模拟和较粗速率网格；省略原文 12 点平滑，并采用 500 Ma 的现代九周期目标。子段 LOESS 的边缘效应也不同。因此它验证真实主指标上的原始实现执行，不复现整幅已发表 eCOCO 图。约 1.85 m / 405 kyr 对应约 0.457 cm/kyr，仅作为图中尺度的诊断参照，不作为硬性通过条件。
 
-实际完成 **8 个窗口、199 次模拟**，用时 **13.60 秒**；跟踪速率依次为 0.50、1.15、0.20、1.50、1.30、1.30、0.80、0.20 cm/kyr。[MATLAB 比较回执](../validation/artifacts/expanded-final/paper-cambrian-ecoco-199/published-comparison.json) 保存完整差异说明。这些结果只能证明预算缩减的真实数据流程完成；没有通过已发表速率图或显著性结果的复现验收。
+实际完成 **8 个窗口、199 次模拟**，最终运行用时 **12.81 秒**；跟踪速率依次为 0.50、1.15、0.20、1.50、1.30、1.30、0.80、0.20 cm/kyr。[MATLAB 比较回执](../validation/artifacts/expanded-release/paper-cambrian-ecoco-199/published-comparison.json) 保存完整差异说明。这些结果只能证明预算缩减的真实数据流程完成；没有通过已发表速率图或显著性结果的复现验收。
 
 COCO/eCOCO 的基础方法文献为 Li, Kump, Hinnov & Mann (2018), *Earth and Planetary Science Letters* **501**, 165–179，[DOI:10.1016/j.epsl.2018.08.041](https://doi.org/10.1016/j.epsl.2018.08.041)。本次没有另外宣称复现该论文的全部案例。
 

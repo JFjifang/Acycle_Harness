@@ -28,10 +28,14 @@ def main() -> int:
     args = parser.parse_args()
     workspace = Path(args.workspace).expanduser().resolve()
     root = Path(args.acycle_root).expanduser().resolve()
-    executable = Path(args.python).expanduser().resolve()
+    candidate = shutil.which(os.path.expanduser(args.python))
+    if candidate is None:
+        parser.error('--python must name an existing executable or a command on PATH')
+    # Resolving this symlink would bypass a virtualenv and lose its installed package.
+    executable = Path(os.path.abspath(candidate))
     matlab = args.matlab
     if '/' in matlab or '\\' in matlab:
-        matlab = str(Path(matlab).expanduser().resolve())
+        matlab = os.path.abspath(os.path.expanduser(matlab))
     env = {'ACYCLE_BACKEND': 'local', 'ACYCLE_ROOT': str(root),
            'MATLAB_EXECUTABLE': matlab, 'ACYCLE_MATLAB_TIMEOUT': '3600',
            'ACYCLE_PYTHON': str(executable), 'ACYCLE_WORKSPACE': str(workspace)}

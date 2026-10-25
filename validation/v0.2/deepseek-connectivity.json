@@ -1,0 +1,165 @@
+{
+  "models": {
+    "object": "list",
+    "data": [
+      {
+        "id": "deepseek-flash",
+        "object": "model",
+        "owned_by": "deepseek",
+        "name": "DeepSeek-V4.1-Flash",
+        "context_window": 1048576,
+        "max_output_tokens": 393216,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "effort": {
+          "supported_levels": [
+            "low",
+            "high",
+            "max"
+          ],
+          "default_level": "high"
+        },
+        "api_capabilities": {
+          "anthropic_messages": {
+            "system_prompt_update": "in-history",
+            "tool_update": "addition-only"
+          }
+        }
+      },
+      {
+        "id": "deepseek-v4-pro",
+        "object": "model",
+        "owned_by": "deepseek",
+        "name": "DeepSeek-V4-Pro",
+        "context_window": 1048576,
+        "max_output_tokens": 393216,
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "effort": {
+          "supported_levels": [
+            "low",
+            "high",
+            "max"
+          ],
+          "default_level": "high"
+        },
+        "api_capabilities": {
+          "anthropic_messages": {
+            "system_prompt_update": "leading-only",
+            "tool_update": "leading-only"
+          }
+        }
+      }
+    ]
+  },
+  "conversation": {
+    "status": "completed",
+    "requested_model": "deepseek-flash",
+    "returned_models": [
+      "deepseek-flash",
+      "deepseek-flash"
+    ],
+    "rounds": 2,
+    "answer": "**Environment check (tool version 0.2.0):** No \u2014 the configured environment **cannot currently run MATLAB**.\n\n- `matlab_available`: **false**\n- `scientific_backend`: MATLAB/Acycle (declared, but not reachable)\n- `backend`: local; `acycle_root` and `github_repository` are both `null`\n- `python_numerical_fallback`: **false**, so no scientific computation can be substituted here\n\nWith no MATLAB backend reachable, the supported operations (`mini_robot`, `mtm_rednoise`, `evolution`, `filter_envelope`, `age_model`) are configured but **not executable** in this session. This is a reported backend limitation, not a data or parameter problem; any spectral, filtering, significance or age-model work would need a working MATLAB/Acycle installation to be run through the approved path.\n\nAs instructed, I performed no analysis and created no runs. Note also the standing caveat carried by the backend: pointwise significance is not proof of astronomical forcing, and Acycle GUI-only methods outside this core would require a sourced MATLAB extension.",
+    "tool_calls": [
+      {
+        "name": "acycle_capabilities",
+        "arguments": {},
+        "ok": true,
+        "result": {
+          "version": "0.2.0",
+          "scientific_backend": "MATLAB/Acycle",
+          "backend": "local",
+          "matlab_available": false,
+          "acycle_root": null,
+          "github_repository": null,
+          "python_numerical_fallback": false,
+          "operations": [
+            "mini_robot",
+            "mtm_rednoise",
+            "evolution",
+            "filter_envelope",
+            "age_model"
+          ],
+          "limits": [
+            "pointwise significance is not proof of astronomical forcing",
+            "Acycle GUI-only methods outside this core require a sourced MATLAB extension"
+          ]
+        }
+      }
+    ],
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an Acycle cyclostratigraphy research assistant. Use the supplied\nAcycle tools to inspect data, perform analysis and preserve reproducible runs. All scientific\ncomputations, spectra, filters, significance, age models and plots MUST run through the\nMATLAB/Acycle tools. Never silently replace MATLAB with Python or claim an unexecuted run\nsucceeded. Python is the interface and may provide genuinely missing functionality, but seek\na MATLAB bridge first. Call acycle_capabilities before analysis. Treat an unavailable MATLAB\nbackend as a reported limitation. Sensitivity runs must retain a parent run ID and never\nreplace a baseline. Spectral peaks alone do not prove orbital forcing: pointwise thresholds\nare not global significance. Distinguish tested numerical reproduction from full paper\nreproduction. Read tool errors, correct supported inputs, and cite returned run IDs and\nartifact paths in the final answer. Do not invent parameter names; follow tool schemas."
+      },
+      {
+        "role": "user",
+        "content": "Call acycle_capabilities once and briefly state whether the configured environment can run MATLAB. Do not perform analysis."
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "index": 0,
+            "id": "call_00_ET_nR5RzusUBkcWL6C5yPtt8148",
+            "type": "function",
+            "function": {
+              "name": "acycle_capabilities",
+              "arguments": "{}"
+            }
+          }
+        ],
+        "reasoning_content": ""
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_00_ET_nR5RzusUBkcWL6C5yPtt8148",
+        "content": "{\"version\": \"0.2.0\", \"scientific_backend\": \"MATLAB/Acycle\", \"backend\": \"local\", \"matlab_available\": false, \"acycle_root\": null, \"github_repository\": null, \"python_numerical_fallback\": false, \"operations\": [\"mini_robot\", \"mtm_rednoise\", \"evolution\", \"filter_envelope\", \"age_model\"], \"limits\": [\"pointwise significance is not proof of astronomical forcing\", \"Acycle GUI-only methods outside this core require a sourced MATLAB extension\"]}"
+      },
+      {
+        "role": "assistant",
+        "content": "**Environment check (tool version 0.2.0):** No \u2014 the configured environment **cannot currently run MATLAB**.\n\n- `matlab_available`: **false**\n- `scientific_backend`: MATLAB/Acycle (declared, but not reachable)\n- `backend`: local; `acycle_root` and `github_repository` are both `null`\n- `python_numerical_fallback`: **false**, so no scientific computation can be substituted here\n\nWith no MATLAB backend reachable, the supported operations (`mini_robot`, `mtm_rednoise`, `evolution`, `filter_envelope`, `age_model`) are configured but **not executable** in this session. This is a reported backend limitation, not a data or parameter problem; any spectral, filtering, significance or age-model work would need a working MATLAB/Acycle installation to be run through the approved path.\n\nAs instructed, I performed no analysis and created no runs. Note also the standing caveat carried by the backend: pointwise significance is not proof of astronomical forcing, and Acycle GUI-only methods outside this core would require a sourced MATLAB extension.",
+        "reasoning_content": "State clearly: MATLAB not available."
+      }
+    ],
+    "usage": [
+      {
+        "prompt_tokens": 1338,
+        "completion_tokens": 25,
+        "total_tokens": 1363,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1338
+      },
+      {
+        "prompt_tokens": 1492,
+        "completion_tokens": 240,
+        "total_tokens": 1732,
+        "prompt_tokens_details": {
+          "cached_tokens": 1280
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_cache_hit_tokens": 1280,
+        "prompt_cache_miss_tokens": 212
+      }
+    ]
+  }
+}
