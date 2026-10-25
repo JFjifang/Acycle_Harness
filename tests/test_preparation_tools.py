@@ -331,6 +331,16 @@ def test_registered_unchanged_output_propagates_verified_transport_reference(pro
     assert downstream['input_artifact_reference'] == reference
     assert downstream['input_sha256'] == reference['input_sha256']
 
+    # A conversational branch reads the parent's frozen input, not its original
+    # output path. It must retain the reference so a large three-column curve
+    # does not fall back into the bounded workflow argument on every rerun.
+    branch = call(project, 'rerun', run_id=downstream['run_id'],
+                  parameter_patch={'anchor_phase': 'trough', 'extrema': 'troughs'})
+    assert project.calls[-1]['input_artifact_reference'] == reference
+    assert branch['input_artifact_reference'] == reference
+    assert branch['input_sha256'] == downstream['input_sha256']
+    assert branch['parent_run_id'] == downstream['run_id']
+
     # A modified output remains a local input; it cannot point at old remote bytes.
     Path(upstream['artifacts']['filtered_csv']).write_bytes(FILTERED + b'50,0,1\n')
     modified = tune_run(project, input_path=upstream['artifacts']['filtered_csv'])

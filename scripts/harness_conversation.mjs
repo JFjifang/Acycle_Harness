@@ -124,7 +124,7 @@ if (publicSkill) patch.push({ insert: [{ id: 'acycle-public-demo-skill',
   config: { skillPath: publicSkill.path } }] })
 if (values.mode === 'mock') {
   patch.push({ id: 'llm-deepseek', disabled: true })
-  patch.push({ insert: [{ id: 'acycle-fixture', name: pathToFileURL(join(repository, 'scripts/harness_conversation_mock.mjs')).href, config: { runtimeRoot, skillName: publicSkill?.name } }] })
+  patch.push({ insert: [{ id: 'acycle-fixture', name: pathToFileURL(join(repository, 'scripts/harness_conversation_mock.mjs')).href, config: { runtimeRoot, skillName: publicSkill?.name, initialStep: previous ? 4 : 0 } }] })
 }
 const patchFile = join(workspace, 'conversation.patch.yml')
 // JSON is a YAML subset. No credential is written to this profile patch.
@@ -191,7 +191,9 @@ process.on('SIGTERM', onSigterm)
 try {
   await harness.start()
   receipt.initialized = true
-  const session = harness.session(previous?.session_id)
+  // A named session() handle does not restore persisted runtime state. The
+  // published SDK requires resumeSession() before sending a new user message.
+  const session = previous ? await harness.resumeSession(previous.session_id) : harness.session()
   receipt.session_id = session.id
   await checkpoint()
   if (!values['initialize-only']) {
@@ -313,13 +315,14 @@ try {
     if (imported?.source_session_id !== receipt.session_id || imported?.sha256 !== hash(bytes)) {
       throw new Error('Infrastructure fixture failed attachment session/hash checks')
     }
-    if (!receipt.turns[1]?.tool_calls.some(call => call.name === 'acycle_inspect')) {
+    const secondTurnChecked = receipt.turns[1]?.tool_calls.some(call => call.name === 'acycle_inspect') ?? false
+    if (receipt.turns.length > 1 && !secondTurnChecked) {
       throw new Error('Infrastructure fixture failed cross-user-turn tool-history check')
     }
     receipt.infrastructure_assertions = {
       official_profile_and_agent_loop: true, skill_loaded_through_official_tool: true,
       attachment_imported_from_current_session: true, imported_bytes_sha256_matches: true,
-      two_distinct_user_messages_retained: true, second_turn_reuses_prior_tool_result: true,
+      two_distinct_user_messages_retained: receipt.turns.length > 1, second_turn_reuses_prior_tool_result: secondTurnChecked,
       real_model_or_scientific_acceptance: false,
     }
   }

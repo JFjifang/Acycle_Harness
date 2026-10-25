@@ -26,7 +26,7 @@ export ACYCLE_GITHUB_REPO=JFjifang/Acycle_Harness
 export ACYCLE_GITHUB_REF=main
 ```
 
-Each analysis dispatches the repository's MATLAB workflow and downloads its outputs. Input data is transmitted to that repository's Actions run; choose a private repository for private data. The transport supports files up to 1 MiB subject to GitHub's encoded workflow-input limit; use local MATLAB for larger inputs. The DeepSeek API key stays in the caller environment and is never sent to GitHub.
+Each analysis dispatches the repository's MATLAB workflow and downloads its outputs. Input data is transmitted to that repository's Actions run; choose a private repository for private data. Initial uploads support files up to 1 MiB subject to GitHub's encoded workflow-input limit; registered outputs from the same repository can be reused by verified artifact reference without re-encoding their bytes. Use local MATLAB for larger inputs. The DeepSeek API key stays in the caller environment and is never sent to GitHub.
 
 See [GitHub Actions execution and cloud transport](docs/GITHUB_ACTIONS.md) for credentials, limits and the optional connector transport required when a managed cloud blocks GitHub's artifact storage domain. Connector mode requires an external authorized agent; setting its cache variable alone does not download artifacts.
 
@@ -40,7 +40,7 @@ Future Acycle versions are loaded at runtime; required functions are checked and
 
 ## Validation and limitations
 
-The real conversation suite uses the published official Harness SDK and `deepseek-flash`, uploads files through its attachment store, and sends independent user turns from [four predeclared scenarios](tests/fixtures/conversation_scenarios.json). Only the natural-language prompts and attachments reach the model; expected operations and acceptance rules stay outside its context. It tests Newark detrending changes, SWA display changes, eCOCO window changes, and clarification when scientific context is missing. See [current acceptance](validation/ACCEPTANCE.md) for separate execution, delivery, steering and scientific-behavior results, including failures. Transport completion alone is not acceptance.
+The historical v0.4 conversation suite uses the published official Harness SDK and `deepseek-flash`, uploads files through its attachment store, and sends independent user turns from [four predeclared scenarios](tests/fixtures/conversation_scenarios.json). Only the natural-language prompts and attachments reach the model; expected operations and acceptance rules stay outside its context. It tests Newark detrending changes, SWA display changes, eCOCO window changes, and clarification when scientific context is missing. See [current acceptance](validation/v0.5/ACCEPTANCE.md) for separate execution, delivery, steering and scientific-behavior results, including failures. Transport completion alone is not acceptance. Version 0.5 separately exercises the complete Newark workflow with its public demonstration skill and disclosed priors; this preset-assisted case is not a blind method-selection benchmark.
 
 `scripts/harness_conversation.mjs --runtime /path/to/official-runtime --case CASE --workspace /new/study --output receipt.json` runs a case with the configured MATLAB backend. The [local handoff](docs/LOCAL_HANDOFF.zh-CN.md) explains runtime installation and the local MATLAB route. `--mode mock` checks infrastructure only; the older `live_*test.py` scripts test Python tool loops and do not establish a native Harness conversation.
 

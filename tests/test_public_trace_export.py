@@ -15,7 +15,9 @@ def test_nested_private_fields_and_stream_blocks_are_removed_without_touching_sc
     fixture = {'runtime': {'reasoningEffort': 'high'}, 'turns': [{
         'tool_results': [{'message': {'role': 'tool', 'summary': scientific,
                                     'content': [{'type': 'text', 'text': '{"summary":{"input_rows":2344}}'}]}}],
-        'nested': {'choices': [{'message': {'reasoning_content': 'PRIVATE', 'content': 'Visible answer'}}]},
+        'nested': {'choices': [{'message': {'reasoning_content': 'PRIVATE', 'reasoningContent': 'PRIVATE',
+                                            'reasoning_summary': 'PRIVATE', 'thinkingSignature': 'PRIVATE',
+                                            'content': 'Visible answer'}}]},
         'events': [{'type': 'assistant/message', 'data': {'message': {'content': [
             {'type': 'reasoning', 'text': 'PRIVATE'}, {'type': 'text', 'text': 'Visible answer'},
             {'type': 'tool-call', 'name': 'acycle_analyze', 'arguments': '{}'}]}}},
@@ -27,6 +29,7 @@ def test_nested_private_fields_and_stream_blocks_are_removed_without_touching_sc
     assert clean['runtime']['reasoningEffort'] == 'high'
     assert clean['turns'][0]['tool_results'][0]['message']['summary'] == scientific
     assert 'reasoning_content' not in clean['turns'][0]['nested']['choices'][0]['message']
+    assert clean['turns'][0]['nested']['choices'][0]['message'] == {'content': 'Visible answer'}
     assert [block['type'] for block in clean['turns'][0]['events'][0]['data']['message']['content']] == ['text', 'tool-call']
     assert len(clean['turns'][0]['events']) == 1
     assert clean['turns'][0]['final_response'] == fixture['turns'][0]['final_response']

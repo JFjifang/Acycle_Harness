@@ -17,8 +17,9 @@ import re
 
 
 DROP = object()
-PRIVATE_FIELDS = {'reasoning', 'reasoning_content', 'reasoning_details', 'reasoning_text',
-                  'thinking', 'thinking_content', 'thinking_text', 'thinking_signature'}
+PRIVATE_FIELDS = {'reasoning', 'reasoningcontent', 'reasoningdetails', 'reasoningtext',
+                  'reasoningsummary', 'reasoningsignature', 'thinking', 'thinkingcontent',
+                  'thinkingtext', 'thinkingsummary', 'thinkingsignature'}
 PRIVATE_TYPE = re.compile(r'(^|[._/-])(reasoning|thinking)([._/-]|$)', re.I)
 
 
@@ -45,7 +46,7 @@ def clean(value, counts=None, *, scientific=False, tool_context=False):
     tool_context = tool_context or value.get('role') == 'tool'
     result = {}
     for key, item in value.items():
-        if key in PRIVATE_FIELDS:
+        if re.sub(r'[_-]', '', key).lower() in PRIVATE_FIELDS:
             counts['removed_field:' + key] += 1
             continue
         # Tool-provided scientific summaries are not model reasoning. Tool text

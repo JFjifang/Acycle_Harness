@@ -20,4 +20,6 @@ validation/v0.4/scientific-runs/
 validation/v0.5/scientific-runs/
 validation/v0.5/matlab/
 validation/v0.5/matlab-final/
+validation/v0.5/matlab-transport/
 validation/v0.5/harness/
+validation/v0.5/failure-evidence/

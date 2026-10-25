@@ -36,7 +36,7 @@ Li et al. (2022), “Astrochronology of the Paleocene-Eocene Thermal Maximum on 
 
 最初的 `paper-petm-coco` 选择整个 Nanjemoy 不整合面以下数据至 214.558 m，采用 20 m LOESS、六周期、经典红噪声处理、论文速率网格和 2000 次模拟，但保留现代默认采样/相关设置。实际完成 2000 次模拟，最终运行用时 75.59 秒，最优速率 **26.43 cm/kyr**、速率网格全局 Monte Carlo p = **0.103948025987**，没有落入预先声明的 8–15 cm/kyr 区间。[MATLAB 原始比较回执](../validation/artifacts/expanded-release/paper-petm-coco-2000/published-comparison.json) 和这一失败案例均保留。
 
-补充材料的进一步审计找到明确差异：[Supplementary Text 3，pp.22–23](../benchmarks/sources/petm_2022_supplement.pdf) 含实际分析日志，[纯文本摘录](../benchmarks/sources/petm_2022_coco_protocol.txt) 可离线核对。原始文件名指定 187.54–211.24 m，经 20 m LOESS 和 0.01 m 线性插值后为 187.542–211.232 m、2370 点；采用 **Pearson**、NFFT **5000**、频率上限 **0.06 cycles/kyr**。初次案例实际使用更宽区间、0.005 m 中位间隔、Spearman、NFFT 8192 和 0.0641711 上限，因此不能把该次偏差仅归因于新旧算法，也不能声称其参数完整匹配原文。
+补充材料的进一步审计找到明确差异：[Supplementary Text 3，pp.22–23](../benchmarks/sources/petm_2022_supplement.pdf)（本地 PDF 仅完整研究包包含；也可从上文开放论文页面下载）含实际分析日志，[纯文本摘录](../benchmarks/sources/petm_2022_coco_protocol.txt) 可离线核对。原始文件名指定 187.54–211.24 m，经 20 m LOESS 和 0.01 m 线性插值后为 187.542–211.232 m、2370 点；采用 **Pearson**、NFFT **5000**、频率上限 **0.06 cycles/kyr**。初次案例实际使用更宽区间、0.005 m 中位间隔、Spearman、NFFT 8192 和 0.0641711 上限，因此不能把该次偏差仅归因于新旧算法，也不能声称其参数完整匹配原文。
 
 独立的 `paper-petm-coco-published-protocol` 根据这份可核实日志新建，原始 CSV 为 4364 点、187.542–211.237 m；所有去趋势与插值仍在 MATLAB 中完成。其他固定参数为一片段、六周期 `[125, 95, 39.8, 23.3, 22, 18.7]` kyr、0.13–30 cm/kyr（步长 0.1）、经典 AR1 相减和 2000 次模拟；种子 1 是本项目的可重现性选择。保留同一 8–15 cm/kyr 事前比较条件；新案例不是覆盖旧结果，也没有搜索参数以追求匹配。速率数组按 MATLAB 冒号语义生成，最后一点是 29.93。
 

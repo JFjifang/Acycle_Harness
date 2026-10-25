@@ -26,12 +26,29 @@ to dispatch workflows and read runs/artifacts. No DeepSeek API key is sent to
 GitHub. Input datasets, parameters and scientific outputs are sent to the selected
 repository's Actions service; choose the repository's visibility accordingly.
 
-Input transport accepts CSV/TXT/DAT/TSV files up to 1 MiB, subject to the tighter
-60,000-character encoded workflow-input limit after gzip compression. Larger
-inputs should run with local MATLAB. Every remote request has a unique token;
+Initial input transport accepts CSV/TXT/DAT/TSV files up to 1 MiB, subject to the
+tighter 60,000-character encoded workflow-input limit after gzip compression.
+Larger unregistered inputs should run with local MATLAB. Version 0.5 reuses
+unchanged, registered outputs from an earlier run in the same repository through
+an artifact reference. For example, a three-column filtered curve can become
+the tuning input without re-encoding it into workflow arguments or dropping its
+envelope column. The worker verifies the source workflow, full ZIP digest,
+canonical member path and exact input digest, then passes the original bytes to
+MATLAB. The 1 MiB input bound still applies. An expired artifact or changed file
+is an explicit error. This route requires `actions: read`; the workflow's token
+is scoped to the preparation step and never appears in the request.
+
+Every remote request has a unique token;
 results are matched to that exact token and include the run URL, source commit,
 upstream revision, artifact SHA-256 and transport used. MATLAB writes the data,
 figures and numerical results. Python transports files and records provenance.
+
+`remote-request.json` retains the dispatch token and input hash before the
+single POST. Read-only GitHub requests retry transient HTTP errors within a
+small bound. If a dispatch response is ambiguous, the backend looks for the
+existing run with that token; it never repeats the POST. Failure to confirm the
+run remains an error with retained evidence. These are transport checks, not
+automatic retries of a failed MATLAB calculation.
 
 ## Standard artifact retrieval
 

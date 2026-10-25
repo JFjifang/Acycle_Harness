@@ -80,6 +80,14 @@ def test_old_retrieval_is_not_a_new_scientific_run_and_structured_failures_remai
     assert len(errors) == 1
 
 
+def test_unreturned_scientific_request_is_not_silently_ignored():
+    turn = {'tool_calls': [{'callId': 'read', 'name': 'acycle_get_run'},
+                           {'callId': 'first', 'name': 'acycle_tune'},
+                           {'callId': 'pending', 'name': 'acycle_tune'}],
+            'tool_results': [{'message': {'toolCallId': 'first', 'content': []}}]}
+    assert audit.unreturned_scientific_calls(turn) == [{'callId': 'pending', 'name': 'acycle_tune'}]
+
+
 def test_transport_projection_does_not_pretend_the_original_file_hash_matches(tmp_path):
     runs, manifest = fixture_records(tmp_path)
     source = Path(runs['depth']['artifacts']['filtered_csv'])
@@ -92,3 +100,34 @@ def test_transport_projection_does_not_pretend_the_original_file_hash_matches(tm
     assert result['required_products_and_lineage'] == 'failed'
     assert result['transport_projection']['status'] == 'exact_two_column_tokens_preserved'
     assert result['transport_projection']['direct_file_hash_and_automatic_lineage_preserved'] is False
+
+
+def test_followup_preserves_all_parameters_except_requested_windows(tmp_path):
+    import copy
+    runs, manifest = fixture_records(tmp_path)
+    branch = copy.deepcopy(runs['ecoco'])
+    branch.update(run_id='ecoco-followup', parent_run_id='ecoco',
+                  steering={'parameter_patch': {'window': 800, 'step': 200}})
+    branch['parameters'].update(window=800, step=200)
+    witnesses = {branch['run_id']: {'artifact_sha256': {role: audit.digest(path) for role, path in branch['artifacts'].items()}}}
+    result = audit.followup_checks(1, [branch], list(runs.values()), manifest, LocalEvidence(), witnesses)
+    assert result['status'] == 'passed'
+    branch['parameters']['seed'] = 999
+    result = audit.followup_checks(1, [branch], list(runs.values()), manifest, LocalEvidence(), witnesses)
+    assert result['status'] == 'failed'
+    assert next(item for item in result['checks'] if item['id'] == 'only_declared_changes_or_recorded_derived_defaults')['status'] == 'failed'
+
+
+def test_artifact_integrity_uses_original_live_message_not_mutated_result_record(tmp_path):
+    original = tmp_path / 'spectrum.csv'
+    original.write_bytes(b'original MATLAB output bytes\n')
+    frozen = tmp_path / 'input.csv'
+    frozen.write_bytes(b'unchanged input bytes\n')
+    witness = {'artifact_sha256': {'spectrum_csv': audit.digest(original)}}
+    run = {'run_id': 'run', 'operation': 'analyze', 'status': 'completed',
+           'input_path': str(frozen), 'input_sha256': audit.digest(frozen),
+           'artifacts': {'spectrum_csv': str(original)}}
+    assert audit.check_record(run, witness, LocalEvidence())['all_artifact_bytes_preserved'] == 'passed'
+    original.write_bytes(b'changed output after the conversation\n')
+    run['artifact_sha256'] = {'spectrum_csv': audit.digest(original)}
+    assert audit.check_record(run, witness, LocalEvidence())['all_artifact_bytes_preserved'] == 'failed'

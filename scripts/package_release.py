@@ -57,7 +57,15 @@ def main():
                 continue
             relative=p.relative_to(ROOT)
             compact_version_evidence = relative.parts[0] == 'validation' and len(relative.parts) == 3 and relative.parts[1] in {'v0.4','v0.5'} and p.suffix in {'.md', '.json'}
-            if relative.parts[0]=='validation' and not compact_version_evidence and (len(relative.parts)!=2 or relative.name not in {
+            current_delivery_evidence = relative.parts[:2] == ('validation','v0.5') and len(relative.parts)>3 and relative.parts[2] in {'local','engineering','web'}
+            compact_paper_evidence = relative.as_posix() in {
+                'validation/artifacts/expanded-release/swa-lavernock-publication/swa-spectrum.csv',
+                'validation/artifacts/expanded-release/swa-lavernock-publication/swa-spectrum.png',
+                'validation/artifacts/expanded-release/paper-petm-coco-2000/published-comparison.json',
+                'validation/artifacts/expanded-release/paper-petm-published-protocol-coco-2000/published-comparison.json',
+                'validation/artifacts/expanded-release/paper-cambrian-ecoco-199/published-comparison.json',
+            }
+            if relative.parts[0]=='validation' and not compact_version_evidence and not current_delivery_evidence and not compact_paper_evidence and (len(relative.parts)!=2 or relative.name not in {
                 'ACCEPTANCE.md','NEWARK.md','matlab-summary.json','release-verification.json',
                 'native-plugin-smoke.json','python-tests.txt','node-tests.txt','paper-validation.json','local-handoff-checks.json','local-bundle-check.json','local-config-fix.json','local-install-check-v04.json'}):
                 continue
@@ -71,7 +79,7 @@ def main():
         with zipfile.ZipFile(handoff) as kit:
             for entry in kit.infolist():
                 output.writestr(entry,kit.read(entry.filename))
-        for evidence in ['web','public-harness','scientific-runs']:
+        for evidence in ['public-harness','scientific-runs']:
             for p in sorted((ROOT/'validation'/'v0.5'/evidence).rglob('*')):
                 if p.is_file():
                     output.write(p,Path('acycle-deepseek')/p.relative_to(ROOT))

@@ -192,7 +192,8 @@ def _validate_parameters(operation, parameters):
             raise ValueError('sedimentation_rate_max must exceed sedimentation_rate_min')
 
 
-def _analyze(root, arguments, operation='analyze', *, steering=None, explicit_parameters=None):
+def _analyze(root, arguments, operation='analyze', *, steering=None, explicit_parameters=None,
+             inherited_artifact_reference=None):
     source = _input_path(root, arguments['input_path'])
     parameters = arguments.get('parameters', {})
     tuning_reference = None
@@ -282,6 +283,12 @@ def _analyze(root, arguments, operation='analyze', *, steering=None, explicit_pa
                     break
     except (ValueError, KeyError):
         pass
+    if input_artifact_reference is None and inherited_artifact_reference is not None:
+        if (not isinstance(inherited_artifact_reference, dict)
+                or inherited_artifact_reference.get('input_sha256') != record['input_sha256']):
+            raise ValueError('Saved branch artifact reference differs from frozen input bytes')
+        input_artifact_reference = dict(inherited_artifact_reference)
+        record['input_artifact_reference'] = input_artifact_reference
     if steering is not None:
         record['steering'] = steering
     _write(run_dir / 'request.json', record)
@@ -411,7 +418,8 @@ def _run_branch(root, baseline, prepared, label):
     operation, parameters, explicit, steering = prepared
     return _analyze(root, {'input_path': baseline['input_path'], 'parameters': parameters,
                           'parent_run_id': baseline['run_id'], 'label': label}, operation,
-                    steering=steering, explicit_parameters=explicit)
+                    steering=steering, explicit_parameters=explicit,
+                    inherited_artifact_reference=baseline.get('input_artifact_reference'))
 
 
 def dispatch(name, args, workspace='.'):

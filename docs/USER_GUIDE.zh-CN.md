@@ -87,6 +87,8 @@ run_validation(getenv('ACYCLE_ROOT'), fullfile(pwd,'local-validation','matlab-fu
 
 科学输入是两列数值文本（CSV/TXT/DAT/TSV）：第一列为深度或时间坐标，第二列为 proxy。文件必须位于指定工作区或 `ACYCLE_ROOT` 内。Excel 可先按明确的 sheet、行、列导出为两列文本；这种文件转换可以用 Python，但不应在转换时悄悄滤波、平滑或改动单位。
 
+GitHub Actions 后端另有传输限制：初始文件不超过 1 MiB，并且 gzip 编码后的完整 workflow 请求不超过 60,000 字符。0.5 对**同一仓库前次运行中已注册、字节未改变的产物**自动使用 artifact 引用，避免把较大的过滤曲线重新塞进请求；原始字节、列数和精度保持不变，worker 核对来源 workflow、ZIP 与输入哈希及成员路径，1 MiB 文件上限仍适用。未注册的大初始输入仍受上述编码限制，应使用本地 MATLAB；过期 artifact 或文件变化会明确报错，不能靠删掉包络列或降低精度绕过。详情见 [GITHUB_ACTIONS.md](GITHUB_ACTIONS.md)。
+
 | 工具 | 用途 |
 | --- | --- |
 | `acycle_capabilities` | 查看已配置后端与支持方法；不能单凭此结果认定 MATLAB 已执行 |

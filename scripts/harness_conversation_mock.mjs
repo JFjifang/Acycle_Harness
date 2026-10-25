@@ -10,7 +10,7 @@ export async function apply(ctx, config) {
   const require = createRequire(join(config.runtimeRoot, 'package.json'))
   const { LlmAdapter } = await import(pathToFileURL(require.resolve('@deepseek-ai/dsh-llm')).href)
   class FixtureAdapter extends LlmAdapter {
-    step = 0
+    step = config.initialStep ?? 0
     async * stream(options) {
       const step = this.step++
       const names = ['skill', 'acycle_capabilities', 'acycle_import_attachment', null, 'acycle_inspect']
