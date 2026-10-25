@@ -128,3 +128,35 @@ def test_remote_run_correlated_by_token_and_output_relocated(tmp_path, monkeypat
     assert result['artifacts']['spectrum'] == str(output / 'spectrum.csv')
     assert (output / 'spectrum.csv').exists()
     assert not any('/runs/99' in ' '.join(args) for args in requests)
+
+
+def test_connector_cache_checks_digest_and_emits_no_signed_urls(tmp_path, monkeypatch):
+    import hashlib
+    from acycle_deepseek.github_backend import _download_artifact, _safe_error
+    cache = tmp_path / 'connector-cache'
+    cache.mkdir()
+    data = b'archive-content'
+    (cache / '42.zip').write_bytes(data)
+    monkeypatch.setenv('ACYCLE_ARTIFACT_CACHE', str(cache))
+    artifact = {'id': 42, 'digest': 'sha256:' + hashlib.sha256(data).hexdigest()}
+    transport, digest = _download_artifact('owner/repo', artifact, tmp_path / 'out.zip', 'acycle-test', {'id': 1, 'html_url': 'https://github.com/owner/repo/actions/runs/1'})
+    assert transport == 'github_connector_cache'
+    assert digest == hashlib.sha256(data).hexdigest()
+    assert not (cache / 'pending' / 'acycle-test.json').exists()
+    assert (tmp_path / 'out.zip').read_bytes() == data
+    assert _safe_error('Get "https://blob.example/file.zip?sig=secret": Forbidden') == 'Get "[redacted-url]": Forbidden'
+    artifact['digest'] = 'sha256:' + '0' * 64
+    with pytest.raises(GitHubBackendError, match='SHA-256'):
+        _download_artifact('owner/repo', artifact, tmp_path / 'bad.zip', 'acycle-test2', {'id': 1, 'html_url': 'url'})
+
+
+def test_connector_wait_has_bounded_actionable_failure(tmp_path, monkeypatch):
+    from acycle_deepseek.github_backend import _download_artifact
+    cache = tmp_path / 'cache'
+    monkeypatch.setenv('ACYCLE_ARTIFACT_CACHE', str(cache))
+    monkeypatch.setenv('ACYCLE_ARTIFACT_CACHE_TIMEOUT', '0')
+    with pytest.raises(GitHubBackendError, match='do not rerun'):
+        _download_artifact('owner/repo', {'id': 42}, tmp_path / 'out.zip', 'acycle-test', {'id': 1, 'html_url': 'url'})
+    pending = json.loads((cache / 'pending' / 'acycle-test.json').read_text())
+    assert pending['repo'] == 'owner/repo'
+    assert pending['artifact_id'] == 42

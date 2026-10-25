@@ -9,7 +9,7 @@ from acycle_deepseek.deepseek import run_conversation
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--workspace", default=".")
-    parser.add_argument("--input", default="examples/data/series.csv")
+    parser.add_argument("--input", default="benchmarks/data/petm_2022_ms_194_200m.csv")
     parser.add_argument("--output", default="validation/deepseek-live.json")
     parser.add_argument("--model", default="deepseek-flash")
     parser.add_argument("--max-rounds", type=int, default=12)

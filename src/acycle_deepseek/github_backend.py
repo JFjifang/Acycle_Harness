@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import base64
 import gzip
+import hashlib
 import json
 import os
 from pathlib import Path, PurePosixPath
@@ -35,8 +36,64 @@ def _gh(arguments: list[str], *, payload: dict | None = None, timeout: float = 6
         capture_output=True, text=True, timeout=timeout, check=False,
     )
     if process.returncode:
-        raise GitHubBackendError('GitHub CLI failed: ' + process.stderr.strip()[-2000:])
+        raise GitHubBackendError('GitHub CLI failed: ' + _safe_error(process.stderr))
     return process.stdout
+
+
+def _safe_error(message: str) -> str:
+    # gh can include temporary signed artifact URLs in errors. Their query
+    # strings are bearer credentials and must never enter tool receipts/logs.
+    message = re.sub(r"https?://[^\s\"']+", '[redacted-url]', message)
+    return message.strip()[-2000:]
+
+
+def _download_artifact(repository: str, artifact: dict[str, Any], archive: Path,
+                       token: str, remote_run: dict[str, Any]) -> tuple[str, str]:
+    cache_value = os.environ.get('ACYCLE_ARTIFACT_CACHE')
+    if cache_value:
+        # Explicit connector mode: an authorized host service fulfills this
+        # request using GitHub's connector and atomically places the ZIP here.
+        # No request is sent to the cloud policy-blocked storage destination.
+        cache = Path(cache_value).resolve()
+        pending_dir = cache / 'pending'
+        pending_dir.mkdir(parents=True, exist_ok=True)
+        cached = cache / f'{artifact["id"]}.zip'
+        pending = pending_dir / f'{token}.json'
+        pending_tmp = pending.with_suffix('.tmp')
+        pending_tmp.write_text(json.dumps({
+            'repo': repository, 'artifact_id': artifact['id'],
+            'run_id': remote_run['id'], 'run_url': remote_run['html_url'],
+            'token': token, 'destination': str(cached),
+        }, indent=2), encoding='utf-8')
+        pending_tmp.replace(pending)
+        deadline = time.monotonic() + float(os.environ.get('ACYCLE_ARTIFACT_CACHE_TIMEOUT', '300'))
+        while not cached.is_file():
+            if time.monotonic() >= deadline:
+                raise GitHubBackendError(
+                    f'Waiting for authorized GitHub connector artifact {artifact["id"]} timed out; '
+                    f'fulfill {pending}. MATLAB run already completed; do not rerun the analysis.')
+            time.sleep(min(1, max(0, deadline - time.monotonic())))
+        if cached.is_symlink():
+            raise GitHubBackendError('Connector cache must contain a regular ZIP, not a symlink')
+        shutil.copyfile(cached, archive)
+        transport = 'github_connector_cache'
+    else:
+        with archive.open('wb') as stream:
+            process = subprocess.run(
+                ['gh', 'api', f'repos/{repository}/actions/artifacts/{artifact["id"]}/zip'],
+                stdout=stream, stderr=subprocess.PIPE, timeout=120, check=False,
+            )
+        if process.returncode:
+            raise GitHubBackendError('Cannot download MATLAB artifact: ' +
+                                     _safe_error(process.stderr.decode(errors='replace')))
+        transport = 'gh'
+    digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+    expected = artifact.get('digest')
+    if expected and expected != 'sha256:' + digest:
+        raise GitHubBackendError('Artifact SHA-256 does not match GitHub receipt')
+    if cache_value:
+        pending.unlink(missing_ok=True)
+    return transport, digest
 
 
 def _payload(request: dict[str, Any]) -> str:
@@ -147,13 +204,8 @@ class GitHubBackend:
         with tempfile.TemporaryDirectory(prefix='acycle-gh-', dir=output_dir.parent) as temp:
             staging = Path(temp)
             archive = staging / 'artifact.zip'
-            with archive.open('wb') as stream:
-                process = subprocess.run(
-                    ['gh', 'api', f'repos/{self.repository}/actions/artifacts/{artifacts[0]["id"]}/zip'],
-                    stdout=stream, stderr=subprocess.PIPE, timeout=120, check=False,
-                )
-            if process.returncode:
-                raise GitHubBackendError('Cannot download MATLAB artifact: ' + process.stderr.decode(errors='replace')[-2000:])
+            artifact_transport, artifact_sha256 = _download_artifact(
+                self.repository, artifacts[0], archive, token, remote_run)
             extracted = staging / 'files'
             _extract_safely(archive, extracted)
             responses = list(extracted.rglob('response.json'))
@@ -170,6 +222,7 @@ class GitHubBackend:
             'backend': 'github-actions-matlab', 'run_id': run_id, 'run_url': run_url,
             'head_sha': remote_run.get('head_sha'), 'conclusion': remote_run.get('conclusion'),
             'request_token': token, 'acycle_revision': transport.get('acycle_revision'),
+            'artifact_transport': artifact_transport, 'artifact_sha256': artifact_sha256,
         }
         (output_dir / 'response.json').write_text(json.dumps(response, indent=2), encoding='utf-8')
         if remote_run.get('conclusion') != 'success':

@@ -26,6 +26,8 @@ export ACYCLE_GITHUB_REF=main
 
 Each analysis dispatches the repository's MATLAB workflow and downloads its outputs. Input data is transmitted to that repository's Actions run; choose a private repository for private data. The transport supports files up to 1 MiB subject to GitHub's encoded workflow-input limit; use local MATLAB for larger inputs. The DeepSeek API key stays in the caller environment and is never sent to GitHub.
 
+See [GitHub Actions execution and cloud transport](docs/GITHUB_ACTIONS.md) for credentials, limits and the optional connector transport required when a managed cloud blocks GitHub's artifact storage domain. Connector mode requires an external authorized agent; setting its cache variable alone does not download artifacts.
+
 ## Harness and model access
 
 See [plugin/README.md](plugin/README.md) for the native Cordis plugin. MCP is available through `python -m acycle_deepseek.mcp`. Both interfaces use the same six Python tools and MATLAB adapter. Set `DEEPSEEK_API_KEY` only in the process environment and run `scripts/live_deepseek_test.py` for a real model/tool test. The official API model ID `deepseek-flash` identifies DeepSeek-V4.1-Flash.

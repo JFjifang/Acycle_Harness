@@ -30,6 +30,7 @@ def main():
         paths.extend(p for p in (ROOT/name).rglob('*') if p.is_file() and not any(part in {'node_modules','__pycache__','.pytest_cache'} for part in p.parts))
     # Include reviewable receipts and reports, but not large downloaded CI caches.
     paths.extend(p for p in (ROOT/'validation').glob('*') if p.is_file())
+    paths.extend(p for p in (ROOT/'validation'/'live-runs').rglob('*') if p.is_file())
     paths.extend(artifacts+[dist/'SHA256SUMS.json'])
     with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_DEFLATED) as output:
         for p in sorted(set(paths)):

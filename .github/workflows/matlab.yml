@@ -69,3 +69,15 @@ jobs:
             validation/matlab/
           if-no-files-found: warn
           retention-days: 14
+      - name: Upload compact validation report
+        if: always() && env.ACYCLE_REQUEST == ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: acycle-validation-report
+          path: |
+            validation/matlab/validation-summary.json
+            validation/matlab/junit.xml
+            validation/matlab/**/*.json
+            validation/matlab/**/*.png
+          if-no-files-found: warn
+          retention-days: 14
