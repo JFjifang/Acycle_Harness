@@ -93,6 +93,14 @@ def test_bad_tool_arguments_fail_before_execution(workspace, matlab_stub, name, 
     assert not matlab_stub
 
 
+@pytest.mark.parametrize('parameters', [{'unknown_algorithm': 'python'}, [], None])
+def test_invalid_parameter_object_rejected_before_matlab_dispatch(workspace, matlab_stub, parameters):
+    with pytest.raises(ValueError):
+        analyze(workspace, parameters=parameters)
+    assert not matlab_stub
+    assert not (workspace / '.acycle').exists()
+
+
 @pytest.mark.parametrize('input_form', ['relative', 'absolute', 'symlink'])
 def test_input_cannot_escape_workspace(workspace, matlab_stub, input_form):
     outside = workspace.parent / 'outside.csv'
@@ -134,6 +142,17 @@ def test_run_storage_cannot_follow_symlink_outside_workspace(workspace, matlab_s
         analyze(workspace)
     assert not list(outside.iterdir())
     assert not matlab_stub
+
+
+def test_saved_result_symlink_cannot_expose_external_json(workspace):
+    outside = workspace.parent / 'external.json'
+    outside.write_text('{"private": true}')
+    run_id = '20261025T000000Z-' + 'a' * 12
+    run = workspace / '.acycle' / 'runs' / run_id
+    run.mkdir(parents=True)
+    (run / 'result.json').symlink_to(outside)
+    with pytest.raises(ValueError):
+        tools.dispatch('acycle_get_run', {'run_id': run_id}, workspace)
 
 
 @pytest.mark.parametrize('parameter,values', [('unknown', [1]), ('span', []), ('span', [0.2]*13), ('span', '0.3')])

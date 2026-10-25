@@ -50,6 +50,8 @@ def _run_path(root, run_id):
 
 def _get(root, run_id):
     path = _run_path(root, run_id) / 'result.json'
+    if not path.resolve().is_relative_to(root):
+        raise ValueError('Saved result must remain inside workspace')
     if not path.is_file():
         raise ValueError(f'Unknown run: {run_id}')
     return json.loads(path.read_text(encoding='utf-8'))
@@ -130,6 +132,7 @@ def _analyze(root, arguments):
                              'operation':'analyze', 'parameters':parameters})
         record.update({'status':'completed', 'result':response})
         record['summary'] = response.get('summary', {})
+        record['effective_parameters'] = response.get('parameters', parameters)
         record['artifacts'] = response.get('artifacts', {})
         record['provenance'] = response.get('provenance', {})
     except Exception as exc:
@@ -154,11 +157,14 @@ def dispatch(name, args, workspace='.'):
         raise ValueError(f'Invalid arguments: unknown={sorted(extras)}, missing={sorted(missing)}')
     root = _root(workspace)
     if name == 'acycle_capabilities':
+        remote = os.environ.get('ACYCLE_BACKEND','local') == 'github'
         return {'version':'0.2.0', 'scientific_backend':'MATLAB/Acycle',
                 'backend':os.environ.get('ACYCLE_BACKEND','local'),
                 'matlab_available':bool(shutil.which(os.environ.get('MATLAB_EXECUTABLE','matlab'))),
                 'acycle_root':os.environ.get('ACYCLE_ROOT'),
                 'github_repository':os.environ.get('ACYCLE_GITHUB_REPO'),
+                'remote_backend_configured':remote and bool(os.environ.get('ACYCLE_GITHUB_REPO')),
+                'execution_note':('GitHub backend runs MATLAB remotely; local matlab_available does not indicate remote readiness. A dispatched run verifies execution.' if remote else 'Local backend requires MATLAB_EXECUTABLE and ACYCLE_ROOT.'),
                 'python_numerical_fallback':False,
                 'operations':['mini_robot','mtm_rednoise','evolution','filter_envelope','age_model'],
                 'limits':['pointwise significance is not proof of astronomical forcing',
@@ -198,7 +204,7 @@ def dispatch(name, args, workspace='.'):
         if not isinstance(ids,list) or not 2 <= len(ids) <= 20:
             raise ValueError('Provide 2–20 run IDs')
         records = [_get(root,r) for r in ids]
-        return {'runs':[{k:r.get(k) for k in ['run_id','status','label','parent_run_id','input_sha256','parameters','summary','artifacts','provenance']} for r in records],
+        return {'runs':[{k:r.get(k) for k in ['run_id','status','label','parent_run_id','input_sha256','parameters','effective_parameters','summary','artifacts','provenance']} for r in records],
                 'note':'Comparison reports existing MATLAB results and metadata; infer robustness with sampling, chronology and independent geological constraints.'}
     raise AssertionError('Unreachable tool dispatch')
 

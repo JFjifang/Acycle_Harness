@@ -26,7 +26,9 @@ raw=flipud(raw);
 p=struct('detrend','linear','dt',0.5,'evolution',true, ...
     'filter_band',[0.04,0.06],'filter_method','taner_hilbert');
 [r,s]=runFixture(testCase,'synthetic-parity',raw,p);
-reference=findduplicate(sortrows(raw(all(isfinite(raw),2),:)));
+% Compare the same serialized input. CSV round-tripping perturbs the original
+% in-memory values enough to change an unconstrained nonlinear fit slightly.
+reference=findduplicate(sortrows(s.raw(all(isfinite(s.raw),2),:)));
 reference=interpolate(reference,0.5);
 line=polyfit(reference(:,1),reference(:,2),1);
 reference(:,2)=reference(:,2)-(reference(:,1)*line(1)+line(2));
@@ -94,6 +96,25 @@ verifyEqual(testCase,s.filtered.filtered,g.filtered,'AbsTol',1e-12);
 assertFigures(testCase,r);
 end
 
+function testPublishedPaperDataWorkflow(testCase)
+% Real source-data workflow tests, NOT reproduction of published chronology.
+% PETM paper: 10.1038/s41467-022-33390-x, selected MS interval 194-200 m.
+% Cambrian paper: 10.1038/s41467-022-29651-4, auxiliary GR record (not Al).
+repository=fileparts(fileparts(fileparts(mfilename('fullpath'))));
+files={'petm_2022_ms_194_200m.csv','cambrian_2022_gamma_ray.csv'};
+for k=1:numel(files)
+    input=fullfile(repository,'benchmarks','data',files{k});
+    [~,name]=fileparts(input);
+    [r,s]=runFixture(testCase,['paper-data-' name],input, ...
+        struct('coordinate_unit','m','evolution',true));
+    verifyEqual(testCase,r.status,'success');
+    verifyTrue(testCase,all(isfinite(s.robust),'all'));
+    verifyTrue(testCase,all(isfinite(s.evolution.amplitude),'all'));
+    verifyGreaterThan(testCase,r.summary.processed_rows,100);
+    assertFigures(testCase,r);
+end
+end
+
 function testTiePointAgeModel(testCase)
 x=(0:0.5:100)'; y=sin(2*pi*x/10);
 p=struct('detrend','mean','evolution',false, ...
@@ -130,6 +151,46 @@ verifyError(testCase,@()acycle_batch(requestPath,responsePath),'Harness:OutputEx
 after=dir(r.artifacts.analysis_mat);
 verifyEqual(testCase,after.bytes,info.bytes);
 verifyEqual(testCase,fileread(responsePath),originalResponse);
+end
+
+function testNonphysicalFitUsesOriginalGridSearch(testCase)
+% Pure sinusoid exposes the unconstrained optimizer's complex result on the
+% pinned R2024b CI. An installation already using upstream's grid fallback
+% legitimately returns a physical fit from redconfML itself.
+x=(0:0.5:40)'; y=sin(x);
+[r,s]=runFixture(testCase,'nonphysical-fit-regression',[x,y], ...
+    struct('detrend','mean','evolution',false));
+[rho,s0,classic,robust]=redconfML(s.processed(:,2),r.parameters.dt,2, ...
+    r.parameters.nfft,2,0.25,r.parameters.fmax,0,r.parameters.fit_fmax);
+physical=isreal(rho)&&isreal(s0)&&abs(rho)<1&&s0>0&& ...
+    isreal(robust)&&all(isfinite(robust),'all')&&all(robust(:,3:end)>0,'all');
+if physical
+    verifyEqual(testCase,r.summary.robust_fit_method,'original_redconfML');
+    verifyEqual(testCase,s.robust,robust,'RelTol',1e-11,'AbsTol',1e-12);
+else
+    verifyEqual(testCase,r.summary.robust_fit_method, ...
+        'original_minirhos0_after_invalid_optimizer_fit');
+    f=classic(:,1); power=classic(:,2);
+    smoothPower=moveMedian(power,round(0.25*numel(f)));
+    [rho,s0]=minirhos0(mean(smoothPower),r.summary.nyquist,f,smoothPower,2);
+    background=s0*(1-rho^2)./(1-2*rho*cos(pi*f/r.summary.nyquist)+rho^2);
+    dof=2*acycleMtmTaperCount(2);
+    expected=[f,power,background,background*chi2inv([0.9,0.95,0.99,0.999],dof)/dof];
+    verifyEqual(testCase,s.robust,expected,'RelTol',1e-11,'AbsTol',1e-12);
+    fig=openfig(r.artifacts.spectrum_fig,'invisible');
+    cleanup=onCleanup(@()close(fig)); %#ok<NASGU>
+    plotted=findall(fig,'Type','line');
+    matched=false;
+    for j=1:numel(plotted)
+        values=get(plotted(j),'YData');
+        if numel(values)==numel(background) && ...
+                max(abs(values(:)-background))<1e-12
+            matched=true;
+        end
+    end
+    verifyTrue(testCase,matched,'Fallback plot must contain the saved background.');
+end
+verifyTrue(testCase,isreal(s.robust)&&all(isfinite(s.robust),'all'));
 end
 
 function [result,saved] = runFixture(testCase,name,input,parameters)

@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "upstream": {
+    "repository": "https://github.com/mingsongli/acycle",
+    "branch": "master",
+    "validated_source_candidate": "dcba4279168745b563e0535b954297023dd62fc7"
+  },
+  "execution_backend": "MATLAB/Acycle originals; Python orchestration only",
+  "status_policy": "Manifest entries describe tests. Consult actual validation receipts for completed execution and pass/fail.",
+  "cases": [
+    {
+      "id": "official-la2004",
+      "kind": "official_example",
+      "runnable": true,
+      "input": {
+        "root": "acycle",
+        "path": "data/Examples/Example-La2004-1E.5T-1P-0-2000.txt",
+        "sha256": "9653ac0d10ea7e4bad40afd4b553bacc3901b9c38e88b3da598e12f23565354f"
+      },
+      "parameters": {
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "smooth_fraction": 0.25,
+        "evolution": true,
+        "coordinate_unit": "kyr"
+      },
+      "scope": "Astronomical ETP example; workflow and axes test, not astronomical solution recomputation.",
+      "documentation_url": "https://github.com/mingsongli/acycle/wiki/Examples",
+      "acceptance": [
+        "completed MATLAB response",
+        "original-source provenance",
+        "MATLAB processed data and spectra",
+        "MATLAB figures saved"
+      ],
+      "execution_status": "not_asserted_by_manifest"
+    },
+    {
+      "id": "official-guandao",
+      "kind": "official_example",
+      "runnable": true,
+      "input": {
+        "root": "acycle",
+        "path": "data/Examples/Example-Guandao2AnisianGR.txt",
+        "sha256": "f357613a31445cbec7658aa2fcf4b65b8c1945e98b1befe5b82223a1c6a8ddec"
+      },
+      "parameters": {
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "smooth_fraction": 0.25,
+        "evolution": true,
+        "coordinate_unit": "m"
+      },
+      "scope": "Official Anisian gamma-ray example; sorting, interpolation and mini robot workflow.",
+      "documentation_url": "https://github.com/mingsongli/acycle/wiki/Examples",
+      "acceptance": [
+        "completed MATLAB response",
+        "original-source provenance",
+        "MATLAB processed data and spectra",
+        "MATLAB figures saved"
+      ],
+      "execution_status": "not_asserted_by_manifest"
+    },
+    {
+      "id": "official-wayao",
+      "kind": "official_example",
+      "runnable": true,
+      "input": {
+        "root": "acycle",
+        "path": "data/Examples/Example-WayaoCarnianGR0.txt",
+        "sha256": "f39dcc29be09cd5a07ef1dcdd20c6fa30499213c204ce4897ac02d9f6f086c21"
+      },
+      "parameters": {
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "smooth_fraction": 0.25,
+        "evolution": true,
+        "coordinate_unit": "m"
+      },
+      "scope": "Official Carnian gamma-ray example; mini robot baseline and optional sensitivity branches.",
+      "documentation_url": "https://github.com/mingsongli/acycle/wiki/Examples",
+      "acceptance": [
+        "completed MATLAB response",
+        "original-source provenance",
+        "MATLAB processed data and spectra",
+        "MATLAB figures saved"
+      ],
+      "execution_status": "not_asserted_by_manifest"
+    },
+    {
+      "id": "official-svalbard",
+      "kind": "official_example",
+      "runnable": true,
+      "input": {
+        "root": "acycle",
+        "path": "data/Examples/Example-SvalbardPETM-logFe.txt",
+        "sha256": "bb7235a5afa92ca689a586c43d95a4820fe5dfb1c779d582306fedba8245bf89"
+      },
+      "parameters": {
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "smooth_fraction": 0.25,
+        "evolution": true,
+        "coordinate_unit": "m"
+      },
+      "scope": "Official PETM logFe example; mini robot workflow, not reproduction of PETM chronology.",
+      "documentation_url": "https://github.com/mingsongli/acycle/wiki/Examples",
+      "acceptance": [
+        "completed MATLAB response",
+        "original-source provenance",
+        "MATLAB processed data and spectra",
+        "MATLAB figures saved"
+      ],
+      "execution_status": "not_asserted_by_manifest"
+    },
+    {
+      "id": "official-rednoise",
+      "kind": "official_example",
+      "runnable": true,
+      "input": {
+        "root": "acycle",
+        "path": "data/Examples/Example-Rednoise0.7-2000.txt",
+        "sha256": "cad728ce0b45b7b654e6d822b5a206fcbc7841c18e2efb2bf18fdc0a876041e3"
+      },
+      "parameters": {
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "smooth_fraction": 0.25,
+        "evolution": true,
+        "coordinate_unit": "sample"
+      },
+      "scope": "Negative control: original MATLAB processing and qualified interpretation; pointwise peaks may occur.",
+      "documentation_url": "https://github.com/mingsongli/acycle/wiki/Examples",
+      "acceptance": [
+        "completed MATLAB response",
+        "original-source provenance",
+        "MATLAB processed data and spectra",
+        "MATLAB figures saved"
+      ],
+      "execution_status": "not_asserted_by_manifest"
+    },
+    {
+      "id": "official-newark",
+      "kind": "official_example",
+      "runnable": true,
+      "input": {
+        "root": "acycle",
+        "path": "data/Examples/Example-LateTriassicNewarkDepthRank.txt",
+        "sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2"
+      },
+      "parameters": {
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "smooth_fraction": 0.25,
+        "evolution": true,
+        "coordinate_unit": "m"
+      },
+      "scope": "Official Newark depth-rank example; additional core workflow coverage.",
+      "documentation_url": "https://github.com/mingsongli/acycle/wiki/Examples",
+      "acceptance": [
+        "completed MATLAB response",
+        "original-source provenance",
+        "MATLAB processed data and spectra",
+        "MATLAB figures saved"
+      ],
+      "execution_status": "not_asserted_by_manifest"
+    },
+    {
+      "id": "paper-petm-ms",
+      "kind": "paper_data_workflow",
+      "runnable": true,
+      "input": {
+        "root": "benchmarks",
+        "path": "data/petm_2022_ms_194_200m.csv",
+        "sha256": "2538e6cf4e3c41ce2de1299a60319dd45de933bfeccdd7707c9587d5db8aac5e",
+        "extraction_receipt": "data/petm_2022_ms_194_200m.provenance.json"
+      },
+      "parameters": {
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "smooth_fraction": 0.25,
+        "evolution": true,
+        "coordinate_unit": "m"
+      },
+      "paper_doi": "10.1038/s41467-022-33390-x",
+      "paper_url": "https://doi.org/10.1038/s41467-022-33390-x",
+      "scope": "Paper-data workflow smoke test on selected 194–200 m magnetic-susceptibility interval; no published Lomb–Scargle/COCO/ASM/chronology reproduction.",
+      "published_result_reproduction": false,
+      "acceptance": [
+        "completed MATLAB response",
+        "source and extraction checksums",
+        "finite outputs checked by MATLAB validation",
+        "MATLAB figures saved"
+      ],
+      "execution_status": "not_asserted_by_manifest"
+    },
+    {
+      "id": "paper-cambrian-gr",
+      "kind": "paper_data_workflow",
+      "runnable": true,
+      "input": {
+        "root": "benchmarks",
+        "path": "data/cambrian_2022_gamma_ray.csv",
+        "sha256": "7b3829c6b4dc62178d07a8960f1da009f0c495e2e3d59ed2c5dc418afdc81f54",
+        "extraction_receipt": "data/cambrian_2022_gamma_ray.provenance.json"
+      },
+      "parameters": {
+        "detrend": "lowess",
+        "span": 0.35,
+        "mtm_nw": 2,
+        "smooth_fraction": 0.25,
+        "evolution": true,
+        "coordinate_unit": "m"
+      },
+      "paper_doi": "10.1038/s41467-022-29651-4",
+      "paper_url": "https://doi.org/10.1038/s41467-022-29651-4",
+      "scope": "Paper-data workflow smoke test on full numeric auxiliary gamma-ray record; no primary Al-based chronology reproduction.",
+      "published_result_reproduction": false,
+      "acceptance": [
+        "completed MATLAB response",
+        "source and extraction checksums",
+        "finite outputs checked by MATLAB validation",
+        "MATLAB figures saved"
+      ],
+      "execution_status": "not_asserted_by_manifest"
+    }
+  ]
+}

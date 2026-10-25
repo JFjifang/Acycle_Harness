@@ -1,0 +1,16 @@
+[
+  {
+    "file": "sources/petm_2022_source.xlsx",
+    "source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-022-33390-x/MediaObjects/41467_2022_33390_MOESM4_ESM.xlsx",
+    "sha256": "2ed8e7c3ca38ab59506f6217ab355933702e284df943a6bed09eab09d943fa95",
+    "bytes": 466334,
+    "retrieved_utc": "2026-10-25"
+  },
+  {
+    "file": "sources/cambrian_2022_source.zip",
+    "source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-022-29651-4/MediaObjects/41467_2022_29651_MOESM2_ESM.zip",
+    "sha256": "809f3c76bb09442ccb35e678254955ba072a086c2093faaeeacbe9d2ebc99c2f",
+    "bytes": 10919258,
+    "retrieved_utc": "2026-10-25"
+  }
+]

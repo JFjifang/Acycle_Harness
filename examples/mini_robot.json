@@ -1,0 +1,12 @@
+{
+  "input_path": "benchmark-inputs/official-wayao.txt",
+  "parameters": {
+    "detrend": "lowess",
+    "span": 0.35,
+    "mtm_nw": 2,
+    "smooth_fraction": 0.25,
+    "coordinate_unit": "m",
+    "evolution": true
+  },
+  "label": "Wayao mini robot baseline"
+}

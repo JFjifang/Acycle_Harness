@@ -36,7 +36,7 @@ Core methods: mini-robot preprocessing, MTM robust AR(1) pointwise thresholds, E
 
 ```sh
 python -m pytest -q
-node --test plugin/test/*.test.mjs
+node --test plugin/tests/*.test.mjs
 matlab -batch "addpath('matlab'); run_validation(getenv('ACYCLE_ROOT'),'validation/matlab')"
 ```
 

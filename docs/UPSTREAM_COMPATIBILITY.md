@@ -21,4 +21,4 @@ Missing originals or incompatible signatures must produce an actionable error, n
 
 Cite Mingsong Li, Linda A. Hinnov and Lee R. Kump (2019), *Acycle: Time-series analysis software for paleoclimate research and education*, Computers & Geosciences 127, 12–22, [doi:10.1016/j.cageo.2019.02.011](https://doi.org/10.1016/j.cageo.2019.02.011). Retain original copyright and licensing notices for any extracted source. Do not infer that every external package bundled by Acycle has identical licensing terms.
 
-Documentation references: [official examples](https://github.com/mingsongli/acycle/wiki/Examples), [mini robot](https://github.com/mingsongli/acycle/wiki/4.10-Mini-Robot), and [source README](https://github.com/mingsongli/acycle/blob/dcba4279168745b563e0535b954297023dd62fc7/README.md). Wiki URLs are orientation, not version pins.
+Documentation references: [official examples](https://github.com/mingsongli/acycle/wiki/Examples), [mini robot](https://github.com/mingsongli/acycle/wiki/4.9-Mini-robot), and [source README](https://github.com/mingsongli/acycle/blob/dcba4279168745b563e0535b954297023dd62fc7/README.md). Wiki URLs are orientation, not version pins.

@@ -175,7 +175,18 @@ else
     [rho,s0,classic,robust] = redconfML(processed(:,2),dt,p.mtm_nw, ...
         p.nfft,2,p.smooth_fraction,p.fmax,1);
 end
-assert(all(isfinite(robust),'all') && all(robust(:,3:end)>0,'all'), ...
+fitMethod='original_redconfML';
+if ~validRobustFit(rho,s0,robust)
+    % Upstream's unconstrained lsqcurvefit can return complex/nonstationary
+    % parameters without throwing. Use the upstream grid-search alternative
+    % and confidence expressions explicitly, rather than exporting them.
+    close(gcf);
+    [rho,s0,robust]=originalGridFallback(classic,p,nyquist);
+    fitMethod='original_minirhos0_after_invalid_optimizer_fit';
+    notes{end+1}=['Original redconfML returned a nonphysical optimizer fit; ', ...
+        'Acycle minirhos0 grid search was used with the same median spectrum.'];
+end
+assert(validRobustFit(rho,s0,robust), ...
     'Harness:InvalidSpectrum','Acycle returned invalid AR(1) spectrum or confidence levels.');
 artifacts.spectrum_png = savePlot(gcf,outputDir,'spectrum');
 artifacts.robust_spectrum_csv = fullfile(outputDir,'spectrum_robust.csv');
@@ -266,12 +277,13 @@ provenance = sourceProvenance(root,sourceNames);
 provenance.matlab_version = version;
 provenance.matlab_release = version('-release');
 provenance.toolboxes = ver;
+provenance.robust_fit_method = fitMethod;
 provenance.input_sha256 = fileSha256(request.input_path);
 summary = struct('input_rows',inputRows,'removed_nonfinite_rows',removedRows, ...
     'merged_duplicate_rows',duplicateRows,'processed_rows',size(processed,1), ...
     'interpolated',interpolated,'sample_interval',dt,'nyquist',nyquist, ...
     'coordinate_unit',p.coordinate_unit,'robust_ar1_rho',rho, ...
-    'robust_ar1_s0',s0,'peaks',peaks);
+    'robust_ar1_s0',s0,'robust_fit_method',fitMethod,'peaks',peaks);
 artifacts.analysis_mat = fullfile(outputDir,'analysis.mat');
 artifacts.provenance_json = fullfile(outputDir,'provenance.json');
 writeJson(artifacts.provenance_json,provenance);
@@ -288,6 +300,40 @@ function value = getDefault(s,name,defaultValue)
 if isfield(s,name), value=s.(name); else, value=defaultValue; end
 end
 
+function valid = validRobustFit(rho,s0,robust)
+valid=isreal(rho)&&isreal(s0)&&isscalar(rho)&&isscalar(s0)&& ...
+    isfinite(rho)&&isfinite(s0)&&abs(rho)<1&&s0>0&& ...
+    isreal(robust)&&all(isfinite(robust),'all')&&all(robust(:,3:end)>0,'all');
+end
+
+function [rho,s0,robust] = originalGridFallback(classic,p,nyquist)
+% Extracted from redconfML.m, commit documented in source_registry.json:
+% fit-support/median lines 124-145, minirhos0 call 176-177,
+% transfer function and chi-square levels 188-197, plot 199-215.
+frequency=classic(:,1); power=classic(:,2);
+fitMask=frequency<=p.fit_fmax;
+smoothCount=round(p.smooth_fraction*nnz(fitMask));
+fitMedian=moveMedian(power(fitMask),smoothCount);
+[rho,s0]=minirhos0(mean(fitMedian),nyquist,frequency(fitMask),fitMedian,2);
+background=s0*(1-rho^2)./(1-2*rho*cos(pi*frequency/nyquist)+rho^2);
+dof=2*acycleMtmTaperCount(p.mtm_nw);
+levels=background*(chi2inv([0.90,0.95,0.99,0.999],dof)/dof);
+robust=[frequency,power,background,levels];
+fig=figure('Color','white','Position',[50 50 1000 600]); %#ok<NASGU>
+semilogy(frequency,power,'k'); hold on;
+semilogy(frequency,classic(:,3),'m-.');
+semilogy(frequency,background,'k-','LineWidth',2);
+semilogy(frequency,levels(:,1),'r-');
+semilogy(frequency,levels(:,2),'r--','LineWidth',2);
+semilogy(frequency,levels(:,3),'b-.');
+semilogy(frequency,levels(:,4),'g--');
+xlabel('Frequency'); ylabel('Power'); xlim([0,p.fmax]);
+legend('Power','Median-smoothed','Robust AR(1) median', ...
+    'Robust AR(1) 90%','Robust AR(1) 95%','Robust AR(1) 99%', ...
+    'Robust AR(1) 99.9%');
+title('Acycle robust AR(1): original grid-search fallback');
+end
+
 function pngPath = savePlot(fig,outputDir,name)
 set(fig,'Visible','off');
 pngPath = fullfile(outputDir,[name '.png']);
@@ -297,10 +343,11 @@ close(fig);
 end
 
 function writeJson(path,value)
+payload=jsonencode(value,'PrettyPrint',true);
 fid=fopen(path,'w');
 assert(fid~=-1,'Harness:WriteFailed','Cannot open response file: %s',path);
 cleanup=onCleanup(@()fclose(fid)); %#ok<NASGU>
-fprintf(fid,'%s\n',jsonencode(value,'PrettyPrint',true));
+fprintf(fid,'%s\n',payload);
 end
 
 function closeNewFigures(oldFigures)

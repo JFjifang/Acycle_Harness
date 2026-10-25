@@ -1,0 +1,11 @@
+{
+  "input_path": "benchmarks/data/petm_2022_ms_194_200m.csv",
+  "parameters": {
+    "detrend": "lowess",
+    "span": 0.35,
+    "mtm_nw": 2,
+    "coordinate_unit": "m",
+    "evolution": true
+  },
+  "label": "PETM MS selected interval: MATLAB workflow test, not paper reproduction"
+}

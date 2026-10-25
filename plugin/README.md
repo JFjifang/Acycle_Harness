@@ -26,3 +26,9 @@ Compatibility was checked against DeepSeek Harness master
 `22ddee3792402c3e70ec5f86a63c3e3e895a2f60` (0.2.1-rc.3):
 `ctx.tools.register(ToolDefinition)`, `ctx.skills.registerProvider`, and
 `ctx.workingDirectory.ensure`. This package declares the corresponding DSH engine range.
+
+The release tarball was also installed and checked with the published official
+`@deepseek-ai/dsh-tools`, `dsh-system-prompt`, and `dsh-skill` 0.2.1-rc.3 packages
+and Cordis 4.0.5. The smoke test checks tool execution, skill loading, and disposal;
+it uses a fixed-directory fixture and does not represent a full desktop UI test.
+The npm `latest` tag can lag these versions, so use explicit versions for verification.
