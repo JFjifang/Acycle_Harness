@@ -25,7 +25,7 @@ def handle(message, workspace, *, schemas=None, dispatcher=None):
         result = {"protocolVersion": PROTOCOL_VERSION,
                   "capabilities": {"tools": {"listChanged": False},
                                    "resources": {"subscribe": False, "listChanged": False}},
-                  "serverInfo": {"name": "acycle-matlab", "version": "0.5.0"}}
+                  "serverInfo": {"name": "acycle-matlab", "version": "0.5.1"}}
     elif method == "ping":
         result = {}
     elif method == "tools/list":

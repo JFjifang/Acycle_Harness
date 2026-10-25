@@ -27,12 +27,16 @@ def digest(path: Path) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--workspace', default=str(Path(__file__).resolve().parents[1]))
-    parser.add_argument('--version', default='0.5.0')
+    parser.add_argument('--version', default='0.5.1')
     parser.add_argument('--plugin-root', required=True, help='Extracted package/ from the npm tarball')
     parser.add_argument('--runtime', help='Official Harness package installation for native-registry smoke')
     parser.add_argument('--output', default='validation/release-verification.json')
     args = parser.parse_args()
     root = Path(args.workspace).resolve()
+    output = Path(args.output)
+    if not output.is_absolute():
+        output = root/output
+    output.parent.mkdir(parents=True, exist_ok=True)
     plugin_root = Path(args.plugin_root).resolve()
     wheel = root/'dist'/f'acycle_deepseek-{args.version}-py3-none-any.whl'
     sdist = root/'dist'/f'acycle_deepseek-{args.version}.tar.gz'
@@ -103,7 +107,7 @@ def main() -> int:
         native = json.loads(checked.stdout)
         assert native['status'] == 'passed'
         assert len(native['registered_tools']) == 13 and len(native['registered_skills']) == 10
-        (root/'validation/native-plugin-smoke.json').write_text(json.dumps(native, indent=2)+'\n')
+        (output.parent/'native-plugin-smoke.json').write_text(json.dumps(native, indent=2)+'\n')
 
     receipt = {
         'version': args.version, 'status': 'passed',
@@ -121,10 +125,6 @@ def main() -> int:
             'scope': 'Installed wheel subprocess protocol; no local scientific MATLAB or full GUI session.'},
         'scope': 'Package/source/independent-install byte parity; actual MCP protocol and optional official Harness registry smoke. Scientific and live conversation evidence is separate.',
     }
-    output = Path(args.output)
-    if not output.is_absolute():
-        output = root/output
-    output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(receipt, indent=2)+'\n')
     print(json.dumps({'status': 'passed', 'wheel_files': len(wheel_files),
                       'plugin_files': len(plugin_files), 'mcp_tools': len(names),

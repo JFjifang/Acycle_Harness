@@ -32,7 +32,7 @@ with tempfile.TemporaryDirectory(prefix='acycle-agent-check-', dir=output.parent
         'name': (bundle/'local/harness_probe.mjs').as_uri(), 'config': {
             'runtime': deployment['runtime'], 'preset': deployment['preset'],
             'workspace': deployment['workspace'], 'output': str(output),
-            'expectedVersion': deployment.get('acycle_version', '0.5.0'),
+            'expectedVersion': deployment.get('acycle_version', '0.5.1'),
             'expectedNativeTools': deployment.get('expected_native_tools', 13),
             'expectedSkills': deployment.get('expected_skills', 10),
             'expectedTotalSkills': deployment.get('expected_total_skills', 10),

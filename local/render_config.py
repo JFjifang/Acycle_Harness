@@ -9,6 +9,7 @@ from pathlib import Path
 import shlex
 import shutil
 import sys
+from deploy_harness import HARNESS_VERSION, build_agent_preset
 
 
 def write_new(path: Path, text: str, force: bool) -> None:
@@ -25,6 +26,7 @@ def main() -> int:
     parser.add_argument('--matlab', default=os.environ.get('MATLAB_EXECUTABLE') or shutil.which('matlab') or 'matlab')
     parser.add_argument('--output-dir', default='local/generated')
     parser.add_argument('--force', action='store_true', help='Replace generated snippets only')
+    parser.add_argument('--newark-demo', action='store_true', help='Include the public Newark demonstration skill in the Desktop preset')
     args = parser.parse_args()
     workspace = Path(args.workspace).expanduser().resolve()
     root = Path(args.acycle_root).expanduser().resolve()
@@ -55,7 +57,17 @@ def main() -> int:
     powershell += ''.join("$env:"+key+" = '"+value.replace("'", "''")+"'\n" for key, value in env.items())
     directory = Path(args.output_dir).expanduser().resolve()
     directory.mkdir(parents=True, exist_ok=True)
-    outputs = {'codex-mcp.toml': toml, 'runtime.env.sh': shell, 'runtime.env.ps1': powershell}
+    preset, demo = build_agent_preset(bundle=Path(__file__).resolve().parents[1],
+        python=str(executable), workspace=workspace, acycle=root, matlab=matlab,
+        plugin_name='dsh-acycle', newark_demo=args.newark_demo)
+    desktop_patch = [{'id': 'preset-acycle', 'config': preset}]
+    desktop_manifest = {'harness_version': HARNESS_VERSION, 'preset': 'acycle',
+        'package': 'dsh-acycle', 'install_via': 'Desktop plugin manager or Desktop-bundled dsh',
+        'patch_file': str(directory/'desktop.preset.patch.yml'), 'newark_demo': demo,
+        'host_configuration_modified': False, 'credentials_stored': False}
+    outputs = {'codex-mcp.toml': toml, 'runtime.env.sh': shell, 'runtime.env.ps1': powershell,
+        'desktop.preset.patch.yml': json.dumps(desktop_patch, ensure_ascii=False, indent=2)+'\n',
+        'desktop-preset.json': json.dumps(desktop_manifest, ensure_ascii=False, indent=2)+'\n'}
     # Check all paths before writing any so a conflict cannot leave mixed snippets.
     for name, content in outputs.items():
         destination = directory/name

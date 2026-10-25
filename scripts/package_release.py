@@ -11,7 +11,7 @@ import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '0.5.0'
+VERSION = '0.5.1'
 
 
 def main():
@@ -37,7 +37,7 @@ def main():
         paths.extend(p for p in (ROOT/name).rglob('*') if p.is_file() and not any(part in {'node_modules','__pycache__','.pytest_cache','generated'} for part in p.parts))
     # Include selected research evidence, not transport caches or credentials.
     paths.extend(p for p in (ROOT/'validation').glob('*') if p.is_file())
-    for evidence in ['v0.2','v0.3','v0.4','v0.5','live-runs','live-runs-v03','artifacts/newark','artifacts/expanded-first','artifacts/expanded-final','artifacts/expanded-release']:
+    for evidence in ['v0.2','v0.3','v0.4','v0.5','v0.5.1','live-runs','live-runs-v03','artifacts/newark','artifacts/expanded-first','artifacts/expanded-final','artifacts/expanded-release']:
         paths.extend(p for p in (ROOT/'validation'/evidence).rglob('*') if p.is_file()
                      and p.relative_to(ROOT).parts[:3] != ('validation','v0.5','harness'))
     paths.extend(artifacts+[dist/'SHA256SUMS.json'])
@@ -56,7 +56,7 @@ def main():
             if not p.exists():
                 continue
             relative=p.relative_to(ROOT)
-            compact_version_evidence = relative.parts[0] == 'validation' and len(relative.parts) == 3 and relative.parts[1] in {'v0.4','v0.5'} and p.suffix in {'.md', '.json'}
+            compact_version_evidence = relative.parts[0] == 'validation' and len(relative.parts) == 3 and relative.parts[1] in {'v0.4','v0.5','v0.5.1'} and p.suffix in {'.md', '.json'}
             current_delivery_evidence = relative.parts[:2] == ('validation','v0.5') and len(relative.parts)>3 and relative.parts[2] in {'local','engineering','web','public-harness','matlab-release'}
             compact_paper_evidence = relative.as_posix() in {
                 'validation/artifacts/expanded-release/swa-lavernock-publication/swa-spectrum.csv',
@@ -65,7 +65,8 @@ def main():
                 'validation/artifacts/expanded-release/paper-petm-published-protocol-coco-2000/published-comparison.json',
                 'validation/artifacts/expanded-release/paper-cambrian-ecoco-199/published-comparison.json',
             }
-            if relative.parts[0]=='validation' and not compact_version_evidence and not current_delivery_evidence and not compact_paper_evidence and (len(relative.parts)!=2 or relative.name not in {
+            latest_delivery_evidence = relative.parts[:2] == ('validation','v0.5.1')
+            if relative.parts[0]=='validation' and not compact_version_evidence and not current_delivery_evidence and not latest_delivery_evidence and not compact_paper_evidence and (len(relative.parts)!=2 or relative.name not in {
                 'ACCEPTANCE.md','NEWARK.md','matlab-summary.json','release-verification.json',
                 'native-plugin-smoke.json','python-tests.txt','node-tests.txt','paper-validation.json','local-handoff-checks.json','local-bundle-check.json','local-config-fix.json','local-install-check-v04.json'}):
                 continue

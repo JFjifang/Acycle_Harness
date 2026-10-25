@@ -1,0 +1,35 @@
+{
+  "checked_at_utc": "2026-10-25T13:30:51.166769+00:00",
+  "status": "passed",
+  "scientific_fields_equal_v050": {
+    "input": true,
+    "public_assumptions": true,
+    "workflow_presets": true,
+    "workflow_input_lineage": true,
+    "interpretation_contract": true
+  },
+  "raw_sha256": "1cd82c19c0de98a8c4d6f09d3af1fdb3ff2e07fe93c3ee241102dd75e4b65ac2",
+  "matlab_source_unchanged_from_commit": "4c184e1ae86fcfbecf7cb5fa4ea0fd01771034c7",
+  "matlab_files": {
+    "matlab/SOURCES.md": "cbeccfd2e3660f4c7ba8584ba890bcf259837f9712f9190b5da0b2ce129d757c",
+    "matlab/acycle_batch.m": "d411d1ea661bd7dc412ccb7b0680b25bb067e89599de7dd545117863733ce2be",
+    "matlab/acycle_coco.m": "18f6c4120fb8258d1dc8acdccf6a4b419accc7a74f4275ef7b092321afe121aa",
+    "matlab/acycle_interpolate_pro.m": "5f8c6a47ded7ff13b47af30b54a62c37a85a94354f203c4d6330e09899220f5f",
+    "matlab/acycle_swa.m": "a5b9c3252ea6b165e99721ee5ed1944a1ed28e20ccc59dff7b2e20120d722b23",
+    "matlab/acycle_tune.m": "5d9fe63aca5ea2dd00306b9777ecef19028a8490a3aaa81f0975e99b61ed07e4",
+    "matlab/coco_sources.json": "464f9cc53a302e8201114c4afa3a72c6e90c1c580947939b89a67cb48d7e8268",
+    "matlab/preparation_sources.json": "b9d5f541609da0f5e4d7df33a12a31808a886b76320ec9bbe15b3301c69daa6b",
+    "matlab/run_validation.m": "08d5e48d042f061f5a9ec8649a04afa0aef68e6b260722f56d7a251bb2b1c5e9",
+    "matlab/source_registry.json": "0bfa6cc61799a7c182731ad5347af2c4ebc90d67360427c3c463bfe1f192f36a",
+    "matlab/swa_sources.json": "109141cc507a1ec584c9271d4058bb975e0e9068f6eda473b4f2de7ac4ce0043",
+    "matlab/tests/test_acycle_batch.m": "f1f6bb583022da9c101ed503ea686f9578473d3c44fcbadb99c8bd2a8e375425",
+    "matlab/tests/test_acycle_coco.m": "d5fc412980a4677628719ac724c414080045731da5cc521cdeae1468756fa981",
+    "matlab/tests/test_acycle_interpolate_pro.m": "3ba335f552e61ad74ed542f5d66ffe4b95d81ac3f1251909703573b5283a11c9",
+    "matlab/tests/test_acycle_swa.m": "59acdf2423fd796e8770d0c61490aa53cd4b52fcf944b4caf82b4dec99966a1d",
+    "matlab/tests/test_acycle_tune.m": "7ed9cbf3bd2da19fefe06105f67b1281414220a074d4784643c193ca08914687",
+    "matlab/tests/test_paper_coco.m": "9492c80fcb84598fd9a380854164184b31576df981b947100cc6eeabbace9412"
+  },
+  "prior_matlab_validation": "../v0.5/matlab-release-ci.json",
+  "revised_prompt_live_model_test": "not_run",
+  "scope": "Byte/declared-parameter comparison only; no numerical computation or new model call."
+}

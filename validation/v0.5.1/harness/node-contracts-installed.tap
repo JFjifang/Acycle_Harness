@@ -1,0 +1,179 @@
+TAP version 13
+# Subtest: compact model result preserves statistics, warnings and source mismatches
+ok 1 - compact model result preserves statistics, warnings and source mismatches
+  ---
+  duration_ms: 1.511068
+  type: 'test'
+  ...
+# Subtest: missing attachment services preserve science and path delivery
+ok 2 - missing attachment services preserve science and path delivery
+  ---
+  duration_ms: 0.567222
+  type: 'test'
+  ...
+# Subtest: failed presentation cannot turn a completed MATLAB result into a failed analysis
+ok 3 - failed presentation cannot turn a completed MATLAB result into a failed analysis
+  ---
+  duration_ms: 8.108273
+  type: 'test'
+  ...
+# Subtest: artifact delivery excludes a symlink escaping recorded outputs and oversized files
+ok 4 - artifact delivery excludes a symlink escaping recorded outputs and oversized files
+  ---
+  duration_ms: 3.300705
+  type: 'test'
+  ...
+# Subtest: official SystemPrompt always includes Acycle workflow rules and removes them with the plugin
+ok 5 - official SystemPrompt always includes Acycle workflow rules and removes them with the plugin
+  ---
+  duration_ms: 200.558308
+  type: 'test'
+  ...
+# Subtest: official registry imports only current Session user refs, preserving bytes and source
+ok 6 - official registry imports only current Session user refs, preserving bytes and source
+  ---
+  duration_ms: 139.269814
+  type: 'test'
+  ...
+# Subtest: multiple files require selection; official host paths auto-import for Python intake
+ok 7 - multiple files require selection; official host paths auto-import for Python intake
+  ---
+  duration_ms: 220.058908
+  type: 'test'
+  ...
+# Subtest: official short handles resolve only unique current Session refs, with real prefix collisions requiring selection
+ok 8 - official short handles resolve only unique current Session refs, with real prefix collisions requiring selection
+  ---
+  duration_ms: 108.158561
+  type: 'test'
+  ...
+# Subtest: bare filenames prefer current uploads, preserve explicit workspace paths, and reject ambiguous uploads
+ok 9 - bare filenames prefer current uploads, preserve explicit workspace paths, and reject ambiguous uploads
+  ---
+  duration_ms: 226.301806
+  type: 'test'
+  ...
+# Subtest: every import preserves its own source receipt across messages and Sessions without changing prior records
+ok 10 - every import preserves its own source receipt across messages and Sessions without changing prior records
+  ---
+  duration_ms: 93.090292
+  type: 'test'
+  ...
+# Subtest: import rejects byte limits and a symlinked destination, leaving source intact
+ok 11 - import rejects byte limits and a symlinked destination, leaving source intact
+  ---
+  duration_ms: 49.067776
+  type: 'test'
+  ...
+# Subtest: official sha256 refs detect altered source bytes and remove partial imports
+ok 12 - official sha256 refs detect altered source bytes and remove partial imports
+  ---
+  duration_ms: 47.390859
+  type: 'test'
+  ...
+# Subtest: official image/file refs and present deliver both spectrum and evolution with original bytes
+ok 13 - official image/file refs and present deliver both spectrum and evolution with original bytes
+  ---
+  duration_ms: 144.07976
+  type: 'test'
+  ...
+# Subtest: path intake remains usable without attachments; attachment import gives an actionable error
+ok 14 - path intake remains usable without attachments; attachment import gives an actionable error
+  ---
+  duration_ms: 73.530042
+  type: 'test'
+  ...
+# Subtest: bridge transports JSON literally without shell expansion
+ok 15 - bridge transports JSON literally without shell expansion
+  ---
+  duration_ms: 20.33549
+  type: 'test'
+  ...
+# Subtest: Desktop MATLAB paths are confined to the bridge child environment
+ok 16 - Desktop MATLAB paths are confined to the bridge child environment
+  ---
+  duration_ms: 45.524687
+  type: 'test'
+  ...
+# Subtest: bridge observes cancellation and waits for subprocess exit
+ok 17 - bridge observes cancellation and waits for subprocess exit
+  ---
+  duration_ms: 104.624084
+  type: 'test'
+  ...
+# Subtest: native cancellation lets Python stop a TERM-ignoring MATLAB process group and save evidence
+ok 18 - native cancellation lets Python stop a TERM-ignoring MATLAB process group and save evidence
+  ---
+  duration_ms: 5098.991276
+  type: 'test'
+  ...
+# {"fixture":"TERM-ignoring process; no MATLAB science","status":"interrupted","returncode":-9,"attempts":1,"automatic_retry":false,"elapsed_seconds":5.042461078999622,"child_reaped":true}
+# Subtest: bridge reports errors and rejects non-JSON output
+ok 19 - bridge reports errors and rejects non-JSON output
+  ---
+  duration_ms: 12.687515
+  type: 'test'
+  ...
+# Subtest: bridge retains structured failed-run diagnostics while rejecting the tool call
+ok 20 - bridge retains structured failed-run diagnostics while rejecting the tool call
+  ---
+  duration_ms: 19.411218
+  type: 'test'
+  ...
+# Subtest: packaged skill metadata strips frontmatter and resolves resources
+ok 21 - packaged skill metadata strips frontmatter and resolves resources
+  ---
+  duration_ms: 1.141331
+  type: 'test'
+  ...
+# Subtest: current Harness requires workflow policy and registers it before tools
+ok 22 - current Harness requires workflow policy and registers it before tools
+  ---
+  duration_ms: 13.312433
+  type: 'test'
+  ...
+# Subtest: new preparation and tuning operations count toward the science budget
+ok 23 - new preparation and tuning operations count toward the science budget
+  ---
+  duration_ms: 0.474201
+  type: 'test'
+  ...
+# Subtest: v0.5 structured RunError survives native error prefixes and isError omissions
+ok 24 - v0.5 structured RunError survives native error prefixes and isError omissions
+  ---
+  duration_ms: 0.257045
+  type: 'test'
+  ...
+# Subtest: a successful early stage does not erase a later failed scientific stage
+ok 25 - a successful early stage does not erase a later failed scientific stage
+  ---
+  duration_ms: 0.186569
+  type: 'test'
+  ...
+# Subtest: read-only retrieval and success-shaped prose cannot satisfy a fresh scientific stage
+ok 26 - read-only retrieval and success-shaped prose cannot satisfy a fresh scientific stage
+  ---
+  duration_ms: 0.125569
+  type: 'test'
+  ...
+# Subtest: public scenario budgets override legacy defaults without becoming model instructions
+ok 27 - public scenario budgets override legacy defaults without becoming model instructions
+  ---
+  duration_ms: 0.225708
+  type: 'test'
+  ...
+# Subtest: continuation inherits only a matching actual Session catalog and labels it historical
+ok 28 - continuation inherits only a matching actual Session catalog and labels it historical
+  ---
+  duration_ms: 2.800379
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6655.949884

@@ -15,7 +15,7 @@ import tarfile
 import uuid
 import zipfile
 
-VERSION = '0.5.0'
+VERSION = '0.5.1'
 TOOLS = {'acycle_capabilities', 'acycle_inspect', 'acycle_analyze', 'acycle_swa',
          'acycle_coco', 'acycle_ecoco', 'acycle_rerun', 'acycle_sensitivity',
          'acycle_compare', 'acycle_get_run', 'acycle_interpolate_pro', 'acycle_tune'}
@@ -64,7 +64,7 @@ import acycle_deepseek
 from acycle_deepseek.tools import _matlab_dir,tool_schemas
 print(json.dumps({'version':importlib.metadata.version('acycle-deepseek'),'package_root':str(Path(acycle_deepseek.__file__).parent),'matlab_root':str(_matlab_dir()),'tools':[item['function']['name'] for item in tool_schemas()]}))'''
         installed = json.loads(run([sys.executable, '-I', '-c', probe]))
-        require(installed['version'] == VERSION, 'Install the matching 0.5.0 package in this Python environment')
+        require(installed['version'] == VERSION, 'Install the matching 0.5.1 package in this Python environment')
         require(set(installed['tools']) == TOOLS, 'Installed shared tool set does not match this release')
         bridge = Path(installed['matlab_root'])
         for name in ('acycle_batch.m', 'acycle_swa.m', 'acycle_coco.m',

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-25",
+  "purpose": "Primary-source verification for literature cues; not a scientific rerun or paper-reproduction receipt. PDFs are not included in this package.",
+  "sources": [
+    {
+      "id": "Olsen1984",
+      "url": "https://www.ldeo.columbia.edu/~polsen/nbcp/olsen_84.pdf",
+      "bytes": 1694864,
+      "sha256": "a9274d52da5922d08c80af053d509e2f3f2fb2d33098619637525a4d8e7c53bf",
+      "checked_location": "Printed pp.129, 144; rendered scanned original inspected."
+    },
+    {
+      "id": "Olsen1986",
+      "url": "https://www.ldeo.columbia.edu/~polsen/nbcp/olsen_86_science.pdf",
+      "bytes": 4156679,
+      "sha256": "fb003c313616744de203b0535c2dcad0bd39bb0dca8dffe83dc40f86632295d4",
+      "checked_location": "Bibliography and original abstract checked against https://pubmed.ncbi.nlm.nih.gov/17758107/; original PDF downloaded."
+    },
+    {
+      "id": "OlsenKent1996",
+      "url": "https://www.ldeo.columbia.edu/~polsen/nbcp/olsen.and.kent.ppp.96.pdf",
+      "bytes": 2078361,
+      "sha256": "4e7eb932196ed4ffed91df901724dc493ef2d211791fe10d3a5b9ac8291bcd56",
+      "checked_location": "Printed p.1; rendered scanned original abstract inspected."
+    },
+    {
+      "id": "Li2018",
+      "url": "https://www.meteo.psu.edu/holocene/public_html/Mann/articles/articles/LiEtAl_EPSL18.pdf",
+      "bytes": 5655680,
+      "sha256": "5d945b3fd6ed17f447d862f450842fb24f70510fa537d3fae758f13129a68f42",
+      "checked_location": "Sections 2/4.2 and figure captions 5, 6, 9; extracted original text checked."
+    }
+  ]
+}

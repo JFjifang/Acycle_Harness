@@ -52,14 +52,19 @@ export async function apply(ctx, config) {
       report.skills = acycleSkills.map(skill => skill.name)
       report.all_scoped_skills = skills.map(skill => skill.name)
       report.demo_skill = config.demoSkill ?? null
-      report.demo_skill_loaded = config.demoSkill ? Boolean((await ctx.skills.get(config.demoSkill,
-        { scope: context.scope, cwd: config.workspace }))?.content) : null
+      const demoSkill = config.demoSkill ? await ctx.skills.get(config.demoSkill,
+        { scope: context.scope, cwd: config.workspace }) : null
+      report.demo_skill_loaded = config.demoSkill ? Boolean(demoSkill?.content) : null
+      report.demo_skill_path = demoSkill?.path ?? null
+      report.demo_skill_content_sha256 = demoSkill?.content
+        ? createHash('sha256').update(demoSkill.content).digest('hex') : null
       report.skill_body_loaded = Boolean(loaded?.content)
       report.persona_present = prompt.includes('This is the Acycle research deployment.')
       const capability = await ctx.tools.execute({ callId: `composition-${randomUUID()}`,
         name: 'acycle_capabilities', arguments: {}, agent, signal: new AbortController().signal })
       if (capability.isError) throw new Error(`Scoped capabilities failed: ${JSON.stringify(capability)}`)
       report.capabilities = { version: capability.value.version, backend: capability.value.backend,
+        acycle_root: capability.value.acycle_root, matlab_available: capability.value.matlab_available,
         python_numerical_fallback: capability.value.python_numerical_fallback }
       // Current Harness injects skills as a durable pre-step catalog, not a static system section.
       fixtureHandle = await ctx.agents.create({ sessionId: `session-${randomUUID()}`, meta: { cwd: config.workspace, agentPreset: preset.id },

@@ -1,0 +1,227 @@
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=77
+  - wheel
+* Getting build dependencies for sdist...
+running egg_info
+writing src/acycle_deepseek.egg-info/PKG-INFO
+writing dependency_links to src/acycle_deepseek.egg-info/dependency_links.txt
+writing entry points to src/acycle_deepseek.egg-info/entry_points.txt
+writing top-level names to src/acycle_deepseek.egg-info/top_level.txt
+reading manifest file 'src/acycle_deepseek.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src/acycle_deepseek.egg-info/SOURCES.txt'
+* Installed build dependency versions:
+  - setuptools==84.2.1
+  - wheel==0.48.0
+* Building sdist...
+running sdist
+running egg_info
+writing src/acycle_deepseek.egg-info/PKG-INFO
+writing dependency_links to src/acycle_deepseek.egg-info/dependency_links.txt
+writing entry points to src/acycle_deepseek.egg-info/entry_points.txt
+writing top-level names to src/acycle_deepseek.egg-info/top_level.txt
+reading manifest file 'src/acycle_deepseek.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src/acycle_deepseek.egg-info/SOURCES.txt'
+running check
+creating acycle_deepseek-0.5.1
+creating acycle_deepseek-0.5.1/matlab
+creating acycle_deepseek-0.5.1/matlab/tests
+creating acycle_deepseek-0.5.1/scripts
+creating acycle_deepseek-0.5.1/skills/acycle-age-model
+creating acycle_deepseek-0.5.1/skills/acycle-astronomical-tuning
+creating acycle_deepseek-0.5.1/skills/acycle-coco
+creating acycle_deepseek-0.5.1/skills/acycle-intake
+creating acycle_deepseek-0.5.1/skills/acycle-interpolation-pro
+creating acycle_deepseek-0.5.1/skills/acycle-mini-robot
+creating acycle_deepseek-0.5.1/skills/acycle-reproduction
+creating acycle_deepseek-0.5.1/skills/acycle-sensitivity-steering
+creating acycle_deepseek-0.5.1/skills/acycle-spectral-interpretation
+creating acycle_deepseek-0.5.1/skills/acycle-swa
+creating acycle_deepseek-0.5.1/src/acycle_deepseek
+creating acycle_deepseek-0.5.1/src/acycle_deepseek.egg-info
+creating acycle_deepseek-0.5.1/tests
+creating acycle_deepseek-0.5.1/tests/fixtures
+copying files to acycle_deepseek-0.5.1...
+copying LICENSE -> acycle_deepseek-0.5.1
+copying MANIFEST.in -> acycle_deepseek-0.5.1
+copying README.md -> acycle_deepseek-0.5.1
+copying pyproject.toml -> acycle_deepseek-0.5.1
+copying setup.py -> acycle_deepseek-0.5.1
+copying matlab/SOURCES.md -> acycle_deepseek-0.5.1/matlab
+copying matlab/acycle_batch.m -> acycle_deepseek-0.5.1/matlab
+copying matlab/acycle_coco.m -> acycle_deepseek-0.5.1/matlab
+copying matlab/acycle_interpolate_pro.m -> acycle_deepseek-0.5.1/matlab
+copying matlab/acycle_swa.m -> acycle_deepseek-0.5.1/matlab
+copying matlab/acycle_tune.m -> acycle_deepseek-0.5.1/matlab
+copying matlab/coco_sources.json -> acycle_deepseek-0.5.1/matlab
+copying matlab/preparation_sources.json -> acycle_deepseek-0.5.1/matlab
+copying matlab/run_validation.m -> acycle_deepseek-0.5.1/matlab
+copying matlab/source_registry.json -> acycle_deepseek-0.5.1/matlab
+copying matlab/swa_sources.json -> acycle_deepseek-0.5.1/matlab
+copying matlab/tests/test_acycle_batch.m -> acycle_deepseek-0.5.1/matlab/tests
+copying matlab/tests/test_acycle_coco.m -> acycle_deepseek-0.5.1/matlab/tests
+copying matlab/tests/test_acycle_interpolate_pro.m -> acycle_deepseek-0.5.1/matlab/tests
+copying matlab/tests/test_acycle_swa.m -> acycle_deepseek-0.5.1/matlab/tests
+copying matlab/tests/test_acycle_tune.m -> acycle_deepseek-0.5.1/matlab/tests
+copying matlab/tests/test_paper_coco.m -> acycle_deepseek-0.5.1/matlab/tests
+copying scripts/ci_request.py -> acycle_deepseek-0.5.1/scripts
+copying skills/acycle-age-model/SKILL.md -> acycle_deepseek-0.5.1/skills/acycle-age-model
+copying skills/acycle-astronomical-tuning/SKILL.md -> acycle_deepseek-0.5.1/skills/acycle-astronomical-tuning
+copying skills/acycle-coco/SKILL.md -> acycle_deepseek-0.5.1/skills/acycle-coco
+copying skills/acycle-intake/SKILL.md -> acycle_deepseek-0.5.1/skills/acycle-intake
+copying skills/acycle-interpolation-pro/SKILL.md -> acycle_deepseek-0.5.1/skills/acycle-interpolation-pro
+copying skills/acycle-mini-robot/SKILL.md -> acycle_deepseek-0.5.1/skills/acycle-mini-robot
+copying skills/acycle-reproduction/SKILL.md -> acycle_deepseek-0.5.1/skills/acycle-reproduction
+copying skills/acycle-sensitivity-steering/SKILL.md -> acycle_deepseek-0.5.1/skills/acycle-sensitivity-steering
+copying skills/acycle-spectral-interpretation/SKILL.md -> acycle_deepseek-0.5.1/skills/acycle-spectral-interpretation
+copying skills/acycle-swa/SKILL.md -> acycle_deepseek-0.5.1/skills/acycle-swa
+copying src/acycle_deepseek/__init__.py -> acycle_deepseek-0.5.1/src/acycle_deepseek
+copying src/acycle_deepseek/artifacts.py -> acycle_deepseek-0.5.1/src/acycle_deepseek
+copying src/acycle_deepseek/cli.py -> acycle_deepseek-0.5.1/src/acycle_deepseek
+copying src/acycle_deepseek/deepseek.py -> acycle_deepseek-0.5.1/src/acycle_deepseek
+copying src/acycle_deepseek/github_backend.py -> acycle_deepseek-0.5.1/src/acycle_deepseek
+copying src/acycle_deepseek/harness_bridge.py -> acycle_deepseek-0.5.1/src/acycle_deepseek
+copying src/acycle_deepseek/matlab_runner.py -> acycle_deepseek-0.5.1/src/acycle_deepseek
+copying src/acycle_deepseek/mcp.py -> acycle_deepseek-0.5.1/src/acycle_deepseek
+copying src/acycle_deepseek/tools.py -> acycle_deepseek-0.5.1/src/acycle_deepseek
+copying src/acycle_deepseek.egg-info/PKG-INFO -> acycle_deepseek-0.5.1/src/acycle_deepseek.egg-info
+copying src/acycle_deepseek.egg-info/SOURCES.txt -> acycle_deepseek-0.5.1/src/acycle_deepseek.egg-info
+copying src/acycle_deepseek.egg-info/dependency_links.txt -> acycle_deepseek-0.5.1/src/acycle_deepseek.egg-info
+copying src/acycle_deepseek.egg-info/entry_points.txt -> acycle_deepseek-0.5.1/src/acycle_deepseek.egg-info
+copying src/acycle_deepseek.egg-info/top_level.txt -> acycle_deepseek-0.5.1/src/acycle_deepseek.egg-info
+copying tests/test_ci_request_artifact.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_deepseek.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_demo_evaluator.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_demo_evaluator_integrity.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_extended_tools.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_github_backend.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_inspect_structure.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_matlab_runner.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_mcp_resources.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_preparation_tools.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_public_trace_export.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_rerun.py -> acycle_deepseek-0.5.1/tests
+copying tests/test_tools.py -> acycle_deepseek-0.5.1/tests
+copying tests/fixtures/conversation_scenarios.json -> acycle_deepseek-0.5.1/tests/fixtures
+copying tests/fixtures/newark_first8_cr.provenance.json -> acycle_deepseek-0.5.1/tests/fixtures
+copying tests/fixtures/newark_first8_cr.txt -> acycle_deepseek-0.5.1/tests/fixtures
+Writing acycle_deepseek-0.5.1/setup.cfg
+Creating tar archive
+removing 'acycle_deepseek-0.5.1' (and everything under it)
+* Building wheel from sdist
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=77
+  - wheel
+* Getting build dependencies for wheel...
+running egg_info
+writing src/acycle_deepseek.egg-info/PKG-INFO
+writing dependency_links to src/acycle_deepseek.egg-info/dependency_links.txt
+writing entry points to src/acycle_deepseek.egg-info/entry_points.txt
+writing top-level names to src/acycle_deepseek.egg-info/top_level.txt
+reading manifest file 'src/acycle_deepseek.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src/acycle_deepseek.egg-info/SOURCES.txt'
+* Installed build dependency versions:
+  - setuptools==84.2.1
+  - wheel==0.48.0
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/acycle_deepseek
+copying src/acycle_deepseek/tools.py -> build/lib/acycle_deepseek
+copying src/acycle_deepseek/mcp.py -> build/lib/acycle_deepseek
+copying src/acycle_deepseek/matlab_runner.py -> build/lib/acycle_deepseek
+copying src/acycle_deepseek/harness_bridge.py -> build/lib/acycle_deepseek
+copying src/acycle_deepseek/github_backend.py -> build/lib/acycle_deepseek
+copying src/acycle_deepseek/deepseek.py -> build/lib/acycle_deepseek
+copying src/acycle_deepseek/cli.py -> build/lib/acycle_deepseek
+copying src/acycle_deepseek/artifacts.py -> build/lib/acycle_deepseek
+copying src/acycle_deepseek/__init__.py -> build/lib/acycle_deepseek
+running egg_info
+writing src/acycle_deepseek.egg-info/PKG-INFO
+writing dependency_links to src/acycle_deepseek.egg-info/dependency_links.txt
+writing entry points to src/acycle_deepseek.egg-info/entry_points.txt
+writing top-level names to src/acycle_deepseek.egg-info/top_level.txt
+reading manifest file 'src/acycle_deepseek.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src/acycle_deepseek.egg-info/SOURCES.txt'
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/acycle_deepseek
+creating build/bdist.linux-x86_64/wheel/acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/SOURCES.md -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/acycle_batch.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/acycle_coco.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/acycle_interpolate_pro.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/acycle_swa.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/acycle_tune.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/coco_sources.json -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/preparation_sources.json -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/run_validation.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/source_registry.json -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+copying build/lib/acycle_deepseek/matlab/swa_sources.json -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab
+creating build/bdist.linux-x86_64/wheel/acycle_deepseek/matlab/tests
+copying build/lib/acycle_deepseek/matlab/tests/test_acycle_batch.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab/tests
+copying build/lib/acycle_deepseek/matlab/tests/test_acycle_coco.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab/tests
+copying build/lib/acycle_deepseek/matlab/tests/test_acycle_interpolate_pro.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab/tests
+copying build/lib/acycle_deepseek/matlab/tests/test_acycle_swa.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab/tests
+copying build/lib/acycle_deepseek/matlab/tests/test_acycle_tune.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab/tests
+copying build/lib/acycle_deepseek/matlab/tests/test_paper_coco.m -> build/bdist.linux-x86_64/wheel/./acycle_deepseek/matlab/tests
+copying build/lib/acycle_deepseek/__init__.py -> build/bdist.linux-x86_64/wheel/./acycle_deepseek
+copying build/lib/acycle_deepseek/artifacts.py -> build/bdist.linux-x86_64/wheel/./acycle_deepseek
+copying build/lib/acycle_deepseek/cli.py -> build/bdist.linux-x86_64/wheel/./acycle_deepseek
+copying build/lib/acycle_deepseek/deepseek.py -> build/bdist.linux-x86_64/wheel/./acycle_deepseek
+copying build/lib/acycle_deepseek/github_backend.py -> build/bdist.linux-x86_64/wheel/./acycle_deepseek
+copying build/lib/acycle_deepseek/harness_bridge.py -> build/bdist.linux-x86_64/wheel/./acycle_deepseek
+copying build/lib/acycle_deepseek/matlab_runner.py -> build/bdist.linux-x86_64/wheel/./acycle_deepseek
+copying build/lib/acycle_deepseek/mcp.py -> build/bdist.linux-x86_64/wheel/./acycle_deepseek
+copying build/lib/acycle_deepseek/tools.py -> build/bdist.linux-x86_64/wheel/./acycle_deepseek
+running install_egg_info
+Copying src/acycle_deepseek.egg-info to build/bdist.linux-x86_64/wheel/./acycle_deepseek-0.5.1-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/acycle_deepseek-0.5.1.dist-info/WHEEL
+creating '/workspace/Acycle_Harness/dist/.tmp-itf8a0fg/acycle_deepseek-0.5.1-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'acycle_deepseek/__init__.py'
+adding 'acycle_deepseek/artifacts.py'
+adding 'acycle_deepseek/cli.py'
+adding 'acycle_deepseek/deepseek.py'
+adding 'acycle_deepseek/github_backend.py'
+adding 'acycle_deepseek/harness_bridge.py'
+adding 'acycle_deepseek/matlab_runner.py'
+adding 'acycle_deepseek/mcp.py'
+adding 'acycle_deepseek/tools.py'
+adding 'acycle_deepseek/matlab/SOURCES.md'
+adding 'acycle_deepseek/matlab/acycle_batch.m'
+adding 'acycle_deepseek/matlab/acycle_coco.m'
+adding 'acycle_deepseek/matlab/acycle_interpolate_pro.m'
+adding 'acycle_deepseek/matlab/acycle_swa.m'
+adding 'acycle_deepseek/matlab/acycle_tune.m'
+adding 'acycle_deepseek/matlab/coco_sources.json'
+adding 'acycle_deepseek/matlab/preparation_sources.json'
+adding 'acycle_deepseek/matlab/run_validation.m'
+adding 'acycle_deepseek/matlab/source_registry.json'
+adding 'acycle_deepseek/matlab/swa_sources.json'
+adding 'acycle_deepseek/matlab/tests/test_acycle_batch.m'
+adding 'acycle_deepseek/matlab/tests/test_acycle_coco.m'
+adding 'acycle_deepseek/matlab/tests/test_acycle_interpolate_pro.m'
+adding 'acycle_deepseek/matlab/tests/test_acycle_swa.m'
+adding 'acycle_deepseek/matlab/tests/test_acycle_tune.m'
+adding 'acycle_deepseek/matlab/tests/test_paper_coco.m'
+adding 'acycle_deepseek-0.5.1.dist-info/licenses/LICENSE'
+adding 'acycle_deepseek-0.5.1.dist-info/METADATA'
+adding 'acycle_deepseek-0.5.1.dist-info/WHEEL'
+adding 'acycle_deepseek-0.5.1.dist-info/entry_points.txt'
+adding 'acycle_deepseek-0.5.1.dist-info/top_level.txt'
+adding 'acycle_deepseek-0.5.1.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built acycle_deepseek-0.5.1.tar.gz and acycle_deepseek-0.5.1-py3-none-any.whl

@@ -1,4 +1,4 @@
-# Acycle 0.5 for DeepSeek Harness
+# Acycle 0.5.1 for DeepSeek Harness
 
 This native Cordis bundle registers Acycle tools and packaged research skills. Python
 transports requests to MATLAB; Acycle original functions perform the scientific work.
@@ -6,20 +6,25 @@ A missing MATLAB backend is an error, never a request to substitute Python numer
 The shared Python/MCP interface has twelve tools; this native package adds
 `acycle_import_attachment` for thirteen Harness tools and ten skills.
 
-1. Install the matching Python wheel with `python -m pip install acycle_deepseek-0.5.0-py3-none-any.whl`.
-2. Set `ACYCLE_PYTHON` to that Python executable, `ACYCLE_ROOT` to an Acycle source checkout,
-   and configure a local MATLAB executable or the documented GitHub backend.
-3. Add the npm tarball using `dsh plugin --profile <profile> add /absolute/path/dsh-acycle-0.5.0.tgz`.
-4. Ensure the actual agent preset contains this plugin, its skills and persona. Prefer the project-local `local/deploy_harness.py` / `local/launch_harness.py` Web deployment, pinned to 0.2.1-rc.3. The older 0.1.2 Desktop MCP path has different rendering and agent-scope behavior. Restart the profile. `acycle_capabilities` reports configuration; an actual scientific call verifies MATLAB execution.
+1. Install the matching `acycle_deepseek-0.5.1-py3-none-any.whl` in a Python virtual environment.
+2. In the current Harness **0.2.1-rc.3 Desktop**, add `dsh-acycle-0.5.1.tgz` through its plugin manager. The bundle supplies a selectable **Acycle MATLAB** agent preset.
+3. From the full handoff, run `local/render_config.py --workspace . --acycle-root /path/to/acycle --matlab /path/to/matlab`. Quit Desktop and merge its generated `local/generated/desktop.preset.patch.yml` entries into `~/.dsh/profiles/desktop/cordis.patch.yml` (or your configured `DSH_HOME`), preserving other entries. Reopen Desktop and select the Acycle agent. The generated paths belong to this preset; they do not change other agents.
+4. Alternatively use `local/deploy_harness.py --install` and `local/launch_harness.py` for the official project-local Web application. The standalone Web runtime needs Node.js >=24.9.0. Run `local/doctor.py --run-matlab` to verify the local MATLAB installation.
 
-The bundle's `cordis.patch.yml` inserts `dsh-acycle`. Optional row config fields are
-`python`, `workspace`, and `timeoutMs`. By default the workspace comes from Harness's
-`workingDirectory` service for the calling agent, then the process directory for
-non-agent calls. `ACYCLE_WORKSPACE` sets a fixed workspace. Paths and tool arguments
-travel over stdin as JSON, never through a shell. The plugin propagates cancellation
-to its local Python/MATLAB process group. A remote GitHub job's cancellation is
-controlled by the backend implementation. Keep the virtual environment's Python path;
-do not dereference its executable symlink to the base interpreter.
+Use Desktop's own plugin manager or bundled CLI for its profile. The standalone npm CLI deliberately cannot manage Desktop's profile. The [local handoff](https://github.com/JFjifang/Acycle_Harness/blob/main/docs/LOCAL_HANDOFF.zh-CN.md) contains the complete setup and merge instructions.
+
+The bundle's `cordis.patch.yml` registers the `acycle` agent preset. Its native plugin
+accepts `python`, `workspace`, `acycleRoot`, `matlabExecutable`, `backend`, and
+`timeoutMs`. Explicit MATLAB/Acycle paths and backend selection apply only to the
+bridge subprocess; they work when Desktop is opened from its application icon.
+If omitted, the corresponding process environment is used. The generated local
+preset selects the local MATLAB backend.
+
+By default the workspace comes from Harness's `workingDirectory` service for the
+calling agent. `workspace` or `ACYCLE_WORKSPACE` selects a fixed workspace. Paths
+and tool arguments travel over stdin as JSON, never through a shell. Cancellation
+propagates to the local Python/MATLAB process group. Keep the virtual environment's
+Python path; do not dereference its executable symlink to the base interpreter.
 
 ## Attach a dataset and continue the conversation
 
@@ -91,35 +96,21 @@ errors do not require rerunning MATLAB; reopen the existing run and repair deliv
 `presentation.images`/`files` retain official references, source paths and hashes;
 `display_markdown` and `warnings` support the user-facing explanation.
 
-Harness configures its model provider separately. Keep `DEEPSEEK_API_KEY` in the
-runtime environment only. The included Python live-test client defaults to the official
-`deepseek-flash` model ID and records the model ID returned by the API.
+Harness configures its model provider separately. Desktop can use its existing
+provider settings. The generated Web deployment references `DEEPSEEK_API_KEY` in
+the launch environment; no credential value is written into package configuration.
 
-Compatibility was checked against DeepSeek Harness master
-`22ddee3792402c3e70ec5f86a63c3e3e895a2f60` (0.2.1-rc.3):
-`ctx.tools.register(ToolDefinition)`, `ctx.skills.registerProvider`, and
-`ctx.workingDirectory.ensure`. The attachment workflow additionally uses official
-attachment/session-query services and optional `present`. This package declares the
-corresponding DSH engine range.
+This release targets the current official Harness **0.2.1-rc.3** interfaces:
+`ctx.tools.register`, `ctx.skills.registerProvider`, `ctx.workingDirectory.ensure`
+and `ctx.systemPrompt.section`. It has no older-Harness fallback. The npm `latest`
+tag currently lags the newest official release, so the Web installer names rc.3
+explicitly. Package tests and actual agent composition are checked separately from
+Electron/macOS GUI behavior and scientific interpretation.
 
-The 0.3 release tarball was installed and checked with the published official
-`@deepseek-ai/dsh-tools`, `dsh-system-prompt`, and `dsh-skill` 0.2.1-rc.3 packages
-and Cordis 4.0.5. The smoke test checks tool execution, skill loading, and disposal;
-it uses a fixed-directory fixture and does not represent a full desktop UI test.
-Real 0.4 Harness conversations now verify autonomous analysis, separate user-turn
-changes and official file/image delivery, but do not pass every scientific-behavior
-or complete-task criterion. Newark completed both analysis turns with interpretation
-caveats. SWA preserved its method and full-spectrum bytes but the model additionally
-used NumPy numerical QA, violating the MATLAB-only boundary. PETM's adjusted window
-failed in original MATLAB and produced no second map; the model retained the failure.
-The missing-metadata case asked for necessary facts but had wording/interface errors.
-See the full bundle's `validation/v0.4/conversation-evaluation.md` and interpretation
-review. The final attachment edge-case fixes have official-service tests but were
-not followed by another real API/MATLAB run. Web/Desktop rendering was not tested.
-The npm `latest` tag can lag these versions, so use explicit versions for verification.
-
-The lightweight npm package contains tools and skills. Paper benchmark datasets and
-their extraction scripts are in the full release bundle or the repository's
-`benchmarks/` directory; obtain those separately when following a reproduction skill.
-
-Version 0.5 adds Interpolation Pro and extrema-based tuning to the same interfaces. Its local MATLAB supervisor launches once, distinguishes startup failure from computation timeout, and retains logs plus a launch receipt in the run output directory. Structured tool failures retain the run ID and diagnostic locations. See `validation/v0.5/ACCEPTANCE.md` for the separate engineering, model, Web-rendering and scientific checks; the historical 0.4 limitations above remain historical evidence.
+The lightweight npm package contains tools and ten general research skills. The
+full handoff also provides datasets, local configuration tools and the optional
+literature-guided Newark demo. Use `--newark-demo` when generating its preset to add
+the eleventh, dataset-specific skill. Current evidence is documented in
+[0.5.1 acceptance](https://github.com/JFjifang/Acycle_Harness/blob/main/validation/v0.5.1/ACCEPTANCE.md);
+the completed MATLAB/Newark rehearsal and its limitations remain in the
+[0.5.0 record](https://github.com/JFjifang/Acycle_Harness/blob/main/validation/v0.5/ACCEPTANCE.md).

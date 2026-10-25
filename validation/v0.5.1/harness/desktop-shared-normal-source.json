@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "scope": "Actual Web-profile agent composition; no model or MATLAB execution.",
+  "model_api_called": false,
+  "matlab_executed": false,
+  "actual_agent_created": false,
+  "error": "RemoteError: acycle-native (dsh-acycle): never started\n    at Proxy.retain (file:///workspace/acycle-runtime-v051/node_modules/@deepseek-ai/dsh-agent-preset-registry/lib/index.js:645:12)\n    at async Proxy.mount (file:///workspace/acycle-runtime-v051/node_modules/@deepseek-ai/dsh-agent-preset-registry/lib/index.js:687:23)\n    at async setup (file:///workspace/Acycle_Harness/local/harness_probe.mjs:37:58)\n    at async raceAbort (file:///workspace/acycle-runtime-v051/node_modules/@deepseek-ai/dsh-agent-loop/lib/index.js:1479:10)\n    at async file:///workspace/acycle-runtime-v051/node_modules/@deepseek-ai/dsh-agent-loop/lib/index.js:1931:6\n    at async file:///workspace/acycle-runtime-v051/node_modules/@deepseek-ai/dsh-agent-loop/lib/index.js:1946:13\n    at async file:///workspace/acycle-runtime-v051/node_modules/@deepseek-ai/dsh-agent-loop/lib/index.js:835:12\n    at async Proxy.initializeAgent (file:///workspace/acycle-runtime-v051/node_modules/@deepseek-ai/dsh-agent-loop/lib/index.js:1944:11)\n    at async Proxy.setupAndPublish (file:///workspace/acycle-runtime-v051/node_modules/@deepseek-ai/dsh-agent-loop/lib/index.js:1930:11)"
+}

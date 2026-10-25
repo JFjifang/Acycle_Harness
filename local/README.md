@@ -1,29 +1,27 @@
-# Acycle 0.5 local handoff
+# Acycle 0.5.1 local handoff
 
-Give `local/HANDOFF_PROMPT.txt` to a local Codex/DeepSeek Harness session after extracting the complete release. Detailed Chinese instructions: `docs/USER_GUIDE.zh-CN.md` and `docs/LOCAL_HANDOFF.zh-CN.md`.
+Give [HANDOFF_PROMPT.txt](HANDOFF_PROMPT.txt) to a local Codex/DeepSeek Harness session after extracting the release. The [Chinese local handoff](../docs/LOCAL_HANDOFF.zh-CN.md) provides a short install → MATLAB doctor → Desktop plugin route; the [user guide](../docs/USER_GUIDE.zh-CN.md) describes all methods.
 
-The release has 12 shared Python/MCP tools, 13 native Harness tools and 10 skills. Six scientific operations use MATLAB: mini robot, SWA, COCO, eCOCO, Interpolation Pro and periodic-extrema tuning. No automatic Python numerical fallback is provided.
+This release targets official Harness **0.2.1-rc.3**, the newest verified release. Use the updated Desktop application and its bundled runtime; a separate system Node installation is unnecessary. A project Web deployment is also available, requiring Node.js **≥24.9.0** and the exact rc.3 package because npm’s `latest` tag currently points to rc.2.
 
-| Entry point | Scope |
+There are 12 shared Python/MCP tools, 13 native Harness tools and 10 general skills. Six scientific operations use MATLAB: mini robot, SWA, COCO, eCOCO, Interpolation Pro and periodic-extrema tuning. Python provides orchestration and file transport.
+
+| Entry point | Purpose |
 | --- | --- |
-| `install_check.py` | Installed 0.5.0 package, archive bytes and actual MCP; optional native registry. No API/MATLAB. |
-| `doctor.py` | Paths/source hashes; `--run-matlab` starts MATLAB once and retains all diagnostic evidence. |
-| `render_config.py` | Project-local Codex MCP and environment snippets; never overwrites host config. |
-| `deploy_harness.py` | Pinned official Harness 0.2.1-rc.3 Web/native deployment, project-private runtime/home/profile/preset. |
-| `check_harness.py` | Actual `acycle` preset agent, scoped persona/tools/skills, skill pre-step messages and image capability. Keyless fixture, no science. |
-| `launch_harness.py` | Launch generated Web deployment with inherited credential and configured MATLAB environment. |
-| `smoke.py` | Bounded real MATLAB requests; `--dry-run` only prints the plan. |
+| `install_check.py` | Installed 0.5.1 package, archive hashes and actual MCP; optional native registry. No API/MATLAB. |
+| `doctor.py --run-matlab` | Check local MATLAB, license, toolboxes and original sources; retain diagnostics. |
+| `deploy_harness.py --install` | Install the supported runtime and current plugin; generate the actual Acycle agent configuration. |
+| `check_harness.py --output ...` | Verify the mounted agent's tools, skills and text/image capability without an API key. |
+| `launch_harness.py` | Launch the generated Web deployment with local MATLAB paths and inherited credentials. |
+| `render_config.py` | Generate the Desktop Acycle preset patch with local Python/MATLAB paths, plus Codex MCP configuration. |
+| `smoke.py --case ...` | Optional method-specific MATLAB diagnostic; `--dry-run` prints requests. |
 
-Use the matching virtual environment interpreter. The supported Harness route requires Node.js ≥24.9, the official Web app/frontend and the actual scoped `acycle` preset. Leave the old Desktop installation/configuration unchanged. The generated provider references `DEEPSEEK_API_KEY`; no credential value is saved. The default runtime, private `DSH_HOME`, npm cache and configuration live under `local/generated/harness-web/`.
+For Desktop, install `dist/dsh-acycle-0.5.1.tgz` through **Plugins → Add plugin**, then enable it. Run `render_config.py`, quit Desktop and merge `local/generated/desktop.preset.patch.yml` into `~/.dsh/profiles/desktop/cordis.patch.yml` (or the configured `DSH_HOME`) while preserving other entries. Reopen Desktop and select **Acycle MATLAB**. The patch configures the Acycle child process; existing Desktop model credentials remain in host settings.
 
-`check_harness.py` goes beyond registry discovery: a real mounted AgentLoop with a deterministic adapter proves the official skill catalog is in actual request messages. It resolves the real deployment model catalog separately. This does not establish a successful real API call, scientific result, or user-visible browser image.
+Add `--newark-demo` to `render_config.py` to mount the public literature-guided Newark skill: 13 tools and 11 skills. See [the demo handoff](../demo/newark-0.5.1/HANDOFF.zh-CN.md) for its input and short prompts. Ordinary research sessions do not receive Newark-specific priors.
 
-`smoke.py --case tune` performs a MATLAB depth/filter analysis, explicitly assumes 405 kyr with a relative zero at the first peak, then diagnoses the original proxy through `tuning_run_id`. Its 48–80 m illustrative band follows the public demo manifest, not independent cycle identification. `--case all` covers all six scientific operations and the dependent tuning chain. The default 19 simulations are diagnostic only.
+For the optional Web route, `deploy_harness.py --install [--newark-demo]` installs the runtime under `local/generated/harness-web/`; `--runtime` reuses an existing same-version installation. `launch_harness.py` reads credentials from `DEEPSEEK_API_KEY` in its process environment.
 
-MATLAB startup failures preserve `matlab-launch.json` and `matlab.log` in unique `.acycle/diagnostics/` or run directories. Do not automatically retry through a different shell or delete failed evidence. GUI delivery failures should reuse existing results, not rerun scientific calculations.
+Check actual conversation results and images after launch. A saved `display_markdown` image should load in main Chat, open in a lightbox and remain visible after refresh; original files should download intact. If display fails, reuse the completed run rather than recalculate it. Preserve MATLAB failure logs and diagnose the cause before retrying.
 
-Current acceptance is in `validation/v0.5/ACCEPTANCE.md`. The official browser fixture `validation/v0.5/web/main-chat-final-fixture.json` verified two existing MATLAB PNGs in the main Chat, lightbox, refresh and original-byte file downloads with a text-only scripted provider. It is not a live-model test or a macOS Desktop test. Review live-model/image/scientific receipts separately. Historical 0.4 conversation failures and the unresolved SWA/PETM paper criteria remain part of the handoff; see the Chinese guide.
-
-The live image lane retained two `read_image` image blocks and uploaded both through the official provider Files API. Its first browser runner timed out before lazy-loaded images were scrolled into view; that failed receipt is preserved. `validation/v0.5/web/main-chat-live-browser-final.json` passed the same-session browser checks with zero new model requests, tool calls or scientific calculations. This is image transport/delivery evidence, not scientific interpretation acceptance.
-
-The opt-in `deploy_harness.py --newark-demo` mounts the public demonstration skill in the real preset (10 Acycle skills plus 1 demo skill, still 13 native tools). The default deployment does not include these dataset-specific priors. Deployment records source hashes; the keyless agent probe checks all 11 skill names in actual request messages. See `demo/newark-0.5.0/HANDOFF.zh-CN.md` for complete deploy/check/launch commands.
+Current release checks: [0.5.1 acceptance](../validation/v0.5.1/ACCEPTANCE.md). Historical full Newark conversation, image and science evidence: [0.5 acceptance](../validation/v0.5/ACCEPTANCE.md). Shared runtime/configuration tests do not establish an Electron GUI test on the user’s machine; local testing and scientific review remain separate.

@@ -1,6 +1,6 @@
 # 0.5 本地问题修正与验证边界
 
-本轮依据 `HARNESS_IMAGE_DIAGNOSIS.zh-CN.md` 中的故障现象，将模型读图、用户看图、实际 agent 配置及 MATLAB 启动分别修正。推荐入口是项目内固定版本的 Harness Web 0.2.1-rc.3；生成器不修改现有 Desktop 安装或全局配置。
+本页记录 0.5.0 依据 `HARNESS_IMAGE_DIAGNOSIS.zh-CN.md` 完成的修复，分别覆盖模型读图、用户看图、实际 agent 配置及 MATLAB 启动。该轮使用 Harness Web 0.2.1-rc.3 验证。0.5.1 已增加当前 Desktop 的原生 preset 配置，最新安装入口见 [本地 handoff](LOCAL_HANDOFF.zh-CN.md)。
 
 | 现象 | 0.5 的处理 | 已验证的范围 |
 |---|---|---|

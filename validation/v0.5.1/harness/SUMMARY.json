@@ -1,0 +1,147 @@
+{
+  "created_at_utc": "2026-10-25T13:36:41.839892+00:00",
+  "status": "passed",
+  "release": "0.5.1",
+  "harness_version": "0.2.1-rc.3",
+  "runtime": "/workspace/acycle-runtime-v051",
+  "node_version": "24.19.0",
+  "python_executable": "/workspace/acycle-release-check-v051/bin/python",
+  "python_path_override_used": false,
+  "wheel_sha256": "3aa3062acc845b336e79a482061122bfaaa5242a702b3bc364f9f3791ed9a90a",
+  "native_archive_sha256": "d4888e77694c2787df5139bc52cce4844ef5002be71b31fcc9d1a34d276c08d6",
+  "native_archive_members": 16,
+  "installed_native_files_match_archive": true,
+  "official_runtime_packages": {
+    "dsh": "0.2.1-rc.3",
+    "dsh-web-frontend": "0.2.1-rc.3",
+    "dsh-sdk-client": "0.2.1-rc.3"
+  },
+  "npm_lockfile_sha256": "5c0db326b73208c7c2223aa85910d488b10fbc5dd476b0b43676362328fdaf96",
+  "node_contracts": {
+    "receipt": "node-contracts-installed.tap",
+    "tests": 28,
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0
+  },
+  "compositions": {
+    "web-normal": {
+      "receipt": "web-normal-installed.json",
+      "receipt_sha256": "fb606f4738be29cc49039343b48dea1efb1da929d4add1d667c61da40bf14801",
+      "actual_agent_created": true,
+      "native_tools": 13,
+      "acycle_skills": 10,
+      "total_scoped_skills": 10,
+      "demo_skill_path": null,
+      "demo_skill_content_sha256": null,
+      "demo_source_hashes": [],
+      "capabilities": {
+        "version": "0.5.1",
+        "backend": "local",
+        "acycle_root": "/workspace/upstream/acycle",
+        "matlab_available": false,
+        "python_numerical_fallback": false
+      }
+    },
+    "web-demo": {
+      "receipt": "web-demo-installed.json",
+      "receipt_sha256": "b784838d0172ff3818a578726dd79f0401b0ffd9c326e70e37d861c31a935c2c",
+      "actual_agent_created": true,
+      "native_tools": 13,
+      "acycle_skills": 10,
+      "total_scoped_skills": 11,
+      "demo_skill_path": "/workspace/Acycle_Harness/demo/newark-0.5.1/skills/newark-relative-time-demo/SKILL.md",
+      "demo_skill_content_sha256": "98dbc8df618fe17bff9534726d2e12b3ad40f938a823ee4f7e8b42a5c808440f",
+      "demo_source_hashes": [
+        {
+          "relative_path": "demo/newark-0.5.1/manifest.json",
+          "sha256": "3abc443905359ba6c46ad0f4450b6c2ba5507bfa578bd0d0c63309065e302abd"
+        },
+        {
+          "relative_path": "demo/newark-0.5.1/SOURCES.md",
+          "sha256": "9e2a399d4cee9bddf86735a5cb3c5950c08ee8f5fd4326bc6b07ee83add92624"
+        },
+        {
+          "relative_path": "demo/newark-0.5.1/literature_sources.json",
+          "sha256": "3d69db795f97b2186e820d45faa0946ab1f19e73335d0f625f89ebe77b6bc10d"
+        },
+        {
+          "relative_path": "demo/newark-0.5.1/skills/newark-relative-time-demo/SKILL.md",
+          "sha256": "1982c03f9ca0064464ae8b7f9004fe5c3678daaf11fb0106a1fdb1fd86747155"
+        },
+        {
+          "relative_path": "scripts/harness_conversation_support.mjs",
+          "sha256": "e519c122d2ba1a29844518138c31cb31ee87190cc865694de79ad11b14db1524"
+        }
+      ],
+      "capabilities": {
+        "version": "0.5.1",
+        "backend": "local",
+        "acycle_root": "/workspace/upstream/acycle",
+        "matlab_available": false,
+        "python_numerical_fallback": false
+      }
+    },
+    "desktop-shared-normal": {
+      "receipt": "desktop-shared-normal-installed.json",
+      "receipt_sha256": "0319e6848e9a0c4552548f721cbf557d6cec7c7af9d6bca9b4f050f03d257109",
+      "actual_agent_created": true,
+      "native_tools": 13,
+      "acycle_skills": 10,
+      "total_scoped_skills": 10,
+      "demo_skill_path": null,
+      "demo_skill_content_sha256": null,
+      "demo_source_hashes": [],
+      "capabilities": {
+        "version": "0.5.1",
+        "backend": "local",
+        "acycle_root": "/workspace/upstream/acycle",
+        "matlab_available": false,
+        "python_numerical_fallback": false
+      }
+    },
+    "desktop-shared-demo": {
+      "receipt": "desktop-shared-demo-installed.json",
+      "receipt_sha256": "ee9ace9acd8e5d7b7c92218ce892c8b10f17ec4d4c56ecf56c784b4cc3b387cc",
+      "actual_agent_created": true,
+      "native_tools": 13,
+      "acycle_skills": 10,
+      "total_scoped_skills": 11,
+      "demo_skill_path": "/workspace/Acycle_Harness/demo/newark-0.5.1/skills/newark-relative-time-demo/SKILL.md",
+      "demo_skill_content_sha256": "98dbc8df618fe17bff9534726d2e12b3ad40f938a823ee4f7e8b42a5c808440f",
+      "demo_source_hashes": [
+        {
+          "relative_path": "demo/newark-0.5.1/manifest.json",
+          "sha256": "3abc443905359ba6c46ad0f4450b6c2ba5507bfa578bd0d0c63309065e302abd"
+        },
+        {
+          "relative_path": "demo/newark-0.5.1/SOURCES.md",
+          "sha256": "9e2a399d4cee9bddf86735a5cb3c5950c08ee8f5fd4326bc6b07ee83add92624"
+        },
+        {
+          "relative_path": "demo/newark-0.5.1/literature_sources.json",
+          "sha256": "3d69db795f97b2186e820d45faa0946ab1f19e73335d0f625f89ebe77b6bc10d"
+        },
+        {
+          "relative_path": "demo/newark-0.5.1/skills/newark-relative-time-demo/SKILL.md",
+          "sha256": "1982c03f9ca0064464ae8b7f9004fe5c3678daaf11fb0106a1fdb1fd86747155"
+        },
+        {
+          "relative_path": "scripts/harness_conversation_support.mjs",
+          "sha256": "e519c122d2ba1a29844518138c31cb31ee87190cc865694de79ad11b14db1524"
+        }
+      ],
+      "capabilities": {
+        "version": "0.5.1",
+        "backend": "local",
+        "acycle_root": "/workspace/upstream/acycle",
+        "matlab_available": false,
+        "python_numerical_fallback": false
+      }
+    }
+  },
+  "desktop_scope": "Installed native bundle plus generated Desktop overlay, mounted by the official shared Web host and actual agent/preset services. The fixture provides its official model selection separately and passes no Acycle/MATLAB environment from the host. This does not test Electron, macOS UI, or the Desktop package-manager UI.",
+  "model_api_called": false,
+  "matlab_executed": false,
+  "host_configuration_modified": false
+}

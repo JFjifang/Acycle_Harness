@@ -1,39 +1,25 @@
-请在解压后的当前 Acycle_Harness 项目完成本机安装和实际测试。我希望在 Harness 中上传数据、发简短问题、看到主聊天中的 MATLAB 图，再在同一对话调整；也保留 Codex MCP 接入。请直接完成可独立进行的工作，最后报告本机实际结果。
+请在当前 Acycle_Harness 0.5.1 交付目录完成本地安装和实际测试。我会使用新版 DeepSeek Harness：上传数据、发简短问题、看到 MATLAB 图件，并在同一会话调整分析。也保留 Codex MCP 接入。
 
-先读取 docs/USER_GUIDE.zh-CN.md、docs/LOCAL_HANDOFF.zh-CN.md、validation/v0.5/ACCEPTANCE.md 和当前 tool schema。核对版本0.5.0：Python/MCP12个工具、Harness原生13个工具、10个skills。六项科学操作是 mini robot、SWA、COCO、eCOCO、Interpolation Pro、周期极值调谐。不要把历史0.4的验收当作新增功能已通过。
+先读 docs/LOCAL_HANDOFF.zh-CN.md 和 docs/USER_GUIDE.zh-CN.md。按本机环境直接完成可执行的工作，保存新的 local-validation/ 报告。当前支持官方 Harness 0.2.1-rc.3，这是本版核验的最新官方 release。我准备更新 Desktop，优先接入该安装的原生插件和 Acycle MATLAB agent；Desktop 自带运行时，不要求另装 Node。无需维护旧版本兼容分支。
 
-定位本机已有MATLAB、工具箱和Acycle源码。参考Acycle SHA为dcba4279168745b563e0535b954297023dd62fc7；已有目录有修改时另建参考checkout，不重置用户目录。不要修改许可证。缺少环境时继续无关独立检查，再准确说明缺什么。所有路径按本机生成，不复制旧云端/workspace路径。
+1. 定位本机 Python、MATLAB 和 Acycle 源码。在项目 .venv 安装 dist/acycle_deepseek-0.5.1-py3-none-any.whl，设置 ACYCLE_ROOT、ACYCLE_BACKEND=local 和 MATLAB_EXECUTABLE；路径必须按本机生成。Acycle 参考提交为 dcba4279168745b563e0535b954297023dd62fc7，保留已有研究目录的修改。
 
-在项目.venv安装匹配的dist/acycle_deepseek-0.5.0-py3-none-any.whl；必要时从本项目安装。运行local/install_check.py写新的local-validation回执，该步骤不调用API/MATLAB。设置ACYCLE_BACKEND=local、ACYCLE_ROOT、MATLAB_EXECUTABLE、ACYCLE_MATLAB_STARTUP_TIMEOUT=180、ACYCLE_MATLAB_TIMEOUT=3600。运行local/doctor.py --run-matlab --output一个新的回执路径，实际检查许可证、release和工具箱。找到可执行文件不代表MATLAB运行成功。
+2. 运行 local/install_check.py --output local-validation/install.json，然后 local/doctor.py --run-matlab --output local-validation/doctor.json。doctor 实际检查 MATLAB、许可证和工具箱。首次启动失败先读保留的 matlab-launch.json / matlab.log，修复具体原因后再试；不循环重试、不删除失败记录。无 Key 的安装和 MATLAB 检查照常完成。
 
-首次MATLAB启动失败，停止并读取保留的matlab-launch.json、matlab.log和启动标记；doctor证据在.acycle/diagnostics/<unique>/，科学调用证据在.acycle/runs/<run_id>/。不循环重试、不从sandbox shell绕过桥、不删除失败记录。修复明确原因后如需重试，创建新的记录。Python/Octave不得代替已有MATLAB计算、数值QA或图形。
+3. 运行 local/render_config.py --workspace . --acycle-root 本机路径 --matlab 本机可执行路径，生成 local/generated/desktop.preset.patch.yml。通过更新后 Desktop 的“插件 → 添加插件”安装本机 dist/dsh-acycle-0.5.1.tgz 并启用；也可用 Desktop 菜单“管理 dsh 命令…”安装的内置命令，在 Desktop 完全退出后执行 dsh plugin --profile desktop add 绝对tgz路径。完全退出应用，检查并合并生成配置到 ~/.dsh/profiles/desktop/cordis.patch.yml（自定义 DSH_HOME 则按实际路径），保留其他条目、更新 preset-acycle。重开应用，在新会话选择 Acycle MATLAB，沿用现有模型凭据并使用支持图像的 DeepSeek Flash。生成配置把科学后端路径传给 Acycle 子进程，从 Dock 启动不依赖终端导出环境。
 
-先运行local/smoke.py --case all --dry-run查看实际请求。环境可用后分别运行analyze、swa、coco --nsim 19、ecoco --nsim 19、interpolate_pro、tune。tune会执行MATLAB滤波、极值调谐、原始proxy的时间诊断，采用公开演示48–80m频带、405kyr完整周期、第一峰相对时间0和trim边界；这些是显式演示假设，不是从谱图检测出绝对年龄或轨道周期。19次Monte Carlo只做诊断，不支持发表级显著性。保留输入SHA、实际参数、每个运行ID、MATLAB版本、原函数来源及所有失败。
+4. 若本次选择 Newark 演示，在 render_config.py 增加 --newark-demo，再合并生成配置，详见 demo/newark-0.5.1/HANDOFF.zh-CN.md。演示模式为 13 个工具、10 个通用 skills 加 1 个演示 skill。读取公开 manifest、SOURCES 和文献指引；这些研究线索只适用于指定 Newark 数据，不用于其他未知文件。
 
-调谐必须明确period_kyr、anchor_age_kyr、anchor_phase、extrema、depth_unit。检查控制点、年龄模型、沉积速率和端点；时间诊断用原始proxy加顶层tuning_run_id，不同时传age_model、sedimentation_rate或coordinate_range。不要只分析已经赋予周期的滤波曲线，再把该周期当独立验证。Interpolation Pro缺口置零是显式方法选择，不把合成零视为测量，不把更密网格视为新增信息。
+5. 在实际 Harness 会话上传数据，用简短提示完成分析；等第一轮回复后再独立发送一次修改要求。普通数据缺单位、年龄/周期或速率范围依据时，先读已有材料，必要时澄清。Newark 演示使用随包公开的研究假设，保留数据证据与405 kyr调谐约束的区别。
 
-若用Codex，运行local/render_config.py生成片段，只把acycle条目定向合并到受信任项目.codex/config.toml，不覆盖其他配置或全局模型；保留虚拟环境解释器和足够工具超时。刷新MCP后实际调用capabilities和一次科学操作，检查12工具。Codex数据使用工作区路径，其图件客户端另行检查，不拿Harness的附件验收替代。
+6. 检查主 Chat 最终答案中的 MATLAB PNG、点击放大、刷新和原文件下载。采用工具返回的 display_markdown，不编造 URL。图件显示问题先用 acycle_get_run 复用已有结果；模型 read_image、用户看到图和解释是否正确分别记录。
 
-Harness固定走Node>=24.9和官方0.2.1-rc.3项目内Web/native模式。保留旧Desktop0.1.2-rc.1及其标准MCP/profile，不用另一个npm CLI修改它。运行local/deploy_harness.py --workspace . --acycle-root本机路径 --matlab本机可执行路径 --install；默认runtime、私有DSH_HOME、Web profile和manifest在local/generated/harness-web/。使用local/install_check.py --runtime local/generated/harness-web/runtime核对安装包；再用local/check_harness.py --output新的回执，证明真正acycle preset agent拥有13个工具、10个scoped skills、persona、可加载技能正文，技能目录确实在pre-step后进入实际请求，以及deepseek-official/deepseek-flash解析为text/image。只看根注册器不够。
+若需要独立 Web 入口，再采用 local/deploy_harness.py --install、check_harness.py 和 launch_harness.py。这一路需要 Node>=24.9.0，安装器使用精确 Harness 0.2.1-rc.3（npm latest 当前是 rc.2），模型凭据从启动环境继承。不要为接入 Desktop 额外部署一套 Web；Web 是可选路线。
 
-若明确选择公开Newark演示，为部署增加--newark-demo，使用独立--directory local/generated/newark-web --port 3081；已有普通runtime可通过--runtime复用。check和launch均指向该目录deployment.json。该模式实际preset额外挂载newark-relative-time-demo，10个通用skills加1个演示skill共11个，工具仍13个；确认公开来源hash及全部技能进入请求。普通模式默认不挂演示先验，不能在其他数据上套用。具体命令见demo/newark-0.5.0/HANDOFF.zh-CN.md。
+科学计算、数值质量检查、滤波、控制点选择、插值、调谐和绘图都走 MATLAB/Acycle。Python 可做接口、文件转换和 Acycle 未提供的辅助功能，后续尽量桥接回 MATLAB。六项科学操作是 mini robot、SWA、COCO、eCOCO、Interpolation Pro 和周期极值调谐；需要逐项诊断时再运行 local/smoke.py --case all --dry-run 及相应 smoke，无需先跑完所有案例才能开始对话。
 
-用local/launch_harness.py启动生成的私有Web。它设置MATLAB/Python路径并继承终端中的DEEPSEEK_API_KEY；不把Key值写入配置、日志、报告、handoff或提交，不打印Web本地token到报告。没有Key时完成无Key安装/agent/MATLAB工作，将真实模型部分标记not_run。浏览器地址从启动输出读取，默认127.0.0.1:3080。若端口冲突，生成新私有端口或明确重生成自己的配置，不结束无关进程。
+连续修改使用 acycle_rerun，保留原输入、基线、方法和未改设置；保存 parent_run_id、输入哈希与实际参数。调谐后用原始 proxy 加 tuning_run_id 做时间域诊断，不把已赋予的405 kyr周期作为独立证明。检查峰谷控制点及端点；19次 Monte Carlo 仅供快速探索。
 
-实际会话在acycle preset上传两列CSV/TXT/DAT/TSV。短提示说清必要单位和研究目标，等待第一轮回复与真实MATLAB结果，再发独立下一条消息调整参数。缺少必要单位、年代/目标、搜索范围时先读取已有说明，再澄清，不猜隐藏文件身份，不为了测试通过编造前提。完整公开Newark演示见demo/newark-0.5.0/manifest.json和scenarios.json；其预设先验允许公开给模型，验收规则和预期答案不应混入提示。
+如用 Codex，运行 local/render_config.py 生成配置，仅合并 acycle 条目到受信任项目 .codex/config.toml，保留其他设置。刷新 MCP 后确认 12 个共享工具，数据通过工作区路径传入。
 
-acycle_import_attachment只接受当前会话用户附件；多文件应选择，唯一8位官方短句柄可用。裸文件名优先会话上传，旧workspace同名文件须用./文件名或绝对路径。核对原字节SHA和本次import_receipt来源session/message，不能只凭同hash假定来源相同。
-
-连续修改使用acycle_rerun，检查基线保留、冻结输入SHA、parent_run_id、operation和未改参数；SWA/COCO/eCOCO及新操作不能被偷偷换成另一种分析。确实依赖本次修改的默认值可重算，但steering须说明。跨不同操作不伪造同类型parent。用acycle_compare读已有MATLAB结果进行比较。
-
-图件验收先复用已有成功运行，不为显示问题重跑科学。助手最终答案应引用工具返回的display_markdown真实PNG路径。检查主Chat内实际img加载、点击放大、同session刷新后仍显示，并下载PNG/CSV/MAT/FIG核对原字节哈希。present卡、Trajectory事件、磁盘文件存在都不等于主Chat大图。自动preview是offloaded；read_image加支持image的模型路由可额外传像素，须从实际请求/回执核对；用户看得见、模型收到图、模型解释正确分别报告。禁止虚构图片URL。
-
-检查完整模型工具轨迹，不能只看Acycle响应backend=matlab：已有MATLAB能力的统计、谱分析、数值质量检查和作图不得另用NumPy。模型可做文件传输/结构处理及Acycle没有实现的辅助功能；必要的新增科学工作尽量整理原MATLAB并记录来源，再桥接回来。超出当前六操作的GUI能力应准确说明边界，不承诺不存在的接口。
-
-以本机真实证据逐项标记passed、failed、not_run或needs_human_clarification。无Keyactual-agent fixture、真实模型、MATLAB计算、主Chat渲染、模型读图、科学解释和论文定量复现分别报告。保存会话ID、每条独立用户消息、模型route、工具调用、runID、参数变化、输出路径及图件事件。不能把工具往返次数写成用户多轮数。
-
-历史0.4有明确未通过项：Newark解释错误；SWA额外NumPy QA越界；PETM第二个8m/4m窗口分支原MATLAB不可解析、无第二图；未知元数据虽先澄清但措辞有问题。0.5官方Web的main-chat-final-fixture已用text-only脚本provider验证既存图件主Chat/放大/刷新/下载，未调用模型或重算科学，也不是Mac Desktop验证。真实图片lane已有两次read_image像素经Files API上传；原live runner的懒加载等待超时保留failed，随后main-chat-live-browser-final.json在同Session通过浏览器检查，新增模型/工具/科学调用均0。它是图像传输和交付证据，不是科学解释验收。完整科学结果以validation/v0.5/ACCEPTANCE.md和对应回执为准，不能提前宣布全部通过。
-
-保留论文差异：Lavernock约0.82125m峰接近论文0.81m但5%FDR未复现；PETM首轮26.43cm/kyr、校正p约0.103948，按原日志独立复跑28.93cm/kyr、校正p约0.66967且仅4/6周期可解析，均未达8–15cm/kyr；Cambrian只预算缩减流程。不要用换区间、改参数、改显著性定义隐去未通过项，也不能只归因于版本。
-
-完成后在local-validation/写本机验收报告和产物入口，列出剩余问题及有依据的下一轮敏感性设置。不要发布、推送或部署外部服务，不修改全局Codex/Harness模型设置，不回传凭据、许可证秘密或无关私有数据。
+完成后报告本机安装、MATLAB运行、实际对话、参数保持、图件交付和科学解释的结果，标记 passed / failed / not_run。历史证据见 validation/v0.5/ACCEPTANCE.md，本版变化与官方共享配置验证见 validation/v0.5.1/ACCEPTANCE.md；共享配置/Web 检查不等于本机 Electron 窗口已测，旧演练也不能充当新版文献指引已重新实测。所有失败原样保留，不通过换参数或历史成功结果掩盖。仅回传必要的去敏报告，不回传 API Key、许可证秘密或无关私有文件。

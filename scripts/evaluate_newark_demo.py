@@ -382,7 +382,7 @@ def evaluate(receipt, receipt_path, manifest, evidence_root, review):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--receipt', required=True, type=Path)
-    parser.add_argument('--manifest', type=Path, default=ROOT / 'demo/newark-0.5.0/manifest.json')
+    parser.add_argument('--manifest', type=Path, default=ROOT / 'demo/newark-0.5.1/manifest.json')
     parser.add_argument('--review', type=Path)
     parser.add_argument('--evidence-root', type=Path)
     parser.add_argument('--archive-evidence', type=Path)

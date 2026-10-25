@@ -1,0 +1,30 @@
+npm notice
+npm notice 📦  dsh-acycle@0.5.1
+npm notice Tarball Contents
+npm notice 35.1kB LICENSE
+npm notice 8.7kB README.md
+npm notice 17.8kB attachments.mjs
+npm notice 781B cordis.patch.yml
+npm notice 11.1kB index.mjs
+npm notice 621B package.json
+npm notice 2.0kB skills/acycle-age-model/SKILL.md
+npm notice 2.7kB skills/acycle-astronomical-tuning/SKILL.md
+npm notice 4.3kB skills/acycle-coco/SKILL.md
+npm notice 5.0kB skills/acycle-intake/SKILL.md
+npm notice 1.9kB skills/acycle-interpolation-pro/SKILL.md
+npm notice 2.0kB skills/acycle-mini-robot/SKILL.md
+npm notice 2.2kB skills/acycle-reproduction/SKILL.md
+npm notice 3.4kB skills/acycle-sensitivity-steering/SKILL.md
+npm notice 1.9kB skills/acycle-spectral-interpretation/SKILL.md
+npm notice 3.4kB skills/acycle-swa/SKILL.md
+npm notice Tarball Details
+npm notice name: dsh-acycle
+npm notice version: 0.5.1
+npm notice filename: dsh-acycle-0.5.1.tgz
+npm notice package size: 35.4 kB
+npm notice unpacked size: 102.9 kB
+npm notice shasum: a99d952aaa24b3a8b8c252d9478c6eee3a6772f7
+npm notice integrity: sha512-pmHddCNYkdsY8[...]4z57T12wb/LFg==
+npm notice total files: 16
+npm notice
+dsh-acycle-0.5.1.tgz

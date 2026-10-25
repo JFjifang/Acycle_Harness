@@ -437,7 +437,7 @@ def dispatch(name, args, workspace='.'):
     root = _root(workspace)
     if name == 'acycle_capabilities':
         remote = os.environ.get('ACYCLE_BACKEND','local') == 'github'
-        return {'version':'0.5.0', 'scientific_backend':'MATLAB/Acycle',
+        return {'version':'0.5.1', 'scientific_backend':'MATLAB/Acycle',
                 'backend':os.environ.get('ACYCLE_BACKEND','local'),
                 'matlab_available':bool(shutil.which(os.environ.get('MATLAB_EXECUTABLE','matlab'))),
                 'acycle_root':os.environ.get('ACYCLE_ROOT'),

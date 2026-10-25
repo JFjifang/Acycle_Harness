@@ -44,8 +44,8 @@ def main() -> int:
         from acycle_deepseek.tools import _matlab_dir, tool_schemas
         report['package_version'] = importlib.metadata.version('acycle-deepseek')
         report['registered_tools'] = [tool['function']['name'] for tool in tool_schemas()]
-        if report['package_version'] != '0.5.0' or len(report['registered_tools']) != 12:
-            report['errors'].append('This handoff requires matching acycle-deepseek 0.5.0 with 12 shared tools')
+        if report['package_version'] != '0.5.1' or len(report['registered_tools']) != 12:
+            report['errors'].append('This handoff requires matching acycle-deepseek 0.5.1 with 12 shared tools')
         bridge = _matlab_dir()
         report['matlab_bridge'] = str(bridge)
     except (ImportError, RuntimeError, importlib.metadata.PackageNotFoundError) as error:
@@ -128,9 +128,9 @@ def main() -> int:
             report['harness'] = {'deployment': str(deployment_path), 'version': installed['version'],
                 'expected_version': deployment['harness_version'], 'profile': deployment['profile'],
                 'preset': deployment['preset'], 'provider': deployment['provider'], 'model': deployment['model'],
-                'actual_agent_checked': False, 'legacy_desktop_modified': False}
+                'actual_agent_checked': False}
             if installed['version'] != '0.2.1-rc.3':
-                report['errors'].append('Supported native Web runtime is pinned to 0.2.1-rc.3; keep the legacy Desktop separate')
+                report['errors'].append('This release supports Harness 0.2.1-rc.3; update the generated deployment with --install')
             if args.check_harness:
                 target = workspace/'local-validation'/('agent-composition-'+uuid.uuid4().hex[:12]+'.json')
                 completed = subprocess.run([sys.executable, str(Path(__file__).with_name('check_harness.py')),

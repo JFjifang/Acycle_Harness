@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "scope": "Literature-guided demo rehearsal. Public presets, checked paper context and dedicated skill are model-visible; acceptance criteria are evaluator-only. This is not a blind method-selection benchmark.",
+  "manifest_path": "manifest.json",
+  "skill_path": "skills/newark-relative-time-demo/SKILL.md",
+  "cases": [
+    {
+      "id": "newark_relative_time_complete",
+      "attachment": {
+        "path": "data/Example-LateTriassicNewarkDepthRank.txt",
+        "name": "Example-LateTriassicNewarkDepthRank.txt"
+      },
+      "turns": [
+        {
+          "id": "complete_relative_time_workflow",
+          "user_prompt": "参考 Newark 早期旋回研究和 COCO 方法，分析附件的轨道节律与沉积速率变化，并建立相对时间轴。",
+          "execution_policy": {
+            "kind": "scientific",
+            "min_completed_scientific_runs": 6,
+            "max_scientific_calls": 8
+          },
+          "acceptance": {
+            "public_assumptions_visible": true,
+            "science_computed_in_matlab": true,
+            "required_products": [
+              "interpolation_pro_grid_and_gap_diagnostic",
+              "preprocessing",
+              "depth_mtm",
+              "depth_evofft",
+              "coco",
+              "ecoco",
+              "filtered_series",
+              "extrema_age_controls",
+              "relative_time_original_proxy",
+              "time_mtm",
+              "time_evofft"
+            ],
+            "input_policy": "Interpolation Pro consumes the official original raw file. Depth analysis, COCO and eCOCO share the same actual Pro interpolated artifact hash and preserve linkage to that raw input. Tuning consumes the actual MATLAB filtered artifact. The final time-domain analysis returns to the original raw proxy hash with the actual tuning controls; it must not use the filtered curve as its proxy.",
+            "lineage": "Retain original raw file -> Interpolation Pro -> common depth-analysis/COCO/eCOCO input -> filtered file -> tuning controls -> original-proxy time analysis. Controls must come from the completed tuning run, never invented or prebundled points.",
+            "raw_artifacts_downloadable": true,
+            "matlab_images_returned": true,
+            "actual_client_image_rendering": "record separately; emitted image references alone do not prove pixels rendered",
+            "no_absolute_chronology_claim": true,
+            "no_tuned_peak_as_independent_validation": true,
+            "no_p_below_0_05_claim_from_19_simulations": true,
+            "no_hidden_parameter_or_cached_result_substitution": true
+          }
+        },
+        {
+          "id": "change_ecoco_window_and_step",
+          "user_prompt": "保留原结果，把 eCOCO 的窗口改成 800 米、步长改成 200 米，看看速率变化是否稳健。",
+          "execution_policy": {
+            "kind": "scientific",
+            "min_completed_scientific_runs": 1,
+            "max_scientific_calls": 2
+          },
+          "acceptance": {
+            "same_initial_ecoco_interpolated_input_hash": true,
+            "same_original_raw_source_lineage": true,
+            "parent_link_to_initial_ecoco": true,
+            "same_ecoco_method": true,
+            "only_intended_scientific_changes": [
+              "physical window 600 to 800 m",
+              "physical step 100 to 200 m"
+            ],
+            "retain": [
+              "initial method",
+              "target age/periods",
+              "rate grid",
+              "detrending",
+              "simulation budget",
+              "seed",
+              "initial run"
+            ],
+            "raw_artifacts_downloadable": true,
+            "matlab_images_returned": true,
+            "comparison_uses_actual_matlab_results": true
+          }
+        },
+        {
+          "id": "optional_trough_phase_sensitivity",
+          "user_prompt": "保留峰值方案，再用谷值建立一条相对时间轴，比较两者；不要把相位差当成年代误差范围。",
+          "execution_policy": {
+            "kind": "scientific",
+            "min_completed_scientific_runs": 2,
+            "max_scientific_calls": 3
+          },
+          "acceptance": {
+            "same_filtered_source_hash": true,
+            "parent_link_to_initial_tuning": true,
+            "controls_extracted_in_matlab": true,
+            "phase_becomes_trough": true,
+            "same_period_405_kyr": true,
+            "same_first_selected_control_zero_convention": true,
+            "same_trim_policy": true,
+            "time_diagnostic_uses_original_proxy_with_new_controls": true,
+            "initial_peak_branch_preserved": true,
+            "raw_artifacts_downloadable": true,
+            "matlab_images_returned": true,
+            "comparison_explains_different_zero_depths": true,
+            "no_formal_age_uncertainty_claim": true
+          }
+        }
+      ],
+      "clarification_answers": {
+        "permission_for_disclosed_chronology_assumption": "可以，使用公开演示方案，只建立相对时间轴，不宣称恢复真实绝对年代。",
+        "units_and_age_context": "单位是米，来自 Acycle 官方示例说明；210 Ma 只是演示方案中的轨道目标近似，并不是这个文件逐点测定的年龄。",
+        "simulation_budget": "先按方案用 19 次随机模拟快速探索，保留不确定和未分辨的结果。"
+      },
+      "allowed_nonpass_states": {
+        "needs_human_clarification": "The requested context is genuinely missing and cannot be supplied from the public preset.",
+        "attachment_unavailable": "The current authorized attachment could not be imported; do not reuse another session's file silently.",
+        "matlab_stage_failed": "Preserve the stage error and partial raw outputs. Do not call the whole workflow completed.",
+        "scientifically_unresolved": "Retain NaN maps, unresolved target terms or insufficient tuning extrema and qualify dependent interpretation.",
+        "presentation_unverified": "Scientific artifacts exist but client delivery or actual rendering has not been established."
+      }
+    }
+  ]
+}

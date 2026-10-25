@@ -1,3 +1,24 @@
 - insert:
-    - id: acycle-matlab
-      name: dsh-acycle
+    - id: preset-acycle
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: acycle
+        name: Acycle MATLAB
+        description: Acycle MATLAB research, original figures and conversational adjustments
+        order: 0
+        plugins:
+          - id: acycle-native
+            name: dsh-acycle
+          - id: acycle-skill-reader
+            name: '@deepseek-ai/dsh-tool-skill'
+          - id: acycle-file-reader
+            name: '@deepseek-ai/dsh-tool-fs'
+            config:
+              read: true
+              readImage: true
+              write: false
+              edit: false
+          - id: acycle-present
+            name: '@deepseek-ai/dsh-tool-present'
+          - id: acycle-ask-user
+            name: '@deepseek-ai/dsh-tool-ask-user'

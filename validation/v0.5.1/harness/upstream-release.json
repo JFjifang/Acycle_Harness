@@ -1,0 +1,31 @@
+{
+  "checked_at_utc": "2026-10-25 13:32:43 UTC",
+  "supported_harness": "0.2.1-rc.3",
+  "node_minimum": "24.9.0",
+  "npm_dist_tags": {
+    "latest": "0.2.1-rc.2",
+    "next": "0.2.1-rc.3",
+    "alpha": "0.2.1-alpha.5"
+  },
+  "npm_published_at_utc": "2026-10-23T07:54:30.267Z",
+  "release": {
+    "url": "https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.1-rc.3",
+    "tag": "dsh-v0.2.1-rc.3",
+    "published_at_utc": "2026-10-23T15:26:39Z",
+    "prerelease": true,
+    "commit": "1f81c047fc48fa190a683e469daa699857e9afe8"
+  },
+  "upstream_default_branch": {
+    "commit": "22ddee3792402c3e70ec5f86a63c3e3e895a2f60",
+    "date": "2026-10-23T11:48:59Z",
+    "url": "https://github.com/deepseek-ai/deepseek-harness/commit/22ddee3792402c3e70ec5f86a63c3e3e895a2f60"
+  },
+  "policy": "Support only the newest published release verified on this date, pin all official runtime packages to it; npm latest is older and is not used.",
+  "desktop_installation_sources": [
+    "https://github.com/deepseek-ai/deepseek-harness/blob/1f81c047fc48fa190a683e469daa699857e9afe8/apps/desktop/README.zh.md#bundled-command-runtime",
+    "https://github.com/deepseek-ai/deepseek-harness/blob/1f81c047fc48fa190a683e469daa699857e9afe8/packages/client/ui-plugin-manager/README.zh.md"
+  ],
+  "desktop_gui_tested": false,
+  "model_api_called": false,
+  "matlab_executed": false
+}

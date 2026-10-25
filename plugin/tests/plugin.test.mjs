@@ -4,7 +4,7 @@ import { mkdtemp, writeFile, mkdir, readFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { runBridge, loadSkills, apply } from '../index.mjs'
+import { runBridge, loadSkills, apply, inject } from '../index.mjs'
 
 async function fixture(body) {
   const root = await mkdtemp(join(tmpdir(), 'acycle-plugin-'))
@@ -17,6 +17,15 @@ test('bridge transports JSON literally without shell expansion', async () => {
   const { executable } = await fixture("import sys; sys.stdout.write(sys.stdin.read())")
   const request = { action: 'call', arguments: { path: 'a b/$(touch NEVER)/quote\'file.csv' } }
   assert.deepEqual(await runBridge(request, { python: executable }), request)
+})
+
+test('Desktop MATLAB paths are confined to the bridge child environment', async t => {
+  const { root, executable } = await fixture("import os,json; print(json.dumps({key:os.environ.get(key) for key in ['ACYCLE_ROOT','MATLAB_EXECUTABLE','ACYCLE_BACKEND']}))")
+  t.after(() => rm(root, { recursive: true, force: true }))
+  const before = { root: process.env.ACYCLE_ROOT, matlab: process.env.MATLAB_EXECUTABLE, backend: process.env.ACYCLE_BACKEND }
+  const environment = { ACYCLE_ROOT: '/local/Acycle source', MATLAB_EXECUTABLE: '/Applications/MATLAB/bin/matlab', ACYCLE_BACKEND: 'local' }
+  assert.deepEqual(await runBridge({}, { python: executable, environment }), environment)
+  assert.deepEqual({ root: process.env.ACYCLE_ROOT, matlab: process.env.MATLAB_EXECUTABLE, backend: process.env.ACYCLE_BACKEND }, before)
 })
 
 test('bridge observes cancellation and waits for subprocess exit', async () => {
@@ -86,11 +95,13 @@ test('packaged skill metadata strips frontmatter and resolves resources', async 
   assert.equal(skill.resourceBase.kind, 'directory')
 })
 
-test('optional SystemPrompt service does not block legacy plugin registration', async () => {
+test('current Harness requires workflow policy and registers it before tools', async () => {
   const { executable, root } = await fixture("print('[]')")
   const registered = []
-  const ctx = { get: () => undefined, tools: { register: tool => registered.push(tool.name) },
+  const ctx = { systemPrompt: { section: section => registered.push(section.name) },
+    tools: { register: tool => registered.push(tool.name) },
     skills: { registerProvider: () => {} } }
+  assert.ok(inject.includes('systemPrompt'))
   await apply(ctx, { workspace: root, python: executable })
-  assert.deepEqual(registered, ['acycle_import_attachment'])
+  assert.deepEqual(registered, ['acycle:research-workflow', 'acycle_import_attachment'])
 })

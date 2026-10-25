@@ -1,0 +1,137 @@
+{
+  "status": "passed",
+  "scope": "Actual Web-profile agent composition; no model or MATLAB execution.",
+  "model_api_called": false,
+  "matlab_executed": false,
+  "actual_agent_created": true,
+  "session_id": "session-53d02e90-033f-45a7-bbb9-aae02873a1da",
+  "selected_preset": "acycle",
+  "model": {
+    "provider": "deepseek-official",
+    "id": "deepseek-flash",
+    "inputModalities": [
+      "text",
+      "image"
+    ]
+  },
+  "tools": [
+    "acycle_analyze",
+    "acycle_capabilities",
+    "acycle_coco",
+    "acycle_compare",
+    "acycle_ecoco",
+    "acycle_get_run",
+    "acycle_import_attachment",
+    "acycle_inspect",
+    "acycle_interpolate_pro",
+    "acycle_rerun",
+    "acycle_sensitivity",
+    "acycle_swa",
+    "acycle_tune",
+    "ask_user_question",
+    "present",
+    "read",
+    "read_image",
+    "skill",
+    "working_directory"
+  ],
+  "native_tool_count": 13,
+  "skills": [
+    "acycle-age-model",
+    "acycle-astronomical-tuning",
+    "acycle-coco",
+    "acycle-intake",
+    "acycle-interpolation-pro",
+    "acycle-mini-robot",
+    "acycle-reproduction",
+    "acycle-sensitivity-steering",
+    "acycle-spectral-interpretation",
+    "acycle-swa"
+  ],
+  "all_scoped_skills": [
+    "acycle-age-model",
+    "acycle-astronomical-tuning",
+    "acycle-coco",
+    "acycle-intake",
+    "acycle-interpolation-pro",
+    "acycle-mini-robot",
+    "acycle-reproduction",
+    "acycle-sensitivity-steering",
+    "acycle-spectral-interpretation",
+    "acycle-swa",
+    "newark-relative-time-demo"
+  ],
+  "demo_skill": "newark-relative-time-demo",
+  "demo_skill_loaded": true,
+  "demo_skill_path": "/workspace/Acycle_Harness/demo/newark-0.5.1/skills/newark-relative-time-demo/SKILL.md",
+  "demo_skill_content_sha256": "98dbc8df618fe17bff9534726d2e12b3ad40f938a823ee4f7e8b42a5c808440f",
+  "skill_body_loaded": true,
+  "persona_present": true,
+  "capabilities": {
+    "version": "0.5.1",
+    "backend": "local",
+    "acycle_root": "/workspace/upstream/acycle",
+    "matlab_available": false,
+    "python_numerical_fallback": false
+  },
+  "skills_in_model_messages": true,
+  "catalog_transport": "Actual preset AgentLoop request captured by a deterministic keyless adapter; official deployment route resolved separately.",
+  "fixture_request_captured": true,
+  "prompt_sha256": "c813414085c1af8d3f2465d37fb672b130d5b3e2115a2bfe2e6db68e5a15c9b5",
+  "prompt_sections": [
+    "harness:identity",
+    "deployment:persona-prefix",
+    "context:file-reference",
+    "tool:read",
+    "mcp-resource-servers",
+    "acycle:research-workflow",
+    "ui:deliverable-file-references",
+    "harness:source",
+    "app:web-surface",
+    "deployment:persona-suffix"
+  ],
+  "compositions": [
+    {
+      "id": "acycle",
+      "modules": [
+        {
+          "moduleName": "@deepseek-ai/dsh-persona",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-4os01ur2/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "dsh-acycle",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-4os01ur2/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "@deepseek-ai/dsh-tool-skill",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-4os01ur2/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "@deepseek-ai/dsh-tool-fs",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-4os01ur2/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "@deepseek-ai/dsh-tool-present",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-4os01ur2/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "@deepseek-ai/dsh-tool-ask-user",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-4os01ur2/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "file:///workspace/Acycle_Harness/scripts/harness_conversation_support.mjs",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-4os01ur2/home/profiles/web/",
+          "useHostBase": true
+        }
+      ],
+      "leakedServices": []
+    }
+  ],
+  "failures": []
+}

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 import { attachOutputs, deliveryConfig, importAttachment, renderResult, resolveInputAttachment } from './attachments.mjs'
 
 export const name = 'acycle-matlab'
-export const inject = ['tools', 'skills', 'workingDirectory']
+export const inject = ['tools', 'skills', 'workingDirectory', 'systemPrompt']
 const skillRoot = fileURLToPath(new URL('./skills/', import.meta.url))
 const MAX_OUTPUT = 16 * 1024 * 1024
 // Python's MATLAB supervisor may need 5 s to escalate its separate process group,
@@ -22,11 +22,12 @@ The plugin's offloaded previews alone do not give the model image pixels. When t
 
 /** No shell expansion; arguments and paths travel as JSON through stdin. */
 export function runBridge(request, { python = process.env.ACYCLE_PYTHON || 'python3', signal,
-                                     timeoutMs = 3_600_000 } = {}) {
+                                     timeoutMs = 3_600_000, environment = {} } = {}) {
   return new Promise((fulfill, reject) => {
     if (signal?.aborted) return reject(new Error('Acycle call cancelled'))
     const child = spawn(python, ['-m', 'acycle_deepseek.harness_bridge'], {
       stdio: ['pipe', 'pipe', 'pipe'], shell: false, detached: process.platform !== 'win32',
+      env: { ...process.env, ...environment },
     })
     let stdout = '', stderr = '', failure, forceTimer
     const stop = (reason) => {
@@ -62,7 +63,7 @@ export function runBridge(request, { python = process.env.ACYCLE_PYTHON || 'pyth
       if (code !== 0) {
         const secret = process.env.DEEPSEEK_API_KEY
         let record
-        try { record = JSON.parse(stdout) } catch { /* Older bridges report errors on stderr. */ }
+        try { record = JSON.parse(stdout) } catch { /* Interpreter/startup failures may only reach stderr. */ }
         const structuredFailure = record && typeof record === 'object' &&
           (record.status === 'failed' || record.error) ? JSON.stringify(record) : null
         const raw = structuredFailure ?? stderr.slice(-4000)
@@ -100,10 +101,15 @@ export async function loadSkills(root = skillRoot) {
 export async function apply(ctx, config = {}) {
   const python = config.python || process.env.ACYCLE_PYTHON || 'python3'
   const configuredWorkspace = config.workspace || process.env.ACYCLE_WORKSPACE
-  const options = { python, timeoutMs: config.timeoutMs || 3_600_000 }
+  // Desktop launch environments need not inherit the terminal's MATLAB paths.
+  // Apply this preset's explicit paths to its child only, never to other agents.
+  const environment = {}
+  if (config.acycleRoot) environment.ACYCLE_ROOT = resolve(config.acycleRoot)
+  if (config.matlabExecutable) environment.MATLAB_EXECUTABLE = config.matlabExecutable
+  if (config.backend) environment.ACYCLE_BACKEND = config.backend
+  const options = { python, timeoutMs: config.timeoutMs || 3_600_000, environment }
   const delivery = deliveryConfig(config)
-  const systemPrompt = ctx.get('systemPrompt')
-  if (systemPrompt) systemPrompt.section({ name: 'acycle:research-workflow', order: 3200,
+  ctx.systemPrompt.section({ name: 'acycle:research-workflow', order: 3200,
     text: WORKFLOW_POLICY, interpolate: false })
   const workspaceFor = async exec => resolve(configuredWorkspace || (exec.agent
     ? await ctx.workingDirectory.ensure(exec.agent, exec.signal) : process.cwd()))

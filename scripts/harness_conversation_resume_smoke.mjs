@@ -18,7 +18,7 @@ const output = resolve(values.output), workspace = resolve(values.workspace)
 await mkdir(output, { recursive: true })
 const files = ['first-process.json', 'second-process.json'].map(name => join(output, name))
 const common = [join(root, 'scripts/harness_conversation.mjs'), '--mode', 'mock',
-  '--runtime', resolve(values.runtime), '--scenarios', join(root, 'demo/newark-0.5.0/scenarios.json'),
+  '--runtime', resolve(values.runtime), '--scenarios', join(root, 'demo/newark-0.5.1/scenarios.json'),
   '--workspace', workspace, '--plugin', resolve(values.plugin), '--max-user-turns', '1',
   '--expect-acycle-tools', '13', '--expect-acycle-skills', '10']
 const env = { ...process.env }

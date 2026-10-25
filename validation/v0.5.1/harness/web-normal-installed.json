@@ -1,0 +1,131 @@
+{
+  "status": "passed",
+  "scope": "Actual Web-profile agent composition; no model or MATLAB execution.",
+  "model_api_called": false,
+  "matlab_executed": false,
+  "actual_agent_created": true,
+  "session_id": "session-dede394d-9390-4c27-b15e-643ca131ca05",
+  "selected_preset": "acycle",
+  "model": {
+    "provider": "deepseek-official",
+    "id": "deepseek-flash",
+    "inputModalities": [
+      "text",
+      "image"
+    ]
+  },
+  "tools": [
+    "acycle_analyze",
+    "acycle_capabilities",
+    "acycle_coco",
+    "acycle_compare",
+    "acycle_ecoco",
+    "acycle_get_run",
+    "acycle_import_attachment",
+    "acycle_inspect",
+    "acycle_interpolate_pro",
+    "acycle_rerun",
+    "acycle_sensitivity",
+    "acycle_swa",
+    "acycle_tune",
+    "ask_user_question",
+    "present",
+    "read",
+    "read_image",
+    "skill",
+    "working_directory"
+  ],
+  "native_tool_count": 13,
+  "skills": [
+    "acycle-age-model",
+    "acycle-astronomical-tuning",
+    "acycle-coco",
+    "acycle-intake",
+    "acycle-interpolation-pro",
+    "acycle-mini-robot",
+    "acycle-reproduction",
+    "acycle-sensitivity-steering",
+    "acycle-spectral-interpretation",
+    "acycle-swa"
+  ],
+  "all_scoped_skills": [
+    "acycle-age-model",
+    "acycle-astronomical-tuning",
+    "acycle-coco",
+    "acycle-intake",
+    "acycle-interpolation-pro",
+    "acycle-mini-robot",
+    "acycle-reproduction",
+    "acycle-sensitivity-steering",
+    "acycle-spectral-interpretation",
+    "acycle-swa"
+  ],
+  "demo_skill": null,
+  "demo_skill_loaded": null,
+  "demo_skill_path": null,
+  "demo_skill_content_sha256": null,
+  "skill_body_loaded": true,
+  "persona_present": true,
+  "capabilities": {
+    "version": "0.5.1",
+    "backend": "local",
+    "acycle_root": "/workspace/upstream/acycle",
+    "matlab_available": false,
+    "python_numerical_fallback": false
+  },
+  "skills_in_model_messages": true,
+  "catalog_transport": "Actual preset AgentLoop request captured by a deterministic keyless adapter; official deployment route resolved separately.",
+  "fixture_request_captured": true,
+  "prompt_sha256": "83d4fa14a2e0703c5d72f69e2b96b45450c454a84149728628d34167633fa11e",
+  "prompt_sections": [
+    "harness:identity",
+    "deployment:persona-prefix",
+    "context:file-reference",
+    "tool:read",
+    "mcp-resource-servers",
+    "acycle:research-workflow",
+    "ui:deliverable-file-references",
+    "harness:source",
+    "app:web-surface",
+    "deployment:persona-suffix"
+  ],
+  "compositions": [
+    {
+      "id": "acycle",
+      "modules": [
+        {
+          "moduleName": "@deepseek-ai/dsh-persona",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-wyrb5xe1/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "file:///workspace/acycle-runtime-v051/node_modules/dsh-acycle/index.mjs",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-wyrb5xe1/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "@deepseek-ai/dsh-tool-skill",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-wyrb5xe1/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "@deepseek-ai/dsh-tool-fs",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-wyrb5xe1/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "@deepseek-ai/dsh-tool-present",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-wyrb5xe1/home/profiles/web/",
+          "useHostBase": true
+        },
+        {
+          "moduleName": "@deepseek-ai/dsh-tool-ask-user",
+          "baseUrl": "file:///workspace/Acycle_Harness/validation/v0.5.1/harness/acycle-agent-check-wyrb5xe1/home/profiles/web/",
+          "useHostBase": true
+        }
+      ],
+      "leakedServices": []
+    }
+  ],
+  "failures": []
+}
