@@ -391,6 +391,10 @@
       "sha256": "6096ab6dca08a733c216b68967163c5224225b191a8a034213484ec7969fc7bc"
     },
     {
+      "relative_path": "code/seriesanalysis/interpolate.m",
+      "sha256": "1a318132adaf427be8fcd207f359200bad2ee723b8f36a0f9a729627c85865b1"
+    },
+    {
       "relative_path": "code/seriesanalysis/minirhos0.m",
       "sha256": "7f364438a7d9f127398deb7825f4693c4ddcfda082eae8baac47077c905f2ef1"
     },

@@ -60,12 +60,28 @@ end
 function testExplicitUnitsAndSixPeriodMode(testCase)
 [data,p]=synthetic(); data(:,1)=data(:,1)/.3048; p.depth_unit='ft';
 p=rmfield(p,'middle_age_ma'); p.orbital_periods_kyr=[125,95,39.8,23.3,22,18.7];
-p.method='phase_averaged';p.nsim=9;
+p.method='phase_averaged';p.nsim=9;p.dt=.25/.3048;
 [r,s]=runFixture(testCase,'coco-feet-six-periods',data,p,'coco');
+[curve,pvalues,null,details]=corrcoefslices_rankNew(s.inputData,s.periods, ...
+    r.summary.sampling_interval_m,r.parameters.nfft,8,12,1,0,0,9,0,1, ...
+    'Spearman',1/(2*r.summary.sampling_interval_m),0,false,'adaptive', ...
+    'MaxFrequency',r.parameters.max_frequency,'Seed',17,'ShowPeriodograms',false);
+verifyEqual(testCase,s.numerical.corrCI,curve,'AbsTol',1e-12);
+verifyEqual(testCase,s.numerical.corrH0,pvalues,'AbsTol',1e-12);
+verifyEqual(testCase,s.numerical.nullCorrelation,null,'AbsTol',1e-12);
+verifyEqual(testCase,s.numerical.details.nullMax,details.nullMax,'AbsTol',1e-12);
 verifyEqual(testCase,s.rawMetres(:,1),s.raw(:,1)*.3048,'AbsTol',1e-12);
+verifyEqual(testCase,s.inputData,interpolate(s.clean,.25),'AbsTol',1e-12);
+verifyEqual(testCase,r.summary.sampling_interval_m,.25,'AbsTol',1e-12);
+verifyEqual(testCase,size(s.prepared,1),961);
 verifyEqual(testCase,r.summary.orbital_periods_kyr,p.orbital_periods_kyr,'AbsTol',1e-12);
 verifyEqual(testCase,r.summary.target_mode,'adaptive');
 verifyEqual(testCase,r.summary.depth_to_metres_factor,.3048);
+verifyEqual(testCase,r.summary.requested_period_count,6);
+verifyEqual(testCase,r.summary.resolved_period_count_at_best,s.numerical.report.periodCountAtBest);
+verifyEqual(testCase,r.summary.target_model,'phase-averaged');
+verifyTrue(testCase,contains(r.summary.interpretation,'of 6 requested'));
+verifyFalse(testCase,contains(r.summary.interpretation,'/9'));
 verifyEqual(testCase,r.status,'success');
 end
 
@@ -107,6 +123,10 @@ function testRejectsUnknownTargetAndHeldoutLeakage(testCase)
 [data,p]=synthetic(); p=rmfield(p,'middle_age_ma');
 request=prepareFixture(testCase,'coco-missing-target',data,p,'coco');
 verifyError(testCase,@()acycle_coco(request),'Harness:COCOTarget');
+[data,p]=synthetic();p=rmfield(p,'middle_age_ma');p.method='phase_averaged';
+p.orbital_periods_kyr=10:10:100;
+request=prepareFixture(testCase,'coco-too-many-periods',data,p,'coco');
+verifyError(testCase,@()acycle_coco(request),'Harness:COCOPeriodCount');
 [data,p]=synthetic();p.method='interleaved';p.detrend='loess';p.span=.5;p.window=120;p.step=60;
 request=prepareFixture(testCase,'ecoco-disallow-leakage',data,p,'ecoco');
 verifyError(testCase,@()acycle_coco(request),'Harness:COCOPreprocessLeakage');

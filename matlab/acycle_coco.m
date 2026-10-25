@@ -35,7 +35,7 @@ assert(isstruct(p)&&isscalar(p),'Harness:COCOParameters','parameters must be an 
 common={'depth_unit','middle_age_ma','orbital_periods_kyr','sedimentation_rate_min', ...
     'sedimentation_rate_max','sedimentation_rate_step','nsim','seed', ...
     'correlation','red_noise','nfft','max_frequency','method','detrend','span','detrend_window'};
-if strcmp(operation,'coco'), allowed=[common,{'slices'}];
+if strcmp(operation,'coco'), allowed=[common,{'slices','dt'}];
 else, allowed=[common,{'window','step'}]; end
 unknown=setdiff(fieldnames(p),allowed);
 assert(isempty(unknown),'Harness:UnknownParameter','Unknown COCO parameters: %s',strjoin(unknown,', '));
@@ -89,8 +89,8 @@ if strcmp(operation,'ecoco')||strcmp(p.method,'adaptive')
     assert(numel(periods)==9,'Harness:COCONinePeriods', ...
         'Modern coherent/four-group Adaptive COCO and eCOCO require exactly nine periods.');
 else
-    assert(numel(periods)>=2&&numel(periods)<=32,'Harness:COCOPeriodCount', ...
-        'phase_averaged COCO supports 2 to 32 distinct periods.');
+    assert(numel(periods)>=2&&numel(periods)<=9,'Harness:COCOPeriodCount', ...
+        'phase_averaged COCO supports 2 to 9 distinct periods; the original publication audit cannot accept more than 9.');
 end
 p.max_frequency=getDefault(p,'max_frequency',1.2/min(periods));
 validateattributes(p.max_frequency,{'numeric'},{'scalar','real','finite','positive','>=',max(1./periods)});
@@ -147,6 +147,28 @@ if ~strcmp(p.detrend,'linear')
         'order','clean; nonlinear smooth subtraction; original median-grid interpolation; original internal linear detrending', ...
         'nullConditioning','Monte Carlo conditional on preprocessed record; global nonlinear trend is not re-estimated in each null');
     preparation.afterDetrend=postDetrendPreparation;
+end
+if isfield(p,'dt')
+    validateattributes(p.dt,{'numeric'},{'scalar','real','finite','positive'});
+    requestedDt=p.dt*factor;
+    requestedCount=floor((clean(end,1)-clean(1,1))/requestedDt)+1;
+    assert(requestedCount>=16&&requestedCount<=200000,'Harness:COCOGrid', ...
+        'Explicit dt must generate 16 to 200000 points.');
+    assert(strcmp(which('interpolate'),fullfile(root,'code','seriesanalysis','interpolate.m')), ...
+        'Harness:FunctionShadowed','Missing or shadowed Acycle interpolate function.');
+    if strcmp(p.detrend,'linear'), interpolationInput=clean;
+    else, interpolationInput=inputData;end
+    % The modern core derives dt from its input and overrides caller dt.
+    % Therefore run the original Acycle interpolation function first, after
+    % optional nonlinear detrending, to honor an explicitly requested grid.
+    inputData=interpolate(interpolationInput,requestedDt);
+    [prepared,resampledPreparation]=cocoPrepareRegularData(inputData, ...
+        'Harness explicit interpolation','MaximumPoints',200000,'MinimumPoints',16,'Verbose',false);
+    dt=resampledPreparation.outputSpacing;
+    preparation.requestedInterpolation=struct('function','interpolate', ...
+        'source','code/seriesanalysis/interpolate.m','requestedIntervalInputUnit',p.dt, ...
+        'requestedIntervalMetres',requestedDt,'afterNonlinearDetrending',~strcmp(p.detrend,'linear'));
+    preparation.afterRequestedInterpolation=resampledPreparation;
 end
 windowCount=1;
 if strcmp(operation,'coco')
@@ -222,7 +244,33 @@ if strcmp(operation,'coco')
     summary.mc_threshold_resolved=report.monteCarloThresholdResolved;
     summary.nsim_completed=details.nSimCompleted;
     summary.target_mode=targetMode;
+    summary.target_model=details.targetModel;
+    summary.target_construction=details.targetConstruction;
+    summary.null_conditioning=details.nullConditioning;
+    summary.requested_period_count=numel(periods);
+    summary.resolved_period_count_at_best=report.periodCountAtBest;
+    summary.all_requested_periods_resolved=report.periodCountAtBest==numel(periods);
+    summary.all_period_rate_range_cm_kyr=details.allNineRateRange;
     summary.interpretation=report.conclusion;
+    if strcmp(p.method,'phase_averaged')
+        % The original audit's statistics apply here, but its explanatory
+        % prose hardcodes nine periods and can misidentify noncoherent mode
+        % as coherent-nine. Preserve the original report and fix only the
+        % public interpretation using original numerical metadata.
+        if report.globalPass
+            decision=['A sedimentation rate passes the original rate-search-corrected global p < 0.05 criterion; ', ...
+                'this full-record association is exploratory, not held-out confirmation.'];
+        else
+            decision='No sedimentation rate passes the original rate-search-corrected global p < 0.05 criterion.';
+        end
+        summary.interpretation=sprintf( ...
+            '%s The best rate uses %d of %d requested frequency-resolved orbital periods in a phase-averaged noncoherent target.', ...
+            decision,report.periodCountAtBest,numel(periods));
+        numerical.report_scope=['Original publication audit retained unchanged. Its nine-period/coherent wording ', ...
+            'does not describe phase_averaged mode; summary and details give the actual target and participation counts.'];
+        warnings{end+1}=['Original publication-report prose assumes nine periods/coherent synthesis. ', ...
+            'The public summary corrects those labels using original numerical metadata; all statistics and figures are unchanged.'];
+    end
     warnings{end+1}=report.monteCarloPrecisionQualification;
 else
     calcMode=p.method; if strcmp(calcMode,'blocked'), calcMode='crossfit'; end

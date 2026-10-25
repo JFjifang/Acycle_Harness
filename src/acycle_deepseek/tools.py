@@ -192,7 +192,7 @@ def dispatch(name, args, workspace='.'):
         allowed = {
             'analyze': {'span','mtm_nw','smooth_fraction','dt','evolution_window','evolution_step','filter_band','sedimentation_rate'},
             'swa': {'mtm_nw','pad_factor','fmax','detrend'},
-            'coco': {'sedimentation_rate_min','sedimentation_rate_max','sedimentation_rate_step','middle_age_ma','orbital_periods_kyr','nsim','seed','correlation','red_noise','nfft','max_frequency','slices','detrend','span','detrend_window','method'},
+            'coco': {'sedimentation_rate_min','sedimentation_rate_max','sedimentation_rate_step','middle_age_ma','orbital_periods_kyr','nsim','seed','correlation','red_noise','nfft','max_frequency','slices','dt','detrend','span','detrend_window','method'},
             'ecoco': {'sedimentation_rate_min','sedimentation_rate_max','sedimentation_rate_step','middle_age_ma','orbital_periods_kyr','nsim','seed','correlation','red_noise','nfft','max_frequency','window','step','method','detrend','span','detrend_window'},
         }.get(operation,set())
         if parameter not in allowed:
@@ -260,7 +260,7 @@ def tool_schemas():
     coco_properties = {
         'depth_unit':{'type':'string','enum':['m','dm','cm','mm','ft','km']},
         'middle_age_ma':{'type':'number','minimum':0,'description':'Astronomical target age (Ma); supply this OR explicit orbital_periods_kyr.'},
-        'orbital_periods_kyr':{'type':'array','items':{'type':'number','exclusiveMinimum':0},'minItems':2,'maxItems':32,'description':'Distinct orbital target periods in kyr; COCO supports 2–32, eCOCO requires exactly 9.'},
+        'orbital_periods_kyr':{'type':'array','items':{'type':'number','exclusiveMinimum':0},'minItems':2,'maxItems':9,'description':'Distinct orbital target periods in kyr; COCO supports 2–9, eCOCO requires exactly 9.'},
         'sedimentation_rate_min':{'type':'number','exclusiveMinimum':0,'description':'cm/kyr'},
         'sedimentation_rate_max':{'type':'number','exclusiveMinimum':0,'description':'cm/kyr'},
         'sedimentation_rate_step':{'type':'number','exclusiveMinimum':0,'description':'cm/kyr'},
@@ -276,8 +276,8 @@ def tool_schemas():
     }
     coco_required=['depth_unit','sedimentation_rate_min','sedimentation_rate_max','sedimentation_rate_step']
     coco_schema={'type':'object','additionalProperties':False,'required':coco_required,
-        'description':'Original COCO 2.0. adaptive uses the coherent-nine target (requires9 periods); phase_averaged supports2–32. Requires units, rate grid and exactly one target definition (middle_age_ma or orbital_periods_kyr).',
-        'properties':{**coco_properties,'method':{'type':'string','enum':['adaptive','phase_averaged']},'slices':{'type':'integer','minimum':1,'maximum':20}}}
+        'description':'Original COCO 2.0. adaptive uses the coherent-nine target (requires9 periods); phase_averaged supports2–9. Requires units, rate grid and exactly one target definition (middle_age_ma or orbital_periods_kyr).',
+        'properties':{**coco_properties,'method':{'type':'string','enum':['adaptive','phase_averaged']},'slices':{'type':'integer','minimum':1,'maximum':20},'dt':{'type':'number','exclusiveMinimum':0,'description':'Optional explicit regular-grid sampling interval in depth_unit, applied in MATLAB after detrending; default is the original median spacing.'}}}
     ecoco_schema={'type':'object','additionalProperties':False,'required':[*coco_required,'window','step'],
         'description':'Original evolutionary COCO 2.0, physical windows without edge padding. Target requires exactly9 periods, or middle_age_ma. Monte Carlo settings and target are preserved.',
         'properties':{**coco_properties,'orbital_periods_kyr':{**coco_properties['orbital_periods_kyr'],'minItems':9,'maxItems':9},
